@@ -225,7 +225,6 @@ texture = ExtResource("2_v45rw")
 centered = false
 
 [node name="TITLE" type="Sprite2D" parent="BGs"]
-self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("1_vx2sg")
 centered = false
 
@@ -284,12 +283,12 @@ offset_bottom = 68.0
 script = ExtResource("7_w4qpp")
 
 [node name="Souris_curseur" type="Sprite2D" parent="Papa_Souris"]
+visible = false
 texture = ExtResource("8_i2i1t")
 centered = false
 offset = Vector2(-1, -1)
 
 [node name="Souris_oeil" type="Sprite2D" parent="Papa_Souris"]
-visible = false
 texture = ExtResource("9_xtaod")
 centered = false
 offset = Vector2(-6, -5)
