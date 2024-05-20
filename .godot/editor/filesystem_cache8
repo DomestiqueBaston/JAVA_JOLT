@@ -1,0 +1,17 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1716226797
+Barefoot_steps_A.wav::AudioStreamWAV::5222996953370087689::1716226754::1716226754::1::::<><>::
+DECOR.png::CompressedTexture2D::6862202660974175062::1716226754::1716226754::1::::<><>::
+DECOR_lights_off.png::CompressedTexture2D::8577562474534889884::1716226754::1716226754::1::::<><>::
+export_presets.cfg::TextFile::-1::1716226754::0::1::::<><>::
+JAVA_JOLT.tscn::PackedScene::2556207399047574994::1716226754::0::1::::<><>::uid://8rrau8643j7s::::res://Titre.png<>uid://duhbg3cugeync::::res://DECOR_lights_off.png<>uid://c41dqfncgpnjy::::res://DECOR.png<>res://ROWENA.gd<>uid://p2sngi3f5ond::::res://ROWENA.png<>res://KUWAHARA.gdshader<>res://Souris.gd<>uid://dc8h3alup5woo::::res://mouse_cursor.png<>uid://sfbq8dum36ei::::res://mouse_eye.png<>uid://dijetsey2d5ss::::res://monobit.ttf<>uid://cgob85htwkwgv::::res://Barefoot_steps_A.wav
+KUWAHARA.gdshader::Shader::-1::1716226754::0::1::::<><>::
+KUWAHARA.tscn::PackedScene::2556207399047574994::1716225449::0::1::::<><>::uid://c41dqfncgpnjy::::res://DECOR.png<>uid://duhbg3cugeync::::res://DECOR_lights_off.png<>uid://8rrau8643j7s::::res://Titre.png<>res://ROWENA.gd<>uid://p2sngi3f5ond::::res://ROWENA.png<>res://KUWAHARA.gdshader<>uid://cgob85htwkwgv::::res://Barefoot_steps_A.wav<>uid://dijetsey2d5ss::::res://monobit.ttf<>res://Souris.gd<>uid://sfbq8dum36ei::::res://mouse_eye.png<>uid://dc8h3alup5woo::::res://mouse_cursor.png
+monobit.ttf::FontFile::7739629950751563830::1716226754::1716226754::1::::<><>::
+mouse_cursor.png::CompressedTexture2D::7368239243340850018::1716226754::1716226754::1::::<><>::
+mouse_eye.png::CompressedTexture2D::1273812102780975596::1716226754::1716226754::1::::<><>::
+README.md::TextFile::-1::1716226754::0::1::::<><>::
+ROWENA.gd::GDScript::-1::1716226754::0::1::::<>CharacterBody2D<>::
+ROWENA.png::CompressedTexture2D::1109687303899265205::1716226754::1716226754::1::::<><>::
+Souris.gd::GDScript::-1::1716226754::0::1::::<>Node2D<>::
+Titre.png::CompressedTexture2D::2352359553645027270::1716226754::1716226754::1::::<><>::
