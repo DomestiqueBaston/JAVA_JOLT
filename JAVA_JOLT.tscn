@@ -1,0 +1,400 @@
+[gd_scene load_steps=25 format=3 uid="uid://bcoimk6uqbmn7"]
+
+[ext_resource type="Texture2D" uid="uid://8rrau8643j7s" path="res://Titre.png" id="1_vx2sg"]
+[ext_resource type="Texture2D" uid="uid://duhbg3cugeync" path="res://DECOR_lights_off.png" id="2_v45rw"]
+[ext_resource type="Texture2D" uid="uid://c41dqfncgpnjy" path="res://DECOR.png" id="3_33akg"]
+[ext_resource type="Script" path="res://ROWENA.gd" id="4_khi0v"]
+[ext_resource type="Texture2D" uid="uid://p2sngi3f5ond" path="res://ROWENA.png" id="5_qbfr2"]
+[ext_resource type="Shader" path="res://KUWAHARA.gdshader" id="6_vt8ty"]
+[ext_resource type="Script" path="res://Souris.gd" id="7_w4qpp"]
+[ext_resource type="Texture2D" uid="uid://dc8h3alup5woo" path="res://mouse_cursor.png" id="8_i2i1t"]
+[ext_resource type="Texture2D" uid="uid://sfbq8dum36ei" path="res://mouse_eye.png" id="9_xtaod"]
+[ext_resource type="FontFile" uid="uid://dijetsey2d5ss" path="res://monobit.ttf" id="10_1nbjk"]
+[ext_resource type="AudioStream" uid="uid://cgob85htwkwgv" path="res://Barefoot_steps_A.wav" id="11_c300p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f73gc"]
+size = Vector2(19, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37oab"]
+size = Vector2(3, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbm7t"]
+size = Vector2(5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kuty"]
+size = Vector2(8, 6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3cgxk"]
+shader = ExtResource("6_vt8ty")
+shader_parameter/radius = 1
+shader_parameter/offset = Vector3(0.03, -0.02, -0.03)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncb4q"]
+size = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_hknbg"]
+resource_name = "Moving_painting"
+length = 4.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kuwahara_Shader:material:shader_parameter/offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.4, 1.9, 2.1, 2.4, 2.8, 3, 3.4, 3.6, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0, 0.01, -0.01), Vector3(0, -0.02, 0.01), Vector3(0.01, -0.01, 0), Vector3(0.01, 0, 0.01), Vector3(0, 0, 0.02), Vector3(-0.01, 0, 0.01), Vector3(0, 0, -0.01), Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0.01, 0.01, -0.01), Vector3(0.01, -0.01, 0.01)]
+}
+
+[sub_resource type="Animation" id="Animation_uoheo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kuwahara_Shader:material:shader_parameter/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.03, -0.02, -0.03)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ml54y"]
+_data = {
+"Moving_painting": SubResource("Animation_hknbg"),
+"RESET": SubResource("Animation_uoheo")
+}
+
+[sub_resource type="Animation" id="Animation_ta5w8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Machin_de_dialogue:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Machin_de_dialogue/Control/MarginContainer/VBoxContainer/HBoxContainer/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1dexo"]
+resource_name = "Waiting"
+length = 22.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 11, 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 12, 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.9, 13, 13.1, 13.2, 13.3, 13.4, 13.5, 13.6, 13.7, 13.8, 13.9, 14, 14.1, 14.2, 14.3, 14.4, 14.5, 14.6, 14.7, 14.8, 14.9, 15, 15.1, 15.2, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9, 16, 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 16.9, 17, 17.1, 17.2, 17.3, 17.4, 17.5, 17.6, 17.7, 17.8, 17.9, 18, 18.1, 18.2, 18.3, 18.4, 18.5, 18.6, 18.7, 18.8, 18.9, 19, 19.1, 19.2, 19.3, 19.4, 19.5, 19.6, 19.7, 19.8, 19.9, 20, 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7, 20.8, 20.9, 21, 21.1, 21.2, 21.3, 21.4, 21.5, 21.6, 21.7, 21.8, 21.9, 22, 22.1, 22.2, 22.3, 22.4, 22.5, 22.6, 22.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Machin_de_dialogue:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.4, 8.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Machin_de_dialogue/Control/MarginContainer/VBoxContainer/HBoxContainer/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.4, 6.7, 8.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_wcrxa"]
+resource_name = "Walk"
+length = 0.80001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Machin_de_dialogue:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mol2e"]
+_data = {
+"RESET": SubResource("Animation_ta5w8"),
+"Waiting": SubResource("Animation_1dexo"),
+"Walk": SubResource("Animation_wcrxa")
+}
+
+[node name="JAVA_JOLT" type="Node2D"]
+
+[node name="BGs" type="Node2D" parent="."]
+
+[node name="TITLE" type="Sprite2D" parent="BGs"]
+visible = false
+texture = ExtResource("1_vx2sg")
+centered = false
+
+[node name="BG_LIGHTS_OFF" type="Sprite2D" parent="BGs"]
+visible = false
+texture = ExtResource("2_v45rw")
+centered = false
+
+[node name="BG_LIGHTS_ON" type="Sprite2D" parent="BGs"]
+texture = ExtResource("3_33akg")
+centered = false
+
+[node name="BG_Colliders" type="Node2D" parent="BGs"]
+visible = false
+
+[node name="Oven_Colliders" type="Area2D" parent="BGs/BG_Colliders"]
+collision_layer = 2
+
+[node name="Oven" type="CollisionShape2D" parent="BGs/BG_Colliders/Oven_Colliders"]
+position = Vector2(59.5, 52)
+shape = SubResource("RectangleShape2D_f73gc")
+
+[node name="Milk_Collider" type="Area2D" parent="BGs/BG_Colliders"]
+collision_layer = 2
+
+[node name="Milk" type="CollisionShape2D" parent="BGs/BG_Colliders/Milk_Collider"]
+position = Vector2(72.5, 35)
+shape = SubResource("RectangleShape2D_37oab")
+
+[node name="Coffee_Maker_Collider" type="Area2D" parent="BGs/BG_Colliders"]
+collision_layer = 2
+
+[node name="Coffee_Maker" type="CollisionShape2D" parent="BGs/BG_Colliders/Coffee_Maker_Collider"]
+position = Vector2(128.5, 34)
+shape = SubResource("RectangleShape2D_tbm7t")
+
+[node name="Radio_Alarm_Collider" type="Area2D" parent="BGs/BG_Colliders"]
+
+[node name="Radio_Alarm" type="CollisionShape2D" parent="BGs/BG_Colliders/Radio_Alarm_Collider"]
+position = Vector2(166, 36)
+shape = SubResource("RectangleShape2D_7kuty")
+
+[node name="ROWENA" type="CharacterBody2D" parent="."]
+position = Vector2(90, 55)
+script = ExtResource("4_khi0v")
+
+[node name="Rowena_Sprites" type="Sprite2D" parent="ROWENA"]
+position = Vector2(0, -16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_qbfr2")
+hframes = 42
+vframes = 3
+frame = 8
+
+[node name="Kuwahara_Shader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3cgxk")
+offset_right = 188.0
+offset_bottom = 68.0
+
+[node name="Papa_Souris" type="Node2D" parent="."]
+script = ExtResource("7_w4qpp")
+
+[node name="Souris_curseur" type="Sprite2D" parent="Papa_Souris"]
+texture = ExtResource("8_i2i1t")
+centered = false
+offset = Vector2(-1, -1)
+
+[node name="Souris_oeil" type="Sprite2D" parent="Papa_Souris"]
+visible = false
+texture = ExtResource("9_xtaod")
+centered = false
+offset = Vector2(-6, -5)
+
+[node name="Collider" type="Area2D" parent="Papa_Souris"]
+collision_mask = 2
+
+[node name="Souris_Collider" type="CollisionShape2D" parent="Papa_Souris/Collider"]
+shape = SubResource("RectangleShape2D_ncb4q")
+
+[node name="Machin_de_dialogue" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Machin_de_dialogue"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Machin_de_dialogue/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_right = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Machin_de_dialogue/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Machin_de_dialogue/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Machin_de_dialogue/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_fonts/font = ExtResource("10_1nbjk")
+text = "Isn't this is an amazing test?"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Machin_de_description" type="CanvasLayer" parent="."]
+
+[node name="Oven" type="Label" parent="Machin_de_description"]
+visible = false
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 90.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_1nbjk")
+text = "oven"
+
+[node name="Milk" type="Label" parent="Machin_de_description"]
+visible = false
+offset_left = 65.0
+offset_top = 24.0
+offset_right = 105.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_1nbjk")
+text = "milk"
+
+[node name="Coffee_Maker" type="Label" parent="Machin_de_description"]
+visible = false
+offset_left = 99.0
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_1nbjk")
+text = "coffee maker"
+
+[node name="Radio_Alarm" type="Label" parent="Machin_de_description"]
+visible = false
+offset_left = 136.0
+offset_top = 23.0
+offset_right = 197.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_1nbjk")
+text = "radio alarm"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_c300p")
+volume_db = -10.0
+
+[node name="Animation_Painting" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ml54y")
+}
+autoplay = "Moving_painting"
+
+[node name="Animation_Rowena" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ROWENA/Rowena_Sprites")
+libraries = {
+"": SubResource("AnimationLibrary_mol2e")
+}
