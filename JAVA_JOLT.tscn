@@ -333,7 +333,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
-text = "Isn't this is an amazing test?"
+text = "Isn't this an amazing test?"
 visible_characters = 0
 visible_ratio = 0.0
 
