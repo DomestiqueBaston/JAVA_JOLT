@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bcoimk6uqbmn7"]
+[gd_scene load_steps=26 format=3 uid="uid://bcoimk6uqbmn7"]
 
 [ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://Titre.png" id="1_vx2sg"]
 [ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://DECOR_lights_off.png" id="2_v45rw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dci25wvm8tytd" path="res://mouse_eye.png" id="9_xtaod"]
 [ext_resource type="FontFile" uid="uid://b1mftrwyvma3v" path="res://monobit.ttf" id="10_1nbjk"]
 [ext_resource type="AudioStream" uid="uid://na48megord41" path="res://Barefoot_steps_A.wav" id="11_c300p"]
+[ext_resource type="AudioStream" uid="uid://dut26m1i3tt3j" path="res://Radio.wav" id="12_p02y2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f73gc"]
 size = Vector2(19, 24)
@@ -111,7 +112,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../AudioStreamPlayer2D:playing")
+tracks/3/path = NodePath("../../Footstep:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -193,7 +194,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../AudioStreamPlayer2D:playing")
+tracks/2/path = NodePath("../../Footstep:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -333,7 +334,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
-text = "Isn't this an amazing test?"
+text = "Just wait a little bit more..."
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -387,9 +388,15 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "radio alarm"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Footstep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_c300p")
+volume_db = -7.5
+
+[node name="Radio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(2, -4)
+stream = ExtResource("12_p02y2")
 volume_db = -10.0
+autoplay = true
 
 [node name="Animation_Painting" type="AnimationPlayer" parent="."]
 libraries = {
