@@ -14,7 +14,6 @@ config/name="JAVA_JOLT"
 run/main_scene="res://JAVA_JOLT.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=10
-config/icon="res://OLDIES/décor_v020_avec_OCC_reduit_retouches.png"
 
 [display]
 

@@ -1,16 +1,16 @@
 [gd_scene load_steps=25 format=3 uid="uid://bcoimk6uqbmn7"]
 
-[ext_resource type="Texture2D" uid="uid://8rrau8643j7s" path="res://Titre.png" id="1_vx2sg"]
-[ext_resource type="Texture2D" uid="uid://duhbg3cugeync" path="res://DECOR_lights_off.png" id="2_v45rw"]
-[ext_resource type="Texture2D" uid="uid://c41dqfncgpnjy" path="res://DECOR.png" id="3_33akg"]
+[ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://Titre.png" id="1_vx2sg"]
+[ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://DECOR_lights_off.png" id="2_v45rw"]
+[ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://DECOR.png" id="3_33akg"]
 [ext_resource type="Script" path="res://ROWENA.gd" id="4_khi0v"]
-[ext_resource type="Texture2D" uid="uid://p2sngi3f5ond" path="res://ROWENA.png" id="5_qbfr2"]
+[ext_resource type="Texture2D" uid="uid://cvnvvtylllww8" path="res://ROWENA.png" id="5_qbfr2"]
 [ext_resource type="Shader" path="res://KUWAHARA.gdshader" id="6_vt8ty"]
 [ext_resource type="Script" path="res://Souris.gd" id="7_w4qpp"]
-[ext_resource type="Texture2D" uid="uid://dc8h3alup5woo" path="res://mouse_cursor.png" id="8_i2i1t"]
-[ext_resource type="Texture2D" uid="uid://sfbq8dum36ei" path="res://mouse_eye.png" id="9_xtaod"]
-[ext_resource type="FontFile" uid="uid://dijetsey2d5ss" path="res://monobit.ttf" id="10_1nbjk"]
-[ext_resource type="AudioStream" uid="uid://cgob85htwkwgv" path="res://Barefoot_steps_A.wav" id="11_c300p"]
+[ext_resource type="Texture2D" uid="uid://l0uq0b0tfn7h" path="res://mouse_cursor.png" id="8_i2i1t"]
+[ext_resource type="Texture2D" uid="uid://dci25wvm8tytd" path="res://mouse_eye.png" id="9_xtaod"]
+[ext_resource type="FontFile" uid="uid://b1mftrwyvma3v" path="res://monobit.ttf" id="10_1nbjk"]
+[ext_resource type="AudioStream" uid="uid://na48megord41" path="res://Barefoot_steps_A.wav" id="11_c300p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f73gc"]
 size = Vector2(19, 24)
@@ -214,14 +214,18 @@ _data = {
 
 [node name="BGs" type="Node2D" parent="."]
 
-[node name="TITLE" type="Sprite2D" parent="BGs"]
-visible = false
-texture = ExtResource("1_vx2sg")
-centered = false
+[node name="ColorRect" type="ColorRect" parent="BGs"]
+offset_right = 188.0
+offset_bottom = 68.0
+color = Color(0, 0, 0, 1)
 
 [node name="BG_LIGHTS_OFF" type="Sprite2D" parent="BGs"]
-visible = false
 texture = ExtResource("2_v45rw")
+centered = false
+
+[node name="TITLE" type="Sprite2D" parent="BGs"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_vx2sg")
 centered = false
 
 [node name="BG_LIGHTS_ON" type="Sprite2D" parent="BGs"]
