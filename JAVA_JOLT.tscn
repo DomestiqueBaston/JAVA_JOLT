@@ -302,12 +302,10 @@ mouse_filter = 2
 [node name="Oven" type="Label" parent="."]
 visible = false
 offset_left = 50.0
-offset_top = 38.0
+offset_top = 36.0
 offset_right = 90.0
-offset_bottom = 61.0
-theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(1, 0.941375, 0.894469, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "oven"
 
@@ -317,9 +315,7 @@ offset_left = 65.0
 offset_top = 24.0
 offset_right = 105.0
 offset_bottom = 47.0
-theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "milk"
 
@@ -329,9 +325,7 @@ offset_left = 99.0
 offset_top = 20.0
 offset_right = 160.0
 offset_bottom = 43.0
-theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "coffee maker"
 
@@ -341,9 +335,7 @@ offset_left = 136.0
 offset_top = 23.0
 offset_right = 197.0
 offset_bottom = 46.0
-theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "radio alarm"
 
@@ -400,9 +392,7 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="Machin_de_dialogue/Control/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 0
+theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "Just wait a little bit more..."
 visible_characters = 0
