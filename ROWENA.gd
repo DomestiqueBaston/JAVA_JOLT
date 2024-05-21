@@ -9,13 +9,14 @@ var moving = false
 
 func _ready():
 	click_position = position
-	$"../Machin_de_description".hide()
 	$".".show()
 	
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("mouse_click"):
-		click_position = get_global_mouse_position()
-		click_position.y = position.y
+		if $"../Papa_Souris/Souris_curseur".visible == true:
+			hide_labels()
+			click_position = get_global_mouse_position()
+			click_position.y = position.y
 		
 	if position.distance_to(click_position) > 1:
 		target_position = (click_position - position).normalized()
@@ -36,3 +37,12 @@ func _physics_process(_delta):
 		click_position.x = position.x
 		$"../Animation_Rowena".play("Waiting")
 		
+#func test_eye_open():
+	#if $"../Papa_Souris/Souris_curseur".visible == true && $"../Papa_Souris/Souris_oeil".visible == false:
+		#moving = false
+
+func hide_labels():
+	$"../Oven".hide()
+	$"../Milk".hide()
+	$"../Coffee_Maker".hide()
+	$"../Radio_Alarm".hide()

@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://ROWENA.gd" id="4_khi0v"]
 [ext_resource type="Texture2D" uid="uid://cvnvvtylllww8" path="res://ROWENA.png" id="5_qbfr2"]
 [ext_resource type="Shader" path="res://KUWAHARA.gdshader" id="6_vt8ty"]
-[ext_resource type="Script" path="res://Souris.gd" id="7_w4qpp"]
 [ext_resource type="Texture2D" uid="uid://l0uq0b0tfn7h" path="res://mouse_cursor.png" id="8_i2i1t"]
+[ext_resource type="Script" path="res://Souris.gd" id="8_k6sap"]
 [ext_resource type="Texture2D" uid="uid://dci25wvm8tytd" path="res://mouse_eye.png" id="9_xtaod"]
 [ext_resource type="FontFile" uid="uid://b1mftrwyvma3v" path="res://monobit.ttf" id="10_1nbjk"]
 [ext_resource type="AudioStream" uid="uid://d07xhloh584xx" path="res://Radio.ogg" id="11_ixl6t"]
@@ -237,6 +237,7 @@ _data = {
 [node name="ColorRect" type="ColorRect" parent="BGs"]
 offset_right = 188.0
 offset_bottom = 68.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BG_LIGHTS_OFF" type="Sprite2D" parent="BGs"]
@@ -251,36 +252,6 @@ centered = false
 texture = ExtResource("3_33akg")
 centered = false
 
-[node name="BG_Colliders" type="Node2D" parent="BGs"]
-visible = false
-
-[node name="Oven_Colliders" type="Area2D" parent="BGs/BG_Colliders"]
-collision_layer = 2
-
-[node name="Oven" type="CollisionShape2D" parent="BGs/BG_Colliders/Oven_Colliders"]
-position = Vector2(59.5, 52)
-shape = SubResource("RectangleShape2D_f73gc")
-
-[node name="Milk_Collider" type="Area2D" parent="BGs/BG_Colliders"]
-collision_layer = 2
-
-[node name="Milk" type="CollisionShape2D" parent="BGs/BG_Colliders/Milk_Collider"]
-position = Vector2(72.5, 35)
-shape = SubResource("RectangleShape2D_37oab")
-
-[node name="Coffee_Maker_Collider" type="Area2D" parent="BGs/BG_Colliders"]
-collision_layer = 2
-
-[node name="Coffee_Maker" type="CollisionShape2D" parent="BGs/BG_Colliders/Coffee_Maker_Collider"]
-position = Vector2(128.5, 34)
-shape = SubResource("RectangleShape2D_tbm7t")
-
-[node name="Radio_Alarm_Collider" type="Area2D" parent="BGs/BG_Colliders"]
-
-[node name="Radio_Alarm" type="CollisionShape2D" parent="BGs/BG_Colliders/Radio_Alarm_Collider"]
-position = Vector2(166, 36)
-shape = SubResource("RectangleShape2D_7kuty")
-
 [node name="ROWENA" type="CharacterBody2D" parent="."]
 position = Vector2(90, 55)
 script = ExtResource("4_khi0v")
@@ -293,13 +264,91 @@ hframes = 42
 vframes = 3
 frame = 8
 
+[node name="BG_Colliders" type="Node2D" parent="."]
+
+[node name="Oven_Colliders" type="Area2D" parent="BG_Colliders"]
+collision_layer = 2
+
+[node name="Oven" type="CollisionShape2D" parent="BG_Colliders/Oven_Colliders"]
+position = Vector2(59.5, 52)
+shape = SubResource("RectangleShape2D_f73gc")
+
+[node name="Milk_Collider" type="Area2D" parent="BG_Colliders"]
+collision_layer = 2
+
+[node name="Milk" type="CollisionShape2D" parent="BG_Colliders/Milk_Collider"]
+position = Vector2(72.5, 35)
+shape = SubResource("RectangleShape2D_37oab")
+
+[node name="Coffee_Maker_Collider" type="Area2D" parent="BG_Colliders"]
+collision_layer = 2
+
+[node name="Coffee_Maker" type="CollisionShape2D" parent="BG_Colliders/Coffee_Maker_Collider"]
+position = Vector2(128.5, 34)
+shape = SubResource("RectangleShape2D_tbm7t")
+
+[node name="Radio_Alarm_Collider" type="Area2D" parent="BG_Colliders"]
+
+[node name="Radio_Alarm" type="CollisionShape2D" parent="BG_Colliders/Radio_Alarm_Collider"]
+position = Vector2(166, 36)
+shape = SubResource("RectangleShape2D_7kuty")
+
 [node name="Kuwahara_Shader" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_3cgxk")
 offset_right = 188.0
 offset_bottom = 68.0
+mouse_filter = 2
+
+[node name="Oven" type="Label" parent="."]
+visible = false
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 90.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_1nbjk")
+text = "oven"
+
+[node name="Milk" type="Label" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 24.0
+offset_right = 105.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_1nbjk")
+text = "milk"
+
+[node name="Coffee_Maker" type="Label" parent="."]
+visible = false
+offset_left = 99.0
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_1nbjk")
+text = "coffee maker"
+
+[node name="Radio_Alarm" type="Label" parent="."]
+visible = false
+offset_left = 136.0
+offset_top = 23.0
+offset_right = 197.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_1nbjk")
+text = "radio alarm"
 
 [node name="Papa_Souris" type="Node2D" parent="."]
-script = ExtResource("7_w4qpp")
+script = ExtResource("8_k6sap")
 
 [node name="Souris_curseur" type="Sprite2D" parent="Papa_Souris"]
 texture = ExtResource("8_i2i1t")
@@ -327,6 +376,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Machin_de_dialogue/Control"]
 layout_mode = 1
@@ -356,57 +406,6 @@ text = "Just wait a little bit more..."
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Machin_de_description" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Oven" type="Label" parent="Machin_de_description"]
-visible = false
-offset_left = 50.0
-offset_top = 38.0
-offset_right = 90.0
-offset_bottom = 61.0
-theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("10_1nbjk")
-text = "oven"
-
-[node name="Milk" type="Label" parent="Machin_de_description"]
-visible = false
-offset_left = 65.0
-offset_top = 24.0
-offset_right = 105.0
-offset_bottom = 47.0
-theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("10_1nbjk")
-text = "milk"
-
-[node name="Coffee_Maker" type="Label" parent="Machin_de_description"]
-visible = false
-offset_left = 99.0
-offset_top = 20.0
-offset_right = 160.0
-offset_bottom = 43.0
-theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("10_1nbjk")
-text = "coffee maker"
-
-[node name="Radio_Alarm" type="Label" parent="Machin_de_description"]
-visible = false
-offset_left = 136.0
-offset_top = 23.0
-offset_right = 197.0
-offset_bottom = 46.0
-theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("10_1nbjk")
-text = "radio alarm"
-
 [node name="Footstep" type="AudioStreamPlayer2D" parent="."]
 volume_db = -7.5
 
@@ -427,3 +426,16 @@ root_node = NodePath("../ROWENA/Rowena_Sprites")
 libraries = {
 "": SubResource("AnimationLibrary_mol2e")
 }
+
+[connection signal="input_event" from="BG_Colliders/Oven_Colliders" to="Papa_Souris" method="_on_oven_colliders_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Oven_Colliders" to="Papa_Souris" method="_on_oven_colliders_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Oven_Colliders" to="Papa_Souris" method="_on_oven_colliders_mouse_exited"]
+[connection signal="input_event" from="BG_Colliders/Milk_Collider" to="Papa_Souris" method="_on_milk_collider_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Milk_Collider" to="Papa_Souris" method="_on_milk_collider_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Milk_Collider" to="Papa_Souris" method="_on_milk_collider_mouse_exited"]
+[connection signal="input_event" from="BG_Colliders/Coffee_Maker_Collider" to="Papa_Souris" method="_on_coffee_maker_collider_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Coffee_Maker_Collider" to="Papa_Souris" method="_on_coffee_maker_collider_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Coffee_Maker_Collider" to="Papa_Souris" method="_on_coffee_maker_collider_mouse_exited"]
+[connection signal="input_event" from="BG_Colliders/Radio_Alarm_Collider" to="Papa_Souris" method="_on_radio_alarm_collider_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Radio_Alarm_Collider" to="Papa_Souris" method="_on_radio_alarm_collider_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Radio_Alarm_Collider" to="Papa_Souris" method="_on_radio_alarm_collider_mouse_exited"]
