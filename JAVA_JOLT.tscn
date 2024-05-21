@@ -169,10 +169,10 @@ tracks/3/path = NodePath("../../Machin_de_dialogue/Control/MarginContainer/VBoxC
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(11.4, 14.8, 20.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 11.4, 14.8, 20.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": ["Just wait a little bit more...", "And a bit more...", "And a bit more..."]
+"values": ["Just wait a little bit more...", "Just wait a little bit more...", "And a bit more...", "And a bit more..."]
 }
 
 [sub_resource type="Animation" id="Animation_wcrxa"]
@@ -401,6 +401,8 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.94902, 0.870588, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "Just wait a little bit more..."
 visible_characters = 0
