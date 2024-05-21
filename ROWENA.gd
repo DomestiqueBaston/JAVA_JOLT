@@ -10,7 +10,7 @@ var moving = false
 func _ready():
 	click_position = position
 	$"../Machin_de_description".hide()
-	#$".".show()
+	$".".show()
 	
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("mouse_click"):
