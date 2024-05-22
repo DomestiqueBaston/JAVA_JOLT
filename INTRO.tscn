@@ -16,7 +16,7 @@ shader_parameter/offset = Vector3(0.03, -0.02, -0.03)
 
 [sub_resource type="Animation" id="Animation_l43pv"]
 resource_name = "Intro"
-length = 9.00001
+length = 11.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -24,7 +24,7 @@ tracks/0/path = NodePath("Titre:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 4, 4.1, 6, 6.1, 9),
+"times": PackedFloat32Array(0, 0.5, 7, 7.1, 9.4, 9.5, 11.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
@@ -36,7 +36,7 @@ tracks/1/path = NodePath("DecorLightsOff:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 9),
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 11.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.1), Color(1, 1, 1, 0.2), Color(1, 1, 1, 0.3), Color(1, 1, 1, 0.4), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.7), Color(1, 1, 1, 0.8), Color(1, 1, 1, 0.9), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -48,7 +48,7 @@ tracks/2/path = NodePath("DecorLightsOffRadioOn:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.2, 2.3, 9),
+"times": PackedFloat32Array(2.2, 2.3, 11.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -75,7 +75,7 @@ tracks/4/path = NodePath("Radio:volume_db")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(2.2, 2.3, 8.9, 9),
+"times": PackedFloat32Array(2.2, 2.3, 11.4, 11.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [-80.0, -10.0, -10.0, -80.0]
@@ -87,7 +87,7 @@ tracks/5/path = NodePath("Decor:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(8, 8.1, 9),
+"times": PackedFloat32Array(10.5, 10.6, 11.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -111,8 +111,12 @@ tracks/6/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("8_paha3")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_paha3")
 }],
-"times": PackedFloat32Array(2.3, 4.7, 7.1)
+"times": PackedFloat32Array(2.3, 4.7, 7.1, 9.5)
 }
 tracks/6/use_blend = true
 

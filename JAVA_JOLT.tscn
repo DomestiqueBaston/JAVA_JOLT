@@ -341,9 +341,11 @@ text = "radio alarm"
 
 [node name="Papa_Souris" type="Node2D" parent="."]
 visible = false
+position = Vector2(-25, -25)
 script = ExtResource("8_k6sap")
 
 [node name="Souris_curseur" type="Sprite2D" parent="Papa_Souris"]
+visible = false
 texture = ExtResource("8_i2i1t")
 centered = false
 offset = Vector2(-1, -1)
