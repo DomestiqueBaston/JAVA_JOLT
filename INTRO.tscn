@@ -1,0 +1,305 @@
+[gd_scene load_steps=16 format=3 uid="uid://dak2h42jqim0i"]
+
+[ext_resource type="Script" path="res://INTRO.gd" id="1_uosxj"]
+[ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://DECOR_lights_off.png" id="1_y538h"]
+[ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://Titre.png" id="2_6dww4"]
+[ext_resource type="Texture2D" uid="uid://bd6xm2n6jst71" path="res://DECOR_lights_off_radio_on.png" id="2_ukxwp"]
+[ext_resource type="Shader" path="res://KUWAHARA.gdshader" id="3_nwoe8"]
+[ext_resource type="AudioStream" uid="uid://d07xhloh584xx" path="res://Radio.ogg" id="5_4qlll"]
+[ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://DECOR.png" id="5_w2akq"]
+[ext_resource type="AudioStream" uid="uid://dgbk6wkkpd0je" path="res://Alarm.ogg" id="8_paha3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
+shader = ExtResource("3_nwoe8")
+shader_parameter/radius = 1
+shader_parameter/offset = Vector3(0.03, -0.02, -0.03)
+
+[sub_resource type="Animation" id="Animation_l43pv"]
+resource_name = "Intro"
+length = 9.00001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Titre:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 4, 4.1, 6, 6.1, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DecorLightsOff:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.1), Color(1, 1, 1, 0.2), Color(1, 1, 1, 0.3), Color(1, 1, 1, 0.4), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.7), Color(1, 1, 1, 0.8), Color(1, 1, 1, 0.9), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DecorLightsOffRadioOn:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.2, 2.3, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Radio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_4qlll")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Radio:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.2, 2.3, 8.9, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-80.0, -10.0, -10.0, -80.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Decor:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(8, 8.1, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Alarm")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_paha3")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_paha3")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_paha3")
+}],
+"times": PackedFloat32Array(2.3, 4.7, 7.1)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="Animation" id="Animation_y3huk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Titre:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DecorLightsOff:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DecorLightsOffRadioOn:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Radio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Radio:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-80.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Decor:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Alarm")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/6/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u468g"]
+_data = {
+"Intro": SubResource("Animation_l43pv"),
+"RESET": SubResource("Animation_y3huk")
+}
+
+[sub_resource type="Animation" id="Animation_hknbg"]
+resource_name = "Moving_painting"
+length = 4.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kuwahara_Shader:material:shader_parameter/offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.4, 1.9, 2.1, 2.4, 2.8, 3, 3.4, 3.6, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0, 0.01, -0.01), Vector3(0, -0.02, 0.01), Vector3(0.01, -0.01, 0), Vector3(0.01, 0, 0.01), Vector3(0, 0, 0.02), Vector3(-0.01, 0, 0.01), Vector3(0, 0, -0.01), Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0.01, 0.01, -0.01), Vector3(0.01, -0.01, 0.01)]
+}
+
+[sub_resource type="Animation" id="Animation_uoheo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kuwahara_Shader:material:shader_parameter/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.03, -0.02, -0.03)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ml54y"]
+_data = {
+"Moving_painting": SubResource("Animation_hknbg"),
+"RESET": SubResource("Animation_uoheo")
+}
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_uosxj")
+
+[node name="Fond" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 188.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DecorLightsOff" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_y538h")
+centered = false
+
+[node name="DecorLightsOffRadioOn" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_ukxwp")
+centered = false
+
+[node name="Titre" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_6dww4")
+centered = false
+
+[node name="Decor" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("5_w2akq")
+centered = false
+
+[node name="Kuwahara_Shader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gxrs6")
+offset_right = 188.0
+offset_bottom = 68.0
+mouse_filter = 2
+
+[node name="Animation_Intro" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u468g")
+}
+autoplay = "Intro"
+
+[node name="Animation_Painting" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ml54y")
+}
+autoplay = "Moving_painting"
+
+[node name="Radio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -80.0
+
+[node name="Alarm" type="AudioStreamPlayer2D" parent="."]
+volume_db = -7.5
+
+[connection signal="animation_finished" from="Animation_Intro" to="." method="_on_animation_intro_animation_finished"]

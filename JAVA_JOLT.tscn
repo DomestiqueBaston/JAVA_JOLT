@@ -340,6 +340,7 @@ theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "radio alarm"
 
 [node name="Papa_Souris" type="Node2D" parent="."]
+visible = false
 script = ExtResource("8_k6sap")
 
 [node name="Souris_curseur" type="Sprite2D" parent="Papa_Souris"]

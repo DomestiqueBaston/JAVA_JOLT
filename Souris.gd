@@ -56,7 +56,7 @@ func _on_radio_alarm_collider_mouse_exited():
 	$Souris_oeil.hide()
 
 
-func _on_oven_colliders_input_event(viewport, event, shape_idx):
+func _on_oven_colliders_input_event(_viewport, event, _shape_idx):
 	if Input.is_action_just_pressed("mouse_click"):
 		if (event is InputEventMouseButton && event.pressed):
 			if $"../Oven".visible == false:
@@ -69,7 +69,7 @@ func _on_oven_colliders_input_event(viewport, event, shape_idx):
 		
 
 
-func _on_milk_collider_input_event(viewport, event, shape_idx):
+func _on_milk_collider_input_event(_viewport, event, _shape_idx):
 	if Input.is_action_just_pressed("mouse_click"):
 		if (event is InputEventMouseButton && event.pressed):
 			if $"../Milk".visible == false:
@@ -81,7 +81,7 @@ func _on_milk_collider_input_event(viewport, event, shape_idx):
 				$"../Milk".visible = false
 
 
-func _on_coffee_maker_collider_input_event(viewport, event, shape_idx):
+func _on_coffee_maker_collider_input_event(_viewport, event, _shape_idx):
 	if Input.is_action_just_pressed("mouse_click"):
 		if (event is InputEventMouseButton && event.pressed):
 			if $"../Coffee_Maker".visible == false:
@@ -93,7 +93,7 @@ func _on_coffee_maker_collider_input_event(viewport, event, shape_idx):
 				$"../Coffee_Maker".visible = false
 
 
-func _on_radio_alarm_collider_input_event(viewport, event, shape_idx):
+func _on_radio_alarm_collider_input_event(_viewport, event, _shape_idx):
 	if Input.is_action_just_pressed("mouse_click"):
 		if (event is InputEventMouseButton && event.pressed):
 			if $"../Radio_Alarm".visible == false:

@@ -1,6 +1,8 @@
+AudioStreamPlayer2D
+AnimationPlayer
+ColorRect
 Node2D
 Control
 CanvasLayer
 CollisionShape2D
 Area2D
-AudioStreamPlayer2D
