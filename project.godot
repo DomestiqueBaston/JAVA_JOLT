@@ -17,11 +17,14 @@ run/max_fps=10
 boot_splash/image="res://Splash_Screen.png"
 boot_splash/use_filter=false
 config/icon="res://JJ.png"
+config/macos_native_icon="res://JJ.icns"
+config/windows_native_icon="res://JJ.ico"
 
 [display]
 
 window/size/viewport_width=188
 window/size/viewport_height=68
+window/size/mode=3
 window/size/always_on_top=true
 window/size/window_width_override=752
 window/size/window_height_override=272
