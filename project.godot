@@ -14,6 +14,9 @@ config/name="JAVA JOLT!"
 run/main_scene="res://INTRO.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=10
+boot_splash/image="res://Splash_Screen.png"
+boot_splash/use_filter=false
+config/icon="res://JJ.png"
 
 [display]
 

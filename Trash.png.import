@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dci25wvm8tytd"
-path="res://.godot/imported/mouse_eye.png-bf1672fe5f0f6f872bc38b5f431a0c11.ctex"
+uid="uid://dadhxlfc30aym"
+path="res://.godot/imported/Trash.png-b568dcb44c552343ad7461fd6f4f4615.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mouse_eye.png"
-dest_files=["res://.godot/imported/mouse_eye.png-bf1672fe5f0f6f872bc38b5f431a0c11.ctex"]
+source_file="res://Trash.png"
+dest_files=["res://.godot/imported/Trash.png-b568dcb44c552343ad7461fd6f4f4615.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bcoimk6uqbmn7"]
+[gd_scene load_steps=27 format=3 uid="uid://bcoimk6uqbmn7"]
 
 [ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://Titre.png" id="1_vx2sg"]
 [ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://DECOR_lights_off.png" id="2_v45rw"]
@@ -6,10 +6,11 @@
 [ext_resource type="Script" path="res://ROWENA.gd" id="4_khi0v"]
 [ext_resource type="Texture2D" uid="uid://cvnvvtylllww8" path="res://ROWENA.png" id="5_qbfr2"]
 [ext_resource type="Shader" path="res://KUWAHARA.gdshader" id="6_vt8ty"]
-[ext_resource type="Texture2D" uid="uid://l0uq0b0tfn7h" path="res://mouse_cursor.png" id="8_i2i1t"]
 [ext_resource type="Script" path="res://Souris.gd" id="8_k6sap"]
-[ext_resource type="Texture2D" uid="uid://dci25wvm8tytd" path="res://mouse_eye.png" id="9_xtaod"]
+[ext_resource type="Texture2D" uid="uid://bfghj8o3qbhhk" path="res://Arrow_16.png" id="9_lb3ak"]
+[ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://Eye.png" id="10_0qooa"]
 [ext_resource type="FontFile" uid="uid://b1mftrwyvma3v" path="res://monobit.ttf" id="10_1nbjk"]
+[ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://Hand.png" id="11_i3oi0"]
 [ext_resource type="AudioStream" uid="uid://d07xhloh584xx" path="res://Radio.ogg" id="11_ixl6t"]
 [ext_resource type="AudioStream" uid="uid://mfyhwj6un3sa" path="res://Barefoot_steps_A.ogg" id="12_e56jp"]
 
@@ -346,15 +347,19 @@ script = ExtResource("8_k6sap")
 
 [node name="Souris_curseur" type="Sprite2D" parent="Papa_Souris"]
 visible = false
-texture = ExtResource("8_i2i1t")
+texture = ExtResource("9_lb3ak")
 centered = false
-offset = Vector2(-1, -1)
+offset = Vector2(-2, -2)
 
 [node name="Souris_oeil" type="Sprite2D" parent="Papa_Souris"]
 visible = false
-texture = ExtResource("9_xtaod")
-centered = false
-offset = Vector2(-6, -5)
+texture = ExtResource("10_0qooa")
+
+[node name="Souris_hand" type="Sprite2D" parent="Papa_Souris"]
+visible = false
+position = Vector2(1, 0)
+texture = ExtResource("11_i3oi0")
+offset = Vector2(-1, 2)
 
 [node name="Collider" type="Area2D" parent="Papa_Souris"]
 collision_mask = 2
