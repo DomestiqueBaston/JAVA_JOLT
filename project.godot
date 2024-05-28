@@ -14,20 +14,24 @@ config/name="JAVA JOLT!"
 run/main_scene="res://INTRO.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=10
+boot_splash/bg_color=Color(0.0156863, 0.00392157, 0.0156863, 1)
 boot_splash/image="res://Splash_Screen.png"
+boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://JJ.png"
 config/macos_native_icon="res://JJ.icns"
 config/windows_native_icon="res://JJ.ico"
+boot_splash/minimum_display_time=2000
 
 [display]
 
 window/size/viewport_width=188
 window/size/viewport_height=68
 window/size/mode=3
+window/size/borderless=true
 window/size/always_on_top=true
-window/size/window_width_override=752
-window/size/window_height_override=272
+window/size/window_width_override=1128
+window/size/window_height_override=408
 window/stretch/mode="viewport"
 
 [filesystem]
@@ -37,9 +41,19 @@ import/fbx/enabled=false
 
 [input]
 
-mouse_click={
+left_mouse_click={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+mouse_wheel_up={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+mouse_wheel_down={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 

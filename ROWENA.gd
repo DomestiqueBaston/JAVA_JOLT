@@ -12,7 +12,7 @@ func _ready():
 	$".".show()
 	
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("mouse_click"):
+	if Input.is_action_just_pressed("left_mouse_click"):
 		if $"../Papa_Souris/Souris_curseur".visible == true:
 			hide_labels()
 			click_position = get_global_mouse_position()
@@ -42,7 +42,7 @@ func _physics_process(_delta):
 		#moving = false
 
 func hide_labels():
-	$"../Oven".hide()
-	$"../Milk".hide()
-	$"../Coffee_Maker".hide()
-	$"../Radio_Alarm".hide()
+	$"../Clickable/Oven".hide()
+	$"../Clickable/Milk".hide()
+	$"../Clickable/Coffee_Maker".hide()
+	$"../Clickable/Radio_Alarm".hide()

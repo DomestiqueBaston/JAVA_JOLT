@@ -300,7 +300,9 @@ offset_right = 188.0
 offset_bottom = 68.0
 mouse_filter = 2
 
-[node name="Oven" type="Label" parent="."]
+[node name="Clickable" type="Node2D" parent="."]
+
+[node name="Oven" type="Label" parent="Clickable"]
 visible = false
 offset_left = 50.0
 offset_top = 36.0
@@ -310,7 +312,7 @@ theme_override_colors/font_color = Color(1, 0.941375, 0.894469, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "oven"
 
-[node name="Milk" type="Label" parent="."]
+[node name="Milk" type="Label" parent="Clickable"]
 visible = false
 offset_left = 65.0
 offset_top = 24.0
@@ -320,7 +322,7 @@ theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "milk"
 
-[node name="Coffee_Maker" type="Label" parent="."]
+[node name="Coffee_Maker" type="Label" parent="Clickable"]
 visible = false
 offset_left = 99.0
 offset_top = 20.0
@@ -330,7 +332,7 @@ theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "coffee maker"
 
-[node name="Radio_Alarm" type="Label" parent="."]
+[node name="Radio_Alarm" type="Label" parent="Clickable"]
 visible = false
 offset_left = 136.0
 offset_top = 23.0
