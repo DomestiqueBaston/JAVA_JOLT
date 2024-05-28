@@ -1,6 +1,7 @@
-Node2D
 AudioStreamPlayer2D
+AudioStreamPlayer
 AnimationPlayer
+Node2D
 ColorRect
 Control
 CanvasLayer

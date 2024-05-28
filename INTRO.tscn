@@ -1,215 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://dak2h42jqim0i"]
+[gd_scene load_steps=17 format=3 uid="uid://dak2h42jqim0i"]
 
 [ext_resource type="Script" path="res://INTRO.gd" id="1_uosxj"]
 [ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://DECOR_lights_off.png" id="1_y538h"]
 [ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://Titre.png" id="2_6dww4"]
-[ext_resource type="Texture2D" uid="uid://bd6xm2n6jst71" path="res://DECOR_lights_off_radio_on.png" id="2_ukxwp"]
+[ext_resource type="Texture2D" uid="uid://bodbm313cxp8u" path="res://Game.png" id="3_8aqf3"]
 [ext_resource type="Shader" path="res://KUWAHARA.gdshader" id="3_nwoe8"]
-[ext_resource type="AudioStream" uid="uid://d07xhloh584xx" path="res://Radio.ogg" id="5_4qlll"]
-[ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://DECOR.png" id="5_w2akq"]
-[ext_resource type="AudioStream" uid="uid://dgbk6wkkpd0je" path="res://Alarm.ogg" id="8_paha3"]
+[ext_resource type="Texture2D" uid="uid://cih5flbyx1hiw" path="res://Code.png" id="4_iqarq"]
+[ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://Intro_v01.ogg" id="5_1y5a3"]
+[ext_resource type="Texture2D" uid="uid://j2lj7nnrn6lh" path="res://Graphics.png" id="5_30fw1"]
+[ext_resource type="Texture2D" uid="uid://cr21qywtlhmk8" path="res://Music.png" id="6_ci5vo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
 shader = ExtResource("3_nwoe8")
 shader_parameter/radius = 1
 shader_parameter/offset = Vector3(0.03, -0.02, -0.03)
-
-[sub_resource type="Animation" id="Animation_l43pv"]
-resource_name = "Intro"
-length = 11.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Titre:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 7, 7.1, 9.4, 9.5, 11.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DecorLightsOff:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 11.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.1), Color(1, 1, 1, 0.2), Color(1, 1, 1, 0.3), Color(1, 1, 1, 0.4), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.7), Color(1, 1, 1, 0.8), Color(1, 1, 1, 0.9), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DecorLightsOffRadioOn:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(2.2, 2.3, 11.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Radio")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_4qlll")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/3/use_blend = true
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Radio:volume_db")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(2.2, 2.3, 11.4, 11.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [-80.0, -10.0, -10.0, -80.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Decor:self_modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(10.5, 10.6, 11.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-tracks/6/type = "audio"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Alarm")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_paha3")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_paha3")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_paha3")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_paha3")
-}],
-"times": PackedFloat32Array(2.3, 4.7, 7.1, 9.5)
-}
-tracks/6/use_blend = true
-
-[sub_resource type="Animation" id="Animation_y3huk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Titre:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DecorLightsOff:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DecorLightsOffRadioOn:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Radio")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [],
-"times": PackedFloat32Array()
-}
-tracks/3/use_blend = true
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Radio:volume_db")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-80.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Decor:self_modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/6/type = "audio"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Alarm")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"clips": [],
-"times": PackedFloat32Array()
-}
-tracks/6/use_blend = true
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u468g"]
-_data = {
-"Intro": SubResource("Animation_l43pv"),
-"RESET": SubResource("Animation_y3huk")
-}
 
 [sub_resource type="Animation" id="Animation_hknbg"]
 resource_name = "Moving_painting"
@@ -249,6 +53,178 @@ _data = {
 "RESET": SubResource("Animation_uoheo")
 }
 
+[sub_resource type="Animation" id="Animation_pxvym"]
+resource_name = "Intro"
+length = 79.7
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sound_FX")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_1y5a3")
+}],
+"times": PackedFloat32Array(8.4)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DecorLightsOff:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Titre:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8.5, 18.9, 79.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Game:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 20.9, 32.7, 79.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Code:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 34.7, 46.3, 79.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Graphics:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 48.3, 60.1, 79.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Music:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 62.1, 73.5, 79.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_a6bnw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DecorLightsOff:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Titre:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Game:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Code:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Graphics:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Music:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vcab"]
+_data = {
+"Intro": SubResource("Animation_pxvym"),
+"RESET": SubResource("Animation_a6bnw")
+}
+
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_uosxj")
 
@@ -263,23 +239,27 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="DecorLightsOff" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("1_y538h")
 centered = false
 
-[node name="DecorLightsOffRadioOn" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-texture = ExtResource("2_ukxwp")
-centered = false
-
 [node name="Titre" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("2_6dww4")
 centered = false
 
-[node name="Decor" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-texture = ExtResource("5_w2akq")
+[node name="Game" type="Sprite2D" parent="."]
+texture = ExtResource("3_8aqf3")
+centered = false
+
+[node name="Code" type="Sprite2D" parent="."]
+texture = ExtResource("4_iqarq")
+centered = false
+
+[node name="Graphics" type="Sprite2D" parent="."]
+texture = ExtResource("5_30fw1")
+centered = false
+
+[node name="Music" type="Sprite2D" parent="."]
+texture = ExtResource("6_ci5vo")
 centered = false
 
 [node name="Kuwahara_Shader" type="ColorRect" parent="."]
@@ -288,22 +268,19 @@ offset_right = 188.0
 offset_bottom = 68.0
 mouse_filter = 2
 
-[node name="Animation_Intro" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_u468g")
-}
-autoplay = "Intro"
-
 [node name="Animation_Painting" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ml54y")
 }
 autoplay = "Moving_painting"
 
-[node name="Radio" type="AudioStreamPlayer2D" parent="."]
-volume_db = -80.0
+[node name="Animation_Screens" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Animation_Painting")
+libraries = {
+"": SubResource("AnimationLibrary_8vcab")
+}
+autoplay = "Intro"
 
-[node name="Alarm" type="AudioStreamPlayer2D" parent="."]
-volume_db = -7.5
+[node name="Sound_FX" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="animation_finished" from="Animation_Intro" to="." method="_on_animation_intro_animation_finished"]
+[connection signal="animation_finished" from="Animation_Screens" to="." method="_on_animation_screens_animation_finished"]

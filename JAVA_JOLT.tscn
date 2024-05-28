@@ -1,7 +1,5 @@
-[gd_scene load_steps=27 format=3 uid="uid://bcoimk6uqbmn7"]
+[gd_scene load_steps=24 format=3 uid="uid://bcoimk6uqbmn7"]
 
-[ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://Titre.png" id="1_vx2sg"]
-[ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://DECOR_lights_off.png" id="2_v45rw"]
 [ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://DECOR.png" id="3_33akg"]
 [ext_resource type="Script" path="res://ROWENA.gd" id="4_khi0v"]
 [ext_resource type="Texture2D" uid="uid://cvnvvtylllww8" path="res://ROWENA.png" id="5_qbfr2"]
@@ -11,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://Eye.png" id="10_0qooa"]
 [ext_resource type="FontFile" uid="uid://b1mftrwyvma3v" path="res://monobit.ttf" id="10_1nbjk"]
 [ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://Hand.png" id="11_i3oi0"]
-[ext_resource type="AudioStream" uid="uid://d07xhloh584xx" path="res://Radio.ogg" id="11_ixl6t"]
 [ext_resource type="AudioStream" uid="uid://mfyhwj6un3sa" path="res://Barefoot_steps_A.ogg" id="12_e56jp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f73gc"]
@@ -241,15 +238,7 @@ offset_bottom = 68.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BG_LIGHTS_OFF" type="Sprite2D" parent="BGs"]
-texture = ExtResource("2_v45rw")
-centered = false
-
-[node name="TITLE" type="Sprite2D" parent="BGs"]
-texture = ExtResource("1_vx2sg")
-centered = false
-
-[node name="BG_LIGHTS_ON" type="Sprite2D" parent="BGs"]
+[node name="DECOR" type="Sprite2D" parent="BGs"]
 texture = ExtResource("3_33akg")
 centered = false
 
@@ -288,9 +277,9 @@ collision_layer = 2
 position = Vector2(128.5, 34)
 shape = SubResource("RectangleShape2D_tbm7t")
 
-[node name="Radio_Alarm_Collider" type="Area2D" parent="BG_Colliders"]
+[node name="Radio_Collider" type="Area2D" parent="BG_Colliders"]
 
-[node name="Radio_Alarm" type="CollisionShape2D" parent="BG_Colliders/Radio_Alarm_Collider"]
+[node name="Radio_Alarm" type="CollisionShape2D" parent="BG_Colliders/Radio_Collider"]
 position = Vector2(166, 36)
 shape = SubResource("RectangleShape2D_7kuty")
 
@@ -332,15 +321,15 @@ theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "coffee maker"
 
-[node name="Radio_Alarm" type="Label" parent="Clickable"]
+[node name="Radio" type="Label" parent="Clickable"]
 visible = false
-offset_left = 136.0
-offset_top = 23.0
-offset_right = 197.0
-offset_bottom = 46.0
+offset_left = 156.0
+offset_top = 25.0
+offset_right = 217.0
+offset_bottom = 48.0
 theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
-text = "radio alarm"
+text = "radio"
 
 [node name="Papa_Souris" type="Node2D" parent="."]
 visible = false
@@ -409,13 +398,7 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="Footstep" type="AudioStreamPlayer2D" parent="."]
-volume_db = -7.5
-
-[node name="Radio" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(2, -4)
-stream = ExtResource("11_ixl6t")
-volume_db = -10.0
-autoplay = true
+volume_db = -15.0
 
 [node name="Animation_Painting" type="AnimationPlayer" parent="."]
 libraries = {
@@ -438,6 +421,6 @@ libraries = {
 [connection signal="input_event" from="BG_Colliders/Coffee_Maker_Collider" to="Papa_Souris" method="_on_coffee_maker_collider_input_event"]
 [connection signal="mouse_entered" from="BG_Colliders/Coffee_Maker_Collider" to="Papa_Souris" method="_on_coffee_maker_collider_mouse_entered"]
 [connection signal="mouse_exited" from="BG_Colliders/Coffee_Maker_Collider" to="Papa_Souris" method="_on_coffee_maker_collider_mouse_exited"]
-[connection signal="input_event" from="BG_Colliders/Radio_Alarm_Collider" to="Papa_Souris" method="_on_radio_alarm_collider_input_event"]
-[connection signal="mouse_entered" from="BG_Colliders/Radio_Alarm_Collider" to="Papa_Souris" method="_on_radio_alarm_collider_mouse_entered"]
-[connection signal="mouse_exited" from="BG_Colliders/Radio_Alarm_Collider" to="Papa_Souris" method="_on_radio_alarm_collider_mouse_exited"]
+[connection signal="input_event" from="BG_Colliders/Radio_Collider" to="Papa_Souris" method="_on_radio_collider_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Radio_Collider" to="Papa_Souris" method="_on_radio_collider_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Radio_Collider" to="Papa_Souris" method="_on_radio_collider_mouse_exited"]

@@ -45,4 +45,4 @@ func hide_labels():
 	$"../Clickable/Oven".hide()
 	$"../Clickable/Milk".hide()
 	$"../Clickable/Coffee_Maker".hide()
-	$"../Clickable/Radio_Alarm".hide()
+	$"../Clickable/Radio".hide()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd6xm2n6jst71"
-path="res://.godot/imported/DECOR_lights_off_radio_on.png-30df8bfb45f62329b344a23c9da8f8b2.ctex"
+uid="uid://cih5flbyx1hiw"
+path="res://.godot/imported/Code.png-f2737b610d3f0857749381cf04af11ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DECOR_lights_off_radio_on.png"
-dest_files=["res://.godot/imported/DECOR_lights_off_radio_on.png-30df8bfb45f62329b344a23c9da8f8b2.ctex"]
+source_file="res://Code.png"
+dest_files=["res://.godot/imported/Code.png-f2737b610d3f0857749381cf04af11ab.ctex"]
 
 [params]
 
