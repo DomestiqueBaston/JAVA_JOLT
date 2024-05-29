@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dak2h42jqim0i"]
+[gd_scene load_steps=18 format=3 uid="uid://dak2h42jqim0i"]
 
 [ext_resource type="Script" path="res://INTRO.gd" id="1_uosxj"]
 [ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://DECOR_lights_off.png" id="1_y538h"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://Intro_v01.ogg" id="5_1y5a3"]
 [ext_resource type="Texture2D" uid="uid://j2lj7nnrn6lh" path="res://Graphics.png" id="5_30fw1"]
 [ext_resource type="Texture2D" uid="uid://cr21qywtlhmk8" path="res://Music.png" id="6_ci5vo"]
+[ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://DECOR.png" id="8_jmi5g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
 shader = ExtResource("3_nwoe8")
@@ -55,7 +56,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_pxvym"]
 resource_name = "Intro"
-length = 79.7
+length = 82.5
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -78,8 +79,8 @@ tracks/1/path = NodePath("../DecorLightsOff:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(2, 0.2),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
@@ -90,7 +91,7 @@ tracks/2/path = NodePath("../Titre:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 8.5, 18.9, 79.7),
+"times": PackedFloat32Array(0, 8.5, 20.3, 82.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -102,7 +103,7 @@ tracks/3/path = NodePath("../Game:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 20.9, 32.7, 79.7),
+"times": PackedFloat32Array(0, 22.3, 34.1, 82.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -114,7 +115,7 @@ tracks/4/path = NodePath("../Code:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 34.7, 46.3, 79.7),
+"times": PackedFloat32Array(0, 36.1, 47.7, 82.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -126,7 +127,7 @@ tracks/5/path = NodePath("../Graphics:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 48.3, 60.1, 79.7),
+"times": PackedFloat32Array(0, 49.7, 61.5, 82.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -138,10 +139,22 @@ tracks/6/path = NodePath("../Music:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 62.1, 73.5, 79.7),
+"times": PackedFloat32Array(0, 63.5, 74.9, 82.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../DecorLightOn:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 81.3, 82.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_a6bnw"]
@@ -218,6 +231,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../DecorLightOn:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vcab"]
 _data = {
@@ -260,6 +285,10 @@ centered = false
 
 [node name="Music" type="Sprite2D" parent="."]
 texture = ExtResource("6_ci5vo")
+centered = false
+
+[node name="DecorLightOn" type="Sprite2D" parent="."]
+texture = ExtResource("8_jmi5g")
 centered = false
 
 [node name="Kuwahara_Shader" type="ColorRect" parent="."]
