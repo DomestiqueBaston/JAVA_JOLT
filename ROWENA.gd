@@ -36,10 +36,6 @@ func _physics_process(_delta):
 	else:
 		click_position.x = position.x
 		$"../Animation_Rowena".play("Waiting")
-		
-#func test_eye_open():
-	#if $"../Papa_Souris/Souris_curseur".visible == true && $"../Papa_Souris/Souris_oeil".visible == false:
-		#moving = false
 
 func hide_labels():
 	$"../Clickable/Oven".hide()

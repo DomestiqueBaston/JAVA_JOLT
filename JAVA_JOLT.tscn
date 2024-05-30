@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://ROWENA.gd" id="4_khi0v"]
 [ext_resource type="Texture2D" uid="uid://cvnvvtylllww8" path="res://ROWENA.png" id="5_qbfr2"]
 [ext_resource type="Shader" path="res://KUWAHARA.gdshader" id="6_vt8ty"]
+[ext_resource type="Texture2D" uid="uid://vqd5mrv0n0yu" path="res://Arrow.png" id="7_n7u1o"]
 [ext_resource type="Script" path="res://Souris.gd" id="8_k6sap"]
-[ext_resource type="Texture2D" uid="uid://bfghj8o3qbhhk" path="res://Arrow_16.png" id="9_lb3ak"]
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://Eye.png" id="10_0qooa"]
 [ext_resource type="FontFile" uid="uid://b1mftrwyvma3v" path="res://monobit.ttf" id="10_1nbjk"]
 [ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://Hand.png" id="11_i3oi0"]
@@ -236,7 +236,7 @@ _data = {
 offset_right = 188.0
 offset_bottom = 68.0
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.0156863, 0.00392157, 0.0156863, 1)
 
 [node name="DECOR" type="Sprite2D" parent="BGs"]
 texture = ExtResource("3_33akg")
@@ -293,23 +293,25 @@ mouse_filter = 2
 
 [node name="Oven" type="Label" parent="Clickable"]
 visible = false
-offset_left = 50.0
+offset_left = 41.0
 offset_top = 36.0
-offset_right = 90.0
+offset_right = 81.0
 offset_bottom = 59.0
 theme_override_colors/font_color = Color(1, 0.941375, 0.894469, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "oven"
+horizontal_alignment = 1
 
 [node name="Milk" type="Label" parent="Clickable"]
 visible = false
-offset_left = 65.0
+offset_left = 53.0
 offset_top = 24.0
-offset_right = 105.0
+offset_right = 93.0
 offset_bottom = 47.0
 theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "milk"
+horizontal_alignment = 1
 
 [node name="Coffee_Maker" type="Label" parent="Clickable"]
 visible = false
@@ -320,16 +322,18 @@ offset_bottom = 43.0
 theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "coffee maker"
+horizontal_alignment = 1
 
 [node name="Radio" type="Label" parent="Clickable"]
 visible = false
-offset_left = 156.0
+offset_left = 136.0
 offset_top = 25.0
-offset_right = 217.0
+offset_right = 197.0
 offset_bottom = 48.0
 theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
 theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "radio"
+horizontal_alignment = 1
 
 [node name="Papa_Souris" type="Node2D" parent="."]
 visible = false
@@ -338,13 +342,14 @@ script = ExtResource("8_k6sap")
 
 [node name="Souris_curseur" type="Sprite2D" parent="Papa_Souris"]
 visible = false
-texture = ExtResource("9_lb3ak")
+texture = ExtResource("7_n7u1o")
 centered = false
-offset = Vector2(-2, -2)
+offset = Vector2(-4, -4)
 
 [node name="Souris_oeil" type="Sprite2D" parent="Papa_Souris"]
 visible = false
 texture = ExtResource("10_0qooa")
+offset = Vector2(0, 1)
 
 [node name="Souris_hand" type="Sprite2D" parent="Papa_Souris"]
 visible = false

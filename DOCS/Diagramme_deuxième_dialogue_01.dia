@@ -88,7 +88,7 @@
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Rowena: This tastes even worse than before!
+            <dia:string>#Rowena: This tastes worse than anything!
 
 Dr. F.: Oh, what a disaster.
 
@@ -215,13 +215,13 @@ Dr. F.: Oh, I see you flailing around like a lost cause, as usual.#</dia:string>
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O3">
       <dia:attribute name="obj_pos">
-        <dia:point val="38.45,13.25"/>
+        <dia:point val="30.2457,13.25"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="24.2205,13.1892;38.5108,17.0495"/>
+        <dia:rectangle val="24.2333,13.1813;30.3144,16.9189"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="38.45,13.25"/>
+        <dia:point val="30.2457,13.25"/>
         <dia:point val="24.3288,16.85"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -237,19 +237,19 @@ Dr. F.: Oh, I see you flailing around like a lost cause, as usual.#</dia:string>
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O0" connection="13"/>
+        <dia:connection handle="0" to="O0" connection="12"/>
         <dia:connection handle="1" to="O1" connection="2"/>
       </dia:connections>
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O4">
       <dia:attribute name="obj_pos">
-        <dia:point val="38.45,13.25"/>
+        <dia:point val="46.6544,13.25"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="38.3989,13.1989;103.529,15.0451"/>
+        <dia:rectangle val="46.6032,13.1987;103.529,15.0431"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="38.45,13.25"/>
+        <dia:point val="46.6544,13.25"/>
         <dia:point val="103.417,14.697"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -265,7 +265,7 @@ Dr. F.: Oh, I see you flailing around like a lost cause, as usual.#</dia:string>
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O0" connection="13"/>
+        <dia:connection handle="0" to="O0" connection="14"/>
         <dia:connection handle="1" to="O2" connection="2"/>
       </dia:connections>
     </dia:object>
