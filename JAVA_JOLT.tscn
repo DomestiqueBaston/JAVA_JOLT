@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcoimk6uqbmn7"]
+[gd_scene load_steps=26 format=3 uid="uid://bcoimk6uqbmn7"]
 
 [ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://DECOR.png" id="3_33akg"]
 [ext_resource type="Script" path="res://ROWENA.gd" id="4_khi0v"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://Souris.gd" id="8_k6sap"]
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://Eye.png" id="10_0qooa"]
 [ext_resource type="FontFile" uid="uid://b1mftrwyvma3v" path="res://monobit.ttf" id="10_1nbjk"]
+[ext_resource type="Script" path="res://Text_Sound.gd" id="10_shjei"]
 [ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://Hand.png" id="11_i3oi0"]
+[ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://Typing.ogg" id="11_py6iw"]
 [ext_resource type="AudioStream" uid="uid://mfyhwj6un3sa" path="res://Barefoot_steps_A.ogg" id="12_e56jp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f73gc"]
@@ -167,7 +169,7 @@ tracks/3/path = NodePath("../../Machin_de_dialogue/Control/MarginContainer/VBoxC
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 11.4, 14.8, 20.5),
+"times": PackedFloat32Array(0, 11.5, 14.8, 20.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": ["Just wait a little bit more...", "Just wait a little bit more...", "And a bit more...", "And a bit more..."]
@@ -344,7 +346,7 @@ script = ExtResource("8_k6sap")
 visible = false
 texture = ExtResource("7_n7u1o")
 centered = false
-offset = Vector2(-4, -4)
+offset = Vector2(-3, -3)
 
 [node name="Souris_oeil" type="Sprite2D" parent="Papa_Souris"]
 visible = false
@@ -401,9 +403,13 @@ theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "Just wait a little bit more..."
 visible_characters = 0
 visible_ratio = 0.0
+script = ExtResource("10_shjei")
 
 [node name="Footstep" type="AudioStreamPlayer2D" parent="."]
 volume_db = -15.0
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_py6iw")
 
 [node name="Animation_Painting" type="AnimationPlayer" parent="."]
 libraries = {
