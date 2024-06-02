@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://DECOR.png" id="3_33akg"]
 [ext_resource type="Script" path="res://ROWENA.gd" id="4_khi0v"]
 [ext_resource type="Texture2D" uid="uid://cvnvvtylllww8" path="res://ROWENA.png" id="5_qbfr2"]
+[ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://JJ_Theme.tres" id="6_6k01o"]
 [ext_resource type="Shader" path="res://KUWAHARA.gdshader" id="6_vt8ty"]
 [ext_resource type="Texture2D" uid="uid://vqd5mrv0n0yu" path="res://Arrow.png" id="7_n7u1o"]
 [ext_resource type="Script" path="res://Souris.gd" id="8_k6sap"]
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://Eye.png" id="10_0qooa"]
-[ext_resource type="FontFile" uid="uid://b1mftrwyvma3v" path="res://monobit.ttf" id="10_1nbjk"]
 [ext_resource type="Script" path="res://Text_Sound.gd" id="10_shjei"]
 [ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://Hand.png" id="11_i3oi0"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://Typing.ogg" id="11_py6iw"]
@@ -88,38 +88,50 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Machin_de_dialogue:visible")
+tracks/1/path = NodePath("../../UI/Control/MarginContainer/Label:visible_ratio")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../Machin_de_dialogue/Control/MarginContainer/VBoxContainer/HBoxContainer/Label:visible_ratio")
+tracks/2/path = NodePath("../../UI/Control/MarginContainer/Label:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": ["Just wait a little bit more..."]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../Machin_de_dialogue/Control/MarginContainer/VBoxContainer/HBoxContainer/Label:text")
+tracks/3/path = NodePath("../../UI/Control/MarginContainer:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Just wait a little bit more..."]
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../UI/Control/MarginContainer/Panel:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1dexo"]
@@ -141,38 +153,50 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Machin_de_dialogue:visible")
+tracks/1/path = NodePath("../../UI/Control/MarginContainer/Label:visible_ratio")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.4, 8.9, 11.5, 14.8, 20.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, false, true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../Machin_de_dialogue/Control/MarginContainer/VBoxContainer/HBoxContainer/Label:visible_ratio")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.4, 6.7, 8.9, 11.5, 14.8, 16.9, 20.5),
+"times": PackedFloat32Array(0, 4.4, 6.7, 8.9, 11.5, 14.1, 17.2, 20.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../UI/Control/MarginContainer/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 11.5, 14.1, 20.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Just wait a little bit more...", "Just wait a little bit more...", "And a bit more... This is also a short example for a long entry!", "And a bit more... This is also a short example for a long entry!"]
+}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../../Machin_de_dialogue/Control/MarginContainer/VBoxContainer/HBoxContainer/Label:text")
+tracks/3/path = NodePath("../../UI/Control/MarginContainer:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 11.5, 14.8, 20.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.2, 8.9, 11.5, 13.9, 20.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["Just wait a little bit more...", "Just wait a little bit more...", "And a bit more...", "And a bit more..."]
+"values": [false, true, false, false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../UI/Control/MarginContainer/Panel:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.2, 4.4, 8.7, 8.9, 13.9, 14.1, 20.3, 20.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_wcrxa"]
@@ -191,25 +215,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
-tracks/1/type = "value"
+tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../Machin_de_dialogue:visible")
+tracks/1/path = NodePath("../../Footstep")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../Footstep")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -221,7 +233,19 @@ tracks/2/keys = {
 }],
 "times": PackedFloat32Array(0, 0.4)
 }
-tracks/2/use_blend = true
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../UI/Control/MarginContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mol2e"]
 _data = {
@@ -245,11 +269,11 @@ texture = ExtResource("3_33akg")
 centered = false
 
 [node name="ROWENA" type="CharacterBody2D" parent="."]
-position = Vector2(90, 55)
+position = Vector2(90, 68)
 script = ExtResource("4_khi0v")
 
 [node name="Rowena_Sprites" type="Sprite2D" parent="ROWENA"]
-position = Vector2(0, -16)
+position = Vector2(0, -29)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_qbfr2")
 hframes = 42
@@ -291,83 +315,58 @@ offset_right = 188.0
 offset_bottom = 68.0
 mouse_filter = 2
 
-[node name="Clickable" type="Node2D" parent="."]
+[node name="Clickable" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
 
 [node name="Oven" type="Label" parent="Clickable"]
 visible = false
-offset_left = 41.0
+layout_mode = 0
+offset_left = 50.0
 offset_top = 36.0
-offset_right = 81.0
-offset_bottom = 59.0
-theme_override_colors/font_color = Color(1, 0.941375, 0.894469, 1)
-theme_override_fonts/font = ExtResource("10_1nbjk")
+offset_right = 72.0
+offset_bottom = 48.0
+theme = ExtResource("6_6k01o")
 text = "oven"
 horizontal_alignment = 1
 
 [node name="Milk" type="Label" parent="Clickable"]
 visible = false
-offset_left = 53.0
+layout_mode = 0
+offset_left = 64.0
 offset_top = 24.0
-offset_right = 93.0
-offset_bottom = 47.0
-theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
-theme_override_fonts/font = ExtResource("10_1nbjk")
+offset_right = 82.0
+offset_bottom = 36.0
+theme = ExtResource("6_6k01o")
 text = "milk"
 horizontal_alignment = 1
 
 [node name="Coffee_Maker" type="Label" parent="Clickable"]
 visible = false
+layout_mode = 0
 offset_left = 99.0
 offset_top = 20.0
-offset_right = 160.0
-offset_bottom = 43.0
-theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
-theme_override_fonts/font = ExtResource("10_1nbjk")
+offset_right = 162.0
+offset_bottom = 32.0
+theme = ExtResource("6_6k01o")
 text = "coffee maker"
 horizontal_alignment = 1
 
 [node name="Radio" type="Label" parent="Clickable"]
 visible = false
-offset_left = 136.0
+layout_mode = 0
+offset_left = 155.0
 offset_top = 25.0
-offset_right = 197.0
-offset_bottom = 48.0
-theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
-theme_override_fonts/font = ExtResource("10_1nbjk")
+offset_right = 179.0
+offset_bottom = 37.0
+theme = ExtResource("6_6k01o")
 text = "radio"
 horizontal_alignment = 1
 
-[node name="Papa_Souris" type="Node2D" parent="."]
-visible = false
-position = Vector2(-25, -25)
-script = ExtResource("8_k6sap")
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Souris_curseur" type="Sprite2D" parent="Papa_Souris"]
-visible = false
-texture = ExtResource("7_n7u1o")
-centered = false
-offset = Vector2(-3, -3)
-
-[node name="Souris_oeil" type="Sprite2D" parent="Papa_Souris"]
-visible = false
-texture = ExtResource("10_0qooa")
-offset = Vector2(0, 1)
-
-[node name="Souris_hand" type="Sprite2D" parent="Papa_Souris"]
-visible = false
-position = Vector2(1, 0)
-texture = ExtResource("11_i3oi0")
-offset = Vector2(-1, 2)
-
-[node name="Collider" type="Area2D" parent="Papa_Souris"]
-collision_mask = 2
-
-[node name="Souris_Collider" type="CollisionShape2D" parent="Papa_Souris/Collider"]
-shape = SubResource("RectangleShape2D_ncb4q")
-
-[node name="Machin_de_dialogue" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="Machin_de_dialogue"]
+[node name="Control" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -375,35 +374,77 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("6_6k01o")
 
-[node name="MarginContainer" type="MarginContainer" parent="Machin_de_dialogue/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
+visible = false
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 13.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = -4
-theme_override_constants/margin_right = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Machin_de_dialogue/Control/MarginContainer"]
+[node name="Panel" type="Panel" parent="UI/Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/Control/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Machin_de_dialogue/Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="Machin_de_dialogue/Control/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 0.941176, 0.894118, 1)
-theme_override_fonts/font = ExtResource("10_1nbjk")
 text = "Just wait a little bit more..."
+autowrap_mode = 2
 visible_characters = 0
 visible_ratio = 0.0
 script = ExtResource("10_shjei")
+
+[node name="Papa_Souris" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = -25.0
+offset_bottom = -25.0
+mouse_filter = 2
+script = ExtResource("8_k6sap")
+
+[node name="Souris_curseur" type="TextureRect" parent="UI/Papa_Souris"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 13.0
+offset_bottom = 13.0
+mouse_filter = 2
+texture = ExtResource("7_n7u1o")
+
+[node name="Souris_oeil" type="TextureRect" parent="UI/Papa_Souris"]
+visible = false
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = ExtResource("10_0qooa")
+
+[node name="Souris_hand" type="TextureRect" parent="UI/Papa_Souris"]
+visible = false
+layout_mode = 0
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 8.0
+offset_bottom = 10.0
+mouse_filter = 2
+texture = ExtResource("11_i3oi0")
+
+[node name="Collider" type="Area2D" parent="UI/Papa_Souris"]
+collision_mask = 2
+
+[node name="Souris_Collider" type="CollisionShape2D" parent="UI/Papa_Souris/Collider"]
+shape = SubResource("RectangleShape2D_ncb4q")
 
 [node name="Footstep" type="AudioStreamPlayer2D" parent="."]
 volume_db = -15.0
@@ -423,15 +464,15 @@ libraries = {
 "": SubResource("AnimationLibrary_mol2e")
 }
 
-[connection signal="input_event" from="BG_Colliders/Oven_Colliders" to="Papa_Souris" method="_on_oven_colliders_input_event"]
-[connection signal="mouse_entered" from="BG_Colliders/Oven_Colliders" to="Papa_Souris" method="_on_oven_colliders_mouse_entered"]
-[connection signal="mouse_exited" from="BG_Colliders/Oven_Colliders" to="Papa_Souris" method="_on_oven_colliders_mouse_exited"]
-[connection signal="input_event" from="BG_Colliders/Milk_Collider" to="Papa_Souris" method="_on_milk_collider_input_event"]
-[connection signal="mouse_entered" from="BG_Colliders/Milk_Collider" to="Papa_Souris" method="_on_milk_collider_mouse_entered"]
-[connection signal="mouse_exited" from="BG_Colliders/Milk_Collider" to="Papa_Souris" method="_on_milk_collider_mouse_exited"]
-[connection signal="input_event" from="BG_Colliders/Coffee_Maker_Collider" to="Papa_Souris" method="_on_coffee_maker_collider_input_event"]
-[connection signal="mouse_entered" from="BG_Colliders/Coffee_Maker_Collider" to="Papa_Souris" method="_on_coffee_maker_collider_mouse_entered"]
-[connection signal="mouse_exited" from="BG_Colliders/Coffee_Maker_Collider" to="Papa_Souris" method="_on_coffee_maker_collider_mouse_exited"]
-[connection signal="input_event" from="BG_Colliders/Radio_Collider" to="Papa_Souris" method="_on_radio_collider_input_event"]
-[connection signal="mouse_entered" from="BG_Colliders/Radio_Collider" to="Papa_Souris" method="_on_radio_collider_mouse_entered"]
-[connection signal="mouse_exited" from="BG_Colliders/Radio_Collider" to="Papa_Souris" method="_on_radio_collider_mouse_exited"]
+[connection signal="input_event" from="BG_Colliders/Oven_Colliders" to="UI/Papa_Souris" method="_on_oven_colliders_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Oven_Colliders" to="UI/Papa_Souris" method="_on_oven_colliders_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Oven_Colliders" to="UI/Papa_Souris" method="_on_oven_colliders_mouse_exited"]
+[connection signal="input_event" from="BG_Colliders/Milk_Collider" to="UI/Papa_Souris" method="_on_milk_collider_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Milk_Collider" to="UI/Papa_Souris" method="_on_milk_collider_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Milk_Collider" to="UI/Papa_Souris" method="_on_milk_collider_mouse_exited"]
+[connection signal="input_event" from="BG_Colliders/Coffee_Maker_Collider" to="UI/Papa_Souris" method="_on_coffee_maker_collider_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Coffee_Maker_Collider" to="UI/Papa_Souris" method="_on_coffee_maker_collider_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Coffee_Maker_Collider" to="UI/Papa_Souris" method="_on_coffee_maker_collider_mouse_exited"]
+[connection signal="input_event" from="BG_Colliders/Radio_Collider" to="UI/Papa_Souris" method="_on_radio_collider_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Radio_Collider" to="UI/Papa_Souris" method="_on_radio_collider_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Radio_Collider" to="UI/Papa_Souris" method="_on_radio_collider_mouse_exited"]
