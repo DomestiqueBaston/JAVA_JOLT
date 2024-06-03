@@ -1,8 +1,9 @@
+CanvasLayer
+Label
 Control
 Panel
 MarginContainer
 TextureRect
-CanvasLayer
 Node2D
 AudioStreamPlayer2D
 AudioStreamPlayer

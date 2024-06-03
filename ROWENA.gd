@@ -26,6 +26,7 @@ func _physics_process(_delta):
 		moving = false
 
 	if moving == true:
+		$ROWENA_Comment.hide()
 		if moving == true && click_position.x - position.x > 0:
 			$Rowena_Sprites.scale = Vector2(-0.5, 0.5)
 			$"../Animation_Rowena".play("Walk")
