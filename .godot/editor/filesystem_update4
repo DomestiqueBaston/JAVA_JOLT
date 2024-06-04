@@ -1,4 +1,8 @@
-res://JAVA_JOLT.tscn
+res://INTRO.tscn
 res://KUWAHARA.gdshader
 res://JJ_Theme.tres
-res://INTRO.tscn
+res://JAVA_JOLT.tscn
+res://DEMO/INTRO.tscn
+res://DEMO/JJ_Theme.tres
+res://DEMO/INTRO.gd
+res://DEMO/KUWAHARA.gdshader
