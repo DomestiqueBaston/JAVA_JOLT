@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cih5flbyx1hiw" path="res://Code.png" id="4_iqarq"]
 [ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://Intro_v01.ogg" id="5_1y5a3"]
 [ext_resource type="Texture2D" uid="uid://j2lj7nnrn6lh" path="res://Graphics.png" id="5_30fw1"]
-[ext_resource type="Texture2D" uid="uid://cr21qywtlhmk8" path="res://Music.png" id="6_ci5vo"]
+[ext_resource type="Texture2D" uid="uid://bgop36od7dx2r" path="res://Sound.png" id="6_h2h5a"]
 [ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://DECOR.png" id="8_jmi5g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
@@ -135,7 +135,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Music:visible")
+tracks/6/path = NodePath("../Sound:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -222,7 +222,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Music:visible")
+tracks/5/path = NodePath("../Sound:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -279,8 +279,8 @@ centered = false
 texture = ExtResource("4_iqarq")
 centered = false
 
-[node name="Music" type="Sprite2D" parent="."]
-texture = ExtResource("6_ci5vo")
+[node name="Sound" type="Sprite2D" parent="."]
+texture = ExtResource("6_h2h5a")
 centered = false
 
 [node name="Graphics" type="Sprite2D" parent="."]

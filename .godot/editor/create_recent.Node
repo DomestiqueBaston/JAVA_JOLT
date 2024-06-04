@@ -1,3 +1,5 @@
+CollisionShape2D
+Area2D
 CanvasLayer
 Label
 Control
@@ -9,5 +11,3 @@ AudioStreamPlayer2D
 AudioStreamPlayer
 AnimationPlayer
 ColorRect
-CollisionShape2D
-Area2D
