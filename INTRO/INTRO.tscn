@@ -1,0 +1,315 @@
+[gd_scene load_steps=18 format=3 uid="uid://dak2h42jqim0i"]
+
+[ext_resource type="Script" path="res://INTRO/INTRO.gd" id="1_uosxj"]
+[ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://demo/DECOR_lights_off.png" id="1_y538h"]
+[ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://demo/Titre.png" id="2_6dww4"]
+[ext_resource type="Texture2D" uid="uid://bodbm313cxp8u" path="res://demo/Game.png" id="3_8aqf3"]
+[ext_resource type="Shader" path="res://SHADER/KUWAHARA.gdshader" id="3_nwoe8"]
+[ext_resource type="Texture2D" uid="uid://cih5flbyx1hiw" path="res://demo/Code.png" id="4_iqarq"]
+[ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://demo/Intro_v01.ogg" id="5_1y5a3"]
+[ext_resource type="Texture2D" uid="uid://j2lj7nnrn6lh" path="res://demo/Graphics.png" id="5_30fw1"]
+[ext_resource type="Texture2D" uid="uid://bgop36od7dx2r" path="res://demo/Sound.png" id="6_h2h5a"]
+[ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://demo/DECOR.png" id="8_jmi5g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
+shader = ExtResource("3_nwoe8")
+shader_parameter/radius = 1
+shader_parameter/offset = Vector3(0.03, -0.02, -0.03)
+
+[sub_resource type="Animation" id="Animation_hknbg"]
+resource_name = "Moving_painting"
+length = 4.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kuwahara_Shader:material:shader_parameter/offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.4, 1.9, 2.1, 2.4, 2.8, 3, 3.4, 3.6, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0, 0.01, -0.01), Vector3(0, -0.02, 0.01), Vector3(0.01, -0.01, 0), Vector3(0.01, 0, 0.01), Vector3(0, 0, 0.02), Vector3(-0.01, 0, 0.01), Vector3(0, 0, -0.01), Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0.01, 0.01, -0.01), Vector3(0.01, -0.01, 0.01)]
+}
+
+[sub_resource type="Animation" id="Animation_uoheo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kuwahara_Shader:material:shader_parameter/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.03, -0.02, -0.03)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ml54y"]
+_data = {
+"Moving_painting": SubResource("Animation_hknbg"),
+"RESET": SubResource("Animation_uoheo")
+}
+
+[sub_resource type="Animation" id="Animation_pxvym"]
+resource_name = "Intro"
+length = 82.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sound_FX")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_1y5a3")
+}],
+"times": PackedFloat32Array(8.4)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../DecorLightsOff:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(2, 0.2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Titre:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8.5, 20.3, 82.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Game:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 22.3, 34.1, 82.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Code:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 36.1, 47.7, 82.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Graphics:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 63.2, 74.5, 82.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sound:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 49.8, 61.2, 82.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../DecorLightOn:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 81.3, 82.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_a6bnw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DecorLightsOff:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Titre:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Game:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Code:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Graphics:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sound:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../DecorLightOn:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vcab"]
+_data = {
+"Intro": SubResource("Animation_pxvym"),
+"RESET": SubResource("Animation_a6bnw")
+}
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_uosxj")
+
+[node name="Fond" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 188.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DecorLightsOff" type="Sprite2D" parent="."]
+texture = ExtResource("1_y538h")
+centered = false
+
+[node name="Titre" type="Sprite2D" parent="."]
+texture = ExtResource("2_6dww4")
+centered = false
+
+[node name="Game" type="Sprite2D" parent="."]
+texture = ExtResource("3_8aqf3")
+centered = false
+
+[node name="Code" type="Sprite2D" parent="."]
+texture = ExtResource("4_iqarq")
+centered = false
+
+[node name="Sound" type="Sprite2D" parent="."]
+texture = ExtResource("6_h2h5a")
+centered = false
+
+[node name="Graphics" type="Sprite2D" parent="."]
+texture = ExtResource("5_30fw1")
+centered = false
+
+[node name="DecorLightOn" type="Sprite2D" parent="."]
+texture = ExtResource("8_jmi5g")
+centered = false
+
+[node name="Kuwahara_Shader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gxrs6")
+offset_right = 188.0
+offset_bottom = 68.0
+mouse_filter = 2
+
+[node name="Animation_Painting" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ml54y")
+}
+autoplay = "Moving_painting"
+
+[node name="Animation_Screens" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Animation_Painting")
+libraries = {
+"": SubResource("AnimationLibrary_8vcab")
+}
+autoplay = "Intro"
+
+[node name="Sound_FX" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="animation_finished" from="Animation_Screens" to="." method="_on_animation_screens_animation_finished"]

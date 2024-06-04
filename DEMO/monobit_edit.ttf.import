@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://3px57xrs03pk"
-path="res://.godot/imported/monobit_edit.ttf-a01ba831e6db48e2eb45957f3319d41d.fontdata"
+path="res://.godot/imported/monobit_edit.ttf-92e6318a511a8aa4b2137971a8d1944e.fontdata"
 
 [deps]
 
-source_file="res://DEMO/monobit_edit.ttf"
-dest_files=["res://.godot/imported/monobit_edit.ttf-a01ba831e6db48e2eb45957f3319d41d.fontdata"]
+source_file="res://demo/monobit_edit.ttf"
+dest_files=["res://.godot/imported/monobit_edit.ttf-92e6318a511a8aa4b2137971a8d1944e.fontdata"]
 
 [params]
 

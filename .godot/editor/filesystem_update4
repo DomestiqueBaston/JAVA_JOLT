@@ -6,3 +6,14 @@ res://DEMO/INTRO.tscn
 res://DEMO/JJ_Theme.tres
 res://DEMO/INTRO.gd
 res://DEMO/KUWAHARA.gdshader
+res://DEMO/JAVA_JOLT.tscn
+res://demo/INTRO.tscn
+res://demo/JJ_Theme.tres
+res://demo/INTRO.gd
+res://demo/KUWAHARA.gdshader
+res://INTRO/INTRO.tscn
+res://SHADER/KUWAHARA.gdshader
+res://default_bus_layout.tres
+res://ROWENA/ROWENA.tscn
+res://THEME/JJ_Theme.tres
+res://UI/UI.tscn

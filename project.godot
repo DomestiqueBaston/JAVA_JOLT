@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="JAVA JOLT!"
-run/main_scene="res://DEMO/INTRO.tscn"
+run/main_scene="res://demo/INTRO.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=10
 boot_splash/bg_color=Color(0.0156863, 0.00392157, 0.0156863, 1)
-boot_splash/image="res://DEMO/Splash_Screen.png"
+boot_splash/image="res://demo/Splash_Screen.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://DEMO/JJ.png"
+config/icon="res://demo/JJ.png"
 config/macos_native_icon="res://JJ.icns"
 config/windows_native_icon="res://JJ.ico"
 boot_splash/minimum_display_time=3000
@@ -31,6 +31,12 @@ window/size/always_on_top=true
 window/size/window_width_override=1128
 window/size/window_height_override=408
 window/stretch/mode="viewport"
+
+[file_customization]
+
+folder_colors={
+"res://demo/": "red"
+}
 
 [filesystem]
 
