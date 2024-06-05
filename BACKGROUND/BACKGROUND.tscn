@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://btw3ypyfee56m"]
+
+[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/DECOR_lights_off.png" id="1_17mqt"]
+[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/DECOR.png" id="1_47m2w"]
+[ext_resource type="Texture2D" uid="uid://c0ag251xrg41u" path="res://BACKGROUND/Oven_Open.png" id="3_bnhff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6a20"]
+size = Vector2(19, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kq4lq"]
+size = Vector2(3, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjqcr"]
+size = Vector2(5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw3ik"]
+size = Vector2(8, 6)
+
+[node name="BACKGROUND" type="Node2D"]
+
+[node name="BG_Lights_off" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_17mqt")
+centered = false
+
+[node name="BG_Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_47m2w")
+centered = false
+
+[node name="Open" type="Node2D" parent="."]
+
+[node name="OvenOpen" type="Sprite2D" parent="Open"]
+texture = ExtResource("3_bnhff")
+centered = false
+
+[node name="BG_Colliders" type="Node2D" parent="."]
+
+[node name="Oven_Colliders" type="Area2D" parent="BG_Colliders"]
+collision_layer = 2
+
+[node name="Oven" type="CollisionShape2D" parent="BG_Colliders/Oven_Colliders"]
+position = Vector2(59.5, 52)
+shape = SubResource("RectangleShape2D_b6a20")
+
+[node name="Milk_Collider" type="Area2D" parent="BG_Colliders"]
+collision_layer = 2
+
+[node name="Milk" type="CollisionShape2D" parent="BG_Colliders/Milk_Collider"]
+position = Vector2(72.5, 35)
+shape = SubResource("RectangleShape2D_kq4lq")
+
+[node name="Coffee_Maker_Collider" type="Area2D" parent="BG_Colliders"]
+collision_layer = 2
+
+[node name="Coffee_Maker" type="CollisionShape2D" parent="BG_Colliders/Coffee_Maker_Collider"]
+position = Vector2(128.5, 34)
+shape = SubResource("RectangleShape2D_sjqcr")
+
+[node name="Radio_Collider" type="Area2D" parent="BG_Colliders"]
+
+[node name="Radio_Alarm" type="CollisionShape2D" parent="BG_Colliders/Radio_Collider"]
+position = Vector2(166, 36)
+shape = SubResource("RectangleShape2D_lw3ik")

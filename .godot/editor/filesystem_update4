@@ -1,6 +1,8 @@
-res://ROWENA/ROWENA.tscn
+res://INTRO/INTRO.tscn
 res://SHADER/KUWAHARA.gdshader
-res://THEME/JJ_Theme.tres
+res://UI/JJ_Theme.tres
 res://demo/KUWAHARA.gdshader
 res://UI/UI.tscn
-res://INTRO/INTRO.tscn
+res://BACKGROUND/BACKGROUND.tscn
+res://SHADER/KUWAHARA.tscn
+res://INTRO/INTRO.gd

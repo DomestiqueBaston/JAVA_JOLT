@@ -250,7 +250,7 @@ _data = {
 "RESET": SubResource("Animation_a6bnw")
 }
 
-[node name="Intro" type="Node2D"]
+[node name="INTRO" type="Node2D"]
 script = ExtResource("1_uosxj")
 
 [node name="Fond" type="ColorRect" parent="."]
