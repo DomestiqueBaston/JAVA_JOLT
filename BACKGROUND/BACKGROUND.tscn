@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://btw3ypyfee56m"]
 
-[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/DECOR_lights_off.png" id="1_17mqt"]
-[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/DECOR.png" id="1_47m2w"]
+[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/BG_Lights_Off.png" id="1_fd7kn"]
+[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="2_8x8bd"]
 [ext_resource type="Texture2D" uid="uid://c0ag251xrg41u" path="res://BACKGROUND/Oven_Open.png" id="3_bnhff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6a20"]
@@ -18,18 +18,18 @@ size = Vector2(8, 6)
 
 [node name="BACKGROUND" type="Node2D"]
 
-[node name="BG_Lights_off" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_17mqt")
+[node name="BG_Lights_Off" type="Sprite2D" parent="."]
+texture = ExtResource("1_fd7kn")
 centered = false
 
-[node name="BG_Base" type="Sprite2D" parent="."]
-texture = ExtResource("1_47m2w")
+[node name="BG_Lights_On" type="Sprite2D" parent="."]
+texture = ExtResource("2_8x8bd")
 centered = false
 
 [node name="Open" type="Node2D" parent="."]
 
 [node name="OvenOpen" type="Sprite2D" parent="Open"]
+visible = false
 texture = ExtResource("3_bnhff")
 centered = false
 

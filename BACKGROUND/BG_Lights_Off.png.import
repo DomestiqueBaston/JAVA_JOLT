@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxayem5uqrj1g"
-path="res://.godot/imported/DECOR_lights_off.png-a5c5dcfdb6a90c8156ebc4c369dc6a15.ctex"
+path="res://.godot/imported/BG_Lights_Off.png-6397617cb6a87645e254957ac0380c7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BACKGROUND/DECOR_lights_off.png"
-dest_files=["res://.godot/imported/DECOR_lights_off.png-a5c5dcfdb6a90c8156ebc4c369dc6a15.ctex"]
+source_file="res://BACKGROUND/BG_Lights_Off.png"
+dest_files=["res://.godot/imported/BG_Lights_Off.png-6397617cb6a87645e254957ac0380c7e.ctex"]
 
 [params]
 

@@ -2,14 +2,14 @@
 
 [ext_resource type="Shader" path="res://SHADER/KUWAHARA.gdshader" id="1_318fm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xoelm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxiaj"]
 shader = ExtResource("1_318fm")
 shader_parameter/radius = 1
 shader_parameter/offset = Vector3(0.03, -0.02, -0.03)
 
 [sub_resource type="Animation" id="Animation_hknbg"]
 resource_name = "Moving_painting"
-length = 8.00001
+length = 4.00001
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,10 +18,10 @@ tracks/0/path = NodePath("Kuwahara_Shader:material:shader_parameter/offset")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.4, 1.9, 2.1, 2.4, 2.8, 3, 3.4, 3.8, 4, 4.5, 4.8, 5, 5.5, 5.8, 6.1, 6.3, 6.7, 7, 7.2, 7.7, 8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.4, 1.9, 2.1, 2.4, 2.8, 3, 3.4, 3.6, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0, 0.01, -0.01), Vector3(0, -0.02, 0.01), Vector3(0.01, -0.01, 0), Vector3(0.01, 0, 0.01), Vector3(0, 0, 0.02), Vector3(-0.01, 0, 0.01), Vector3(0, 0, -0.01), Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(-0.01, 0, 0.01), Vector3(0.01, -0.01, 0.01), Vector3(0, -0.02, 0.01), Vector3(0.01, -0.01, 0), Vector3(0.01, 0, 0.01), Vector3(0, 0, 0.02), Vector3(-0.01, 0, 0.01), Vector3(0.01, 0, 0.01), Vector3(0, 0, 0.02), Vector3(0.01, 0.01, -0.01), Vector3(0, 0, -0.01), Vector3(0, 0.01, -0.01), Vector3(0, -0.02, 0.01), Vector3(0.01, -0.01, 0.01)]
+"values": [Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0, 0.01, -0.01), Vector3(0, -0.02, 0.01), Vector3(0.01, -0.01, 0), Vector3(0.01, 0, 0.01), Vector3(0, 0, 0.02), Vector3(-0.01, 0, 0.01), Vector3(0, 0, -0.01), Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0.01, 0.01, -0.01), Vector3(0.01, -0.01, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_uoheo"]
@@ -48,7 +48,7 @@ _data = {
 [node name="KUWAHARA" type="Node2D"]
 
 [node name="Kuwahara_Shader" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_xoelm")
+material = SubResource("ShaderMaterial_nxiaj")
 offset_right = 188.0
 offset_bottom = 68.0
 mouse_filter = 2

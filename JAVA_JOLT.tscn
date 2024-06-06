@@ -10,6 +10,8 @@
 [node name="BACKGROUND" parent="." instance=ExtResource("1_3jbuv")]
 
 [node name="ROWENA" parent="." instance=ExtResource("2_s87s0")]
+position = Vector2(120, 68)
+scale = Vector2(-1, 1)
 
 [node name="KUWAHARA" parent="." instance=ExtResource("3_quulp")]
 

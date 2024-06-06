@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7tbw0pnaoy4p"
-path="res://.godot/imported/DECOR.png-3cbbd9146df44ff64e2da79648e951f3.ctex"
+uid="uid://3atnhhhoq7g1"
+path="res://.godot/imported/Coffee_Cupboard_Open.png-f3db5222d32dbabf999565c27c2bf2bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BACKGROUND/DECOR.png"
-dest_files=["res://.godot/imported/DECOR.png-3cbbd9146df44ff64e2da79648e951f3.ctex"]
+source_file="res://BACKGROUND/Coffee_Cupboard_Open.png"
+dest_files=["res://.godot/imported/Coffee_Cupboard_Open.png-f3db5222d32dbabf999565c27c2bf2bf.ctex"]
 
 [params]
 

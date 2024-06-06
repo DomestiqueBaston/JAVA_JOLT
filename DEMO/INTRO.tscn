@@ -1,15 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://dak2h42jqim0i"]
+[gd_scene load_steps=25 format=3 uid="uid://dak2h42jqim0i"]
 
 [ext_resource type="Script" path="res://demo/INTRO.gd" id="1_uosxj"]
 [ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://demo/DECOR_lights_off.png" id="1_y538h"]
-[ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://demo/Titre.png" id="2_6dww4"]
-[ext_resource type="Texture2D" uid="uid://bodbm313cxp8u" path="res://demo/Game.png" id="3_8aqf3"]
+[ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://INTRO/Titre.png" id="2_6dww4"]
+[ext_resource type="Texture2D" uid="uid://bodbm313cxp8u" path="res://INTRO/Game.png" id="3_8aqf3"]
 [ext_resource type="Shader" path="res://demo/KUWAHARA.gdshader" id="3_nwoe8"]
-[ext_resource type="Texture2D" uid="uid://cih5flbyx1hiw" path="res://demo/Code.png" id="4_iqarq"]
-[ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://demo/Intro_v01.ogg" id="5_1y5a3"]
-[ext_resource type="Texture2D" uid="uid://j2lj7nnrn6lh" path="res://demo/Graphics.png" id="5_30fw1"]
-[ext_resource type="Texture2D" uid="uid://bgop36od7dx2r" path="res://demo/Sound.png" id="6_h2h5a"]
-[ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://demo/DECOR.png" id="8_jmi5g"]
+[ext_resource type="Texture2D" uid="uid://cih5flbyx1hiw" path="res://INTRO/Code.png" id="4_iqarq"]
+[ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://INTRO/Intro.ogg" id="5_1y5a3"]
+[ext_resource type="Texture2D" uid="uid://j2lj7nnrn6lh" path="res://INTRO/Graphics.png" id="5_30fw1"]
+[ext_resource type="Texture2D" uid="uid://bgop36od7dx2r" path="res://INTRO/Sound.png" id="6_h2h5a"]
+[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="8_ucnwy"]
+[ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/ROWENA.png" id="9_a4uop"]
+[ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/Coffee_Cupboard_Open.png" id="9_n6jc3"]
+[ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/Barefoot_steps_A.ogg" id="10_1mach"]
+[ext_resource type="AudioStream" uid="uid://drtmlnoimgrw0" path="res://SOUND/Cupboard_Open.ogg" id="14_21nd7"]
+[ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing.ogg" id="14_lvr4p"]
+[ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="15_iioys"]
+[ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://SOUND/Cupboard_Closed.ogg" id="17_725xu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
 shader = ExtResource("3_nwoe8")
@@ -56,7 +63,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_pxvym"]
 resource_name = "Intro"
-length = 82.5
+length = 94.5
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,7 +82,7 @@ tracks/0/use_blend = true
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../DecorLightsOff:self_modulate")
+tracks/1/path = NodePath("../BG_Lights_Off:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -91,7 +98,7 @@ tracks/2/path = NodePath("../Titre:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 8.5, 20.3, 82.5),
+"times": PackedFloat32Array(0, 8.5, 20.3, 81.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -103,7 +110,7 @@ tracks/3/path = NodePath("../Game:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 22.3, 34.1, 82.5),
+"times": PackedFloat32Array(0, 22.3, 34.1, 81.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -115,7 +122,7 @@ tracks/4/path = NodePath("../Code:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 36.1, 47.7, 82.5),
+"times": PackedFloat32Array(0, 36.1, 47.7, 81.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -127,7 +134,7 @@ tracks/5/path = NodePath("../Graphics:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 63.2, 74.5, 82.5),
+"times": PackedFloat32Array(0, 63.2, 74.5, 81.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -139,7 +146,7 @@ tracks/6/path = NodePath("../Sound:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 49.8, 61.2, 82.5),
+"times": PackedFloat32Array(0, 49.8, 61.2, 81.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, false]
@@ -147,22 +154,171 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../DecorLightOn:visible")
+tracks/7/path = NodePath("../BG_Lights_On:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 81.3, 82.5),
+"times": PackedFloat32Array(0, 81.3, 81.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../ROWENA/Rowena_Sprites:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(81.7, 81.8, 81.9, 82, 82.1, 82.2, 82.3, 82.4, 82.5, 82.6, 82.7, 82.8, 82.9, 83, 83.1, 83.2, 83.3, 83.4, 83.5, 83.6, 83.7, 83.8, 83.9, 84, 84.1, 84.2, 84.3, 84.4, 84.5, 84.6, 84.7, 84.8, 84.9, 85, 85.1, 85.2, 85.3, 85.4, 85.5, 85.6, 85.7, 85.8, 85.9, 86, 86.1, 86.2, 86.3, 86.4, 86.5, 86.6, 86.7, 86.8, 86.9, 87, 87.1, 87.2, 87.3, 87.4, 87.5, 87.6, 87.7, 87.8, 87.9, 88, 88.1, 88.2, 88.3, 88.4, 88.5, 88.6, 88.7, 88.8, 88.9, 89, 89.1, 89.2, 89.3, 89.4, 89.5, 89.6, 89.7, 89.8, 89.9, 90, 90.1, 90.2, 90.3, 90.4, 90.5, 90.6, 90.7, 90.8, 90.9, 91, 91.1, 91.2, 91.3, 91.4, 91.5, 91.6, 91.7, 91.8, 91.9, 92, 92.1, 92.2, 92.3, 92.4, 92.5, 92.6, 92.7, 92.8, 92.9, 93, 93.1, 93.2, 93.3, 93.4, 93.5, 93.6, 93.7, 93.8, 93.9, 94, 94.1, 94.2, 94.3, 94.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../ROWENA/Rowena_Sprites:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(81.7, 83.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(80, -29), Vector2(0, -29)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../ROWENA/Rowena_Sprites:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(81.7, 83.7, 83.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(-0.5, 0.5)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Monologue/Box/Comments:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 84.1, 84.2, 85.4, 85.7, 87.8, 90.1, 93),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false, true, false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Monologue/Box/Comments:text")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(84.2, 85.7, 90.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["Ok.", "Coffee, now.", "No coffee? This can't be happening"]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../CoffeeCupboardOpen:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 88.5, 88.6, 93.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/14/type = "audio"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Cupboard_Open")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_21nd7")
+}],
+"times": PackedFloat32Array(81.7, 82.1, 82.5, 82.9, 83.3, 83.7, 88.5)
+}
+tracks/14/use_blend = true
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../ROWENA/Rowena_Sprites:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 81.6, 81.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/16/type = "audio"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../ROWENA/Foot_Steps")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/16/use_blend = true
+tracks/17/type = "audio"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../Cupboard_Closed")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("17_725xu")
+}],
+"times": PackedFloat32Array(93.8)
+}
+tracks/17/use_blend = true
 
 [sub_resource type="Animation" id="Animation_a6bnw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../DecorLightsOff:self_modulate")
+tracks/0/path = NodePath("../BG_Lights_Off:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -234,10 +390,94 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../DecorLightOn:visible")
+tracks/6/path = NodePath("../BG_Lights_On:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../ROWENA/Rowena_Sprites:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../ROWENA/Rowena_Sprites:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -29)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../ROWENA/Rowena_Sprites:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Monologue/Box/Comments:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Monologue/Box/Comments:text")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Ok."]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../CoffeeCupboardOpen:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../ROWENA/Rowena_Sprites:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -263,7 +503,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="DecorLightsOff" type="Sprite2D" parent="."]
+[node name="BG_Lights_Off" type="Sprite2D" parent="."]
 texture = ExtResource("1_y538h")
 centered = false
 
@@ -287,9 +527,29 @@ centered = false
 texture = ExtResource("5_30fw1")
 centered = false
 
-[node name="DecorLightOn" type="Sprite2D" parent="."]
-texture = ExtResource("8_jmi5g")
+[node name="BG_Lights_On" type="Sprite2D" parent="."]
+texture = ExtResource("8_ucnwy")
 centered = false
+
+[node name="CoffeeCupboardOpen" type="Sprite2D" parent="."]
+texture = ExtResource("9_n6jc3")
+centered = false
+
+[node name="ROWENA" type="CharacterBody2D" parent="."]
+position = Vector2(120, 68)
+collision_layer = 8
+collision_mask = 4
+
+[node name="Rowena_Sprites" type="Sprite2D" parent="ROWENA"]
+position = Vector2(0, -29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_a4uop")
+hframes = 42
+vframes = 3
+
+[node name="Foot_Steps" type="AudioStreamPlayer2D" parent="ROWENA"]
+volume_db = -5.0
+bus = &"FX"
 
 [node name="Kuwahara_Shader" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_gxrs6")
@@ -311,5 +571,38 @@ libraries = {
 autoplay = "Intro"
 
 [node name="Sound_FX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1, 1)
+stream = ExtResource("14_lvr4p")
+
+[node name="Monologue" type="CanvasLayer" parent="."]
+
+[node name="Box" type="Control" parent="Monologue"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("15_iioys")
+
+[node name="Comments" type="Label" parent="Monologue/Box"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 19.0
+offset_right = 188.0
+offset_bottom = 47.0
+size_flags_vertical = 0
+theme = ExtResource("15_iioys")
+theme_override_font_sizes/font_size = 0
+text = "Ok."
+autowrap_mode = 2
+
+[node name="Cupboard_Open" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
+
+[node name="Cupboard_Closed" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="animation_finished" from="Animation_Screens" to="." method="_on_animation_screens_animation_finished"]

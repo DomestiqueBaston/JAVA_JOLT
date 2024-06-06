@@ -1,15 +1,15 @@
 [gd_scene load_steps=18 format=3 uid="uid://dak2h42jqim0i"]
 
 [ext_resource type="Script" path="res://INTRO/INTRO.gd" id="1_uosxj"]
-[ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://demo/DECOR_lights_off.png" id="1_y538h"]
 [ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://INTRO/Titre.png" id="2_6dww4"]
+[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/BG_Lights_Off.png" id="2_omdve"]
 [ext_resource type="Texture2D" uid="uid://bodbm313cxp8u" path="res://INTRO/Game.png" id="3_8aqf3"]
 [ext_resource type="Shader" path="res://SHADER/KUWAHARA.gdshader" id="3_nwoe8"]
 [ext_resource type="Texture2D" uid="uid://cih5flbyx1hiw" path="res://INTRO/Code.png" id="4_iqarq"]
-[ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://INTRO/Intro_v01.ogg" id="5_1y5a3"]
+[ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://INTRO/Intro.ogg" id="5_1y5a3"]
 [ext_resource type="Texture2D" uid="uid://j2lj7nnrn6lh" path="res://INTRO/Graphics.png" id="5_30fw1"]
 [ext_resource type="Texture2D" uid="uid://bgop36od7dx2r" path="res://INTRO/Sound.png" id="6_h2h5a"]
-[ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://demo/DECOR.png" id="8_jmi5g"]
+[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="8_i8e62"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
 shader = ExtResource("3_nwoe8")
@@ -75,7 +75,7 @@ tracks/0/use_blend = true
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../DecorLightsOff:self_modulate")
+tracks/1/path = NodePath("../BG_Lights_Off:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -147,7 +147,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../DecorLightOn:visible")
+tracks/7/path = NodePath("../BG_Lights_On:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -162,7 +162,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../DecorLightsOff:self_modulate")
+tracks/0/path = NodePath("../BG_Lights_Off:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -234,7 +234,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../DecorLightOn:visible")
+tracks/6/path = NodePath("../BG_Lights_On:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -263,8 +263,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="DecorLightsOff" type="Sprite2D" parent="."]
-texture = ExtResource("1_y538h")
+[node name="BG_Lights_Off" type="Sprite2D" parent="."]
+texture = ExtResource("2_omdve")
 centered = false
 
 [node name="Titre" type="Sprite2D" parent="."]
@@ -287,8 +287,8 @@ centered = false
 texture = ExtResource("5_30fw1")
 centered = false
 
-[node name="DecorLightOn" type="Sprite2D" parent="."]
-texture = ExtResource("8_jmi5g")
+[node name="BG_Lights_On" type="Sprite2D" parent="."]
+texture = ExtResource("8_i8e62")
 centered = false
 
 [node name="Kuwahara_Shader" type="ColorRect" parent="."]
