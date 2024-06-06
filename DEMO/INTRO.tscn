@@ -196,7 +196,7 @@ tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(81.7, 83.7, 83.8),
 "transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(-0.5, 0.5)]
 }
 tracks/11/type = "value"
@@ -221,7 +221,7 @@ tracks/12/keys = {
 "times": PackedFloat32Array(84.2, 85.7, 90.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": ["Ok.", "Coffee, now.", "No coffee? This can't be happening"]
+"values": ["Ok.", "Coffee, now.", "No coffee? This can't be happening."]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -545,7 +545,7 @@ position = Vector2(0, -29)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_a4uop")
 hframes = 42
-vframes = 3
+vframes = 4
 
 [node name="Foot_Steps" type="AudioStreamPlayer2D" parent="ROWENA"]
 volume_db = -5.0
