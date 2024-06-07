@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clvr31ogitwwv"]
+[gd_scene load_steps=15 format=3 uid="uid://clvr31ogitwwv"]
 
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/ROWENA.png" id="1_tqx3q"]
 [ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/Barefoot_steps_A.ogg" id="3_72jic"]
@@ -174,12 +174,29 @@ tracks/1/keys = {
 "values": [true, true]
 }
 
+[sub_resource type="Animation" id="Animation_vn55n"]
+resource_name = "Nonsense"
+length = 1.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mol2e"]
 _data = {
 "Do_Something_High": SubResource("Animation_o301v"),
 "Do_Something_Low": SubResource("Animation_kgaqx"),
 "Do_Something_Lowest": SubResource("Animation_crym6"),
 "Do_Something_Mid": SubResource("Animation_jmibs"),
+"Nonsense": SubResource("Animation_vn55n"),
 "RESET": SubResource("Animation_ta5w8"),
 "Wait_Base": SubResource("Animation_mdy2a"),
 "Wait_Nails": SubResource("Animation_ort0t"),

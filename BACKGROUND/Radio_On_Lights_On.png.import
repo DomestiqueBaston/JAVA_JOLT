@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bodbm313cxp8u"
-path="res://.godot/imported/Game.png-23deea56b811973f157db697f48cd6e6.ctex"
+uid="uid://dery6ph6gxcu2"
+path="res://.godot/imported/Radio_On_Lights_On.png-6426eab771351a0b484c8c10adb727a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://INTRO/Game.png"
-dest_files=["res://.godot/imported/Game.png-23deea56b811973f157db697f48cd6e6.ctex"]
+source_file="res://BACKGROUND/Radio_On_Lights_On.png"
+dest_files=["res://.godot/imported/Radio_On_Lights_On.png-6426eab771351a0b484c8c10adb727a2.ctex"]
 
 [params]
 

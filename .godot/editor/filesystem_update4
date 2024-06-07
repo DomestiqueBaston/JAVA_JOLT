@@ -3,4 +3,6 @@ res://demo/KUWAHARA.gdshader
 res://UI/JJ_Theme.tres
 res://SHADER/KUWAHARA.gdshader
 res://demo/INTRO.tscn
-res://UI/UI.tscn
+res://INTRO-OUTRO/INTRO.tscn
+res://BACKGROUND/BACKGROUND.tscn
+res://INTRO_OUTRO/INTRO.tscn

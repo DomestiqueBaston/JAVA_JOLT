@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=10 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="2_8x8bd"]
+[ext_resource type="Texture2D" uid="uid://wx47j17h2tlm" path="res://BACKGROUND/Radio_On_Lights_Off.png" id="2_yjrnf"]
 [ext_resource type="Texture2D" uid="uid://c0ag251xrg41u" path="res://BACKGROUND/Oven_Open.png" id="3_bnhff"]
+[ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/Radio_On_Lights_On.png" id="4_ukw4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6a20"]
 size = Vector2(19, 24)
@@ -22,8 +24,16 @@ size = Vector2(8, 6)
 texture = ExtResource("1_fd7kn")
 centered = false
 
+[node name="Radio_On_Lights_Off" type="Sprite2D" parent="."]
+texture = ExtResource("2_yjrnf")
+centered = false
+
 [node name="BG_Lights_On" type="Sprite2D" parent="."]
 texture = ExtResource("2_8x8bd")
+centered = false
+
+[node name="Radio_On_Lights_On" type="Sprite2D" parent="."]
+texture = ExtResource("4_ukw4d")
 centered = false
 
 [node name="Open" type="Node2D" parent="."]
@@ -34,6 +44,7 @@ texture = ExtResource("3_bnhff")
 centered = false
 
 [node name="BG_Colliders" type="Node2D" parent="."]
+visible = false
 
 [node name="Oven_Colliders" type="Area2D" parent="BG_Colliders"]
 collision_layer = 2

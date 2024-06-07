@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wx47j17h2tlm"
-path="res://.godot/imported/Radio_On.png-2af777e7921013d5597b86d27d55def4.ctex"
+uid="uid://bgop36od7dx2r"
+path="res://.godot/imported/Sound.png-03b9207f3b5d3ba7d34e10d502d5519e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BACKGROUND/Radio_On.png"
-dest_files=["res://.godot/imported/Radio_On.png-2af777e7921013d5597b86d27d55def4.ctex"]
+source_file="res://INTRO_OUTRO/Sound.png"
+dest_files=["res://.godot/imported/Sound.png-03b9207f3b5d3ba7d34e10d502d5519e.ctex"]
 
 [params]
 

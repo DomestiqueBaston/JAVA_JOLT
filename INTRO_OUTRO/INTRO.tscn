@@ -1,18 +1,18 @@
 [gd_scene load_steps=26 format=3 uid="uid://dak2h42jqim0i"]
 
 [ext_resource type="Script" path="res://demo/INTRO.gd" id="1_uosxj"]
-[ext_resource type="Texture2D" uid="uid://7y7l2i70ms6c" path="res://demo/DECOR_lights_off.png" id="1_y538h"]
-[ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://INTRO/Titre.png" id="2_6dww4"]
-[ext_resource type="Texture2D" uid="uid://bodbm313cxp8u" path="res://INTRO/Game.png" id="3_8aqf3"]
-[ext_resource type="Shader" path="res://demo/KUWAHARA.gdshader" id="3_nwoe8"]
-[ext_resource type="Texture2D" uid="uid://cih5flbyx1hiw" path="res://INTRO/Code.png" id="4_iqarq"]
-[ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://INTRO/Intro.ogg" id="5_1y5a3"]
-[ext_resource type="Texture2D" uid="uid://j2lj7nnrn6lh" path="res://INTRO/Graphics.png" id="5_30fw1"]
-[ext_resource type="Texture2D" uid="uid://bgop36od7dx2r" path="res://INTRO/Sound.png" id="6_h2h5a"]
+[ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://INTRO_OUTRO/Titre.png" id="2_6dww4"]
+[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/BG_Lights_Off.png" id="2_omdve"]
+[ext_resource type="Texture2D" uid="uid://bodbm313cxp8u" path="res://INTRO_OUTRO/Game.png" id="3_8aqf3"]
+[ext_resource type="Shader" path="res://SHADER/KUWAHARA.gdshader" id="3_nwoe8"]
+[ext_resource type="Texture2D" uid="uid://cih5flbyx1hiw" path="res://INTRO_OUTRO/Code.png" id="4_iqarq"]
+[ext_resource type="AudioStream" uid="uid://6ahcgw3gceah" path="res://INTRO_OUTRO/Intro.ogg" id="5_1y5a3"]
+[ext_resource type="Texture2D" uid="uid://j2lj7nnrn6lh" path="res://INTRO_OUTRO/Graphics.png" id="5_30fw1"]
+[ext_resource type="Texture2D" uid="uid://bgop36od7dx2r" path="res://INTRO_OUTRO/Sound.png" id="6_h2h5a"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="8_ucnwy"]
+[ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/Radio_On_Lights_On.png" id="9_028bb"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/ROWENA.png" id="9_a4uop"]
 [ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/Coffee_Cupboard_Open.png" id="9_n6jc3"]
-[ext_resource type="Texture2D" uid="uid://wx47j17h2tlm" path="res://BACKGROUND/Radio_On.png" id="9_wws7n"]
 [ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/Barefoot_steps_A.ogg" id="10_1mach"]
 [ext_resource type="AudioStream" uid="uid://drtmlnoimgrw0" path="res://SOUND/Cupboard_Open.ogg" id="14_21nd7"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing.ogg" id="14_lvr4p"]
@@ -316,7 +316,7 @@ tracks/17/use_blend = true
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("../RadioOn:visible")
+tracks/18/path = NodePath("../Radio_On_Lights_On:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -511,7 +511,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("../RadioOn:visible")
+tracks/14/path = NodePath("../Radio_On_Lights_On:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -553,7 +553,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BG_Lights_Off" type="Sprite2D" parent="."]
-texture = ExtResource("1_y538h")
+texture = ExtResource("2_omdve")
 centered = false
 
 [node name="BG_Lights_On" type="Sprite2D" parent="."]
@@ -582,9 +582,9 @@ centered = false
 texture = ExtResource("5_30fw1")
 centered = false
 
-[node name="RadioOn" type="Sprite2D" parent="."]
+[node name="Radio_On_Lights_On" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("9_wws7n")
+texture = ExtResource("9_028bb")
 centered = false
 
 [node name="CoffeeCupboardOpen" type="Sprite2D" parent="."]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="JAVA JOLT!"
-run/main_scene="res://demo/INTRO.tscn"
+run/main_scene="res://INTRO_OUTRO/INTRO.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=10
 boot_splash/bg_color=Color(0.0156863, 0.00392157, 0.0156863, 1)
