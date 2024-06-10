@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dak2h42jqim0i"]
+[gd_scene load_steps=27 format=3 uid="uid://dak2h42jqim0i"]
 
 [ext_resource type="Script" path="res://demo/INTRO.gd" id="1_uosxj"]
 [ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://INTRO_OUTRO/Titre.png" id="2_6dww4"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing.ogg" id="14_lvr4p"]
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="15_iioys"]
 [ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://SOUND/Cupboard_Closed.ogg" id="17_725xu"]
+[ext_resource type="Script" path="res://demo/Text_Sound.gd" id="19_exvi4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
 shader = ExtResource("3_nwoe8")
@@ -68,7 +69,7 @@ length = 94.5
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sound_FX")
+tracks/0/path = NodePath("../Intro_Sound")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -174,7 +175,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(81.7, 81.8, 81.9, 82, 82.1, 82.2, 82.3, 82.4, 82.5, 82.6, 82.7, 82.8, 82.9, 83, 83.1, 83.2, 83.3, 83.4, 83.5, 83.6, 83.7, 83.8, 83.9, 84, 84.1, 84.2, 84.3, 84.4, 84.5, 84.6, 84.7, 84.8, 84.9, 85, 85.1, 85.2, 85.3, 85.4, 85.5, 85.6, 85.7, 85.8, 85.9, 86, 86.1, 86.2, 86.3, 86.4, 86.5, 86.6, 86.7, 86.8, 86.9, 87, 87.1, 87.2, 87.3, 87.4, 87.5, 87.6, 87.7, 87.8, 87.9, 88, 88.1, 88.2, 88.3, 88.4, 88.5, 88.6, 88.7, 88.8, 88.9, 89, 89.1, 89.2, 89.3, 89.4, 89.5, 89.6, 89.7, 89.8, 89.9, 90, 90.1, 90.2, 90.3, 90.4, 90.5, 90.6, 90.7, 90.8, 90.9, 91, 91.1, 91.2, 91.3, 91.4, 91.5, 91.6, 91.7, 91.8, 91.9, 92, 92.1, 92.2, 92.3, 92.4, 92.5, 92.6, 92.7, 92.8, 92.9, 93, 93.1, 93.2, 93.3, 93.4, 93.5, 93.6, 93.7, 93.8, 93.9, 94, 94.1, 94.2, 94.3, 94.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 111, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 8, 9, 10, 11, 12, 13, 14, 15, 16, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -207,7 +208,7 @@ tracks/11/path = NodePath("../Monologue/Box/Comments:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 84.2, 85.4, 85.7, 87.8, 90.1, 93),
+"times": PackedFloat32Array(0, 84.2, 85.4, 85.7, 87.4, 89.4, 93),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true, false, true, false]
@@ -219,7 +220,7 @@ tracks/12/path = NodePath("../Monologue/Box/Comments:text")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(84.2, 85.7, 90.1),
+"times": PackedFloat32Array(84.2, 85.7, 89.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["Ok.", "Coffee, now.", "No coffee? This can't be happening."]
@@ -332,7 +333,7 @@ tracks/19/path = NodePath("../Monologue/Box/Comments:visible_ratio")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(84.2, 84.6, 85.6, 85.7, 86.5, 90, 90.1, 93),
+"times": PackedFloat32Array(84.2, 84.6, 85.6, 85.7, 86.5, 89.3, 89.4, 92.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
@@ -601,7 +602,7 @@ position = Vector2(0, -29)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_a4uop")
 hframes = 42
-vframes = 4
+vframes = 6
 
 [node name="Foot_Steps" type="AudioStreamPlayer2D" parent="ROWENA"]
 volume_db = -5.0
@@ -626,11 +627,8 @@ libraries = {
 }
 autoplay = "Intro"
 
-[node name="Sound_FX" type="AudioStreamPlayer2D" parent="."]
-
-[node name="Typing" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(1, 1)
-stream = ExtResource("14_lvr4p")
+[node name="Intro_Sound" type="AudioStreamPlayer2D" parent="."]
+bus = &"INTRO_OUTRO"
 
 [node name="Monologue" type="CanvasLayer" parent="."]
 
@@ -658,10 +656,19 @@ autowrap_mode = 2
 visible_characters = 0
 visible_characters_behavior = 1
 visible_ratio = 0.0
+script = ExtResource("19_exvi4")
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="Monologue"]
+position = Vector2(1, 1)
+stream = ExtResource("14_lvr4p")
+volume_db = 2.5
+bus = &"FX"
 
 [node name="Cupboard_Open" type="AudioStreamPlayer2D" parent="."]
 volume_db = -5.0
+bus = &"FX"
 
 [node name="Cupboard_Closed" type="AudioStreamPlayer2D" parent="."]
+bus = &"FX"
 
 [connection signal="animation_finished" from="Animation_Screens" to="." method="_on_animation_screens_animation_finished"]
