@@ -1,0 +1,254 @@
+[gd_scene load_steps=12 format=3 uid="uid://dol47lh1gupsx"]
+
+[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="1_mxm7a"]
+[ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/Radio_On_Lights_On.png" id="2_46q67"]
+[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/BG_Lights_Off.png" id="3_mm7vi"]
+[ext_resource type="Texture2D" uid="uid://0shmmmluyidr" path="res://INTRO_OUTRO/End.png" id="4_4oy66"]
+[ext_resource type="AudioStream" uid="uid://b6cpsyavomfrk" path="res://INTRO_OUTRO/Music_Off.ogg" id="5_ayqnn"]
+[ext_resource type="AudioStream" uid="uid://cdk4cbg43ly8j" path="res://INTRO_OUTRO/Opening_Door.ogg" id="6_ju8ck"]
+[ext_resource type="AudioStream" uid="uid://cd88xgmqxtv7m" path="res://INTRO_OUTRO/Steps.ogg" id="7_wbyuv"]
+[ext_resource type="AudioStream" uid="uid://bi1ej7wmde8ep" path="res://INTRO_OUTRO/Closing_Door.ogg" id="8_2ywjy"]
+
+[sub_resource type="Animation" id="Animation_laq0e"]
+resource_name = "Outro"
+length = 12.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg_Lights_Off:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bg_Lights_On:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Radio_On_Lights_On:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Music_Off")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_ayqnn")
+}],
+"times": PackedFloat32Array(0.9)
+}
+tracks/3/use_blend = true
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Opening_Door")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_ju8ck")
+}],
+"times": PackedFloat32Array(1.7)
+}
+tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Steps")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 1.78671,
+"start_offset": 0.0,
+"stream": ExtResource("7_wbyuv")
+}],
+"times": PackedFloat32Array(2.2)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Closing_Door")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_2ywjy")
+}],
+"times": PackedFloat32Array(3.7)
+}
+tracks/6/use_blend = true
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("End:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("End:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(9, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c2bm3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg_Lights_Off:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bg_Lights_On:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Radio_On_Lights_On:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("End:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("End:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_myp3g"]
+_data = {
+"Outro": SubResource("Animation_laq0e"),
+"RESET": SubResource("Animation_c2bm3")
+}
+
+[node name="Outro" type="Node2D"]
+
+[node name="Fond" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 188.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Bg_Lights_On" type="Sprite2D" parent="."]
+texture = ExtResource("1_mxm7a")
+centered = false
+
+[node name="Radio_On_Lights_On" type="Sprite2D" parent="."]
+texture = ExtResource("2_46q67")
+centered = false
+
+[node name="Bg_Lights_Off" type="Sprite2D" parent="."]
+texture = ExtResource("3_mm7vi")
+centered = false
+
+[node name="End" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_4oy66")
+centered = false
+
+[node name="Opening_Door" type="AudioStreamPlayer2D" parent="."]
+volume_db = 2.5
+bus = &"INTRO_OUTRO"
+
+[node name="Closing_Door" type="AudioStreamPlayer2D" parent="."]
+volume_db = 5.0
+bus = &"INTRO_OUTRO"
+
+[node name="Music_Off" type="AudioStreamPlayer2D" parent="."]
+volume_db = 2.5
+bus = &"INTRO_OUTRO"
+
+[node name="Steps" type="AudioStreamPlayer2D" parent="."]
+volume_db = 5.0
+bus = &"FX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_myp3g")
+}
+autoplay = "Outro"
