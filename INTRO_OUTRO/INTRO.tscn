@@ -602,7 +602,7 @@ position = Vector2(0, -29)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_a4uop")
 hframes = 42
-vframes = 6
+vframes = 7
 
 [node name="Foot_Steps" type="AudioStreamPlayer2D" parent="ROWENA"]
 volume_db = -5.0
