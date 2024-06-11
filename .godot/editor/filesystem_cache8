@@ -45,7 +45,7 @@ Titre.png::CompressedTexture2D::4777918305933094930::1717515128::1717515395::1::
 Trash.png::CompressedTexture2D::7165921862160805700::1717515128::1717515395::1::::<><>::
 Typing.ogg::AudioStreamOggVorbis::7346729254588054477::1717515128::1717515395::1::::<><>::
 ::res://DOC/::1717767904
-::res://INTRO_OUTRO/::1718103919
+::res://INTRO_OUTRO/::1718108995
 Closing_Door.ogg::AudioStreamOggVorbis::3001865909801455595::1718036201::1718036221::1::::<><>::
 Code.png::CompressedTexture2D::5350633779945270210::1716972719::1717771743::1::::<><>::
 End.png::CompressedTexture2D::1792326988345433335::1718098963::1718098976::1::::<><>::
@@ -58,12 +58,13 @@ INTRO.tscn::PackedScene::7181559253299432490::1718103919::0::1::::<><>::res://de
 Music_Off.ogg::AudioStreamOggVorbis::4567347752695743680::1718035171::1718035174::1::::<><>::
 Opening_Door.ogg::AudioStreamOggVorbis::5005816103366616835::1718034995::1718035027::1::::<><>::
 OUTRO.tscn::PackedScene::8166432545262223799::1718099986::0::1::::<><>::uid://c7tbw0pnaoy4p::::res://BACKGROUND/BG_Lights_On.png<>uid://dery6ph6gxcu2::::res://BACKGROUND/Radio_On_Lights_On.png<>uid://cxayem5uqrj1g::::res://BACKGROUND/BG_Lights_Off.png<>uid://0shmmmluyidr::::res://INTRO_OUTRO/End.png<>uid://b6cpsyavomfrk::::res://INTRO_OUTRO/Music_Off.ogg<>uid://cdk4cbg43ly8j::::res://INTRO_OUTRO/Opening_Door.ogg<>uid://cd88xgmqxtv7m::::res://INTRO_OUTRO/Steps.ogg<>uid://bi1ej7wmde8ep::::res://INTRO_OUTRO/Closing_Door.ogg<>uid://dcxe430338t0p::::res://INTRO_OUTRO/Go_To_Bed.ogg
+Snoring.ogg::AudioStreamOggVorbis::272737812073535477::1718109208::1718109210::1::::<><>::
 Sound.png::CompressedTexture2D::2837417441229297019::1718037923::1718037927::1::::<><>::
 Steps.ogg::AudioStreamOggVorbis::5053577432641606312::1718035742::1718035747::1::::<><>::
 Titre.png::CompressedTexture2D::4777918305933094930::1716926921::1717771743::1::::<><>::
-::res://ROWENA/::1718104001
+::res://ROWENA/::1718108085
 Barefoot_steps_A.ogg::AudioStreamOggVorbis::1830676759927894813::1717677209::1717677450::1::::<><>::
-ROWENA.png::CompressedTexture2D::731109856751355564::1718106885::1718106916::1::::<><>::
+ROWENA.png::CompressedTexture2D::731109856751355564::1718108038::1718108085::1::::<><>::
 ROWENA.tscn::PackedScene::5589354158864622385::1718104001::0::1::::<><>::uid://kofjjbj565wq::::res://ROWENA/ROWENA.png<>uid://1c18jpuv4m1b::::res://ROWENA/Barefoot_steps_A.ogg
 ::res://SHADER/::1718104001
 KUWAHARA.gdshader::Shader::-1::1718104001::0::1::::<><>::
