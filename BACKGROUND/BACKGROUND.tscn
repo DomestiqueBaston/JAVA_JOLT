@@ -1,13 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=45 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="2_8x8bd"]
 [ext_resource type="Texture2D" uid="uid://wx47j17h2tlm" path="res://BACKGROUND/Radio_On_Lights_Off.png" id="2_yjrnf"]
-[ext_resource type="Texture2D" uid="uid://c0ag251xrg41u" path="res://BACKGROUND/Oven_Open.png" id="3_bnhff"]
 [ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/Radio_On_Lights_On.png" id="4_ukw4d"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6a20"]
-size = Vector2(19, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq4lq"]
 size = Vector2(3, 6)
@@ -17,6 +13,117 @@ size = Vector2(5, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw3ik"]
 size = Vector2(8, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mclqa"]
+size = Vector2(12, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3makw"]
+size = Vector2(12, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_furv3"]
+size = Vector2(9, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_od5oj"]
+size = Vector2(11, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4yva"]
+size = Vector2(5, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kotwc"]
+size = Vector2(10, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_au0c4"]
+size = Vector2(5, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwxyw"]
+size = Vector2(10, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3lcp"]
+size = Vector2(5, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yh4g6"]
+size = Vector2(5, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otlsw"]
+size = Vector2(5, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq8sn"]
+size = Vector2(15, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
+size = Vector2(12, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j18d4"]
+size = Vector2(5, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tvcg"]
+size = Vector2(11, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmlip"]
+size = Vector2(11, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8upq"]
+size = Vector2(24, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kny74"]
+size = Vector2(9, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_koqen"]
+size = Vector2(9, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcs60"]
+size = Vector2(9, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f71es"]
+size = Vector2(9, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2a7mq"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7vk2"]
+size = Vector2(24, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6a20"]
+size = Vector2(20, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rssmk"]
+size = Vector2(18, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq4uj"]
+size = Vector2(26, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whj2c"]
+size = Vector2(8, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy2og"]
+size = Vector2(18, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2aceh"]
+size = Vector2(9, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05rhk"]
+size = Vector2(7, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wncc"]
+size = Vector2(8, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrsfs"]
+size = Vector2(12, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3h6g"]
+size = Vector2(10, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ht4j"]
+size = Vector2(20, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6svqt"]
+size = Vector2(21, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0h5p8"]
+size = Vector2(9, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1efa"]
+size = Vector2(19, 13)
 
 [node name="BACKGROUND" type="Node2D"]
 
@@ -36,39 +143,281 @@ centered = false
 texture = ExtResource("4_ukw4d")
 centered = false
 
-[node name="Open" type="Node2D" parent="."]
+[node name="Stuff_Colliders" type="Node2D" parent="."]
 
-[node name="OvenOpen" type="Sprite2D" parent="Open"]
-visible = false
-texture = ExtResource("3_bnhff")
-centered = false
-
-[node name="BG_Colliders" type="Node2D" parent="."]
-visible = false
-
-[node name="Oven_Colliders" type="Area2D" parent="BG_Colliders"]
+[node name="Milk_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
-[node name="Oven" type="CollisionShape2D" parent="BG_Colliders/Oven_Colliders"]
-position = Vector2(59.5, 52)
-shape = SubResource("RectangleShape2D_b6a20")
-
-[node name="Milk_Collider" type="Area2D" parent="BG_Colliders"]
-collision_layer = 2
-
-[node name="Milk" type="CollisionShape2D" parent="BG_Colliders/Milk_Collider"]
+[node name="Milk" type="CollisionShape2D" parent="Stuff_Colliders/Milk_Collider"]
 position = Vector2(72.5, 35)
 shape = SubResource("RectangleShape2D_kq4lq")
 
-[node name="Coffee_Maker_Collider" type="Area2D" parent="BG_Colliders"]
+[node name="Coffee_Maker_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
-[node name="Coffee_Maker" type="CollisionShape2D" parent="BG_Colliders/Coffee_Maker_Collider"]
+[node name="Coffee_Maker" type="CollisionShape2D" parent="Stuff_Colliders/Coffee_Maker_Collider"]
 position = Vector2(128.5, 34)
 shape = SubResource("RectangleShape2D_sjqcr")
 
-[node name="Radio_Collider" type="Area2D" parent="BG_Colliders"]
+[node name="Radio_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
 
-[node name="Radio_Alarm" type="CollisionShape2D" parent="BG_Colliders/Radio_Collider"]
+[node name="Radio_Alarm" type="CollisionShape2D" parent="Stuff_Colliders/Radio_Collider"]
 position = Vector2(166, 36)
 shape = SubResource("RectangleShape2D_lw3ik")
+
+[node name="Refrigerator_Right_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Refrigerator_Right" type="CollisionShape2D" parent="Stuff_Colliders/Refrigerator_Right_Collider"]
+position = Vector2(32, 42.5)
+shape = SubResource("RectangleShape2D_mclqa")
+
+[node name="Refrigerator_Left_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Refrigerator_Left_a" type="CollisionShape2D" parent="Stuff_Colliders/Refrigerator_Left_Collider"]
+position = Vector2(19, 37)
+shape = SubResource("RectangleShape2D_3makw")
+
+[node name="Refrigerator_Left_b" type="CollisionShape2D" parent="Stuff_Colliders/Refrigerator_Left_Collider"]
+position = Vector2(20.5, 58.5)
+shape = SubResource("RectangleShape2D_furv3")
+
+[node name="Chair_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Chair_a" type="CollisionShape2D" parent="Stuff_Colliders/Chair_Collider"]
+position = Vector2(5.5, 52.5)
+shape = SubResource("RectangleShape2D_od5oj")
+
+[node name="Chair_b" type="CollisionShape2D" parent="Stuff_Colliders/Chair_Collider"]
+position = Vector2(13.5, 59)
+shape = SubResource("RectangleShape2D_w4yva")
+
+[node name="Painting_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Painting" type="CollisionShape2D" parent="Stuff_Colliders/Painting_Collider"]
+position = Vector2(5, 16.5)
+shape = SubResource("RectangleShape2D_kotwc")
+
+[node name="Light_Switch_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Light_Switch" type="CollisionShape2D" parent="Stuff_Colliders/Light_Switch_Collider"]
+position = Vector2(5.5, 33)
+shape = SubResource("RectangleShape2D_au0c4")
+
+[node name="Stool_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Stool" type="CollisionShape2D" parent="Stuff_Colliders/Stool_Collider"]
+position = Vector2(180, 59.5)
+shape = SubResource("RectangleShape2D_rwxyw")
+
+[node name="Towel_Large_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Towel_Large_Collider" type="CollisionShape2D" parent="Stuff_Colliders/Towel_Large_Collider"]
+position = Vector2(164.5, 52)
+shape = SubResource("RectangleShape2D_i3lcp")
+
+[node name="Towel_Small_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Towel_Small" type="CollisionShape2D" parent="Stuff_Colliders/Towel_Small_Collider"]
+position = Vector2(170.5, 49.5)
+shape = SubResource("RectangleShape2D_yh4g6")
+
+[node name="Plant_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Plant" type="CollisionShape2D" parent="Stuff_Colliders/Plant_Collider"]
+position = Vector2(43.5, 33.5)
+shape = SubResource("RectangleShape2D_otlsw")
+
+[node name="Toaster_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Toaster" type="CollisionShape2D" parent="Stuff_Colliders/Toaster_Collider"]
+position = Vector2(152.5, 35.5)
+shape = SubResource("RectangleShape2D_xq8sn")
+
+[node name="Furniture_Colliders" type="Node2D" parent="."]
+
+[node name="Low" type="Node2D" parent="Furniture_Colliders"]
+
+[node name="Lower_Cupboard_1_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Lower_Cupboard_1" type="CollisionShape2D" parent="Furniture_Colliders/Low/Lower_Cupboard_1_Collider"]
+position = Vector2(76, 54)
+shape = SubResource("RectangleShape2D_hj11s")
+
+[node name="Lower_Cupboard_2_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Lower_Cupboard_2" type="CollisionShape2D" parent="Furniture_Colliders/Low/Lower_Cupboard_2_Collider"]
+position = Vector2(91.5, 51.5)
+shape = SubResource("RectangleShape2D_j18d4")
+
+[node name="Lower_Cupboard_3_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Lower_Cupboard_3" type="CollisionShape2D" parent="Furniture_Colliders/Low/Lower_Cupboard_3_Collider"]
+position = Vector2(100.5, 51.5)
+shape = SubResource("RectangleShape2D_6tvcg")
+
+[node name="Lower_Cupboard_4_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Lower_Cupboard_4_Collider" type="CollisionShape2D" parent="Furniture_Colliders/Low/Lower_Cupboard_4_Collider"]
+position = Vector2(112.5, 51.5)
+shape = SubResource("RectangleShape2D_bmlip")
+
+[node name="Lower_Cupboard_5_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Lower_Cupboard_5" type="CollisionShape2D" parent="Furniture_Colliders/Low/Lower_Cupboard_5_Collider"]
+position = Vector2(149, 53.5)
+shape = SubResource("RectangleShape2D_o8upq")
+
+[node name="Drawer_Left_1_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Drawer_Left_1" type="CollisionShape2D" parent="Furniture_Colliders/Low/Drawer_Left_1_Collider"]
+position = Vector2(43.5, 43)
+shape = SubResource("RectangleShape2D_kny74")
+
+[node name="Drawer_Left_2_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Drawer_Left_2" type="CollisionShape2D" parent="Furniture_Colliders/Low/Drawer_Left_2_Collider"]
+position = Vector2(43.5, 48)
+shape = SubResource("RectangleShape2D_koqen")
+
+[node name="Drawer_Left_3_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Drawer_Left_3" type="CollisionShape2D" parent="Furniture_Colliders/Low/Drawer_Left_3_Collider"]
+position = Vector2(43.5, 53.5)
+shape = SubResource("RectangleShape2D_rcs60")
+
+[node name="Drawer_Left_4_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Drawer_Left_4" type="CollisionShape2D" parent="Furniture_Colliders/Low/Drawer_Left_4_Collider"]
+position = Vector2(43.5, 60.5)
+shape = SubResource("RectangleShape2D_f71es")
+
+[node name="Drawer_Left_5_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Drawer_Left_5" type="CollisionShape2D" parent="Furniture_Colliders/Low/Drawer_Left_5_Collider"]
+position = Vector2(76, 43)
+shape = SubResource("RectangleShape2D_2a7mq")
+
+[node name="Drawer_Right_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Drawer_Right" type="CollisionShape2D" parent="Furniture_Colliders/Low/Drawer_Right_Collider"]
+position = Vector2(149, 42.5)
+shape = SubResource("RectangleShape2D_t7vk2")
+
+[node name="Oven_Colliders" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Oven" type="CollisionShape2D" parent="Furniture_Colliders/Low/Oven_Colliders"]
+position = Vector2(60, 52)
+shape = SubResource("RectangleShape2D_b6a20")
+
+[node name="DishWasher_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Dishwasher" type="CollisionShape2D" parent="Furniture_Colliders/Low/DishWasher_Collider"]
+position = Vector2(127, 53)
+shape = SubResource("RectangleShape2D_rssmk")
+
+[node name="Up" type="Node2D" parent="Furniture_Colliders"]
+
+[node name="Upper_Cupboard_1_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture_Colliders/Up/Upper_Cupboard_1_Collider"]
+position = Vector2(25, 11)
+shape = SubResource("RectangleShape2D_aq4uj")
+
+[node name="Upper_Cupboard_2_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Upper_Cupboard_2" type="CollisionShape2D" parent="Furniture_Colliders/Up/Upper_Cupboard_2_Collider"]
+position = Vector2(44, 15.5)
+shape = SubResource("RectangleShape2D_whj2c")
+
+[node name="Upper_Cupboard_3_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Upper_Cupboard_3" type="CollisionShape2D" parent="Furniture_Colliders/Up/Upper_Cupboard_3_Collider"]
+position = Vector2(58, 9.5)
+shape = SubResource("RectangleShape2D_fy2og")
+
+[node name="Upper_Cupboard_4_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Upper_Cupboard_4_a" type="CollisionShape2D" parent="Furniture_Colliders/Up/Upper_Cupboard_4_Collider"]
+position = Vector2(72.5, 10)
+shape = SubResource("RectangleShape2D_2aceh")
+
+[node name="Upper_Cupboard_4_b" type="CollisionShape2D" parent="Furniture_Colliders/Up/Upper_Cupboard_4_Collider"]
+position = Vector2(73.5, 22.5)
+shape = SubResource("RectangleShape2D_05rhk")
+
+[node name="Upper_Cupboard_5_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Upper_Cupboard_5" type="CollisionShape2D" parent="Furniture_Colliders/Up/Upper_Cupboard_5_Collider"]
+position = Vector2(82, 15.5)
+shape = SubResource("RectangleShape2D_4wncc")
+
+[node name="Upper_Cupboard_6_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Upper_Cupboard_6_Collider" type="CollisionShape2D" parent="Furniture_Colliders/Up/Upper_Cupboard_6_Collider"]
+position = Vector2(93, 15.5)
+shape = SubResource("RectangleShape2D_mrsfs")
+
+[node name="Upper_Cupboard_7_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Upper_Cupboard_7" type="CollisionShape2D" parent="Furniture_Colliders/Up/Upper_Cupboard_7_Collider"]
+position = Vector2(135, 15.5)
+shape = SubResource("RectangleShape2D_t3h6g")
+
+[node name="Upper_Cupboard_8_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Upper_Cupboard_8_Collider" type="CollisionShape2D" parent="Furniture_Colliders/Up/Upper_Cupboard_8_Collider"]
+position = Vector2(151, 15.5)
+shape = SubResource("RectangleShape2D_3ht4j")
+
+[node name="Microwave_Oven_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Microwave_Oven" type="CollisionShape2D" parent="Furniture_Colliders/Up/Microwave_Oven_Collider"]
+position = Vector2(59.5, 21.5)
+shape = SubResource("RectangleShape2D_6svqt")
+
+[node name="Window_Right_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Window_Right" type="CollisionShape2D" parent="Furniture_Colliders/Up/Window_Right_Collider"]
+position = Vector2(183.5, 24)
+shape = SubResource("RectangleShape2D_0h5p8")
+
+[node name="Window_Left_Collider" type="Area2D" parent="Furniture_Colliders/Up"]
+collision_layer = 2
+
+[node name="Window_Left" type="CollisionShape2D" parent="Furniture_Colliders/Up/Window_Left_Collider"]
+position = Vector2(120.5, 15.5)
+shape = SubResource("RectangleShape2D_h1efa")
