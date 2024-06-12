@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx7iuxmkmaojs"]
+
+[ext_resource type="Texture2D" uid="uid://cps7xqwnh7s0q" path="res://BACKGROUND/Up_Right_Cupboard_Open.png" id="1_nf856"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pxap"]
+size = Vector2(7, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8hqo"]
+size = Vector2(9, 8)
+
+[node name="Upper_Right_Cupboard" type="Node2D"]
+
+[node name="Up_Right_Cupboard_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_nf856")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Cooking_Pot_Up_Right_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Cooking_Pot_Up_Right" type="CollisionPolygon2D" parent="Stuff_Colliders/Cooking_Pot_Up_Right_Collider"]
+polygon = PackedVector2Array(161, 27, 155, 27, 155, 24, 154, 23, 154, 22, 155, 21, 161, 19)
+
+[node name="Huge_Pressure_Cooker_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Huge_Pressure_Cooker" type="CollisionPolygon2D" parent="Stuff_Colliders/Huge_Pressure_Cooker_Collider"]
+polygon = PackedVector2Array(155, 27, 145, 27, 145, 21, 144, 20, 144, 19, 145, 19, 147, 18, 151, 17, 155, 18, 157, 19, 158, 19, 158, 20, 155, 21, 154, 22, 154, 23, 155, 24)
+
+[node name="Sauce_Pan_Set_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Sauce_Pan" type="CollisionShape2D" parent="Stuff_Colliders/Sauce_Pan_Set_Collider"]
+position = Vector2(156.5, 12)
+shape = SubResource("RectangleShape2D_3pxap")
+
+[node name="Salad_Bowls_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Salad_Bowls" type="CollisionShape2D" parent="Stuff_Colliders/Salad_Bowls_Collider"]
+position = Vector2(148.5, 11)
+shape = SubResource("RectangleShape2D_y8hqo")

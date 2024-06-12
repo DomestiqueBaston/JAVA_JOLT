@@ -1,9 +1,9 @@
 [gd_scene load_steps=32 format=3 uid="uid://bcoimk6uqbmn7"]
 
-[ext_resource type="Texture2D" uid="uid://bni3k4oh0u1sx" path="res://demo/Oven_Open.png" id="2_khuuf"]
-[ext_resource type="Texture2D" uid="uid://maobiwhm8jas" path="res://demo/DECOR.png" id="3_33akg"]
+[ext_resource type="Texture2D" uid="uid://wc0vs0rj8hi6" path="res://demo/Oven_Open.png" id="2_khuuf"]
+[ext_resource type="Texture2D" uid="uid://qc4eojwndnd" path="res://demo/DECOR.png" id="3_33akg"]
 [ext_resource type="Script" path="res://demo/ROWENA.gd" id="4_khi0v"]
-[ext_resource type="Texture2D" uid="uid://cvnvvtylllww8" path="res://demo/ROWENA.png" id="5_qbfr2"]
+[ext_resource type="Texture2D" uid="uid://dgoxweobiac5e" path="res://demo/ROWENA.png" id="5_qbfr2"]
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="6_6k01o"]
 [ext_resource type="Shader" path="res://demo/KUWAHARA.gdshader" id="6_vt8ty"]
 [ext_resource type="Texture2D" uid="uid://vqd5mrv0n0yu" path="res://UI/Arrow.png" id="7_n7u1o"]
@@ -12,16 +12,16 @@
 [ext_resource type="Script" path="res://demo/Text_Sound.gd" id="10_shjei"]
 [ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://UI/Hand.png" id="11_i3oi0"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing.ogg" id="11_py6iw"]
-[ext_resource type="AudioStream" uid="uid://mfyhwj6un3sa" path="res://demo/Barefoot_steps_A.ogg" id="12_e56jp"]
+[ext_resource type="AudioStream" uid="uid://bkfems2vnve1v" path="res://demo/Barefoot_steps_A.ogg" id="12_e56jp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3djui"]
 size = Vector2(12, 68)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f73gc"]
-size = Vector2(19, 24)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37oab"]
 size = Vector2(3, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f73gc"]
+size = Vector2(19, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbm7t"]
 size = Vector2(5, 10)
@@ -404,19 +404,19 @@ shape = SubResource("RectangleShape2D_3djui")
 
 [node name="BG_Colliders" type="Node2D" parent="."]
 
-[node name="Oven_Colliders" type="Area2D" parent="BG_Colliders"]
-collision_layer = 2
-
-[node name="Oven" type="CollisionShape2D" parent="BG_Colliders/Oven_Colliders"]
-position = Vector2(59.5, 52)
-shape = SubResource("RectangleShape2D_f73gc")
-
 [node name="Milk_Collider" type="Area2D" parent="BG_Colliders"]
 collision_layer = 2
 
 [node name="Milk" type="CollisionShape2D" parent="BG_Colliders/Milk_Collider"]
 position = Vector2(72.5, 35)
 shape = SubResource("RectangleShape2D_37oab")
+
+[node name="Oven_Colliders" type="Area2D" parent="BG_Colliders"]
+collision_layer = 2
+
+[node name="Oven" type="CollisionShape2D" parent="BG_Colliders/Oven_Colliders"]
+position = Vector2(59.5, 52)
+shape = SubResource("RectangleShape2D_f73gc")
 
 [node name="Coffee_Maker_Collider" type="Area2D" parent="BG_Colliders"]
 collision_layer = 2
@@ -586,12 +586,12 @@ libraries = {
 "": SubResource("AnimationLibrary_mol2e")
 }
 
-[connection signal="input_event" from="BG_Colliders/Oven_Colliders" to="UI/Papa_Souris" method="_on_oven_colliders_input_event"]
-[connection signal="mouse_entered" from="BG_Colliders/Oven_Colliders" to="UI/Papa_Souris" method="_on_oven_colliders_mouse_entered"]
-[connection signal="mouse_exited" from="BG_Colliders/Oven_Colliders" to="UI/Papa_Souris" method="_on_oven_colliders_mouse_exited"]
 [connection signal="input_event" from="BG_Colliders/Milk_Collider" to="UI/Papa_Souris" method="_on_milk_collider_input_event"]
 [connection signal="mouse_entered" from="BG_Colliders/Milk_Collider" to="UI/Papa_Souris" method="_on_milk_collider_mouse_entered"]
 [connection signal="mouse_exited" from="BG_Colliders/Milk_Collider" to="UI/Papa_Souris" method="_on_milk_collider_mouse_exited"]
+[connection signal="input_event" from="BG_Colliders/Oven_Colliders" to="UI/Papa_Souris" method="_on_oven_colliders_input_event"]
+[connection signal="mouse_entered" from="BG_Colliders/Oven_Colliders" to="UI/Papa_Souris" method="_on_oven_colliders_mouse_entered"]
+[connection signal="mouse_exited" from="BG_Colliders/Oven_Colliders" to="UI/Papa_Souris" method="_on_oven_colliders_mouse_exited"]
 [connection signal="input_event" from="BG_Colliders/Coffee_Maker_Collider" to="UI/Papa_Souris" method="_on_coffee_maker_collider_input_event"]
 [connection signal="mouse_entered" from="BG_Colliders/Coffee_Maker_Collider" to="UI/Papa_Souris" method="_on_coffee_maker_collider_mouse_entered"]
 [connection signal="mouse_exited" from="BG_Colliders/Coffee_Maker_Collider" to="UI/Papa_Souris" method="_on_coffee_maker_collider_mouse_exited"]

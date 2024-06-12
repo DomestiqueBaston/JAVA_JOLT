@@ -1,6 +1,8 @@
 CollisionShape2D
 Area2D
+CollisionPolygon2D
 Node2D
+ColorRect
 AudioStreamPlayer2D
 AnimationPlayer
 CanvasLayer
@@ -10,4 +12,3 @@ Panel
 MarginContainer
 TextureRect
 AudioStreamPlayer
-ColorRect
