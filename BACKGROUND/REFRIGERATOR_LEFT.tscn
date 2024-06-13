@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqa3bbbs2by12"]
+
+[ext_resource type="Texture2D" uid="uid://crk1e1iogssok" path="res://BACKGROUND/Refrigerator_Left_Open.png" id="1_i4cca"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o43c3"]
+size = Vector2(4, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_carps"]
+size = Vector2(4, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs807"]
+size = Vector2(4, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcb6r"]
+size = Vector2(4, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vg2lo"]
+size = Vector2(4, 8)
+
+[node name="Refrigerator_Left" type="Node2D"]
+
+[node name="Refrigerator_Left_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_i4cca")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Pizza_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Pizza_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Pizza_Drawer_Collider"]
+position = Vector2(19, 26.5)
+shape = SubResource("RectangleShape2D_o43c3")
+
+[node name="Vegetable_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Vegetable_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Vegetable_Drawer_Collider"]
+position = Vector2(19, 34.5)
+shape = SubResource("RectangleShape2D_carps")
+
+[node name="Lasagna_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Lasagna_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Lasagna_Drawer_Collider"]
+position = Vector2(19, 42.5)
+shape = SubResource("RectangleShape2D_hs807")
+
+[node name="Ice_Cream_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Ice_Cream_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Ice_Cream_Drawer_Collider"]
+position = Vector2(19, 50.5)
+shape = SubResource("RectangleShape2D_vcb6r")
+
+[node name="Meat_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Meat_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Meat_Drawer_Collider"]
+position = Vector2(19, 59)
+shape = SubResource("RectangleShape2D_vg2lo")

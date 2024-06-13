@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=46 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="2_8x8bd"]
@@ -90,7 +90,9 @@ size = Vector2(12, 4)
 size = Vector2(24, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6a20"]
-size = Vector2(20, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45k5q"]
+size = Vector2(19, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rssmk"]
 size = Vector2(18, 24)
@@ -144,12 +146,11 @@ texture = ExtResource("4_ukw4d")
 centered = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
-visible = false
 
-[node name="Milk_Collider" type="Area2D" parent="Stuff_Colliders"]
+[node name="Spoiled_Milk_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
-[node name="Milk" type="CollisionPolygon2D" parent="Stuff_Colliders/Milk_Collider"]
+[node name="Spoiled_Milk" type="CollisionPolygon2D" parent="Stuff_Colliders/Spoiled_Milk_Collider"]
 position = Vector2(72.5, 35)
 polygon = PackedVector2Array(-1.5, 3, -1.5, -2, -0.5, -4, 0.5, -4, 1.5, -2, 1.5, 3)
 
@@ -368,7 +369,6 @@ position = Vector2(50, 38)
 shape = SubResource("RectangleShape2D_ktomw")
 
 [node name="Furniture_Colliders" type="Node2D" parent="."]
-visible = false
 
 [node name="Low" type="Node2D" parent="Furniture_Colliders"]
 
@@ -428,33 +428,40 @@ collision_layer = 2
 position = Vector2(43.5, 53.5)
 shape = SubResource("RectangleShape2D_rcs60")
 
-[node name="Drawer_Left_4_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+[node name="Private_Drawer_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
 collision_layer = 2
 
-[node name="Drawer_Left_4" type="CollisionShape2D" parent="Furniture_Colliders/Low/Drawer_Left_4_Collider"]
+[node name="Private_Drawer" type="CollisionShape2D" parent="Furniture_Colliders/Low/Private_Drawer_Collider"]
 position = Vector2(43.5, 60.5)
 shape = SubResource("RectangleShape2D_f71es")
 
-[node name="Drawer_Left_5_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+[node name="Kitchen_Tools_Drawer_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
 collision_layer = 2
 
-[node name="Drawer_Left_5" type="CollisionShape2D" parent="Furniture_Colliders/Low/Drawer_Left_5_Collider"]
+[node name="Kitchen_Tools_Drawer" type="CollisionShape2D" parent="Furniture_Colliders/Low/Kitchen_Tools_Drawer_Collider"]
 position = Vector2(76, 43)
 shape = SubResource("RectangleShape2D_2a7mq")
 
-[node name="Drawer_Right_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+[node name="Cutlery_Drawer_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
 collision_layer = 2
 
-[node name="Drawer_Right" type="CollisionShape2D" parent="Furniture_Colliders/Low/Drawer_Right_Collider"]
+[node name="Cutlery_Drawer" type="CollisionShape2D" parent="Furniture_Colliders/Low/Cutlery_Drawer_Collider"]
 position = Vector2(149, 42.5)
 shape = SubResource("RectangleShape2D_t7vk2")
 
-[node name="Oven_Colliders" type="Area2D" parent="Furniture_Colliders/Low"]
+[node name="Oven_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
 collision_layer = 2
 
-[node name="Oven" type="CollisionShape2D" parent="Furniture_Colliders/Low/Oven_Colliders"]
-position = Vector2(60, 52)
+[node name="Oven" type="CollisionShape2D" parent="Furniture_Colliders/Low/Oven_Collider"]
+position = Vector2(60, 50)
 shape = SubResource("RectangleShape2D_b6a20")
+
+[node name="Oven_Bottom_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
+collision_layer = 2
+
+[node name="Oven_Bottom" type="CollisionShape2D" parent="Furniture_Colliders/Low/Oven_Bottom_Collider"]
+position = Vector2(59.5, 62.5)
+shape = SubResource("RectangleShape2D_45k5q")
 
 [node name="DishWasher_Collider" type="Area2D" parent="Furniture_Colliders/Low"]
 collision_layer = 2
