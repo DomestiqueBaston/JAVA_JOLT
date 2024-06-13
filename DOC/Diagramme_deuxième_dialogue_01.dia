@@ -65,13 +65,13 @@
   <dia:layer name="Arrière-plan" visible="true" active="true">
     <dia:object type="Flowchart - Box" version="0" id="O0">
       <dia:attribute name="obj_pos">
-        <dia:point val="22.0413,6.55"/>
+        <dia:point val="47.2413,-1.15"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="21.9913,6.5;54.9088,13.3"/>
+        <dia:rectangle val="47.1913,-1.2;80.1088,5.6"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="22.0413,6.55"/>
+        <dia:point val="47.2413,-1.15"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="32.817500000000003"/>
@@ -90,9 +90,9 @@
           <dia:attribute name="string">
             <dia:string>#Rowena: This tastes worse than anything!
 
-Dr. F.: Oh, what a disaster.
+Dr. F.: Oh, what a disaster...
 
-Rowena: I looked everywhere in the kitchen, but it's still undrinkable! I don't know what else to do.
+Rowena: I did my best but it's still undrinkable! I don't know what else to do.
 
 Dr. F.: Well, well, well, looks like the coffee catastrophe continues.#</dia:string>
           </dia:attribute>
@@ -103,7 +103,7 @@ Dr. F.: Well, well, well, looks like the coffee catastrophe continues.#</dia:str
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="38.4501,7.695"/>
+            <dia:point val="63.6501,-0.005"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -215,13 +215,13 @@ Dr. F.: Oh, I see you flailing around like a lost cause, as usual.#</dia:string>
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O3">
       <dia:attribute name="obj_pos">
-        <dia:point val="30.2457,13.25"/>
+        <dia:point val="55.4457,5.55"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="24.2333,13.1813;30.3144,16.9189"/>
+        <dia:rectangle val="24.2237,5.48594;55.5097,16.985"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="30.2457,13.25"/>
+        <dia:point val="55.4457,5.55"/>
         <dia:point val="24.3288,16.85"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -243,13 +243,13 @@ Dr. F.: Oh, I see you flailing around like a lost cause, as usual.#</dia:string>
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O4">
       <dia:attribute name="obj_pos">
-        <dia:point val="46.6544,13.25"/>
+        <dia:point val="71.8544,5.55"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="46.6032,13.1987;103.529,15.0431"/>
+        <dia:rectangle val="71.7925,5.48806;103.524,14.8742"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="46.6544,13.25"/>
+        <dia:point val="71.8544,5.55"/>
         <dia:point val="103.417,14.697"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -433,11 +433,11 @@ Dr. F.: Yet here I am, the voice in your head, reflecting the truth you're too a
         <dia:point val="-17.6867,47.8927"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-28.8405,47.8225;-17.6165,62.0543"/>
+        <dia:rectangle val="-24.1041,47.8259;-17.6199,61.1339"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="-17.6867,47.8927"/>
-        <dia:point val="-28.7703,61.9665"/>
+        <dia:point val="-24.0261,61.0332"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -506,19 +506,19 @@ Rowena: I'll also disregard that last insinuation.#</dia:string>
     </dia:object>
     <dia:object type="Flowchart - Box" version="0" id="O11">
       <dia:attribute name="obj_pos">
-        <dia:point val="-66.764,61.9665"/>
+        <dia:point val="-45.0973,61.0332"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-66.814,61.9165;9.2735,74.3165"/>
+        <dia:rectangle val="-45.1473,60.9832;-2.90483,69.3832"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-66.764,61.9665"/>
+        <dia:point val="-45.0973,61.0332"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="75.987499999999997"/>
+        <dia:real val="42.142500000000005"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="12.300000000000001"/>
+        <dia:real val="8.2999999999999989"/>
       </dia:attribute>
       <dia:attribute name="show_background">
         <dia:boolean val="true"/>
@@ -537,12 +537,7 @@ Rowena: Constructive? More like deconstructive. And I certainly don't need it fr
 
 Dr. F.: Ah, but I exist in your mind, Rowena. And deep down, you know I'm right.
 
-Rowena: I'll believe that when I see it. Now, if you'll excuse me, I have a coffee crisis to handle.
-
-Dr. F.: Fine, fine, Rowena. But how about trying something different this time? Think about repurposing what you have lying around for your caffeine fix.
-And while you're at it, maybe spice up your life a bit... in more ways than one.
-
-Rowena: I'll also disregard that last insinuation.#</dia:string>
+Rowena: I'll believe that when I see it. Now, if you'll excuse me, I have a coffee crisis to handle.#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -551,7 +546,7 @@ Rowena: I'll also disregard that last insinuation.#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="-28.7702,63.1115"/>
+            <dia:point val="-24.0261,62.1782"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -591,7 +586,7 @@ Rowena: I'll also disregard that last insinuation.#</dia:string>
 
 Dr. F.: Ah, the independent woman act again. Suit yourself, Rowena. But don't come crawling back to me when you hit a dead end.
 
-Rowena: I won't need to, Dr. F., because I won't hit a dead end. Unlike some, I don't need constant reminders of my failures.#</dia:string>
+Rowena: I won't need to, because I won't hit a dead end. Unlike some, I don't need constant reminders of my failures.#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -1074,13 +1069,13 @@ Dr. F.: Pathetic, Rowena. Always so defensive. But tell me, how's that been work
         <dia:point val="69.7176,45.0471"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-28.7703,44.995;69.7697,61.9665"/>
+        <dia:rectangle val="-24.0261,44.995;69.7697,61.0332"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="69.7176,45.0471"/>
         <dia:point val="69.2247,56.3735"/>
-        <dia:point val="-17.7494,49.7267"/>
-        <dia:point val="-28.7703,61.9665"/>
+        <dia:point val="-13.0052,48.7934"/>
+        <dia:point val="-24.0261,61.0332"/>
       </dia:attribute>
       <dia:attribute name="corner_types">
         <dia:enum val="0"/>
@@ -1587,7 +1582,7 @@ Dr. F.: Come on, Rowena. Your career's already circling the drain. What's one mo
 
 Dr. F.: Touché, Rowena. But I'd rather be imaginary than stuck in a dead-end job like you.
 
-Rowena: Dead-end job? You don't know the half of it, Dr. F. But at least I'm trying to make something of myself.
+Rowena: Dead-end job? You don't know the half of it. But at least I'm trying to make something of myself.
 
 Dr. F.: Spare me the excuses, Rowena. You're just a failure waiting to happen.#</dia:string>
           </dia:attribute>
@@ -1730,11 +1725,11 @@ Rowena: Get out of my head! I'll figure this out on my own.#</dia:string>
         <dia:point val="96.996,21.397"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="72.926,21.3421;97.0509,24.2089"/>
+        <dia:rectangle val="72.9261,21.3421;97.0509,24.2089"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="96.996,21.397"/>
-        <dia:point val="73.0372,23.913"/>
+        <dia:point val="73.0373,23.913"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -1811,14 +1806,14 @@ Rowena: Get out of my head! I'll figure this out on my own.#</dia:string>
     </dia:object>
     <dia:object type="Standard - BezierLine" version="0" id="O46">
       <dia:attribute name="obj_pos">
-        <dia:point val="73.0372,30.613"/>
+        <dia:point val="73.0373,30.613"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="29.2131,30.5589;73.0913,45.6584"/>
+        <dia:rectangle val="29.2131,30.5589;73.0914,45.6584"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
-        <dia:point val="73.0372,30.613"/>
-        <dia:point val="73.3131,33.8084"/>
+        <dia:point val="73.0373,30.613"/>
+        <dia:point val="73.3132,33.8084"/>
         <dia:point val="30.8131,36.46"/>
         <dia:point val="29.4663,45.6584"/>
       </dia:attribute>
@@ -1899,6 +1894,37 @@ Rowena: Get out of my head! I'll figure this out on my own.#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O42" connection="13"/>
+        <dia:connection handle="3" to="O10" connection="2"/>
+      </dia:connections>
+    </dia:object>
+    <dia:object type="Standard - BezierLine" version="0" id="O49">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-24.0261,69.3332"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-24.1027,69.2633;53.1596,72.8458"/>
+      </dia:attribute>
+      <dia:attribute name="bez_points">
+        <dia:point val="-24.0261,69.3332"/>
+        <dia:point val="-25.6917,71.6"/>
+        <dia:point val="51.4417,72.0667"/>
+        <dia:point val="53.1596,72.7785"/>
+      </dia:attribute>
+      <dia:attribute name="corner_types">
+        <dia:enum val="0"/>
+        <dia:enum val="0"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow">
+        <dia:enum val="22"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_length">
+        <dia:real val="0.5"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_width">
+        <dia:real val="0.5"/>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="0" to="O11" connection="13"/>
         <dia:connection handle="3" to="O10" connection="2"/>
       </dia:connections>
     </dia:object>

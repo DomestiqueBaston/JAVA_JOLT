@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://ubhhk3it4y6m"]
+
+[ext_resource type="Texture2D" uid="uid://c0ag251xrg41u" path="res://BACKGROUND/Oven_Open.png" id="1_ybga3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26irs"]
+size = Vector2(13, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53510"]
+size = Vector2(13, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb22a"]
+size = Vector2(13, 4)
+
+[node name="Oven" type="Node2D"]
+
+[node name="Oven_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_ybga3")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Empty_Space_1_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Empty_Space_1" type="CollisionShape2D" parent="Stuff_Colliders/Empty_Space_1_Collider"]
+position = Vector2(57.5, 48)
+shape = SubResource("RectangleShape2D_26irs")
+
+[node name="Empty_Space_2_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Empty_Space_2" type="CollisionShape2D" parent="Stuff_Colliders/Empty_Space_2_Collider"]
+position = Vector2(57.5, 52.5)
+shape = SubResource("RectangleShape2D_53510")
+
+[node name="Empty_Space_3_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Empty_Space_3" type="CollisionShape2D" parent="Stuff_Colliders/Empty_Space_3_Collider"]
+position = Vector2(57.5, 57)
+shape = SubResource("RectangleShape2D_gb22a")

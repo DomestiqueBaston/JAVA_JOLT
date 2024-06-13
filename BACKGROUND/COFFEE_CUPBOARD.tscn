@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://keucd37jh7cv"]
+
+[ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/Coffee_Cupboard_Open.png" id="1_f6c4a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfsvx"]
+size = Vector2(6, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcexa"]
+size = Vector2(3, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trh8a"]
+size = Vector2(2, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqxi0"]
+size = Vector2(3, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouy5x"]
+size = Vector2(1, 4)
+
+[node name="Coffee_Cupboard" type="Node2D"]
+
+[node name="Coffee_Cupboard_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_f6c4a")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Empty_Coffee_Space_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Empty_Coffee_Space" type="CollisionShape2D" parent="Stuff_Colliders/Empty_Coffee_Space_Collider"]
+position = Vector2(136, 23.5)
+shape = SubResource("RectangleShape2D_nfsvx")
+
+[node name="Canned_Green_Beans_1_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Canned_Green_Beans_1" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Green_Beans_1_Collider"]
+position = Vector2(136.5, 8)
+shape = SubResource("RectangleShape2D_qcexa")
+
+[node name="Canned_Green_Beans_2_Collider2" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Canned_Green_Beans_2" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Green_Beans_2_Collider2"]
+position = Vector2(135, 12.5)
+shape = SubResource("RectangleShape2D_trh8a")
+
+[node name="Canned_Beans_1_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Canned_Beans_1" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Beans_1_Collider"]
+position = Vector2(137.5, 12.5)
+shape = SubResource("RectangleShape2D_hqxi0")
+
+[node name="Canned_Beans_2_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="CAnned_Beans_2" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Beans_2_Collider"]
+position = Vector2(138.5, 8)
+shape = SubResource("RectangleShape2D_ouy5x")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cybs73vw2lwpw"]
+
+[ext_resource type="Texture2D" uid="uid://03no3ryu1mft" path="res://BACKGROUND/Dishwasher_Open.png" id="1_p7plr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgg0e"]
+size = Vector2(15, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gst5h"]
+size = Vector2(15, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tb8sb"]
+size = Vector2(15, 4)
+
+[node name="Dishwasher_Open" type="Node2D"]
+
+[node name="Dishwasher_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_p7plr")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Dishwasher_Empty_Top_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Dishwasher_Empty_Top" type="CollisionShape2D" parent="Stuff_Colliders/Dishwasher_Empty_Top_Collider"]
+position = Vector2(128.5, 47.5)
+shape = SubResource("RectangleShape2D_qgg0e")
+
+[node name="Dishwasher_Empty_Mid_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Dishwasher_Empty_Mid" type="CollisionShape2D" parent="Stuff_Colliders/Dishwasher_Empty_Mid_Collider"]
+position = Vector2(128.5, 52.5)
+shape = SubResource("RectangleShape2D_gst5h")
+
+[node name="Dishwasher_Empty_Low_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Dishwasher_Empty_Low" type="CollisionShape2D" parent="Stuff_Colliders/Dishwasher_Empty_Low_Collider"]
+position = Vector2(128.5, 59)
+shape = SubResource("RectangleShape2D_tb8sb")

@@ -158,7 +158,7 @@
         <dia:point val="30.1856,-2.5"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="29.5888,-2.55544;30.3076,0.261056"/>
+        <dia:rectangle val="29.5888,-2.55544;30.3075,0.261055"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="30.1856,-2.5"/>
@@ -182,51 +182,6 @@
       </dia:connections>
     </dia:object>
     <dia:object type="Flowchart - Box" version="0" id="O3">
-      <dia:attribute name="obj_pos">
-        <dia:point val="-12.635,4.75"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="-12.685,4.7;12.585,6.7"/>
-      </dia:attribute>
-      <dia:attribute name="elem_corner">
-        <dia:point val="-12.635,4.75"/>
-      </dia:attribute>
-      <dia:attribute name="elem_width">
-        <dia:real val="25.170000000000002"/>
-      </dia:attribute>
-      <dia:attribute name="elem_height">
-        <dia:real val="1.9000000000000001"/>
-      </dia:attribute>
-      <dia:attribute name="show_background">
-        <dia:boolean val="true"/>
-      </dia:attribute>
-      <dia:attribute name="padding">
-        <dia:real val="0.5"/>
-      </dia:attribute>
-      <dia:attribute name="text">
-        <dia:composite type="text">
-          <dia:attribute name="string">
-            <dia:string>#Rowena : Doc., you are my nightmare,you know I can't function without it.#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="font">
-            <dia:font family="sans" style="0" name="Helvetica"/>
-          </dia:attribute>
-          <dia:attribute name="height">
-            <dia:real val="0.80000000000000004"/>
-          </dia:attribute>
-          <dia:attribute name="pos">
-            <dia:point val="-0.05,5.895"/>
-          </dia:attribute>
-          <dia:attribute name="color">
-            <dia:color val="#000000"/>
-          </dia:attribute>
-          <dia:attribute name="alignment">
-            <dia:enum val="1"/>
-          </dia:attribute>
-        </dia:composite>
-      </dia:attribute>
-    </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O4">
       <dia:attribute name="obj_pos">
         <dia:point val="14.1613,7.8"/>
       </dia:attribute>
@@ -273,35 +228,7 @@ Dr. F. : Yes, your vital elixir. Always there to fill that void in your… hoo-h
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O5">
-      <dia:attribute name="obj_pos">
-        <dia:point val="16.6394,2.05"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="-0.160368,1.99266;16.6968,5.00945"/>
-      </dia:attribute>
-      <dia:attribute name="conn_endpoints">
-        <dia:point val="16.6394,2.05"/>
-        <dia:point val="-0.05,4.75"/>
-      </dia:attribute>
-      <dia:attribute name="numcp">
-        <dia:int val="1"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow">
-        <dia:enum val="22"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow_length">
-        <dia:real val="0.5"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow_width">
-        <dia:real val="0.5"/>
-      </dia:attribute>
-      <dia:connections>
-        <dia:connection handle="0" to="O1" connection="12"/>
-        <dia:connection handle="1" to="O3" connection="2"/>
-      </dia:connections>
-    </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O6">
+    <dia:object type="Standard - Line" version="0" id="O4">
       <dia:attribute name="obj_pos">
         <dia:point val="29.8775,2.05"/>
       </dia:attribute>
@@ -326,10 +253,10 @@ Dr. F. : Yes, your vital elixir. Always there to fill that void in your… hoo-h
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O1" connection="13"/>
-        <dia:connection handle="1" to="O4" connection="2"/>
+        <dia:connection handle="1" to="O3" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O7">
+    <dia:object type="Flowchart - Box" version="0" id="O5">
       <dia:attribute name="obj_pos">
         <dia:point val="42.1637,7.15"/>
       </dia:attribute>
@@ -376,7 +303,7 @@ Dr. F. : Helpful? My dear, I'm the voice of reason in your chaotic life. How abo
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O8">
+    <dia:object type="Standard - Line" version="0" id="O6">
       <dia:attribute name="obj_pos">
         <dia:point val="43.1157,2.05"/>
       </dia:attribute>
@@ -401,24 +328,24 @@ Dr. F. : Helpful? My dear, I'm the voice of reason in your chaotic life. How abo
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O1" connection="14"/>
-        <dia:connection handle="1" to="O7" connection="2"/>
+        <dia:connection handle="1" to="O5" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O9">
+    <dia:object type="Flowchart - Box" version="0" id="O7">
       <dia:attribute name="obj_pos">
-        <dia:point val="-23.3712,8.5"/>
+        <dia:point val="-23.1045,6.56667"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-23.4212,8.45;4.8213,10.45"/>
+        <dia:rectangle val="-23.1545,6.51667;5.08797,10.1167"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-23.3712,8.5"/>
+        <dia:point val="-23.1045,6.56667"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="28.142500000000002"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="1.9000000000000004"/>
+        <dia:real val="3.5000000000000004"/>
       </dia:attribute>
       <dia:attribute name="show_background">
         <dia:boolean val="true"/>
@@ -429,7 +356,9 @@ Dr. F. : Helpful? My dear, I'm the voice of reason in your chaotic life. How abo
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Dr. F. : Yes, your vital elixir. Always there to fill that void in your… muff.#</dia:string>
+            <dia:string>#Rowena : Doc., you are my nightmare, you know I can't wake up without it.
+
+Dr. F. : Yes, your vital elixir. Always there to fill that void in your… muff.#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -438,7 +367,7 @@ Dr. F. : Helpful? My dear, I'm the voice of reason in your chaotic life. How abo
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="-9.29995,9.645"/>
+            <dia:point val="-9.03328,7.71167"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -449,16 +378,16 @@ Dr. F. : Helpful? My dear, I'm the voice of reason in your chaotic life. How abo
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O10">
+    <dia:object type="Standard - Line" version="0" id="O8">
       <dia:attribute name="obj_pos">
-        <dia:point val="-0.05,6.65"/>
+        <dia:point val="16.6394,2.05"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-9.40958,6.59117;0.00883488,8.73479"/>
+        <dia:rectangle val="-9.1434,1.99209;16.6973,6.81699"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="-0.05,6.65"/>
-        <dia:point val="-9.29995,8.5"/>
+        <dia:point val="16.6394,2.05"/>
+        <dia:point val="-9.03328,6.56667"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -473,11 +402,11 @@ Dr. F. : Helpful? My dear, I'm the voice of reason in your chaotic life. How abo
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O3" connection="13"/>
-        <dia:connection handle="1" to="O9" connection="2"/>
+        <dia:connection handle="0" to="O1" connection="12"/>
+        <dia:connection handle="1" to="O7" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O11">
+    <dia:object type="Flowchart - Box" version="0" id="O9">
       <dia:attribute name="obj_pos">
         <dia:point val="-56.0988,13.4"/>
       </dia:attribute>
@@ -524,15 +453,15 @@ Dr. F. : Oh, come now, Rowena. There's no need to be touchy. I'm just here to le
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O12">
+    <dia:object type="Standard - Line" version="0" id="O10">
       <dia:attribute name="obj_pos">
-        <dia:point val="-16.3356,10.4"/>
+        <dia:point val="-16.0689,10.0667"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-38.7108,10.3438;-16.2794,13.6769"/>
+        <dia:rectangle val="-38.7106,10.0099;-16.0121,13.6684"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="-16.3356,10.4"/>
+        <dia:point val="-16.0689,10.0667"/>
         <dia:point val="-38.6,13.4"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -548,19 +477,19 @@ Dr. F. : Oh, come now, Rowena. There's no need to be touchy. I'm just here to le
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O9" connection="12"/>
-        <dia:connection handle="1" to="O11" connection="2"/>
+        <dia:connection handle="0" to="O7" connection="12"/>
+        <dia:connection handle="1" to="O9" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O13">
+    <dia:object type="Standard - Line" version="0" id="O11">
       <dia:attribute name="obj_pos">
-        <dia:point val="-2.26432,10.4"/>
+        <dia:point val="-1.99766,10.0667"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-2.33094,10.3334;14.4685,18.3815"/>
+        <dia:rectangle val="-2.0648,9.99953;14.4674,18.37"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="-2.26432,10.4"/>
+        <dia:point val="-1.99766,10.0667"/>
         <dia:point val="14.3675,18.3"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -576,11 +505,11 @@ Dr. F. : Oh, come now, Rowena. There's no need to be touchy. I'm just here to le
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O9" connection="14"/>
-        <dia:connection handle="1" to="O36" connection="2"/>
+        <dia:connection handle="0" to="O7" connection="14"/>
+        <dia:connection handle="1" to="O34" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O14">
+    <dia:object type="Flowchart - Box" version="0" id="O12">
       <dia:attribute name="obj_pos">
         <dia:point val="-91.7974,20.8455"/>
       </dia:attribute>
@@ -625,7 +554,7 @@ Dr. F. : Oh, come now, Rowena. There's no need to be touchy. I'm just here to le
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O15">
+    <dia:object type="Standard - Line" version="0" id="O13">
       <dia:attribute name="obj_pos">
         <dia:point val="-47.3494,16.9"/>
       </dia:attribute>
@@ -649,11 +578,11 @@ Dr. F. : Oh, come now, Rowena. There's no need to be touchy. I'm just here to le
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O11" connection="12"/>
-        <dia:connection handle="1" to="O14" connection="2"/>
+        <dia:connection handle="0" to="O9" connection="12"/>
+        <dia:connection handle="1" to="O12" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O16">
+    <dia:object type="Flowchart - Box" version="0" id="O14">
       <dia:attribute name="obj_pos">
         <dia:point val="-64.8487,46.4"/>
       </dia:attribute>
@@ -698,7 +627,7 @@ Dr. F. : Oh, come now, Rowena. There's no need to be touchy. I'm just here to le
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O17">
+    <dia:object type="Standard - Line" version="0" id="O15">
       <dia:attribute name="obj_pos">
         <dia:point val="-38.6,16.9"/>
       </dia:attribute>
@@ -722,11 +651,11 @@ Dr. F. : Oh, come now, Rowena. There's no need to be touchy. I'm just here to le
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O11" connection="13"/>
-        <dia:connection handle="1" to="O46" connection="2"/>
+        <dia:connection handle="0" to="O9" connection="13"/>
+        <dia:connection handle="1" to="O44" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O18">
+    <dia:object type="Flowchart - Box" version="0" id="O16">
       <dia:attribute name="obj_pos">
         <dia:point val="-36.87,22.25"/>
       </dia:attribute>
@@ -773,7 +702,7 @@ Dr. F. : Good luck with that. I'm irreplaceable. Now, about that coffee...#</dia
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O19">
+    <dia:object type="Standard - Line" version="0" id="O17">
       <dia:attribute name="obj_pos">
         <dia:point val="-29.8506,16.9"/>
       </dia:attribute>
@@ -797,11 +726,11 @@ Dr. F. : Good luck with that. I'm irreplaceable. Now, about that coffee...#</dia
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O11" connection="14"/>
-        <dia:connection handle="1" to="O18" connection="2"/>
+        <dia:connection handle="0" to="O9" connection="14"/>
+        <dia:connection handle="1" to="O16" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O20">
+    <dia:object type="Flowchart - Box" version="0" id="O18">
       <dia:attribute name="obj_pos">
         <dia:point val="-49.6913,91.6318"/>
       </dia:attribute>
@@ -850,7 +779,7 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O21">
+    <dia:object type="Standard - Line" version="0" id="O19">
       <dia:attribute name="obj_pos">
         <dia:point val="-15.5107,82.6076"/>
       </dia:attribute>
@@ -874,11 +803,11 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O27" connection="13"/>
-        <dia:connection handle="1" to="O20" connection="2"/>
+        <dia:connection handle="0" to="O25" connection="13"/>
+        <dia:connection handle="1" to="O18" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O22">
+    <dia:object type="Flowchart - Box" version="0" id="O20">
       <dia:attribute name="obj_pos">
         <dia:point val="-63.99,51.5"/>
       </dia:attribute>
@@ -923,7 +852,7 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O23">
+    <dia:object type="Standard - Line" version="0" id="O21">
       <dia:attribute name="obj_pos">
         <dia:point val="-54.8625,48.3"/>
       </dia:attribute>
@@ -947,25 +876,25 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O16" connection="12"/>
-        <dia:connection handle="1" to="O22" connection="2"/>
+        <dia:connection handle="0" to="O14" connection="12"/>
+        <dia:connection handle="1" to="O20" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O24">
+    <dia:object type="Flowchart - Box" version="0" id="O22">
       <dia:attribute name="obj_pos">
-        <dia:point val="-54.999,58.4455"/>
+        <dia:point val="-56.1811,58.1122"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-55.049,58.3955;-34.8965,60.3955"/>
+        <dia:rectangle val="-56.2311,58.0622;-34.7811,61.6622"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-54.999,58.4455"/>
+        <dia:point val="-56.1811,58.1122"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="20.052500000000002"/>
+        <dia:real val="21.350000000000001"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="1.9000000000000001"/>
+        <dia:real val="3.5000000000000004"/>
       </dia:attribute>
       <dia:attribute name="show_background">
         <dia:boolean val="true"/>
@@ -976,7 +905,9 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Rowena : I don’t have a plan, that’s why I’m talking to you.#</dia:string>
+            <dia:string>#Rowena : I don’t have a plan, that’s why I’m talking to you.
+
+Dr. F. : You know we could make it last all day long, right?#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -985,7 +916,7 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="-44.9728,59.5905"/>
+            <dia:point val="-45.5061,59.2572"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -996,18 +927,18 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O25">
+    <dia:object type="Flowchart - Box" version="0" id="O23">
       <dia:attribute name="obj_pos">
-        <dia:point val="-39.3064,52.8743"/>
+        <dia:point val="-40.2376,52.8743"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-39.3564,52.8243;-22.7839,54.8243"/>
+        <dia:rectangle val="-40.2876,52.8243;-21.8526,54.8243"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-39.3064,52.8743"/>
+        <dia:point val="-40.2376,52.8743"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="16.4725"/>
+        <dia:real val="18.335000000000001"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="1.9000000000000001"/>
@@ -1021,7 +952,7 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#Rowena : I guess I'll start looking in the kitchen.#</dia:string>
+            <dia:string>#Rowena : I guess I'll start looking here, in the kitchen.#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -1041,7 +972,7 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O26">
+    <dia:object type="Standard - Line" version="0" id="O24">
       <dia:attribute name="obj_pos">
         <dia:point val="-34.89,48.3"/>
       </dia:attribute>
@@ -1050,7 +981,7 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="-34.89,48.3"/>
-        <dia:point val="-31.0702,52.8743"/>
+        <dia:point val="-31.0701,52.8743"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -1065,11 +996,11 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O16" connection="14"/>
-        <dia:connection handle="1" to="O25" connection="2"/>
+        <dia:connection handle="0" to="O14" connection="14"/>
+        <dia:connection handle="1" to="O23" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O27">
+    <dia:object type="Flowchart - Box" version="0" id="O25">
       <dia:attribute name="obj_pos">
         <dia:point val="-21.9269,80.7076"/>
       </dia:attribute>
@@ -1114,7 +1045,7 @@ Dr. F. : Suit yourself, Rowena. Just remember, I'm always here to spice up your 
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O28">
+    <dia:object type="Flowchart - Box" version="0" id="O26">
       <dia:attribute name="obj_pos">
         <dia:point val="-31.492,35.7066"/>
       </dia:attribute>
@@ -1161,7 +1092,7 @@ Dr. F.: You'd better, I suppose, yes. So, what's your plan, caffeine junkie?#</d
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O29">
+    <dia:object type="Standard - Line" version="0" id="O27">
       <dia:attribute name="obj_pos">
         <dia:point val="-24.95,25.75"/>
       </dia:attribute>
@@ -1185,11 +1116,11 @@ Dr. F.: You'd better, I suppose, yes. So, what's your plan, caffeine junkie?#</d
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O18" connection="13"/>
-        <dia:connection handle="1" to="O28" connection="2"/>
+        <dia:connection handle="0" to="O16" connection="13"/>
+        <dia:connection handle="1" to="O26" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O30">
+    <dia:object type="Flowchart - Box" version="0" id="O28">
       <dia:attribute name="obj_pos">
         <dia:point val="-21.4984,29.0904"/>
       </dia:attribute>
@@ -1236,7 +1167,7 @@ Dr. F.: Ah, the existential crisis begins! But let's save the philosophy for lat
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O31">
+    <dia:object type="Standard - Line" version="0" id="O29">
       <dia:attribute name="obj_pos">
         <dia:point val="-18.99,25.75"/>
       </dia:attribute>
@@ -1260,11 +1191,11 @@ Dr. F.: Ah, the existential crisis begins! But let's save the philosophy for lat
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O18" connection="14"/>
-        <dia:connection handle="1" to="O30" connection="2"/>
+        <dia:connection handle="0" to="O16" connection="14"/>
+        <dia:connection handle="1" to="O28" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O32">
+    <dia:object type="Flowchart - Box" version="0" id="O30">
       <dia:attribute name="obj_pos">
         <dia:point val="26.411,17.6152"/>
       </dia:attribute>
@@ -1309,7 +1240,7 @@ Dr. F.: Ah, the existential crisis begins! But let's save the philosophy for lat
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O33">
+    <dia:object type="Standard - Line" version="0" id="O31">
       <dia:attribute name="obj_pos">
         <dia:point val="32.8194,11.3"/>
       </dia:attribute>
@@ -1333,11 +1264,11 @@ Dr. F.: Ah, the existential crisis begins! But let's save the philosophy for lat
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O4" connection="14"/>
-        <dia:connection handle="1" to="O32" connection="2"/>
+        <dia:connection handle="0" to="O3" connection="14"/>
+        <dia:connection handle="1" to="O30" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O34">
+    <dia:object type="Flowchart - Box" version="0" id="O32">
       <dia:attribute name="obj_pos">
         <dia:point val="2.46498,42.7955"/>
       </dia:attribute>
@@ -1384,7 +1315,7 @@ Dr. F. : Useful? My dear, I'm the voice of reason in your chaotic life. How abou
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O35">
+    <dia:object type="Standard - Line" version="0" id="O33">
       <dia:attribute name="obj_pos">
         <dia:point val="26.7675,11.4"/>
       </dia:attribute>
@@ -1408,10 +1339,10 @@ Dr. F. : Useful? My dear, I'm the voice of reason in your chaotic life. How abou
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="1" to="O34" connection="2"/>
+        <dia:connection handle="1" to="O32" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O36">
+    <dia:object type="Flowchart - Box" version="0" id="O34">
       <dia:attribute name="obj_pos">
         <dia:point val="8.21248,18.3"/>
       </dia:attribute>
@@ -1456,7 +1387,7 @@ Dr. F. : Useful? My dear, I'm the voice of reason in your chaotic life. How abou
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O37">
+    <dia:object type="Standard - Line" version="0" id="O35">
       <dia:attribute name="obj_pos">
         <dia:point val="20.3807,11.3"/>
       </dia:attribute>
@@ -1480,11 +1411,11 @@ Dr. F. : Useful? My dear, I'm the voice of reason in your chaotic life. How abou
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O4" connection="12"/>
-        <dia:connection handle="1" to="O36" connection="2"/>
+        <dia:connection handle="0" to="O3" connection="12"/>
+        <dia:connection handle="1" to="O34" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O38">
+    <dia:object type="Flowchart - Box" version="0" id="O36">
       <dia:attribute name="obj_pos">
         <dia:point val="-18.8694,49.9121"/>
       </dia:attribute>
@@ -1531,7 +1462,7 @@ Dr. F.: Vague advice? My dear, I'm the epitome of clarity. But fine, if you want
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O39">
+    <dia:object type="Standard - Line" version="0" id="O37">
       <dia:attribute name="obj_pos">
         <dia:point val="22.6175,46.2955"/>
       </dia:attribute>
@@ -1555,11 +1486,11 @@ Dr. F.: Vague advice? My dear, I'm the epitome of clarity. But fine, if you want
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O34" connection="13"/>
-        <dia:connection handle="1" to="O38" connection="2"/>
+        <dia:connection handle="0" to="O32" connection="13"/>
+        <dia:connection handle="1" to="O36" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O40">
+    <dia:object type="Flowchart - Box" version="0" id="O38">
       <dia:attribute name="obj_pos">
         <dia:point val="47.6913,57.3939"/>
       </dia:attribute>
@@ -1606,7 +1537,7 @@ Dr. F.: An excellent idea! My wisdom deserves to be immortalized. Now, shall we 
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O41">
+    <dia:object type="Standard - Line" version="0" id="O39">
       <dia:attribute name="obj_pos">
         <dia:point val="32.6937,46.2955"/>
       </dia:attribute>
@@ -1630,11 +1561,11 @@ Dr. F.: An excellent idea! My wisdom deserves to be immortalized. Now, shall we 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O34" connection="14"/>
-        <dia:connection handle="1" to="O40" connection="2"/>
+        <dia:connection handle="0" to="O32" connection="14"/>
+        <dia:connection handle="1" to="O38" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O42">
+    <dia:object type="Flowchart - Box" version="0" id="O40">
       <dia:attribute name="obj_pos">
         <dia:point val="47.8587,18.2227"/>
       </dia:attribute>
@@ -1679,7 +1610,7 @@ Dr. F.: An excellent idea! My wisdom deserves to be immortalized. Now, shall we 
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O43">
+    <dia:object type="Standard - Line" version="0" id="O41">
       <dia:attribute name="obj_pos">
         <dia:point val="52.3068,10.65"/>
       </dia:attribute>
@@ -1703,11 +1634,11 @@ Dr. F.: An excellent idea! My wisdom deserves to be immortalized. Now, shall we 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O7" connection="12"/>
-        <dia:connection handle="1" to="O42" connection="2"/>
+        <dia:connection handle="0" to="O5" connection="12"/>
+        <dia:connection handle="1" to="O40" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O44">
+    <dia:object type="Flowchart - Box" version="0" id="O42">
       <dia:attribute name="obj_pos">
         <dia:point val="68.9112,12.45"/>
       </dia:attribute>
@@ -1754,12 +1685,12 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O45">
+    <dia:object type="Standard - Line" version="0" id="O43">
       <dia:attribute name="obj_pos">
         <dia:point val="72.5931,10.65"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="72.5364,10.5934;85.1781,12.7207"/>
+        <dia:rectangle val="72.5365,10.5934;85.1781,12.7207"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="72.5931,10.65"/>
@@ -1778,11 +1709,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O7" connection="14"/>
-        <dia:connection handle="1" to="O44" connection="2"/>
+        <dia:connection handle="0" to="O5" connection="14"/>
+        <dia:connection handle="1" to="O42" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O46">
+    <dia:object type="Flowchart - Box" version="0" id="O44">
       <dia:attribute name="obj_pos">
         <dia:point val="-52.1348,41.4591"/>
       </dia:attribute>
@@ -1827,7 +1758,7 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O47">
+    <dia:object type="Standard - Line" version="0" id="O45">
       <dia:attribute name="obj_pos">
         <dia:point val="-44.7098,43.3591"/>
       </dia:attribute>
@@ -1851,11 +1782,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O46" connection="13"/>
-        <dia:connection handle="1" to="O16" connection="2"/>
+        <dia:connection handle="0" to="O44" connection="13"/>
+        <dia:connection handle="1" to="O14" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O48">
+    <dia:object type="Standard - BezierLine" version="0" id="O46">
       <dia:attribute name="obj_pos">
         <dia:point val="14.3675,20.2"/>
       </dia:attribute>
@@ -1882,21 +1813,21 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O36" connection="13"/>
-        <dia:connection handle="3" to="O16" connection="2"/>
+        <dia:connection handle="0" to="O34" connection="13"/>
+        <dia:connection handle="3" to="O14" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O49">
+    <dia:object type="Standard - BezierLine" version="0" id="O47">
       <dia:attribute name="obj_pos">
-        <dia:point val="-9.29995,10.4"/>
+        <dia:point val="-9.03328,10.0667"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-9.35046,10.3495;22.7262,42.7955"/>
+        <dia:rectangle val="-9.13762,10.0112;22.9195,42.7955"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
-        <dia:point val="-9.29995,10.4"/>
-        <dia:point val="-9.07414,32.3833"/>
-        <dia:point val="21.7258,40.1955"/>
+        <dia:point val="-9.03328,10.0667"/>
+        <dia:point val="-10.5583,23.1"/>
+        <dia:point val="20.5083,16.8333"/>
         <dia:point val="22.6175,42.7955"/>
       </dia:attribute>
       <dia:attribute name="corner_types">
@@ -1913,51 +1844,20 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O9" connection="13"/>
-        <dia:connection handle="3" to="O34" connection="2"/>
+        <dia:connection handle="0" to="O7" connection="13"/>
+        <dia:connection handle="3" to="O32" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O50">
-      <dia:attribute name="obj_pos">
-        <dia:point val="-4.45964,32.5904"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="-19.2308,32.5316;-4.40087,35.7066"/>
-      </dia:attribute>
-      <dia:attribute name="bez_points">
-        <dia:point val="-4.45964,32.5904"/>
-        <dia:point val="-5.16716,36.1571"/>
-        <dia:point val="-17.555,33.9733"/>
-        <dia:point val="-19.2308,35.7066"/>
-      </dia:attribute>
-      <dia:attribute name="corner_types">
-        <dia:enum val="0"/>
-        <dia:enum val="0"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow">
-        <dia:enum val="22"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow_length">
-        <dia:real val="0.5"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow_width">
-        <dia:real val="0.5"/>
-      </dia:attribute>
-      <dia:connections>
-        <dia:connection handle="0" to="O30" connection="13"/>
-        <dia:connection handle="3" to="O28" connection="2"/>
-      </dia:connections>
-    </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O51">
+    <dia:object type="Standard - BezierLine" version="0" id="O48">
       <dia:attribute name="obj_pos">
         <dia:point val="4.05974,32.5904"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-20.7543,32.5382;4.1123,80.7076"/>
+        <dia:rectangle val="-20.9722,32.5342;4.11598,80.7076"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="4.05974,32.5904"/>
-        <dia:point val="4.42365,40.8141"/>
+        <dia:point val="2.10833,47.0333"/>
         <dia:point val="-34.1844,31.4095"/>
         <dia:point val="-15.5107,80.7076"/>
       </dia:attribute>
@@ -1975,16 +1875,16 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O30" connection="14"/>
-        <dia:connection handle="3" to="O27" connection="2"/>
+        <dia:connection handle="0" to="O28" connection="14"/>
+        <dia:connection handle="3" to="O25" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O52">
+    <dia:object type="Standard - BezierLine" version="0" id="O49">
       <dia:attribute name="obj_pos">
         <dia:point val="62.45,10.65"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="22.6127,10.5964;62.568,42.7955"/>
+        <dia:rectangle val="22.6127,10.5964;62.5681,42.7955"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="62.45,10.65"/>
@@ -2006,11 +1906,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O7" connection="13"/>
-        <dia:connection handle="3" to="O34" connection="2"/>
+        <dia:connection handle="0" to="O5" connection="13"/>
+        <dia:connection handle="3" to="O32" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O53">
+    <dia:object type="Flowchart - Box" version="0" id="O50">
       <dia:attribute name="obj_pos">
         <dia:point val="61.0494,28.9515"/>
       </dia:attribute>
@@ -2055,7 +1955,7 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O54">
+    <dia:object type="Standard - Line" version="0" id="O51">
       <dia:attribute name="obj_pos">
         <dia:point val="35.666,19.5152"/>
       </dia:attribute>
@@ -2079,11 +1979,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O32" connection="13"/>
-        <dia:connection handle="1" to="O53" connection="2"/>
+        <dia:connection handle="0" to="O30" connection="13"/>
+        <dia:connection handle="1" to="O50" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O55">
+    <dia:object type="Standard - Line" version="0" id="O52">
       <dia:attribute name="obj_pos">
         <dia:point val="53.4737,20.1227"/>
       </dia:attribute>
@@ -2107,11 +2007,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O42" connection="13"/>
-        <dia:connection handle="1" to="O53" connection="2"/>
+        <dia:connection handle="0" to="O40" connection="13"/>
+        <dia:connection handle="1" to="O50" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O56">
+    <dia:object type="Flowchart - Box" version="0" id="O53">
       <dia:attribute name="obj_pos">
         <dia:point val="50.534,45.4212"/>
       </dia:attribute>
@@ -2156,7 +2056,7 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O57">
+    <dia:object type="Standard - Line" version="0" id="O54">
       <dia:attribute name="obj_pos">
         <dia:point val="71.3031,30.8515"/>
       </dia:attribute>
@@ -2180,11 +2080,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O53" connection="12"/>
-        <dia:connection handle="1" to="O56" connection="2"/>
+        <dia:connection handle="0" to="O50" connection="12"/>
+        <dia:connection handle="1" to="O53" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O58">
+    <dia:object type="Standard - BezierLine" version="0" id="O55">
       <dia:attribute name="obj_pos">
         <dia:point val="81.5569,30.8515"/>
       </dia:attribute>
@@ -2211,11 +2111,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O53" connection="13"/>
-        <dia:connection handle="3" to="O46" connection="2"/>
+        <dia:connection handle="0" to="O50" connection="13"/>
+        <dia:connection handle="3" to="O44" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O59">
+    <dia:object type="Standard - BezierLine" version="0" id="O56">
       <dia:attribute name="obj_pos">
         <dia:point val="-30.91,25.75"/>
       </dia:attribute>
@@ -2242,11 +2142,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O18" connection="12"/>
-        <dia:connection handle="3" to="O27" connection="2"/>
+        <dia:connection handle="0" to="O16" connection="12"/>
+        <dia:connection handle="3" to="O25" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O60">
+    <dia:object type="Standard - BezierLine" version="0" id="O57">
       <dia:attribute name="obj_pos">
         <dia:point val="12.5412,46.2955"/>
       </dia:attribute>
@@ -2273,11 +2173,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O34" connection="12"/>
-        <dia:connection handle="3" to="O27" connection="2"/>
+        <dia:connection handle="0" to="O32" connection="12"/>
+        <dia:connection handle="3" to="O25" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O61">
+    <dia:object type="Standard - BezierLine" version="0" id="O58">
       <dia:attribute name="obj_pos">
         <dia:point val="61.0494,30.8515"/>
       </dia:attribute>
@@ -2304,11 +2204,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O53" connection="11"/>
-        <dia:connection handle="3" to="O27" connection="2"/>
+        <dia:connection handle="0" to="O50" connection="11"/>
+        <dia:connection handle="3" to="O25" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O62">
+    <dia:object type="Standard - BezierLine" version="0" id="O59">
       <dia:attribute name="obj_pos">
         <dia:point val="-74.2851,31.6255"/>
       </dia:attribute>
@@ -2335,11 +2235,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O79" connection="13"/>
-        <dia:connection handle="3" to="O27" connection="2"/>
+        <dia:connection handle="0" to="O74" connection="13"/>
+        <dia:connection handle="3" to="O25" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O63">
+    <dia:object type="Standard - BezierLine" version="0" id="O60">
       <dia:attribute name="obj_pos">
         <dia:point val="91.8106,30.8515"/>
       </dia:attribute>
@@ -2366,11 +2266,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O53" connection="14"/>
-        <dia:connection handle="3" to="O18" connection="2"/>
+        <dia:connection handle="0" to="O50" connection="14"/>
+        <dia:connection handle="3" to="O16" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O64">
+    <dia:object type="Standard - BezierLine" version="0" id="O61">
       <dia:attribute name="obj_pos">
         <dia:point val="76.9893,15.95"/>
       </dia:attribute>
@@ -2397,22 +2297,22 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O44" connection="12"/>
-        <dia:connection handle="3" to="O22" connection="2"/>
+        <dia:connection handle="0" to="O42" connection="12"/>
+        <dia:connection handle="3" to="O20" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O65">
+    <dia:object type="Standard - BezierLine" version="0" id="O62">
       <dia:attribute name="obj_pos">
         <dia:point val="85.0674,15.95"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-31.0702,15.8836;85.1338,52.9417"/>
+        <dia:rectangle val="-31.0701,15.8836;85.1338,52.9417"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="85.0674,15.95"/>
         <dia:point val="63.3751,26.0379"/>
-        <dia:point val="-28.0997,51.644"/>
-        <dia:point val="-31.0702,52.8743"/>
+        <dia:point val="-28.0996,51.644"/>
+        <dia:point val="-31.0701,52.8743"/>
       </dia:attribute>
       <dia:attribute name="corner_types">
         <dia:enum val="0"/>
@@ -2428,22 +2328,22 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O44" connection="13"/>
-        <dia:connection handle="3" to="O25" connection="2"/>
+        <dia:connection handle="0" to="O42" connection="13"/>
+        <dia:connection handle="3" to="O23" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O66">
+    <dia:object type="Standard - BezierLine" version="0" id="O63">
       <dia:attribute name="obj_pos">
         <dia:point val="93.1456,15.95"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-44.9727,15.8876;93.208,58.7324"/>
+        <dia:rectangle val="-45.5061,15.8876;93.208,58.3991"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="93.1456,15.95"/>
         <dia:point val="35.8296,33.4015"/>
-        <dia:point val="-7.80676,54.6742"/>
-        <dia:point val="-44.9727,58.4455"/>
+        <dia:point val="-8.34014,54.3409"/>
+        <dia:point val="-45.5061,58.1122"/>
       </dia:attribute>
       <dia:attribute name="corner_types">
         <dia:enum val="0"/>
@@ -2459,11 +2359,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O44" connection="14"/>
-        <dia:connection handle="3" to="O24" connection="2"/>
+        <dia:connection handle="0" to="O42" connection="14"/>
+        <dia:connection handle="3" to="O22" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O67">
+    <dia:object type="Standard - Line" version="0" id="O64">
       <dia:attribute name="obj_pos">
         <dia:point val="-5.70373,53.4121"/>
       </dia:attribute>
@@ -2487,11 +2387,11 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O38" connection="12"/>
-        <dia:connection handle="1" to="O27" connection="2"/>
+        <dia:connection handle="0" to="O36" connection="12"/>
+        <dia:connection handle="1" to="O25" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O68">
+    <dia:object type="Flowchart - Box" version="0" id="O65">
       <dia:attribute name="obj_pos">
         <dia:point val="-13.4327,70.3821"/>
       </dia:attribute>
@@ -2538,7 +2438,7 @@ Dr. F.: Ah, but where would the fun be in that? Exploration is half the journey,
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O69">
+    <dia:object type="Standard - Line" version="0" id="O66">
       <dia:attribute name="obj_pos">
         <dia:point val="7.46189,53.4121"/>
       </dia:attribute>
@@ -2562,11 +2462,11 @@ Dr. F.: Ah, but where would the fun be in that? Exploration is half the journey,
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O38" connection="13"/>
-        <dia:connection handle="1" to="O68" connection="2"/>
+        <dia:connection handle="0" to="O36" connection="13"/>
+        <dia:connection handle="1" to="O65" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O70">
+    <dia:object type="Flowchart - Box" version="0" id="O67">
       <dia:attribute name="obj_pos">
         <dia:point val="10.7503,63.0645"/>
       </dia:attribute>
@@ -2613,7 +2513,7 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O71">
+    <dia:object type="Standard - Line" version="0" id="O68">
       <dia:attribute name="obj_pos">
         <dia:point val="20.6275,53.4121"/>
       </dia:attribute>
@@ -2637,11 +2537,11 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O38" connection="14"/>
-        <dia:connection handle="1" to="O70" connection="2"/>
+        <dia:connection handle="0" to="O36" connection="14"/>
+        <dia:connection handle="1" to="O67" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O72">
+    <dia:object type="Standard - BezierLine" version="0" id="O69">
       <dia:attribute name="obj_pos">
         <dia:point val="63.925,60.8939"/>
       </dia:attribute>
@@ -2668,11 +2568,11 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O40" connection="13"/>
-        <dia:connection handle="3" to="O27" connection="2"/>
+        <dia:connection handle="0" to="O38" connection="13"/>
+        <dia:connection handle="3" to="O25" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O73">
+    <dia:object type="Standard - BezierLine" version="0" id="O70">
       <dia:attribute name="obj_pos">
         <dia:point val="10.4085,73.8821"/>
       </dia:attribute>
@@ -2699,22 +2599,22 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O68" connection="13"/>
-        <dia:connection handle="3" to="O34" connection="2"/>
+        <dia:connection handle="0" to="O65" connection="13"/>
+        <dia:connection handle="3" to="O32" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O74">
+    <dia:object type="Standard - BezierLine" version="0" id="O71">
       <dia:attribute name="obj_pos">
         <dia:point val="34.5916,66.5645"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-44.9728,56.8818;34.6623,69.1131"/>
+        <dia:rectangle val="-45.5061,56.5615;34.6623,69.0872"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="34.5916,66.5645"/>
         <dia:point val="24.7149,76.9179"/>
-        <dia:point val="-38.2396,51.3118"/>
-        <dia:point val="-44.9728,58.4455"/>
+        <dia:point val="-38.7729,50.9785"/>
+        <dia:point val="-45.5061,58.1122"/>
       </dia:attribute>
       <dia:attribute name="corner_types">
         <dia:enum val="0"/>
@@ -2730,11 +2630,11 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O70" connection="13"/>
-        <dia:connection handle="3" to="O24" connection="2"/>
+        <dia:connection handle="0" to="O67" connection="13"/>
+        <dia:connection handle="3" to="O22" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O75">
+    <dia:object type="Standard - BezierLine" version="0" id="O72">
       <dia:attribute name="obj_pos">
         <dia:point val="-57.1,53.4"/>
       </dia:attribute>
@@ -2761,81 +2661,19 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O22" connection="13"/>
-        <dia:connection handle="3" to="O20" connection="2"/>
+        <dia:connection handle="0" to="O20" connection="13"/>
+        <dia:connection handle="3" to="O18" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O76">
+    <dia:object type="Standard - Line" version="0" id="O73">
       <dia:attribute name="obj_pos">
-        <dia:point val="-44.9728,59.3955"/>
+        <dia:point val="-31.0701,54.7743"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-44.9263,46.35;-34.8585,59.4455"/>
-      </dia:attribute>
-      <dia:attribute name="bez_points">
-        <dia:point val="-44.9728,59.3955"/>
-        <dia:point val="-44.9407,59.3955"/>
-        <dia:point val="-44.9083,46.4"/>
-        <dia:point val="-44.8762,46.4"/>
-      </dia:attribute>
-      <dia:attribute name="corner_types">
-        <dia:enum val="0"/>
-        <dia:enum val="0"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow">
-        <dia:enum val="22"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow_length">
-        <dia:real val="0.5"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow_width">
-        <dia:real val="0.5"/>
-      </dia:attribute>
-      <dia:connections>
-        <dia:connection handle="0" to="O24" connection="16"/>
-        <dia:connection handle="3" to="O16" connection="2"/>
-      </dia:connections>
-    </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O77">
-      <dia:attribute name="obj_pos">
-        <dia:point val="-44.9728,60.3455"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="-66.307,43.7095;-44.8762,62.916"/>
-      </dia:attribute>
-      <dia:attribute name="bez_points">
-        <dia:point val="-44.9728,60.3455"/>
-        <dia:point val="-67.5578,72.9027"/>
-        <dia:point val="-78.4669,33.8118"/>
-        <dia:point val="-44.8762,46.4"/>
-      </dia:attribute>
-      <dia:attribute name="corner_types">
-        <dia:enum val="0"/>
-        <dia:enum val="0"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow">
-        <dia:enum val="22"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow_length">
-        <dia:real val="0.5"/>
-      </dia:attribute>
-      <dia:attribute name="end_arrow_width">
-        <dia:real val="0.5"/>
-      </dia:attribute>
-      <dia:connections>
-        <dia:connection handle="0" to="O24" connection="13"/>
-        <dia:connection handle="3" to="O16" connection="2"/>
-      </dia:connections>
-    </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O78">
-      <dia:attribute name="obj_pos">
-        <dia:point val="-31.0702,54.7743"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="-31.1277,54.7168;-24.729,91.7421"/>
+        <dia:rectangle val="-31.1276,54.7168;-24.729,91.7421"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="-31.0702,54.7743"/>
+        <dia:point val="-31.0701,54.7743"/>
         <dia:point val="-24.9863,91.6318"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -2851,11 +2689,11 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O25" connection="13"/>
-        <dia:connection handle="1" to="O20" connection="2"/>
+        <dia:connection handle="0" to="O23" connection="13"/>
+        <dia:connection handle="1" to="O18" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Flowchart - Box" version="0" id="O79">
+    <dia:object type="Flowchart - Box" version="0" id="O74">
       <dia:attribute name="obj_pos">
         <dia:point val="-99.0676,29.7255"/>
       </dia:attribute>
@@ -2900,7 +2738,7 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         </dia:composite>
       </dia:attribute>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O80">
+    <dia:object type="Standard - Line" version="0" id="O75">
       <dia:attribute name="obj_pos">
         <dia:point val="-72.5824,22.7455"/>
       </dia:attribute>
@@ -2924,11 +2762,11 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O14" connection="13"/>
-        <dia:connection handle="1" to="O79" connection="2"/>
+        <dia:connection handle="0" to="O12" connection="13"/>
+        <dia:connection handle="1" to="O74" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - BezierLine" version="0" id="O81">
+    <dia:object type="Standard - BezierLine" version="0" id="O76">
       <dia:attribute name="obj_pos">
         <dia:point val="69.6478,47.3212"/>
       </dia:attribute>
@@ -2955,11 +2793,11 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:real val="0.5"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O56" connection="13"/>
-        <dia:connection handle="3" to="O79" connection="2"/>
+        <dia:connection handle="0" to="O53" connection="13"/>
+        <dia:connection handle="3" to="O74" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="Standard - Line" version="0" id="O82">
+    <dia:object type="Standard - Line" version="0" id="O77">
       <dia:attribute name="obj_pos">
         <dia:point val="-19.2308,39.2066"/>
       </dia:attribute>
@@ -2968,7 +2806,35 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="-19.2308,39.2066"/>
-        <dia:point val="-31.0702,52.8743"/>
+        <dia:point val="-31.0701,52.8743"/>
+      </dia:attribute>
+      <dia:attribute name="numcp">
+        <dia:int val="1"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow">
+        <dia:enum val="22"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_length">
+        <dia:real val="0.5"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_width">
+        <dia:real val="0.5"/>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="0" to="O26" connection="13"/>
+        <dia:connection handle="1" to="O23" connection="2"/>
+      </dia:connections>
+    </dia:object>
+    <dia:object type="Standard - Line" version="0" id="O78">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-4.45965,32.5904"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-19.3401,32.5312;-4.40041,35.9343"/>
+      </dia:attribute>
+      <dia:attribute name="conn_endpoints">
+        <dia:point val="-4.45965,32.5904"/>
+        <dia:point val="-19.2308,35.7066"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -2984,7 +2850,66 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O28" connection="13"/>
-        <dia:connection handle="1" to="O25" connection="2"/>
+        <dia:connection handle="1" to="O26" connection="2"/>
+      </dia:connections>
+    </dia:object>
+    <dia:object type="Standard - Line" version="0" id="O79">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-44.8762,48.3"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-45.7361,48.2474;-44.8236,58.1757"/>
+      </dia:attribute>
+      <dia:attribute name="conn_endpoints">
+        <dia:point val="-44.8762,48.3"/>
+        <dia:point val="-45.4081,58.064"/>
+      </dia:attribute>
+      <dia:attribute name="numcp">
+        <dia:int val="1"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow">
+        <dia:enum val="22"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_length">
+        <dia:real val="0.5"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_width">
+        <dia:real val="0.5"/>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="0" to="O14" connection="13"/>
+        <dia:connection handle="1" to="O22" connection="16"/>
+      </dia:connections>
+    </dia:object>
+    <dia:object type="Standard - BezierLine" version="0" id="O80">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-45.5061,61.6122"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-45.5562,61.5621;10.7946,70.3821"/>
+      </dia:attribute>
+      <dia:attribute name="bez_points">
+        <dia:point val="-45.5061,61.6122"/>
+        <dia:point val="-45.4917,69.7"/>
+        <dia:point val="10.5083,67.4333"/>
+        <dia:point val="10.4085,70.3821"/>
+      </dia:attribute>
+      <dia:attribute name="corner_types">
+        <dia:enum val="0"/>
+        <dia:enum val="0"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow">
+        <dia:enum val="22"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_length">
+        <dia:real val="0.5"/>
+      </dia:attribute>
+      <dia:attribute name="end_arrow_width">
+        <dia:real val="0.5"/>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="0" to="O22" connection="13"/>
+        <dia:connection handle="3" to="O65" connection="2"/>
       </dia:connections>
     </dia:object>
   </dia:layer>
