@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1n8b6od2ip8a"]
+
+[ext_resource type="Texture2D" uid="uid://cfcdplx6ttyw5" path="res://BACKGROUND/Left_Glass_Cupboard_Open.png" id="1_0270w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cddej"]
+size = Vector2(5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvmbi"]
+size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndtfm"]
+size = Vector2(5, 5)
+
+[node name="Left_Glass_Cupboard" type="Node2D"]
+
+[node name="Left_Glass_Cupboard_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_0270w")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Wine_Glasses_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Wine_Glasses" type="CollisionShape2D" parent="Stuff_Colliders/Wine_Glasses_Collider"]
+position = Vector2(42.5, 7.5)
+shape = SubResource("RectangleShape2D_cddej")
+
+[node name="Glasses_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Glasses" type="CollisionShape2D" parent="Stuff_Colliders/Glasses_Collider"]
+position = Vector2(43, 16)
+shape = SubResource("RectangleShape2D_gvmbi")
+
+[node name="Plates_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Plates" type="CollisionShape2D" parent="Stuff_Colliders/Plates_Collider"]
+position = Vector2(42.5, 24.5)
+shape = SubResource("RectangleShape2D_ndtfm")
