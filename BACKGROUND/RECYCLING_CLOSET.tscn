@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8lvk22dhf1g2"]
+
+[ext_resource type="Texture2D" uid="uid://cux36xgb3en3y" path="res://BACKGROUND/Recycling_Closet_Open.png" id="1_tdvom"]
+
+[node name="Recycling_Closet" type="Node2D"]
+
+[node name="Recycling_Closet_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_tdvom")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Recycling_Bin_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Recycling_Bin" type="CollisionPolygon2D" parent="Stuff_Colliders/Recycling_Bin_Collider"]
+polygon = PackedVector2Array(95, 62, 95, 46, 92, 46, 89, 48, 89, 50, 90, 50, 91, 62)

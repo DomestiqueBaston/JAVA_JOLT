@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7kwi7lwhh6do"]
+
+[ext_resource type="Texture2D" uid="uid://bc6yd6wqeaqpu" path="res://BACKGROUND/Sink_Cupboard_Open.png" id="1_k8be0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywmpa"]
+size = Vector2(9, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18ro2"]
+size = Vector2(17, 3)
+
+[node name="Under_Sink_Cabinet" type="Node2D"]
+
+[node name="Under_Sink_Cabinet" type="Sprite2D" parent="."]
+texture = ExtResource("1_k8be0")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+visible = false
+
+[node name="Extinguisher_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Extinguisher" type="CollisionPolygon2D" parent="Stuff_Colliders/Extinguisher_Collider"]
+polygon = PackedVector2Array(117, 61, 114, 61, 114, 51, 115, 48, 116, 48, 117, 51)
+
+[node name="Plastic_Baskets_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Plastic_Baskets" type="CollisionShape2D" parent="Stuff_Colliders/Plastic_Baskets_Collider"]
+position = Vector2(109.5, 55.5)
+shape = SubResource("RectangleShape2D_ywmpa")
+
+[node name="Plunger_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Plunger" type="CollisionPolygon2D" parent="Stuff_Colliders/Plunger_Collider"]
+polygon = PackedVector2Array(105, 61, 102, 61, 102, 60, 103, 59, 103, 52, 104, 52, 104, 59, 105, 60)
+
+[node name="Trash_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Trash" type="CollisionPolygon2D" parent="Stuff_Colliders/Trash_Collider"]
+polygon = PackedVector2Array(102, 61, 96, 61, 96, 53.7958, 95, 53, 95, 51, 96, 51, 96, 49, 100, 48, 101, 48, 105, 49, 105, 60, 104, 59, 104, 52, 103, 52, 103, 59, 102, 60)
+
+[node name="Sink_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Sink" type="CollisionShape2D" parent="Stuff_Colliders/Sink_Collider"]
+position = Vector2(108.5, 42.5)
+shape = SubResource("RectangleShape2D_18ro2")

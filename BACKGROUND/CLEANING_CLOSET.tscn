@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwm38rpibu2od"]
+
+[ext_resource type="Texture2D" uid="uid://f4ggsplrnayx" path="res://BACKGROUND/Cleaning_Closet_Open.png" id="1_2qfwk"]
+
+[node name="Cleaning_Closet" type="Node2D"]
+
+[node name="Cleaning_Closet_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_2qfwk")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Drain_Cleaner_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Drain_Cleaner" type="CollisionPolygon2D" parent="Stuff_Colliders/Drain_Cleaner_Collider"]
+polygon = PackedVector2Array(143, 61, 139, 61, 139, 57, 140, 54, 141, 54, 144, 57, 144, 60, 143, 60)
+
+[node name="Mop_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Mop" type="CollisionPolygon2D" parent="Stuff_Colliders/Mop_Collider"]
+polygon = PackedVector2Array(149, 60, 148, 61, 143, 61, 143, 60, 145, 60, 146, 59, 149, 59)
+
+[node name="Detergent_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Detergent" type="CollisionPolygon2D" parent="Stuff_Colliders/Detergent_Collider"]
+polygon = PackedVector2Array(153, 61, 150, 61, 149, 60, 149, 54, 150, 53, 152, 53, 153, 56, 154, 57, 154, 60)
+
+[node name="Large_Bucket_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Large_Bucket" type="CollisionPolygon2D" parent="Stuff_Colliders/Large_Bucket_Collider"]
+polygon = PackedVector2Array(151, 52, 159, 52, 159, 61, 153, 61, 154, 60, 154, 57, 153, 56, 152, 53, 151, 53)
+
+[node name="Small_Bucket_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Small_Bucket" type="CollisionPolygon2D" parent="Stuff_Colliders/Small_Bucket_Collider"]
+polygon = PackedVector2Array(143, 53, 149, 53, 149, 59, 146, 59, 145, 60, 144, 60, 144, 57, 143, 56)
+
+[node name="Dust_Pan_Brush_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Dust_Pan_Brush" type="CollisionPolygon2D" parent="Stuff_Colliders/Dust_Pan_Brush_Collider"]
+polygon = PackedVector2Array(146, 53, 143, 50, 142, 50, 142, 51, 143, 52, 143, 53)

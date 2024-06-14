@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://curt16g1h0snh"]
+
+[ext_resource type="Texture2D" uid="uid://cmbmog354tyew" path="res://BACKGROUND/Micro_Wave_Open.png" id="1_w70x4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwij2"]
+size = Vector2(9, 1)
+
+[node name="Micro_Wave" type="Node2D"]
+
+[node name="Micro_Wave_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_w70x4")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Pizza_Collider" type="Area2D" parent="Stuff_Colliders"]
+
+[node name="Pizza" type="CollisionShape2D" parent="Stuff_Colliders/Pizza_Collider"]
+position = Vector2(60.5, 24.5)
+shape = SubResource("RectangleShape2D_cwij2")
