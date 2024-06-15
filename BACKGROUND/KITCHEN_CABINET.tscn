@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bodgro4qy43p8"]
+
+[ext_resource type="Texture2D" uid="uid://1re4xmfoby2h" path="res://BACKGROUND/Kitchen_Cabinet_Open.png" id="1_22mus"]
+
+[node name="Kitchen_Cabinet" type="Node2D"]
+
+[node name="Kitchen_Cabinet_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_22mus")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Rice_Cooker_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stuff_Colliders/Rice_Cooker_Collider"]
+polygon = PackedVector2Array(74, 61, 70, 61, 70, 56, 72, 56, 75, 57, 75, 58, 74, 58)
+
+[node name="Pressure_Cooker_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Pressure_Cooker" type="CollisionPolygon2D" parent="Stuff_Colliders/Pressure_Cooker_Collider"]
+polygon = PackedVector2Array(78, 61, 74, 61, 74, 58, 75, 58, 75, 57, 72, 56, 71, 56, 71, 55, 74, 53, 76, 53, 77, 54, 78, 56, 80, 56, 80, 57, 78, 58)
