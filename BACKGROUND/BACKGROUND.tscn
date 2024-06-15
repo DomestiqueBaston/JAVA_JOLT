@@ -143,7 +143,6 @@ texture = ExtResource("4_ukw4d")
 centered = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
-visible = false
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
 

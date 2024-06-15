@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4o6l6ik45oxv"]
+
+[ext_resource type="Texture2D" uid="uid://thyu6hg6yxkc" path="res://BACKGROUND/Bottom_Left_Drawer_Open.png" id="1_fl58y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o210j"]
+size = Vector2(14, 5)
+
+[node name="Bottom_Left_Drawer" type="Node2D"]
+
+[node name="Bottom_Left_Drawer_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_fl58y")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Bottom_Left_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Bottom_Left_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Bottom_Left_Drawer_Collider"]
+position = Vector2(48, 53.5)
+shape = SubResource("RectangleShape2D_o210j")
