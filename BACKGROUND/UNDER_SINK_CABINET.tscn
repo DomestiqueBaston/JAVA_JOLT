@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7kwi7lwhh6do"]
+[gd_scene load_steps=6 format=3 uid="uid://b7kwi7lwhh6do"]
 
 [ext_resource type="Texture2D" uid="uid://bc6yd6wqeaqpu" path="res://BACKGROUND/Sink_Cupboard_Open.png" id="1_k8be0"]
 
@@ -7,6 +7,12 @@ size = Vector2(9, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18ro2"]
 size = Vector2(17, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi7rc"]
+size = Vector2(5, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlv1w"]
+size = Vector2(3, 21)
 
 [node name="Under_Sink_Cabinet" type="Node2D"]
 
@@ -48,3 +54,14 @@ collision_layer = 2
 [node name="Sink" type="CollisionShape2D" parent="Stuff_Colliders/Sink_Collider"]
 position = Vector2(108.5, 42.5)
 shape = SubResource("RectangleShape2D_18ro2")
+
+[node name="Door_Collider" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Door_1" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(92.5, 51.5)
+shape = SubResource("RectangleShape2D_qi7rc")
+
+[node name="Door_2" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(118.5, 51.5)
+shape = SubResource("RectangleShape2D_rlv1w")

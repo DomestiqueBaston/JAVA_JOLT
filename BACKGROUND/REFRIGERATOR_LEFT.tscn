@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqa3bbbs2by12"]
+[gd_scene load_steps=8 format=3 uid="uid://cqa3bbbs2by12"]
 
 [ext_resource type="Texture2D" uid="uid://crk1e1iogssok" path="res://BACKGROUND/Refrigerator_Left_Open.png" id="1_i4cca"]
 
@@ -16,6 +16,9 @@ size = Vector2(4, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vg2lo"]
 size = Vector2(4, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ebyv"]
+size = Vector2(6, 43)
 
 [node name="Refrigerator_Left" type="Node2D"]
 
@@ -59,3 +62,10 @@ collision_layer = 2
 [node name="Meat_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Meat_Drawer_Collider"]
 position = Vector2(19, 59)
 shape = SubResource("RectangleShape2D_vg2lo")
+
+[node name="Door_Collider" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Door" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(14, 42.5)
+shape = SubResource("RectangleShape2D_5ebyv")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1n8b6od2ip8a"]
+[gd_scene load_steps=6 format=3 uid="uid://b1n8b6od2ip8a"]
 
 [ext_resource type="Texture2D" uid="uid://cfcdplx6ttyw5" path="res://BACKGROUND/Left_Glass_Cupboard_Open.png" id="1_0270w"]
 
@@ -10,6 +10,9 @@ size = Vector2(6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndtfm"]
 size = Vector2(5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw0o3"]
+size = Vector2(2, 25)
 
 [node name="Left_Glass_Cupboard" type="Node2D"]
 
@@ -39,3 +42,10 @@ collision_layer = 2
 [node name="Plates" type="CollisionShape2D" parent="Stuff_Colliders/Plates_Collider"]
 position = Vector2(42.5, 24.5)
 shape = SubResource("RectangleShape2D_ndtfm")
+
+[node name="Door_Collider" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Door" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(39, 15.5)
+shape = SubResource("RectangleShape2D_rw0o3")

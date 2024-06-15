@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ubhhk3it4y6m"]
+[gd_scene load_steps=6 format=3 uid="uid://ubhhk3it4y6m"]
 
 [ext_resource type="Texture2D" uid="uid://c0ag251xrg41u" path="res://BACKGROUND/Oven_Open.png" id="1_ybga3"]
 
@@ -10,6 +10,9 @@ size = Vector2(13, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gb22a"]
 size = Vector2(13, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gacuh"]
+size = Vector2(29, 2)
 
 [node name="Oven" type="Node2D"]
 
@@ -39,3 +42,10 @@ collision_layer = 2
 [node name="Empty_Space_3" type="CollisionShape2D" parent="Stuff_Colliders/Empty_Space_3_Collider"]
 position = Vector2(57.5, 57)
 shape = SubResource("RectangleShape2D_gb22a")
+
+[node name="Door_Collider" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Door" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(64.5, 60)
+shape = SubResource("RectangleShape2D_gacuh")

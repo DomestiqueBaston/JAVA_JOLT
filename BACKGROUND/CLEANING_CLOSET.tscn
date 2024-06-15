@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwm38rpibu2od"]
+[gd_scene load_steps=4 format=3 uid="uid://bwm38rpibu2od"]
 
 [ext_resource type="Texture2D" uid="uid://f4ggsplrnayx" path="res://BACKGROUND/Cleaning_Closet_Open.png" id="1_2qfwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1gdw"]
+size = Vector2(4, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmbok"]
+size = Vector2(8, 17)
 
 [node name="Cleaning_Closet" type="Node2D"]
 
@@ -45,3 +51,14 @@ collision_layer = 2
 
 [node name="Dust_Pan_Brush" type="CollisionPolygon2D" parent="Stuff_Colliders/Dust_Pan_Brush_Collider"]
 polygon = PackedVector2Array(146, 53, 143, 50, 142, 50, 142, 51, 143, 52, 143, 53)
+
+[node name="Door_Collider" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Door_1" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(161, 53.5)
+shape = SubResource("RectangleShape2D_q1gdw")
+
+[node name="Door_2" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(132, 53.5)
+shape = SubResource("RectangleShape2D_dmbok")

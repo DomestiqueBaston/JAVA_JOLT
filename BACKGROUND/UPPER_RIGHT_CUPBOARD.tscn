@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx7iuxmkmaojs"]
+[gd_scene load_steps=6 format=3 uid="uid://dx7iuxmkmaojs"]
 
 [ext_resource type="Texture2D" uid="uid://cps7xqwnh7s0q" path="res://BACKGROUND/Up_Right_Cupboard_Open.png" id="1_nf856"]
 
@@ -7,6 +7,12 @@ size = Vector2(7, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8hqo"]
 size = Vector2(9, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl2n8"]
+size = Vector2(6, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vhs3"]
+size = Vector2(3, 25)
 
 [node name="Upper_Right_Cupboard" type="Node2D"]
 
@@ -41,3 +47,14 @@ collision_layer = 2
 [node name="Salad_Bowls" type="CollisionShape2D" parent="Stuff_Colliders/Salad_Bowls_Collider"]
 position = Vector2(148.5, 11)
 shape = SubResource("RectangleShape2D_y8hqo")
+
+[node name="Door_Collider" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Door_1" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(138, 15.5)
+shape = SubResource("RectangleShape2D_hl2n8")
+
+[node name="Door_2" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(162.5, 15.5)
+shape = SubResource("RectangleShape2D_0vhs3")

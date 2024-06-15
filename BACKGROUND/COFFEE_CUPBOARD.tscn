@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://keucd37jh7cv"]
+[gd_scene load_steps=8 format=3 uid="uid://keucd37jh7cv"]
 
 [ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/Coffee_Cupboard_Open.png" id="1_f6c4a"]
 
@@ -16,6 +16,9 @@ size = Vector2(3, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ouy5x"]
 size = Vector2(1, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7hyh"]
+size = Vector2(3, 25)
 
 [node name="Coffee_Cupboard" type="Node2D"]
 
@@ -59,3 +62,10 @@ collision_layer = 2
 [node name="CAnned_Beans_2" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Beans_2_Collider"]
 position = Vector2(138.5, 8)
 shape = SubResource("RectangleShape2D_ouy5x")
+
+[node name="Door_Collider" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Door" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(140.5, 15.5)
+shape = SubResource("RectangleShape2D_j7hyh")

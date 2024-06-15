@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://biujccej6p2cp"]
+
+[ext_resource type="Texture2D" uid="uid://y2rpamha0ndh" path="res://BACKGROUND/Cupboard_Upper_Center_Open.png" id="1_2y3mg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uow65"]
+size = Vector2(12, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm2ln"]
+size = Vector2(11, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5uhp"]
+size = Vector2(2, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fndr0"]
+size = Vector2(10, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xqk8"]
+size = Vector2(7, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rtus"]
+size = Vector2(5, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orsi6"]
+size = Vector2(8, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvtwv"]
+size = Vector2(4, 25)
+
+[node name="Cupboard_Upper_Center" type="Node2D"]
+
+[node name="Cupboard_Upper_Center_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_2y3mg")
+centered = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
+
+[node name="Large_Cookie_Box_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Large_Cookie_Box" type="CollisionShape2D" parent="Stuff_Colliders/Large_Cookie_Box_Collider"]
+position = Vector2(93, 25)
+shape = SubResource("RectangleShape2D_uow65")
+
+[node name="Small_Cookie_Box_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Small_Cookie_Box" type="CollisionShape2D" parent="Stuff_Colliders/Small_Cookie_Box_Collider"]
+position = Vector2(92.5, 20)
+shape = SubResource("RectangleShape2D_vm2ln")
+
+[node name="Tea_Box_1_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Tee_Box_1" type="CollisionShape2D" parent="Stuff_Colliders/Tea_Box_1_Collider"]
+position = Vector2(88, 13.5)
+shape = SubResource("RectangleShape2D_o5uhp")
+
+[node name="Tea_Box_2_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Tee_Box_2" type="CollisionShape2D" parent="Stuff_Colliders/Tea_Box_2_Collider"]
+position = Vector2(94, 13.5)
+shape = SubResource("RectangleShape2D_fndr0")
+
+[node name="Tea_Box_3_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Tee_Box_3" type="CollisionShape2D" parent="Stuff_Colliders/Tea_Box_3_Collider"]
+position = Vector2(95.5, 10.5)
+shape = SubResource("RectangleShape2D_5xqk8")
+
+[node name="Tea_Box_4_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Tee_Box_4" type="CollisionShape2D" parent="Stuff_Colliders/Tea_Box_4_Collider"]
+position = Vector2(89.5, 10.5)
+shape = SubResource("RectangleShape2D_3rtus")
+
+[node name="Tea_Box_5_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Tea_Box_5" type="CollisionShape2D" parent="Stuff_Colliders/Tea_Box_5_Collider"]
+position = Vector2(91, 8)
+shape = SubResource("RectangleShape2D_orsi6")
+
+[node name="Door_Collider" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Door" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(85, 15.5)
+shape = SubResource("RectangleShape2D_yvtwv")
