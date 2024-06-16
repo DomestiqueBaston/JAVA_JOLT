@@ -1,2 +1,3 @@
-res://BACKGROUND/BACKGROUND.tscn
+res://UI/UI.tscn
 res://SHADER/KUWAHARA.gdshader
+res://UI/JJ_Theme.tres
