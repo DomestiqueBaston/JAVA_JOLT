@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7kwi7lwhh6do"]
 
-[ext_resource type="Texture2D" uid="uid://bc6yd6wqeaqpu" path="res://BACKGROUND/Sink_Cupboard_Open.png" id="1_k8be0"]
+[ext_resource type="Texture2D" uid="uid://bc6yd6wqeaqpu" path="res://BACKGROUND/IMAGES/Under_Sink_Cabinet_Open.png" id="1_k8be0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywmpa"]
 size = Vector2(9, 11)
@@ -21,7 +21,6 @@ texture = ExtResource("1_k8be0")
 centered = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
-visible = false
 
 [node name="Extinguisher_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2

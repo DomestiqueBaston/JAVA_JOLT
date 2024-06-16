@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2npfr3kry2md"]
+
+[ext_resource type="Texture2D" uid="uid://dduooioelfxfv" path="res://BACKGROUND/IMAGES/Salt_Out.png" id="1_ucysp"]
+
+[node name="Salt" type="Node2D"]
+
+[node name="Salt_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_ucysp")
+centered = false

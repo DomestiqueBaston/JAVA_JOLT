@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cybs73vw2lwpw"]
 
-[ext_resource type="Texture2D" uid="uid://03no3ryu1mft" path="res://BACKGROUND/Dishwasher_Open.png" id="1_p7plr"]
+[ext_resource type="Texture2D" uid="uid://03no3ryu1mft" path="res://BACKGROUND/IMAGES/Dishwasher_Open.png" id="1_p7plr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgg0e"]
 size = Vector2(15, 3)

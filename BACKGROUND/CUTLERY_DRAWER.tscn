@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ygsahuj4jtn3"]
 
-[ext_resource type="Texture2D" uid="uid://daq1dm4w05dv0" path="res://BACKGROUND/Cutlery_Drawer_Open.png" id="1_1gm6o"]
+[ext_resource type="Texture2D" uid="uid://daq1dm4w05dv0" path="res://BACKGROUND/IMAGES/Cutlery_Drawer_Open.png" id="1_1gm6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yep3q"]
 size = Vector2(30, 3)

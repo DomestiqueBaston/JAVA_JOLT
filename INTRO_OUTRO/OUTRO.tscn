@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://dol47lh1gupsx"]
 
-[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="1_mxm7a"]
-[ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/Radio_On_Lights_On.png" id="2_46q67"]
-[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/BG_Lights_Off.png" id="3_mm7vi"]
+[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/IMAGES/BG_Lights_On.png" id="1_mxm7a"]
+[ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/IMAGES/Radio_On_Lights_On.png" id="2_46q67"]
+[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="3_mm7vi"]
 [ext_resource type="Texture2D" uid="uid://0shmmmluyidr" path="res://INTRO_OUTRO/End.png" id="4_4oy66"]
 [ext_resource type="AudioStream" uid="uid://b6cpsyavomfrk" path="res://INTRO_OUTRO/Music_Off.ogg" id="5_ayqnn"]
 [ext_resource type="AudioStream" uid="uid://d5d7mofo1pkv" path="res://INTRO_OUTRO/Snoring.ogg" id="5_gmlpy"]

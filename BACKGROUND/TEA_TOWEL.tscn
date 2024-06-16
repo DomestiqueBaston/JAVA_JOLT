@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c01a4ys1igxui"]
+
+[ext_resource type="Texture2D" uid="uid://boywyr2ikebp8" path="res://BACKGROUND/IMAGES/Tea_Towel_Out.png" id="1_srwmg"]
+
+[node name="Tea_Towel" type="Node2D"]
+
+[node name="Tea_Towel_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_srwmg")
+centered = false

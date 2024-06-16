@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://7uau0gjjgi0k"]
+
+[ext_resource type="Texture2D" uid="uid://ci0v27uluhr5d" path="res://BACKGROUND/IMAGES/Pepper_Out.png" id="1_pp21u"]
+
+[node name="Pepper" type="Node2D"]
+
+[node name="Pepper_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_pp21u")
+centered = false

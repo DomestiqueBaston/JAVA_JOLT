@@ -1,9 +1,9 @@
-[gd_scene load_steps=45 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=47 format=3 uid="uid://btw3ypyfee56m"]
 
-[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/BG_Lights_Off.png" id="1_fd7kn"]
-[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/BG_Lights_On.png" id="2_8x8bd"]
-[ext_resource type="Texture2D" uid="uid://wx47j17h2tlm" path="res://BACKGROUND/Radio_On_Lights_Off.png" id="2_yjrnf"]
-[ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/Radio_On_Lights_On.png" id="4_ukw4d"]
+[ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
+[ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/IMAGES/BG_Lights_On.png" id="2_8x8bd"]
+[ext_resource type="Texture2D" uid="uid://wx47j17h2tlm" path="res://BACKGROUND/IMAGES/Radio_On_Lights_Off.png" id="2_yjrnf"]
+[ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/IMAGES/Radio_On_Lights_On.png" id="4_ukw4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -123,6 +123,12 @@ size = Vector2(4, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktomw"]
 size = Vector2(4, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4728"]
+size = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4i34"]
+size = Vector2(2, 2)
 
 [node name="BACKGROUND" type="Node2D"]
 
@@ -455,11 +461,35 @@ collision_layer = 2
 [node name="Rice_Pot" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Rice_Pot_Collider"]
 polygon = PackedVector2Array(139, 35, 139, 31, 145, 31, 145, 39, 143, 39, 143, 35, 141, 35, 141, 39, 140, 39, 140, 35)
 
-[node name="Pasta_Pot_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+[node name="Rice_Pot_Salt_Pepper_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Rice_Pot_Collider"]
+visible = false
+polygon = PackedVector2Array(139, 31, 145, 31, 145, 38, 144, 38, 144, 39, 139, 39)
+
+[node name="Rice_Pot_Salt_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Rice_Pot_Collider"]
+visible = false
+polygon = PackedVector2Array(139, 35, 139, 31, 145, 31, 145, 38.0363, 144, 38, 143.909, 39, 140, 39, 140, 35)
+
+[node name="Rice_Pot_Pepper_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Rice_Pot_Collider"]
+visible = false
+polygon = PackedVector2Array(139, 31, 145, 31, 145, 39, 143, 39, 143, 35, 141, 35, 141, 39, 139, 39)
+
+[node name="Cookie_Pot_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
 
-[node name="Pasta_Pot" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Pasta_Pot_Collider"]
+[node name="Cookie_Pot" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cookie_Pot_Collider"]
 polygon = PackedVector2Array(133, 39, 133, 30, 139, 30, 139, 35, 138, 35, 138, 39, 137, 39, 137, 33, 135, 33, 135, 39)
+
+[node name="Cookie_Pepper_Olive_Oil_Bottle_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cookie_Pot_Collider"]
+visible = false
+polygon = PackedVector2Array(133, 39, 133, 30, 139, 30, 139, 39)
+
+[node name="Cookie_Pot_Pepper_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cookie_Pot_Collider"]
+visible = false
+polygon = PackedVector2Array(133, 39, 133, 30, 139, 30, 139, 39, 137, 39, 137, 33, 135, 33, 135, 39)
+
+[node name="Cookie_Pot_Oilve_Oil_Bottle_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cookie_Pot_Collider"]
+visible = false
+polygon = PackedVector2Array(133, 39, 133, 30, 139, 30, 139, 35, 138, 35, 138, 39)
 
 [node name="Tap_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
@@ -487,6 +517,11 @@ collision_layer = 2
 [node name="Food_Processor" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Food_Processor_Collider"]
 position = Vector2(89, 34.5)
 polygon = PackedVector2Array(-3, 4.5, -3, 2.5, -4, 2.5, -4, -4.5, -2, -4.5, 3, -4.5, 3, -2.5, 4, -2.5, 4, -1.5, 5, -1.5, 5, 1.5, 4, 1.54301, 4, 4.5)
+
+[node name="Food_Processor_Red_Coffee_Cup_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Food_Processor_Collider"]
+visible = false
+position = Vector2(89, 34.5)
+polygon = PackedVector2Array(-4, 4.5, -4, -4.5, -2, -4.5, 3, -4.5, 3, -2.5, 4, -2.5, 4, -1.5, 5, -1.5, 5, 1.5, 4, 1.54301, 4, 4.5)
 
 [node name="Red_Coffee_Cup_Left_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
@@ -538,3 +573,15 @@ collision_layer = 2
 [node name="Sauce_Pan" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Sauce_Pan_Collider"]
 position = Vector2(50, 38)
 shape = SubResource("RectangleShape2D_ktomw")
+
+[node name="Coffee_Beans_1_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+
+[node name="Coffee_Beans_1" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Coffee_Beans_1_Collider"]
+position = Vector2(144.5, 38.5)
+shape = SubResource("RectangleShape2D_r4728")
+
+[node name="Coffee_Beans_2_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+
+[node name="Coffee_Beans_2" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Coffee_Beans_2_Collider"]
+position = Vector2(137, 64)
+shape = SubResource("RectangleShape2D_p4i34")

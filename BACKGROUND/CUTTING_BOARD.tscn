@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb5hg60uixc8t"]
+
+[ext_resource type="Texture2D" uid="uid://dwskhdv53jp4q" path="res://BACKGROUND/IMAGES/Cutting_Board_Out.png" id="1_lpl0j"]
+
+[node name="Cutting_Board" type="Node2D"]
+
+[node name="Cutting_Board_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_lpl0j")
+centered = false

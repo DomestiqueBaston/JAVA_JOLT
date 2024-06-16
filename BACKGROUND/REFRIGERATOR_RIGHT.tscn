@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://ra2c3mr66sx3"]
+[gd_scene load_steps=15 format=3 uid="uid://ra2c3mr66sx3"]
 
-[ext_resource type="Texture2D" uid="uid://gym227kuxgio" path="res://BACKGROUND/Refrigerator_Right_Open.png" id="1_jhg0m"]
+[ext_resource type="Texture2D" uid="uid://gym227kuxgio" path="res://BACKGROUND/IMAGES/Refrigerator_Right_Open.png" id="1_jhg0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5xtp"]
 size = Vector2(5, 6)
@@ -10,6 +10,9 @@ size = Vector2(3, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uolm1"]
 size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7phv3"]
+size = Vector2(4, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7kg8s"]
 size = Vector2(6, 3)
@@ -53,24 +56,29 @@ collision_layer = 2
 position = Vector2(43.5, 33)
 shape = SubResource("RectangleShape2D_k5xtp")
 
-[node name="Milk_Bottle_Collider" type="Area2D" parent="Stuff_Colliders"]
-collision_layer = 2
-
-[node name="Milk_Bottle" type="CollisionShape2D" parent="Stuff_Colliders/Milk_Bottle_Collider"]
-position = Vector2(43.5, 41.5)
-shape = SubResource("RectangleShape2D_1u1ex")
-
 [node name="Fruit_Juice_Bottles_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
-[node name="Fruit_Juice_Bottle" type="CollisionShape2D" parent="Stuff_Colliders/Fruit_Juice_Bottles_Collider"]
+[node name="Fruit_Juice_Bottles" type="CollisionShape2D" parent="Stuff_Colliders/Fruit_Juice_Bottles_Collider"]
+position = Vector2(43.5, 41.5)
+shape = SubResource("RectangleShape2D_1u1ex")
+
+[node name="Milk_Bottles_Collider" type="Area2D" parent="Stuff_Colliders"]
+collision_layer = 2
+
+[node name="Milk_Bottles" type="CollisionShape2D" parent="Stuff_Colliders/Milk_Bottles_Collider"]
 position = Vector2(43, 50)
 shape = SubResource("RectangleShape2D_uolm1")
 
-[node name="Grapefruits_Collider" type="Area2D" parent="Stuff_Colliders"]
+[node name="Milk_Bottle_Out" type="CollisionShape2D" parent="Stuff_Colliders/Milk_Bottles_Collider"]
+visible = false
+position = Vector2(44, 50)
+shape = SubResource("RectangleShape2D_7phv3")
+
+[node name="Butter_Knife_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
-[node name="Grapefruits" type="CollisionShape2D" parent="Stuff_Colliders/Grapefruits_Collider"]
+[node name="Butter_Knife" type="CollisionShape2D" parent="Stuff_Colliders/Butter_Knife_Collider"]
 position = Vector2(28, 27.5)
 shape = SubResource("RectangleShape2D_7kg8s")
 
@@ -141,3 +149,7 @@ collision_layer = 2
 
 [node name="Door" type="CollisionPolygon2D" parent="Door_Collider"]
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 40, 53, 40, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)
+
+[node name="Door_Milk_Bottle_Out" type="CollisionPolygon2D" parent="Door_Collider"]
+visible = false
+polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 42, 53, 42, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)

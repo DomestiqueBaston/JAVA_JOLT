@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c27jjvn6y1y6n"]
+
+[ext_resource type="Texture2D" uid="uid://mtbkpijml1im" path="res://BACKGROUND/IMAGES/Olive_Oil_Bottle_Out.png" id="1_4jdqs"]
+
+[node name="Olive_Oil_Bottle" type="Node2D"]
+
+[node name="Olive_Oil_Bottle_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_4jdqs")
+centered = false

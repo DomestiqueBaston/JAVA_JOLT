@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b524pbt10bgh3"]
+
+[ext_resource type="Texture2D" uid="uid://cyghiycxbscrl" path="res://BACKGROUND/IMAGES/Coffee_Filter_Holder_Out.png" id="1_wc6bv"]
+
+[node name="Coffee_Filter_Holder" type="Node2D"]
+
+[node name="Coffee_Filter_Holder_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_wc6bv")
+centered = false

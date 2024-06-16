@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://keucd37jh7cv"]
 
-[ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/Coffee_Cupboard_Open.png" id="1_f6c4a"]
+[ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/IMAGES/Coffee_Cupboard_Open.png" id="1_f6c4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfsvx"]
 size = Vector2(6, 7)

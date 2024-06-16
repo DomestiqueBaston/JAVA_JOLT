@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw148nt7ey3ky"]
+
+[ext_resource type="Texture2D" uid="uid://b7itgwxv8j5lp" path="res://BACKGROUND/IMAGES/Red_Coffee_Cup_Out.png" id="1_pjlgo"]
+
+[node name="Left_Red_Coffee_Cup" type="Node2D"]
+
+[node name="Left_Red_Coffee_Cup_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_pjlgo")
+centered = false

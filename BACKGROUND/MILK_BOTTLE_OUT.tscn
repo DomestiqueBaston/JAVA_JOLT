@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://104ojbco1ej0"]
+
+[ext_resource type="Texture2D" uid="uid://urv2i5aor78o" path="res://BACKGROUND/IMAGES/Milk_Bottle_Out.png" id="1_a4c2a"]
+
+[node name="Milk_Bottle" type="Node2D"]
+
+[node name="Milk_Bottle_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_a4c2a")
+centered = false
