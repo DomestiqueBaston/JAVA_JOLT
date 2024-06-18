@@ -1,3 +1,7 @@
 res://ROWENA/ROWENA.tscn
 res://SHADER/KUWAHARA.gdshader
 res://UI/JJ_Theme.tres
+res://UI/UI.tscn
+res://UI/Mouse.gd
+res://BACKGROUND/BACKGROUND.tscn
+res://JAVA_JOLT.tscn

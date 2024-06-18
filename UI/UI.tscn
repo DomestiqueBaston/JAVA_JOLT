@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=22 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
+[ext_resource type="Script" path="res://UI/Mouse.gd" id="2_1tfy2"]
 [ext_resource type="Texture2D" uid="uid://vqd5mrv0n0yu" path="res://UI/Arrow.png" id="4_ru12x"]
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://UI/Eye.png" id="5_g7pd6"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing.ogg" id="5_ie2x1"]
@@ -409,6 +410,7 @@ offset_top = -25.0
 offset_right = -25.0
 offset_bottom = -25.0
 mouse_filter = 2
+script = ExtResource("2_1tfy2")
 
 [node name="Cursor" type="TextureRect" parent="Mouse"]
 visible = false
