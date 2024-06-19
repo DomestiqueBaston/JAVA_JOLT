@@ -1,14 +1,14 @@
 [gd_scene load_steps=33 format=3 uid="uid://clvr31ogitwwv"]
 
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/ROWENA.png" id="1_tqx3q"]
-[ext_resource type="AudioStream" uid="uid://l7jtkoklf4u0" path="res://ROWENA/Disgusted.ogg" id="2_q3h8f"]
-[ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/Open_Close.ogg" id="3_q5seg"]
-[ext_resource type="AudioStream" uid="uid://bt5748asskrtp" path="res://ROWENA/Phone_Fall.ogg" id="4_1fp5g"]
+[ext_resource type="AudioStream" uid="uid://l7jtkoklf4u0" path="res://ROWENA/Disgusted.ogg" id="2_5gboi"]
+[ext_resource type="AudioStream" uid="uid://dv5yjodb221qq" path="res://ROWENA/Spitting_Out.ogg" id="2_v3kx6"]
+[ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/Barefoot_Steps_A.ogg" id="3_72jic"]
+[ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/Open_Close.ogg" id="3_qt3j0"]
+[ext_resource type="AudioStream" uid="uid://bt5748asskrtp" path="res://ROWENA/Phone_Fall.ogg" id="3_wmn3r"]
+[ext_resource type="AudioStream" uid="uid://damkxikdmdura" path="res://ROWENA/Beep.ogg" id="4_7nc6a"]
 [ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://SOUND/Phone_Ring.ogg" id="5_gkr5f"]
-[ext_resource type="AudioStream" uid="uid://damkxikdmdura" path="res://ROWENA/Beep.ogg" id="5_rhdsr"]
-[ext_resource type="AudioStream" uid="uid://dv5yjodb221qq" path="res://ROWENA/Spitting_Out.ogg" id="6_jq64u"]
 [ext_resource type="AudioStream" uid="uid://cuwid5c2t025o" path="res://SOUND/Hang_Up.ogg" id="6_xr3ty"]
-[ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/Barefoot_Steps_A.ogg" id="7_ngb3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3djui"]
 size = Vector2(16, 68)
@@ -38,7 +38,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("2_q3h8f")
+"stream": ExtResource("2_5gboi")
 }],
 "times": PackedFloat32Array(0.9)
 }
@@ -85,7 +85,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_q5seg")
+"stream": ExtResource("3_qt3j0")
 }],
 "times": PackedFloat32Array(0.8)
 }
@@ -116,7 +116,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_q5seg")
+"stream": ExtResource("3_qt3j0")
 }],
 "times": PackedFloat32Array(0.8)
 }
@@ -147,7 +147,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_q5seg")
+"stream": ExtResource("3_qt3j0")
 }],
 "times": PackedFloat32Array(0.7)
 }
@@ -178,7 +178,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_q5seg")
+"stream": ExtResource("3_qt3j0")
 }],
 "times": PackedFloat32Array(0.8)
 }
@@ -209,7 +209,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_q5seg")
+"stream": ExtResource("3_qt3j0")
 }],
 "times": PackedFloat32Array(0.8)
 }
@@ -240,7 +240,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3_q5seg")
+"stream": ExtResource("3_qt3j0")
 }],
 "times": PackedFloat32Array(0.8)
 }
@@ -287,7 +287,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_1fp5g")
+"stream": ExtResource("3_wmn3r")
 }],
 "times": PackedFloat32Array(4.2)
 }
@@ -302,7 +302,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("5_rhdsr")
+"stream": ExtResource("4_7nc6a")
 }],
 "times": PackedFloat32Array(2.1)
 }
@@ -360,7 +360,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("6_jq64u")
+"stream": ExtResource("2_v3kx6")
 }],
 "times": PackedFloat32Array(1.2)
 }
@@ -574,7 +574,7 @@ libraries = {
 autoplay = "Wait_Base"
 
 [node name="Foot_Steps" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_ngb3e")
+stream = ExtResource("3_72jic")
 volume_db = -5.0
 bus = &"FX"
 

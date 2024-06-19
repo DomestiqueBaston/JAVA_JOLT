@@ -299,11 +299,13 @@ Les dialogues :
 
 La souris :
 
+	On quitte le jeu en cliquant sur la fenêtre de droite (comme vu précédemment) avec le curseur « Quit ».
 	L’action par défaut est le clique gauche.
 	Le curseur par défaut est la croix.
 	On obtient une info sur ce qui est désigné avec un clique droit.
 	Si le curseur est posé sur un objet dont on peut obtenir une information ou interagir avec, alors le curseur changera de couleur.
 	Si plusieurs actions sont possibles (regarder,  attraper, etc.), alors on fera défiler les options d’action avec la molette de la souris.
+	On règle le volume sonore général sur le BUS Master sur le poste de radio de la cuisine (par défaut, le son (et le curseur) sera sur Sound_Up – maximum – et on aura comme autres choix Sound_Down (-8 DB) et No_Sound (-80 DB). Ou alors on fait varier le volume par tranche à chaque fois qu’on clique (0, -2, -4, -8, -16, -40 et -80) et dans ce cas, le point de départ sera Sound_Down (-8 DB).
 
 
 L’inventaire :
@@ -312,12 +314,12 @@ L’inventaire :
 	Il sera assez succinct puisque Rowena ne peut transporter que 2 objets (à moins qu’ils ne soient petits et ou que plusieurs puissent être réunis en 1 objet dans une main comme par exemple des grains de café).
 	On portera ainsi l’inventaire à 4 objets s’ils sont petits.
 	Il sera possible de regarder les objets (curseur œil).
-	On pourra combiner les objets (curseur… je ne sais pas encore).
+	On pourra combiner les objets (dans l’inventaire).
 	Il sera possible de « jeter » un objet (curseur poubelle (?) à condition qu’il ne soit pas unique ou à considérer que cela signifie ranger, remettre à sa place, etc. sans que le personnage n’ait à le faire, ce qui serait chiant, il faut le reconnaître).
 	Les objets composant l’inventaire se trouverons sous forme de texte car la résolution du jeu est trop basse pour des images lisibles (sans compter qu’il faudrait avoir aussi le shader Kuwahara dessus).
 	
 	Interactions avec les éléments de l’inventaire :
-	Elles se feront dans l’espace inventaire (!) de la même manière que dans le décor donc avec le curseur qui change d’aspect en fonction de ce qu’il est possible de faire avec les objets contenus dans l’inventaire. Pour combiner un élément avec un autre, il faudra en sélectionner un qui passera en rouge et ensuite le second. S’il doit se passer quelque chose, alors on n’aura plus qu’un nouvel objet dans l’inventaire à la place des deux précédents (sauf éventuelle indication contraire) et tout reprendra une couleur par défaut (et la forme concernant le curseur).
+	Elles se feront dans l’espace inventaire (!) de la même manière que dans le décor donc avec le curseur qui change d’aspect en fonction de ce qu’il est possible de faire avec les objets contenus dans l’inventaire. Pour combiner un élément avec un autre, il faudra en sélectionner un qui passera en rouge et ensuite le second (avec le curseur Cross_Active). S’il doit se passer quelque chose, alors on n’aura plus qu’un nouvel objet dans l’inventaire à la place des deux précédents (sauf éventuelle indication contraire) et tout reprendra une couleur par défaut (et la forme concernant le curseur). Si l’action est impossible/inutile, on aura un commentaire de Rowena.
 	S’il faut utiliser un élément de l’inventaire avec un autre du décor, alors il faudra cliquer sur « sortir » de l’inventaire pour le fermer (le curseur gardera sa couleur) puis cliquer sur l’élément du décor. S’il doit se passer quelque chose, alors en fonction de ce qui est prévu… 
 	Version alternative (qui a ma préférence malgré le risque de fermer la fenêtre à chaque instant) : Pour sortir de l’inventaire, il suffit de déplacer le curseur à l’extérieur de la fenêtre d’inventaire.
 
@@ -327,7 +329,7 @@ Notes de trucs importants que je ne sais pas où mettre.
 
 
 Les animations :
-	Il faudra prendre garde à ce que Rowena soit devant le plan de travail de la cuisine (pas à droite de l’écran ni à gauche) pour jouer les animations liées à ce qu’elle fait quand elle tourne le dos car ces animations supposent qu’elle fait des trucs sur le comptoir (plus ou moins).
+	Il faudra prendre garde à ce que Rowena soit devant le plan de travail de la cuisine (pas à droite de l’écran ni à gauche) pour jouer les animations liées à ce qu’elle fait quand elle tourne le dos car ces animations supposent qu’elle fasse des trucs sur le comptoir (plus ou moins).
 
 
 Les trucs à régler :

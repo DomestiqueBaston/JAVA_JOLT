@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dol47lh1gupsx"]
+[gd_scene load_steps=19 format=3 uid="uid://dol47lh1gupsx"]
 
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/IMAGES/BG_Lights_On.png" id="1_mxm7a"]
 [ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/IMAGES/Radio_On_Lights_On.png" id="2_46q67"]
@@ -6,10 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://0shmmmluyidr" path="res://INTRO_OUTRO/End.png" id="4_4oy66"]
 [ext_resource type="AudioStream" uid="uid://b6cpsyavomfrk" path="res://INTRO_OUTRO/Music_Off.ogg" id="5_ayqnn"]
 [ext_resource type="AudioStream" uid="uid://d5d7mofo1pkv" path="res://INTRO_OUTRO/Snoring.ogg" id="5_gmlpy"]
+[ext_resource type="Shader" path="res://SHADER/KUWAHARA.gdshader" id="5_y1t33"]
 [ext_resource type="AudioStream" uid="uid://cdk4cbg43ly8j" path="res://INTRO_OUTRO/Opening_Door.ogg" id="6_ju8ck"]
 [ext_resource type="AudioStream" uid="uid://cd88xgmqxtv7m" path="res://INTRO_OUTRO/Steps.ogg" id="7_wbyuv"]
 [ext_resource type="AudioStream" uid="uid://bi1ej7wmde8ep" path="res://INTRO_OUTRO/Closing_Door.ogg" id="8_2ywjy"]
 [ext_resource type="AudioStream" uid="uid://dcxe430338t0p" path="res://INTRO_OUTRO/Going_To_Bed.ogg" id="9_w327o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a06ih"]
+shader = ExtResource("5_y1t33")
+shader_parameter/radius = 1
+shader_parameter/offset = Vector3(0.03, -0.02, -0.03)
 
 [sub_resource type="Animation" id="Animation_laq0e"]
 resource_name = "Outro"
@@ -234,6 +240,44 @@ _data = {
 "RESET": SubResource("Animation_c2bm3")
 }
 
+[sub_resource type="Animation" id="Animation_hknbg"]
+resource_name = "Moving_painting"
+length = 4.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kuwahara_Shader:material:shader_parameter/offset")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.4, 1.9, 2.1, 2.4, 2.8, 3, 3.4, 3.6, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0, 0.01, -0.01), Vector3(0, -0.02, 0.01), Vector3(0.01, -0.01, 0), Vector3(0.01, 0, 0.01), Vector3(0, 0, 0.02), Vector3(-0.01, 0, 0.01), Vector3(0, 0, -0.01), Vector3(0.01, -0.01, 0.01), Vector3(0, 0.01, 0.01), Vector3(0.01, 0.01, -0.01), Vector3(0.01, -0.01, 0.01)]
+}
+
+[sub_resource type="Animation" id="Animation_uoheo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kuwahara_Shader:material:shader_parameter/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.03, -0.02, -0.03)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ml54y"]
+_data = {
+"Moving_painting": SubResource("Animation_hknbg"),
+"RESET": SubResource("Animation_uoheo")
+}
+
 [node name="Outro" type="Node2D"]
 
 [node name="Fond" type="ColorRect" parent="."]
@@ -263,6 +307,12 @@ visible = false
 texture = ExtResource("4_4oy66")
 centered = false
 
+[node name="Kuwahara_Shader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_a06ih")
+offset_right = 188.0
+offset_bottom = 68.0
+mouse_filter = 2
+
 [node name="Opening_Door" type="AudioStreamPlayer2D" parent="."]
 volume_db = 2.5
 bus = &"INTRO_OUTRO"
@@ -286,8 +336,14 @@ bus = &"INTRO_OUTRO"
 [node name="Snoring" type="AudioStreamPlayer2D" parent="."]
 bus = &"INTRO_OUTRO"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Animation_Outro" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_myp3g")
 }
 autoplay = "Outro"
+
+[node name="Animation_Painting" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ml54y")
+}
+autoplay = "Moving_painting"

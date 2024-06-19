@@ -3,3 +3,7 @@ res://UI/JJ_Theme.tres
 res://SHADER/KUWAHARA.gdshader
 res://UI/UI.tscn
 res://INTRO_OUTRO/OUTRO.tscn
+res://INTRO_OUTRO/INTRO.tscn
+res://JAVA_JOLT.tscn
+res://BACKGROUND/BACKGROUND.tscn
+res://default_bus_layout.tres

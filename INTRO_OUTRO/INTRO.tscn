@@ -602,7 +602,7 @@ position = Vector2(0, -29)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_a4uop")
 hframes = 42
-vframes = 7
+vframes = 9
 
 [node name="Foot_Steps" type="AudioStreamPlayer2D" parent="ROWENA"]
 volume_db = -5.0
@@ -620,7 +620,7 @@ libraries = {
 }
 autoplay = "Moving_painting"
 
-[node name="Animation_Screens" type="AnimationPlayer" parent="."]
+[node name="Animation_Intro" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Animation_Painting")
 libraries = {
 "": SubResource("AnimationLibrary_8vcab")
@@ -671,4 +671,4 @@ bus = &"FX"
 [node name="Cupboard_Closed" type="AudioStreamPlayer2D" parent="."]
 bus = &"FX"
 
-[connection signal="animation_finished" from="Animation_Screens" to="." method="_on_animation_screens_animation_finished"]
+[connection signal="animation_finished" from="Animation_Intro" to="." method="_on_animation_screens_animation_finished"]
