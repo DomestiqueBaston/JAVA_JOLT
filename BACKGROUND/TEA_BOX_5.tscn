@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk8icx05nohvf"]
+
+[ext_resource type="Texture2D" uid="uid://d1hnsdvt862bo" path="res://BACKGROUND/IMAGES/Tea_Box_5_Out.png" id="1_tnuqt"]
+
+[node name="Tea_Box_5" type="Node2D"]
+
+[node name="Tea_Box_5_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_tnuqt")
+centered = false

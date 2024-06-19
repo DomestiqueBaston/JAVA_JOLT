@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://gkhi2lnbdk1w"]
+
+[ext_resource type="Texture2D" uid="uid://ddgn56hffulyf" path="res://BACKGROUND/IMAGES/Small_Cookie_Box_Out.png" id="1_6udry"]
+
+[node name="Small_Cookie_Box" type="Node2D"]
+
+[node name="Small_Cookie_Box_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_6udry")
+centered = false

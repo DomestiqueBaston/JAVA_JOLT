@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6v4j87wg8xqj"]
+
+[ext_resource type="Texture2D" uid="uid://cw5drdf86kasd" path="res://BACKGROUND/IMAGES/Large_Glasses_Out.png" id="1_qeukd"]
+
+[node name="Large_Glasses" type="Node2D"]
+
+[node name="Large_Glasses_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_qeukd")
+centered = false

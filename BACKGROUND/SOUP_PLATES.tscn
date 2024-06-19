@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkfebpcow813r"]
+
+[ext_resource type="Texture2D" uid="uid://dxmvbufnu25" path="res://BACKGROUND/IMAGES/Soup_Plates_Out.png" id="1_knxgr"]
+
+[node name="Soup_Plates" type="Node2D"]
+
+[node name="Soup_Plates_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_knxgr")
+centered = false

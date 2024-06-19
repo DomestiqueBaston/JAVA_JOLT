@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://btfonqst3bx6s"]
+
+[ext_resource type="Texture2D" uid="uid://dl0l3n80hgryd" path="res://BACKGROUND/IMAGES/Canned_Green_Beans_1_Out.png" id="1_ycrtf"]
+
+[node name="Canned_Green_Beans_1" type="Node2D"]
+
+[node name="Canned_Green_Beans_1_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_ycrtf")
+centered = false

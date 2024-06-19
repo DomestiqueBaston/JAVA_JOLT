@@ -1,15 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhm7kqnf3wtj3"]
+[gd_scene load_steps=9 format=3 uid="uid://dhm7kqnf3wtj3"]
 
 [ext_resource type="Texture2D" uid="uid://beo8dh43vs6vt" path="res://BACKGROUND/IMAGES/Cupboard_Upper_Center_Left_Open.png" id="1_otodu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xam3h"]
 size = Vector2(7, 3)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijoc3"]
+size = Vector2(4, 3)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx1uu"]
 size = Vector2(7, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8cli"]
+size = Vector2(4, 5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gp6n"]
 size = Vector2(6, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw20i"]
+size = Vector2(6, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w554"]
 size = Vector2(5, 25)
@@ -21,7 +30,6 @@ texture = ExtResource("1_otodu")
 centered = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
-visible = false
 
 [node name="Small_Wine_Glasses_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
@@ -30,6 +38,11 @@ collision_layer = 2
 position = Vector2(80.5, 8.5)
 shape = SubResource("RectangleShape2D_xam3h")
 
+[node name="Small_Wine_Glasses_Out" type="CollisionShape2D" parent="Stuff_Colliders/Small_Wine_Glasses_Collider"]
+visible = false
+position = Vector2(79, 8.5)
+shape = SubResource("RectangleShape2D_ijoc3")
+
 [node name="Large_Glasses_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
@@ -37,12 +50,22 @@ collision_layer = 2
 position = Vector2(80.5, 16.5)
 shape = SubResource("RectangleShape2D_jx1uu")
 
+[node name="Large_Glasses_Out" type="CollisionShape2D" parent="Stuff_Colliders/Large_Glasses_Collider"]
+visible = false
+position = Vector2(79, 16.5)
+shape = SubResource("RectangleShape2D_r8cli")
+
 [node name="Soup_Plates_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
 [node name="Soup_Plates" type="CollisionShape2D" parent="Stuff_Colliders/Soup_Plates_Collider"]
 position = Vector2(80, 25)
 shape = SubResource("RectangleShape2D_6gp6n")
+
+[node name="Soup_Plates_Out" type="CollisionShape2D" parent="Stuff_Colliders/Soup_Plates_Collider"]
+visible = false
+position = Vector2(80, 25.5)
+shape = SubResource("RectangleShape2D_cw20i")
 
 [node name="Door_Collider" type="Area2D" parent="."]
 collision_layer = 2

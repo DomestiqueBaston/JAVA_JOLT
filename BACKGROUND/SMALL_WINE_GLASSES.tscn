@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3vo14bi5gpq5"]
+
+[ext_resource type="Texture2D" uid="uid://bubexnseo2kpg" path="res://BACKGROUND/IMAGES/Small_Wine_Glasses_Out.png" id="1_tpbe4"]
+
+[node name="Small_Wine_Glasses" type="Node2D"]
+
+[node name="Small_Wine_Glasses_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_tpbe4")
+centered = false
