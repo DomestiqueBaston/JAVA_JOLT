@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb3p3hqs4nx1h"]
+
+[ext_resource type="Texture2D" uid="uid://d083g84steba1" path="res://BACKGROUND/IMAGES/Left_Plate_Out.png" id="1_tll8n"]
+
+[node name="Left_Plate" type="Node2D"]
+
+[node name="Left_Plate_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_tll8n")
+centered = false

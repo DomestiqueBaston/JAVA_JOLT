@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7y04tvteegi8"]
+
+[ext_resource type="Texture2D" uid="uid://dpcnnnwjxv8qv" path="res://BACKGROUND/IMAGES/Right_Bowls_Out.png" id="1_4xu6a"]
+
+[node name="Right_Bowls" type="Node2D"]
+
+[node name="Right_Bowls_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_4xu6a")
+centered = false

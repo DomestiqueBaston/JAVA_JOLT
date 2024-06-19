@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1ai22jploqfb"]
+
+[ext_resource type="Texture2D" uid="uid://d06udkx4vl2sf" path="res://BACKGROUND/IMAGES/Pizza_Out.png" id="1_6ng8x"]
+
+[node name="Pizza" type="Node2D"]
+
+[node name="Pizza_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_6ng8x")
+centered = false

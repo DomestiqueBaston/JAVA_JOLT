@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://oikeqivw5dp5"]
+
+[ext_resource type="Texture2D" uid="uid://c475lqqi3oq1b" path="res://BACKGROUND/IMAGES/Left_Glass_Out.png" id="1_71rf2"]
+
+[node name="Left_Glass" type="Node2D"]
+
+[node name="Left_Glass_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_71rf2")
+centered = false

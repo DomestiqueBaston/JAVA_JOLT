@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5o71w1wnkpo2"]
+[gd_scene load_steps=7 format=3 uid="uid://b5o71w1wnkpo2"]
 
 [ext_resource type="Texture2D" uid="uid://dg218pv0vlcxy" path="res://BACKGROUND/IMAGES/Right_Glass_Cupboard_Open.png" id="1_803rn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qaswx"]
 size = Vector2(4, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx44g"]
+size = Vector2(4, 4)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a74sh"]
 size = Vector2(6, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfsnb"]
+size = Vector2(6, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swuem"]
 size = Vector2(8, 25)
@@ -26,18 +32,32 @@ collision_layer = 2
 position = Vector2(72, 25.5)
 shape = SubResource("RectangleShape2D_qaswx")
 
+[node name="Bowls_Out" type="CollisionShape2D" parent="Stuff_Colliders/Bowls_Collider"]
+visible = false
+position = Vector2(72, 26)
+shape = SubResource("RectangleShape2D_mx44g")
+
 [node name="Large_Bowls_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
 [node name="Large_Bowls" type="CollisionPolygon2D" parent="Stuff_Colliders/Large_Bowls_Collider"]
 polygon = PackedVector2Array(70, 19, 70, 17, 68, 17, 68, 13, 73, 13, 73, 18, 71, 19)
 
-[node name="Plates_Collider" type="Area2D" parent="Stuff_Colliders"]
+[node name="Large_Bowls_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Large_Bowls_Collider"]
+visible = false
+polygon = PackedVector2Array(70, 19, 70, 17, 68, 17, 68, 14, 73, 14, 73, 18, 71, 19)
+
+[node name="Right_Plates_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
-[node name="Plates" type="CollisionShape2D" parent="Stuff_Colliders/Plates_Collider"]
+[node name="Right_Plates" type="CollisionShape2D" parent="Stuff_Colliders/Right_Plates_Collider"]
 position = Vector2(71, 8.5)
 shape = SubResource("RectangleShape2D_a74sh")
+
+[node name="Right_Plates_Out" type="CollisionShape2D" parent="Stuff_Colliders/Right_Plates_Collider"]
+visible = false
+position = Vector2(71, 9)
+shape = SubResource("RectangleShape2D_dfsnb")
 
 [node name="Door_Collider" type="Area2D" parent="."]
 collision_layer = 2
