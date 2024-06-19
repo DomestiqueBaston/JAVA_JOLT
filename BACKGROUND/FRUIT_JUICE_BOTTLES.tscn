@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://qfesbdd5q8do"]
+
+[ext_resource type="Texture2D" uid="uid://l4jfropjntil" path="res://BACKGROUND/IMAGES/Fruit_Juice_Bottles_Out.png" id="1_or5j2"]
+
+[node name="Fruit_Juice_Bottles" type="Node2D"]
+
+[node name="Fruit_Juice_Bottles_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_or5j2")
+centered = false

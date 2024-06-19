@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://df07lfaii6h17"]
+
+[ext_resource type="Texture2D" uid="uid://dnps06e87ryyd" path="res://BACKGROUND/IMAGES/Eggs_Out.png" id="1_m0tg2"]
+
+[node name="Eggs" type="Node2D"]
+
+[node name="Eggs_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_m0tg2")
+centered = false

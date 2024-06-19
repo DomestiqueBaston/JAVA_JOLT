@@ -23,6 +23,8 @@ size = Vector2(8, 25)
 texture = ExtResource("1_803rn")
 centered = false
 
+[node name="Opens_Outs" type="Node2D" parent="."]
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Bowls_Collider" type="Area2D" parent="Stuff_Colliders"]

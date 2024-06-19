@@ -1,9 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://ra2c3mr66sx3"]
+[gd_scene load_steps=16 format=3 uid="uid://ra2c3mr66sx3"]
 
 [ext_resource type="Texture2D" uid="uid://gym227kuxgio" path="res://BACKGROUND/IMAGES/Refrigerator_Right_Open.png" id="1_jhg0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5xtp"]
 size = Vector2(5, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1cyp"]
+size = Vector2(3, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u1ex"]
 size = Vector2(3, 5)
@@ -47,6 +50,8 @@ size = Vector2(8, 4)
 texture = ExtResource("1_jhg0m")
 centered = false
 
+[node name="Open_Outs" type="Node2D" parent="."]
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Smoothie_Bottles_Collider" type="Area2D" parent="Stuff_Colliders"]
@@ -55,6 +60,10 @@ collision_layer = 2
 [node name="Smoothie_Bottles" type="CollisionShape2D" parent="Stuff_Colliders/Smoothie_Bottles_Collider"]
 position = Vector2(43.5, 33)
 shape = SubResource("RectangleShape2D_k5xtp")
+
+[node name="Smoothie_Bottles_Out" type="CollisionShape2D" parent="Stuff_Colliders/Smoothie_Bottles_Collider"]
+position = Vector2(44.5, 33)
+shape = SubResource("RectangleShape2D_a1cyp")
 
 [node name="Fruit_Juice_Bottles_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
@@ -101,6 +110,10 @@ collision_layer = 2
 
 [node name="Sauce_Pan" type="CollisionPolygon2D" parent="Stuff_Colliders/Sauce_Pan_Collider"]
 polygon = PackedVector2Array(27, 36, 27, 33, 29, 33, 29, 34, 33, 34, 33, 35, 29, 35, 29, 36)
+
+[node name="Sauce_Pan_Yoghurts_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Sauce_Pan_Collider"]
+visible = false
+polygon = PackedVector2Array(27, 38, 27, 33, 29, 33, 29, 34, 33, 34, 33, 35, 29, 35, 29, 38)
 
 [node name="Eggs_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
@@ -150,6 +163,30 @@ collision_layer = 2
 [node name="Door" type="CollisionPolygon2D" parent="Door_Collider"]
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 40, 53, 40, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)
 
+[node name="Door_Fruit_Juice_Smoothie_Out" type="CollisionPolygon2D" parent="Door_Collider"]
+visible = false
+polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 46, 47, 46, 53, 40, 53, 40, 47, 46, 47, 46, 36, 43, 36, 43, 30, 46, 30, 46, 22)
+
+[node name="Door_Smoothie_Milk_Bottle_Out" type="CollisionPolygon2D" parent="Door_Collider"]
+visible = false
+polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 42, 53, 42, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 43, 36, 43, 30, 46, 30, 46, 22)
+
+[node name="Door_Fruit_Juice_Out" type="CollisionPolygon2D" parent="Door_Collider"]
+visible = false
+polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 46, 47, 46, 53, 40, 53, 40, 47, 46, 47, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)
+
+[node name="Door_Smoothie_Out" type="CollisionPolygon2D" parent="Door_Collider"]
+visible = false
+polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 40, 53, 40, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 43, 36, 43, 30, 46, 30, 46, 22)
+
 [node name="Door_Milk_Bottle_Out" type="CollisionPolygon2D" parent="Door_Collider"]
 visible = false
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 42, 53, 42, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)
+
+[node name="Door_Fruit_Juice_Milk_Bottle_Out" type="CollisionPolygon2D" parent="Door_Collider"]
+visible = false
+polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 46, 47, 46, 53, 42, 53, 42, 47, 46, 47, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)
+
+[node name="Door_Fruit_Juice_Smoothie_Milk_Bottle_Out" type="CollisionPolygon2D" parent="Door_Collider"]
+visible = false
+polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 46, 47, 46, 53, 42, 53, 42, 47, 46, 47, 46, 36, 43, 36, 43, 30, 46, 30, 46, 22)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4ifmgaen8wfq"]
+
+[ext_resource type="Texture2D" uid="uid://8g0tp2srlni4" path="res://BACKGROUND/IMAGES/Smoothie_Bottle_Out.png" id="1_u45eg"]
+
+[node name="Smoothie_Bottles" type="Node2D"]
+
+[node name="Smoothie_Bottles_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_u45eg")
+centered = false

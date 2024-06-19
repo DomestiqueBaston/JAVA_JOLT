@@ -151,6 +151,8 @@ centered = false
 texture = ExtResource("4_ukw4d")
 centered = false
 
+[node name="Opens_Outs" type="Node2D" parent="."]
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]

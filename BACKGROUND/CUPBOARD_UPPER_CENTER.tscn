@@ -32,6 +32,8 @@ size = Vector2(4, 25)
 texture = ExtResource("1_2y3mg")
 centered = false
 
+[node name="Opens_Outs" type="Node2D" parent="."]
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Large_Cookie_Box_Collider" type="Area2D" parent="Stuff_Colliders"]
