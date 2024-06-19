@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckyipximouygl"]
+
+[ext_resource type="Texture2D" uid="uid://tfiyrldjgf65" path="res://BACKGROUND/IMAGES/Notched_Red_Coffee_Cup.png" id="1_hysqa"]
+
+[node name="Notched_Coffee_Cup" type="Node2D"]
+
+[node name="Notched_Coffee_Cup_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_hysqa")
+centered = false

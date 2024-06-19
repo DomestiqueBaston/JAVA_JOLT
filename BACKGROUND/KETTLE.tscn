@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://on575x5u6ig6"]
+
+[ext_resource type="Texture2D" uid="uid://b0ug13c7pmd0v" path="res://BACKGROUND/IMAGES/Kettle_Out.png" id="1_yw7bc"]
+
+[node name="Kettel" type="Node2D"]
+
+[node name="Kettle_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_yw7bc")
+centered = false

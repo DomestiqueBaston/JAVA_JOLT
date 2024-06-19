@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dghv7yscvjcpa"]
+
+[ext_resource type="Texture2D" uid="uid://fbaeg06q01a1" path="res://BACKGROUND/IMAGES/Yucca_Out.png" id="1_rqfng"]
+
+[node name="Yucca" type="Node2D"]
+
+[node name="Yucca_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_rqfng")
+centered = false

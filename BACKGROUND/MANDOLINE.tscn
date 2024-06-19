@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://qcb7bomhvmx7"]
+
+[ext_resource type="Texture2D" uid="uid://73t1sr77us35" path="res://BACKGROUND/IMAGES/Mandoline_Out.png" id="1_6xefn"]
+
+[node name="Mandoline" type="Node2D"]
+
+[node name="Mandoline_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_6xefn")
+centered = false

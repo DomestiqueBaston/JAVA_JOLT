@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://beyd0ygbqmt3b"]
+
+[ext_resource type="Texture2D" uid="uid://cvmkeery1kpah" path="res://BACKGROUND/IMAGES/Tupperware_Out.png" id="1_76ou1"]
+
+[node name="Tupperware" type="Node2D"]
+
+[node name="Tupperware_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_76ou1")
+centered = false

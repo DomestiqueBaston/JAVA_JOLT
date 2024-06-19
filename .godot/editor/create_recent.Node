@@ -1,8 +1,8 @@
-AudioStreamPlayer2D
 CollisionShape2D
+CollisionPolygon2D
+AudioStreamPlayer2D
 Area2D
 Node2D
-CollisionPolygon2D
 ColorRect
 AnimationPlayer
 CanvasLayer

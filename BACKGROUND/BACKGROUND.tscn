@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=48 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/IMAGES/BG_Lights_On.png" id="2_8x8bd"]
@@ -82,6 +82,9 @@ size = Vector2(9, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1efa"]
 size = Vector2(19, 13)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc8r7"]
+size = Vector2(6, 10)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw3ik"]
 size = Vector2(8, 7)
 
@@ -115,8 +118,8 @@ size = Vector2(4, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fc325"]
 size = Vector2(2, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rphqw"]
-size = Vector2(8, 3)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwl77"]
+size = Vector2(4, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkco4"]
 size = Vector2(4, 2)
@@ -365,6 +368,11 @@ collision_layer = 2
 [node name="Coffee_Maker" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Coffee_Maker_Collider"]
 polygon = PackedVector2Array(125, 29, 131, 29, 131, 37, 129, 37, 129, 39, 125, 39)
 
+[node name="Coffee_Maker_Red_Coffee_Cup_Out" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Coffee_Maker_Collider"]
+visible = false
+position = Vector2(128, 34)
+shape = SubResource("RectangleShape2D_mc8r7")
+
 [node name="Radio_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
 
@@ -441,10 +449,10 @@ collision_layer = 2
 position = Vector2(152.5, 35.5)
 shape = SubResource("RectangleShape2D_xq8sn")
 
-[node name="Red_Coffee_Cup_Right_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+[node name="Notched_Coffee_Cup_Right_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
 
-[node name="Red_Coffee_Cup_Right" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Red_Coffee_Cup_Right_Collider"]
+[node name="Notched_Coffee_Cup_Right" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Notched_Coffee_Cup_Right_Collider"]
 position = Vector2(131, 38)
 shape = SubResource("RectangleShape2D_hney6")
 
@@ -459,6 +467,7 @@ shape = SubResource("RectangleShape2D_fc325")
 collision_layer = 2
 
 [node name="Rice_Pot" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Rice_Pot_Collider"]
+visible = false
 polygon = PackedVector2Array(139, 35, 139, 31, 145, 31, 145, 39, 143, 39, 143, 35, 141, 35, 141, 39, 140, 39, 140, 35)
 
 [node name="Rice_Pot_Salt_Pepper_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Rice_Pot_Collider"]
@@ -474,7 +483,6 @@ visible = false
 polygon = PackedVector2Array(139, 35, 139, 31, 145, 31, 145, 38, 144, 38, 144, 39, 140, 39, 140, 35)
 
 [node name="Rice_Pot_Salt_Out_No_Coffee" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Rice_Pot_Collider"]
-visible = false
 polygon = PackedVector2Array(139, 35, 139, 31, 145, 31, 145, 39, 140, 39, 140, 35)
 
 [node name="Rice_Pot_Pepper_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Rice_Pot_Collider"]
@@ -509,27 +517,32 @@ polygon = PackedVector2Array(-5, -0.5, -5, -1.5, -3, -1.5, 0, -0.5, 1, -4.5, 3, 
 [node name="Pastic_Boxes_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
 
-[node name="Plastic_boxes" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Pastic_Boxes_Collider"]
+[node name="Plastic_boxes" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Pastic_Boxes_Collider"]
 position = Vector2(100, 37.5)
-shape = SubResource("RectangleShape2D_rphqw")
+polygon = PackedVector2Array(4, -1.5, 4, 1.5, -4, 1.5, -4, -0.5, -1, -0.5, -1, -1.5)
+
+[node name="Plastic_Boxes_Out" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Pastic_Boxes_Collider"]
+visible = false
+position = Vector2(98, 38)
+shape = SubResource("RectangleShape2D_gwl77")
 
 [node name="Mandoline_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
 
 [node name="Mandoline" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Mandoline_Collider"]
-polygon = PackedVector2Array(93, 39, 93, 36, 94, 36, 94, 33, 96, 33, 97, 34, 97, 36, 96, 36, 96, 39)
+polygon = PackedVector2Array(94, 39, 94, 33, 96, 33, 97, 34, 97, 37, 96, 37, 96, 39)
 
 [node name="Food_Processor_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
 
 [node name="Food_Processor" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Food_Processor_Collider"]
 position = Vector2(89, 34.5)
-polygon = PackedVector2Array(-3, 4.5, -3, 2.5, -4, 2.5, -4, -4.5, -2, -4.5, 3, -4.5, 3, -2.5, 4, -2.5, 4, -1.5, 5, -1.5, 5, 1.5, 4, 1.54301, 4, 4.5)
+polygon = PackedVector2Array(-3, 4.5, -3, 2.5, -4, 2.5, -4, -4.5, -2, -4.5, 3, -4.5, 3, -2.5, 4, -2.5, 4, -1.5, 4, 1.5, 5, 1.5, 5, 4.5)
 
 [node name="Food_Processor_Red_Coffee_Cup_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Food_Processor_Collider"]
 visible = false
 position = Vector2(89, 34.5)
-polygon = PackedVector2Array(-4, 4.5, -4, -4.5, -2, -4.5, 3, -4.5, 3, -2.5, 4, -2.5, 4, -1.5, 5, -1.5, 5, 1.5, 4, 1.54301, 4, 4.5)
+polygon = PackedVector2Array(-4, 4.5, -4, -4.5, -2, -4.5, 3, -4.5, 3, -2.5, 4, -2.5, 4, -1.5, 4, 1.5, 5, 1.5, 5, 4.5)
 
 [node name="Red_Coffee_Cup_Left_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
@@ -585,11 +598,13 @@ shape = SubResource("RectangleShape2D_ktomw")
 [node name="Coffee_Beans_1_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 
 [node name="Coffee_Beans_1" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Coffee_Beans_1_Collider"]
+visible = false
 position = Vector2(144.5, 38.5)
 shape = SubResource("RectangleShape2D_r4728")
 
 [node name="Coffee_Beans_2_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 
 [node name="Coffee_Beans_2" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Coffee_Beans_2_Collider"]
+visible = false
 position = Vector2(137, 64)
 shape = SubResource("RectangleShape2D_p4i34")
