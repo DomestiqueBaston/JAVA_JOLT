@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cdk4cbg43ly8j" path="res://INTRO_OUTRO/Opening_Door.ogg" id="6_ju8ck"]
 [ext_resource type="AudioStream" uid="uid://cd88xgmqxtv7m" path="res://INTRO_OUTRO/Steps.ogg" id="7_wbyuv"]
 [ext_resource type="AudioStream" uid="uid://bi1ej7wmde8ep" path="res://INTRO_OUTRO/Closing_Door.ogg" id="8_2ywjy"]
-[ext_resource type="AudioStream" uid="uid://dcxe430338t0p" path="res://INTRO_OUTRO/Go_To_Bed.ogg" id="9_w327o"]
+[ext_resource type="AudioStream" uid="uid://dcxe430338t0p" path="res://INTRO_OUTRO/Going_To_Bed.ogg" id="9_w327o"]
 
 [sub_resource type="Animation" id="Animation_laq0e"]
 resource_name = "Outro"
