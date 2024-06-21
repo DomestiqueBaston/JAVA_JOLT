@@ -114,26 +114,29 @@ Là où l’on peut trouver des éléments cachés nécessaires à une autre ten
 	Une fois l’heure atteinte, à ce moment-là, n’ayant plus trop le choix, Rowena acceptera de fouiller dans la poubelle sous l’évier pour récupérer le filtre à café plein de la veille. Le replacera dans la cafetière pour le repasser. Allumera la cafetière.
 	Quand le café sera passé, elle prendra la tasse rouge devant les couteaux de cuisine (à droite de la bouteille de lait sur le plan de travail) et pas celle à côté de la cafetière car elle est ébréchée. Se servira une tasse de café et la boira… pour la recracher aussitôt !
 
-Ce que Rowena peut dire de certaines choses qu’elle va prendre, etc.
+Ce que Rowena peut dire de certaines choses qu’elle va prendre ou pas, etc.
 
 
-	Couteau, fourchette, cuillère (couverts) : « Ok ! I’ll take only one. » Ou « One’s more than enough. » quand Rowena en a déjà un/une.
+	Couteau, fourchette, cuillère (couverts) dans le tiroir sous le toaster : « Ok ! I’ll take only one. » Ou « One’s more than enough. » quand Rowena en a déjà un/une.
 
-	Les couteaux : Quand Rowena voudra les utiliser elle dira « No way, awake as I am, I'm going to hurt myself. » Sauf pour la deuxième tentative.
-	Assiette, bol, etc. : « I'm not going to walk around all morning with this in my hand, or am I? Ok. Then. »
+	Les couteaux (couverts) : Quand Rowena voudra les utiliser elle dira « Awake as I am, I'm going to hurt myself. » Sauf pour la deuxième tentative pour couper un filtre.
+	Assiette, bol, etc. : « I'm not going to walk around with this, or am I? Well… »
 
-	Les grosses casseroles, Cocotte, etc. : « There's no way I'm dragging that around this morning. »
+	Les grosses casseroles, Cocotte, etc. : « There's no way I'm dragging that around . »
 	
-	Les placards au dessus de la hotte/micro-onde et du frigo : « Naaa! It’s too high, I've never put anything in it. »
+	Les placards au dessus de la hotte/micro-onde et du frigo : « Naaa! Too high, I've never put anything in it. »
+
 	Dans le four : « I'd have to clean it, it's so gross (and empty). »
+
+	Dans le tiroir sous le four : « It’s filled with burnt pizza remains... »
 
 	Placard de gauche de la hotte/micro-onde : « Glasses and plates. »
 
-	Tiroir à droite du lave-vaisselle : « It's where I store useless stuff like a garlic press. »
+	Tiroir à droite de la gazinière : « It's where I store useless stuff like a garlic press. »
 
-	Un presse-ail : « What could I possibly do with it now? »
+	Un presse-ail dans le tiroir d’outils de cuisine : « What could I possibly do with it now? »
 
-	Un tire-bouchon : « Hm... No, too soon. »
+	Un tire-bouchon dans le tiroir d’outils de cuisine : « Hm... No, too soon. »
 
 	Une chaise : « I'm fine, I've had enough rest so far. »
 
@@ -141,7 +144,7 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre, etc.
 
 	Un petit torchon : « It's clean, it'll be perfect! »
 
-	Un grand torchon : « It's disgusting, and I shouldn’t use it except for… I shouldn’t! »
+	Un grand torchon : « Hm… I shouldn’t use it except for… I shouldn’t! »
 
 	La radio : « I can adjust the sound of the game, that's clever! »
 
@@ -153,7 +156,18 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre, etc.
 
 	La cafetière : « It's hopelessly empty. I could cry... If I had time. Besides, the filter holder is stuck.»
 
-	Le robinet : « Yeah. And? »
+	Le robinet : « Yeah. And? » (on ne l’utilise que si on l’associe à quelque chose d’utile pour le jeu)
+	La cafetière à droite de l’évier : « It’s at the right place ! » (on ne l’utilise que combinée avec les bons objets)
+
+	Le pot de cookies à droite de la cafetière : « Only one but I need a coffee first. »
+
+	L’huile d’olive devant les cookies : « Ok but that’s to please you. »
+
+	Le pot riz à droite du pot de cookies : « No, it’s raw. »
+
+	Le sel devant le riz : « I’ll never use it with my coffee but ok. »
+
+	Le poivre à gauche du sel : « You always need some pepper ! »
 
 	L’interstice entre le placard et le lave-vaisselle à gauche : « Huh? What would I... Wow! »
 
@@ -166,9 +180,7 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre, etc.
 	
 	Le pot en verre à droite de la cafetière : « Full of raw pasta. »
 
-	La mandoline à gauche de l’évier : « Nope. Last time I nearly sliced my fingers off with that thing! »
-
-	La tasse rouge à droite de la cafetière : « No, I chipped it yesterday. I have another one. »
+	La tasse rouge à droite de la cafetière : « No, I chipped it yesterday. »
 
 	La tasse rouge à droite de la bouteille de lait : « Yeah, it's new and clean. »
 
@@ -180,7 +192,19 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre, etc.
 
 	La panier de pommes à gauche du lait : « Apples are ripe, but it's coffee that I need. »
 
-	Le yucca droite du frigo : « I'll be gardening this weekend. »
+	Le yucca à droite du frigo : « I'll be gardening this weekend. But okay, I’ll take it. »
+
+	La casserolle (sauce pan) à droite du Yucca sur la gazinière : « No, there’s still sauce in it. »
+
+	La bouilloire derrière la casserolle sur la gazinière : « If you say so... »
+
+	La cocotte (pressure cooker) sur la gazinière : « Ha ! Nope... »
+
+	Le panier de fruits juste à droite de la gazinière : « Just a red apple, nothing more. »
+
+	Le robot-mixer à gauche de la mandoline : « It’s not a Rank Xerox, no way. »
+
+	La mandoline à droite du robot-mixer : « As long as I don’t slice my fingers off. »
 
 	La hotte/micro-onde : « It works... If I turn it on. »
 
@@ -200,10 +224,10 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre, etc.
 
 	Le couteau à beurre : « Ok. I’ll take that. »
 
-	Le machin à eau froide et glaçons dans la porte du réfrigérateur/congélateur : « I hate this thing and never use it. But it works. »
-	Le tableau au dessus de la chaise : « A painting entitled “Monsieur le marquis et Madame”. I bought it from a so talented French painter. »
+	Le machin à eau froide et glaçons dans la porte du réfrigérateur/congélateur : « I hate this thing. But it works. »
+	Le tableau au dessus de la chaise : « A painting entitled “Monsieur le marquis et Madame”. »
 
-	Les interrupteurs : « I’m no Hubert Bonisseur de la Bath... »
+	Les interrupteurs : « I’m no Hubert Bonisseur de la Bath... » (on n’y touche donc pas !)
 
 	L’évier : « It's made of aluminium and I hate that. There are two plates in it. »
 
