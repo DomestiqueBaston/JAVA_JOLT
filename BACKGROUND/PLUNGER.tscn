@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://v32rvfempd7v"]
+
+[ext_resource type="Texture2D" uid="uid://c1unus3clvr6h" path="res://BACKGROUND/IMAGES/Plunger_Out.png" id="1_ljdgo"]
+
+[node name="Plunger" type="Node2D"]
+
+[node name="Plunger_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_ljdgo")
+centered = false

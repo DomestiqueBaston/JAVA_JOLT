@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsan28kgv6ic5"]
+
+[ext_resource type="Texture2D" uid="uid://cg7jx8tb8jpdu" path="res://BACKGROUND/IMAGES/Extinguisher_Out.png" id="1_cy137"]
+
+[node name="Extinguisher" type="Node2D"]
+
+[node name="Extinguisher_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_cy137")
+centered = false

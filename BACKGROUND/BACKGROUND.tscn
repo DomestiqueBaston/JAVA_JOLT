@@ -157,31 +157,31 @@ centered = false
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
 
-[node name="Lower_Cupboard_1_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+[node name="Kitchen_Cabinet_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
 collision_layer = 2
 
-[node name="Lower_Cupboard_1" type="CollisionShape2D" parent="Stuff_Colliders/Low/Lower_Cupboard_1_Collider"]
+[node name="Kitchen_Cabinet" type="CollisionShape2D" parent="Stuff_Colliders/Low/Kitchen_Cabinet_Collider"]
 position = Vector2(76, 54)
 shape = SubResource("RectangleShape2D_hj11s")
 
-[node name="Lower_Cupboard_2_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+[node name="Recycling_Closet_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
 collision_layer = 2
 
-[node name="Lower_Cupboard_2" type="CollisionShape2D" parent="Stuff_Colliders/Low/Lower_Cupboard_2_Collider"]
+[node name="Recycling_Closet" type="CollisionShape2D" parent="Stuff_Colliders/Low/Recycling_Closet_Collider"]
 position = Vector2(91.5, 51.5)
 shape = SubResource("RectangleShape2D_j18d4")
 
-[node name="Lower_Cupboard_3_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+[node name="Undersink_Cabinet_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
 collision_layer = 2
 
-[node name="Lower_Cupboard_3" type="CollisionShape2D" parent="Stuff_Colliders/Low/Lower_Cupboard_3_Collider"]
+[node name="Undersink_Cabinet" type="CollisionShape2D" parent="Stuff_Colliders/Low/Undersink_Cabinet_Collider"]
 position = Vector2(106.5, 51.5)
 shape = SubResource("RectangleShape2D_6tvcg")
 
-[node name="Lower_Cupboard_4_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+[node name="Cleaning_Closet_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
 collision_layer = 2
 
-[node name="Lower_Cupboard_4" type="CollisionShape2D" parent="Stuff_Colliders/Low/Lower_Cupboard_4_Collider"]
+[node name="Cleaning_Closet" type="CollisionShape2D" parent="Stuff_Colliders/Low/Cleaning_Closet_Collider"]
 position = Vector2(149, 53.5)
 shape = SubResource("RectangleShape2D_o8upq")
 
@@ -278,59 +278,59 @@ shape = SubResource("RectangleShape2D_yh4g6")
 
 [node name="Up" type="Node2D" parent="Stuff_Colliders"]
 
-[node name="Upper_Cupboard_1_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+[node name="Top_Left_Unused_Cupboard_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stuff_Colliders/Up/Upper_Cupboard_1_Collider"]
+[node name="Top_Left_Unused_Cupboard" type="CollisionShape2D" parent="Stuff_Colliders/Up/Top_Left_Unused_Cupboard_Collider"]
 position = Vector2(25, 11)
 shape = SubResource("RectangleShape2D_aq4uj")
 
-[node name="Upper_Cupboard_2_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+[node name="Left_Glass_Cupboard_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
 collision_layer = 2
 
-[node name="Upper_Cupboard_2" type="CollisionShape2D" parent="Stuff_Colliders/Up/Upper_Cupboard_2_Collider"]
+[node name="Left_Glass_Cupboard" type="CollisionShape2D" parent="Stuff_Colliders/Up/Left_Glass_Cupboard_Collider"]
 position = Vector2(44, 15.5)
 shape = SubResource("RectangleShape2D_whj2c")
 
-[node name="Upper_Cupboard_3_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+[node name="Top_Center_Unused_Cupboard__Collider" type="Area2D" parent="Stuff_Colliders/Up"]
 collision_layer = 2
 
-[node name="Upper_Cupboard_3" type="CollisionShape2D" parent="Stuff_Colliders/Up/Upper_Cupboard_3_Collider"]
+[node name="Top_Center_Unused_Cupboard" type="CollisionShape2D" parent="Stuff_Colliders/Up/Top_Center_Unused_Cupboard__Collider"]
 position = Vector2(58, 9.5)
 shape = SubResource("RectangleShape2D_fy2og")
 
-[node name="Upper_Cupboard_4_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+[node name="Right_Glass_Cupboard_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
 collision_layer = 2
 
-[node name="Upper_Cupboard_4" type="CollisionPolygon2D" parent="Stuff_Colliders/Up/Upper_Cupboard_4_Collider"]
+[node name="Right_Glass_Cupboard" type="CollisionPolygon2D" parent="Stuff_Colliders/Up/Right_Glass_Cupboard_Collider"]
 position = Vector2(72.5, 10)
 polygon = PackedVector2Array(-4.5, -7, -4.5, 7, -2.5, 7, -2.5, 16, -3.5, 16, -3.5, 18, 4.5, 18, 4.5, -7)
 
-[node name="Upper_Cupboard_5_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+[node name="Cupboard_Upper_Center_Left_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
 collision_layer = 2
 
-[node name="Upper_Cupboard_5" type="CollisionShape2D" parent="Stuff_Colliders/Up/Upper_Cupboard_5_Collider"]
+[node name="Cupboard_Upper_Center_Left" type="CollisionShape2D" parent="Stuff_Colliders/Up/Cupboard_Upper_Center_Left_Collider"]
 position = Vector2(82, 15.5)
 shape = SubResource("RectangleShape2D_4wncc")
 
-[node name="Upper_Cupboard_6_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+[node name="Cupboard_Upper_Center_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
 collision_layer = 2
 
-[node name="Upper_Cupboard_6_Collider" type="CollisionShape2D" parent="Stuff_Colliders/Up/Upper_Cupboard_6_Collider"]
+[node name="Cupboard_Upper_Center" type="CollisionShape2D" parent="Stuff_Colliders/Up/Cupboard_Upper_Center_Collider"]
 position = Vector2(93, 15.5)
 shape = SubResource("RectangleShape2D_mrsfs")
 
-[node name="Upper_Cupboard_7_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+[node name="Coffee_Cupboard_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
 collision_layer = 2
 
-[node name="Upper_Cupboard_7" type="CollisionShape2D" parent="Stuff_Colliders/Up/Upper_Cupboard_7_Collider"]
+[node name="Coffee_Cupboard" type="CollisionShape2D" parent="Stuff_Colliders/Up/Coffee_Cupboard_Collider"]
 position = Vector2(135, 15.5)
 shape = SubResource("RectangleShape2D_t3h6g")
 
-[node name="Upper_Cupboard_8_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+[node name="Upper_Right_Cupboard_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
 collision_layer = 2
 
-[node name="Upper_Cupboard_8_Collider" type="CollisionShape2D" parent="Stuff_Colliders/Up/Upper_Cupboard_8_Collider"]
+[node name="Upper_Right_Cupboard" type="CollisionShape2D" parent="Stuff_Colliders/Up/Upper_Right_Cupboard_Collider"]
 position = Vector2(151, 15.5)
 shape = SubResource("RectangleShape2D_3ht4j")
 

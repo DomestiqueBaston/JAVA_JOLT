@@ -1,10 +1,6 @@
-res://BACKGROUND/BACKGROUND.tscn
+res://JAVA_JOLT.tscn
 res://SHADER/KUWAHARA.gdshader
 res://UI/JJ_Theme.tres
-res://JAVA_JOLT.tscn
-res://UI/UI.tscn
-res://UI/Mouse_test.gd
-res://UI/Mouse_test_2.gd
-res://UI/Mouse_test_3.gd
-res://UI/Mouse_test_1.gd
-res://UI/New_Mouse.gd
+res://BACKGROUND/BACKGROUND.tscn
+res://BACKGROUND/UNDER_SINK_CABINET.tscn
+res://BACKGROUND/PLUNGER.tscn

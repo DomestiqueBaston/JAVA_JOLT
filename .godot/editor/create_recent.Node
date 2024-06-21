@@ -1,6 +1,6 @@
+CollisionShape2D
 ColorRect
 Node2D
-CollisionShape2D
 CollisionPolygon2D
 AudioStreamPlayer2D
 Area2D
