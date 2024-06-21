@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wc0vs0rj8hi6"
-path="res://.godot/imported/Oven_Open.png-14fc8d923af9dacc222695e2498f2699.ctex"
+path="res://.godot/imported/Oven_Open.png-638e0ed322dda57dbc0547a1d8fe3395.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/Oven_Open.png"
-dest_files=["res://.godot/imported/Oven_Open.png-14fc8d923af9dacc222695e2498f2699.ctex"]
+source_file="res://DEMO/Oven_Open.png"
+dest_files=["res://.godot/imported/Oven_Open.png-638e0ed322dda57dbc0547a1d8fe3395.ctex"]
 
 [params]
 
