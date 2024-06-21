@@ -295,6 +295,7 @@ Les dialogues :
 	Le texte s’affiche caractère après caractère (voir la « démo ») en émettant un petit son à chaque caractère (sauf les espaces).
 	Lorsque le texte sera trop long pour la taille de la zone réservée (si cela arrive), alors on utilisera un petit symbole en bas à droite de la zone avec « … » qui clignote invitant le joueur à cliquer pour afficher la suite du texte soit en faisant de la place en faisant remonter le texte d’une ligne pendant que le reste du texte s’affiche.
 	Chaque personnage aura une couleur de texte, ce qui évitera d’avoir à noter son nom ou de mettre un portrait (avec la très faible résolution du jeu, il faut économiser l’espace). On peut supposer que ce sera « bleu » pour Dr. F. et « rose » pour Rowena.
+	On affiche les entrées de dialogue de chaque personnage les unes après les autres. Donc à la fin de chaque entrée, on aura les « … » qui clignotent pour signifier qu’il faut cliquer pour la suite (et on vide la zone de dialogue avant de passer texte du personnage suivant, bien entendu).
 
 
 La souris :
