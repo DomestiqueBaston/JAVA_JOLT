@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://bkfems2vnve1v"
-path="res://.godot/imported/Barefoot_steps_A.ogg-56b4cf2518b173dff333140b52e4d7b8.oggvorbisstr"
+path="res://.godot/imported/Barefoot_steps_A.ogg-2c5a3002a168cf783709a07bee5b9ed8.oggvorbisstr"
 
 [deps]
 
-source_file="res://demo/Barefoot_steps_A.ogg"
-dest_files=["res://.godot/imported/Barefoot_steps_A.ogg-56b4cf2518b173dff333140b52e4d7b8.oggvorbisstr"]
+source_file="res://DEMO/Barefoot_steps_A.ogg"
+dest_files=["res://.godot/imported/Barefoot_steps_A.ogg-2c5a3002a168cf783709a07bee5b9ed8.oggvorbisstr"]
 
 [params]
 
