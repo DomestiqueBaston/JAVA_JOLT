@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgoxweobiac5e"
-path="res://.godot/imported/ROWENA.png-a85b4a6d7298bf1a6527016390ad65da.ctex"
+path="res://.godot/imported/ROWENA.png-8d9249f7628c87798f570dbed53d7eb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DEMO/ROWENA.png"
-dest_files=["res://.godot/imported/ROWENA.png-a85b4a6d7298bf1a6527016390ad65da.ctex"]
+source_file="res://demo/ROWENA.png"
+dest_files=["res://.godot/imported/ROWENA.png-8d9249f7628c87798f570dbed53d7eb9.ctex"]
 
 [params]
 

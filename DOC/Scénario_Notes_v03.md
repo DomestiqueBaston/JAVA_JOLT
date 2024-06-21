@@ -334,6 +334,9 @@ Notes de trucs importants que je ne sais pas où mettre.
 Les animations :
 	Il faudra prendre garde à ce que Rowena soit devant le plan de travail de la cuisine (pas à droite de l’écran ni à gauche) pour jouer les animations liées à ce qu’elle fait quand elle tourne le dos car ces animations supposent qu’elle fasse des trucs sur le comptoir (plus ou moins).
 
+	/!\ ROWENA avance de 4 pixels par frame quand elle marche ! /!\
+
+
 
 Les trucs à régler :
 	
