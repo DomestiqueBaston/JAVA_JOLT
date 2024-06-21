@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bou50y45l6m8r"]
+
+[ext_resource type="Texture2D" uid="uid://b4adpodq8040w" path="res://BACKGROUND/IMAGES/Oven_Bottom_Open.png" id="1_xo771"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x36xk"]
+size = Vector2(20, 3)
+
+[node name="Oven_Bottom" type="Node2D"]
+
+[node name="Oven_Bottom_Open" type="Sprite2D" parent="."]
+texture = ExtResource("1_xo771")
+centered = false
+
+[node name="Opens_Outs" type="Node2D" parent="."]
+
+[node name="Door_Collider" type="Area2D" parent="."]
+
+[node name="Door" type="CollisionShape2D" parent="Door_Collider"]
+position = Vector2(67, 62.5)
+shape = SubResource("RectangleShape2D_x36xk")

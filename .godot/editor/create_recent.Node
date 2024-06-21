@@ -1,9 +1,9 @@
 CollisionShape2D
-ColorRect
+Area2D
 Node2D
+ColorRect
 CollisionPolygon2D
 AudioStreamPlayer2D
-Area2D
 AnimationPlayer
 CanvasLayer
 Label
