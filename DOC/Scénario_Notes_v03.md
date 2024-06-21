@@ -272,13 +272,13 @@ Troisième tentative :
 
 – Rowena allume la cafetière. Au bout de quelques instants, le café est passé.
 
-	La tasse rouge et la cafetière : « By the grace of Zeus! » Rowena boit le café et le recrache quasiment instantanément. Elle dira alors « Ugh ! This is absolutely rancid ! » Et on enchaîne sur la séquence animée finale.
+	La tasse rouge et la cafetière : « By the grace of Zeus! » Rowena boit le café et le recrache quasiment instantanément. Elle dira alors (après s’être retournée) « Ugh ! This is absolutely rancid ! » Et on enchaîne sur la séquence animée finale.
 
 	
 La voix intérieure (le docteur F.)
 
 
-	Il faut introduire ce personnage qui va intervenir entre chaque tentative dans le jeu uniquement au travers des dialogues étant un « ami » imaginaire de Rowena. Elle parle avec lui à voix haute même s’il n’est que dans sa tête à elle. Sa fonction sera de distiller ± quelques indices concernant le jeu en plus de se foutre de la gueule de Rowena et de l’enfoncer.
+	Il faut introduire ce personnage qui va intervenir entre chaque tentative dans le jeu uniquement au travers des dialogues étant un « ami » imaginaire de Rowena. Elle parle avec lui à voix haute même s’il n’est que dans sa tête à elle. Sa fonction sera de distiller ± quelques indices concernant le jeu en plus de se foutre de la gueule de Rowena et de l’enfoncer (soyons honnêtes, c’est là, surtout, sa fonction).
 	Le docteur F. est un écho du psy que consulte Rowena. Il n’est pas forcément très efficace sauf en ce qui concerne sa faculté à lui prendre de l’argent toutes les semaines. Il se prend pour Freud, est très sarcastique, méprisant et ramène tous ses commentaires au fait que Rowena est célibataire et ne baise pas souvent. Dr. F. étant une émanation de l’imagination de Rowena, il ne fait aucun doute qu’elle même est totalement obnubilée par son célibat et son manque de sport en chambre.
 	Il faudra introduire le docteur F. juste après que Rowena se soit rendu compte du fait qu’elle n’a plus de café. Un « court » dialogue à choix multiples entre les deux s’instaurera pour les présenter. Avec interactions du joueur et choix de réponse. La première fois, il n’y aura pas vraiment d’implications dans les choix. Ensuite, en fonction des réponses données par le joueur, Rowena obtiendra plus ou moins d’indices (de toute manière, ça ne sera vraiment jamais miraculeux).
 
