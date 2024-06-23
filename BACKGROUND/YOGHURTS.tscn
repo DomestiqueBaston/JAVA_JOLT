@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://72nmp5vveecf"]
+
+[ext_resource type="Texture2D" uid="uid://chj7pb6o1uf5x" path="res://BACKGROUND/IMAGES/Yoghurts_Out.png" id="1_sqr71"]
+
+[node name="Yoghurts" type="Node2D"]
+
+[node name="Yoghurts_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_sqr71")
+centered = false

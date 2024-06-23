@@ -54,7 +54,7 @@ collision_layer = 2
 [node name="Trash" type="CollisionPolygon2D" parent="Stuff_Colliders/Trash_Collider"]
 polygon = PackedVector2Array(102, 61, 96, 61, 96, 53.7958, 95, 53, 95, 51, 96, 51, 96, 49, 100, 48, 101, 48, 105, 49, 105, 60, 104, 59, 104, 52, 103, 52, 103, 59, 102, 60)
 
-[node name="Trash_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Trash_Collider"]
+[node name="Plunger_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Trash_Collider"]
 visible = false
 polygon = PackedVector2Array(96, 61, 96, 53.7958, 95, 53, 95, 51, 96, 51, 96, 49, 100, 48, 101, 48, 105, 49, 105, 61, 102, 61)
 

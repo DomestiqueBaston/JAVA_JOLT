@@ -117,49 +117,64 @@ Là où l’on peut trouver des éléments cachés nécessaires à une autre ten
 Ce que Rowena peut dire de certaines choses qu’elle va prendre ou pas, etc.
 
 
-	Couteau, fourchette, cuillère (couverts) dans le tiroir sous le toaster : « Ok ! I’ll take only one. » Ou « One’s more than enough. » quand Rowena en a déjà un/une.
+/!\ A moins que ce soit précisé autrement, Rowena donnera le nom de ce qu’elle désigne quand elle le regardera. /!\ A ne pas confondre avec son commentaire quand on veut prendre les choses.
 
-	Les couteaux (couverts) : Quand Rowena voudra les utiliser elle dira « Awake as I am, I'm going to hurt myself. » Sauf pour la deuxième tentative pour couper un filtre.
-	Assiette, bol, etc. : « I'm not going to walk around with this, or am I? Well… »
 
-	Les grosses casseroles, Cocotte, etc. : « There's no way I'm dragging that around . »
-	
-	Les placards au dessus de la hotte/micro-onde et du frigo : « Naaa! Too high, I've never put anything in it. »
+Le lave-vaisselle : « My dishwasher… » Quand il est ouvert « It’s empty. »
+
+	L’interstice entre le placard et le lave-vaisselle à gauche : « Huh? What would I... Wow! » (ramasse des grains de café). On n’a « accès » à ce collider que pour la 2ème tentative. Quand Rowena aura assez de grains de café, alors sa réplique sera : « That should be enough. »
+
+Le four : « My oven… » Quand il est ouvert «It's as empty as space is ! »
 
 	Dans le four : « I'd have to clean it, it's so gross (and empty). »
 
 	Dans le tiroir sous le four : « It’s filled with burnt pizza remains... »
 
-	Placard de gauche de la hotte/micro-onde : « Glasses and plates. »
+Cuttlery drawer : « That’s a nice Cuttlery drawer, isn’t it ? »
 
-	Tiroir à droite de la gazinière : « It's where I store useless stuff like a garlic press. »
+	Couteau, fourchette, cuillère (couverts) dans le tiroir sous le toaster : « Ok ! I’ll take one. » Ou « One’s more than enough. » quand Rowena en a déjà un/une.
 
-	Un presse-ail dans le tiroir d’outils de cuisine : « What could I possibly do with it now? »
+	Les couteaux (couverts) : Quand Rowena voudra les utiliser elle dira « Awake as I am, I'm going to hurt myself. » Sauf pour la deuxième tentative pour couper un filtre.
+	
+Les placards au dessus de la hotte/micro-onde et du frigo : « Naaa! Too high, I've never put anything in it. »
 
-	Un tire-bouchon dans le tiroir d’outils de cuisine : « Hm... No, too soon. »
+Left Glass Cupboard : « Glasses and plates. »
 
-	Une chaise : « I'm fine, I've had enough rest so far. »
+Kitchen Tool drawer : « It's where I store useless stuff like a garlic press. »
 
-	Un tabouret : « As soon as I find out what it's for, okay. »
+	Un garlic press dans le tiroir d’outils de cuisine : « What could I possibly do with it now? »
 
-	Un petit torchon : « It's clean, it'll be perfect! »
+	Un corkscrew dans le tiroir d’outils de cuisine : « Hm... No, too soon. »
 
-	Un grand torchon : « Hm… I shouldn’t use it except for… I shouldn’t! »
+	Une wooden spoon : « It was my childhood dream to have one, so I'm taking it. »
 
-	La radio : « I can adjust the sound of the game, that's clever! »
+Sur la gazinière :
 
-	La fenêtre de droite : « Ok ! I’ve had enough of this... » – QUIT THE GAME !
+	La casserolle (sauce pan) à droite du Yucca sur la gazinière : « No, there’s still sauce in it. »
+
+	La kettle derrière la casserolle sur la gazinière : « If you say so... »
+
+	La cocotte (pressure cooker) sur la gazinière : « There's no way I'm dragging that around. »
+
+Sur le plan de travail :
+
+	Le panier de fruits juste à droite de la gazinière : « Just a red apple, nothing more. »
+
+	Le robot-mixer à gauche de la mandoline : « It’s not a Rank Xerox, no way. »
+
+	La mandoline à droite du robot-mixer : « As long as I don’t slice my fingers off. »
+
+	La radio : « I can adjust the sound, that's clever! »
 
 	Le toaster : « It works and I can use it whenever I want. »
 
-	les pots d’épices et condiments devant le pot en terre : « At this hour? In my worst nightmares! »
+	La cafetière : « It's empty. I could cry if I had time. The filter holder is stuck.»
 
-	La cafetière : « It's hopelessly empty. I could cry... If I had time. Besides, the filter holder is stuck.»
+	Le coffee pot (uniquement un cache, on ne peut pas vraiment le prendre. Pour y accéder, on utilisera la cafetière complète, comme pour le filter holder) : « Ok ! I think it’s ready. »
 
-	Le robinet : « Yeah. And? » (on ne l’utilise que si on l’associe à quelque chose d’utile pour le jeu)
-	La cafetière à droite de l’évier : « It’s at the right place ! » (on ne l’utilise que combinée avec les bons objets)
+	Le robinet : « Yes. And? » (on ne l’utilise que si on l’associe à quelque chose d’utile pour le jeu)
 
-	Le pot de cookies à droite de la cafetière : « Only one but I need a coffee first. »
+	Le pot de cookies à droite de la cafetière : « Only one but I need my coffee first. »
 
 	L’huile d’olive devant les cookies : « Ok but that’s to please you. »
 
@@ -169,13 +184,13 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre ou pas, etc.
 
 	Le poivre à gauche du sel : « You always need some pepper ! »
 
-	L’interstice entre le placard et le lave-vaisselle à gauche : « Huh? What would I... Wow! »
-
 	Les premiers grains de café : « Well, that's something... »
 
-	Les seconds grains de café : « My precious! »
+	Les grains de café : « Oh ! My precious! »
 
-	Le pot en terre à gauche du toaster : « Full of raw rice and... Oh, miracle, coffee beans!  Not enough, but I'll take them. »
+	Le pot en terre à gauche du toaster : « Full of raw rice... Oh, miracle, coffee beans right beside!  »
+
+	Les grains de café à côté du pot de riz en terre : « Not enough, but I'll take them. »
 	Quand Rowena aura assez de grains de café, alors sa réplique sera : « That should be enough. »
 	
 	Le pot en verre à droite de la cafetière : « Full of raw pasta. »
@@ -190,27 +205,7 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre ou pas, etc.
 
 	La bouilloire : « There's still water in it. It's cold. »
 
-	La panier de pommes à gauche du lait : « Apples are ripe, but it's coffee that I need. »
-
 	Le yucca à droite du frigo : « I'll be gardening this weekend. But okay, I’ll take it. »
-
-	La casserolle (sauce pan) à droite du Yucca sur la gazinière : « No, there’s still sauce in it. »
-
-	La bouilloire derrière la casserolle sur la gazinière : « If you say so... »
-
-	La cocotte (pressure cooker) sur la gazinière : « Ha ! Nope... »
-
-	Le panier de fruits juste à droite de la gazinière : « Just a red apple, nothing more. »
-
-	Le robot-mixer à gauche de la mandoline : « It’s not a Rank Xerox, no way. »
-
-	La mandoline à droite du robot-mixer : « As long as I don’t slice my fingers off. »
-
-	La hotte/micro-onde : « It works... If I turn it on. »
-
-	La pizza dans le micro-onde : « It’s now rock hard ! »
-
-	Les placards en hauteur : « In here, I store plates, glasses, bowls, etc. »
 
 	Les tupperwares à gauche de l’évier : « I know how to make them fart. I’ll take one. »
 
@@ -218,34 +213,149 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre ou pas, etc.
 
 	La bouteille de lait devant la planche à découper : « Only sour milk. »
 
-	Le réfrigérateur/congélateur : « Yes, way too big for my needs. »
+Ailleurs dans la cuisine :
 
-	Le beurrier dans le réfrigérateur : « Butter. There's a little knife in it. »
+	La fenêtre au dessus de l’évier : « A window. It allows light to enter while maintaining a constant temperature in the apartment. »
 
-	Le couteau à beurre : « Ok. I’ll take that. »
+	Une chaise : « I'm fine, I've had enough rest so far. »
 
-	Le machin à eau froide et glaçons dans la porte du réfrigérateur/congélateur : « I hate this thing. But it works. »
+	Un tabouret : « As soon as I find out what it's for, okay. »
+
+	Un petit torchon à côté de la fenêtre de droite : « It's clean, it'll be perfect! »
+
+	Un grand torchon à côté de la fenêtre de droite : « I shouldn’t use it except for… No, I shouldn’t! »
+
+	La fenêtre de droite : « Ok ! I’ve had enough of this… Alright ? » – QUIT THE GAME !
+
 	Le tableau au dessus de la chaise : « A painting entitled “Monsieur le marquis et Madame”. »
 
 	Les interrupteurs : « I’m no Hubert Bonisseur de la Bath... » (on n’y touche donc pas !)
 
-	L’évier : « It's made of aluminium and I hate that. There are two plates in it. »
+La hotte/micro-onde : « It works... If I turn it on. »
 
-	L’assiette dans l’évier : « It's dirty from yesterday's disgusting pizza. »
+	La pizza dans le micro-onde : « It’s now rock hard ! »	
 
-	Les fenêtres : « A window. It allows light to enter while maintaining a constant temperature in the apartment. »
+Le réfrigérateur/congélateur : « Yes, way too big for my needs. »
 
-	La petite casserole sur le four : « Good. Since we must... »
+Refrigerator Left : « That’s where frozen food is. »
 
-	Une cuillère en bois : « It was my childhood dream to have one, so I'm taking it. »
+	Tous les tiroirs : « Way too cold at this hour ! »
 
-	Un verre : « Well... Ok. »
+Refrigerator Right : « That’s a refrigerator… »
+
+	Le beurrier dans le réfrigérateur : « Butter. There's a little knife in it. »
+
+	Le couteau à beurre : « Ok. I’ll take that knife. »
+
+	Smoothie bottles : « I only drink it before working out. But Ok. »
+
+	Fruit Juice : « I only drink it before working out. But Ok. »
+
+	Milk bottles : « Ok for one. »
+
+	The sauce pan : « I’ll leave that here. »
+
+	Cream pots : « Not now. »
+
+	Yoghurts : « Ok, ok... »
+
+	Green pepper : « Way too early for that ! »
+
+	Tomatoes : « Hm… Nope ! »
+
+	Eggs : « Ok but I need to be extra careful. »
+
+	Cauliflower : « Not now. »
+
+	Yellow pepper : « Ok... No. I was kidding. »
+
+	Fruits : « Don’t you remember ? I need a coffee ! »
+	
+Cleaning Closet: « That’s where I store my cleaning stuff. »
+
+	Le « Destop » (Drain Cleaner) : «To make coffee ? »
+
+	La lessive : « I’ll use it this weekend. »
+
+	Le grand sceau : « Hm… Nope. »
+
+ 	La balayette dans le petit sceau : « What was my quest, anyway ? » (pas sûr du « anyway du tout).
+
+	Le petit sceau contenant la balayette : « What could I possibly do with it ? »
+
+	La serpillère : « It’s fealthy ! »
+
+Cupboard Upper Center : « I wonder what’s inside... »
+
+	La boîte de thé du dessus (la 5) : « Coffee, not tea… Or is it? »
+	
+	Les boîtes de thé du dessous (de 1 à 4) : « It'll come down on me for this… »
+
+	La petite boîte de cookies : « I shouldn't be having these cookies. »
+
+	La grande boîte de cookies : «That’s way too much right now. »
+
+Cupboard Upper Center Left : « A cupboard… »
+
+	Un petit verre de vin : « eventually, yes. »
+
+	Un grand verre : « Ok. »
+
+	Une assiette à soupe : « Yes, that’s definitely needed ! »
+
+Kitchen Cabinet : « A cabinet… »
+
+	La cocotte : « There's no way I'm dragging that around. »
+
+	Le Rice cooker : « Please... » (No!)
+
+Left Glass Cupboard : « Magical ! I can see through the door. »
+
+	Un verre de vin : « Only one is fine with me. »
+
+	Un verre : « as long as I only take one... »
+
+	Une assiette : « Good. »
+
+Private Drawer : « It’s my private drawer... ». Si on veut le fouiller : « Nobody should ever know what’s inside. »
+
+Les tiroirs entre le précédent et le suivant sont vide !
+
+Top Left Drawer : « My junk drawer. »
 
 	Un filtre à café : « This could be a first step. »
 
 	Le rouleau de scotch : « Could be useful. »
 
-	La poubelle sous l’évier : Lorsque Roxena veut fouiller la poubelle mais qu’il n’est pas encore temps pour elle de le faire, alors elle dit « Yes, when I was a kid, I used to love playing in the dump. When I was a kid... ». Quand il est enfin temps pour elle, alors elle dit « Ok. Not much of a choice, now. Let's get that yesterday's coffee... »
+
+The Recycling Closet : « That’s the recycling closet ».
+
+	En le fouillant la poubelle : « It’s half full of plastic and paper. »
+
+
+Le machin à eau froide et glaçons dans la porte du réfrigérateur/congélateur de gauche : « I hate this thing. But it works. »
+
+Right Glass Cupboard : « Magic ! I see what’s in there. »
+
+	Right Plates : « Nice and clean. »
+
+	Right Large Bowls : « I have smaller ones but ok. »
+
+	Right Bowls : « I have bigger ones but ok. »
+
+Under Sink Cabinet : « Oh my god ! What’s in it ? »
+
+	La poubelle : Lorsque Roxena veut fouiller la poubelle mais qu’il n’est pas encore temps pour elle de le faire, alors elle dit « Yes, when I was a kid, I used to love playing in the dump. When I was a kid... ». Quand il est enfin temps pour elle, alors elle dit « Ok. Not much of a choice, now. Let's get that yesterday's coffee... »
+
+	La ventouse (Plunger) : « I’ve always liked that tool. »
+
+	Un panier en plastique : « Okay, just because it's lightweight.  »
+
+	L’extincteur : « That's clever! Or is it...? »
+
+Upper Right Cupboard : « Big stuff in here. »
+
+	Les saladier, casserolles, grande cocotte et cocotte en terre : « There's no way I'm dragging that around. »
 Ce que Rowena dira lorsque le joueur la fera combiner les bons objets ensemble.
 
 
@@ -363,4 +473,4 @@ Les animations :
 
 
 Les trucs à régler :
-	
+	Validation avant de quitter par la fenêtre… 

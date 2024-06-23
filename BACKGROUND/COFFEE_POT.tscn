@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5kxuu04ad4l7"]
+
+[ext_resource type="Texture2D" uid="uid://ud8j5q8o1h0b" path="res://BACKGROUND/IMAGES/Coffee_Bottle_Out.png" id="1_pibha"]
+
+[node name="Coffee_Pot" type="Node2D"]
+
+[node name="Coffee_Pot_Out" type="Sprite2D" parent="."]
+texture = ExtResource("1_pibha")
+centered = false
