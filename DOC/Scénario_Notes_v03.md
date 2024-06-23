@@ -297,7 +297,7 @@ Cupboard Upper Center : « I wonder what’s inside... »
 
 Cupboard Upper Center Left : « A cupboard… »
 
-	Un petit verre de vin : « eventually, yes. »
+	Un petit verre à vin : « eventually, yes. »
 
 	Un grand verre : « Ok. »
 
@@ -461,7 +461,7 @@ L’inventaire :
 	Version alternative (qui a ma préférence malgré le risque de fermer la fenêtre à chaque instant) : Pour sortir de l’inventaire, il suffit de déplacer le curseur à l’extérieur de la fenêtre d’inventaire.
 
 	Interactions avec les éléments dans les tiroirs :
-	La zone d’inventaire servira à afficher le contenu des tiroirs puisqu’on ne voit pas ce qu’ils contiennent. Une liste sera donnée du contenu et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible.
+	La zone d’inventaire servira à afficher le contenu des tiroirs puisqu’on ne voit pas ce qu’ils contiennent. Une liste sera donnée du contenu et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible si besoin (voire au dessus).
 Notes de trucs importants que je ne sais pas où mettre.
 
 
@@ -473,4 +473,4 @@ Les animations :
 
 
 Les trucs à régler :
-	Validation avant de quitter par la fenêtre… 
+	Validation avant de quitter par la fenêtre ?
