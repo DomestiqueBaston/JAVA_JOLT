@@ -54,7 +54,8 @@ func _type_one_character():
 	if i >= 0 and i < n:
 		if $Boxes/Dialogue_Box/Dialogue.text[i] != ' ':
 			$Typing.play()
-		$Boxes/Dialogue_Box/Dialogue.visible_characters += 1
+		i += 1
+		$Boxes/Dialogue_Box/Dialogue.visible_characters = i
 	if i < 0 or i == n:
 		$Boxes/Dialogue_Box/Typing_Timer.stop()
 		emit_signal("_typing_finished")
