@@ -610,6 +610,8 @@ shape = SubResource("RectangleShape2D_ncb4q")
 [node name="Typing" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(1, 1)
 stream = ExtResource("5_ie2x1")
+volume_db = 2.5
+bus = &"FX"
 
 [node name="Dialogue_AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
