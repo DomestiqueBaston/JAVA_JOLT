@@ -413,7 +413,6 @@ mouse_filter = 1
 theme = ExtResource("1_00ud7")
 text = "Dialogue box"
 autowrap_mode = 2
-visible_characters_behavior = 1
 
 [node name="Typing_Timer" type="Timer" parent="Boxes/Dialogue_Box"]
 
