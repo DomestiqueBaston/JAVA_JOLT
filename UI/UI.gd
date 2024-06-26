@@ -2,10 +2,19 @@ extends CanvasLayer
 
 enum { ROWENA, DOCTOR }
 
+## Dialogue typing speed, in characters per seconds.
 @export var characters_per_second := 15
+
+## Scale applied to pitch of sound when Rowena types.
 @export var rowena_typing_pitch: float = 6
+
+## Scale applied to pitch of sound when the doctor types.
 @export var doctor_typing_pitch: float = 1
+
+## Color of dialogue text when Rowena speaks.
 @export var rowena_text_color := Color(0xed/255.0, 0x6f/255.0, 0x68/255.0)
+
+## Color of dialogue text when the doctor speaks.
 @export var doctor_text_color := Color(0x5b/255.0, 0x90/255.0, 0xc2/255.0)
 
 signal _typing_finished
