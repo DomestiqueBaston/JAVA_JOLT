@@ -51,13 +51,10 @@ func type_dialogue_text(text: String, speaker: int):
 func _type_one_character():
 	var n = $Boxes/Dialogue_Box/Dialogue.text.length()
 	var i = $Boxes/Dialogue_Box/Dialogue.visible_characters
-	if i >= 0:
-		while i < n:
-			i += 1
-			if $Boxes/Dialogue_Box/Dialogue.text[i-1] != ' ':
-				$Typing.play()
-				break
-		$Boxes/Dialogue_Box/Dialogue.visible_characters = i
+	if i >= 0 and i < n:
+		if $Boxes/Dialogue_Box/Dialogue.text[i] != ' ':
+			$Typing.play()
+		$Boxes/Dialogue_Box/Dialogue.visible_characters += 1
 	if i < 0 or i == n:
 		$Boxes/Dialogue_Box/Typing_Timer.stop()
 		emit_signal("_typing_finished")
