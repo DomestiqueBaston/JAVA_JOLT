@@ -3,6 +3,8 @@ extends CanvasLayer
 enum { ROWENA, DOCTOR }
 
 @export var characters_per_second := 15
+@export var rowena_typing_pitch: float = 6
+@export var doctor_typing_pitch: float = 1
 @export var rowena_text_color := Color(0xed/255.0, 0x6f/255.0, 0x68/255.0)
 @export var doctor_text_color := Color(0x5b/255.0, 0x90/255.0, 0xc2/255.0)
 
@@ -24,29 +26,34 @@ func tell_story():
 	await _next_click
 	clear_dialogue()
 
-func _set_dialogue_color(speaker: int):
+func _set_dialogue_style(speaker: int):
 	if speaker == ROWENA:
 		$Boxes/Dialogue_Box/Dialogue.self_modulate = rowena_text_color
+		$Typing.pitch_scale = 6
 	else:
 		$Boxes/Dialogue_Box/Dialogue.self_modulate = doctor_text_color
+		$Typing.pitch_scale = 1
 
 func clear_dialogue():
 	$Dialogue_AnimationPlayer.play("Close_Dialogue")
 	$Boxes/Dialogue_Box/Next.visible = false
 
 func set_dialogue_text(text: String, speaker: int):
-	_set_dialogue_color(speaker)
+	_set_dialogue_style(speaker)
 	$Boxes/Dialogue_Box/Dialogue.text = text
 	$Dialogue_AnimationPlayer.play("Open_Dialogue")
 	$Boxes/Dialogue_Box/Next.visible = true
 
 func type_dialogue_text(text: String, speaker: int):
-	_set_dialogue_color(speaker)
+	_set_dialogue_style(speaker)
 	$Boxes/Dialogue_Box/Dialogue.text = text
 	$Boxes/Dialogue_Box/Dialogue.visible_characters = 0
 	$Boxes/Dialogue_Box/Next.visible = false
 	$Boxes/Dialogue_Box/Typing_Timer.start(1.0 / characters_per_second)
 	$Dialogue_AnimationPlayer.play("Open_Dialogue")
+
+#func choose_response(choices: Array[String]) -> int:
+#	return 0
 
 func _type_one_character():
 	var n = $Boxes/Dialogue_Box/Dialogue.text.length()
