@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=29 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
+[ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
 [ext_resource type="Script" path="res://UI/New_Mouse.gd" id="2_mswu7"]
 [ext_resource type="Texture2D" uid="uid://vqd5mrv0n0yu" path="res://UI/IMAGES/Arrow.png" id="4_ru12x"]
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://UI/IMAGES/Eye.png" id="5_g7pd6"]
@@ -310,6 +311,7 @@ _data = {
 }
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ui3qd")
 
 [node name="Clickable" type="Control" parent="."]
 layout_mode = 3
@@ -412,9 +414,13 @@ text = "Dialogue box"
 autowrap_mode = 2
 visible_characters_behavior = 1
 
+[node name="Typing_Timer" type="Timer" parent="Boxes/Dialogue_Box"]
+wait_time = 0.1
+
 [node name="Next" type="Control" parent="Boxes/Dialogue_Box"]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="Three_Points" type="Label" parent="Boxes/Dialogue_Box/Next"]
 layout_mode = 1
@@ -430,6 +436,7 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_filter = 0
 theme = ExtResource("1_00ud7")
 theme_override_colors/font_color = Color(0.87451, 0.239216, 0.203922, 1)
 text = "..."
@@ -620,3 +627,6 @@ libraries = {
 "": SubResource("AnimationLibrary_5oxd5")
 }
 autoplay = "Blinking"
+
+[connection signal="timeout" from="Boxes/Dialogue_Box/Typing_Timer" to="." method="_type_one_character"]
+[connection signal="gui_input" from="Boxes/Dialogue_Box/Next/Three_Points" to="." method="_on_three_points_gui_input"]
