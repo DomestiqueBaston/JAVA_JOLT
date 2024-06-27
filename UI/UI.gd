@@ -19,6 +19,7 @@ enum { ROWENA, DOCTOR }
 
 signal _typing_finished
 signal _next_click
+signal _click_on_choice(which: int)
 
 func _ready():
 	tell_story()
@@ -33,63 +34,106 @@ func tell_story():
 		profession must face!", DOCTOR)
 	await _typing_finished
 	await _next_click
-	clear_dialogue()
+	var choices: Array[String] = [
+		"Doc, you are my nightmare. You know I can't wake up without it.",
+		"Just like you, this is a disaster, Doc. You know I need my coffee.",
+		"Doc, my nemesis. Can't you be helpful for once?"
+	]
+	var choice = await choose_response(choices)
+	print("choice = ", choice)
 
 func _set_dialogue_style(speaker: int):
 	if speaker == ROWENA:
-		$Boxes/Dialogue_Box/Dialogue.self_modulate = rowena_text_color
+		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
 		$Typing.pitch_scale = 6
 	else:
-		$Boxes/Dialogue_Box/Dialogue.self_modulate = doctor_text_color
+		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = doctor_text_color
 		$Typing.pitch_scale = 1
 
 func clear_dialogue():
-	$Dialogue_AnimationPlayer.play("Close_Dialogue")
-	$Boxes/Dialogue_Box/Next.visible = false
+	$Dialogue_AnimationPlayer.play("Close_Dialogue_1")
+	$Boxes/Dialogue_Box/BG/Next.visible = false
 
 func set_dialogue_text(text: String, speaker: int):
 	_set_dialogue_style(speaker)
-	$Boxes/Dialogue_Box/Dialogue.text = text
-	$Dialogue_AnimationPlayer.play("Open_Dialogue")
-	$Boxes/Dialogue_Box/Next.visible = true
+	$Boxes/Dialogue_Box/BG/Dialogue.text = text
+	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
+	$Boxes/Dialogue_Box/BG/Next.visible = true
 
 func type_dialogue_text(text: String, speaker: int):
 	_set_dialogue_style(speaker)
-	$Boxes/Dialogue_Box/Dialogue.text = text
-	$Boxes/Dialogue_Box/Dialogue.visible_characters = 0
-	$Boxes/Dialogue_Box/Next.visible = false
-	$Boxes/Dialogue_Box/Typing_Timer.start(1.0 / characters_per_second)
-	$Dialogue_AnimationPlayer.play("Open_Dialogue")
+	$Boxes/Dialogue_Box/BG/Dialogue.text = text
+	$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = 0
+	$Boxes/Dialogue_Box/BG/Next.visible = false
+	$Typing_Timer.start(1.0 / characters_per_second)
+	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
 
-#func choose_response(choices: Array[String]) -> int:
-#	return 0
+func choose_response(choices: Array[String]) -> int:
+	_set_dialogue_style(ROWENA)
+	$Boxes/Dialogue_Box/BG/Next.visible = false
+	$Boxes/Dialogue_Box/BG/Dialogue.text = choices[0]
+	if choices.size() > 1:
+		$Boxes/Dialogue_Box/BG2/Dialogue2.text = choices[1]
+		$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
+		if choices.size() > 2:
+			$Boxes/Dialogue_Box/BG3/Dialogue3.text = choices[2]
+			$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
+	$Dialogue_AnimationPlayer.play("Open_Dialogue_%d" % choices.size())
+	var choice = await _click_on_choice
+	$Dialogue_AnimationPlayer.play("Close_Dialogue_%d" % choices.size())
+	await $Dialogue_AnimationPlayer.animation_finished
+	return choice
 
 func _type_one_character():
-	var n = $Boxes/Dialogue_Box/Dialogue.text.length()
-	var i = $Boxes/Dialogue_Box/Dialogue.visible_characters
+	var n = $Boxes/Dialogue_Box/BG/Dialogue.text.length()
+	var i = $Boxes/Dialogue_Box/BG/Dialogue.visible_characters
 	if i >= 0 and i < n:
-		if $Boxes/Dialogue_Box/Dialogue.text[i] != ' ':
+		if $Boxes/Dialogue_Box/BG/Dialogue.text[i] != ' ':
 			$Typing.play()
 		i += 1
-		$Boxes/Dialogue_Box/Dialogue.visible_characters = i
+		$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = i
 	if i < 0 or i == n:
-		$Boxes/Dialogue_Box/Typing_Timer.stop()
+		$Typing_Timer.stop()
 		emit_signal("_typing_finished")
-		$Boxes/Dialogue_Box/Next.visible = true
+		$Boxes/Dialogue_Box/BG/Next.visible = true
 
-#
-# If the user clicks on the three points control, emit a _next_click signal.
-#
 func _on_three_points_gui_input(event: InputEvent):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			emit_signal("_next_click")
 
-#
-# If the user clicks on the dialogue box outside of the three points control,
-# skip to the end of the current text.
-#
-func _on_dialogue_gui_input(event):
+func _on_dialogue_1_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			$Boxes/Dialogue_Box/Dialogue.visible_characters = -1
+			# if Dialogue2 is visible, we are waiting for the user to choose
+			if $Boxes/Dialogue_Box/BG2/Dialogue2.visible:
+				_click_on_choice.emit(0)
+			# if not, we may be typing
+			else:
+				$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = -1
+
+func _on_dialogue_2_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			_click_on_choice.emit(1)
+
+func _on_dialogue_3_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			_click_on_choice.emit(2)
+
+func _on_dialogue_1_mouse_entered():
+	if $Boxes/Dialogue_Box/BG2/Dialogue2.visible:
+		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = Color.WHITE
+		$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
+		$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
+
+func _on_dialogue_2_mouse_entered():
+	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
+	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = Color.WHITE
+	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
+
+func _on_dialogue_3_mouse_entered():
+	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
+	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
+	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = Color.WHITE

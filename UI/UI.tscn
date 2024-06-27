@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=33 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
@@ -20,13 +20,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncb4q"]
 size = Vector2(1, 1)
 
-[sub_resource type="Animation" id="Animation_oyp0o"]
-resource_name = "Close_Dialogue"
+[sub_resource type="Animation" id="Animation_cpgsf"]
+resource_name = "Close_Dialogue_2"
 length = 0.30001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Boxes/Dialogue_Box/BG:self_modulate")
+tracks/0/path = NodePath("Boxes/Dialogue_Box/BG2:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Boxes/Dialogue_Box/BG:visible")
+tracks/1/path = NodePath("Boxes/Dialogue_Box/BG2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -50,7 +50,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Boxes/Dialogue_Box/Dialogue:visible")
+tracks/2/path = NodePath("Boxes/Dialogue_Box/BG2/Dialogue2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -59,14 +59,162 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boxes/Dialogue_Box/BG:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.752941), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boxes/Dialogue_Box/BG:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boxes/Dialogue_Box/BG/Dialogue:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
-[sub_resource type="Animation" id="Animation_a80s1"]
-resource_name = "Open_Dialogue"
+[sub_resource type="Animation" id="Animation_dm4gf"]
+resource_name = "Close_Dialogue_3"
 length = 0.30001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Boxes/Dialogue_Box/BG:self_modulate")
+tracks/0/path = NodePath("Boxes/Dialogue_Box/BG3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.752941), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boxes/Dialogue_Box/BG3:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boxes/Dialogue_Box/BG3/Dialogue3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boxes/Dialogue_Box/BG2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.752941), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boxes/Dialogue_Box/BG2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boxes/Dialogue_Box/BG2/Dialogue2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Boxes/Dialogue_Box/BG:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.752941), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Boxes/Dialogue_Box/BG:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Boxes/Dialogue_Box/BG/Dialogue:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_h5hi5"]
+resource_name = "Open_Dialogue_2"
+length = 0.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boxes/Dialogue_Box/BG2:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +226,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Boxes/Dialogue_Box/BG:visible")
+tracks/1/path = NodePath("Boxes/Dialogue_Box/BG2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -90,10 +238,158 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Boxes/Dialogue_Box/Dialogue:visible")
+tracks/2/path = NodePath("Boxes/Dialogue_Box/BG2/Dialogue2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boxes/Dialogue_Box/BG:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boxes/Dialogue_Box/BG:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boxes/Dialogue_Box/BG/Dialogue:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_i7m3u"]
+resource_name = "Open_Dialogue_3"
+length = 0.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boxes/Dialogue_Box/BG3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boxes/Dialogue_Box/BG3:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boxes/Dialogue_Box/BG3/Dialogue3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boxes/Dialogue_Box/BG:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boxes/Dialogue_Box/BG:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boxes/Dialogue_Box/BG/Dialogue:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Boxes/Dialogue_Box/BG2:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Boxes/Dialogue_Box/BG2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Boxes/Dialogue_Box/BG2/Dialogue2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -129,7 +425,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Boxes/Dialogue_Box/Dialogue:visible")
+tracks/2/path = NodePath("Boxes/Dialogue_Box/BG/Dialogue:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -138,11 +434,167 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boxes/Dialogue_Box/BG2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boxes/Dialogue_Box/BG2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boxes/Dialogue_Box/BG2/Dialogue2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Boxes/Dialogue_Box/BG3:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Boxes/Dialogue_Box/BG3:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Boxes/Dialogue_Box/BG3/Dialogue3:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oyp0o"]
+resource_name = "Close_Dialogue_1"
+length = 0.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boxes/Dialogue_Box/BG:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.752941), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boxes/Dialogue_Box/BG:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boxes/Dialogue_Box/BG/Dialogue:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_a80s1"]
+resource_name = "Open_Dialogue_1"
+length = 0.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boxes/Dialogue_Box/BG:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boxes/Dialogue_Box/BG:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boxes/Dialogue_Box/BG/Dialogue:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ot440"]
 _data = {
-"Close_Dialogue": SubResource("Animation_oyp0o"),
-"Open_Dialogue": SubResource("Animation_a80s1"),
+"Close_Dialogue_1": SubResource("Animation_oyp0o"),
+"Close_Dialogue_2": SubResource("Animation_cpgsf"),
+"Close_Dialogue_3": SubResource("Animation_dm4gf"),
+"Open_Dialogue_1": SubResource("Animation_a80s1"),
+"Open_Dialogue_2": SubResource("Animation_h5hi5"),
+"Open_Dialogue_3": SubResource("Animation_i7m3u"),
 "RESET": SubResource("Animation_igdpa")
 }
 
@@ -279,7 +731,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Boxes/Dialogue_Box/Next/Three_Points:visible")
+tracks/0/path = NodePath("Boxes/Dialogue_Box/BG/Next/Three_Points:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -294,7 +746,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Boxes/Dialogue_Box/Next/Three_Points:visible")
+tracks/0/path = NodePath("Boxes/Dialogue_Box/BG/Next/Three_Points:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -387,24 +839,21 @@ horizontal_alignment = 1
 autowrap_mode = 2
 visible_characters_behavior = 1
 
-[node name="Dialogue_Box" type="MarginContainer" parent="Boxes"]
+[node name="Dialogue_Box" type="VBoxContainer" parent="Boxes"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 13.0
 grow_horizontal = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
 
-[node name="BG" type="Panel" parent="Boxes/Dialogue_Box"]
+[node name="BG" type="PanelContainer" parent="Boxes/Dialogue_Box"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Dialogue" type="Label" parent="Boxes/Dialogue_Box"]
+[node name="Dialogue" type="Label" parent="Boxes/Dialogue_Box/BG"]
 visible = false
 custom_minimum_size = Vector2(186, 12)
 layout_mode = 2
@@ -414,15 +863,13 @@ theme = ExtResource("1_00ud7")
 text = "Dialogue box"
 autowrap_mode = 2
 
-[node name="Typing_Timer" type="Timer" parent="Boxes/Dialogue_Box"]
-
-[node name="Next" type="Control" parent="Boxes/Dialogue_Box"]
+[node name="Next" type="Control" parent="Boxes/Dialogue_Box/BG"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="Three_Points" type="Label" parent="Boxes/Dialogue_Box/Next"]
+[node name="Three_Points" type="Label" parent="Boxes/Dialogue_Box/BG/Next"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -439,6 +886,38 @@ size_flags_vertical = 8
 mouse_filter = 1
 theme = ExtResource("1_00ud7")
 text = "..."
+
+[node name="BG2" type="PanelContainer" parent="Boxes/Dialogue_Box"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Dialogue2" type="Label" parent="Boxes/Dialogue_Box/BG2"]
+visible = false
+custom_minimum_size = Vector2(186, 12)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+theme = ExtResource("1_00ud7")
+text = "Dialogue box 2"
+autowrap_mode = 2
+
+[node name="BG3" type="PanelContainer" parent="Boxes/Dialogue_Box"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Dialogue3" type="Label" parent="Boxes/Dialogue_Box/BG3"]
+visible = false
+custom_minimum_size = Vector2(186, 12)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+theme = ExtResource("1_00ud7")
+text = "Dialogue box 3"
+autowrap_mode = 2
 
 [node name="Inventory_Box" type="MarginContainer" parent="Boxes"]
 layout_mode = 1
@@ -482,6 +961,7 @@ mouse_filter = 2
 script = ExtResource("2_mswu7")
 
 [node name="Cross_Passive" type="TextureRect" parent="Mouse"]
+visible = false
 layout_mode = 0
 offset_left = -7.0
 offset_top = -7.0
@@ -613,6 +1093,8 @@ stream = ExtResource("5_ie2x1")
 volume_db = 1.5
 bus = &"FX"
 
+[node name="Typing_Timer" type="Timer" parent="."]
+
 [node name="Dialogue_AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ot440")
@@ -629,6 +1111,11 @@ libraries = {
 }
 autoplay = "Blinking"
 
-[connection signal="gui_input" from="Boxes/Dialogue_Box/Dialogue" to="." method="_on_dialogue_gui_input"]
-[connection signal="timeout" from="Boxes/Dialogue_Box/Typing_Timer" to="." method="_type_one_character"]
-[connection signal="gui_input" from="Boxes/Dialogue_Box/Next/Three_Points" to="." method="_on_three_points_gui_input"]
+[connection signal="gui_input" from="Boxes/Dialogue_Box/BG/Dialogue" to="." method="_on_dialogue_1_gui_input"]
+[connection signal="mouse_entered" from="Boxes/Dialogue_Box/BG/Dialogue" to="." method="_on_dialogue_1_mouse_entered"]
+[connection signal="gui_input" from="Boxes/Dialogue_Box/BG/Next/Three_Points" to="." method="_on_three_points_gui_input"]
+[connection signal="gui_input" from="Boxes/Dialogue_Box/BG2/Dialogue2" to="." method="_on_dialogue_2_gui_input"]
+[connection signal="mouse_entered" from="Boxes/Dialogue_Box/BG2/Dialogue2" to="." method="_on_dialogue_2_mouse_entered"]
+[connection signal="gui_input" from="Boxes/Dialogue_Box/BG3/Dialogue3" to="." method="_on_dialogue_3_gui_input"]
+[connection signal="mouse_entered" from="Boxes/Dialogue_Box/BG3/Dialogue3" to="." method="_on_dialogue_3_mouse_entered"]
+[connection signal="timeout" from="Typing_Timer" to="." method="_type_one_character"]
