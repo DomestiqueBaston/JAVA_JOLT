@@ -28,20 +28,21 @@ func _ready():
 
 func tell_story_node(graph, node):
 	var speaker = ROWENA if node.speaker == "rowena" else DOCTOR
-	type_dialogue_text(node.text, speaker)
-	await _typing_finished
-	await _next_click
-	var next = node.get("next")
-	if typeof(next) == TYPE_STRING:
-		await tell_story_node(graph, graph[next])
-	elif typeof(next) == TYPE_ARRAY:
-		var choices: Array[String] = []
-		for node_name in next:
-			choices.append(graph[node_name].text)
-		var choice = await choose_response(choices)
-		next = graph[node.next[choice]].get("next")
-		if typeof(next) == TYPE_STRING:
-			await tell_story_node(graph, graph[next])
+	var choices = node.get("choices")
+	var next
+	if choices:
+		var texts: Array[String] = []
+		for obj in choices:
+			texts.append(obj.text)
+		var choice = await choose_response(texts, speaker)
+		next = choices[choice].get("next")
+	else:
+		type_dialogue_text(node.text, speaker)
+		await _typing_finished
+		await _next_click
+		next = node.get("next")
+	if next:
+		tell_story_node(graph, graph[next])
 	else:
 		clear_dialogue()
 
@@ -71,16 +72,17 @@ func type_dialogue_text(text: String, speaker: int):
 	$Typing_Timer.start(1.0 / characters_per_second)
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
 
-func choose_response(choices: Array[String]) -> int:
-	_set_dialogue_style(ROWENA)
+func choose_response(choices: Array[String], speaker: int) -> int:
+	var color = rowena_text_color if speaker == ROWENA else doctor_text_color
 	$Boxes/Dialogue_Box/BG/Next.visible = false
 	$Boxes/Dialogue_Box/BG/Dialogue.text = choices[0]
+	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = color
 	if choices.size() > 1:
 		$Boxes/Dialogue_Box/BG2/Dialogue2.text = choices[1]
-		$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
+		$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = color
 		if choices.size() > 2:
 			$Boxes/Dialogue_Box/BG3/Dialogue3.text = choices[2]
-			$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
+			$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = color
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_%d" % choices.size())
 	var choice = await _click_on_choice
 	$Dialogue_AnimationPlayer.play("Close_Dialogue_%d" % choices.size())
