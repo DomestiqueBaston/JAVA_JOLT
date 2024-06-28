@@ -32,10 +32,10 @@ func tell_story_node(graph, node):
 	var next
 	if choices:
 		var texts: Array[String] = []
-		for obj in choices:
-			texts.append(obj.text)
+		for node_name in choices:
+			texts.append(graph[node_name].text)
 		var choice = await choose_response(texts, speaker)
-		next = choices[choice].get("next")
+		next = graph[choices[choice]].get("next")
 	else:
 		type_dialogue_text(node.text, speaker)
 		await _typing_finished

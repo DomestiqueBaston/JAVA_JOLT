@@ -2,40 +2,83 @@
 	"start": {
 		"speaker": "rowena",
 		"text": "No coffee? This can't be happening...",
-		"next": "node2"
+		"next": "doctor1"
 	},
-	"node2": {
+	"doctor1": {
 		"speaker": "doctor",
 		"text": "Ah! Rowena Pitifool! What keeps you going? Your cherished coffee, the faithful companion in your... dry spells. Oh, the trials your... profession must face!",
-		"next": "node3",
+		"next": "choice1",
 	},
-	"node3": {
+	"choice1": {
 		"speaker": "rowena",
-		"choices": [
-			{
-				"text": "Doc, you are my nightmare. You know I can't wake up without it.",
-				"next": "node4"
-			},
-			{
-				"text": "Just like you, this is a disaster, Doc. You know I need my coffee.",
-				"next": "node5"
-			},
-			{
-				"text": "Doc, my nemesis. Can't you be helpful for once?",
-				"next": "node6"
-			}
-		]
+		"choices": [ "rowena1", "rowena2", "rowena3" ]
 	},
-	"node4": {
+	"rowena1": {
+		"speaker": "rowena",
+		"text": "Doc, you are my nightmare. You know I can't wake up without it.",
+		"next": "doctor2"
+	},
+	"rowena2": {
+		"speaker": "rowena",
+		"text": "Just like you, this is a disaster, Doc. You know I need my coffee.",
+		"next": "doctor3"
+	},
+	"rowena3": {
+		"speaker": "rowena",
+		"text": "Doc, my nemesis. Can't you be helpful for once?",
+		"next": "doctor4"
+	},
+	"doctor2": {
 		"speaker": "doctor",
 		"text": "Yes, your vital elixir. Always there to fill that void in your... muff.",
+		"next": "choice2"
 	},
-	"node5": {
+	"choice2": {
+		"speaker": "rowena",
+		"choices": [ "rowena4", "rowena5", "rowena6" ]
+	},
+	"doctor3": {
 		"speaker": "doctor",
 		"text": "Yes, your vital elixir. Always there to fill that void in your... hoo-ha.",
+		"next": "choice3"
 	},
-	"node6": {
+	"choice3": {
+		"speaker": "rowena",
+		"choices": [ "rowena6", "rowena5", "rowena7" ]
+	},
+	"doctor4": {
 		"speaker": "doctor",
 		"text": "Helpful? My dear, I'm the voice of reason in your chaotic life. How about finding a solution for your coffee dilemma?",
+	},
+	"rowena4": {
+		"speaker": "rowena",
+		"text": "Please, not this again. I just need my coffee.",
+		"next": "doctor5"
+	},
+	"rowena5": {
+		"speaker": "rowena",
+		"text": "Do you have any useful suggestions, or just sarcasm?",
+		"next": "doctor6"
+	},
+	"rowena6": {
+		"speaker": "rowena",
+		"text": "You're really not helping.",
+		"next": "rowena8"
+	},
+	"rowena7": {
+		"speaker": "rowena",
+		"text": "Please, not this again. I just need my coffee.",
+	},
+	"doctor5": {
+		"speaker": "doctor",
+		"text": "Oh, come now, Rowena. There's no need to be touchy. I'm just here to lend suggestive... remarks.",
+	},
+	"doctor6": {
+		"speaker": "doctor",
+		"text": "Useful? My dear, I'm the voice of reason in your chaotic life. How about finding a solution for your coffee dilemma?",
+	},
+	"rowena8": {
+		"speaker": "doctor",
+		"text": "I'm OK with that as it makes your misery so entertaining. Now, what's your plan, caffeine junkie?",
 	},
 }
