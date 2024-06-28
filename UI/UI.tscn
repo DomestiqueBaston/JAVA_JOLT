@@ -851,6 +851,7 @@ theme_override_constants/separation = 0
 [node name="BG" type="PanelContainer" parent="Boxes/Dialogue_Box"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 13)
 layout_mode = 2
 mouse_filter = 2
 
@@ -890,6 +891,7 @@ text = "..."
 [node name="BG2" type="PanelContainer" parent="Boxes/Dialogue_Box"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 13)
 layout_mode = 2
 mouse_filter = 2
 
@@ -906,6 +908,7 @@ autowrap_mode = 2
 [node name="BG3" type="PanelContainer" parent="Boxes/Dialogue_Box"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 13)
 layout_mode = 2
 mouse_filter = 2
 
