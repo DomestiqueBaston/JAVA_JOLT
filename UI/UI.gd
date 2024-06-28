@@ -21,26 +21,29 @@ signal _typing_finished
 signal _next_click
 signal _click_on_choice(which: int)
 
-func _ready():
-	tell_story()
+const dialogue1 = preload("res://dialogue1.json").data
 
-func tell_story():
-	type_dialogue_text("No coffee? This can't be happening...", ROWENA)
+func _ready():
+	tell_story_node(dialogue1, dialogue1["start"])
+
+func tell_story_node(graph, node):
+	var speaker = ROWENA if node.speaker == "rowena" else DOCTOR
+	type_dialogue_text(node.text, speaker)
 	await _typing_finished
 	await _next_click
-	type_dialogue_text(
-		"Ah! Rowena Pitifool! What keeps you going? Your cherished coffee, the \
-		faithful companion in your... dry spells. Oh, the trials your... \
-		profession must face!", DOCTOR)
-	await _typing_finished
-	await _next_click
-	var choices: Array[String] = [
-		"Doc, you are my nightmare. You know I can't wake up without it.",
-		"Just like you, this is a disaster, Doc. You know I need my coffee.",
-		"Doc, my nemesis. Can't you be helpful for once?"
-	]
-	var choice = await choose_response(choices)
-	print("choice = ", choice)
+	var next = node.get("next")
+	if typeof(next) == TYPE_STRING:
+		await tell_story_node(graph, graph[next])
+	elif typeof(next) == TYPE_ARRAY:
+		var choices: Array[String] = []
+		for node_name in next:
+			choices.append(graph[node_name].text)
+		var choice = await choose_response(choices)
+		next = graph[node.next[choice]].get("next")
+		if typeof(next) == TYPE_STRING:
+			await tell_story_node(graph, graph[next])
+	else:
+		clear_dialogue()
 
 func _set_dialogue_style(speaker: int):
 	if speaker == ROWENA:

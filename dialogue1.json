@@ -1,0 +1,39 @@
+{
+	"start": {
+		"speaker": "rowena",
+		"text": "No coffee? This can't be happening...",
+		"next": "node2"
+	},
+	"node2": {
+		"speaker": "doctor",
+		"text": "Ah! Rowena Pitifool! What keeps you going? Your cherished coffee, the faithful companion in your... dry spells. Oh, the trials your... profession must face!",
+		"next": ["node3", "node4", "node5"]
+	},
+	"node3": {
+		"speaker": "rowena",
+		"text": "Doc, you are my nightmare. You know I can't wake up without it.",
+		"next": "node6"
+	},
+	"node4": {
+		"speaker": "rowena",
+		"text": "Just like you, this is a disaster, Doc. You know I need my coffee.",
+		"next": "node7"
+	},
+	"node5": {
+		"speaker": "rowena",
+		"text": "Doc, my nemesis. Can't you be helpful for once?",
+		"next": "node8"
+	},
+	"node6": {
+		"speaker": "doctor",
+		"text": "Yes, your vital elixir. Always there to fill that void in your... muff.",
+	},
+	"node7": {
+		"speaker": "doctor",
+		"text": "Yes, your vital elixir. Always there to fill that void in your... hoo-ha.",
+	},
+	"node8": {
+		"speaker": "doctor",
+		"text": "Helpful? My dear, I'm the voice of reason in your chaotic life. How about finding a solution for your coffee dilemma?",
+	},
+}
