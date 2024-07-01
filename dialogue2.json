@@ -1,0 +1,321 @@
+{
+	"start": {
+		"speaker": "rowena",
+		"text": "This tastes worse than anything!",
+		"next": "doctor1"
+	},
+	"doctor1": {
+		"speaker": "doctor",
+		"text": "Oh, what a disaster...",
+		"next": "rowena1"
+	},
+	"rowena1": {
+		"speaker": "rowena",
+		"text": "I did my best but it's still undrinkable! I don't know what else to do.",
+		"next": "doctor2"
+	},
+	"doctor2": {
+		"speaker": "doctor",
+		"text": "Well, well, well, looks like the coffee catastrophe continues.",
+		"next": [ "rowena2", "rowena3" ]
+	},
+	"rowena2": {
+		"speaker": "rowena",
+		"text": "I don't need your suggestions. I'll find a solution on my own.",
+		"next": "doctor3"
+	},
+	"doctor3": {
+		"speaker": "doctor",
+		"text": "As if you've ever been capable of finding a solution on your own. But suit yourself, Rowena. Just remember, time's ticking away, and your precious coffee isn't going to magically appear.",
+		"next": [ "rowena18", "rowena5" ]
+	},
+	"rowena3": {
+		"speaker": "rowena",
+		"text": "Stop it! I'm serious. I need to figure this out.",
+		"next": "doctor4"
+	},
+	"doctor4": {
+		"speaker": "doctor",
+		"text": "Oh, lighten up. It's just another failure in your long list of life mishaps.",
+		"next": "rowena4"
+	},
+	"rowena4": {
+		"speaker": "rowena",
+		"text": "Can't you see I'm trying to fix this?",
+		"next": "doctor5"
+	},
+	"doctor5": {
+		"speaker": "doctor",
+		"text": "Oh, I see you flailing around like a lost cause, as usual.",
+		"next": [ "rowena7", "rowena9", "rowena11" ]
+	},
+	"rowena5": {
+		"speaker": "rowena",
+		"text": "I've dealt with worse than you. I don't have time for your mind games.",
+		"next": "doctor6"
+	},
+	"doctor6": {
+		"speaker": "doctor",
+		"text": "Oh, please. Spare me the bravado, Rowena. You're crumbling under the weight of your own insecurities.",
+		"next": "rowena6"
+	},
+	"rowena6": {
+		"speaker": "rowena",
+		"text": "Insecurities? You're the one who's a figment of my imagination, constantly taunting me.",
+		"next": "doctor7"
+	},
+	"doctor7": {
+		"speaker": "doctor",
+		"text": "Yet here I am, the voice in your head, reflecting the truth you're too afraid to face.",
+		"next": [ "rowena21", "rowena17" ]
+	},
+	"rowena7": {
+		"speaker": "rowena",
+		"text": "At least I'm not the one who's imaginary!",
+		"next": "doctor8"
+	},
+	"doctor8": {
+		"speaker": "doctor",
+		"text": "Touché, Rowena. But I'd rather be imaginary than stuck in a dead-end job like you.",
+		"next": "rowena8"
+	},
+	"rowena8": {
+		"speaker": "rowena",
+		"text": "Dead-end job? You don't know the half of it. But at least I'm trying to make something of myself.",
+		"next": "doctor9"
+	},
+	"doctor9": {
+		"speaker": "doctor",
+		"text": "Spare me the excuses, Rowena. You're just a failure waiting to happen.",
+		"next": "rowena21"
+	},
+	"rowena9": {
+		"speaker": "rowena",
+		"text": "And yet you're still here, aren't you? Must be pretty boring in my head if you have nothing better to do than criticize.",
+		"next": "doctor10"
+	},
+	"doctor10": {
+		"speaker": "doctor",
+		"text": "Maybe if you got off your ass once in a while and did something productive, I wouldn't have to.",
+		"next": "rowena10"
+	},
+	"rowena10": {
+		"speaker": "rowena",
+		"text": "Maybe if you stopped being such a downer, I could focus on finding a solution instead of dealing with your constant negativity!",
+		"next": "doctor11"
+	},
+	"doctor11": {
+		"speaker": "doctor",
+		"text": "Come on, Rowena. You know deep down you can't handle this on your own. You need me.",
+		"next": "rowena30"
+	},
+	"rowena11": {
+		"speaker": "rowena",
+		"text": "Maybe if you were a little more helpful and a little less condescending, I wouldn't be in this mess in the first place!",
+		"next": "doctor12"
+	},
+	"doctor12": {
+		"speaker": "doctor",
+		"text": "Don't be so uptight. It's just a cup of coffee. Or is your life so dull that even a simple task like this is a big deal?",
+		"next": "rowena12"
+	},
+	"rowena12": {
+		"speaker": "rowena",
+		"text": "Stop it! I'm serious. I need to figure this out.",
+		"next": "doctor13"
+	},
+	"doctor13": {
+		"speaker": "doctor",
+		"text": "Oh, lighten up. It's just another failure in your long list of life mishaps.",
+		"next": "rowena13"
+	},
+	"rowena13": {
+		"speaker": "rowena",
+		"text": "Can't you see I'm trying to fix this?",
+		"next": "doctor14"
+	},
+	"doctor14": {
+		"speaker": "doctor",
+		"text": "Oh, I see you flailing around like a lost cause, as usual.",
+		"next": "rowena14"
+	},
+	"rowena14": {
+		"speaker": "rowena",
+		"text": "I'm not in the mood for your sarcastic remarks right now.",
+		"next": "doctor15"
+	},
+	"doctor15": {
+		"speaker": "doctor",
+		"text": "When are you ever in the mood for anything, Rowena? Your life's one big joke. All work, no play, and definitely no action in the bedroom.",
+		"next": "rowena15"
+	},
+	"rowena15": {
+		"speaker": "rowena",
+		"text": "That's it! I've had enough of your condescending attitude.",
+		"next": "doctor16"
+	},
+	"doctor16": {
+		"speaker": "doctor",
+		"text": "Oh, touchy, touchy. Can't handle the truth, can you?",
+		"next": "rowena16"
+	},
+	"rowena16": {
+		"speaker": "rowena",
+		"text": "Get out of my head! I'll figure this out on my own.",
+		"next": "rowena29"
+	},
+	"rowena17": {
+		"speaker": "rowena",
+		"text": "Just stop! I'm tired of your endless sarcasm and snide remarks. I'm perfectly capable of handling this situation on my own. So, if you don't have anything helpful to say, then kindly keep your thoughts to yourself!",
+		"next": "doctor17"
+	},
+	"doctor17": {
+		"speaker": "doctor",
+		"text": "Ah, the truth hurts, doesn't it? But don't worry, Rowena, your life's already enough of a mess without my help.",
+		"next": [ "rowena20", "rowena23" ]
+	},
+	"rowena18": {
+		"speaker": "rowena",
+		"text": "Ugh, just shut up, will you? I'll show you I'm not as helpless as you think.",
+		"next": "doctor18"
+	},
+	"doctor18": {
+		"speaker": "doctor",
+		"text": "Oh, Rowena, always so defensive. But go ahead, show me what you're made of. I'll be right here, watching your inevitable failure.",
+		"next": "rowena19"
+	},
+	"rowena19": {
+		"speaker": "rowena",
+		"text": "I don't need your constant commentary, Dr. F. I'll make this work, with or without your negativity.",
+		"next": "doctor19"
+	},
+	"doctor19": {
+		"speaker": "doctor",
+		"text": "Negativity? It's called realism, Rowena. And in the real world, your coffee-less existence is just another day in your pathetic life.",
+		"next": "rowena27"
+	},
+	"rowena20": {
+		"speaker": "rowena",
+		"text": "Just because my life isn't perfect doesn't give you the right to mock me. I'll deal with my problems in my own way.",
+		"next": "doctor20"
+	},
+	"doctor20": {
+		"speaker": "doctor",
+		"text": "Pathetic, Rowena. Always so defensive. But tell me, how's that been working out for you so far?",
+		"next": "rowena27"
+	},
+	"rowena21": {
+		"speaker": "rowena",
+		"text": "Enough! I'm not interested in your negativity. I'm finding a solution on my own.",
+		"next": "doctor21"
+	},
+	"doctor21": {
+		"speaker": "doctor",
+		"text": "Ah, the independent woman act again. Suit yourself, Rowena. But don't come crawling back to me when you hit a dead end.",
+		"next": "rowena22"
+	},
+	"rowena22": {
+		"speaker": "rowena",
+		"text": "I won't need to, because I won't hit a dead end. Unlike some, I don't need constant reminders of my failures.",
+		"next": "doctor23"
+	},
+	"rowena23": {
+		"speaker": "rowena",
+		"text": "Pathetic? Coming from a figment of my imagination, that's rich.",
+		"next": "doctor22"
+	},
+	"doctor22": {
+		"speaker": "doctor",
+		"text": "Well, who else knows your failures better than your own mind?",
+		"next": [ "rowena25", "rowena26" ]
+	},
+	"doctor23": {
+		"speaker": "doctor",
+		"text": "Oh, Rowena, always so touchy. But let's be honest, your love life is as attractive as a front door... Or should I say, a back door?",
+		"next": "rowena24"
+	},
+	"rowena24": {
+		"speaker": "rowena",
+		"text": "I'm starting to wonder who's talking about my back door here -- me or you. Either way, I've had enough. Just zip it! I've got a coffee crisis to deal with.",
+		"next": "doctor24"
+	},
+	"doctor24": {
+		"speaker": "doctor",
+		"text": "Oh, touchy, touchy. Can't handle the truth, can you?",
+		"next": [ "rowena30", "rowena31" ]
+	},
+	"rowena25": {
+		"speaker": "rowena",
+		"text": "Just shut it! I'm done with your insults.",
+		"next": "doctor25"
+	},
+	"doctor25": {
+		"speaker": "doctor",
+		"text": "Oh, Rowena, always so sensitive. But maybe if you listend for once, you wouldn't be in this mess.",
+		"next": "rowena30"
+	},
+	"rowena26": {
+		"speaker": "rowena",
+		"text": "I don't need your criticism. I'm perfectly capable of handling my own problems.",
+		"next": "doctor26"
+	},
+	"doctor26": {
+		"speaker": "doctor",
+		"text": "Come on, Rowena. Your career's already going down the drain. What's one more failure in the grand scheme of things?",
+		"next": [ "rowena32", "rowena33" ]
+	},
+	"rowena27": {
+		"speaker": "rowena",
+		"text": "Pathetic? Coming from a figment of my imagination, that's rich. Now, if you don't mind, I have a coffee crisis to solve.",
+		"next": "doctor27"
+	},
+	"doctor27": {
+		"speaker": "doctor",
+		"text": "Oh, touchy, touchy. Can't handle a little constructive criticism, can you?",
+		"next": "rowena28"
+	},
+	"rowena28": {
+		"speaker": "rowena",
+		"text": "Constructive? More like deconstructive? And I certainly don't need it from someone who doesn't even exist.",
+		"next": "doctor28"
+	},
+	"doctor28": {
+		"speaker": "doctor",
+		"text": "Ah, but I exist in your mind, Rowena. And deep down, you know I'm right.",
+		"next": "rowena29"
+	},
+	"rowena29": {
+		"speaker": "rowena",
+		"text": "I'll believe that when I see it. Now, if you'll excuse me, I have a coffee crisis to handle.",
+		"next": "doctor29"
+	},
+	"rowena30": {
+		"speaker": "rowena",
+		"text": "Keep your suggestions to yourself. I don't need your input.",
+		"next": "doctor29"
+	},
+	"rowena31": {
+		"speaker": "rowena",
+		"text": "I'll manage without your interference. Now, if you'll excuse me, I have a coffee problem to solve.",
+		"next": "doctor29"
+	},
+	"rowena32": {
+		"speaker": "rowena",
+		"text": "My job is tough enough without your commentary.",
+		"next": "doctor29"
+	},
+	"rowena33": {
+		"speaker": "rowena",
+		"text": "My job is a mess. But I don't need your reminders.",
+		"next": "doctor29"
+	},
+	"doctor29": {
+		"speaker": "doctor",
+		"text": "Fine, fine, Rowena. But how about trying something different this time? Think about repurposing what you have lying around for your caffeine fix. And while you're at it, maybe spice up your life a bit... in more ways than one.",
+		"next": "rowena34"
+	},
+	"rowena34": {
+		"speaker": "rowena",
+		"text": "I'll also disregard that last insinuation.",
+	},
+}

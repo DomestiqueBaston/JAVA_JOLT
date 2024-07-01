@@ -17,14 +17,21 @@ enum { ROWENA, DOCTOR }
 ## Color of dialogue text when the doctor speaks.
 @export var doctor_text_color := Color(0x5b/255.0, 0x90/255.0, 0xc2/255.0)
 
+@export_range(1, 2) var dialogue_number: int = 1
+
 signal _typing_finished
 signal _next_click
 signal _click_on_choice(which: int)
 
 const dialogue1 = preload("res://dialogue1.json").data
+const dialogue2 = preload("res://dialogue2.json").data
 
 func _ready():
-	tell_story_node(dialogue1, dialogue1["start"])
+	match dialogue_number:
+		1:
+			tell_story_node(dialogue1, dialogue1["start"])
+		2:
+			tell_story_node(dialogue2, dialogue2["start"])
 
 func tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
