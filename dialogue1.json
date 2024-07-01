@@ -7,11 +7,7 @@
 	"doctor1": {
 		"speaker": "doctor",
 		"text": "Ah! Rowena Pitifool! What keeps you going? Your cherished coffee, the faithful companion in your... dry spells. Oh, the trials your... profession must face!",
-		"next": "choice1",
-	},
-	"choice1": {
-		"speaker": "rowena",
-		"choices": [ "rowena1", "rowena2", "rowena3" ]
+		"next": [ "rowena1", "rowena2", "rowena3" ]
 	},
 	"rowena1": {
 		"speaker": "rowena",
@@ -31,24 +27,17 @@
 	"doctor2": {
 		"speaker": "doctor",
 		"text": "Yes, your vital elixir. Always there to fill that void in your... muff.",
-		"next": "choice2"
-	},
-	"choice2": {
-		"speaker": "rowena",
-		"choices": [ "rowena4", "rowena5", "rowena6" ]
+		"next": [ "rowena4", "rowena5", "rowena6" ]
 	},
 	"doctor3": {
 		"speaker": "doctor",
 		"text": "Yes, your vital elixir. Always there to fill that void in your... hoo-ha.",
-		"next": "choice3"
-	},
-	"choice3": {
-		"speaker": "rowena",
-		"choices": [ "rowena6", "rowena5", "rowena7" ]
+		"next": [ "rowena6", "rowena5", "rowena7" ]
 	},
 	"doctor4": {
 		"speaker": "doctor",
 		"text": "Helpful? My dear, I'm the voice of reason in your chaotic life. How about finding a solution for your coffee dilemma?",
+		"next": [ "rowena8", "rowena5", "rowena9" ]
 	},
 	"rowena4": {
 		"speaker": "rowena",
@@ -63,22 +52,175 @@
 	"rowena6": {
 		"speaker": "rowena",
 		"text": "You're really not helping.",
-		"next": "rowena8"
+		"next": "doctor7"
 	},
 	"rowena7": {
 		"speaker": "rowena",
 		"text": "Please, not this again. I just need my coffee.",
+		"next": "doctor13"
 	},
 	"doctor5": {
 		"speaker": "doctor",
 		"text": "Oh, come now, Rowena. There's no need to be touchy. I'm just here to lend suggestive... remarks.",
+		"next": [ "rowena10", "rowena11", "rowena12" ]
 	},
 	"doctor6": {
 		"speaker": "doctor",
 		"text": "Useful? My dear, I'm the voice of reason in your chaotic life. How about finding a solution for your coffee dilemma?",
+		"next": [ "rowena12", "rowena19", "rowena20" ]
 	},
-	"rowena8": {
+	"doctor7": {
 		"speaker": "doctor",
 		"text": "I'm OK with that as it makes your misery so entertaining. Now, what's your plan, caffeine junkie?",
+		"next": "rowena16"
+	},
+	"rowena8": {
+		"speaker": "rowena",
+		"text": "I just need my coffee.",
+		"next": "doctor15"
+	},
+	"rowena9": {
+		"speaker": "rowena",
+		"text": "You won't help me, will you?",
+		"next": "doctor8"
+	},
+	"rowena10": {
+		"speaker": "rowena",
+		"text": "And I want you to stop that. I hate it when you make those comments about my... Well, you know.",
+		"next": "doctor9"
+	},
+	"rowena11": {
+		"speaker": "rowena",
+		"text": "Sarcasm won't get me my coffee.",
+		"next": "doctor7"
+	},
+	"doctor8": {
+		"speaker": "doctor",
+		"text": "True, but it makes your misery more entertaining. Now, what’s your plan, caffeine junkie?",
+		"next": [ "rowena16", "rowena17", "rowena18" ]
+	},
+	"doctor9": {
+		"speaker": "doctor",
+		"text": "My dear, it's not my fault if your love life is as barren as your coffee cupboard. But enough about that -— let's focus on the task at hand, shall we?",
+		"next": "rowena12"
+	},
+	"rowena12": {
+		"speaker": "rowena",
+		"text": "Maybe I should find a new imaginary friend.",
+		"next": "doctor10"
+	},
+	"doctor10": {
+		"speaker": "doctor",
+		"text": "Good luck with that. I'm irreplaceable. Now, about that coffee...",
+		"next": [ "rowena15", "rowena13", "rowena14" ]
+	},
+	"rowena13": {
+		"speaker": "rowena",
+		"text": "You're right. I do need to focus.",
+		"next": "doctor11"
+	},
+	"doctor11": {
+		"speaker": "doctor",
+		"text": "You'd better, I suppose, yes. So, what's your plan, caffeine junkie?",
+		"next": "rowena17"
+	},
+	"rowena14": {
+		"speaker": "rowena",
+		"text": "I can't believe I'm arguing with a voice in my head.",
+		"next": "doctor12"
+	},
+	"doctor12": {
+		"speaker": "doctor",
+		"text": "Ah, the existential crisis begins! But let's save the philosophy for later. Now, about that coffee...",
+		"next": [ "rowena13", "rowena15" ]
+	},
+	"doctor13": {
+		"speaker": "doctor",
+		"text": "Oh, Rowena. No need to get your froth all steamed up. I'm just here to offer my ever-so-helpful... insights.",
+		"next": [ "rowena15", "rowena22", "rowena11", "rowena12" ]
+	},
+	"rowena15": {
+		"speaker": "rowena",
+		"text": "Fine, I'll check the kitchen.",
+		"next": "doctor18"
+	},
+	"rowena16": {
+		"speaker": "rowena",
+		"text": "I'll find a way, just you watch.",
+		"next": "doctor18"
+	},
+	"rowena17": {
+		"speaker": "rowena",
+		"text": "I guess I'll start looking here, in the kitchen.",
+		"next": "doctor18"
+	},
+	"rowena18": {
+		"speaker": "rowena",
+		"text": "I don't have a plan, that's why I'm talking to you.",
+		"next": "doctor15"
+	},
+	"doctor15": {
+		"speaker": "doctor",
+		"text": "You know we could make it last all day long, right?",
+		"next": "rowena21"
+	},
+	"rowena19": {
+		"speaker": "rowena",
+		"text": "I need more than just vague advice.",
+		"next": "doctor14"
+	},
+	"doctor14": {
+		"speaker": "doctor",
+		"text": "Vague advice? My dear, I'm the epitomy of clarity. But fine, if you want specifics, start by looking in the kitchen. You might be surprised by what you find.",
+		"next": [ "rowena15", "rowena21", "rowena23" ]
+	},
+	"rowena20": {
+		"speaker": "rowena",
+		"text": "Maybe I should write down your sarcastic suggestions.",
+		"next": "doctor16"
+	},
+	"rowena21": {
+		"speaker": "rowena",
+		"text": "Can't you just tell me where to look?",
+		"next": "doctor17"
+	},
+	"rowena22": {
+		"speaker": "rowena",
+		"text": "And I want you to stop that, please! I hate it when you make those comments about my... Well, you know.",
+		"next": "doctor9"
+	},
+	"rowena23": {
+		"speaker": "rowena",
+		"text": "What if there's nothing there?",
+		"next": "doctor15"
+	},
+	"doctor15": {
+		"speaker": "doctor",
+		"text": "Then you'll have to get creative, won't you? It's not like you have a plan anyway.",
+		"next": [ "rowena15", "rowena18" ]
+	},
+	"doctor16": {
+		"speaker": "doctor",
+		"text": "An excellent idea! My wisdom deserves to be immortalized. Now, shall we find that coffee?",
+		"next": "rowena15"
+	},
+	"doctor17": {
+		"speaker": "doctor",
+		"text": "Ah, but where would the fun be in that? Exploration is half the journey, my dear. Start with the obvious and work your way to the obscure.",
+		"next": "rowena5"
+	},
+	"doctor18": {
+		"speaker": "doctor",
+		"text": "Oh, I'm sure you'll find something delightful in there. After all, necessity is the mother of invention... and perhaps a little bit of desperation, too.",
+		"next": "rowena24"
+	},
+	"rowena24": {
+		"speaker": "rowena",
+		"text": "I'll try to ignore your commentary and concentrate on finding coffee.",
+		"next": "doctor19"
+	},
+	"doctor19": {
+		"speaker": "doctor",
+		"text": "Suit yourself, Rowena. Just remember, I'm always here to spice up your inner monologues.",
 	},
 }

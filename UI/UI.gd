@@ -27,24 +27,25 @@ func _ready():
 	tell_story_node(dialogue1, dialogue1["start"])
 
 func tell_story_node(graph, node):
-	var speaker = ROWENA if node.speaker == "rowena" else DOCTOR
-	var choices = node.get("choices")
-	var next
-	if choices:
+	var speaker = _get_node_speaker(node)
+	type_dialogue_text(node.text, speaker)
+	await _typing_finished
+	await _next_click
+	var next = node.get("next")
+	if typeof(next) == TYPE_ARRAY:
 		var texts: Array[String] = []
-		for node_name in choices:
+		for node_name in next:
 			texts.append(graph[node_name].text)
+		speaker = _get_node_speaker(graph[next[0]])
 		var choice = await choose_response(texts, speaker)
-		next = graph[choices[choice]].get("next")
-	else:
-		type_dialogue_text(node.text, speaker)
-		await _typing_finished
-		await _next_click
-		next = node.get("next")
+		next = graph[next[choice]].get("next")
 	if next:
 		tell_story_node(graph, graph[next])
 	else:
 		clear_dialogue()
+
+func _get_node_speaker(node) -> int:
+	return ROWENA if node.speaker == "rowena" else DOCTOR
 
 func _set_dialogue_style(speaker: int):
 	if speaker == ROWENA:
