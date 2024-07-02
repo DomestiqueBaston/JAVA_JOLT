@@ -17,7 +17,7 @@ enum { ROWENA, DOCTOR }
 ## Color of dialogue text when the doctor speaks.
 @export var doctor_text_color := Color(0x5b/255.0, 0x90/255.0, 0xc2/255.0)
 
-@export_range(1, 2) var dialogue_number: int = 1
+@export_range(1, 3) var dialogue_number: int = 1
 
 signal _typing_finished
 signal _next_click
@@ -25,6 +25,7 @@ signal _click_on_choice(which: int)
 
 const dialogue1 = preload("res://dialogue1.json").data
 const dialogue2 = preload("res://dialogue2.json").data
+const dialogue3 = preload("res://dialogue3.json").data
 
 func _ready():
 	match dialogue_number:
@@ -32,6 +33,8 @@ func _ready():
 			tell_story_node(dialogue1, dialogue1["start"])
 		2:
 			tell_story_node(dialogue2, dialogue2["start"])
+		3:
+			tell_story_node(dialogue3, dialogue3["start"])
 
 func tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
@@ -91,6 +94,9 @@ func choose_response(choices: Array[String], speaker: int) -> int:
 		if choices.size() > 2:
 			$Boxes/Dialogue_Box/BG3/Dialogue3.text = choices[2]
 			$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = color
+			if choices.size() > 3:
+				$Boxes/Dialogue_Box/BG4/Dialogue4.text = choices[3]
+				$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = color
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_%d" % choices.size())
 	var choice = await _click_on_choice
 	$Dialogue_AnimationPlayer.play("Close_Dialogue_%d" % choices.size())
@@ -135,18 +141,32 @@ func _on_dialogue_3_gui_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			_click_on_choice.emit(2)
 
+func _on_dialogue_4_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			_click_on_choice.emit(3)
+
 func _on_dialogue_1_mouse_entered():
 	if $Boxes/Dialogue_Box/BG2/Dialogue2.visible:
 		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = Color.WHITE
 		$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
 		$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
+		$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = rowena_text_color
 
 func _on_dialogue_2_mouse_entered():
 	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
 	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = Color.WHITE
 	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
+	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = rowena_text_color
 
 func _on_dialogue_3_mouse_entered():
 	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
 	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
 	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = Color.WHITE
+	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = rowena_text_color
+
+func _on_dialogue_4_mouse_entered():
+	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
+	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
+	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
+	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = Color.WHITE
