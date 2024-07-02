@@ -1,0 +1,159 @@
+{
+	"start": {
+		"speaker": "rowena",
+		"text": "Back to the starting point! Crap!",
+		"next": "doctor1"
+	},
+	"doctor1": {
+		"speaker": "doctor",
+		"text": "Your life is a big waste, Rowena. You're kind of incredible. Your ability to always go down again stuns me.",
+		"next": "rowena1"
+	},
+	"rowena1": {
+		"speaker": "rowena",
+		"text": "Why is there such a character in my mind? You're the one just getting me down that way!",
+		"next": "doctor2"
+	},
+	"doctor2": {
+		"speaker": "doctor",
+		"text": "Rowena, don't you remember? You called me a figment of your imagination. Don't accuse me of being responsible for looking for the meaning of your life in the trash can.",
+		"next": "rowena2"
+	},
+	"rowena2": {
+		"speaker": "rowena",
+		"text": "What? You make me do that.",
+		"next": "doctor3"
+	},
+	"doctor3": {
+		"speaker": "doctor",
+		"text": "And you've made me!",
+		"next": "rowena3"
+	},
+	"rowena3": {
+		"speaker": "rowena",
+		"text": "Wannabe Dr. Freud is trying to play the role of his life driving mine. I won't let you make more of a mess out of my life.",
+		"next": "doctor4"
+	},
+	"doctor4": {
+		"speaker": "doctor",
+		"text": "Yes. You'll be much more efficient by yourself. Act like you don't want to have a sex life, act like your job is desperately needed. Even though you claim otherwise. Let's pretend your useful...",
+		"next": "rowena4"
+	},
+	"rowena4": {
+		"speaker": "rowena",
+		"text": "You're such a jerk! Why am I telling this to you? Am I telling this to me? You're driving me insane! I'm driving myself crazy.",
+		"next": "doctor5"
+	},
+	"doctor5": {
+		"speaker": "doctor",
+		"text": "Yes, you are, Rowena! Every single day, you ruin what we've rebuilt so far.",
+		"next": [ "rowena5", "rowena9", "rowena13" ]
+	},
+	"rowena5": {
+		"speaker": "rowena",
+		"text": "Back to the same old shit.",
+		"next": "doctor6"
+	},
+	"doctor6": {
+		"speaker": "doctor",
+		"text": "Ah, the endless cycle of failure. The tragic comedy of Rowena Pitifool.",
+		"next": "rowena6"
+	},
+	"rowena6": {
+		"speaker": "rowena",
+		"text": "Spare me your commentary and let's just get this damn coffee made.",
+		"next": "doctor7"
+	},
+	"doctor7": {
+		"speaker": "doctor",
+		"text": "As you wish. But let's not forget, Rowena, no matter how many times you screw up, I'll always be here to remind you just how hopeless you really are.",
+		"next": "rowena7"
+	},
+	"rowena7": {
+		"speaker": "rowena",
+		"text": "Enough! I'm sick of your constant negativity. I do n't need your criticism, and I sure as hell don't need you.",
+		"next": "doctor8"
+	},
+	"doctor8": {
+		"speaker": "doctor",
+		"text": "Oh, but you do, Rowena. Without me, you're just a lost cause drowning in your own failures.",
+		"next": "rowena8"
+	},
+	"rowena8": {
+		"speaker": "rowena",
+		"text": "We'll see about that. This ends now!",
+		"next": "doctor9"
+	},
+	"doctor9": {
+		"speaker": "doctor",
+		"text": "You can try to ignore me or avoid me, but you'll always be your worst enemy. Take control of your life, because if someone else takes charge, it will be very painful. The clock is ticking, Rowena, and soon you'll feel the difference."
+	},
+	"rowena9": {
+		"speaker": "rowena",
+		"text": "Ruin what we've rebuilt? Spare me the psychoanalysis, I've got a coffee crisis, not a therapy session.",
+		"next": "doctor10"
+	},
+	"doctor10": {
+		"speaker": "doctor",
+		"text": "You can try to ignore me or avoid me, but you'll always be your worst enemy. Take control of your life, because if someone else takes charge, it will be very painful. The clock is ticking, Rowena, and soon you'll feel the difference.",
+		"next": "rowena10"
+	},
+	"rowena10": {
+		"speaker": "rowena",
+		"text": "Spare me the wisdom, I'm not avoiding. I'm multitasking.",
+		"next": "doctor11"
+	},
+	"doctor11": {
+		"speaker": "doctor",
+		"text": "Ignoring problems won't solve them, Rowena.",
+		"next": "rowena11"
+	},
+	"rowena11": {
+		"speaker": "rowena",
+		"text": "And listening to you won't make them disappear. So unless you've got a magic coffee bean up  your sleeve, let me handle this.",
+		"next": "doctor12"
+	},
+	"doctor12": {
+		"speaker": "doctor",
+		"text": "Suit yourself, Rowena. But remember, consequences await.",
+		"next": "rowena12"
+	},
+	"rowena12": {
+		"speaker": "rowena",
+		"text": "I'll face them, just not with you breathing down my neck. Now, if you'll excuse me, I have a coffee to save.",
+		"next": "doctor13"
+	},
+	"doctor13": {
+		"speaker": "doctor",
+		"text": "Time's running out, Rowena. Enjoy your little game while you still can."
+	},
+	"rowena13": {
+		"speaker": "rowena",
+		"text": "Ruin what we've rebuilt? Oh, please, spare me the melodrama. We both know this coffee crisis is just a minor setback.",
+		"next": "doctor14"
+	},
+	"doctor14": {
+		"speaker": "doctor",
+		"text": "Minor setback? Rowena, you're delusional if you think--",
+		"next": "rowena14"
+	},
+	"rowena14": {
+		"speaker": "rowena",
+		"text": "Look, I don't need your negativity right now. I need solutions. So unless you have something constructive to contribute, I suggest you zip it.",
+		"next": "doctor15"
+	},
+	"doctor15": {
+		"speaker": "doctor",
+		"text": "Fine, Rowena. Ignore me if you want, but remember, when reality hits you, I'll be here to remind you of your failures.",
+		"next": "rowena15"
+	},
+	"rowena15": {
+		"speaker": "rowena",
+		"text": "Whatever. I've got a coffee crisis to solve, and you're pessimism isn't helping.",
+		"next": "doctor16"
+	},
+	"doctor16": {
+		"speaker": "doctor",
+		"text": "Suit yourself, Rowena. But time is ticking, and the clock doesn't care about your caffeine addiction."
+	},
+}
