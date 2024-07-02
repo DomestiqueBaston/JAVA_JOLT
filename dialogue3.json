@@ -129,7 +129,7 @@
 	},
 	"rowena13": {
 		"speaker": "rowena",
-		"text": "Ruin what we've rebuilt? Oh, please, spare me the melodrama. We both know this coffee crisis is just a minor setback.",
+		"text": "Ruin what we've rebuilt? Please, spare me the melodrama. We both know this coffee crisis is just a setback.",
 		"next": "doctor14"
 	},
 	"doctor14": {

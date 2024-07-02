@@ -166,7 +166,7 @@
 	},
 	"rowena17": {
 		"speaker": "rowena",
-		"text": "Just stop! I'm tired of your endless sarcasm. I'm perfectly capable of handling this situation on my own. So, if you don't have anything helpful to say, then keep your thoughts to yourself!",
+		"text": "Stop! I'm capable of handling this situation on my own. So, if you don't have anything helpful to say, then keep your thoughts to yourself!",
 		"next": "doctor17"
 	},
 	"doctor17": {

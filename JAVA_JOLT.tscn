@@ -16,4 +16,3 @@ scale = Vector2(-1, 1)
 [node name="KUWAHARA" parent="." instance=ExtResource("3_quulp")]
 
 [node name="UI" parent="." instance=ExtResource("4_ilxi3")]
-dialogue_number = 2
