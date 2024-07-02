@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://UI/New_Mouse.gd" id="2_mswu7"]
 [ext_resource type="Texture2D" uid="uid://vqd5mrv0n0yu" path="res://UI/IMAGES/Arrow.png" id="4_ru12x"]
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://UI/IMAGES/Eye.png" id="5_g7pd6"]
-[ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing.ogg" id="5_ie2x1"]
+[ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing_Doc.ogg" id="5_ie2x1"]
 [ext_resource type="Texture2D" uid="uid://mfquvma5rebu" path="res://UI/IMAGES/Cross_Passive.png" id="5_m325r"]
 [ext_resource type="Texture2D" uid="uid://dllfigi60weqt" path="res://UI/IMAGES/Sound_Up.png" id="6_aydsq"]
 [ext_resource type="Texture2D" uid="uid://ddwsqpkd5bt0w" path="res://UI/IMAGES/Load.png" id="6_dr1x2"]

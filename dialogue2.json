@@ -26,7 +26,7 @@
 	},
 	"doctor3": {
 		"speaker": "doctor",
-		"text": "As if you've ever been capable of finding a solution on your own. But suit yourself, Rowena. Just remember, time's ticking away, and your precious coffee isn't going to magically appear.",
+		"text": "As if you've ever been capable of finding a solution on your own. Just remember, time's ticking away, and your precious coffee isn't going to magically appear.",
 		"next": [ "rowena18", "rowena5" ]
 	},
 	"rowena3": {
@@ -91,7 +91,7 @@
 	},
 	"rowena9": {
 		"speaker": "rowena",
-		"text": "And yet you're still here, aren't you? Must be pretty boring in my head if you have nothing better to do than criticize.",
+		"text": "Must be pretty boring if you have nothing better to do than criticize.",
 		"next": "doctor10"
 	},
 	"doctor10": {
@@ -111,7 +111,7 @@
 	},
 	"rowena11": {
 		"speaker": "rowena",
-		"text": "Maybe if you were a little more helpful and a little less condescending, I wouldn't be in this mess in the first place!",
+		"text": "Maybe if you were more helpful and less condescending, I wouldn't be in this mess in the first place!",
 		"next": "doctor12"
 	},
 	"doctor12": {
@@ -162,11 +162,11 @@
 	"rowena16": {
 		"speaker": "rowena",
 		"text": "Get out of my head! I'll figure this out on my own.",
-		"next": "rowena29"
+		"next": "doctor29"
 	},
 	"rowena17": {
 		"speaker": "rowena",
-		"text": "Just stop! I'm tired of your endless sarcasm and snide remarks. I'm perfectly capable of handling this situation on my own. So, if you don't have anything helpful to say, then kindly keep your thoughts to yourself!",
+		"text": "Just stop! I'm tired of your endless sarcasm. I'm perfectly capable of handling this situation on my own. So, if you don't have anything helpful to say, then keep your thoughts to yourself!",
 		"next": "doctor17"
 	},
 	"doctor17": {
@@ -311,7 +311,7 @@
 	},
 	"doctor29": {
 		"speaker": "doctor",
-		"text": "Fine, fine, Rowena. But how about trying something different this time? Think about repurposing what you have lying around for your caffeine fix. And while you're at it, maybe spice up your life a bit... in more ways than one.",
+		"text": "Fine, fine, Rowena. But how about trying something different? Think about repurposing what you have lying around. And maybe spice up your life a bit... In more ways than one.",
 		"next": "rowena34"
 	},
 	"rowena34": {

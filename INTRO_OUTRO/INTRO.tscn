@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/IMAGES/Coffee_Cupboard_Open.png" id="9_n6jc3"]
 [ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/SOUNDS/Barefoot_Steps_A.ogg" id="10_1mach"]
 [ext_resource type="AudioStream" uid="uid://drtmlnoimgrw0" path="res://trash/Close.ogg" id="14_21nd7"]
-[ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing.ogg" id="14_lvr4p"]
+[ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing_Doc.ogg" id="14_lvr4p"]
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="15_iioys"]
 [ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Open_Close.ogg" id="17_725xu"]
 [ext_resource type="Script" path="res://UI/Text_Sound.gd" id="18_2b3cl"]
