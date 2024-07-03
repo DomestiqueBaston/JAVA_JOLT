@@ -101,7 +101,7 @@
 	},
 	"doctor9": {
 		"speaker": "doctor",
-		"text": "My dear, it's not my fault if your love life is as barren as your coffee cupboard. But enough about that -— let's focus on the task at hand, shall we?",
+		"text": "My dear, it's not my fault if your love life is as barren as your coffee cupboard. But enough about that, let's focus on the task at hand, shall we?",
 		"next": "rowena12"
 	},
 	"rowena12": {
@@ -186,7 +186,7 @@
 	},
 	"rowena22": {
 		"speaker": "rowena",
-		"text": "And I want you to stop that, please! I hate it when you make those comments about my... Well, you know.",
+		"text": "I hate it when you make those comments about my... Well, you know.",
 		"next": "doctor9"
 	},
 	"rowena23": {
