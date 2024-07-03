@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://mfquvma5rebu" path="res://UI/IMAGES/Cross_Passive.png" id="5_m325r"]
 [ext_resource type="Texture2D" uid="uid://dllfigi60weqt" path="res://UI/IMAGES/Sound_Up.png" id="6_aydsq"]
 [ext_resource type="Texture2D" uid="uid://ddwsqpkd5bt0w" path="res://UI/IMAGES/Load.png" id="6_dr1x2"]
-[ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://UI/IMAGES/Hand.png" id="6_ge8wt"]
+[ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://UI/IMAGES/Grab.png" id="6_ge8wt"]
 [ext_resource type="Texture2D" uid="uid://dxc0wres4r2mc" path="res://UI/IMAGES/Cross_Active.png" id="6_gioah"]
 [ext_resource type="Texture2D" uid="uid://bb1pd7t5evdm8" path="res://UI/IMAGES/Sound_Down.png" id="7_3c6ry"]
 [ext_resource type="Texture2D" uid="uid://dd5tsfrs4riqg" path="res://UI/IMAGES/Save.png" id="7_7mdoy"]

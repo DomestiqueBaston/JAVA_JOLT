@@ -10,9 +10,10 @@
 [ext_resource type="Script" path="res://demo/Souris.gd" id="8_k6sap"]
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://UI/IMAGES/Eye.png" id="10_0qooa"]
 [ext_resource type="Script" path="res://demo/Text_Sound.gd" id="10_shjei"]
-[ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://UI/IMAGES/Hand.png" id="11_i3oi0"]
+[ext_resource type="Texture2D" uid="uid://q5dgi0clf0kl" path="res://UI/IMAGES/Grab.png" id="11_i3oi0"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing_Doc.ogg" id="11_py6iw"]
 [ext_resource type="AudioStream" uid="uid://bkfems2vnve1v" path="res://DEMO/Barefoot_steps_A.ogg" id="12_e56jp"]
+
 
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3djui"]
