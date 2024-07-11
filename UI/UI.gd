@@ -17,6 +17,13 @@ enum { ROWENA, DOCTOR }
 ## Color of dialogue text when the doctor speaks.
 @export var doctor_text_color := Color(0x5b/255.0, 0x90/255.0, 0xc2/255.0)
 
+## Color of dialogue text option under the mouse cursor.
+@export var highlighted_text_color := Color.WHITE
+
+# Color of unhighlighted text options in current dialogue.
+var _choice_text_color: Color
+
+# Which dialogue to start with (for testing), 0 for none.
 @export_range(0, 3) var dialogue_number: int = 0
 
 ## Signal emitted when user clicks somewhere to make Rowena move.
@@ -95,19 +102,19 @@ func type_dialogue_text(text: String, speaker: int):
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
 
 func choose_response(choices: Array[String], speaker: int) -> int:
-	var color = rowena_text_color if speaker == ROWENA else doctor_text_color
+	_choice_text_color = rowena_text_color if speaker == ROWENA else doctor_text_color
 	$Boxes/Dialogue_Box/BG/Next.visible = false
 	$Boxes/Dialogue_Box/BG/Dialogue.text = choices[0]
-	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = color
+	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = _choice_text_color
 	if choices.size() > 1:
 		$Boxes/Dialogue_Box/BG2/Dialogue2.text = choices[1]
-		$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = color
+		$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = _choice_text_color
 		if choices.size() > 2:
 			$Boxes/Dialogue_Box/BG3/Dialogue3.text = choices[2]
-			$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = color
+			$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = _choice_text_color
 			if choices.size() > 3:
 				$Boxes/Dialogue_Box/BG4/Dialogue4.text = choices[3]
-				$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = color
+				$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = _choice_text_color
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_%d" % choices.size())
 	var choice = await _click_on_choice
 	$Dialogue_AnimationPlayer.play("Close_Dialogue_%d" % choices.size())
@@ -159,25 +166,25 @@ func _on_dialogue_4_gui_input(event):
 
 func _on_dialogue_1_mouse_entered():
 	if $Boxes/Dialogue_Box/BG2/Dialogue2.visible:
-		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = Color.WHITE
-		$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
-		$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
-		$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = rowena_text_color
+		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = highlighted_text_color
+		$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = _choice_text_color
+		$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = _choice_text_color
+		$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = _choice_text_color
 
 func _on_dialogue_2_mouse_entered():
-	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
-	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = Color.WHITE
-	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
-	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = rowena_text_color
+	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = _choice_text_color
+	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = highlighted_text_color
+	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = _choice_text_color
+	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = _choice_text_color
 
 func _on_dialogue_3_mouse_entered():
-	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
-	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
-	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = Color.WHITE
-	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = rowena_text_color
+	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = _choice_text_color
+	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = _choice_text_color
+	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = highlighted_text_color
+	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = _choice_text_color
 
 func _on_dialogue_4_mouse_entered():
-	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
-	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = rowena_text_color
-	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = rowena_text_color
-	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = Color.WHITE
+	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = _choice_text_color
+	$Boxes/Dialogue_Box/BG2/Dialogue2.self_modulate = _choice_text_color
+	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = _choice_text_color
+	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = highlighted_text_color
