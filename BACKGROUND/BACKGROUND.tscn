@@ -1,6 +1,7 @@
-[gd_scene load_steps=48 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=49 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
+[ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/IMAGES/BG_Lights_On.png" id="2_8x8bd"]
 [ext_resource type="Texture2D" uid="uid://wx47j17h2tlm" path="res://BACKGROUND/IMAGES/Radio_On_Lights_Off.png" id="2_yjrnf"]
 [ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/IMAGES/Radio_On_Lights_On.png" id="4_ukw4d"]
@@ -134,6 +135,7 @@ size = Vector2(1, 1)
 size = Vector2(2, 2)
 
 [node name="BACKGROUND" type="Node2D"]
+script = ExtResource("1_tfe66")
 
 [node name="BG_Lights_Off" type="Sprite2D" parent="."]
 texture = ExtResource("1_fd7kn")
@@ -292,10 +294,10 @@ collision_layer = 2
 position = Vector2(44, 15.5)
 shape = SubResource("RectangleShape2D_whj2c")
 
-[node name="Top_Center_Unused_Cupboard__Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+[node name="Top_Center_Unused_Cupboard_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
 collision_layer = 2
 
-[node name="Top_Center_Unused_Cupboard" type="CollisionShape2D" parent="Stuff_Colliders/Up/Top_Center_Unused_Cupboard__Collider"]
+[node name="Top_Center_Unused_Cupboard" type="CollisionShape2D" parent="Stuff_Colliders/Up/Top_Center_Unused_Cupboard_Collider"]
 position = Vector2(58, 9.5)
 shape = SubResource("RectangleShape2D_fy2og")
 
@@ -516,14 +518,14 @@ collision_layer = 2
 position = Vector2(117, 35.5)
 polygon = PackedVector2Array(-5, -0.5, -5, -1.5, -3, -1.5, 0, -0.5, 1, -4.5, 3, -4.5, 3, 3.5, -1, 3.5, -1, 1.5)
 
-[node name="Pastic_Boxes_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+[node name="Plastic_Boxes_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
 
-[node name="Plastic_boxes" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Pastic_Boxes_Collider"]
+[node name="Plastic_boxes" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Plastic_Boxes_Collider"]
 position = Vector2(100, 37.5)
 polygon = PackedVector2Array(4, -1.5, 4, 1.5, -4, 1.5, -4, -0.5, -1, -0.5, -1, -1.5)
 
-[node name="Plastic_Boxes_Out" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Pastic_Boxes_Collider"]
+[node name="Plastic_Boxes_Out" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Plastic_Boxes_Collider"]
 visible = false
 position = Vector2(98, 38)
 shape = SubResource("RectangleShape2D_gwl77")

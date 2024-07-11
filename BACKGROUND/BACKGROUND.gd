@@ -1,0 +1,140 @@
+extends Node2D
+
+## Identifiers for all the objects in the background.
+enum {
+	KITCHEN_CABINET,
+	RECYCLING_CLOSET,
+	UNDERSINK_CABINET,
+	CLEANING_CLOSET,
+	DRAWER_LEFT_1,
+	DRAWER_LEFT_2,
+	DRAWER_LEFT_3,
+	PRIVATE_DRAWER,
+	KITCHEN_TOOLS_DRAWER,
+	CUTLERY_DRAWER,
+	OVEN,
+	OVEN_BOTTOM,
+	DISHWASHER,
+	STOOL,
+	CHAIR,
+	TOWEL_LARGE,
+	TOWEL_SMALL,
+	TOP_LEFT_UNUSED_CUPBOARD,
+	LEFT_GLASS_CUPBOARD,
+	TOP_CENTER_UNUSED_CUPBOARD,
+	RIGHT_GLASS_CUPBOARD,
+	CUPBOARD_UPPER_CENTER_LEFT,
+	CUPBOARD_UPPER_CENTER,
+	COFFEE_CUPBOARD,
+	UPPER_RIGHT_CUPBOARD,
+	MICROWAVE_OVEN,
+	WINDOW_RIGHT,
+	WINDOW_LEFT,
+	SPOILED_MILK,
+	COFFEE_MAKER,
+	RADIO,
+	REFRIGERATOR_RIGHT,
+	REFRIGERATOR_LEFT,
+	REFRIGERATOR_LEFT_WATER_ICE,
+	PAINTING,
+	LIGHT_SWITCH_LEFT,
+	LIGHT_SWITCH_RIGHT,
+	YUCCA,
+	OLIVE_OIL_BOTTLE,
+	SALT,
+	TOASTER,
+	NOTCHED_COFFEE_CUP_RIGHT,
+	PEPPER,
+	RICE_POT,
+	COOKIE_POT,
+	TAP,
+	PLASTIC_BOXES,
+	MANDOLINE,
+	FOOD_PROCESSOR,
+	RED_COFFEE_CUP_LEFT,
+	BROWN_COFFEE_CUP,
+	KNIFE_BLOCK,
+	FRUIT_BASKET,
+	CUTTING_BOARD,
+	PRESSURE_COOKER,
+	KETTLE,
+	SAUCE_PAN,
+	COFFEE_BEANS_1,
+	COFFEE_BEANS_2,
+	OBJECT_COUNT # must be last!
+}
+
+signal mouse_entered_object(which: int)
+signal mouse_exited_object(which: int)
+
+@onready var _colliders: Array[Area2D] = [
+	$Stuff_Colliders/Low/Kitchen_Cabinet_Collider,				# KITCHEN_CABINET
+	$Stuff_Colliders/Low/Recycling_Closet_Collider,				# RECYCLING_CLOSET
+	$Stuff_Colliders/Low/Undersink_Cabinet_Collider,			# UNDERSINK_CABINET
+	$Stuff_Colliders/Low/Cleaning_Closet_Collider,				# CLEANING_CLOSET
+	$Stuff_Colliders/Low/Drawer_Left_1_Collider,				# DRAWER_LEFT_1
+	$Stuff_Colliders/Low/Drawer_Left_2_Collider,				# DRAWER_LEFT_2
+	$Stuff_Colliders/Low/Drawer_Left_3_Collider,				# DRAWER_LEFT_3
+	$Stuff_Colliders/Low/Private_Drawer_Collider,				# PRIVATE_DRAWER
+	$Stuff_Colliders/Low/Kitchen_Tools_Drawer_Collider,			# KITCHEN_TOOLS_DRAWER
+	$Stuff_Colliders/Low/Cutlery_Drawer_Collider,				# CUTLERY_DRAWER
+	$Stuff_Colliders/Low/Oven_Collider,							# OVEN
+	$Stuff_Colliders/Low/Oven_Bottom_Collider,					# OVEN_BOTTOM
+	$Stuff_Colliders/Low/DishWasher_Collider,					# DISHWASHER
+	$Stuff_Colliders/Low/Stool_Collider,						# STOOL
+	$Stuff_Colliders/Low/Chair_Collider,						# CHAIR
+	$Stuff_Colliders/Low/Towel_Large_Collider,					# TOWEL_LARGE
+	$Stuff_Colliders/Low/Towel_Small_Collider,					# TOWEL_SMALL
+	$Stuff_Colliders/Up/Top_Left_Unused_Cupboard_Collider,		# TOP_LEFT_UNUSED_CUPBOARD
+	$Stuff_Colliders/Up/Left_Glass_Cupboard_Collider,			# LEFT_GLASS_CUPBOARD
+	$Stuff_Colliders/Up/Top_Center_Unused_Cupboard_Collider,	# TOP_CENTER_UNUSED_CUPBOARD
+	$Stuff_Colliders/Up/Right_Glass_Cupboard_Collider,			# RIGHT_GLASS_CUPBOARD
+	$Stuff_Colliders/Up/Cupboard_Upper_Center_Left_Collider,	# CUPBOARD_UPPER_CENTER_LEFT
+	$Stuff_Colliders/Up/Cupboard_Upper_Center_Collider,			# CUPBOARD_UPPER_CENTER
+	$Stuff_Colliders/Up/Coffee_Cupboard_Collider,				# COFFEE_CUPBOARD
+	$Stuff_Colliders/Up/Upper_Right_Cupboard_Collider,			# UPPER_RIGHT_CUPBOARD
+	$Stuff_Colliders/Up/Microwave_Oven_Collider,				# MICROWAVE_OVEN
+	$Stuff_Colliders/Up/Window_Right_Collider,					# WINDOW_RIGHT
+	$Stuff_Colliders/Up/Window_Left_Collider,					# WINDOW_LEFT
+	$Stuff_Colliders/Mid/Spoiled_Milk_Collider,					# SPOILED_MILK
+	$Stuff_Colliders/Mid/Coffee_Maker_Collider,					# COFFEE_MAKER
+	$Stuff_Colliders/Mid/Radio_Collider,						# RADIO
+	$Stuff_Colliders/Mid/Refrigerator_Right_Collider,			# REFRIGERATOR_RIGHT
+	$Stuff_Colliders/Mid/Refrigerator_Left_Collider,			# REFRIGERATOR_LEFT
+	$Stuff_Colliders/Mid/Refrigerator_Left_Water_Ice_Collider,	# REFRIGERATOR_LEFT_WATER_ICE
+	$Stuff_Colliders/Mid/Painting_Collider,						# PAINTING
+	$Stuff_Colliders/Mid/Light_Switch_Left_Collider,			# LIGHT_SWITCH_LEFT
+	$Stuff_Colliders/Mid/Light_Switch_Right_Collider,			# LIGHT_SWITCH_RIGHT
+	$Stuff_Colliders/Mid/Yucca_Collider,						# YUCCA
+	$Stuff_Colliders/Mid/Olive_Oil_Bottle_Collider,				# OLIVE_OIL_BOTTLE
+	$Stuff_Colliders/Mid/Salt_Collider,							# SALT
+	$Stuff_Colliders/Mid/Toaster_Collider,						# TOASTER
+	$Stuff_Colliders/Mid/Notched_Coffee_Cup_Right_Collider,		# NOTCHED_COFFEE_CUP_RIGHT
+	$Stuff_Colliders/Mid/Pepper_Collider,						# PEPPER
+	$Stuff_Colliders/Mid/Rice_Pot_Collider,						# RICE_POT
+	$Stuff_Colliders/Mid/Cookie_Pot_Collider,					# COOKIE_POT
+	$Stuff_Colliders/Mid/Tap_Collider,							# TAP
+	$Stuff_Colliders/Mid/Plastic_Boxes_Collider,				# PLASTIC_BOXES
+	$Stuff_Colliders/Mid/Mandoline_Collider,					# MANDOLINE
+	$Stuff_Colliders/Mid/Food_Processor_Collider,				# FOOD_PROCESSOR
+	$Stuff_Colliders/Mid/Red_Coffee_Cup_Left_Collider,			# RED_COFFEE_CUP_LEFT
+	$Stuff_Colliders/Mid/Brown_Coffee_Cup_Collider,				# BROWN_COFFEE_CUP
+	$Stuff_Colliders/Mid/Knife_Block_Collider,					# KNIFE_BLOCK
+	$Stuff_Colliders/Mid/Fruit_Basket_Collider,					# FRUIT_BASKET
+	$Stuff_Colliders/Mid/Cutting_Board_Collider,				# CUTTING_BOARD
+	$Stuff_Colliders/Mid/Pressure_Cooker_Collider,				# PRESSURE_COOKER
+	$Stuff_Colliders/Mid/Kettle_Collider,						# KETTLE
+	$Stuff_Colliders/Mid/Sauce_Pan_Collider,					# SAUCE_PAN
+	$Stuff_Colliders/Mid/Coffee_Beans_1_Collider,				# COFFEE_BEANS_1
+	$Stuff_Colliders/Mid/Coffee_Beans_2_Collider,				# COFFEE_BEANS_2
+]
+
+func _ready():
+	assert(_colliders.size() == OBJECT_COUNT)
+	for index in _colliders.size():
+		var collider: Area2D = _colliders[index]
+		collider.mouse_entered.connect(func(): mouse_entered_object.emit(index))
+		collider.mouse_exited.connect(func(): mouse_exited_object.emit(index))
+
+func get_collider(which: int) -> Area2D:
+	return _colliders[which]

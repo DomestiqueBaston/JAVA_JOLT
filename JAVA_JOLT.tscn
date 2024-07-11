@@ -19,4 +19,6 @@ scale = Vector2(-1, 1)
 
 [node name="UI" parent="." instance=ExtResource("4_ilxi3")]
 
+[connection signal="mouse_entered_object" from="BACKGROUND" to="." method="_on_background_mouse_entered_object"]
+[connection signal="mouse_exited_object" from="BACKGROUND" to="." method="_on_background_mouse_exited_object"]
 [connection signal="click_on_background" from="UI" to="." method="_on_ui_click_on_background"]
