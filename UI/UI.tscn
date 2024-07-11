@@ -1418,9 +1418,9 @@ texture = ExtResource("7_7mdoy")
 [node name="Quit" type="TextureRect" parent="Mouse"]
 visible = false
 layout_mode = 0
-offset_left = -7.0
+offset_left = -12.0
 offset_top = -8.0
-offset_right = 9.0
+offset_right = 4.0
 offset_bottom = 8.0
 mouse_filter = 2
 texture = ExtResource("8_0avw1")
