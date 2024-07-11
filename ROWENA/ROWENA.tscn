@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://clvr31ogitwwv"]
+[gd_scene load_steps=34 format=3 uid="uid://clvr31ogitwwv"]
 
+[ext_resource type="Script" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/ROWENA.png" id="1_tqx3q"]
 [ext_resource type="AudioStream" uid="uid://l7jtkoklf4u0" path="res://ROWENA/SOUNDS/Disgusted.ogg" id="2_5gboi"]
 [ext_resource type="AudioStream" uid="uid://dv5yjodb221qq" path="res://ROWENA/SOUNDS/Spitting_Out.ogg" id="2_v3kx6"]
@@ -552,6 +553,7 @@ _data = {
 position = Vector2(90, 68)
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("1_a1se7")
 
 [node name="Rowena_Sprites" type="Sprite2D" parent="."]
 position = Vector2(0, -29)

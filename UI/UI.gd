@@ -17,7 +17,10 @@ enum { ROWENA, DOCTOR }
 ## Color of dialogue text when the doctor speaks.
 @export var doctor_text_color := Color(0x5b/255.0, 0x90/255.0, 0xc2/255.0)
 
-@export_range(1, 3) var dialogue_number: int = 1
+@export_range(0, 3) var dialogue_number: int = 0
+
+## Signal emitted when user clicks somewhere to make Rowena move.
+signal click_on_background(pos: Vector2)
 
 signal _typing_finished
 signal _next_click
@@ -35,6 +38,14 @@ func _ready():
 			tell_story_node(dialogue2, dialogue2["start"])
 		3:
 			tell_story_node(dialogue3, dialogue3["start"])
+
+func _is_left_button_press(event: InputEvent) -> bool:
+	return (event is InputEventMouseButton and
+			event.button_index == MOUSE_BUTTON_LEFT and event.pressed)
+
+func _unhandled_input(event: InputEvent):
+	if _is_left_button_press(event) and not $Boxes/Dialogue_Box/BG/Dialogue.visible:
+		click_on_background.emit(event.position)
 
 func tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
@@ -117,34 +128,34 @@ func _type_one_character():
 		$Boxes/Dialogue_Box/BG/Next.visible = true
 
 func _on_three_points_gui_input(event: InputEvent):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			emit_signal("_next_click")
+	if _is_left_button_press(event):
+		$Boxes/Dialogue_Box/BG/Next/Three_Points.accept_event()
+		emit_signal("_next_click")
 
 func _on_dialogue_1_gui_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			# if Dialogue2 is visible, we are waiting for the user to choose
-			if $Boxes/Dialogue_Box/BG2/Dialogue2.visible:
-				_click_on_choice.emit(0)
-			# if not, we may be typing
-			else:
-				$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = -1
+	if _is_left_button_press(event):
+		$Boxes/Dialogue_Box/BG/Dialogue.accept_event()
+		# if Dialogue2 is visible, we are waiting for the user to choose
+		if $Boxes/Dialogue_Box/BG2/Dialogue2.visible:
+			_click_on_choice.emit(0)
+		# if not, we may be typing
+		else:
+			$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = -1
 
 func _on_dialogue_2_gui_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			_click_on_choice.emit(1)
+	if _is_left_button_press(event):
+		$Boxes/Dialogue_Box/BG2/Dialogue2.accept_event()
+		_click_on_choice.emit(1)
 
 func _on_dialogue_3_gui_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			_click_on_choice.emit(2)
+	if _is_left_button_press(event):
+		$Boxes/Dialogue_Box/BG3/Dialogue3.accept_event()
+		_click_on_choice.emit(2)
 
 func _on_dialogue_4_gui_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			_click_on_choice.emit(3)
+	if _is_left_button_press(event):
+		$Boxes/Dialogue_Box/BG4/Dialogue4.accept_event()
+		_click_on_choice.emit(3)
 
 func _on_dialogue_1_mouse_entered():
 	if $Boxes/Dialogue_Box/BG2/Dialogue2.visible:
