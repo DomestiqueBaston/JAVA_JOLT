@@ -23,7 +23,7 @@ enum { ROWENA, DOCTOR }
 # Color of unhighlighted text options in current dialogue.
 var _choice_text_color: Color
 
-# Which dialogue to start with (for testing), 0 for none.
+## Which dialogue to start with (for testing), 0 for none.
 @export_range(0, 3) var dialogue_number: int = 0
 
 ## Signal emitted when user clicks somewhere to make Rowena move.
@@ -40,11 +40,11 @@ const dialogue3 = preload("res://dialogue3.json").data
 func _ready():
 	match dialogue_number:
 		1:
-			tell_story_node(dialogue1, dialogue1["start"])
+			_tell_story_node(dialogue1, dialogue1["start"])
 		2:
-			tell_story_node(dialogue2, dialogue2["start"])
+			_tell_story_node(dialogue2, dialogue2["start"])
 		3:
-			tell_story_node(dialogue3, dialogue3["start"])
+			_tell_story_node(dialogue3, dialogue3["start"])
 
 func _is_left_button_press(event: InputEvent) -> bool:
 	return (event is InputEventMouseButton and
@@ -54,7 +54,7 @@ func _unhandled_input(event: InputEvent):
 	if _is_left_button_press(event) and not $Boxes/Dialogue_Box/BG/Dialogue.visible:
 		click_on_background.emit(event.position)
 
-func tell_story_node(graph, node):
+func _tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
 	type_dialogue_text(node.text, speaker)
 	await _typing_finished
@@ -68,7 +68,7 @@ func tell_story_node(graph, node):
 		var choice = await choose_response(texts, speaker)
 		next = graph[next[choice]].get("next")
 	if next:
-		tell_story_node(graph, graph[next])
+		_tell_story_node(graph, graph[next])
 	else:
 		clear_dialogue()
 
@@ -85,25 +85,25 @@ func _set_dialogue_style(speaker: int):
 
 func clear_dialogue():
 	$Dialogue_AnimationPlayer.play("Close_Dialogue_1")
-	$Boxes/Dialogue_Box/BG/Next.visible = false
+	$Boxes/Dialogue_Box/BG/Next.hide()
 
 func set_dialogue_text(text: String, speaker: int):
 	_set_dialogue_style(speaker)
 	$Boxes/Dialogue_Box/BG/Dialogue.text = text
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
-	$Boxes/Dialogue_Box/BG/Next.visible = true
+	$Boxes/Dialogue_Box/BG/Next.show()
 
 func type_dialogue_text(text: String, speaker: int):
 	_set_dialogue_style(speaker)
 	$Boxes/Dialogue_Box/BG/Dialogue.text = text
 	$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = 0
-	$Boxes/Dialogue_Box/BG/Next.visible = false
+	$Boxes/Dialogue_Box/BG/Next.hide()
 	$Typing_Timer.start(1.0 / characters_per_second)
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
 
 func choose_response(choices: Array[String], speaker: int) -> int:
 	_choice_text_color = rowena_text_color if speaker == ROWENA else doctor_text_color
-	$Boxes/Dialogue_Box/BG/Next.visible = false
+	$Boxes/Dialogue_Box/BG/Next.hide()
 	$Boxes/Dialogue_Box/BG/Dialogue.text = choices[0]
 	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = _choice_text_color
 	if choices.size() > 1:
@@ -132,7 +132,14 @@ func _type_one_character():
 	if i < 0 or i == n:
 		$Typing_Timer.stop()
 		emit_signal("_typing_finished")
-		$Boxes/Dialogue_Box/BG/Next.visible = true
+		$Boxes/Dialogue_Box/BG/Next.show()
+
+func set_comment_text(text: String):
+	$Boxes/Comments.text = text
+	$Boxes/Comments.show()
+
+func clear_comment_text():
+	$Boxes/Comments.hide()
 
 func _on_three_points_gui_input(event: InputEvent):
 	if _is_left_button_press(event):
