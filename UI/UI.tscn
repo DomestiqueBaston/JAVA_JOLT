@@ -1440,6 +1440,7 @@ collision_mask = 2
 [node name="Souris_Collider" type="CollisionShape2D" parent="Mouse/Collider"]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_ncb4q")
+disabled = true
 
 [node name="Typing" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(1, 1)
