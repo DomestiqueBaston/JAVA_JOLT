@@ -1318,30 +1318,28 @@ script = ExtResource("2_mswu7")
 [node name="Cross_Passive" type="TextureRect" parent="Mouse"]
 visible = false
 layout_mode = 0
-offset_left = -7.0
-offset_top = -7.0
-offset_right = 9.0
-offset_bottom = 9.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 mouse_filter = 2
 texture = ExtResource("5_m325r")
 
 [node name="Cross_Active" type="TextureRect" parent="Mouse"]
 visible = false
 layout_mode = 0
-offset_left = -7.0
-offset_top = -7.0
-offset_right = 9.0
-offset_bottom = 9.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 mouse_filter = 2
 texture = ExtResource("6_gioah")
 
 [node name="Arrow" type="TextureRect" parent="Mouse"]
 visible = false
 layout_mode = 0
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 13.0
-offset_bottom = 13.0
+offset_right = 16.0
+offset_bottom = 16.0
 mouse_filter = 2
 texture = ExtResource("4_ru12x")
 
@@ -1436,6 +1434,7 @@ mouse_filter = 2
 texture = ExtResource("9_f052n")
 
 [node name="Collider" type="Area2D" parent="Mouse"]
+visible = false
 collision_mask = 2
 
 [node name="Souris_Collider" type="CollisionShape2D" parent="Mouse/Collider"]

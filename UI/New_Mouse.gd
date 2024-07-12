@@ -21,10 +21,11 @@ func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	assert(_cursors.size() == Globals.Cursor.CURSOR_COUNT)
 	set_cursor(Globals.Cursor.CROSS_PASSIVE)
+	global_position = get_global_mouse_position()
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		global_position = event.position
+		position = event.position
 
 func set_cursor(cursor: int):
 	if _current_cursor != cursor:
