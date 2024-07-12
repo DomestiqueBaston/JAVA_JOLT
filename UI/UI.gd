@@ -196,5 +196,5 @@ func _on_dialogue_4_mouse_entered():
 	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = _choice_text_color
 	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = highlighted_text_color
 
-func set_mouse_cursor(cursor_name: String):
-	$Mouse.set_cursor(cursor_name)
+func set_mouse_cursor(cursor: int):
+	$Mouse.set_cursor(cursor)

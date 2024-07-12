@@ -12,10 +12,10 @@ func _on_background_mouse_entered_object(which):
 	print($BACKGROUND.get_collider(which).name)
 	current_object = which
 	if which == $BACKGROUND.WINDOW_RIGHT:
-		$UI.set_mouse_cursor("Quit")
+		$UI.set_mouse_cursor(Globals.Cursor.QUIT)
 	else:
-		$UI.set_mouse_cursor("Cross_Passive")
+		$UI.set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
 
 func _on_background_mouse_exited_object(_which):
 	current_object = -1
-	$UI.set_mouse_cursor("Cross_Passive")
+	$UI.set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
