@@ -245,7 +245,7 @@ Refrigerator Right : « That’s a refrigerator… »
 
 	Le beurrier dans le réfrigérateur : « Butter. There's a little knife in it. »
 
-	Le couteau à beurre : « Ok. I’ll take that knife. »
+	Le couteau à beurre : « Ok. I’ll take only that knife. »
 
 	Smoothie bottles : « I only drink it before working out. But Ok. »
 
