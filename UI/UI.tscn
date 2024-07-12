@@ -1335,7 +1335,7 @@ offset_bottom = 9.0
 mouse_filter = 2
 texture = ExtResource("6_gioah")
 
-[node name="Cursor" type="TextureRect" parent="Mouse"]
+[node name="Arrow" type="TextureRect" parent="Mouse"]
 visible = false
 layout_mode = 0
 offset_left = -3.0

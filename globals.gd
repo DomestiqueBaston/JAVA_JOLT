@@ -4,7 +4,7 @@ extends Node
 enum Cursor {
 	CROSS_PASSIVE,
 	CROSS_ACTIVE,
-	CURSOR,
+	ARROW,
 	SOUND_UP,
 	SOUND_DOWN,
 	NO_SOUND,
