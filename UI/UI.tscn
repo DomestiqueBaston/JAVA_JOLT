@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=36 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://cb685rnn6q07t" path="res://UI/IMAGES/Quit.png" id="8_0avw1"]
 [ext_resource type="Texture2D" uid="uid://dpjsaxgllscqn" path="res://UI/IMAGES/No_Sound.png" id="8_mhf7y"]
 [ext_resource type="Texture2D" uid="uid://dadhxlfc30aym" path="res://UI/IMAGES/Trash.png" id="9_f052n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu12a"]
+size = Vector2(16, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncb4q"]
 size = Vector2(1, 1)
@@ -1321,6 +1324,13 @@ theme = ExtResource("1_00ud7")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 0
 text = "Inv."
+
+[node name="Collider" type="Area2D" parent="Inventory"]
+collision_layer = 2
+
+[node name="Inventory_Collider" type="CollisionShape2D" parent="Inventory/Collider"]
+position = Vector2(8, 5)
+shape = SubResource("RectangleShape2D_yu12a")
 
 [node name="Mouse" type="Control" parent="."]
 layout_mode = 3
