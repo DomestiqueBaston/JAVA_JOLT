@@ -605,7 +605,7 @@ hframes = 42
 vframes = 9
 
 [node name="Foot_Steps" type="AudioStreamPlayer2D" parent="ROWENA"]
-volume_db = -5.0
+volume_db = -10.0
 bus = &"FX"
 
 [node name="Kuwahara_Shader" type="ColorRect" parent="."]
