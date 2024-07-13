@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=40 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
@@ -1099,6 +1099,60 @@ _data = {
 "RESET": SubResource("Animation_ayngy")
 }
 
+[sub_resource type="Animation" id="Animation_4kbfq"]
+resource_name = "Inv_On"
+length = 0.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory/Inv:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.360784), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_utdto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory/Inv:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_huf36"]
+resource_name = "Inv_Off"
+length = 0.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory/Inv:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.643137), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qex0e"]
+_data = {
+"Inv_Off": SubResource("Animation_huf36"),
+"Inv_On": SubResource("Animation_4kbfq"),
+"RESET": SubResource("Animation_utdto")
+}
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_ui3qd")
 
@@ -1177,6 +1231,7 @@ autowrap_mode = 2
 visible_characters_behavior = 1
 
 [node name="Dialogue_Box" type="VBoxContainer" parent="Boxes"]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1278,19 +1333,19 @@ text = "Dialogue box 4"
 autowrap_mode = 2
 
 [node name="Inventory_Box" type="MarginContainer" parent="Boxes"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -34.0
-offset_bottom = -1.0
+offset_top = -33.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
 
 [node name="BG" type="Panel" parent="Boxes/Inventory_Box"]
 visible = false
@@ -1492,6 +1547,11 @@ libraries = {
 "": SubResource("AnimationLibrary_5oxd5")
 }
 autoplay = "Blinking"
+
+[node name="Inventory_Icon_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qex0e")
+}
 
 [connection signal="gui_input" from="Boxes/Dialogue_Box/BG/Dialogue" to="." method="_on_dialogue_1_gui_input"]
 [connection signal="mouse_entered" from="Boxes/Dialogue_Box/BG/Dialogue" to="." method="_on_dialogue_1_mouse_entered"]

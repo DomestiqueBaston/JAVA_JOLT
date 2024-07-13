@@ -1,6 +1,6 @@
 Comment qu’on fait pour ramasser des trucs, etc. PRÉCISÉMENT !
 
-J’avais oublié de l’ajouter mais il y est à présent dans la scène UI.tscn : on a une « icône » (Label) Inv. Pour ouvrir/fermer l’inventaire. Quand on clique dessus, l’inventaire s’ouvre ou se ferme (étonnant!). Il serait probablement judicieux que l’icône n’apparaisse que quand on survole l’emplacement de l’inventaire et disparaisse quand on s’en éloigne.
+J’avais oublié de l’ajouter mais il y est à présent dans la scène UI.tscn : on a une « icône » (Label) Inv. Pour ouvrir/fermer l’inventaire. Quand on clique dessus, l’inventaire s’ouvre ou se ferme (étonnant!). Il serait probablement judicieux que l’icône n’apparaisse que quand on survole l’emplacement de l’inventaire et disparaisse quand on s’en éloigne sauf quand il est ouvert.
 	À tout moment, si Rowena se retrouve à transporter plus de 4 objets, elle refusera d’en prendre un nouveau en disant « Hey! I don't have four arms, I'm not Shiva! ».
 	À noter également que lorsque dans l’inventaire, on dit « utiliser » A sur B, on peut tout à fait faire l’inverse !
 	Toujours à noter : lorsque l’on fait bricoler des trucs à Rowena, elle le fera toujours de dos (elle a une animation pour ça) et il faudra prendre garde à ce qu’elle ne soit pas sur les bords de l’écran car il n’y a pas de plan sur lequel « bricoler ». Elle devra donc se déplacer si besoin.

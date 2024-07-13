@@ -450,6 +450,11 @@ L’inventaire :
 	Il sera possible de prendre les objets (curseur Hand).
 	Il sera possible de « jeter » un objet (curseur Trash à condition qu’il ne soit pas unique ou à considérer que cela signifie ranger, remettre à sa place, etc. sans que le personnage n’ait à le faire, ce qui serait chiant, il faut le reconnaître).
 	Les objets composant l’inventaire se trouverons sous forme de texte car la résolution du jeu est trop basse pour des images lisibles (sans compter qu’il faudrait avoir aussi le shader Kuwahara dessus).
+	Sélectionner un élément de l’inventaire le fera passer en surbrillance (rose, comme pour les dialogues de Rowena). Par défaut, la couleur est le blanc. Le désélectionner lui rendra la couleur par défaut. Après avoir combiné des éléments de l’inventaire, ce qui en résulte prend la couleur par défaut et n’est pas sélectionné.
+	L’icon de l’inventaire s’affiche en plaçant la souris dans le coin supérieur gauche. Il y a une animation pour affichage de l’icône et une pour la masquer.
+	/!\ IMPORTANT : pendant les séquences de dialogue, l’inventaire ne peut pas être affiché.
+	Pour fermer l’inventaire sans y interagir, il suffit de cliquer à nouveau sur l’icône Inv.
+	Lorsque l’inventaire est ouvert, l’icône Inv. ne disparaît pas.
 
 
 	Interactions avec les éléments dans les tiroirs :
