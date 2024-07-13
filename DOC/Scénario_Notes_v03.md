@@ -424,7 +424,6 @@ L’interface
 
 
 Les dialogues :
-
 	En fonction des besoins mais pour le moment quand j’écris, tout l’écran sera destiné à afficher les dialogues en surimpression. Il faudra probablement mettre un fond qui assombrira temporairement l’image derrière afin de rendre le texte définitivement lisible.
 	Le texte s’affiche caractère après caractère (voir la « démo ») en émettant un petit son à chaque caractère (sauf les espaces).
 	Lorsque le texte sera trop long pour la taille de la zone réservée (si cela arrive), alors on utilisera un petit symbole en bas à droite de la zone avec « … » qui clignote invitant le joueur à cliquer pour afficher la suite du texte soit en faisant de la place en faisant remonter le texte d’une ligne pendant que le reste du texte s’affiche.
@@ -433,7 +432,6 @@ Les dialogues :
 
 
 La souris :
-
 	On quitte le jeu en cliquant sur la fenêtre de droite (comme vu précédemment) avec le curseur « Quit ».
 	On règle le son sur le poste de radio (voir plus bas)
 	L’action par défaut est le clique gauche.
@@ -442,26 +440,29 @@ La souris :
 	Si le curseur est posé sur un objet dont on peut obtenir une information ou interagir avec, alors le curseur changera de couleur.
 	Si plusieurs actions sont possibles (regarder,  attraper, etc.), alors on fera défiler les options d’action avec la molette de la souris.
 	On règle le volume sonore général sur le BUS Master sur le poste de radio de la cuisine (par défaut, le son (et le curseur) sera sur Sound_Up – maximum – et on aura comme autres choix Sound_Down (-8 DB) et No_Sound (-80 DB). Ou alors on fait varier le volume par tranche à chaque fois qu’on clique (0, -2, -4, -8, -16, -40 et -80) et dans ce cas, le point de départ sera Sound_Down (-8 DB). Si on coupe le son, alors il faut cacher le layer Radio_On_Lights_On qui affiche une lumière témoin de mise en marche et ATTENTION, il est animé dans les scènes OUTRO et INTRO (il faudra donc « overide » ces animations).
-	Pour les interactions entre les objets (de l’inventaire) et le robinet (par exemple), il faudra sélectionner l’objet dans l’inventaire, le curseur passera à Cross_Active, on sortira de la fenêtre de l’inventaire (en faisant sortir la souris du cadre de l’inventaire (on par sur cette option de sortie) puis on cliquera sur le robinet. S’il doit y avoir un changement, l’élément de l’inventaire changera de nom et on aura éventuellement un commentaire de Rowena sinon, un commentaire de Rowena qui dira que ça ne va pas.
+	Pour les interactions avec les objets, voir le doc à ce sujet (Détail de comment qu’on fait pour faire les choses_v01.odt).
 
 
 L’inventaire :
-
-	Il prendra (probablement) la forme de la zone de dialogue.
-	Il sera assez succinct puisque Rowena ne peut transporter que 2 objets (à moins qu’ils ne soient petits et ou que plusieurs puissent être réunis en 1 objet dans une main comme par exemple des grains de café).
-	On portera ainsi l’inventaire à 4 objets s’ils sont petits.
-	Il sera possible de regarder les objets (curseur œil).
-	On pourra combiner les objets (dans l’inventaire).
-	Il sera possible de « jeter » un objet (curseur poubelle (?) à condition qu’il ne soit pas unique ou à considérer que cela signifie ranger, remettre à sa place, etc. sans que le personnage n’ait à le faire, ce qui serait chiant, il faut le reconnaître).
+	Il prendra la même forme que la zone de dialogue mais au bas de l’écran.
+	Il sera assez succinct puisque Rowena ne peut transporter que 4 objets. Elle dira « Hey! I don't have four arms, I'm not Shiva! » si on lui demande d’en porter plus.
+	Il sera possible de regarder les objets (curseur Eye).
+	Il sera possible de prendre les objets (curseur Hand).
+	Il sera possible de « jeter » un objet (curseur Trash à condition qu’il ne soit pas unique ou à considérer que cela signifie ranger, remettre à sa place, etc. sans que le personnage n’ait à le faire, ce qui serait chiant, il faut le reconnaître).
 	Les objets composant l’inventaire se trouverons sous forme de texte car la résolution du jeu est trop basse pour des images lisibles (sans compter qu’il faudrait avoir aussi le shader Kuwahara dessus).
-	
-	Interactions avec les éléments de l’inventaire :
-	Elles se feront dans l’espace inventaire (!) de la même manière que dans le décor donc avec le curseur qui change d’aspect en fonction de ce qu’il est possible de faire avec les objets contenus dans l’inventaire. Pour combiner un élément avec un autre, il faudra en sélectionner un qui passera en rouge et ensuite le second (avec le curseur Cross_Active). S’il doit se passer quelque chose, alors on n’aura plus qu’un nouvel objet dans l’inventaire à la place des deux précédents (sauf éventuelle indication contraire) et tout reprendra une couleur par défaut (et la forme concernant le curseur). Si l’action est impossible/inutile, on aura un commentaire de Rowena.
-	S’il faut utiliser un élément de l’inventaire avec un autre du décor, alors il faudra cliquer sur « sortir » de l’inventaire pour le fermer (le curseur gardera sa couleur) puis cliquer sur l’élément du décor. S’il doit se passer quelque chose, alors en fonction de ce qui est prévu… 
-	Version alternative (qui a ma préférence malgré le risque de fermer la fenêtre à chaque instant) : Pour sortir de l’inventaire, il suffit de déplacer le curseur à l’extérieur de la fenêtre d’inventaire.
+
 
 	Interactions avec les éléments dans les tiroirs :
 	La zone d’inventaire servira à afficher le contenu des tiroirs puisqu’on ne voit pas ce qu’ils contiennent. Une liste sera donnée du contenu et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible si besoin (voire au dessus).
+
+	Sauver/charger une partie :
+	Cela se fera n’importe où. Il n’y aura qu’à faire défiler les icônes d’action à la souris avec la molette et de cliquer sur Sauver pour sauver une partie ou Charger pour… charger une partie.
+
+	Changer le volume sonore du jeu :
+	Cela ne peut se faire que sur le poste de radio sur la plan de travail à droite (juste à gauche de la fenêtre). On se servira alors de la molette de la souris pour faire défiler les icônes jusqu’à afficher celle d’augmentation ou diminution du volume ou carrément couper le son.
+
+	Quitter le jeu :
+	Il suffira de cliquer sur la fenêtre de droite dans la cuisine (le curseur se transformera en Quit quand on passe dessus). À ce moment-là, la fenêtre de dialogue s’ouvrira et affichera ce que Rowena va dire avec un choix pour le joueur « Hmm... Really? 'Cause if I mess this up… » et les choix de réponses seront « Nothing ventured, nothing gained, I'd say… » (oui) et « Actually, I'd rather stay in this misery… » (non).
 Notes de trucs importants que je ne sais pas où mettre.
 
 
@@ -469,8 +470,3 @@ Les animations :
 	Il faudra prendre garde à ce que Rowena soit devant le plan de travail de la cuisine (pas à droite de l’écran ni à gauche) pour jouer les animations liées à ce qu’elle fait quand elle tourne le dos car ces animations supposent qu’elle fasse des trucs sur le comptoir (plus ou moins).
 
 	/!\ ROWENA avance de 4 pixels par frame quand elle marche ! /!\
-
-
-
-Les trucs à régler :
-	Validation avant de quitter par la fenêtre ?
