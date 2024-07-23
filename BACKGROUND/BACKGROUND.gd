@@ -1,69 +1,5 @@
 extends Node2D
 
-## Identifiers for all the objects in the background.
-enum {
-	KITCHEN_CABINET,
-	RECYCLING_CLOSET,
-	UNDERSINK_CABINET,
-	CLEANING_CLOSET,
-	DRAWER_LEFT_1,
-	DRAWER_LEFT_2,
-	DRAWER_LEFT_3,
-	PRIVATE_DRAWER,
-	KITCHEN_TOOLS_DRAWER,
-	CUTLERY_DRAWER,
-	OVEN,
-	OVEN_BOTTOM,
-	DISHWASHER,
-	STOOL,
-	CHAIR,
-	TOWEL_LARGE,
-	TOWEL_SMALL,
-	TOP_LEFT_UNUSED_CUPBOARD,
-	LEFT_GLASS_CUPBOARD,
-	TOP_CENTER_UNUSED_CUPBOARD,
-	RIGHT_GLASS_CUPBOARD,
-	CUPBOARD_UPPER_CENTER_LEFT,
-	CUPBOARD_UPPER_CENTER,
-	COFFEE_CUPBOARD,
-	UPPER_RIGHT_CUPBOARD,
-	MICROWAVE_OVEN,
-	WINDOW_RIGHT,
-	WINDOW_LEFT,
-	SPOILED_MILK,
-	COFFEE_MAKER,
-	RADIO,
-	REFRIGERATOR_RIGHT,
-	REFRIGERATOR_LEFT,
-	REFRIGERATOR_LEFT_WATER_ICE,
-	PAINTING,
-	LIGHT_SWITCH_LEFT,
-	LIGHT_SWITCH_RIGHT,
-	YUCCA,
-	OLIVE_OIL_BOTTLE,
-	SALT,
-	TOASTER,
-	NOTCHED_COFFEE_CUP_RIGHT,
-	PEPPER,
-	RICE_POT,
-	COOKIE_POT,
-	TAP,
-	PLASTIC_BOXES,
-	MANDOLINE,
-	FOOD_PROCESSOR,
-	RED_COFFEE_CUP_LEFT,
-	BROWN_COFFEE_CUP,
-	KNIFE_BLOCK,
-	FRUIT_BASKET,
-	CUTTING_BOARD,
-	PRESSURE_COOKER,
-	KETTLE,
-	SAUCE_PAN,
-	COFFEE_BEANS_1,
-	COFFEE_BEANS_2,
-	OBJECT_COUNT # must be last!
-}
-
 signal mouse_entered_object(which: int)
 signal mouse_exited_object(which: int)
 
@@ -130,7 +66,7 @@ signal mouse_exited_object(which: int)
 ]
 
 func _ready():
-	assert(_colliders.size() == OBJECT_COUNT)
+	assert(_colliders.size() == Globals.Prop.PROP_COUNT)
 	for index in _colliders.size():
 		var collider: Area2D = _colliders[index]
 		collider.mouse_entered.connect(func(): mouse_entered_object.emit(index))

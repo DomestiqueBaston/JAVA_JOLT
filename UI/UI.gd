@@ -26,6 +26,9 @@ var _choice_text_color: Color
 ## Which dialogue to start with (for testing), 0 for none.
 @export_range(0, 3) var dialogue_number: int = 0
 
+var _available_actions: Array[int] = []
+var _current_action: int = -1
+
 ## Signal emitted when user clicks somewhere to make Rowena move.
 signal click_on_background(pos: Vector2)
 
@@ -53,6 +56,10 @@ func _is_left_button_press(event: InputEvent) -> bool:
 func _unhandled_input(event: InputEvent):
 	if _is_left_button_press(event) and not $Boxes/Dialogue_Box/BG/Dialogue.visible:
 		click_on_background.emit(event.position)
+	elif event.is_action_pressed("next_mouse_action"):
+		_next_action()
+	elif event.is_action_pressed("prev_mouse_action"):
+		_prev_action()
 
 func _tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
@@ -196,5 +203,33 @@ func _on_dialogue_4_mouse_entered():
 	$Boxes/Dialogue_Box/BG3/Dialogue3.self_modulate = _choice_text_color
 	$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = highlighted_text_color
 
-func set_mouse_cursor(cursor: int):
+func _set_mouse_cursor(cursor: int):
 	$Mouse.set_cursor(cursor)
+
+func clear_available_actions():
+	_available_actions.clear()
+	_current_action = -1
+	_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
+
+func set_available_actions(cursors: Array[int]):
+	if cursors.is_empty():
+		clear_available_actions()
+	else:
+		_available_actions = cursors
+		_current_action = 0
+		_set_mouse_cursor(cursors[0])
+
+func get_current_action() -> int:
+	if _current_action < 0:
+		return -1
+	else:
+		return _available_actions[_current_action]
+
+func _next_action():
+	if _available_actions.size() > 1:
+		_current_action = (_current_action + 1) % _available_actions.size()
+		_set_mouse_cursor(_available_actions[_current_action])
+
+func _prev_action():
+	if _available_actions.size() > 1:
+		_current_action = posmod(_current_action - 1, _available_actions.size())
