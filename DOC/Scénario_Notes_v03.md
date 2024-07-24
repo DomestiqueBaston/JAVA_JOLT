@@ -119,6 +119,7 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre ou pas, etc.
 
 /!\ A moins que ce soit précisé autrement, Rowena donnera le nom de ce qu’elle désigne quand elle le regardera. /!\ A ne pas confondre avec son commentaire quand on veut prendre les choses.
 
+Le Coffee Cupboard : « The only place I know before my coffee ! » Quand on veut le rouvrir (il a été ouvert dans l’intro) « I don’t want to rub salt in the wound ! »
 
 Le lave-vaisselle : « My dishwasher… » Quand il est ouvert « It’s empty. »
 
@@ -238,6 +239,8 @@ La hotte/micro-onde : « It works... If I turn it on. »
 Le réfrigérateur/congélateur : « Yes, way too big for my needs. »
 
 Refrigerator Left : « That’s where frozen food is. »
+	
+	Water/ice fountain (sur la porte fermée) : « Where in the world have you been so far ? »
 
 	Tous les tiroirs : « Way too cold at this hour ! »
 
@@ -345,7 +348,7 @@ Right Glass Cupboard : « Magic ! I see what’s in there. »
 
 Under Sink Cabinet : « Oh my god ! What’s in it ? »
 
-	La poubelle : Lorsque Roxena veut fouiller la poubelle mais qu’il n’est pas encore temps pour elle de le faire, alors elle dit « Yes, when I was a kid, I used to love playing in the dump. When I was a kid... ». Quand il est enfin temps pour elle, alors elle dit « Ok. Not much of a choice, now. Let's get that yesterday's coffee... »
+	La poubelle : Lorsque Rowena veut fouiller la poubelle mais qu’il n’est pas encore temps pour elle de le faire, alors elle dit « Yes, when I was a kid, I used to love playing in the dump. When I was a kid... ». Quand il est enfin temps pour elle, alors elle dit « Ok. Not much of a choice, now. Let's get that yesterday's coffee... »
 
 	La ventouse (Plunger) : « I’ve always liked that tool. »
 
