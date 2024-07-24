@@ -58,7 +58,7 @@ const prop_info: Array[String] = [
 	# WINDOW_RIGHT
 	"That's a big window.",
 	# WINDOW_LEFT
-	"That's a window. It allows light in while maintaining a constant temperature in the apartment.",
+	"I know what that is: it's a window!",
 	# SPOILED_MILK
 	"That's just some sour milk.",
 	# COFFEE_MAKER
@@ -129,8 +129,8 @@ func _ready():
 func _on_ui_click_on_background(pos):
 	$UI.clear_comment_text()
 	match $UI.get_current_cursor():
-		Globals.Cursor.QUIT:
-			get_tree().quit()
+		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
+			$ROWENA.walk_to(pos.x)
 		Globals.Cursor.EYE:
 			if current_prop >= 0:
 				var viewport_size: Vector2 = get_viewport_rect().size
@@ -148,13 +148,13 @@ func _on_ui_click_on_background(pos):
 				Globals.Prop.REFRIGERATOR_RIGHT:
 					print("open the refrigerator!")
 					$UI.clear_available_cursors()
-		_:
-			$ROWENA.walk_to(pos.x)
+		Globals.Cursor.QUIT:
+			get_tree().quit()
 
 func _on_background_area_entered_object(which: int, _area: Area2D):
 	print($BACKGROUND.get_collider(which).name)
 	current_prop = which
-	var actions: Array[int] = [ Globals.Cursor.EYE ]
+	var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
 	match which:
 		Globals.Prop.REFRIGERATOR_RIGHT:
 			actions.append(Globals.Cursor.HAND)

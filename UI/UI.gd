@@ -223,7 +223,7 @@ func set_available_cursors(cursors: Array[int]):
 
 func get_current_cursor() -> int:
 	if _current_cursor < 0:
-		return -1
+		return Globals.Cursor.CROSS_PASSIVE
 	else:
 		return _available_cursors[_current_cursor]
 
