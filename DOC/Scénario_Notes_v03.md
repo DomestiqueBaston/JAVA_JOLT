@@ -200,6 +200,8 @@ Sur le plan de travail :
 
 	La tasse rouge à droite de la bouteille de lait : « Yeah, it's new and clean. »
 
+	La tasse marron : « That’s my cup of tea. »
+
 	Le journal devant la bouteille de lait : « Yesterday's newspaper. »
 
 	Les couteaux de cuisine dans le porte-couteaux : « Naa ! My boss isn't worth the trouble! »
