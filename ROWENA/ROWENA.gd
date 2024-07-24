@@ -23,3 +23,9 @@ func _physics_process(_delta: float):
 
 func walk_to(x: float):
 	target_x = x
+
+func get_global_bbox() -> Rect2:
+	var rect_shape: RectangleShape2D = $ROWENA_Collider.shape
+	var size: Vector2 = rect_shape.size
+	var pos: Vector2 = $ROWENA_Collider.global_position
+	return Rect2(pos - size/2, size)

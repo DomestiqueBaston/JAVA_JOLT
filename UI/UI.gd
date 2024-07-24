@@ -141,8 +141,10 @@ func _type_one_character():
 		emit_signal("_typing_finished")
 		$Boxes/Dialogue_Box/BG/Next.show()
 
-func set_comment_text(text: String):
+func set_comment_text(text: String, rect: Rect2):
 	$Boxes/Comments.text = text
+	$Boxes/Comments.size = rect.size
+	$Boxes/Comments.position = rect.position
 	$Boxes/Comments.show()
 
 func clear_comment_text():

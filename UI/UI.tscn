@@ -1218,17 +1218,15 @@ theme = ExtResource("1_00ud7")
 [node name="Comments" type="Label" parent="Boxes"]
 visible = false
 layout_mode = 0
-offset_left = 19.0
-offset_top = 19.0
-offset_right = 82.0
-offset_bottom = 31.0
+offset_right = 64.0
+offset_bottom = 68.0
 size_flags_vertical = 0
 theme = ExtResource("1_00ud7")
 theme_override_font_sizes/font_size = 0
 text = "Comment box"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
-visible_characters_behavior = 1
 
 [node name="Dialogue_Box" type="VBoxContainer" parent="Boxes"]
 visible = false
