@@ -20,8 +20,8 @@ func _on_ui_click_on_background(pos):
 		_:
 			$ROWENA.walk_to(pos.x)
 
-func _on_background_mouse_entered_object(which):
-	print($BACKGROUND.get_collider(which).name)
+func _on_background_area_entered_object(which: int, area: Area2D):
+	print(area.name, " entered ", $BACKGROUND.get_collider(which).name)
 	current_object = which
 	var actions: Array[int] = []
 	if which == Globals.Prop.WINDOW_RIGHT:
@@ -32,7 +32,8 @@ func _on_background_mouse_entered_object(which):
 	$UI.set_available_actions(actions)
 	$UI.clear_comment_text()
 
-func _on_background_mouse_exited_object(_which):
-	current_object = -1
-	$UI.clear_available_actions()
-	$UI.clear_comment_text()
+func _on_background_area_exited_object(which: int, _area: Area2D):
+	if current_object == which:
+		current_object = -1
+		$UI.clear_available_actions()
+		$UI.clear_comment_text()

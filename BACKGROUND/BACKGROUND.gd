@@ -1,7 +1,7 @@
 extends Node2D
 
-signal mouse_entered_object(which: int)
-signal mouse_exited_object(which: int)
+signal area_entered_object(which: int, area: Area2D)
+signal area_exited_object(which: int, area: Area2D)
 
 @onready var _colliders: Array[Area2D] = [
 	$Stuff_Colliders/Low/Kitchen_Cabinet_Collider,				# KITCHEN_CABINET
@@ -69,8 +69,8 @@ func _ready():
 	assert(_colliders.size() == Globals.Prop.PROP_COUNT)
 	for index in _colliders.size():
 		var collider: Area2D = _colliders[index]
-		collider.mouse_entered.connect(func(): mouse_entered_object.emit(index))
-		collider.mouse_exited.connect(func(): mouse_exited_object.emit(index))
+		collider.area_entered.connect(func(area): area_entered_object.emit(index, area))
+		collider.area_exited.connect(func(area): area_exited_object.emit(index, area))
 
 func get_collider(which: int) -> Area2D:
 	return _colliders[which]
