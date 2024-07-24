@@ -127,7 +127,7 @@ Le lave-vaisselle : « My dishwasher… » Quand il est ouvert « It’s emp
 
 Le four : « My oven… » Quand il est ouvert «It's as empty as space is ! »
 
-	Dans le four : « I'd have to clean it, it's so gross (and empty). »
+	Dans le four : « I'd have to clean it, it's so gross. »
 
 	Dans le tiroir sous le four : « It’s filled with burnt pizza remains... »
 
@@ -141,7 +141,7 @@ Les placards au dessus de la hotte/micro-onde et du frigo : « Naaa! Too high,
 
 Left Glass Cupboard : « Glasses and plates. »
 
-Kitchen Tool drawer : « It's where I store useless stuff like a garlic press. »
+Kitchen Tool drawer : « Here I store useless stuff like a garlic press. »
 
 	Un garlic press dans le tiroir d’outils de cuisine : « What could I possibly do with it now? »
 
@@ -167,9 +167,9 @@ Sur le plan de travail :
 
 	La radio : « I can adjust the sound, that's clever! »
 
-	Le toaster : « It works and I can use it whenever I want. »
+	Le toaster : « It works and I can use it anytime. »
 
-	La cafetière : « It's empty. I could cry if I had time. The filter holder is stuck.»
+	La cafetière : « It's empty. I could cry. The filter holder’s stuck.»
 
 	Le coffee pot (uniquement un cache, on ne peut pas vraiment le prendre. Pour y accéder, on utilisera la cafetière complète, comme pour le filter holder) : « Ok ! I think it’s ready. »
 
@@ -187,9 +187,9 @@ Sur le plan de travail :
 
 	Les premiers grains de café : « Well, that's something... »
 
-	Les grains de café : « Oh ! My precious! »
+	Les grains de café : « Oh ! My precious ! »
 
-	Le pot en terre à gauche du toaster : « Full of raw rice... Oh, miracle, coffee beans right beside!  »
+	Le pot en terre à gauche du toaster : « Full of rice... Miracle, coffee beans right beside ! »
 
 	Les grains de café à côté du pot de riz en terre : « Not enough, but I'll take them. »
 	Quand Rowena aura assez de grains de café, alors sa réplique sera : « That should be enough. »
@@ -208,7 +208,7 @@ Sur le plan de travail :
 
 	La bouilloire : « There's still water in it. It's cold. »
 
-	Le yucca à droite du frigo : « I'll be gardening this weekend. But okay, I’ll take it. »
+	Le yucca à droite du frigo : « I'll be gardening this later. But I’ll take it. »
 
 	Les tupperwares à gauche de l’évier : « I know how to make them fart. I’ll take one. »
 
@@ -218,17 +218,17 @@ Sur le plan de travail :
 
 Ailleurs dans la cuisine :
 
-	La fenêtre au dessus de l’évier : « A window. It allows light to enter while maintaining a constant temperature in the apartment. »
+	La fenêtre au dessus de l’évier : « I know what this is : a window. »
 
 	Une chaise : « I'm fine, I've had enough rest so far. »
 
-	Un tabouret : « As soon as I find out what it's for, okay. »
+	Un tabouret : « As soon as I find out what it's for. »
 
 	Un petit torchon à côté de la fenêtre de droite : « It's clean, it'll be perfect! »
 
 	Un grand torchon à côté de la fenêtre de droite : « I shouldn’t use it except for… No, I shouldn’t! »
 
-	La fenêtre de droite : « Ok ! I’ve had enough of this… Alright ? » – QUIT THE GAME !
+	La fenêtre de droite : « I’ve had enough of this… Alright ? » – QUIT THE GAME !
 
 	Le tableau au dessus de la chaise : « A painting entitled “Monsieur le marquis et Madame”. »
 
@@ -284,7 +284,7 @@ Cleaning Closet: « That’s where I store my cleaning stuff. »
 
 	Le grand sceau : « Hm… Nope. »
 
- 	La balayette dans le petit sceau : « What was my quest, anyway ? » (pas sûr du « anyway du tout).
+ 	La balayette dans le petit sceau : « What was my quest, anyway ? » (pas sûr du « anyway » du tout).
 
 	Le petit sceau contenant la balayette : « What could I possibly do with it ? »
 
@@ -310,7 +310,7 @@ Cupboard Upper Center Left : « A cupboard… »
 
 Kitchen Cabinet : « A cabinet… »
 
-	La cocotte : « There's no way I'm dragging that around. »
+	La cocotte : « No way I'm dragging that around. »
 
 	Le Rice cooker : « Please... » (No!)
 
@@ -322,7 +322,7 @@ Left Glass Cupboard : « Magical ! I can see through the door. »
 
 	Une assiette : « Good. »
 
-Private Drawer : « It’s my private drawer... ». Si on veut le fouiller : « Nobody should ever know what’s inside. »
+Private Drawer : « It’s my private drawer... ». Si on veut le fouiller : « Nobody should know what’s inside. »
 
 Les tiroirs entre le précédent et le suivant sont vide !
 
@@ -350,7 +350,7 @@ Right Glass Cupboard : « Magic ! I see what’s in there. »
 
 Under Sink Cabinet : « Oh my god ! What’s in it ? »
 
-	La poubelle : Lorsque Rowena veut fouiller la poubelle mais qu’il n’est pas encore temps pour elle de le faire, alors elle dit « Yes, when I was a kid, I used to love playing in the dump. When I was a kid... ». Quand il est enfin temps pour elle, alors elle dit « Ok. Not much of a choice, now. Let's get that yesterday's coffee... »
+	La poubelle : Lorsque Rowena veut fouiller la poubelle mais qu’il n’est pas encore temps pour elle de le faire, alors elle dit « I used to play in the dump. When I was a kid… ». Quand il est enfin temps pour elle, alors elle dit « Not much choice. Let's get that filthy coffee… »
 
 	La ventouse (Plunger) : « I’ve always liked that tool. »
 
@@ -360,15 +360,15 @@ Under Sink Cabinet : « Oh my god ! What’s in it ? »
 
 Upper Right Cupboard : « Big stuff in here. »
 
-	Les saladier, casserolles, grande cocotte et cocotte en terre : « There's no way I'm dragging that around. »
+	Les saladier, casserolles, grande cocotte et cocotte en terre : « No way I'm dragging that around. »
 Ce que Rowena dira lorsque le joueur la fera combiner les bons objets ensemble.
 
 
 Première tentative :
 
-	Le couteau à beurre et la cafetière : « Yes, I can remove the filter holder without breaking it. »
+	Le couteau à beurre et la cafetière : « I can remove the filter holder intact. »
 
-	Le petit torchon et le porte filtre de la cafetière : « It works, but I can't get enough coffee out of it. »
+	Le petit torchon et le porte filtre de la cafetière : « It works, but I can't get enough coffee. »
 
 	Le petit torchon et le lait : « It should be more absorbent now. »
 
@@ -380,11 +380,11 @@ Deuxième tentative :
 
 	La cuillère en bois et les grains de café (tous): « Ok. Well, that's something. »
 
-	En rajoutant le torchon dessus : « Looks like we have a lead here... »
+	En rajoutant le torchon dessus : « Looks like we have a lead here ! »
 
 	Et en finissant avec la cuillère en bois : « Got it ! » Elle obtient du café moulu.
 
-– « One small step for man, one giant leap for mankind. »
+– « One small step for man, one giant leap… »
 
 	La plache à découper et un filtre à café : « Alright ! »
 
@@ -394,18 +394,18 @@ Deuxième tentative :
 
 	Le « patch » et le scotch : « Ok, it’s now sealed. »
 
-– Rowena se met le patch sur le bras avec du scotch. Attend 10 secondes (en jeu). « Darn! This thing does absolutely nothing for me. »
+– Rowena se met le patch sur le bras avec du scotch. Attend 10 secondes (en jeu). « Darn! This thing does nothing ! »
 
 	Le patch et le robinet : « Yeah, that should make it porous... »
 
-–  Rowena se remet le patch sur le bras. Attends encore 10 secondes (en jeu). « Damn it, this stupid thing doesn't work at all! » Une fois fait, on enchaîne sur le troisième dialogue.
+–  Rowena se remet le patch sur le bras. Attends encore 10 secondes (en jeu). « Damn it, it doesn't work at all! » Une fois fait, on enchaîne sur le troisième dialogue.
 
 
 Troisième tentative :
 
-	Un verre et le robinet : « Okay, but I won't drink it: I don't really like the taste. »
+	Un verre et le robinet : « Okay, but I won't drink it. »
 
-	Un verre d’eau et la cafetière : « Considering that I don't have spare hours, a glass of water will suffice. »
+	Un verre d’eau et la cafetière : « Given my time cruch, a glass of water will do. »
 
 	Le café de la poubelle et la cafetière: « Don't think, don't think... »
 
