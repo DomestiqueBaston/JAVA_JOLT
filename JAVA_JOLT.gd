@@ -149,7 +149,7 @@ func _on_ui_click_on_background(pos):
 				Globals.Prop.REFRIGERATOR_RIGHT:
 					$UI.clear_available_cursors()
 					await _walk_to_prop()
-					$ROWENA.get_something(randi_range(4, 5), false)
+					$ROWENA.get_something(3, false)
 					await $ROWENA.got_something
 					$BACKGROUND.open_refrigerator_right()
 		Globals.Cursor.QUIT:
