@@ -93,7 +93,7 @@ Là où l’on peut trouver des éléments cachés nécessaires à une autre ten
 	Moudre les vieux grains de café (elle n’a pas de moulin à café) :
 	Rowena trouvera une cuillère en bois dans le tiroir du haut du meuble à droite de la gazinière.
 	Derrière la bouteille de lait périmé se trouve la planche à découper.
-	Elle réutilisera son torchon (l’autre, le grand est trop « dégueu »).
+	Elle réutilisera son torchon (l’autre, le grand, est trop « dégueu »).
 	Elle placera les grains de café dans le torchon sur la planche à découper, les recouvrira avec l’autre bout du torchon et les écrasera avec la cuillère en bois.
 
 	Se faire un patch au café :
@@ -189,10 +189,10 @@ Sur le plan de travail :
 
 	Les grains de café : « Oh ! My precious ! »
 
-	Le pot en terre à gauche du toaster : « Full of rice... Miracle, coffee beans right beside ! »
+	Le pot en terre à gauche du toaster : « Full of rice... » Si Rowena a déjà enlevé le sel, elle dira : « Miracle, coffee beans right beside ! »
 
 	Les grains de café à côté du pot de riz en terre : « Not enough, but I'll take them. »
-	Quand Rowena aura assez de grains de café, alors sa réplique sera : « That should be enough. »
+	Quand Rowena aura assez de grains de café (quand elle trouvera la «deuxième dose » de grains de café, quelle qu’elle soit, par terre ou à côté du riz derrière le sel, alors sa réplique sera : « That should be enough. »
 	
 	Le pot en verre à droite de la cafetière : « Full of raw pasta. »
 
@@ -378,11 +378,9 @@ Première tentative :
 
 Deuxième tentative :
 
-	La cuillère en bois et les grains de café (tous): « Ok. Well, that's something. »
+	Le torchon et les grains de café (tous): « Ok. Well, that's something. »
 
-	En rajoutant le torchon dessus : « Looks like we have a lead here ! »
-
-	Et en finissant avec la cuillère en bois : « Got it ! » Elle obtient du café moulu.
+	En rajoutant la cuillère en bois dessus : « Looks like a plan to me ! » Elle obtient du café moulu.
 
 – « One small step for man, one giant leap… »
 
@@ -394,11 +392,11 @@ Deuxième tentative :
 
 	Le « patch » et le scotch : « Ok, it’s now sealed. »
 
-– Rowena se met le patch sur le bras avec du scotch. Attend 10 secondes (en jeu). « Darn! This thing does nothing ! »
+– Rowena se met le patch sur le bras avec du scotch. Attend 5 secondes. « Darn! This thing does nothing ! »
 
 	Le patch et le robinet : « Yeah, that should make it porous... »
 
-–  Rowena se remet le patch sur le bras. Attends encore 10 secondes (en jeu). « Damn it, it doesn't work at all! » Une fois fait, on enchaîne sur le troisième dialogue.
+–  Rowena se remet le patch sur le bras. Attends encore 5 secondes. « Damn it, it doesn't work at all! » Une fois fait, on enchaîne sur le troisième dialogue.
 
 
 Troisième tentative :
@@ -453,9 +451,12 @@ L’inventaire :
 	Il sera assez succinct puisque Rowena ne peut transporter que 4 objets. Elle dira « Hey! I don't have four arms, I'm not Shiva! » si on lui demande d’en porter plus.
 	Il sera possible de regarder les objets (curseur Eye).
 	Il sera possible de prendre les objets (curseur Hand).
+	Il sera possible d’utiliser les objets (curseur Arrow).
 	Il sera possible de « jeter » un objet (curseur Trash à condition qu’il ne soit pas unique ou à considérer que cela signifie ranger, remettre à sa place, etc. sans que le personnage n’ait à le faire, ce qui serait chiant, il faut le reconnaître).
 	Les objets composant l’inventaire se trouverons sous forme de texte car la résolution du jeu est trop basse pour des images lisibles (sans compter qu’il faudrait avoir aussi le shader Kuwahara dessus).
-	Sélectionner un élément de l’inventaire le fera passer en surbrillance (rose, comme pour les dialogues de Rowena). Par défaut, la couleur est le blanc. Le désélectionner lui rendra la couleur par défaut. Après avoir combiné des éléments de l’inventaire, ce qui en résulte prend la couleur par défaut et n’est pas sélectionné.
+	Utiliser un élément de l’inventaire le fera passer en surbrillance (rose, comme pour les dialogues de Rowena). Par défaut, la couleur est le blanc. Le désélectionner lui rendra la couleur par défaut.
+	Après avoir combiné des éléments de l’inventaire, ce qui en résulte prend la couleur par défaut et n’est pas sélectionné.
+	Pour désassembler des éléments « désassemblables » on les utilisera sur eux-mêmes. Ils le sont par défaut mais on va rester logique. Si on avait dû utiliser du sirop et de l’eau par exemple, on imagine bien qu’on n’aurait pas pu les désassembler.
 	L’icon de l’inventaire s’affiche en plaçant la souris dans le coin supérieur gauche. Il y a une animation pour affichage de l’icône et une pour la masquer.
 	/!\ IMPORTANT : pendant les séquences de dialogue, l’inventaire ne peut pas être affiché (et l’icône ne peut pas apparaître).
 	Pour fermer l’inventaire sans y interagir, il suffit de cliquer à nouveau sur l’icône Inv.

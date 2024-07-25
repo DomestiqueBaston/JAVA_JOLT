@@ -14,3 +14,39 @@ J’avais oublié de l’ajouter mais il y est à présent dans la scène UI.tsc
 	Pour finir, 1) elle prendra (curseur Hand) le torchon imbibé de lait (le curseur redevient Arrow) pour 2) l’utiliser sur le porte-filtre. À ce moment Rowena se retournera et dira « It should be more absorbent now. » puis « Let’s taste it ! » et se retournera à nouveau (donc de dos), jouera une fois son animation de Do_Erk_Stuff en disant « Erk! » (il est possible que je supprime le son de l’anim Do_Erk_Stuff). Ça fera bien trop peu (en plus du fait que ça n’est pas bon du tout) !
 
 	Une fois fait, on enchaîne sur le deuxième dialogue.
+
+
+2ème tentative : récupérer des vieux grains de café tombés derrière les pots et le meuble pour les moudre et obtenir une poudre afin de s’en faire des patchs.
+	/!\ Je ne vais pas répéter à nouveau les moindres détails logiques qui ont déjà été présentées au dessus, je pense qu’on a compris.
+
+	Récupérer des grains de café :
+	Sur le plan de travail, à côté du pot en terre, derrière le sel qu’il faut enlever pour les trouver, Rowena pourra trouver quelques grains de cafés perdus. Ça n’est pas suffisant, il faut ceux mentionnés juste en dessous.
+	Par terre, entre le lave-vaisselle et le meuble à sa droite, Rowena trouvera encore des grains de café.
+	/!\  Ces grains de café ne seront pas trouvables lors de la première tentative !
+	L’ordre pour trouver ces grains de café n’a pas d’importance.
+	Tant que Rowena n’aura  ramassé qu’une dose de grains de café, dans son inventaire elle n’aura que : « Not enough coffee beans ».
+	Lorsque Rowena aura ramassé les deux doses de grains de café, elle n’aura plus que : « Enough coffee beans » dans son inventaire. Soit les deux doses cumulées.
+
+	Moudre les vieux grains de café (elle n’a pas de moulin à café) :
+	Rowena trouvera une cuillère en bois dans le tiroir du haut du meuble à droite de la gazinière.
+	Elle réutilisera son torchon (l’autre, le grand, est trop « dégueu »).
+	/!\ Pour les étapes suivantes, à chaque fois, après avoir dit « Ok. Well, that's something. », « Looks like a plan to me ! » et « Last step ! », elle jouera son animation Turn_Back puis Do_Stuff puis Turn_Front.
+	Elle placera les grains de café dans le torchon et les écrasera avec la cuillère en bois. Il faut utiliser les éléments dans un ordre précis.
+	Utiliser le torchon sur les grains de café (Rowena dira « Ok. Well, that's something. ») pour avoir dans l’inventaire « Towel with coffee beans », puis utiliser la cuillère en bois dessus pour que Rowena dise « Looks like a plan to me ! » pour avoir dans son inventaire « Small towel » et « Ground coffee beans ». Une fois fait, Rowena dira alors « One small step for man, one giant leap… ».
+
+	Se faire un patch au café :
+	Encore une fois, ici aussi, à chaque fois que Rowena assemble des trucs, elle joue ses animation Turn_Back, Do_Stuff puis Turn_Front !
+	Il reste des filtres à café dans le tiroir du milieu à gauche de la gazinière. Elle en prendra un pour avoir un « Coffee filter » dans son inventaire.
+	Dans le tiroir de droite dans lequel il y a les couverts, elle prendra un couteau.
+	Elle dira « Alright ! » avant d’utiliser le filtre à café sur la planche à découper.
+	Ensuite elle dira « Okay, but just this once. » avant d’utiliser le couteau sur la planche à découper avec un filtre à café obtenant  « Cutting board d’un côté » et « Half Coffee filter » de l’autre.
+	Elle prendra le rouleau de scotch dans le Top_Left_Drawer. Pour couper un morceau de scotch, soit elle utilisera le scotch sur lui-même, soit elle utilisera le couteau dessus. Elle obtiendra en plus un « Piece of tape ».
+	Elle dira « Clever me ! » et mettra son café moulu dans le demi filtre à café pour obtenir Ground coffee in half a filter (cela peut être fait avant d’aller récupérer le scotch) et le fermera avec un morceau de scotch qu’elle aura coupé du rouleau. Elle dira « Ok, it’s now sealed. » avant d’obtenir a « Coffee Patch ».
+	Puis coupera à nouveau un morceau de scotch. Et l’utilisera sur le patch au café.
+	/!\ IL FAUT QUE JE FASSE UNE ANIMATION POUR QUE ROWENA APPLIQUE LE PATCH SUR SON BRAS ! /!\
+	Elle décidera que ça ne marche pas au bout de 5 secondes (pendant ces 5 secondes, le joueur ne pourra plus intervenir). Sans doute car il est trop sec. Elle dira « Darn! This thing does nothing ! » et enlèvera le patch (on rejoue l’animation d’application du patch dans le son si j’en ai mis un).
+	Rowena dira « Yeah, that should make it porous... » et ira humidifier (utiliser) son patch sous le robinet de l’évier (je dois voir si je peux trouver un son de robinet qui coule).
+	Replacera (animation!) son patch sur son bras (le scotch fonctionnera encore).
+	Elle attendra à nouveau 5 secondes, dira « Damn it, it doesn't work at all! » : ça ne marche définitivement pas.
+		
+	Une fois fait, on enchaîne sur le troisième dialogue.
