@@ -49,17 +49,20 @@ func _ready():
 		3:
 			_tell_story_node(dialogue3, dialogue3["start"])
 
-func _is_left_button_press(event: InputEvent) -> bool:
-	return (event is InputEventMouseButton and
-			event.button_index == MOUSE_BUTTON_LEFT and event.pressed)
-
 func _unhandled_input(event: InputEvent):
-	if _is_left_button_press(event) and not $Boxes/Dialogue_Box/BG/Dialogue.visible:
-		click_on_background.emit(event.position)
+	if event.is_action_pressed("left_mouse_click"):
+		if not is_dialogue_visible():
+			if event is InputEventMouse:
+				click_on_background.emit(event.position)
+			else:
+				click_on_background.emit($Mouse.position)
+			get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("next_mouse_action"):
 		_next_cursor()
+		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("prev_mouse_action"):
 		_prev_cursor()
+		get_viewport().set_input_as_handled()
 
 func _tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
@@ -89,6 +92,9 @@ func _set_dialogue_style(speaker: int):
 	else:
 		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = doctor_text_color
 		$Typing.pitch_scale = 1
+
+func is_dialogue_visible() -> bool:
+	return $Boxes/Dialogue_Box/BG/Dialogue.visible
 
 func clear_dialogue():
 	$Dialogue_AnimationPlayer.play("Close_Dialogue_1")
@@ -151,12 +157,12 @@ func clear_comment_text():
 	$Boxes/Comments.hide()
 
 func _on_three_points_gui_input(event: InputEvent):
-	if _is_left_button_press(event):
+	if event.is_action_pressed("left_mouse_click"):
 		$Boxes/Dialogue_Box/BG/Next/Three_Points.accept_event()
 		emit_signal("_next_click")
 
-func _on_dialogue_1_gui_input(event):
-	if _is_left_button_press(event):
+func _on_dialogue_1_gui_input(event: InputEvent):
+	if event.is_action_pressed("left_mouse_click"):
 		$Boxes/Dialogue_Box/BG/Dialogue.accept_event()
 		# if Dialogue2 is visible, we are waiting for the user to choose
 		if $Boxes/Dialogue_Box/BG2/Dialogue2.visible:
@@ -165,18 +171,18 @@ func _on_dialogue_1_gui_input(event):
 		else:
 			$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = -1
 
-func _on_dialogue_2_gui_input(event):
-	if _is_left_button_press(event):
+func _on_dialogue_2_gui_input(event: InputEvent):
+	if event.is_action_pressed("left_mouse_click"):
 		$Boxes/Dialogue_Box/BG2/Dialogue2.accept_event()
 		_click_on_choice.emit(1)
 
-func _on_dialogue_3_gui_input(event):
-	if _is_left_button_press(event):
+func _on_dialogue_3_gui_input(event: InputEvent):
+	if event.is_action_pressed("left_mouse_click"):
 		$Boxes/Dialogue_Box/BG3/Dialogue3.accept_event()
 		_click_on_choice.emit(2)
 
-func _on_dialogue_4_gui_input(event):
-	if _is_left_button_press(event):
+func _on_dialogue_4_gui_input(event: InputEvent):
+	if event.is_action_pressed("left_mouse_click"):
 		$Boxes/Dialogue_Box/BG4/Dialogue4.accept_event()
 		_click_on_choice.emit(3)
 

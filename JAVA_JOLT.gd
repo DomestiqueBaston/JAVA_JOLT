@@ -152,6 +152,8 @@ func _on_ui_click_on_background(pos):
 			get_tree().quit()
 
 func _on_background_area_entered_object(which: int, _area: Area2D):
+	if $UI.is_dialogue_visible():
+		return
 	print($BACKGROUND.get_collider(which).name)
 	current_prop = which
 	var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
