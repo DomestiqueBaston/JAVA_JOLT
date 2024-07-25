@@ -344,10 +344,11 @@ position = Vector2(59.5, 21.5)
 shape = SubResource("RectangleShape2D_6svqt")
 
 [node name="Window_Right_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+position = Vector2(183.5, 24)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Window_Right" type="CollisionShape2D" parent="Stuff_Colliders/Up/Window_Right_Collider"]
-position = Vector2(183.5, 24)
 shape = SubResource("RectangleShape2D_0h5p8")
 
 [node name="Window_Left_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
@@ -385,10 +386,11 @@ position = Vector2(166, 35.5)
 shape = SubResource("RectangleShape2D_lw3ik")
 
 [node name="Refrigerator_Right_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(32, 42.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Refrigerator_Right" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Refrigerator_Right_Collider"]
-position = Vector2(32, 42.5)
 shape = SubResource("RectangleShape2D_mclqa")
 
 [node name="Refrigerator_Left_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]

@@ -76,21 +76,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("../Open_Close")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_qt3j0")
-}],
-"times": PackedFloat32Array(0.8)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_aq0oo"]
 resource_name = "Get_Something_High_2"
@@ -107,21 +92,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("../Open_Close")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_qt3j0")
-}],
-"times": PackedFloat32Array(0.8)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_kgaqx"]
 resource_name = "Get_Something_Low"
@@ -138,21 +108,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("../Open_Close")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_qt3j0")
-}],
-"times": PackedFloat32Array(0.7)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_10pwy"]
 resource_name = "Get_Something_Low_Mid"
@@ -169,21 +124,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("../Open_Close")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_qt3j0")
-}],
-"times": PackedFloat32Array(0.8)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_crym6"]
 resource_name = "Get_Something_Lowest"
@@ -200,21 +140,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("../Open_Close")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_qt3j0")
-}],
-"times": PackedFloat32Array(0.8)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jmibs"]
 resource_name = "Get_Something_Mid"
@@ -231,21 +156,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("../Open_Close")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_qt3j0")
-}],
-"times": PackedFloat32Array(0.8)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vn55n"]
 resource_name = "Nonsense"
@@ -574,34 +484,35 @@ libraries = {
 }
 autoplay = "Wait_Base"
 
-[node name="Foot_Steps" type="AudioStreamPlayer2D" parent="."]
+[node name="Foot_Steps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_72jic")
 volume_db = -10.0
 bus = &"FX"
 
-[node name="Spitting_Out" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(-90, -68)
+[node name="Spitting_Out" type="AudioStreamPlayer" parent="."]
 volume_db = -7.5
 bus = &"FX"
 
-[node name="Disgusted" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(-90, -68)
+[node name="Disgusted" type="AudioStreamPlayer" parent="."]
 volume_db = -15.0
 bus = &"FX"
 
-[node name="Phone_Ring" type="AudioStreamPlayer2D" parent="."]
+[node name="Phone_Ring" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_gkr5f")
 bus = &"FX"
 
-[node name="Hang_Up" type="AudioStreamPlayer2D" parent="."]
+[node name="Hang_Up" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_xr3ty")
 volume_db = -10.0
 bus = &"FX"
 
-[node name="Phone_Fall" type="AudioStreamPlayer2D" parent="."]
+[node name="Phone_Fall" type="AudioStreamPlayer" parent="."]
 volume_db = -7.5
-
-[node name="Beep" type="AudioStreamPlayer2D" parent="."]
 bus = &"FX"
 
-[node name="Open_Close" type="AudioStreamPlayer2D" parent="."]
+[node name="Beep" type="AudioStreamPlayer" parent="."]
+bus = &"FX"
+
+[node name="Open_Close" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qt3j0")
+bus = &"FX"

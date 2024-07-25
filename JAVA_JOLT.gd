@@ -128,9 +128,10 @@ func _ready():
 
 func _on_ui_click_on_background(pos):
 	$UI.clear_comment_text()
+	$BACKGROUND.close_everything()
 	match $UI.get_current_cursor():
 		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
-			$ROWENA.walk_to(pos.x)
+			$ROWENA.walk_to_x(pos.x)
 		Globals.Cursor.EYE:
 			if current_prop >= 0:
 				var viewport_size: Vector2 = get_viewport_rect().size
@@ -146,10 +147,18 @@ func _on_ui_click_on_background(pos):
 			$UI.clear_comment_text()
 			match current_prop:
 				Globals.Prop.REFRIGERATOR_RIGHT:
-					print("open the refrigerator!")
 					$UI.clear_available_cursors()
+					await _walk_to_prop()
+					$ROWENA.get_something(randi_range(4, 5), false)
+					await $ROWENA.got_something
+					$BACKGROUND.open_refrigerator_right()
 		Globals.Cursor.QUIT:
+			await _walk_to_prop()
 			get_tree().quit()
+
+func _walk_to_prop():
+	$ROWENA.walk_to_area($BACKGROUND.get_collider(current_prop))
+	await $ROWENA.target_area_reached
 
 func _on_background_area_entered_object(which: int, _area: Area2D):
 	if $UI.is_dialogue_visible():

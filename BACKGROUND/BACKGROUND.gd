@@ -3,6 +3,8 @@ extends Node2D
 signal area_entered_object(which: int, area: Area2D)
 signal area_exited_object(which: int, area: Area2D)
 
+var _refrigerator_right = preload("res://BACKGROUND/REFRIGERATOR_RIGHT.tscn")
+
 @onready var _colliders: Array[Area2D] = [
 	$Stuff_Colliders/Low/Kitchen_Cabinet_Collider,				# KITCHEN_CABINET
 	$Stuff_Colliders/Low/Recycling_Closet_Collider,				# RECYCLING_CLOSET
@@ -74,3 +76,10 @@ func _ready():
 
 func get_collider(which: int) -> Area2D:
 	return _colliders[which]
+
+func open_refrigerator_right():
+	$Opens_Outs.add_child(_refrigerator_right.instantiate())
+
+func close_everything():
+	for i in $Opens_Outs.get_child_count():
+		$Opens_Outs.get_child(i).queue_free()
