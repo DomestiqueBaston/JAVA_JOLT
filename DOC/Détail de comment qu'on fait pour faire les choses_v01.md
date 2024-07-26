@@ -43,7 +43,7 @@ J’avais oublié de l’ajouter mais il y est à présent dans la scène UI.tsc
 	Elle prendra le rouleau de scotch dans le Top_Left_Drawer. Pour couper un morceau de scotch, soit elle utilisera le scotch sur lui-même, soit elle utilisera le couteau dessus. Elle obtiendra en plus un « Piece of tape ».
 	Elle dira « Clever me ! » et mettra son café moulu dans le demi filtre à café pour obtenir Ground coffee in half a filter (cela peut être fait avant d’aller récupérer le scotch) et le fermera avec un morceau de scotch qu’elle aura coupé du rouleau. Elle dira « Ok, it’s now sealed. » avant d’obtenir a « Coffee Patch ».
 	Puis coupera à nouveau un morceau de scotch. Et l’utilisera sur le patch au café.
-	/!\ IL FAUT QUE JE FASSE UNE ANIMATION POUR QUE ROWENA APPLIQUE LE PATCH SUR SON BRAS ! /!\
+	A ce moment-là, Rowena joue ces animations : se retourne, applique son patch puis se retourne à nouveau vers nous.
 	Elle décidera que ça ne marche pas au bout de 5 secondes (pendant ces 5 secondes, le joueur ne pourra plus intervenir). Sans doute car il est trop sec. Elle dira « Darn! This thing does nothing ! » et enlèvera le patch (on rejoue l’animation d’application du patch dans le son si j’en ai mis un).
 	Rowena dira « Yeah, that should make it porous... » et ira humidifier (utiliser) son patch sous le robinet de l’évier (je dois voir si je peux trouver un son de robinet qui coule).
 	Replacera (animation!) son patch sur son bras (le scotch fonctionnera encore).
