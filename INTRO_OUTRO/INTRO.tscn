@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://drtmlnoimgrw0" path="res://trash/Close.ogg" id="14_21nd7"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing_Doc.ogg" id="14_lvr4p"]
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="15_iioys"]
-[ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Open_Close.ogg" id="17_725xu"]
+[ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Cupboard_Open_Close.ogg" id="17_725xu"]
 [ext_resource type="Script" path="res://UI/Text_Sound.gd" id="18_2b3cl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
