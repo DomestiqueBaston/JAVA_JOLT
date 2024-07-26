@@ -486,15 +486,15 @@ autoplay = "Wait_Base"
 
 [node name="Foot_Steps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_72jic")
-volume_db = -10.0
+volume_db = -15.0
 bus = &"FX"
 
 [node name="Spitting_Out" type="AudioStreamPlayer" parent="."]
-volume_db = -7.5
+volume_db = -20.0
 bus = &"FX"
 
 [node name="Disgusted" type="AudioStreamPlayer" parent="."]
-volume_db = -15.0
+volume_db = -20.0
 bus = &"FX"
 
 [node name="Phone_Ring" type="AudioStreamPlayer" parent="."]
@@ -503,14 +503,15 @@ bus = &"FX"
 
 [node name="Hang_Up" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_xr3ty")
-volume_db = -10.0
+volume_db = -30.0
 bus = &"FX"
 
 [node name="Phone_Fall" type="AudioStreamPlayer" parent="."]
-volume_db = -7.5
+volume_db = -10.0
 bus = &"FX"
 
 [node name="Beep" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 bus = &"FX"
 
 [node name="Open_Close" type="AudioStreamPlayer" parent="."]

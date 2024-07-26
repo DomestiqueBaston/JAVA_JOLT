@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dak2h42jqim0i"]
+[gd_scene load_steps=26 format=3 uid="uid://dak2h42jqim0i"]
 
 [ext_resource type="Script" path="res://INTRO_OUTRO/INTRO.gd" id="1_pqvu6"]
 [ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://INTRO_OUTRO/IMAGES/Titre.png" id="2_6dww4"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/ROWENA.png" id="9_a4uop"]
 [ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/IMAGES/Coffee_Cupboard_Open.png" id="9_n6jc3"]
 [ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/SOUNDS/Barefoot_Steps_A.ogg" id="10_1mach"]
-[ext_resource type="AudioStream" uid="uid://drtmlnoimgrw0" path="res://trash/Close.ogg" id="14_21nd7"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing_Doc.ogg" id="14_lvr4p"]
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="15_iioys"]
 [ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Cupboard_Open_Close.ogg" id="17_725xu"]
@@ -237,102 +236,91 @@ tracks/13/keys = {
 "update": 1,
 "values": [false, true, false]
 }
-tracks/14/type = "audio"
+tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("../Cupboard_Open")
+tracks/14/path = NodePath("../ROWENA/Rowena_Sprites:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("10_1mach")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("10_1mach")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("10_1mach")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("10_1mach")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("10_1mach")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("10_1mach")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("14_21nd7")
-}],
-"times": PackedFloat32Array(81.7, 82.1, 82.5, 82.9, 83.3, 83.7, 88.5)
-}
-tracks/14/use_blend = true
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("../ROWENA/Rowena_Sprites:visible")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
 "times": PackedFloat32Array(0, 81.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
+tracks/15/type = "audio"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../ROWENA/Foot_Steps")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_1mach")
+}],
+"times": PackedFloat32Array(81.7, 82.1, 82.5, 82.9, 83.3, 83.7)
+}
+tracks/15/use_blend = true
 tracks/16/type = "audio"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("../ROWENA/Foot_Steps")
+tracks/16/path = NodePath("../Cupboard_Open_Close")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"clips": [],
-"times": PackedFloat32Array()
-}
-tracks/16/use_blend = true
-tracks/17/type = "audio"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("../Cupboard_Closed")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("17_725xu")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("17_725xu")
 }],
-"times": PackedFloat32Array(93.8)
+"times": PackedFloat32Array(88.5, 93.8)
 }
-tracks/17/use_blend = true
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("../Radio_On_Lights_On:visible")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
+tracks/16/use_blend = true
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../Radio_On_Lights_On:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
 "times": PackedFloat32Array(0, 81.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("../Monologue/Box/Comments:visible_ratio")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../Monologue/Box/Comments:visible_ratio")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
 "times": PackedFloat32Array(84.2, 84.6, 85.6, 85.7, 86.5, 89.3, 89.4, 92.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
@@ -604,8 +592,8 @@ texture = ExtResource("9_a4uop")
 hframes = 42
 vframes = 9
 
-[node name="Foot_Steps" type="AudioStreamPlayer2D" parent="ROWENA"]
-volume_db = -10.0
+[node name="Foot_Steps" type="AudioStreamPlayer" parent="ROWENA"]
+volume_db = -15.0
 bus = &"FX"
 
 [node name="Kuwahara_Shader" type="ColorRect" parent="."]
@@ -627,7 +615,7 @@ libraries = {
 }
 autoplay = "Intro"
 
-[node name="Intro_Sound" type="AudioStreamPlayer2D" parent="."]
+[node name="Intro_Sound" type="AudioStreamPlayer" parent="."]
 bus = &"INTRO_OUTRO"
 
 [node name="Monologue" type="CanvasLayer" parent="."]
@@ -658,17 +646,11 @@ visible_characters_behavior = 1
 visible_ratio = 0.0
 script = ExtResource("18_2b3cl")
 
-[node name="Typing" type="AudioStreamPlayer2D" parent="Monologue"]
-position = Vector2(1, 1)
+[node name="Typing" type="AudioStreamPlayer" parent="Monologue"]
 stream = ExtResource("14_lvr4p")
-volume_db = 2.5
 bus = &"FX"
 
-[node name="Cupboard_Open" type="AudioStreamPlayer2D" parent="."]
-volume_db = -5.0
-bus = &"FX"
-
-[node name="Cupboard_Closed" type="AudioStreamPlayer2D" parent="."]
+[node name="Cupboard_Open_Close" type="AudioStreamPlayer" parent="."]
 bus = &"FX"
 
 [connection signal="animation_finished" from="Animation_Intro" to="." method="_on_animation_screens_animation_finished"]

@@ -119,7 +119,7 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre ou pas, etc.
 
 /!\ A moins que ce soit précisé autrement, Rowena donnera le nom de ce qu’elle désigne quand elle le regardera. /!\ A ne pas confondre avec son commentaire quand on veut prendre les choses.
 
-Le Coffee Cupboard : « The only place I know before my coffee ! » Quand on veut le rouvrir (il a été ouvert dans l’intro) « I don’t want to rub salt in the wound ! »
+Le Coffee Cupboard : « I like rubbing salt in the wound ! »
 
 Le lave-vaisselle : « My dishwasher… » Quand il est ouvert « It’s empty. »
 

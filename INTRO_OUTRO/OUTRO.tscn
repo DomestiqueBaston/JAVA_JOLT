@@ -315,27 +315,27 @@ offset_right = 188.0
 offset_bottom = 68.0
 mouse_filter = 2
 
-[node name="Opening_Door" type="AudioStreamPlayer2D" parent="."]
+[node name="Opening_Door" type="AudioStreamPlayer" parent="."]
 volume_db = 2.5
 bus = &"INTRO_OUTRO"
 
-[node name="Closing_Door" type="AudioStreamPlayer2D" parent="."]
+[node name="Closing_Door" type="AudioStreamPlayer" parent="."]
 volume_db = 2.5
 bus = &"INTRO_OUTRO"
 
-[node name="Music_Off" type="AudioStreamPlayer2D" parent="."]
+[node name="Music_Off" type="AudioStreamPlayer" parent="."]
 volume_db = 2.5
 bus = &"INTRO_OUTRO"
 
-[node name="Steps" type="AudioStreamPlayer2D" parent="."]
+[node name="Steps" type="AudioStreamPlayer" parent="."]
 volume_db = 6.5
 bus = &"INTRO_OUTRO"
 
-[node name="Go_To_Bed" type="AudioStreamPlayer2D" parent="."]
+[node name="Go_To_Bed" type="AudioStreamPlayer" parent="."]
 volume_db = -22.5
 bus = &"INTRO_OUTRO"
 
-[node name="Snoring" type="AudioStreamPlayer2D" parent="."]
+[node name="Snoring" type="AudioStreamPlayer" parent="."]
 bus = &"INTRO_OUTRO"
 
 [node name="Animation_Outro" type="AnimationPlayer" parent="."]
