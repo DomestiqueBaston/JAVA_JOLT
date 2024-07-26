@@ -147,14 +147,15 @@ func _type_one_character():
 		emit_signal("_typing_finished")
 		$Boxes/Dialogue_Box/BG/Next.show()
 
-func set_comment_text(text: String, rect: Rect2):
-	$Boxes/Comments.text = text
-	$Boxes/Comments.size = rect.size
-	$Boxes/Comments.position = rect.position
-	$Boxes/Comments.show()
+func set_comment_text(text: String, x: float, left_justify: bool):
+	$Boxes/CenterContainer/Comment_Box/Comments.text = text
+	if not left_justify:
+		x -= $Boxes/CenterContainer/Comment_Box.size.x
+	$Boxes/CenterContainer.position.x = x
+	$Boxes/CenterContainer/Comment_Box.show()
 
 func clear_comment_text():
-	$Boxes/Comments.hide()
+	$Boxes/CenterContainer/Comment_Box.hide()
 
 func _on_three_points_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):

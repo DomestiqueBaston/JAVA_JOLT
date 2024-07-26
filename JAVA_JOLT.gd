@@ -135,14 +135,16 @@ func _on_ui_click_on_background(pos):
 		Globals.Cursor.EYE:
 			if current_prop >= 0:
 				var viewport_size: Vector2 = get_viewport_rect().size
-				var comment_size := Vector2(viewport_size.x/3, viewport_size.y)
-				var comment_pos := Vector2(0, 0)
 				var rowena_bbox: Rect2 = $ROWENA.get_global_bbox()
+				var x: float
+				var left_justify: bool
 				if rowena_bbox.get_center().x < viewport_size.x/2:
-					comment_pos.x = rowena_bbox.position.x + rowena_bbox.size.x + 3
+					left_justify = true
+					x = rowena_bbox.position.x + rowena_bbox.size.x
 				else:
-					comment_pos.x = rowena_bbox.position.x - comment_size.x - 3
-				$UI.set_comment_text(prop_info[current_prop], Rect2(comment_pos, comment_size))
+					left_justify = false
+					x = rowena_bbox.position.x
+				$UI.set_comment_text(prop_info[current_prop], x, left_justify)
 		Globals.Cursor.HAND:
 			$UI.clear_comment_text()
 			match current_prop:

@@ -1215,23 +1215,6 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_00ud7")
 
-[node name="Comment_Box" type="PanelContainer" parent="Boxes"]
-visible = false
-layout_mode = 0
-offset_right = 65.0
-offset_bottom = 14.0
-
-[node name="Comments" type="Label" parent="Boxes/Comment_Box"]
-custom_minimum_size = Vector2(63, 13)
-layout_mode = 2
-size_flags_vertical = 1
-theme = ExtResource("1_00ud7")
-theme_override_font_sizes/font_size = 0
-text = "Comments"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="Dialogue_Box" type="VBoxContainer" parent="Boxes"]
 layout_mode = 1
 anchors_preset = 10
@@ -1363,6 +1346,26 @@ theme = ExtResource("1_00ud7")
 text = "Inventory box"
 autowrap_mode = 2
 visible_characters_behavior = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Boxes"]
+layout_mode = 0
+offset_right = 65.0
+offset_bottom = 68.0
+
+[node name="Comment_Box" type="PanelContainer" parent="Boxes/CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Comments" type="Label" parent="Boxes/CenterContainer/Comment_Box"]
+custom_minimum_size = Vector2(63, 13)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_00ud7")
+theme_override_font_sizes/font_size = 0
+text = "Comments"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Inventory" type="Control" parent="."]
 visible = false
