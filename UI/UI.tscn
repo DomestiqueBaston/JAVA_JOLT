@@ -1359,7 +1359,7 @@ layout_mode = 2
 theme_override_styles/panel = ExtResource("3_re3bw")
 
 [node name="Comments" type="Label" parent="Boxes/CenterContainer/Comment_Box"]
-custom_minimum_size = Vector2(63, 13)
+custom_minimum_size = Vector2(65, 13)
 layout_mode = 2
 size_flags_vertical = 1
 theme = ExtResource("1_00ud7")
@@ -1367,7 +1367,7 @@ theme_override_font_sizes/font_size = 0
 text = "Comments"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
 
 [node name="Inventory" type="Control" parent="."]
 visible = false
