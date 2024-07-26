@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=41 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
 [ext_resource type="Script" path="res://UI/New_Mouse.gd" id="2_mswu7"]
+[ext_resource type="StyleBox" uid="uid://cls45jvu2j875" path="res://UI/Comment_Box.tres" id="3_re3bw"]
 [ext_resource type="Texture2D" uid="uid://vqd5mrv0n0yu" path="res://UI/IMAGES/Arrow.png" id="4_ru12x"]
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://UI/IMAGES/Eye.png" id="5_g7pd6"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing_Doc.ogg" id="5_ie2x1"]
@@ -1355,6 +1356,7 @@ offset_bottom = 68.0
 [node name="Comment_Box" type="PanelContainer" parent="Boxes/CenterContainer"]
 visible = false
 layout_mode = 2
+theme_override_styles/panel = ExtResource("3_re3bw")
 
 [node name="Comments" type="Label" parent="Boxes/CenterContainer/Comment_Box"]
 custom_minimum_size = Vector2(63, 13)
