@@ -1,14 +1,14 @@
 [gd_scene load_steps=34 format=3 uid="uid://clvr31ogitwwv"]
 
 [ext_resource type="Script" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
-[ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/ROWENA.png" id="1_tqx3q"]
+[ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/IMAGES/ROWENA.png" id="1_tqx3q"]
 [ext_resource type="AudioStream" uid="uid://l7jtkoklf4u0" path="res://ROWENA/SOUNDS/Disgusted.ogg" id="2_5gboi"]
 [ext_resource type="AudioStream" uid="uid://dv5yjodb221qq" path="res://ROWENA/SOUNDS/Spitting_Out.ogg" id="2_v3kx6"]
 [ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/SOUNDS/Barefoot_Steps_A.ogg" id="3_72jic"]
 [ext_resource type="AudioStream" uid="uid://bt5748asskrtp" path="res://ROWENA/SOUNDS/Phone_Fall.ogg" id="3_wmn3r"]
 [ext_resource type="AudioStream" uid="uid://damkxikdmdura" path="res://ROWENA/SOUNDS/Beep.ogg" id="4_7nc6a"]
-[ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://SOUND/Phone_Ring.ogg" id="5_gkr5f"]
-[ext_resource type="AudioStream" uid="uid://cuwid5c2t025o" path="res://SOUND/Hang_Up.ogg" id="6_xr3ty"]
+[ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://ROWENA/SOUNDS/Phone_Ring.ogg" id="5_gkr5f"]
+[ext_resource type="AudioStream" uid="uid://cuwid5c2t025o" path="res://ROWENA/SOUNDS/Hang_Up.ogg" id="6_xr3ty"]
 [ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Cupboard_Open_Close.ogg" id="10_ggfb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3djui"]
