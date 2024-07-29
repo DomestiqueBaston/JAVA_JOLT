@@ -28,8 +28,10 @@ var _choice_text_color: Color
 
 var _available_cursors: Array[int] = []
 var _current_cursor: int = -1
+var _is_mouse_in_inventory_icon: bool = false
+var _is_inventory_open: bool = false
 
-## Signal emitted when user clicks somewhere to make Rowena move.
+## Signal emitted when user clicks somewhere to move or do something.
 signal click_on_background(pos: Vector2)
 
 signal _typing_finished
@@ -51,7 +53,7 @@ func _ready():
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
-		if not is_dialogue_visible():
+		if not is_dialogue_visible() and not is_inventory_open():
 			if event is InputEventMouse:
 				click_on_background.emit(event.position)
 			else:
@@ -243,3 +245,27 @@ func _prev_cursor():
 	if _available_cursors.size() > 1:
 		_current_cursor = posmod(_current_cursor - 1, _available_cursors.size())
 		_set_mouse_cursor(_available_cursors[_current_cursor])
+
+func is_inventory_open() -> bool:
+	return _is_inventory_open
+
+func _on_inventory_area_entered(_area: Area2D):
+	if not is_dialogue_visible() and not is_inventory_open():
+		_is_mouse_in_inventory_icon = true
+		$Inventory_Icon_AnimationPlayer.play("Inv_On")
+
+func _on_inventory_area_exited(_area: Area2D):
+	if not is_dialogue_visible() and not is_inventory_open():
+		_is_mouse_in_inventory_icon = false
+		$Inventory_Icon_AnimationPlayer.play("Inv_Off")
+
+func _on_inv_gui_input(event: InputEvent):
+	if (event.is_action_pressed("left_mouse_click") and
+		not is_dialogue_visible()):
+		if _is_inventory_open:
+			$Inventory_AnimationPlayer.play("Close_Inventory")
+		else:
+			$Inventory_AnimationPlayer.play("Open_Inventory")
+			clear_comment_text()
+		_is_inventory_open = not _is_inventory_open
+		$Inventory/Inv.accept_event()

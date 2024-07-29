@@ -1143,8 +1143,8 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qex0e"]
@@ -1318,7 +1318,6 @@ text = "Dialogue box 4"
 autowrap_mode = 2
 
 [node name="Inventory_Box" type="MarginContainer" parent="Boxes"]
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1370,7 +1369,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Inventory" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = -2.0
@@ -1378,9 +1376,11 @@ offset_right = 18.0
 offset_bottom = 8.0
 
 [node name="Inv" type="Label" parent="Inventory"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 18.0
 offset_bottom = 12.0
+mouse_filter = 1
 theme = ExtResource("1_00ud7")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 0
@@ -1564,4 +1564,7 @@ libraries = {
 [connection signal="mouse_entered" from="Boxes/Dialogue_Box/BG3/Dialogue3" to="." method="_on_dialogue_3_mouse_entered"]
 [connection signal="gui_input" from="Boxes/Dialogue_Box/BG4/Dialogue4" to="." method="_on_dialogue_4_gui_input"]
 [connection signal="mouse_entered" from="Boxes/Dialogue_Box/BG4/Dialogue4" to="." method="_on_dialogue_4_mouse_entered"]
+[connection signal="gui_input" from="Inventory/Inv" to="." method="_on_inv_gui_input"]
+[connection signal="area_entered" from="Inventory/Collider" to="." method="_on_inventory_area_entered"]
+[connection signal="area_exited" from="Inventory/Collider" to="." method="_on_inventory_area_exited"]
 [connection signal="timeout" from="Typing_Timer" to="." method="_type_one_character"]

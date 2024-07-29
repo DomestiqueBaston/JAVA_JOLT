@@ -194,7 +194,7 @@ func _walk_to_prop():
 	await $ROWENA.target_area_reached
 
 func _on_background_area_entered_object(which: int, _area: Area2D):
-	if $UI.is_dialogue_visible():
+	if $UI.is_dialogue_visible() or $UI.is_inventory_open():
 		return
 	print($BACKGROUND.get_collider(which).name)
 	current_prop = which
