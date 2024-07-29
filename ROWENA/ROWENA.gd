@@ -32,9 +32,29 @@ func _physics_process(_delta: float):
 		$ROWENA_AnimationPlayer.play("Walk")
 		move_and_slide()
 
+#
+# Turns to look in the direction of the given X coordinate.
+#
+func look_at_x(x: float):
+	var dx = position.x - x
+	if dx < 0:
+		$Rowena_Sprites.scale = Vector2(0.5, 0.5)
+	elif dx > 0:
+		$Rowena_Sprites.scale = Vector2(-0.5, 0.5)
+
+#
+# Walks toward the given X coordinate. Ignored if Rowena is walking toward an
+# Area2D collider, that is, if walk_to_area() has been called and the
+# target_area_reached() signal has not yet been emitted.
+#
 func walk_to_x(x: float):
 	_target_x = x
 
+#
+# Walks toward the given Area2D collider and stops when it intersects with
+# Rowena's collider. When that happens, a target_area_reached() signal is
+# emitted.
+#
 func walk_to_area(area: Area2D):
 	_target_area = area
 

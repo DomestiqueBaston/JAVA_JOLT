@@ -127,12 +127,13 @@ func _ready():
 	assert(prop_info.size() == Globals.Prop.PROP_COUNT)
 
 func _on_ui_click_on_background(pos):
-	$UI.clear_comment_text()
 	$BACKGROUND.close_everything()
 	match $UI.get_current_cursor():
 		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
+			$UI.clear_comment_text()
 			$ROWENA.walk_to_x(pos.x)
 		Globals.Cursor.EYE:
+			$ROWENA.look_at_x(pos.x)
 			if current_prop >= 0:
 				var viewport_size: Vector2 = get_viewport_rect().size
 				var rowena_bbox: Rect2 = $ROWENA.get_global_bbox()
@@ -154,7 +155,10 @@ func _on_ui_click_on_background(pos):
 					$ROWENA.get_something(3, false)
 					await $ROWENA.got_something
 					$BACKGROUND.open_refrigerator_right()
+				_:
+					$ROWENA.look_at(pos.x)
 		Globals.Cursor.QUIT:
+			$UI.clear_comment_text()
 			await _walk_to_prop()
 			get_tree().quit()
 
@@ -174,10 +178,8 @@ func _on_background_area_entered_object(which: int, _area: Area2D):
 		Globals.Prop.WINDOW_RIGHT:
 			actions.append(Globals.Cursor.QUIT)
 	$UI.set_available_cursors(actions)
-	$UI.clear_comment_text()
 
 func _on_background_area_exited_object(which: int, _area: Area2D):
 	if current_prop == which:
 		current_prop = -1
 		$UI.clear_available_cursors()
-		$UI.clear_comment_text()
