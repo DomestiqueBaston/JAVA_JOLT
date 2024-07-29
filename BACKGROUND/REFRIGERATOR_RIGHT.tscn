@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://ra2c3mr66sx3"]
+[gd_scene load_steps=17 format=3 uid="uid://ra2c3mr66sx3"]
 
+[ext_resource type="Script" path="res://BACKGROUND/REFRIGERATOR_RIGHT.gd" id="1_gquyx"]
 [ext_resource type="Texture2D" uid="uid://gym227kuxgio" path="res://BACKGROUND/IMAGES/Refrigerator_Right_Open.png" id="1_jhg0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5xtp"]
@@ -45,6 +46,7 @@ size = Vector2(3, 2)
 size = Vector2(8, 4)
 
 [node name="Refrigerator_Right" type="Node2D"]
+script = ExtResource("1_gquyx")
 
 [node name="Refrigerator_Right_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_jhg0m")

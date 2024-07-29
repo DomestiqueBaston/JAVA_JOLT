@@ -3,6 +3,8 @@ extends Node2D
 signal area_entered_object(which: int, area: Area2D)
 signal area_exited_object(which: int, area: Area2D)
 
+var _open_object = -1
+
 var _refrigerator_right = preload("res://BACKGROUND/REFRIGERATOR_RIGHT.tscn")
 
 @onready var _colliders: Array[Area2D] = [
@@ -68,18 +70,46 @@ var _refrigerator_right = preload("res://BACKGROUND/REFRIGERATOR_RIGHT.tscn")
 ]
 
 func _ready():
-	assert(_colliders.size() == Globals.Prop.PROP_COUNT)
+	assert(_colliders.size() == Globals.Prop.MAIN_PROP_COUNT)
 	for index in _colliders.size():
 		var collider: Area2D = _colliders[index]
-		collider.area_entered.connect(func(area): area_entered_object.emit(index, area))
-		collider.area_exited.connect(func(area): area_exited_object.emit(index, area))
+		collider.area_entered.connect(func(area):
+			if _open_object < 0:
+				area_entered_object.emit(index, area)
+			)
+		collider.area_exited.connect(func(area):
+			if _open_object < 0:
+				area_exited_object.emit(index, area)
+			)
 
 func get_collider(which: int) -> Area2D:
-	return _colliders[which]
+	match _open_object:
+		Globals.Prop.REFRIGERATOR_RIGHT:
+			var node: Node = $Opens_Outs.get_child(0)
+			return node.get_collider(which)
+		_:
+			return _colliders[which]
 
 func open_refrigerator_right():
-	$Opens_Outs.add_child(_refrigerator_right.instantiate())
+	var node: Node = _refrigerator_right.instantiate()
+	$Opens_Outs.add_child(node)
+	node.area_entered_object.connect(
+		func(which, area):
+			area_entered_object.emit(which, area)
+			)
+	node.area_exited_object.connect(
+		func(which, area):
+			area_exited_object.emit(which, area)
+			)
+	$Sounds/Fridge_Open_Close.play()
+	_open_object = Globals.Prop.REFRIGERATOR_RIGHT
+
+func close_refrigerator_right():
+	$Opens_Outs.get_child(0).queue_free()
+	$Sounds/Fridge_Open_Close.play()
+	_open_object = -1
 
 func close_everything():
-	for i in $Opens_Outs.get_child_count():
-		$Opens_Outs.get_child(i).queue_free()
+	match _open_object:
+		Globals.Prop.REFRIGERATOR_RIGHT:
+			close_refrigerator_right()

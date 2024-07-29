@@ -50,7 +50,7 @@ const prop_info: Array[String] = [
 	# CUPBOARD_UPPER_CENTER
 	"I wonder what's in there...",
 	# COFFEE_CUPBOARD
-	"Coffee cupboard?",
+	"That's my coffee cupboard. :'(",
 	# UPPER_RIGHT_CUPBOARD
 	"There's big stuff in there.",
 	# MICROWAVE_OVEN
@@ -121,15 +121,41 @@ const prop_info: Array[String] = [
 	"Coffee beans!",
 	# COFFEE_BEANS_2
 	"Coffee beans!",
+	# SMOOTHIE_BOTTLES
+	"Those are smoothie bottles.",
+	# FRUIT_JUICE_BOTTLES
+	"Those are bottles of fruit juice.",
+	# MILK_BOTTLES
+	"Those are bottles of milk.",
+	# BUTTER_KNIFE
+	"That's a butter knife.",
+	# CREAM_POTS
+	"Those are jars of cream.",
+	# YOGHURTS
+	"That's yogurt.",
+	# SAUCE_PAN_IN_FRIDGE
+	"That's a sauce pan.",
+	# EGGS
+	"Those are eggs.",
+	# GREEN_PEPPER
+	"That's a green pepper.",
+	# TOMATOES
+	"Those are tomatoes.",
+	# CAULIFLOWER
+	"That's a cauliflower.",
+	# YELLOW_PEPPER
+	"That's a yellow pepper.",
+	# FRUIT
+	"That's some fruit.",
 ]
 
 func _ready():
-	assert(prop_info.size() == Globals.Prop.PROP_COUNT)
+	assert(prop_info.size() == Globals.Prop.TOTAL_PROP_COUNT)
 
 func _on_ui_click_on_background(pos):
-	$BACKGROUND.close_everything()
 	match $UI.get_current_cursor():
 		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
+			$BACKGROUND.close_everything()
 			$UI.clear_comment_text()
 			$ROWENA.walk_to_x(pos.x)
 		Globals.Cursor.EYE:
@@ -158,6 +184,7 @@ func _on_ui_click_on_background(pos):
 				_:
 					$ROWENA.look_at(pos.x)
 		Globals.Cursor.QUIT:
+			$BACKGROUND.close_everything()
 			$UI.clear_comment_text()
 			await _walk_to_prop()
 			get_tree().quit()

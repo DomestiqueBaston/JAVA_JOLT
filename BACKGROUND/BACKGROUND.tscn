@@ -1,10 +1,11 @@
-[gd_scene load_steps=49 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=50 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/IMAGES/BG_Lights_On.png" id="2_8x8bd"]
 [ext_resource type="Texture2D" uid="uid://wx47j17h2tlm" path="res://BACKGROUND/IMAGES/Radio_On_Lights_Off.png" id="2_yjrnf"]
 [ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/IMAGES/Radio_On_Lights_On.png" id="4_ukw4d"]
+[ext_resource type="AudioStream" uid="uid://na6eamuhj80a" path="res://ROWENA/SOUNDS/Fridge_Open_Close.ogg" id="6_jvbuw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -616,3 +617,9 @@ collision_layer = 2
 visible = false
 position = Vector2(137, 64)
 shape = SubResource("RectangleShape2D_p4i34")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Fridge_Open_Close" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_jvbuw")
+bus = &"FX"
