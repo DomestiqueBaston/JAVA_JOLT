@@ -20,6 +20,9 @@ enum { ROWENA, DOCTOR }
 ## Color of dialogue text option under the mouse cursor.
 @export var highlighted_text_color := Color.WHITE
 
+## Seconds before comments disappear.
+@export var comment_timeout: float = 4
+
 # Color of unhighlighted text options in current dialogue.
 var _choice_text_color: Color
 
@@ -155,8 +158,13 @@ func set_comment_text(text: String, x: float, left_justify: bool):
 		x -= $Boxes/CenterContainer/Comment_Box.size.x
 	$Boxes/CenterContainer.position.x = x
 	$Boxes/CenterContainer/Comment_Box.show()
+	$Comment_Timer.start(comment_timeout)
 
 func clear_comment_text():
+	$Comment_Timer.stop()
+	$Boxes/CenterContainer/Comment_Box.hide()
+
+func _on_comment_timer_timeout():
 	$Boxes/CenterContainer/Comment_Box.hide()
 
 func _on_three_points_gui_input(event: InputEvent):
