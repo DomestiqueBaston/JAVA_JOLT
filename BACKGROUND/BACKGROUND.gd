@@ -73,34 +73,31 @@ func _ready():
 	assert(_colliders.size() == Globals.Prop.MAIN_PROP_COUNT)
 	for index in _colliders.size():
 		var collider: Area2D = _colliders[index]
-		collider.area_entered.connect(func(area):
-			if _open_object < 0:
-				area_entered_object.emit(index, area)
-			)
-		collider.area_exited.connect(func(area):
-			if _open_object < 0:
-				area_exited_object.emit(index, area)
-			)
+		collider.area_entered.connect(
+			func(area): area_entered_object.emit(index, area))
+		collider.area_exited.connect(
+			func(area): area_exited_object.emit(index, area))
 
 func get_collider(which: int) -> Area2D:
+	if which < Globals.Prop.MAIN_PROP_COUNT:
+		return _colliders[which]
 	match _open_object:
 		Globals.Prop.REFRIGERATOR_RIGHT:
 			var node: Node = $Opens_Outs.get_child(0)
 			return node.get_collider(which)
 		_:
-			return _colliders[which]
+			return null
+
+func get_open_object() -> int:
+	return _open_object
 
 func open_refrigerator_right():
 	var node: Node = _refrigerator_right.instantiate()
 	$Opens_Outs.add_child(node)
 	node.area_entered_object.connect(
-		func(which, area):
-			area_entered_object.emit(which, area)
-			)
+		func(which, area): area_entered_object.emit(which, area))
 	node.area_exited_object.connect(
-		func(which, area):
-			area_exited_object.emit(which, area)
-			)
+		func(which, area): area_exited_object.emit(which, area))
 	$Sounds/Fridge_Open_Close.play()
 	_open_object = Globals.Prop.REFRIGERATOR_RIGHT
 

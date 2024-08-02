@@ -160,35 +160,45 @@ position = Vector2(29, 61)
 shape = SubResource("RectangleShape2D_dq8vp")
 
 [node name="Door_Collider" type="Area2D" parent="."]
+position = Vector2(37.5, 42.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Door" type="CollisionPolygon2D" parent="Door_Collider"]
+position = Vector2(-37.5, -42.5)
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 40, 53, 40, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)
 
 [node name="Door_Fruit_Juice_Smoothie_Out" type="CollisionPolygon2D" parent="Door_Collider"]
 visible = false
+position = Vector2(-37.5, -42.5)
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 46, 47, 46, 53, 40, 53, 40, 47, 46, 47, 46, 36, 43, 36, 43, 30, 46, 30, 46, 22)
 
 [node name="Door_Smoothie_Milk_Bottle_Out" type="CollisionPolygon2D" parent="Door_Collider"]
 visible = false
+position = Vector2(-37.5, -42.5)
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 42, 53, 42, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 43, 36, 43, 30, 46, 30, 46, 22)
 
 [node name="Door_Fruit_Juice_Out" type="CollisionPolygon2D" parent="Door_Collider"]
 visible = false
+position = Vector2(-37.5, -42.5)
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 46, 47, 46, 53, 40, 53, 40, 47, 46, 47, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)
 
 [node name="Door_Smoothie_Out" type="CollisionPolygon2D" parent="Door_Collider"]
 visible = false
+position = Vector2(-37.5, -42.5)
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 40, 53, 40, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 43, 36, 43, 30, 46, 30, 46, 22)
 
 [node name="Door_Milk_Bottle_Out" type="CollisionPolygon2D" parent="Door_Collider"]
 visible = false
+position = Vector2(-37.5, -42.5)
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 45, 39, 45, 44, 46, 47, 46, 53, 42, 53, 42, 47, 46, 47, 45, 44, 42, 44, 42, 39, 45, 39, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)
 
 [node name="Door_Fruit_Juice_Milk_Bottle_Out" type="CollisionPolygon2D" parent="Door_Collider"]
 visible = false
+position = Vector2(-37.5, -42.5)
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 46, 47, 46, 53, 42, 53, 42, 47, 46, 47, 46, 36, 41, 36, 41, 30, 46, 30, 46, 22)
 
 [node name="Door_Fruit_Juice_Smoothie_Milk_Bottle_Out" type="CollisionPolygon2D" parent="Door_Collider"]
 visible = false
+position = Vector2(-37.5, -42.5)
 polygon = PackedVector2Array(38, 22, 38, 63, 49, 63, 49, 22, 46, 22, 46, 36, 46, 47, 46, 53, 42, 53, 42, 47, 46, 47, 46, 36, 43, 36, 43, 30, 46, 30, 46, 22)

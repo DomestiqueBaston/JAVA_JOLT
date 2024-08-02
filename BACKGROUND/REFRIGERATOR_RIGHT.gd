@@ -17,6 +17,7 @@ signal area_exited_object(which: int, area: Area2D)
 	$Stuff_Colliders/Cauliflower_Collider,
 	$Stuff_Colliders/Yellow_Pepper_Collider,
 	$Stuff_Colliders/Fruits_Collider,
+	$Door_Collider,
 ]
 
 func _ready():

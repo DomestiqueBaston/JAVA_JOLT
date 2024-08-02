@@ -1,5 +1,9 @@
 extends Node2D
 
+## At this distance from an open object (e.g. the refrigerator), we close it
+## automatically rather than make Rowena walk back to it.
+@export var auto_close_distance = 60
+
 var current_prop: int = -1
 
 const prop_info: Array[String] = [
@@ -147,6 +151,8 @@ const prop_info: Array[String] = [
 	"That's a yellow pepper.",
 	# FRUIT
 	"That's some fruit.",
+	# REFRIGERATOR_RIGHT_OPEN_DOOR
+	"Do you want to close the refrigerator?",
 ]
 
 func _ready():
@@ -155,7 +161,6 @@ func _ready():
 func _on_ui_click_on_background(pos):
 	match $UI.get_current_cursor():
 		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
-			$BACKGROUND.close_everything()
 			$UI.clear_comment_text()
 			$ROWENA.walk_to_x(pos.x)
 		Globals.Cursor.EYE:
@@ -181,16 +186,37 @@ func _on_ui_click_on_background(pos):
 					$ROWENA.get_something(3, false)
 					await $ROWENA.got_something
 					$BACKGROUND.open_refrigerator_right()
+				Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
+					$UI.clear_available_cursors()
+					await _walk_to_prop()
+					$ROWENA.get_something(3, false)
+					await $ROWENA.got_something
+					$BACKGROUND.close_refrigerator_right()
 				_:
 					$ROWENA.look_at(pos.x)
 		Globals.Cursor.QUIT:
-			$BACKGROUND.close_everything()
 			$UI.clear_comment_text()
+			await _close_open_object()
 			await _walk_to_prop()
 			get_tree().quit()
 
-func _walk_to_prop():
-	$ROWENA.walk_to_area($BACKGROUND.get_collider(current_prop))
+func _close_open_object():
+	if $BACKGROUND.get_open_object() == Globals.Prop.REFRIGERATOR_RIGHT:
+		var door = Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR
+		if _get_distance_from_prop(door) < auto_close_distance:
+			await _walk_to_prop(door)
+			$ROWENA.get_something(3, false)
+			await $ROWENA.got_something
+		$BACKGROUND.close_refrigerator_right()
+
+func _get_distance_from_prop(which: int) -> float:
+		var prop: Area2D = $BACKGROUND.get_collider(which)
+		return absf($ROWENA.position.x - prop.position.x)
+
+func _walk_to_prop(which: int = -1):
+	if which < 0:
+		which = current_prop
+	$ROWENA.walk_to_area($BACKGROUND.get_collider(which))
 	await $ROWENA.target_area_reached
 
 func _on_background_area_entered_object(which: int, _area: Area2D):
@@ -204,6 +230,8 @@ func _on_background_area_entered_object(which: int, _area: Area2D):
 			actions.append(Globals.Cursor.HAND)
 		Globals.Prop.WINDOW_RIGHT:
 			actions.append(Globals.Cursor.QUIT)
+		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
+			actions.append(Globals.Cursor.HAND)
 	$UI.set_available_cursors(actions)
 
 func _on_background_area_exited_object(which: int, _area: Area2D):
