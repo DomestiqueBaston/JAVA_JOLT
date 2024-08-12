@@ -132,7 +132,7 @@ const prop_info: Array[String] = [
 	# MILK_BOTTLES
 	"Those are bottles of milk.",
 	# BUTTER_KNIFE
-	"That's a butter knife.",
+	"That's butter... with a butter knife in it.",
 	# CREAM_POTS
 	"Those are jars of cream.",
 	# YOGHURTS
