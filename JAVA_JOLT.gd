@@ -4,7 +4,13 @@ extends Node2D
 ## automatically rather than make Rowena walk back to it.
 @export var auto_close_distance = 60
 
+# The prop currently under the mouse cursor (see Globals.Prop), or -1.
 var current_prop: int = -1
+
+# Dictionary containing all the background object colliders that are currently
+# in contact with the mouse cursor. Keys are prop numbers (see Globals.prop);
+# values are Area2D instances.
+var overlapping_colliders = {}
 
 const prop_info: Array[String] = [
 	# KITCHEN_CABINET
@@ -219,22 +225,79 @@ func _walk_to_prop(which: int = -1):
 	$ROWENA.walk_to_area($BACKGROUND.get_collider(which))
 	await $ROWENA.target_area_reached
 
+#
+# Callback invoked when the mouse collider (_area) enters the Area2D of a
+# background object (the prop identified by which: see Globals.Prop). The
+# current prop, and available cursor actions, are updated as appropriate.
+#
 func _on_background_area_entered_object(which: int, _area: Area2D):
 	if $UI.is_dialogue_visible() or $UI.is_inventory_open():
 		return
-	print($BACKGROUND.get_collider(which).name)
-	current_prop = which
-	var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
-	match which:
-		Globals.Prop.REFRIGERATOR_RIGHT:
-			actions.append(Globals.Cursor.HAND)
-		Globals.Prop.WINDOW_RIGHT:
-			actions.append(Globals.Cursor.QUIT)
-		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
-			actions.append(Globals.Cursor.HAND)
-	$UI.set_available_cursors(actions)
+	var collider: Area2D = $BACKGROUND.get_collider(which)
+	if not overlapping_colliders.has(which):
+		overlapping_colliders[which] = collider
+		_update_current_prop()
 
+#
+# Callback invoked when the mouse collider (_area) leaves the Area2D of a
+# background object (the prop identified by which: see Globals.Prop). The
+# current prop, and available cursor actions, are updated as appropriate.
+#
 func _on_background_area_exited_object(which: int, _area: Area2D):
-	if current_prop == which:
+	if overlapping_colliders.erase(which):
+		_update_current_prop()
+
+#
+# Called when the list of background objects in contact with the mouse collider
+# has changed. The current prop object is updated, if necessary, and the list of
+# available cursor actions is updated accordingly.
+#
+# If the mouse is is contact with more than one object, all but the topmost
+# object are ignored. Object depth is determined by each collider's "bg_level"
+# metadata value. The default value is 0; higher values are considered to be on
+# top of lower values.
+#
+func _update_current_prop():
+	var top_prop = -1
+	var top_collider: Area2D
+
+	# fetch the topmost object in contact with the mouse collider
+
+	if not overlapping_colliders.is_empty():
+		var bg_level = -1
+		for key in overlapping_colliders.keys():
+			var collider: Area2D = overlapping_colliders[key]
+			var level = collider.get_meta(&"bg_level", 0)
+			if bg_level < level:
+				bg_level = level
+				top_prop = key
+				top_collider = collider
+
+	# already the current prop: do nothing
+
+	if current_prop == top_prop:
+		return
+
+	# if the refrigerator door is open (for example), the closed door remains
+	# in the scene; ignore it
+
+	if top_prop >= 0 and top_prop == $BACKGROUND.get_open_object():
 		current_prop = -1
+	else:
+		current_prop = top_prop
+
+	# update the list of available cursor actions
+
+	if current_prop < 0:
 		$UI.clear_available_cursors()
+	else:
+		print(top_collider.name)
+		var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
+		match current_prop:
+			Globals.Prop.REFRIGERATOR_RIGHT:
+				actions.append(Globals.Cursor.HAND)
+			Globals.Prop.WINDOW_RIGHT:
+				actions.append(Globals.Cursor.QUIT)
+			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
+				actions.append(Globals.Cursor.HAND)
+		$UI.set_available_cursors(actions)
