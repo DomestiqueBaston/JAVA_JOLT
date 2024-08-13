@@ -297,10 +297,9 @@ func find_in_inventory(item: String) -> int:
 	return _inventory_contents.find(item)
 
 func add_to_inventory(item: String):
-	if _inventory_contents.find(item) >= 0:
-		return
-	_inventory_contents.append(item)
-	_update_inventory_labels()
+	if _inventory_contents.find(item) < 0:
+		_inventory_contents.append(item)
+		_update_inventory_labels()
 
 func remove_from_inventory(index: int):
 	_inventory_contents.remove_at(index)

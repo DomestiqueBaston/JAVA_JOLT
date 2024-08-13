@@ -191,7 +191,11 @@ func _on_ui_click_on_background(pos):
 		Globals.Cursor.EYE:
 			$ROWENA.look_at_x(pos.x)
 			if current_prop >= 0:
-				_set_comment(prop_info[current_prop])
+				if (current_prop == Globals.Prop.BUTTER_KNIFE and
+					$UI.find_in_inventory("Butter knife") >= 0):
+					_set_comment("That's butter. I've got the knife, though.")
+				else:
+					_set_comment(prop_info[current_prop])
 				if current_prop == Globals.Prop.BUTTER_KNIFE:
 					butter_knife_seen = true
 		Globals.Cursor.HAND:
@@ -312,8 +316,11 @@ func _update_current_prop():
 		print(top_collider.name)
 		var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
 		match current_prop:
-			Globals.Prop.REFRIGERATOR_RIGHT, Globals.Prop.BUTTER_KNIFE:
+			Globals.Prop.REFRIGERATOR_RIGHT:
 				actions.append(Globals.Cursor.HAND)
+			Globals.Prop.BUTTER_KNIFE:
+				if $UI.find_in_inventory("Butter knife") < 0:
+					actions.append(Globals.Cursor.HAND)
 			Globals.Prop.WINDOW_RIGHT:
 				actions.append(Globals.Cursor.QUIT)
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
