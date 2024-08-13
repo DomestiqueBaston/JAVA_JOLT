@@ -33,6 +33,7 @@ var _available_cursors: Array[int] = []
 var _current_cursor: int = -1
 var _is_mouse_in_inventory_icon: bool = false
 var _is_inventory_open: bool = false
+var _inventory_contents: Array[String] = []
 
 ## Signal emitted when user clicks somewhere to move or do something.
 signal click_on_background(pos: Vector2)
@@ -46,6 +47,7 @@ const dialogue2 = preload("res://dialogue2.json").data
 const dialogue3 = preload("res://dialogue3.json").data
 
 func _ready():
+	clear_inventory()
 	match dialogue_number:
 		1:
 			_tell_story_node(dialogue1, dialogue1["start"])
@@ -277,3 +279,29 @@ func _on_inv_gui_input(event: InputEvent):
 			clear_comment_text()
 		_is_inventory_open = not _is_inventory_open
 		$Inventory/Inv.accept_event()
+
+func _update_inventory_labels():
+	for index in 4:
+		var label = get_node(
+			"Boxes/Inventory_Box/BG%d/Inventory%d" % [index+1, index+1])
+		if index < _inventory_contents.size():
+			label.text = _inventory_contents[index]
+		else:
+			label.text = ""
+
+func clear_inventory():
+	_inventory_contents.clear()
+	_update_inventory_labels()
+
+func find_in_inventory(item: String) -> int:
+	return _inventory_contents.find(item)
+
+func add_to_inventory(item: String):
+	if _inventory_contents.find(item) >= 0:
+		return
+	_inventory_contents.append(item)
+	_update_inventory_labels()
+
+func remove_from_inventory(index: int):
+	_inventory_contents.remove_at(index)
+	_update_inventory_labels()

@@ -161,8 +161,27 @@ const prop_info: Array[String] = [
 	"Do you want to close the refrigerator?",
 ]
 
+var butter_knife_seen = false
+
 func _ready():
 	assert(prop_info.size() == Globals.Prop.TOTAL_PROP_COUNT)
+
+#
+# Sets the comment text, positioning it to the left or to the right of Rowena,
+# depending on where she is standing.
+#
+func _set_comment(text: String):
+	var viewport_size: Vector2 = get_viewport_rect().size
+	var rowena_bbox: Rect2 = $ROWENA.get_global_bbox()
+	var x: float
+	var left_justify: bool
+	if rowena_bbox.get_center().x < viewport_size.x/2:
+		left_justify = true
+		x = rowena_bbox.position.x + rowena_bbox.size.x
+	else:
+		left_justify = false
+		x = rowena_bbox.position.x
+	$UI.set_comment_text(text, x, left_justify)
 
 func _on_ui_click_on_background(pos):
 	match $UI.get_current_cursor():
@@ -172,17 +191,9 @@ func _on_ui_click_on_background(pos):
 		Globals.Cursor.EYE:
 			$ROWENA.look_at_x(pos.x)
 			if current_prop >= 0:
-				var viewport_size: Vector2 = get_viewport_rect().size
-				var rowena_bbox: Rect2 = $ROWENA.get_global_bbox()
-				var x: float
-				var left_justify: bool
-				if rowena_bbox.get_center().x < viewport_size.x/2:
-					left_justify = true
-					x = rowena_bbox.position.x + rowena_bbox.size.x
-				else:
-					left_justify = false
-					x = rowena_bbox.position.x
-				$UI.set_comment_text(prop_info[current_prop], x, left_justify)
+				_set_comment(prop_info[current_prop])
+				if current_prop == Globals.Prop.BUTTER_KNIFE:
+					butter_knife_seen = true
 		Globals.Cursor.HAND:
 			$UI.clear_comment_text()
 			match current_prop:
@@ -198,6 +209,13 @@ func _on_ui_click_on_background(pos):
 					$ROWENA.get_something(3, false)
 					await $ROWENA.got_something
 					$BACKGROUND.close_refrigerator_right()
+				Globals.Prop.BUTTER_KNIFE:
+					$UI.clear_available_cursors()
+					if butter_knife_seen:
+						$UI.add_to_inventory("Butter knife")
+						_set_comment("OK, I'll just take that knife.")
+					else:
+						_set_comment("Remember? Coffee...")
 				_:
 					$ROWENA.look_at(pos.x)
 		Globals.Cursor.QUIT:
@@ -294,7 +312,7 @@ func _update_current_prop():
 		print(top_collider.name)
 		var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
 		match current_prop:
-			Globals.Prop.REFRIGERATOR_RIGHT:
+			Globals.Prop.REFRIGERATOR_RIGHT, Globals.Prop.BUTTER_KNIFE:
 				actions.append(Globals.Cursor.HAND)
 			Globals.Prop.WINDOW_RIGHT:
 				actions.append(Globals.Cursor.QUIT)
