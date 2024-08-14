@@ -1660,6 +1660,7 @@ layout_mode = 2
 [node name="Inventory1" type="Label" parent="Boxes/Inventory_Box/BG1"]
 visible = false
 layout_mode = 2
+mouse_filter = 1
 text = "Inventory 1"
 
 [node name="BG2" type="PanelContainer" parent="Boxes/Inventory_Box"]
@@ -1670,6 +1671,7 @@ layout_mode = 2
 [node name="Inventory2" type="Label" parent="Boxes/Inventory_Box/BG2"]
 visible = false
 layout_mode = 2
+mouse_filter = 1
 text = "Inventory 2"
 
 [node name="BG3" type="PanelContainer" parent="Boxes/Inventory_Box"]
@@ -1680,6 +1682,7 @@ layout_mode = 2
 [node name="Inventory3" type="Label" parent="Boxes/Inventory_Box/BG3"]
 visible = false
 layout_mode = 2
+mouse_filter = 1
 text = "Inventory 3"
 
 [node name="BG4" type="PanelContainer" parent="Boxes/Inventory_Box"]
@@ -1690,6 +1693,7 @@ layout_mode = 2
 [node name="Inventory4" type="Label" parent="Boxes/Inventory_Box/BG4"]
 visible = false
 layout_mode = 2
+mouse_filter = 1
 text = "Inventory 4"
 
 [node name="CenterContainer" type="CenterContainer" parent="Boxes"]
@@ -1912,6 +1916,14 @@ libraries = {
 [connection signal="mouse_entered" from="Boxes/Dialogue_Box/BG3/Dialogue3" to="." method="_on_dialogue_3_mouse_entered"]
 [connection signal="gui_input" from="Boxes/Dialogue_Box/BG4/Dialogue4" to="." method="_on_dialogue_4_gui_input"]
 [connection signal="mouse_entered" from="Boxes/Dialogue_Box/BG4/Dialogue4" to="." method="_on_dialogue_4_mouse_entered"]
+[connection signal="gui_input" from="Boxes/Inventory_Box/BG1/Inventory1" to="." method="_on_inventory_gui_input"]
+[connection signal="mouse_entered" from="Boxes/Inventory_Box/BG1/Inventory1" to="." method="_on_inventory_1_mouse_entered"]
+[connection signal="gui_input" from="Boxes/Inventory_Box/BG2/Inventory2" to="." method="_on_inventory_gui_input"]
+[connection signal="mouse_entered" from="Boxes/Inventory_Box/BG2/Inventory2" to="." method="_on_inventory_2_mouse_entered"]
+[connection signal="gui_input" from="Boxes/Inventory_Box/BG3/Inventory3" to="." method="_on_inventory_gui_input"]
+[connection signal="mouse_entered" from="Boxes/Inventory_Box/BG3/Inventory3" to="." method="_on_inventory_3_mouse_entered"]
+[connection signal="gui_input" from="Boxes/Inventory_Box/BG4/Inventory4" to="." method="_on_inventory_gui_input"]
+[connection signal="mouse_entered" from="Boxes/Inventory_Box/BG4/Inventory4" to="." method="_on_inventory_4_mouse_entered"]
 [connection signal="gui_input" from="Inventory/Inv" to="." method="_on_inv_gui_input"]
 [connection signal="area_entered" from="Inventory/Collider" to="." method="_on_inventory_area_entered"]
 [connection signal="area_exited" from="Inventory/Collider" to="." method="_on_inventory_area_exited"]
