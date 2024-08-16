@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-enum { ROWENA, DOCTOR }
-
 ## Dialogue typing speed, in characters per seconds.
 @export var characters_per_second := 15
 
@@ -23,31 +21,52 @@ enum { ROWENA, DOCTOR }
 ## Seconds before comments disappear.
 @export var comment_timeout: float = 4
 
-# Color of unhighlighted text options in current dialogue.
-var _choice_text_color: Color
-
 ## Which dialogue to start with (for testing), 0 for none.
 @export_range(0, 3) var dialogue_number: int = 0
 
-var _available_cursors: Array[int] = []
-var _current_cursor: int = -1
-var _is_mouse_in_inventory_icon: bool = false
-var _is_inventory_open: bool = false
-var _inventory_contents: Array[String] = []
-var _current_inventory_item: int = -1
+## Signal emitted when user clicks somewhere to move or do something.
+signal click_on_background(pos: Vector2)
 
-const _inventory_size = 4
+enum { ROWENA, DOCTOR }
+
+# Color of unhighlighted text options in current dialogue.
+var _choice_text_color: Color
+
+# Which cursor actions are currently available.
+var _available_cursors: Array[int] = []
+
+# Cursor actions available while the inventory is open.
 const _inventory_cursors: Array[int] = [
 	Globals.Cursor.CROSS_PASSIVE,
 	#Globals.Cursor.HAND,
 	Globals.Cursor.TRASH
 ]
 
-## Signal emitted when user clicks somewhere to move or do something.
-signal click_on_background(pos: Vector2)
+# Current cursor action (index into _available_cursors or _inventory_cursors).
+var _current_cursor: int = -1
 
+# true if the mouse is over the icon that opens/closes the inventory.
+var _is_mouse_in_inventory_icon: bool = false
+
+# true if the inventory box is open.
+var _is_inventory_open: bool = false
+
+# Inventory contents: maps item numbers (Globals.Prop enum) to label strings.
+var _inventory_contents := {}
+
+# Index (not item number!) of the highlighted inventory item.
+var _current_inventory_index: int = -1
+
+# How many items the inventory can hold.
+const _max_inventory_size = 4
+
+# Emitted when the typing of a line of dialogue finishes.
 signal _typing_finished
+
+# Emitted when the user clicks on "..." to pass to the next line of dialogue.
 signal _next_click
+
+# Emitted when the user clicks on one possible response in the dialogue box.
 signal _click_on_choice(which: int)
 
 const dialogue1 = preload("res://dialogue1.json").data
@@ -315,11 +334,12 @@ func _close_inventory():
 		_set_mouse_cursor(_available_cursors[0])
 
 func _update_inventory_labels():
-	for i in _inventory_size:
+	var items = _inventory_contents.keys()
+	for i in _max_inventory_size:
 		var label: Label = get_node(
 			"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
 		if i < _inventory_contents.size():
-			label.text = _inventory_contents[i]
+			label.text = _inventory_contents[items[i]]
 		else:
 			label.text = ""
 
@@ -327,29 +347,28 @@ func clear_inventory():
 	_inventory_contents.clear()
 	_update_inventory_labels()
 
-func find_in_inventory(item: String) -> int:
-	return _inventory_contents.find(item)
+func find_in_inventory(item: int) -> int:
+	return _inventory_contents.keys().find(item)
 
-func add_to_inventory(item: String):
-	if _inventory_contents.find(item) < 0:
-		_inventory_contents.append(item)
-		_update_inventory_labels()
+func add_to_inventory(item: int, label: String):
+	_inventory_contents[item] = label
+	_update_inventory_labels()
 
 func remove_from_inventory(index: int):
-	_inventory_contents.remove_at(index)
+	_inventory_contents.erase(_inventory_contents.keys()[index])
 	_update_inventory_labels()
 
 func is_inventory_full() -> bool:
-	return _inventory_contents.size() >= _inventory_size
+	return _inventory_contents.size() >= _max_inventory_size
 
 func _set_current_inventory_item(index: int):
 	if index >= _inventory_contents.size():
 		index = -1
-	for i in _inventory_size:
+	for i in _max_inventory_size:
 		var label: Label = get_node(
 			"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
 		label.self_modulate = rowena_text_color if i == index else Color.WHITE
-	_current_inventory_item = index
+	_current_inventory_index = index
 
 func _on_inventory_1_mouse_entered():
 	_set_current_inventory_item(0)
@@ -368,13 +387,13 @@ func _on_inventory_gui_input(event: InputEvent):
 		_click_on_inventory_item()
 
 func _click_on_inventory_item():
-	if _current_inventory_item < 0:
+	if _current_inventory_index < 0:
 		return
 	match _inventory_cursors[_current_cursor]:
 		Globals.Cursor.TRASH:
-			remove_from_inventory(_current_inventory_item)
+			remove_from_inventory(_current_inventory_index)
 			if _inventory_contents.is_empty():
 				_close_inventory()
 				$Inventory_Icon_AnimationPlayer.play("Inv_Off")
 			else:
-				_set_current_inventory_item(_current_inventory_item)
+				_set_current_inventory_item(_current_inventory_index)

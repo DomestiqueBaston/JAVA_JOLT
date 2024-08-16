@@ -192,7 +192,7 @@ func _on_ui_click_on_background(pos):
 			$ROWENA.look_at_x(pos.x)
 			if current_prop >= 0:
 				if (current_prop == Globals.Prop.BUTTER_KNIFE and
-					$UI.find_in_inventory("Butter knife") >= 0):
+					$UI.find_in_inventory(Globals.Prop.BUTTER_KNIFE) >= 0):
 					_set_comment("That's butter. I've got the knife, though.")
 				else:
 					_set_comment(prop_info[current_prop])
@@ -220,7 +220,8 @@ func _on_ui_click_on_background(pos):
 					elif $UI.is_inventory_full():
 						_set_comment("Hey, I don't have 4 arms, I'm not Shiva!")
 					else:
-						$UI.add_to_inventory("Butter knife")
+						$UI.add_to_inventory(
+							Globals.Prop.BUTTER_KNIFE, "Butter knife")
 						_set_comment("OK, I'll just take that knife.")
 				_:
 					$ROWENA.look_at(pos.x)
@@ -321,7 +322,7 @@ func _update_current_prop():
 			Globals.Prop.REFRIGERATOR_RIGHT:
 				actions.append(Globals.Cursor.HAND)
 			Globals.Prop.BUTTER_KNIFE:
-				if $UI.find_in_inventory("Butter knife") < 0:
+				if $UI.find_in_inventory(Globals.Prop.BUTTER_KNIFE) < 0:
 					actions.append(Globals.Cursor.HAND)
 			Globals.Prop.WINDOW_RIGHT:
 				actions.append(Globals.Cursor.QUIT)
