@@ -215,11 +215,13 @@ func _on_ui_click_on_background(pos):
 					$BACKGROUND.close_refrigerator_right()
 				Globals.Prop.BUTTER_KNIFE:
 					$UI.clear_available_cursors()
-					if butter_knife_seen:
+					if not butter_knife_seen:
+						_set_comment("Remember? Coffee...")
+					elif $UI.is_inventory_full():
+						_set_comment("Hey, I don't have 4 arms, I'm not Shiva!")
+					else:
 						$UI.add_to_inventory("Butter knife")
 						_set_comment("OK, I'll just take that knife.")
-					else:
-						_set_comment("Remember? Coffee...")
 				_:
 					$ROWENA.look_at(pos.x)
 		Globals.Cursor.QUIT:

@@ -36,6 +36,7 @@ var _is_inventory_open: bool = false
 var _inventory_contents: Array[String] = []
 var _current_inventory_item: int = -1
 
+const _inventory_size = 4
 const _inventory_cursors: Array[int] = [
 	Globals.Cursor.CROSS_PASSIVE,
 	#Globals.Cursor.HAND,
@@ -314,7 +315,7 @@ func _close_inventory():
 		_set_mouse_cursor(_available_cursors[0])
 
 func _update_inventory_labels():
-	for i in 4:
+	for i in _inventory_size:
 		var label: Label = get_node(
 			"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
 		if i < _inventory_contents.size():
@@ -338,10 +339,13 @@ func remove_from_inventory(index: int):
 	_inventory_contents.remove_at(index)
 	_update_inventory_labels()
 
+func is_inventory_full() -> bool:
+	return _inventory_contents.size() >= _inventory_size
+
 func _set_current_inventory_item(index: int):
 	if index >= _inventory_contents.size():
 		index = -1
-	for i in 4:
+	for i in _inventory_size:
 		var label: Label = get_node(
 			"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
 		label.self_modulate = rowena_text_color if i == index else Color.WHITE
