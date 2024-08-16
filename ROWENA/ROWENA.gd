@@ -55,8 +55,16 @@ func walk_to_x(x: float):
 # Rowena's collider. When that happens, a target_area_reached() signal is
 # emitted.
 #
-func walk_to_area(area: Area2D):
-	_target_area = area
+# If Rowena's collider already intersects area's, false is returned, and no
+# target_area_reached() is emitted.
+#
+func walk_to_area(area: Area2D) -> bool:
+	if area.overlaps_body(self):
+		look_at_x(area.global_position.x)
+		return false
+	else:
+		_target_area = area
+		return true
 
 func get_global_bbox() -> Rect2:
 	var rect_shape: RectangleShape2D = $ROWENA_Collider.shape

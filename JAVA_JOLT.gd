@@ -244,8 +244,8 @@ func _get_distance_from_prop(which: int) -> float:
 func _walk_to_prop(which: int = -1):
 	if which < 0:
 		which = current_prop
-	$ROWENA.walk_to_area($BACKGROUND.get_collider(which))
-	await $ROWENA.target_area_reached
+	if $ROWENA.walk_to_area($BACKGROUND.get_collider(which)):
+		await $ROWENA.target_area_reached
 
 #
 # Callback invoked when the mouse collider (_area) enters the Area2D of a
