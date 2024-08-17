@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=42 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dd5tsfrs4riqg" path="res://UI/IMAGES/Save.png" id="7_7mdoy"]
 [ext_resource type="Texture2D" uid="uid://cb685rnn6q07t" path="res://UI/IMAGES/Quit.png" id="8_0avw1"]
 [ext_resource type="Texture2D" uid="uid://dpjsaxgllscqn" path="res://UI/IMAGES/No_Sound.png" id="8_mhf7y"]
+[ext_resource type="Texture2D" uid="uid://bihujj3qfu6gv" path="res://UI/IMAGES/Arrow_Active.png" id="8_ngskb"]
 [ext_resource type="Texture2D" uid="uid://dadhxlfc30aym" path="res://UI/IMAGES/Trash.png" id="9_f052n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu12a"]
@@ -1749,7 +1750,6 @@ mouse_filter = 2
 script = ExtResource("2_mswu7")
 
 [node name="Cross_Passive" type="TextureRect" parent="Mouse"]
-visible = false
 layout_mode = 0
 offset_left = -7.5
 offset_top = -7.5
@@ -1777,6 +1777,15 @@ offset_right = 13.0
 offset_bottom = 13.0
 mouse_filter = 2
 texture = ExtResource("4_ru12x")
+
+[node name="Arrow_Active" type="TextureRect" parent="Mouse"]
+visible = false
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 13.0
+offset_bottom = 13.0
+texture = ExtResource("8_ngskb")
 
 [node name="Sound_Up" type="TextureRect" parent="Mouse"]
 visible = false
