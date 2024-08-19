@@ -22,3 +22,4 @@ scale = Vector2(-1, 1)
 [connection signal="area_entered_object" from="BACKGROUND" to="." method="_on_background_area_entered_object"]
 [connection signal="area_exited_object" from="BACKGROUND" to="." method="_on_background_area_exited_object"]
 [connection signal="click_on_background" from="UI" to="." method="_on_ui_click_on_background"]
+[connection signal="use_object_on_other" from="UI" to="." method="_use_object_on_other"]

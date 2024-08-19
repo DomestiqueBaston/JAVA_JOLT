@@ -1768,7 +1768,7 @@ offset_bottom = 8.5
 mouse_filter = 2
 texture = ExtResource("6_gioah")
 
-[node name="Arrow" type="TextureRect" parent="Mouse"]
+[node name="Arrow_Passive" type="TextureRect" parent="Mouse"]
 visible = false
 layout_mode = 0
 offset_left = -3.0
@@ -1785,6 +1785,7 @@ offset_left = -3.0
 offset_top = -3.0
 offset_right = 13.0
 offset_bottom = 13.0
+mouse_filter = 2
 texture = ExtResource("8_ngskb")
 
 [node name="Sound_Up" type="TextureRect" parent="Mouse"]

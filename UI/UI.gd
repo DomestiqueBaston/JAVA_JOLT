@@ -27,6 +27,9 @@ extends CanvasLayer
 ## Signal emitted when user clicks somewhere to move or do something.
 signal click_on_background(pos: Vector2)
 
+## Signal emitted when user tries to "use" one inventory item on another.
+signal use_object_on_other(object1: int, object2: int)
+
 enum { ROWENA, DOCTOR }
 
 # Color of unhighlighted text options in current dialogue.
@@ -38,7 +41,7 @@ var _available_cursors: Array[int] = []
 # Cursor actions available while the inventory is open.
 const _inventory_cursors: Array[int] = [
 	Globals.Cursor.CROSS_PASSIVE,
-	#Globals.Cursor.HAND,
+	Globals.Cursor.HAND,
 	Globals.Cursor.TRASH
 ]
 
@@ -54,8 +57,11 @@ var _is_inventory_open: bool = false
 # Inventory contents: maps item numbers (Globals.Prop enum) to label strings.
 var _inventory_contents := {}
 
-# Index (not item number!) of the highlighted inventory item.
+# Index (not item ID!) of the highlighted inventory item.
 var _current_inventory_index: int = -1
+
+# Number (Global.Prop enum) of the inventory item being used (arrow cursor).
+var _inventory_item_being_used: int = -1
 
 # How many items the inventory can hold.
 const _max_inventory_size = 4
@@ -258,19 +264,30 @@ func _set_mouse_cursor(cursor: int):
 
 func clear_available_cursors():
 	_available_cursors.clear()
-	_current_cursor = -1
-	_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
+	if _inventory_item_being_used >= 0:
+		_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
+	else:
+		_current_cursor = -1
+		_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
 
 func set_available_cursors(cursors: Array[int]):
 	if cursors.is_empty():
 		clear_available_cursors()
 	else:
 		_available_cursors = cursors
-		_current_cursor = 0
-		_set_mouse_cursor(cursors[0])
+		if _inventory_item_being_used >= 0:
+			_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
+		else:
+			_current_cursor = 0
+			_set_mouse_cursor(cursors[0])
 
 func get_current_cursor() -> int:
-	if _current_cursor < 0:
+	if _inventory_item_being_used >= 0:
+		if _current_inventory_index >= 0:
+			return Globals.Cursor.ARROW_ACTIVE
+		else:
+			return Globals.Cursor.ARROW_PASSIVE
+	elif _current_cursor < 0:
 		return Globals.Cursor.CROSS_PASSIVE
 	elif _is_inventory_open:
 		return _inventory_cursors[_current_cursor]
@@ -278,7 +295,9 @@ func get_current_cursor() -> int:
 		return _available_cursors[_current_cursor]
 
 func _next_cursor():
-	if _is_inventory_open:
+	if _inventory_item_being_used >= 0:
+		return
+	elif _is_inventory_open:
 		_current_cursor = (_current_cursor + 1) % _inventory_cursors.size()
 		_set_mouse_cursor(_inventory_cursors[_current_cursor])
 	elif _available_cursors.size() > 1:
@@ -286,7 +305,9 @@ func _next_cursor():
 		_set_mouse_cursor(_available_cursors[_current_cursor])
 
 func _prev_cursor():
-	if _is_inventory_open:
+	if _inventory_item_being_used >= 0:
+		return
+	elif _is_inventory_open:
 		_current_cursor = posmod(_current_cursor - 1, _inventory_cursors.size())
 		_set_mouse_cursor(_inventory_cursors[_current_cursor])
 	elif _available_cursors.size() > 1:
@@ -297,13 +318,13 @@ func is_inventory_open() -> bool:
 	return _is_inventory_open
 
 func _on_inventory_area_entered(_area: Area2D):
+	_is_mouse_in_inventory_icon = true
 	if not is_dialogue_visible() and not is_inventory_open():
-		_is_mouse_in_inventory_icon = true
 		$Inventory_Icon_AnimationPlayer.play("Inv_On")
 
 func _on_inventory_area_exited(_area: Area2D):
+	_is_mouse_in_inventory_icon = false
 	if not is_dialogue_visible() and not is_inventory_open():
-		_is_mouse_in_inventory_icon = false
 		$Inventory_Icon_AnimationPlayer.play("Inv_Off")
 
 func _on_inv_gui_input(event: InputEvent):
@@ -319,19 +340,25 @@ func _open_inventory():
 	$Inventory_AnimationPlayer.play("Open_Inventory")
 	clear_comment_text()
 	_current_cursor = 0
-	_set_mouse_cursor(_inventory_cursors[0])
+	if _inventory_item_being_used >= 0:
+		_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
+	else:
+		_set_mouse_cursor(_inventory_cursors[0])
 	_set_current_inventory_item(-1)
 	_is_inventory_open = true
 
 func _close_inventory():
 	$Inventory_AnimationPlayer.play("Close_Inventory")
+	if not _is_mouse_in_inventory_icon:
+		$Inventory_Icon_AnimationPlayer.play("Inv_Off")
 	_is_inventory_open = false
-	if _available_cursors.is_empty():
-		_current_cursor = -1
-		_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
-	else:
-		_current_cursor = 0
-		_set_mouse_cursor(_available_cursors[0])
+	if _inventory_item_being_used < 0:
+		if _available_cursors.is_empty():
+			_current_cursor = -1
+			_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
+		else:
+			_current_cursor = 0
+			_set_mouse_cursor(_available_cursors[0])
 
 func _update_inventory_labels():
 	var items = _inventory_contents.keys()
@@ -361,13 +388,36 @@ func remove_from_inventory(index: int):
 func is_inventory_full() -> bool:
 	return _inventory_contents.size() >= _max_inventory_size
 
+func is_inventory_item_being_used() -> bool:
+	return _inventory_item_being_used >= 0
+
+func get_inventory_item_being_used() -> int:
+	return _inventory_item_being_used
+
+func stop_using_inventory_item():
+	_inventory_item_being_used = -1
+	if _available_cursors.is_empty():
+		_current_cursor = -1
+		_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
+	else:
+		_current_cursor = 0
+		_set_mouse_cursor(_available_cursors[0])
+
 func _set_current_inventory_item(index: int):
 	if index >= _inventory_contents.size():
 		index = -1
-	for i in _max_inventory_size:
-		var label: Label = get_node(
-			"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
-		label.self_modulate = rowena_text_color if i == index else Color.WHITE
+
+	if _inventory_item_being_used >= 0:
+		if index >= 0:
+			_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
+		else:
+			_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
+	else:
+		for i in _max_inventory_size:
+			var label: Label = get_node(
+				"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
+			label.self_modulate = rowena_text_color if i == index else Color.WHITE
+
 	_current_inventory_index = index
 
 func _on_inventory_1_mouse_entered():
@@ -387,13 +437,25 @@ func _on_inventory_gui_input(event: InputEvent):
 		_click_on_inventory_item()
 
 func _click_on_inventory_item():
-	if _current_inventory_index < 0:
-		return
-	match _inventory_cursors[_current_cursor]:
-		Globals.Cursor.TRASH:
-			remove_from_inventory(_current_inventory_index)
-			if _inventory_contents.is_empty():
-				_close_inventory()
-				$Inventory_Icon_AnimationPlayer.play("Inv_Off")
-			else:
-				_set_current_inventory_item(_current_inventory_index)
+	if _inventory_item_being_used >= 0:
+		var object1 = _inventory_item_being_used
+		_inventory_item_being_used = -1
+		if _current_inventory_index >= 0:
+			var object2 = _inventory_contents.keys()[_current_inventory_index]
+			_close_inventory()
+			use_object_on_other.emit(object1, object2)
+		else:
+			_current_cursor = 0
+			_set_mouse_cursor(_inventory_cursors[0])
+
+	elif _current_inventory_index >= 0:
+		match _inventory_cursors[_current_cursor]:
+			Globals.Cursor.HAND:
+				_inventory_item_being_used = _inventory_contents.keys()[_current_inventory_index]
+				_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
+			Globals.Cursor.TRASH:
+				remove_from_inventory(_current_inventory_index)
+				if _inventory_contents.is_empty():
+					_close_inventory()
+				else:
+					_set_current_inventory_item(_current_inventory_index)

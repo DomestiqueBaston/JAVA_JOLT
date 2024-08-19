@@ -5,7 +5,8 @@ var _current_cursor: int = -1
 @onready var _cursors: Array[TextureRect] = [
 	$Cross_Passive,
 	$Cross_Active,
-	$Arrow,
+	$Arrow_Passive,
+	$Arrow_Active,
 	$Sound_Up,
 	$Sound_Down,
 	$No_Sound,

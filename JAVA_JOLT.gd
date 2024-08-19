@@ -188,6 +188,11 @@ func _on_ui_click_on_background(pos):
 		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
 			$UI.clear_comment_text()
 			$ROWENA.walk_to_x(pos.x)
+		Globals.Cursor.ARROW_PASSIVE:
+			$UI.stop_using_inventory_item()
+		Globals.Cursor.ARROW_ACTIVE:
+			_use_object_on_other($UI.get_inventory_item_being_used(), current_prop)
+			$UI.stop_using_inventory_item()
 		Globals.Cursor.EYE:
 			$ROWENA.look_at_x(pos.x)
 			if current_prop >= 0:
@@ -272,6 +277,14 @@ func _on_background_area_exited_object(which: int, _area: Area2D):
 	if overlapping_colliders.erase(which):
 		_update_current_prop()
 
+func _get_prop_name(prop) -> String:
+	var prop_name
+	if typeof(prop) == TYPE_INT:
+		prop_name = $BACKGROUND.get_collider(prop).name
+	else:
+		prop_name = prop.name
+	return prop_name.replace("_Collider", "")
+
 #
 # Called when the list of background objects in contact with the mouse collider
 # has changed. The current prop object is updated, if necessary, and the list of
@@ -316,7 +329,7 @@ func _update_current_prop():
 	if current_prop < 0:
 		$UI.clear_available_cursors()
 	else:
-		print(top_collider.name)
+		print(_get_prop_name(top_collider))
 		var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
 		match current_prop:
 			Globals.Prop.REFRIGERATOR_RIGHT:
@@ -329,3 +342,6 @@ func _update_current_prop():
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.HAND)
 		$UI.set_available_cursors(actions)
+
+func _use_object_on_other(object1: int, object2: int):
+	print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
