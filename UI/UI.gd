@@ -280,22 +280,29 @@ func _on_dialogue_4_mouse_entered():
 func _set_mouse_cursor(cursor: int):
 	$Mouse.set_cursor(cursor)
 
+#
+# Specifies that no action cursors are available in the current context. The
+# current cursor is set to CROSS_PASSIVE (unless a "use inventory item"
+# operation is in progress).
+#
 func clear_available_cursors():
 	_available_cursors.clear()
-	if _inventory_item_being_used >= 0:
-		_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
-	else:
+	if _inventory_item_being_used < 0:
 		_current_cursor = -1
 		_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
 
+#
+# Specifies the set of action cursors available in the current context. The
+# current cursor is set to the first in the list; prev_cursor and next_cursor UI
+# events cycle through the list (unless a "use inventory item" operation is in
+# progress).
+#
 func set_available_cursors(cursors: Array[int]):
 	if cursors.is_empty():
 		clear_available_cursors()
 	else:
 		_available_cursors = cursors
-		if _inventory_item_being_used >= 0:
-			_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
-		else:
+		if _inventory_item_being_used < 0:
 			_current_cursor = 0
 			_set_mouse_cursor(cursors[0])
 
@@ -389,17 +396,33 @@ func _update_inventory_labels():
 		else:
 			label.text = ""
 
+#
+# Removes all items from the inventory.
+#
 func clear_inventory():
 	_inventory_contents.clear()
 	_update_inventory_labels()
 
+#
+# Searches for an item in the inventory and returns its index, if it is found,
+# or -1 if not. The item parameter is a constant from Globals.Prop.
+#
 func find_in_inventory(item: int) -> int:
 	return _inventory_contents.keys().find(item)
 
+#
+# This can be used either to add an item to the inventory or to update the label
+# of an item that is already there. It is assumed that the inventory has room
+# for the new item, if it is not already there.
+#
 func add_to_inventory(item: int, label: String):
 	_inventory_contents[item] = label
 	_update_inventory_labels()
 
+#
+# Removes an item from the inventory, where 0 <= index < the number of items in
+# the inventory.
+#
 func remove_from_inventory(index: int):
 	_inventory_contents.erase(_inventory_contents.keys()[index])
 	_update_inventory_labels()
@@ -407,12 +430,26 @@ func remove_from_inventory(index: int):
 func is_inventory_full() -> bool:
 	return _inventory_contents.size() >= _max_inventory_size
 
+#
+# Returns true if the user has requested to use an item in the inventory and we
+# are waiting for him to choose the target object.
+#
 func is_inventory_item_being_used() -> bool:
 	return _inventory_item_being_used >= 0
 
+#
+# Returns the number of the item in the inventory that the user has requested to
+# use: either a constant from Globals.Prop, or -1 if no item is being used.
+#
 func get_inventory_item_being_used() -> int:
 	return _inventory_item_being_used
 
+#
+# Call this if the user has clicked somewhere after requesting that an item in
+# the inventory be used. He may have clicked on the target object, or in empty
+# space to abort, for example. In any case, the operation is terminated and the
+# previous mouse cursor is restored.
+#
 func stop_using_inventory_item():
 	_inventory_item_being_used = -1
 	if _available_cursors.is_empty():
