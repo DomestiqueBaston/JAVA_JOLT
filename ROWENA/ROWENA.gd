@@ -7,6 +7,7 @@ signal target_area_reached
 
 var _target_x: float
 var _target_area: Area2D
+var _walk_to_area_origin: bool
 
 func _ready():
 	_target_x = position.x
@@ -15,13 +16,18 @@ func _physics_process(_delta: float):
 	var dir = 0
 
 	if _target_area:
-		if _target_area.overlaps_body(self):
+		var done
+		if _walk_to_area_origin:
+			done = (absf(_target_area.global_position.x - position.x) < 1)
+		else:
+			done = _target_area.overlaps_body(self)
+		if done:
 			_target_area = null
 			_target_x = position.x
 			target_area_reached.emit()
 			return
 		dir = 1 if _target_area.global_position.x > position.x else -1
-	elif absf(_target_x - position.x) > 1:
+	elif absf(_target_x - position.x) >= 1:
 		dir = 1 if _target_x > position.x else -1
 
 	if dir == 0:
@@ -56,7 +62,7 @@ func walk_to_x(x: float):
 # emitted.
 #
 # If Rowena's collider already intersects area's, false is returned, and no
-# target_area_reached() is emitted.
+# target_area_reached() signal is emitted.
 #
 func walk_to_area(area: Area2D) -> bool:
 	if area.overlaps_body(self):
@@ -64,6 +70,24 @@ func walk_to_area(area: Area2D) -> bool:
 		return false
 	else:
 		_target_area = area
+		_walk_to_area_origin = false
+		return true
+
+#
+# Similar to walk_to_area(), but Rowena walks all the way to the origin of the
+# given collider, rather than stopping when she gets close enough. When she
+# arrives at the origin of the collider, a target_area_reached() signal is
+# emitted.
+#
+# If Rowena is already at the origin of the collider, false is returned, and no
+# target_area_reached() signal is emitted.
+#
+func walk_to_area_origin(area: Area2D) -> bool:
+	if absf(area.global_position.x - position.x) < 1:
+		return false
+	else:
+		_target_area = area
+		_walk_to_area_origin = true
 		return true
 
 func get_global_bbox() -> Rect2:

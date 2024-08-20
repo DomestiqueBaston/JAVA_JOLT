@@ -279,14 +279,23 @@ func _get_distance_from_prop(which: int) -> float:
 # until she has reached the object; if she is already standing near the object,
 # she just turns to face it, and the method returns immediately.
 #
+# If walk_to_origin is true, she walks all the way to the origin of the object's
+# collider; otherwise, she walks until her collider intersects with it.
+#
 # NB. This will only work properly if the given object's collider (an Area2D) is
 # positioned correctly (its origin is at the center of its shape), and if its
 # collision mask includes Rowena's movements (layer 3).
 #
-func _walk_to_prop(which: int = -1):
+func _walk_to_prop(which: int = -1, walk_to_origin: bool = false):
 	if which < 0:
 		which = current_prop
-	if $ROWENA.walk_to_area($BACKGROUND.get_collider(which)):
+	var area = $BACKGROUND.get_collider(which)
+	var must_wait
+	if walk_to_origin:
+		must_wait = $ROWENA.walk_to_area_origin(area)
+	else:
+		must_wait = $ROWENA.walk_to_area(area)
+	if must_wait:
 		await $ROWENA.target_area_reached
 
 #
@@ -384,7 +393,7 @@ func _use_object_on_other(object1: int, object2: int):
 		elif $UI.is_inventory_full():
 			_set_comment(inventory_full_msg)
 		else:
-			await _walk_to_prop(Globals.Prop.COFFEE_MAKER)
+			await _walk_to_prop(Globals.Prop.COFFEE_MAKER, true)
 			await $ROWENA.take_coffee_filter()
 			_set_comment("I got the filter holder out intact!")
 			$UI.add_to_inventory(Globals.Prop.COFFEE_MAKER, "Coffee filter holder")
