@@ -116,11 +116,11 @@ func get_something(height: int, with_sound: bool):
 	await $ROWENA_AnimationPlayer.animation_finished
 	set_physics_process(true)
 
-func take_coffee_filter():
+func do_stuff(erk: bool = false):
 	set_physics_process(false)
 	$ROWENA_AnimationPlayer.play("Turn_Back")
 	await $ROWENA_AnimationPlayer.animation_finished
-	$ROWENA_AnimationPlayer.play("Do_Stuff")
+	$ROWENA_AnimationPlayer.play("Do_Erk_Stuff" if erk else "Do_Stuff")
 	await $ROWENA_AnimationPlayer.animation_finished
 	$ROWENA_AnimationPlayer.play("Turn_Front")
 	await $ROWENA_AnimationPlayer.animation_finished

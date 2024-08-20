@@ -165,6 +165,7 @@ const inventory_full_msg = "Hey, I don't have 4 arms, I'm not Shiva!"
 
 var butter_knife_seen = false
 var coffee_maker_seen = false
+var is_towel_wet = false
 
 func _ready():
 	assert(prop_info.size() == Globals.Prop.TOTAL_PROP_COUNT)
@@ -199,7 +200,7 @@ func _on_ui_click_on_background(pos: Vector2):
 		Globals.Cursor.EYE:
 			_perform_eye_action(pos)
 		Globals.Cursor.HAND:
-			_perform_hand_action(pos)
+			_perform_hand_action()
 		Globals.Cursor.QUIT:
 			$UI.clear_comment_text()
 			await _close_open_object()
@@ -222,33 +223,45 @@ func _perform_eye_action(pos: Vector2):
 				comment = "That's my coffee maker. I've got the filter holder."
 	_set_comment(comment if comment else prop_info[current_prop])
 
-func _perform_hand_action(pos: Vector2):
+func _perform_hand_action():
 	$UI.clear_comment_text()
+	$UI.clear_available_cursors()
+	var take_label = ""
+	var take_msg = ""
+
 	match current_prop:
 		Globals.Prop.REFRIGERATOR_RIGHT:
-			$UI.clear_available_cursors()
 			await _walk_to_prop()
 			$ROWENA.get_something(3, false)
 			await $ROWENA.got_something
 			$BACKGROUND.open_refrigerator_right()
 		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
-			$UI.clear_available_cursors()
 			await _walk_to_prop()
 			$ROWENA.get_something(3, false)
 			await $ROWENA.got_something
 			$BACKGROUND.close_refrigerator_right()
 		Globals.Prop.BUTTER_KNIFE:
-			$UI.clear_available_cursors()
-			if not butter_knife_seen:
-				_set_comment("Remember? Coffee...")
-			elif $UI.is_inventory_full():
-				_set_comment(inventory_full_msg)
+			if butter_knife_seen:
+				take_label = "Butter knife"
+				take_msg = "OK, I'll just take that knife."
 			else:
-				$UI.add_to_inventory(
-					Globals.Prop.BUTTER_KNIFE, "Butter knife")
-				_set_comment("OK, I'll just take that knife.")
-		_:
-			$ROWENA.look_at(pos.x)
+				_set_comment("Remember? Coffee...")
+		Globals.Prop.MILK_BOTTLES:
+			take_label = "Bottle of milk"
+			take_msg = "OK, one bottle of milk."
+		Globals.Prop.TOWEL_SMALL:
+			if is_towel_wet:
+				take_label = "Small towel moistened with milk"
+			else:
+				take_label = "Small towel"
+			take_msg = "OK, one small towel."
+
+	if take_label:
+		if $UI.is_inventory_full():
+			_set_comment(inventory_full_msg)
+		else:
+			$UI.add_to_inventory(current_prop, take_label)
+			_set_comment(take_msg)
 
 func _close_open_object():
 	if $BACKGROUND.get_open_object() == Globals.Prop.REFRIGERATOR_RIGHT:
@@ -377,25 +390,78 @@ func _update_current_prop():
 		match current_prop:
 			Globals.Prop.REFRIGERATOR_RIGHT:
 				actions.append(Globals.Cursor.HAND)
-			Globals.Prop.BUTTER_KNIFE:
-				if $UI.find_in_inventory(Globals.Prop.BUTTER_KNIFE) < 0:
-					actions.append(Globals.Cursor.HAND)
-			Globals.Prop.WINDOW_RIGHT:
-				actions.append(Globals.Cursor.QUIT)
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.HAND)
+			Globals.Prop.BUTTER_KNIFE, \
+			Globals.Prop.TOWEL_SMALL, \
+			Globals.Prop.MILK_BOTTLES:
+				if $UI.find_in_inventory(current_prop) < 0:
+					actions.append(Globals.Cursor.HAND)
+
+			Globals.Prop.WINDOW_RIGHT:
+				actions.append(Globals.Cursor.QUIT)
 		$UI.set_available_cursors(actions)
 
+func _check_objects(have1: int, have2: int, want1: int, want2: int) -> bool:
+	return ((have1 == want1 and have2 == want2) or
+			(have1 == want2 and have2 == want1))
+
+#
+# Called when the user "uses" an object in the inventory on another object,
+# which may or may not be in the inventory. The two parameters are object
+# constants from Globals.Prop.
+#
 func _use_object_on_other(object1: int, object2: int):
-	if object1 == Globals.Prop.BUTTER_KNIFE and object2 == Globals.Prop.COFFEE_MAKER:
+
+	# butter knife + coffee maker: add the filter holder to the inventory
+
+	if _check_objects(
+		object1, object2, Globals.Prop.BUTTER_KNIFE, Globals.Prop.COFFEE_MAKER):
 		if not coffee_maker_seen:
 			_set_comment("That's not my sparring partner.")
 		elif $UI.is_inventory_full():
 			_set_comment(inventory_full_msg)
 		else:
 			await _walk_to_prop(Globals.Prop.COFFEE_MAKER, true)
-			await $ROWENA.take_coffee_filter()
+			await $ROWENA.do_stuff()
 			_set_comment("I got the filter holder out intact!")
 			$UI.add_to_inventory(Globals.Prop.COFFEE_MAKER, "Coffee filter holder")
+
+	# milk bottle + small towel: moisten the towel and update the inventory
+	# (both objects must be in the inventory)
+
+	elif _check_objects(
+		object1, object2, Globals.Prop.MILK_BOTTLES, Globals.Prop.TOWEL_SMALL):
+			if ($UI.find_in_inventory(object1) < 0 or
+				$UI.find_in_inventory(object2) < 0):
+				pass
+			elif is_towel_wet:
+				_set_comment("The towel is already moist.")
+			else:
+				await $ROWENA.do_stuff()
+				_set_comment("Now the towel is moist.")
+				is_towel_wet = true
+				$UI.add_to_inventory(
+					Globals.Prop.TOWEL_SMALL, "Small towel moistened with milk")
+
+	# small towel + filter holder: if the towel has been moistened, use it on
+	# the filter holder and taste it (both objects must be in the inventory)
+
+	elif _check_objects(
+		object1, object2, Globals.Prop.TOWEL_SMALL, Globals.Prop.COFFEE_MAKER):
+			if ($UI.find_in_inventory(object1) < 0 or
+				$UI.find_in_inventory(object2) < 0):
+				pass
+			elif is_towel_wet:
+				await $ROWENA.do_stuff()
+				_set_comment("That should be more absorbent now. Let's taste it!")
+				await $ROWENA.do_stuff(true)
+				_set_comment("That's disgusting! And there's not enough...")
+			else:
+				await $ROWENA.do_stuff()
+				_set_comment("That works, but I can't get enough coffee out of it.")
+
+	# huh?
+
 	else:
 		print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
