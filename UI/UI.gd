@@ -89,6 +89,24 @@ func _ready():
 		3:
 			_tell_story_node(dialogue3, dialogue3["start"])
 
+#
+# If the user has chosen an inventory item to use and then moves the mouse
+# outside the inventory box, close the inventory box automatically. It would
+# seem cleaner to do this using mouse_entered() and mouse_exited() GUI events,
+# but those events are already handled by the Labels inside the inventory box.
+# And without a big margin around them, events for their container are not
+# triggered reliably.
+#
+func _input(event: InputEvent):
+	if (_is_inventory_open and _inventory_item_being_used >= 0 and
+		event is InputEventMouseMotion):
+		var invbox = $Boxes/Inventory_Box
+		var rect = Rect2(invbox.position, invbox.size)
+		if rect.has_point(event.position):
+			$Close_Inventory_Timer.stop()
+		else:
+			$Close_Inventory_Timer.start()
+
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		if _is_inventory_open:
@@ -348,6 +366,7 @@ func _open_inventory():
 	_is_inventory_open = true
 
 func _close_inventory():
+	$Close_Inventory_Timer.stop()
 	$Inventory_AnimationPlayer.play("Close_Inventory")
 	if not _is_mouse_in_inventory_icon:
 		$Inventory_Icon_AnimationPlayer.play("Inv_Off")
@@ -459,3 +478,7 @@ func _click_on_inventory_item():
 					_close_inventory()
 				else:
 					_set_current_inventory_item(_current_inventory_index)
+
+func _on_close_inventory_timer_timeout():
+	if _is_inventory_open:
+		_close_inventory()
