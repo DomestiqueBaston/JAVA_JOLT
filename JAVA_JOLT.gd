@@ -161,6 +161,8 @@ const prop_info: Array[String] = [
 	"Do you want to close the refrigerator?",
 ]
 
+const inventory_full_msg = "Hey, I don't have 4 arms, I'm not Shiva!"
+
 var butter_knife_seen = false
 var coffee_maker_seen = false
 
@@ -184,77 +186,69 @@ func _set_comment(text: String):
 		x = rowena_bbox.position.x
 	$UI.set_comment_text(text, x, left_justify)
 
-func _on_ui_click_on_background(pos):
+func _on_ui_click_on_background(pos: Vector2):
 	match $UI.get_current_cursor():
 		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
 			$UI.clear_comment_text()
 			$ROWENA.walk_to_x(pos.x)
-
 		Globals.Cursor.ARROW_PASSIVE:
 			$UI.stop_using_inventory_item()
-
 		Globals.Cursor.ARROW_ACTIVE:
 			_use_object_on_other($UI.get_inventory_item_being_used(), current_prop)
 			$UI.stop_using_inventory_item()
-
 		Globals.Cursor.EYE:
-			$ROWENA.look_at_x(pos.x)
-			if current_prop >= 0:
-				var comment = ""
-				match current_prop:
-					Globals.Prop.BUTTER_KNIFE:
-						butter_knife_seen = true
-						if $UI.find_in_inventory(current_prop) >= 0:
-							comment = "That's butter. I've got the knife, though."
-					Globals.Prop.COFFEE_MAKER:
-						coffee_maker_seen = true
-						if $UI.find_in_inventory(current_prop) >= 0:
-							comment = "That's my coffee maker. I've got the filter holder."
-				if comment:
-					_set_comment(comment)
-				else:
-					_set_comment(prop_info[current_prop])
-				if current_prop == Globals.Prop.BUTTER_KNIFE:
-					butter_knife_seen = true
-
+			_perform_eye_action(pos)
 		Globals.Cursor.HAND:
-			$UI.clear_comment_text()
-			match current_prop:
-				Globals.Prop.REFRIGERATOR_RIGHT:
-					$UI.clear_available_cursors()
-					await _walk_to_prop()
-					$ROWENA.get_something(3, false)
-					await $ROWENA.got_something
-					$BACKGROUND.open_refrigerator_right()
-				Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
-					$UI.clear_available_cursors()
-					await _walk_to_prop()
-					$ROWENA.get_something(3, false)
-					await $ROWENA.got_something
-					$BACKGROUND.close_refrigerator_right()
-				Globals.Prop.BUTTER_KNIFE:
-					$UI.clear_available_cursors()
-					if not butter_knife_seen:
-						_set_comment("Remember? Coffee...")
-					elif $UI.is_inventory_full():
-						_set_comment("Hey, I don't have 4 arms, I'm not Shiva!")
-					else:
-						$UI.add_to_inventory(
-							Globals.Prop.BUTTER_KNIFE, "Butter knife")
-						_set_comment("OK, I'll just take that knife.")
-				Globals.Prop.COFFEE_MAKER:
-					if not coffee_maker_seen:
-						_set_comment("OK. Actually, no!")
-					elif $UI.find_in_inventory(Globals.Prop.BUTTER_KNIFE) >= 0:
-						_set_comment("That's not my sparring partner.")
-				_:
-					$ROWENA.look_at(pos.x)
-
+			_perform_hand_action(pos)
 		Globals.Cursor.QUIT:
 			$UI.clear_comment_text()
 			await _close_open_object()
 			await _walk_to_prop()
 			get_tree().quit()
+
+func _perform_eye_action(pos: Vector2):
+	$ROWENA.look_at_x(pos.x)
+	if current_prop < 0:
+		return
+	var comment = ""
+	match current_prop:
+		Globals.Prop.BUTTER_KNIFE:
+			butter_knife_seen = true
+			if $UI.find_in_inventory(current_prop) >= 0:
+				comment = "That's butter. I've got the knife, though."
+		Globals.Prop.COFFEE_MAKER:
+			coffee_maker_seen = true
+			if $UI.find_in_inventory(current_prop) >= 0:
+				comment = "That's my coffee maker. I've got the filter holder."
+	_set_comment(comment if comment else prop_info[current_prop])
+
+func _perform_hand_action(pos: Vector2):
+	$UI.clear_comment_text()
+	match current_prop:
+		Globals.Prop.REFRIGERATOR_RIGHT:
+			$UI.clear_available_cursors()
+			await _walk_to_prop()
+			$ROWENA.get_something(3, false)
+			await $ROWENA.got_something
+			$BACKGROUND.open_refrigerator_right()
+		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
+			$UI.clear_available_cursors()
+			await _walk_to_prop()
+			$ROWENA.get_something(3, false)
+			await $ROWENA.got_something
+			$BACKGROUND.close_refrigerator_right()
+		Globals.Prop.BUTTER_KNIFE:
+			$UI.clear_available_cursors()
+			if not butter_knife_seen:
+				_set_comment("Remember? Coffee...")
+			elif $UI.is_inventory_full():
+				_set_comment(inventory_full_msg)
+			else:
+				$UI.add_to_inventory(
+					Globals.Prop.BUTTER_KNIFE, "Butter knife")
+				_set_comment("OK, I'll just take that knife.")
+		_:
+			$ROWENA.look_at(pos.x)
 
 func _close_open_object():
 	if $BACKGROUND.get_open_object() == Globals.Prop.REFRIGERATOR_RIGHT:
@@ -265,10 +259,30 @@ func _close_open_object():
 			await $ROWENA.got_something
 		$BACKGROUND.close_refrigerator_right()
 
+#
+# Returns the distance in X between Rowena and the given object from the
+# BACKGROUND scene (a constant from Globals.Prop).
+#
+# NB. Background objects are represented by Area2D instances, and Area2D does
+# not provide access to its bounding box, so all we can do is look at the
+# Area2D's origin. This method will give unexpected results if an object's
+# collider is not positioned at the center of its shape(s). 
+#
 func _get_distance_from_prop(which: int) -> float:
 		var prop: Area2D = $BACKGROUND.get_collider(which)
 		return absf($ROWENA.position.x - prop.position.x)
 
+#
+# Tells Rowena to walk toward the given object from the BACKGROUND scene (a
+# constant from Globals.Prop). If which is -1, she walks toward the current
+# prop (i.e. the object the mouse is over). This is a couroutine which blocks
+# until she has reached the object; if she is already standing near the object,
+# she just turns to face it, and the method returns immediately.
+#
+# NB. This will only work properly if the given object's collider (an Area2D) is
+# positioned correctly (its origin is at the center of its shape), and if its
+# collision mask includes Rowena's movements (layer 3).
+#
 func _walk_to_prop(which: int = -1):
 	if which < 0:
 		which = current_prop
@@ -357,9 +371,6 @@ func _update_current_prop():
 			Globals.Prop.BUTTER_KNIFE:
 				if $UI.find_in_inventory(Globals.Prop.BUTTER_KNIFE) < 0:
 					actions.append(Globals.Cursor.HAND)
-			Globals.Prop.COFFEE_MAKER:
-				if $UI.find_in_inventory(Globals.Prop.BUTTER_KNIFE) >= 0:
-					actions.append(Globals.Cursor.HAND)
 			Globals.Prop.WINDOW_RIGHT:
 				actions.append(Globals.Cursor.QUIT)
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
@@ -368,8 +379,10 @@ func _update_current_prop():
 
 func _use_object_on_other(object1: int, object2: int):
 	if object1 == Globals.Prop.BUTTER_KNIFE and object2 == Globals.Prop.COFFEE_MAKER:
-		if $UI.is_inventory_full():
-			_set_comment("Hey, I don't have 4 arms, I'm not Shiva!")
+		if not coffee_maker_seen:
+			_set_comment("That's not my sparring partner.")
+		elif $UI.is_inventory_full():
+			_set_comment(inventory_full_msg)
 		else:
 			await _walk_to_prop(Globals.Prop.COFFEE_MAKER)
 			await $ROWENA.take_coffee_filter()
