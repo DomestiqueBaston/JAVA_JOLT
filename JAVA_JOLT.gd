@@ -317,7 +317,7 @@ func _get_prop_name(prop) -> String:
 		prop_name = $BACKGROUND.get_collider(prop).name
 	else:
 		prop_name = prop.name
-	return prop_name.replace("_Collider", "").replace("_", " ")
+	return prop_name.to_lower().replace("_collider", "").replace("_", " ")
 
 #
 # Called when the list of background objects in contact with the mouse collider
