@@ -20,6 +20,10 @@ enum Cursor {
 
 ## Objects defined in the BACKGROUND scene.
 enum Prop {
+	
+	# props that are not inside something else, so they are always visible
+	# (unless they are temporarily hidden behind an open door, for example)
+	
 	KITCHEN_CABINET,
 	RECYCLING_CLOSET,
 	UNDERSINK_CABINET,
@@ -79,7 +83,9 @@ enum Prop {
 	SAUCE_PAN,
 	COFFEE_BEANS_1,
 	COFFEE_BEANS_2,
-	MAIN_PROP_COUNT,
+	MAIN_PROP_COUNT, # must follow the last of the main props
+	
+	# props visible only when the refrigerator door is open
 	
 	REFRIGERATOR_RIGHT_BEGIN=MAIN_PROP_COUNT,
 	SMOOTHIE_BOTTLES=REFRIGERATOR_RIGHT_BEGIN,
@@ -98,5 +104,5 @@ enum Prop {
 	REFRIGERATOR_RIGHT_OPEN_DOOR,
 	REFRIGERATOR_RIGHT_END=REFRIGERATOR_RIGHT_OPEN_DOOR,
 	
-	TOTAL_PROP_COUNT
+	TOTAL_PROP_COUNT # must be last
 }
