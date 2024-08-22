@@ -412,6 +412,10 @@ Troisième tentative :
 	La tasse rouge et la cafetière : « By the grace of Zeus! » Rowena boit le café et le recrache quasiment instantanément. Elle dira alors (après s’être retournée) « Ugh ! This is absolutely rancid ! » Et on enchaîne sur la séquence animée finale.
 
 	
+Ce que Rowena dira lorsque le joueur la fera combiner les mauvais objets ensemble.
+
+
+Aléatoirement, Rowena répondra : « That’s doesn’t ring any bell to me ! », « Maybe some other day», « Yeah, or I could just lick the floor... » ou encore « No way, Jose ! » si on lui demande de combiner des mauvais objets.
 La voix intérieure (le docteur F.)
 
 
