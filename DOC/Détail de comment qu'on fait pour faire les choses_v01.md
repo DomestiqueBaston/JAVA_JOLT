@@ -50,3 +50,11 @@ J’avais oublié de l’ajouter mais il y est à présent dans la scène UI.tsc
 	Elle attendra à nouveau 5 secondes, dira « Damn it, it doesn't work at all! » : ça ne marche définitivement pas.
 		
 	Une fois fait, on enchaîne sur le troisième dialogue.
+
+
+3ème tentative : faire recuire le café de la veille pris dans la poubelle.
+	Elle ira prendre un verre dans le placard vitré à gauche de la hotte/micro-onde au dessus de la gazinière et le remplira d’eau au robinet.
+	Elle videra ensuite ce verre d’eau dans le réservoir de la cafetière.
+	Rowena refusera de fouiller dans la poubelle tant qu’il ne sera pas au moins 9h10 (on réglera ce délai plus tard). Avant l’heure, en fouillant dans la poubelle, Rowena dira « I used to play in the dump. When I was a kid… ».
+	Une fois l’heure atteinte, à ce moment-là, n’ayant plus trop le choix, Rowena dira « Not much choice. Let's get that filthy coffee… » et acceptera de fouiller dans la poubelle sous l’évier pour récupérer le filtre à café plein de la veille. Le replacera dans la cafetière pour le repasser. Allumera la cafetière.
+	Quand le café sera passé, elle prendra la tasse rouge devant les couteaux de cuisine (à droite de la bouteille de lait sur le plan de travail) et pas celle à côté de la cafetière car elle est ébréchée. Se servira une tasse de café et automatiquement la boira… pour la recracher aussitôt !
