@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://fqfwk8y42uqq"]
-
-[ext_resource type="Texture2D" uid="uid://dn5uubq6o6m8x" path="res://trash/Trash_Lid_Out.png" id="1_a488o"]
-
-[node name="Trash_Lid" type="Node2D"]
-
-[node name="Trash_Lid_Out" type="Sprite2D" parent="."]
-texture = ExtResource("1_a488o")
-centered = false

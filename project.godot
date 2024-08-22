@@ -35,14 +35,6 @@ window/size/window_width_override=1128
 window/size/window_height_override=408
 window/stretch/mode="viewport"
 
-[file_customization]
-
-folder_colors={
-"res://DEMO/": "red",
-"res://demo/": "red",
-"res://trash/": "red"
-}
-
 [filesystem]
 
 import/blender/enabled=false
