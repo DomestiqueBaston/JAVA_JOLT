@@ -290,6 +290,8 @@ func clear_available_cursors():
 	if _inventory_item_being_used < 0:
 		_current_cursor = -1
 		_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
+	else:
+		_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
 
 #
 # Specifies the set of action cursors available in the current context. The
@@ -305,13 +307,21 @@ func set_available_cursors(cursors: Array[int]):
 		if _inventory_item_being_used < 0:
 			_current_cursor = 0
 			_set_mouse_cursor(cursors[0])
+		else:
+			_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
 
 func get_current_cursor() -> int:
 	if _inventory_item_being_used >= 0:
-		if _current_inventory_index >= 0:
-			return Globals.Cursor.ARROW_ACTIVE
+		if _is_inventory_open:
+			if _current_inventory_index >= 0:
+				return Globals.Cursor.ARROW_ACTIVE
+			else:
+				return Globals.Cursor.ARROW_PASSIVE
 		else:
-			return Globals.Cursor.ARROW_PASSIVE
+			if _available_cursors.is_empty():
+				return Globals.Cursor.ARROW_PASSIVE
+			else:
+				return Globals.Cursor.ARROW_ACTIVE
 	elif _current_cursor < 0:
 		return Globals.Cursor.CROSS_PASSIVE
 	elif _is_inventory_open:
