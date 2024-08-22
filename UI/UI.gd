@@ -212,15 +212,15 @@ func set_comment_text(text: String, x: float, left_justify: bool):
 	if not left_justify:
 		x -= $Boxes/CenterContainer/Comment_Box.size.x
 	$Boxes/CenterContainer.position.x = x
-	$Boxes/CenterContainer/Comment_Box.show()
+	$Boxes/CenterContainer.show()
 	$Comment_Timer.start(comment_timeout)
 
 func clear_comment_text():
 	$Comment_Timer.stop()
-	$Boxes/CenterContainer/Comment_Box.hide()
+	$Boxes/CenterContainer.hide()
 
 func _on_comment_timer_timeout():
-	$Boxes/CenterContainer/Comment_Box.hide()
+	$Boxes/CenterContainer.hide()
 
 func _on_three_points_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):

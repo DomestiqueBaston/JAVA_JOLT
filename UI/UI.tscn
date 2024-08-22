@@ -1086,6 +1086,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Boxes/Inventory_Box:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_pj36a"]
 resource_name = "Open_Inventory"
@@ -1234,6 +1246,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Boxes/Inventory_Box:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_wb0vr"]
 length = 0.001
@@ -1381,6 +1405,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Boxes/Inventory_Box:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7qn2o"]
 _data = {
@@ -1442,6 +1478,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.643137), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inventory:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_4kbfq"]
 resource_name = "Inv_On"
@@ -1458,6 +1506,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.360784), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inventory:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_utdto"]
 length = 0.001
@@ -1472,6 +1532,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inventory:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qex0e"]
@@ -1645,6 +1717,7 @@ text = "Dialogue box 4"
 autowrap_mode = 2
 
 [node name="Inventory_Box" type="VBoxContainer" parent="Boxes"]
+visible = false
 custom_minimum_size = Vector2(188, 34)
 layout_mode = 1
 anchors_preset = 2
@@ -1700,12 +1773,12 @@ mouse_filter = 1
 text = "Inventory 4"
 
 [node name="CenterContainer" type="CenterContainer" parent="Boxes"]
+visible = false
 layout_mode = 0
 offset_right = 65.0
 offset_bottom = 68.0
 
 [node name="Comment_Box" type="PanelContainer" parent="Boxes/CenterContainer"]
-visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_re3bw")
 
@@ -1721,6 +1794,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Inventory" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = -2.0
