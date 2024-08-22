@@ -110,3 +110,20 @@ func close_everything():
 	match _open_object:
 		Globals.Prop.REFRIGERATOR_RIGHT:
 			close_refrigerator_right()
+
+#
+# Makes the given object visible or invisible in the scene. An object is made
+# invisible by making visible an image that hides it.
+#
+func set_object_visible(which: int, vis: bool):
+	if which < Globals.Prop.MAIN_PROP_COUNT:
+		match which:
+			Globals.Prop.TOWEL_SMALL:
+				$Removed_Objects/Tea_Towel_Out.visible = not vis
+			Globals.Prop.COFFEE_MAKER:
+				$Removed_Objects/Coffee_Filter_Holder_Out.visible = not vis
+	else:
+		match _open_object:
+			Globals.Prop.REFRIGERATOR_RIGHT:
+				var node: Node = $Opens_Outs.get_child(0)
+				node.set_object_visible(which, vis)

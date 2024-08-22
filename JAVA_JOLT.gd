@@ -261,6 +261,7 @@ func _perform_hand_action():
 			_set_comment(inventory_full_msg)
 		else:
 			$UI.add_to_inventory(current_prop, take_label)
+			$BACKGROUND.set_object_visible(current_prop, false)
 			_set_comment(take_msg)
 
 func _close_open_object():
@@ -426,6 +427,7 @@ func _use_object_on_other(object1: int, object2: int):
 			await $ROWENA.do_stuff()
 			_set_comment("I got the filter holder out intact!")
 			$UI.add_to_inventory(Globals.Prop.COFFEE_MAKER, "Coffee filter holder")
+			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_MAKER, false)
 
 	# milk bottle + small towel: moisten the towel and update the inventory
 	# (both objects must be in the inventory)
@@ -465,3 +467,11 @@ func _use_object_on_other(object1: int, object2: int):
 
 	else:
 		print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
+
+#
+# Callback invoked when the user has removed an item from the inventory (that
+# is, put it down). The corresponding object in the scene is made visible
+# again.
+#
+func _on_inventory_item_removed(which: int):
+	$BACKGROUND.set_object_visible(which, true)

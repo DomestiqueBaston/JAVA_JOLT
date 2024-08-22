@@ -1,11 +1,13 @@
-[gd_scene load_steps=50 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=52 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/IMAGES/BG_Lights_On.png" id="2_8x8bd"]
 [ext_resource type="Texture2D" uid="uid://wx47j17h2tlm" path="res://BACKGROUND/IMAGES/Radio_On_Lights_Off.png" id="2_yjrnf"]
 [ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/IMAGES/Radio_On_Lights_On.png" id="4_ukw4d"]
+[ext_resource type="Texture2D" uid="uid://boywyr2ikebp8" path="res://BACKGROUND/IMAGES/Tea_Towel_Out.png" id="6_8a0sv"]
 [ext_resource type="AudioStream" uid="uid://na6eamuhj80a" path="res://ROWENA/SOUNDS/Fridge_Open_Close.ogg" id="6_jvbuw"]
+[ext_resource type="Texture2D" uid="uid://cyghiycxbscrl" path="res://BACKGROUND/IMAGES/Coffee_Filter_Holder_Out.png" id="7_2civg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -154,9 +156,22 @@ centered = false
 texture = ExtResource("4_ukw4d")
 centered = false
 
+[node name="Removed_Objects" type="Node2D" parent="."]
+
+[node name="Tea_Towel_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("6_8a0sv")
+centered = false
+
+[node name="Coffee_Filter_Holder_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("7_2civg")
+centered = false
+
 [node name="Opens_Outs" type="Node2D" parent="."]
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
+visible = false
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
 

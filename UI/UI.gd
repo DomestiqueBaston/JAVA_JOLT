@@ -30,6 +30,9 @@ signal click_on_background(pos: Vector2)
 ## Signal emitted when user tries to "use" one inventory item on another.
 signal use_object_on_other(object1: int, object2: int)
 
+## Signal emitted when user removes an inventory item (from Globals.Prop).
+signal inventory_item_removed(which: int)
+
 enum { ROWENA, DOCTOR }
 
 # Color of unhighlighted text options in current dialogue.
@@ -434,7 +437,9 @@ func add_to_inventory(item: int, label: String):
 # the inventory.
 #
 func remove_from_inventory(index: int):
-	_inventory_contents.erase(_inventory_contents.keys()[index])
+	var item = _inventory_contents.keys()[index]
+	inventory_item_removed.emit(item)
+	_inventory_contents.erase(item)
 	_update_inventory_labels()
 
 func is_inventory_full() -> bool:

@@ -38,3 +38,10 @@ func _ready():
 
 func get_collider(which: int) -> Area2D:
 	return _colliders[which - Globals.Prop.REFRIGERATOR_RIGHT_BEGIN]
+
+func set_object_visible(which: int, vis: bool):
+	match which:
+		Globals.Prop.BUTTER_KNIFE:
+			$Removed_Objects/Butter_Knife_Out.visible = not vis
+		Globals.Prop.MILK_BOTTLES:
+			$Removed_Objects/Milk_Bottle_Out.visible = not vis
