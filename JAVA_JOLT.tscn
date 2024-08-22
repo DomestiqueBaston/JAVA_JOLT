@@ -18,7 +18,6 @@ scale = Vector2(-1, 1)
 [node name="KUWAHARA" parent="." instance=ExtResource("3_quulp")]
 
 [node name="UI" parent="." instance=ExtResource("4_ilxi3")]
-comment_timeout = 3.0
 
 [connection signal="area_entered_object" from="BACKGROUND" to="." method="_on_background_area_entered_object"]
 [connection signal="area_exited_object" from="BACKGROUND" to="." method="_on_background_area_exited_object"]
