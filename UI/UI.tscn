@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=44 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://dpjsaxgllscqn" path="res://UI/IMAGES/No_Sound.png" id="8_mhf7y"]
 [ext_resource type="Texture2D" uid="uid://bihujj3qfu6gv" path="res://UI/IMAGES/Arrow_Active.png" id="8_ngskb"]
 [ext_resource type="Texture2D" uid="uid://dadhxlfc30aym" path="res://UI/IMAGES/Trash.png" id="9_f052n"]
+[ext_resource type="Texture2D" uid="uid://de4jh46qo8nt4" path="res://UI/IMAGES/Open.png" id="18_uto5b"]
+[ext_resource type="Texture2D" uid="uid://6da50018lwam" path="res://UI/IMAGES/Close.png" id="19_j6wa7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu12a"]
 size = Vector2(16, 6)
@@ -1877,6 +1879,24 @@ offset_right = 8.0
 offset_bottom = 8.0
 mouse_filter = 2
 texture = ExtResource("9_f052n")
+
+[node name="Open" type="TextureRect" parent="Mouse"]
+visible = false
+layout_mode = 0
+offset_left = -8.5
+offset_top = -8.5
+offset_right = 7.5
+offset_bottom = 7.5
+texture = ExtResource("18_uto5b")
+
+[node name="Close" type="TextureRect" parent="Mouse"]
+visible = false
+layout_mode = 0
+offset_left = -8.5
+offset_top = -8.5
+offset_right = 7.5
+offset_bottom = 7.5
+texture = ExtResource("19_j6wa7")
 
 [node name="Mouse_Collider" type="Area2D" parent="Mouse"]
 collision_mask = 2
