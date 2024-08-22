@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://clvr31ogitwwv"]
+[gd_scene load_steps=36 format=3 uid="uid://clvr31ogitwwv"]
 
 [ext_resource type="Script" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/IMAGES/ROWENA.png" id="1_tqx3q"]
@@ -7,7 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/SOUNDS/Barefoot_Steps_A.ogg" id="3_72jic"]
 [ext_resource type="AudioStream" uid="uid://bt5748asskrtp" path="res://ROWENA/SOUNDS/Phone_Fall.ogg" id="3_wmn3r"]
 [ext_resource type="AudioStream" uid="uid://damkxikdmdura" path="res://ROWENA/SOUNDS/Beep.ogg" id="4_7nc6a"]
+[ext_resource type="AudioStream" uid="uid://b5rhb1m6aocrt" path="res://ROWENA/SOUNDS/Do_Erk_Stuff.ogg" id="4_bo057"]
 [ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://ROWENA/SOUNDS/Phone_Ring.ogg" id="5_gkr5f"]
+[ext_resource type="AudioStream" uid="uid://b0ai1u38p82et" path="res://ROWENA/SOUNDS/Do_Stuff.ogg" id="5_splmy"]
 [ext_resource type="AudioStream" uid="uid://cuwid5c2t025o" path="res://ROWENA/SOUNDS/Hang_Up.ogg" id="6_xr3ty"]
 [ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Cupboard_Open_Close.ogg" id="10_ggfb7"]
 
@@ -44,6 +46,21 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.9)
 }
 tracks/1/use_blend = true
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Do_Erk_Stuff")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_bo057")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ww28l"]
 resource_name = "Do_Stuff"
@@ -60,6 +77,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [270, 271, 272, 273, 274, 275, 276, 277, 278]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Do_Stuff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_splmy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_o301v"]
 resource_name = "Get_Something_High_1"
@@ -494,7 +526,7 @@ volume_db = -20.0
 bus = &"FX"
 
 [node name="Disgusted" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
+volume_db = -25.0
 bus = &"FX"
 
 [node name="Phone_Ring" type="AudioStreamPlayer" parent="."]
@@ -517,3 +549,9 @@ bus = &"FX"
 [node name="Open_Close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ggfb7")
 bus = &"FX"
+
+[node name="Do_Stuff" type="AudioStreamPlayer" parent="."]
+volume_db = -12.5
+
+[node name="Do_Erk_Stuff" type="AudioStreamPlayer" parent="."]
+volume_db = -12.5
