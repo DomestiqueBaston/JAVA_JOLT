@@ -214,6 +214,10 @@ func _on_ui_click_on_background(pos: Vector2):
 			_perform_eye_action(pos)
 		Globals.Cursor.HAND:
 			_perform_hand_action()
+		Globals.Cursor.OPEN:
+			_perform_open_action()
+		Globals.Cursor.CLOSE:
+			_perform_close_action()
 		Globals.Cursor.QUIT:
 			$UI.clear_comment_text()
 			await _close_open_object()
@@ -243,16 +247,6 @@ func _perform_hand_action():
 	var take_msg = ""
 
 	match current_prop:
-		Globals.Prop.REFRIGERATOR_RIGHT:
-			await _walk_to_prop()
-			$ROWENA.get_something(3, false)
-			await $ROWENA.got_something
-			$BACKGROUND.open_refrigerator_right()
-		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
-			await _walk_to_prop()
-			$ROWENA.get_something(3, false)
-			await $ROWENA.got_something
-			$BACKGROUND.close_refrigerator_right()
 		Globals.Prop.BUTTER_KNIFE:
 			if butter_knife_seen:
 				take_label = "Butter knife"
@@ -276,6 +270,26 @@ func _perform_hand_action():
 			$UI.add_to_inventory(current_prop, take_label)
 			$BACKGROUND.set_object_visible(current_prop, false)
 			_set_comment(take_msg)
+
+func _perform_open_action():
+	$UI.clear_comment_text()
+	$UI.clear_available_cursors()
+	match current_prop:
+		Globals.Prop.REFRIGERATOR_RIGHT:
+			await _walk_to_prop()
+			$ROWENA.get_something(3, false)
+			await $ROWENA.got_something
+			$BACKGROUND.open_refrigerator_right()
+
+func _perform_close_action():
+	$UI.clear_comment_text()
+	$UI.clear_available_cursors()
+	match current_prop:
+		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
+			await _walk_to_prop()
+			$ROWENA.get_something(3, false)
+			await $ROWENA.got_something
+			$BACKGROUND.close_refrigerator_right()
 
 func _close_open_object():
 	if $BACKGROUND.get_open_object() == Globals.Prop.REFRIGERATOR_RIGHT:
@@ -415,9 +429,9 @@ func _update_current_prop():
 		var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
 		match current_prop:
 			Globals.Prop.REFRIGERATOR_RIGHT:
-				actions.append(Globals.Cursor.HAND)
+				actions.append(Globals.Cursor.OPEN)
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
-				actions.append(Globals.Cursor.HAND)
+				actions.append(Globals.Cursor.CLOSE)
 			Globals.Prop.BUTTER_KNIFE, \
 			Globals.Prop.TOWEL_SMALL, \
 			Globals.Prop.MILK_BOTTLES:

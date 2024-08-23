@@ -12,6 +12,8 @@ var _current_cursor: int = -1
 	$No_Sound,
 	$Eye,
 	$Hand,
+	$Open,
+	$Close,
 	$Load,
 	$Save,
 	$Quit,
