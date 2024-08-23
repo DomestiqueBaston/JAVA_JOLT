@@ -11,6 +11,8 @@ enum Cursor {
 	NO_SOUND,
 	EYE,
 	HAND,
+	OPEN,
+	CLOSE,
 	LOAD,
 	SAVE,
 	QUIT,
