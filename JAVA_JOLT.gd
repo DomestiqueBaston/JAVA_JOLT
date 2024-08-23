@@ -1,5 +1,18 @@
 extends Node2D
 
+# MANIPULATING OBJECTS
+#
+# If the user can take an object, add the HAND cursor action when the object is
+# made current in _update_current_prop(). Then, in _perform_hand_action(), add
+# the object to the inventory if it is the current prop. If the object is to be
+# hidden from sight when it has been taken (the small towel, for example), add
+# it to the list of singleton objects in _on_background_area_entered_object(),
+# and show/hide it in the BACKGROUND scene: add the appropriate image to the
+# Removed_Objects node there and handle it in $BACKGROUND.set_object_visible().
+# That function must also be modified if the object is not a singleton but its
+# visual aspect changes (e.g. to hide one milk bottle or the coffee maker's
+# filter holder).
+
 ## At this distance from an open object (e.g. the refrigerator), we close it
 ## automatically rather than make Rowena walk back to it.
 @export var auto_close_distance = 60
@@ -320,6 +333,18 @@ func _walk_to_prop(which: int = -1, walk_to_origin: bool = false):
 func _on_background_area_entered_object(which: int, _area: Area2D):
 	if $UI.is_dialogue_visible() or $UI.is_inventory_open():
 		return
+
+	# some objects are hidden if the user has taken them, so ignore them
+
+	const singleton_objects = [
+		Globals.Prop.TOWEL_SMALL
+	]
+	if which in singleton_objects and $UI.find_in_inventory(which) >= 0:
+		return
+
+	# add the collider to the set of current colliders and make the topmost
+	# collider the current prop
+
 	var collider: Area2D = $BACKGROUND.get_collider(which)
 	if not overlapping_colliders.has(which):
 		overlapping_colliders[which] = collider
