@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dak2h42jqim0i"]
+[gd_scene load_steps=27 format=3 uid="uid://dak2h42jqim0i"]
 
 [ext_resource type="Script" path="res://INTRO_OUTRO/INTRO.gd" id="1_pqvu6"]
 [ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://INTRO_OUTRO/IMAGES/Titre.png" id="2_6dww4"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing_Doc.ogg" id="14_lvr4p"]
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="15_iioys"]
 [ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Cupboard_Open_Close.ogg" id="17_725xu"]
+[ext_resource type="StyleBox" uid="uid://cls45jvu2j875" path="res://UI/Comment_Box.tres" id="17_o3ahg"]
 [ext_resource type="Script" path="res://UI/Text_Sound.gd" id="18_2b3cl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxrs6"]
@@ -326,6 +327,42 @@ tracks/18/keys = {
 "update": 0,
 "values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("../Monologue/Box/PanelContainer:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(84.1667, 84.2, 85.4333, 85.4667, 85.6333, 85.6667, 87.4, 87.4333, 89.2667, 89.3, 93.0333, 93.0667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false, false, true, true, false, false, true, true, false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../Monologue/Box/PanelContainer:size")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(84.1667, 84.3667, 84.6, 85.6333, 85.6667, 85.8, 86.5333, 87.4333, 89.2667, 89.3, 89.5, 90.3667, 90.4667, 90.5333, 91.4667, 91.5333, 92.5, 92.7, 93.0667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 9), Vector2(10, 9), Vector2(15, 9), Vector2(15, 9), Vector2(10, 9), Vector2(10, 9), Vector2(59, 9), Vector2(59, 9), Vector2(59, 9), Vector2(10, 9), Vector2(10, 9), Vector2(54, 9), Vector2(54, 9), Vector2(54, 18), Vector2(54, 18), Vector2(54, 27), Vector2(54, 27), Vector2(63, 27), Vector2(63, 27)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../Monologue/Box/PanelContainer:self_modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(84.2, 84.3, 85.3667, 85.4333, 85.6667, 85.7667, 87.3667, 87.4333, 89.3, 89.4, 93, 93.0667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_a6bnw"]
 length = 0.001
@@ -521,6 +558,42 @@ tracks/15/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../Monologue/Box/PanelContainer:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../Monologue/Box/PanelContainer:size")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 9)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../Monologue/Box/PanelContainer:self_modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vcab"]
 _data = {
@@ -629,6 +702,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("15_iioys")
+
+[node name="PanelContainer" type="PanelContainer" parent="Monologue/Box"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 124.0
+offset_top = 20.0
+offset_right = 139.0
+offset_bottom = 29.0
+theme_override_styles/panel = ExtResource("17_o3ahg")
 
 [node name="Comments" type="Label" parent="Monologue/Box"]
 layout_mode = 0

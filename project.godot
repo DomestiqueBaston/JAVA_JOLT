@@ -14,13 +14,13 @@ config/name="JAVA JOLT!"
 run/main_scene="res://INTRO_OUTRO/INTRO.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=10
-boot_splash/bg_color=Color(0.137255, 0.133333, 0.145098, 1)
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/image="res://Splash_Screen.png"
 boot_splash/use_filter=false
 config/icon="res://JJ.png"
 config/macos_native_icon="res://JJ.icns"
 config/windows_native_icon="res://JJ.ico"
-boot_splash/minimum_display_time=2000
+boot_splash/minimum_display_time=15000
 
 [autoload]
 
@@ -30,6 +30,7 @@ Globals="*res://globals.gd"
 
 window/size/viewport_width=188
 window/size/viewport_height=68
+window/size/mode=4
 window/size/always_on_top=true
 window/size/window_width_override=1128
 window/size/window_height_override=408
