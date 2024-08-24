@@ -250,6 +250,21 @@ func _perform_hand_action():
 	var take_sound = false
 
 	match current_prop:
+		Globals.Prop.TOWEL_SMALL:
+			if is_towel_wet:
+				take_label = "Small towel moistened with milk"
+			else:
+				take_label = "Small towel"
+			take_msg = "OK, one small towel."
+			take_height = 1
+		Globals.Prop.PRESSURE_COOKER:
+			_set_comment("There's no way I'm dragging that around.")
+		Globals.Prop.KETTLE:
+			take_label = "Tea kettle"
+			take_msg = "OK, if you say so."
+			take_height = 3
+		Globals.Prop.SAUCE_PAN:
+			_set_comment("No, there's still sauce in it.")
 		Globals.Prop.BUTTER_KNIFE:
 			if butter_knife_seen:
 				take_label = "Butter knife"
@@ -260,13 +275,6 @@ func _perform_hand_action():
 		Globals.Prop.MILK_BOTTLES:
 			take_label = "Bottle of milk"
 			take_msg = "OK, one bottle of milk."
-			take_height = 1
-		Globals.Prop.TOWEL_SMALL:
-			if is_towel_wet:
-				take_label = "Small towel moistened with milk"
-			else:
-				take_label = "Small towel"
-			take_msg = "OK, one small towel."
 			take_height = 1
 
 	if take_label:
@@ -440,8 +448,11 @@ func _update_current_prop():
 				actions.append(Globals.Cursor.OPEN)
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
-			Globals.Prop.BUTTER_KNIFE, \
+			Globals.Prop.PRESSURE_COOKER, \
+			Globals.Prop.KETTLE, \
+			Globals.Prop.SAUCE_PAN, \
 			Globals.Prop.TOWEL_SMALL, \
+			Globals.Prop.BUTTER_KNIFE, \
 			Globals.Prop.MILK_BOTTLES:
 				if $UI.find_in_inventory(current_prop) < 0:
 					actions.append(Globals.Cursor.HAND)

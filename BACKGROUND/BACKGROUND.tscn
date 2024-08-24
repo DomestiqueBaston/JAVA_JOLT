@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=53 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://boywyr2ikebp8" path="res://BACKGROUND/IMAGES/Tea_Towel_Out.png" id="6_8a0sv"]
 [ext_resource type="AudioStream" uid="uid://na6eamuhj80a" path="res://ROWENA/SOUNDS/Fridge_Open_Close.ogg" id="6_jvbuw"]
 [ext_resource type="Texture2D" uid="uid://cyghiycxbscrl" path="res://BACKGROUND/IMAGES/Coffee_Filter_Holder_Out.png" id="7_2civg"]
+[ext_resource type="Texture2D" uid="uid://b0ug13c7pmd0v" path="res://BACKGROUND/IMAGES/Kettle_Out.png" id="8_inw3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -168,10 +169,14 @@ visible = false
 texture = ExtResource("7_2civg")
 centered = false
 
+[node name="Kettle_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("8_inw3g")
+centered = false
+
 [node name="Opens_Outs" type="Node2D" parent="."]
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
-visible = false
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
 
@@ -609,9 +614,12 @@ collision_layer = 2
 polygon = PackedVector2Array(56, 39, 56, 35, 55, 35, 55, 34, 56, 34, 56, 33, 59, 33, 59, 32, 61, 32, 61, 33, 64, 33, 64, 34, 65, 34, 65, 35, 64, 35, 64, 39)
 
 [node name="Kettle_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(54, 36)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Kettle" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Kettle_Collider"]
+position = Vector2(-54, -36)
 polygon = PackedVector2Array(56, 39, 52, 39, 52, 37, 51, 35, 51, 33, 52, 33, 54, 35, 56, 36)
 
 [node name="Sauce_Pan_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
