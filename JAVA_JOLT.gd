@@ -288,11 +288,13 @@ func _perform_hand_action():
 		if $UI.is_inventory_full():
 			_set_comment(inventory_full_msg)
 		else:
+			# because walking will change the current prop...
+			var take_prop = current_prop
 			await _walk_to_prop()
 			_set_comment(take_msg)
 			await $ROWENA.get_something(take_height, take_sound)
-			$UI.add_to_inventory(current_prop, take_label)
-			$BACKGROUND.set_object_visible(current_prop, false)
+			$UI.add_to_inventory(take_prop, take_label)
+			$BACKGROUND.set_object_visible(take_prop, false)
 
 func _perform_open_action():
 	$UI.clear_comment_text()
