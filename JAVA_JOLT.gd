@@ -176,6 +176,13 @@ const prop_info: Array[String] = [
 
 const inventory_full_msg = "Hey, I don't have 4 arms, I'm not Shiva!"
 
+const cant_use_msgs = [
+	"That doesn't ring a bell for me.",
+	"Maybe some other time.",
+	"Yeah, or I could just lick the floor...",
+	"No way, Jose!",
+]
+
 var butter_knife_seen = false
 var coffee_maker_seen = false
 var is_towel_wet = false
@@ -524,7 +531,9 @@ func _use_object_on_other(object1: int, object2: int):
 	# huh?
 
 	else:
-		print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
+		#print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
+		var msg_index = randi() % cant_use_msgs.size()
+		_set_comment(cant_use_msgs[msg_index])
 
 #
 # Callback invoked when the user has removed an item from the inventory (that
