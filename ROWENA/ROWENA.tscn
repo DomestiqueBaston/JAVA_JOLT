@@ -19,6 +19,7 @@ size = Vector2(16, 68)
 [sub_resource type="Animation" id="Animation_euko2"]
 resource_name = "Do_Erk_Stuff"
 length = 1.30001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,6 +66,7 @@ tracks/2/use_blend = true
 [sub_resource type="Animation" id="Animation_ww28l"]
 resource_name = "Do_Stuff"
 length = 0.90001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,6 +98,7 @@ tracks/1/use_blend = true
 [sub_resource type="Animation" id="Animation_o301v"]
 resource_name = "Get_Something_High_1"
 length = 1.40001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -112,6 +115,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_aq0oo"]
 resource_name = "Get_Something_High_2"
 length = 1.40001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -128,6 +132,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_kgaqx"]
 resource_name = "Get_Something_Low"
 length = 1.50001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -144,6 +149,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_10pwy"]
 resource_name = "Get_Something_Low_Mid"
 length = 1.50001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -160,6 +166,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_crym6"]
 resource_name = "Get_Something_Lowest"
 length = 1.60001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -176,6 +183,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_jmibs"]
 resource_name = "Get_Something_Mid"
 length = 1.50001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -192,6 +200,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_vn55n"]
 resource_name = "Nonsense"
 length = 1.10001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -208,6 +217,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_mng2v"]
 resource_name = "Phone_Call"
 length = 5.00001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -253,6 +263,7 @@ tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ta5w8"]
 length = 0.001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -281,6 +292,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_wvops"]
 resource_name = "Spitting_Out"
 length = 2.30001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -312,6 +324,7 @@ tracks/1/use_blend = true
 [sub_resource type="Animation" id="Animation_3roor"]
 resource_name = "Sticking_Patch"
 length = 1.90001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -328,6 +341,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_r5vrl"]
 resource_name = "Stop_That"
 length = 1.50001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -344,6 +358,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_yxscj"]
 resource_name = "Turn_Back"
 length = 1.50001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -360,6 +375,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_cpa71"]
 resource_name = "Turn_Front"
 length = 1.10001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -376,6 +392,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_mdy2a"]
 resource_name = "Wait_Base"
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -392,6 +409,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_ort0t"]
 resource_name = "Wait_Nails"
 length = 2.50001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -408,6 +426,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_4bhe7"]
 resource_name = "Wait_Towel"
 length = 2.40001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -425,6 +444,7 @@ tracks/0/keys = {
 resource_name = "Walk"
 length = 0.80001
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -453,6 +473,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_4vnq0"]
 resource_name = "WtF"
 length = 2.20001
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -526,7 +547,7 @@ volume_db = -20.0
 bus = &"FX"
 
 [node name="Disgusted" type="AudioStreamPlayer" parent="."]
-volume_db = -25.0
+volume_db = -27.5
 bus = &"FX"
 
 [node name="Phone_Ring" type="AudioStreamPlayer" parent="."]
