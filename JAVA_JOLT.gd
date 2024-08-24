@@ -264,6 +264,10 @@ func _perform_hand_action():
 				take_label = "Small towel"
 			take_msg = "OK, one small towel."
 			take_height = 1
+		Globals.Prop.FRUIT_BASKET:
+			take_label = "Red apple"
+			take_msg = "Just a red apple, nothing more."
+			take_height = 3
 		Globals.Prop.PRESSURE_COOKER:
 			_set_comment("There's no way I'm dragging that around.")
 		Globals.Prop.KETTLE:
@@ -292,7 +296,8 @@ func _perform_hand_action():
 			var take_prop = current_prop
 			await _walk_to_prop()
 			_set_comment(take_msg)
-			await $ROWENA.get_something(take_height, take_sound)
+			$ROWENA.get_something(take_height, take_sound)
+			await $ROWENA.got_something
 			$UI.add_to_inventory(take_prop, take_label)
 			$BACKGROUND.set_object_visible(take_prop, false)
 
@@ -457,6 +462,7 @@ func _update_current_prop():
 				actions.append(Globals.Cursor.OPEN)
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
+			Globals.Prop.FRUIT_BASKET, \
 			Globals.Prop.PRESSURE_COOKER, \
 			Globals.Prop.KETTLE, \
 			Globals.Prop.SAUCE_PAN, \

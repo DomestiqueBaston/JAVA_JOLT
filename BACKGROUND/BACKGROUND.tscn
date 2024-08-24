@@ -595,10 +595,11 @@ collision_layer = 2
 polygon = PackedVector2Array(78, 32, 80, 32, 80, 34, 82, 32, 83, 32, 84, 33, 84, 34, 83, 34, 82, 35, 79, 35, 78, 36, 79, 39, 78, 39, 78, 38, 75, 38, 75, 36, 76, 35, 78, 35)
 
 [node name="Fruit_Basket_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(67, 37.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Fruit_Basket" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Fruit_Basket_Collider"]
-position = Vector2(67, 37.5)
 polygon = PackedVector2Array(2, 1.5, 3, 0.5, 3, -0.5, 1, -1.5, -3, -1.5, -3, 1.5)
 
 [node name="Cutting_Board_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
