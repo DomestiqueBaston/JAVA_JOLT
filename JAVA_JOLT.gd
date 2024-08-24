@@ -264,6 +264,10 @@ func _perform_hand_action():
 				take_label = "Small towel"
 			take_msg = "OK, one small towel."
 			take_height = 1
+		Globals.Prop.FRUIT_BASKET:
+			take_label = "Red apple"
+			take_msg = "Just a red apple, nothing more."
+			take_height = 3
 		Globals.Prop.PRESSURE_COOKER:
 			_set_comment("There's no way I'm dragging that around.")
 		Globals.Prop.KETTLE:
@@ -457,6 +461,7 @@ func _update_current_prop():
 				actions.append(Globals.Cursor.OPEN)
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
+			Globals.Prop.FRUIT_BASKET, \
 			Globals.Prop.PRESSURE_COOKER, \
 			Globals.Prop.KETTLE, \
 			Globals.Prop.SAUCE_PAN, \
