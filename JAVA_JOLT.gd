@@ -296,7 +296,8 @@ func _perform_hand_action():
 			var take_prop = current_prop
 			await _walk_to_prop()
 			_set_comment(take_msg)
-			await $ROWENA.get_something(take_height, take_sound)
+			$ROWENA.get_something(take_height, take_sound)
+			await $ROWENA.got_something
 			$UI.add_to_inventory(take_prop, take_label)
 			$BACKGROUND.set_object_visible(take_prop, false)
 
