@@ -243,8 +243,11 @@ func _perform_eye_action(pos: Vector2):
 func _perform_hand_action():
 	$UI.clear_comment_text()
 	$UI.clear_available_cursors()
+
 	var take_label = ""
 	var take_msg = ""
+	var take_height = 0
+	var take_sound = false
 
 	match current_prop:
 		Globals.Prop.BUTTER_KNIFE:
@@ -253,23 +256,28 @@ func _perform_hand_action():
 				take_msg = "OK, I'll just take that knife."
 			else:
 				_set_comment("Remember? Coffee...")
+			take_height = 4
 		Globals.Prop.MILK_BOTTLES:
 			take_label = "Bottle of milk"
 			take_msg = "OK, one bottle of milk."
+			take_height = 1
 		Globals.Prop.TOWEL_SMALL:
 			if is_towel_wet:
 				take_label = "Small towel moistened with milk"
 			else:
 				take_label = "Small towel"
 			take_msg = "OK, one small towel."
+			take_height = 1
 
 	if take_label:
 		if $UI.is_inventory_full():
 			_set_comment(inventory_full_msg)
 		else:
+			await _walk_to_prop()
+			_set_comment(take_msg)
+			await $ROWENA.get_something(take_height, take_sound)
 			$UI.add_to_inventory(current_prop, take_label)
 			$BACKGROUND.set_object_visible(current_prop, false)
-			_set_comment(take_msg)
 
 func _perform_open_action():
 	$UI.clear_comment_text()

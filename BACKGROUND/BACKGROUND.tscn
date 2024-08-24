@@ -288,10 +288,11 @@ position = Vector2(164.5, 52)
 shape = SubResource("RectangleShape2D_i3lcp")
 
 [node name="Towel_Small_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+position = Vector2(170.5, 49.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Towel_Small" type="CollisionShape2D" parent="Stuff_Colliders/Low/Towel_Small_Collider"]
-position = Vector2(170.5, 49.5)
 shape = SubResource("RectangleShape2D_yh4g6")
 
 [node name="Up" type="Node2D" parent="Stuff_Colliders"]
