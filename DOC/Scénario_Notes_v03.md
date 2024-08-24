@@ -67,11 +67,11 @@ Ce que Rowena peut essayer de faire (ou pas)...
 
 	Dans tous les cas, elle finira par faire repasser le café de la veille qu’elle a mis à la poubelle, en ayant pris soin de s’en servir une tasse et de le boire avant de tout recracher tellement c’est dégueulasse. Si le joueur essaye de faire cela avant 9h10, systématiquement Rowena se dira « Non, je ne peux pas faire ça ! ». C’est seulement à partir de 9h10 (?) qu’elle regardera l’horloge et se dira « Bon, tant pis, plus le choix ! » et lancera les opérations. Alors à ce moment-là, la partie sera bien entendu perdue puisqu’elle renoncera à tout et retournera se coucher ! Elle sortira par où elle est entrée au départ et refermera la porte (son).
 
-	On devra garder à l’esprit que Rowena n’a que 2 mains et pas de poche puisqu’elle sort de la douche en serviette de toilette. Cela signifie qu’il ne sera pas possible de se balader avec plus de deux objets en mains. Si les objets sont petits, on pourra moduler cette limite. Par exemple : tous les grains de café qu’elle ramassera pourront tenir dans une main, il en deviendront éventuellement instantanément un seul.
+	On devra garder à l’esprit que Rowena n’a que 2 mains et pas de poche puisqu’elle sort de la douche en serviette de toilette. Cela signifie qu’il ne sera pas possible de se balader avec plus de quatre objets en mains. Si les objets sont petits, on pourra moduler cette limite. Par exemple : tous les grains de café qu’elle ramassera pourront tenir dans une main, il en deviendront éventuellement instantanément un seul.
 
-	Si le joueur veut prendre plusieurs exemplaires d’un objet dont il n’aura pas besoin (en plusieurs exemplaires), Rowena aura des répliques du genre « One will be more than enough! », « No, I'm not starting a collection! »
+	Si le joueur veut prendre plusieurs exemplaires d’un objet dont il n’aura pas besoin, Rowena aura ces répliques : « One will be more than enough! » ou « No, I'm not starting a collection! » (aléatoirement).
 
-	Si Rowena essaye d’utiliser un objet avec un autre mais que cela ne sert à rien, elle dira « Nonsense! » ou « Hm... Nope! » ou « That won't stick. » ou « Hmm... doesn't ring any bells. » ou « Sorry, doesn't click. » 
+	Si Rowena essaye d’utiliser un objet avec un autre mais que cela ne sert à rien, elle dira : aléatoirement, « That’s doesn’t ring any bell to me ! », « Maybe some other day», « Yeah, or I could just lick the floor... » ou encore « No way, Jose ! » si on lui demande de combiner des mauvais objets.
 Ce que Rowena peut trouver d’utile dans la cuisine pour chaque tentative
 
 
@@ -119,17 +119,17 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre ou pas, etc.
 
 /!\ A moins que ce soit précisé autrement, Rowena donnera le nom de ce qu’elle désigne quand elle le regardera. /!\ A ne pas confondre avec son commentaire quand on veut prendre les choses.
 
-Le Coffee Cupboard : « I like rubbing salt in the wound ! »
+Le Coffee Cupboard (quand on l’ouvre) : « I like rubbing salt in the wound ! »
 
 Le lave-vaisselle : « My dishwasher… » Quand il est ouvert « It’s empty. »
 
-	L’interstice entre le placard et le lave-vaisselle à gauche : « Huh? What would I... Wow! » (ramasse des grains de café). On n’a « accès » à ce collider que pour la 2ème tentative. Quand Rowena aura assez de grains de café, alors sa réplique sera : « That should be enough. »
+	L’interstice entre le placard et le lave-vaisselle à gauche : « Huh? What would I... Wow! » (ramasse des grains de café). On n’a « accès » à ce collider que pour la 2ème tentative (avant il est inactif). Quand Rowena aura assez de grains de café, alors sa réplique sera : « That should be enough. »
 
 Le four : « My oven… » Quand il est ouvert «It's as empty as space is ! »
 
-	Dans le four : « I'd have to clean it, it's so gross. »
+	Dans le four (3 empty spaces) : « I'd have to clean it, it's so gross. » (elle ne prend pas)
 
-	Dans le tiroir sous le four : « It’s filled with burnt pizza remains... »
+	Dans le tiroir sous le four : « It’s filled with burnt pizza remains... » quand on regarde le collider quand il est ouvert (elle ne prend pas)
 
 Cuttlery drawer : « That’s a nice Cuttlery drawer, isn’t it ? »
 
@@ -139,47 +139,47 @@ Cuttlery drawer : « That’s a nice Cuttlery drawer, isn’t it ? »
 	
 Les placards au dessus de la hotte/micro-onde et du frigo : « Naaa! Too high, I've never put anything in it. »
 
-Left Glass Cupboard : « Glasses and plates. »
+Left Glass Cupboard : « Glasses and plates. » (verres et assiettes)
 
 Kitchen Tool drawer : « Here I store useless stuff like a garlic press. »
 
-	Un garlic press dans le tiroir d’outils de cuisine : « What could I possibly do with it now? »
+	Un garlic press dans le tiroir d’outils de cuisine : « What could I possibly do with it now? » (elle ne prend pas)
 
-	Un corkscrew dans le tiroir d’outils de cuisine : « Hm... No, too soon. »
+	Un corkscrew dans le tiroir d’outils de cuisine : « Hm... No, too soon. » (elle ne prend pas)
 
-	Une wooden spoon : « It was my childhood dream to have one, so I'm taking it. »
+	Une wooden spoon : « It was my childhood dream to have one. I'm taking it. »
 
 Sur la gazinière :
 
-	La casserolle (sauce pan) à droite du Yucca sur la gazinière : « No, there’s still sauce in it. »
+	La casserolle (sauce pan) à droite du Yucca sur la gazinière : « No, there’s still sauce in it. » (elle ne prend pas)
 
 	La kettle derrière la casserolle sur la gazinière : « If you say so... »
 
-	La cocotte (pressure cooker) sur la gazinière : « There's no way I'm dragging that around. »
+	La cocotte (pressure cooker) sur la gazinière : « There's no way I'm dragging that around. » (elle ne prend pas)
 
 Sur le plan de travail :
 
 	Le panier de fruits juste à droite de la gazinière : « Just a red apple, nothing more. »
 
-	Le robot-mixer à gauche de la mandoline : « It’s not a Rank Xerox, no way. »
+	Le robot-mixer à gauche de la mandoline : « It’s not a Rank Xerox, no way. » (elle ne prend pas)
 
 	La mandoline à droite du robot-mixer : « As long as I don’t slice my fingers off. »
 
-	La radio : « I can adjust the sound, that's clever! »
+	La radio : « I can adjust the sound, that's clever! » (elle ne prend pas)
 
-	Le toaster : « It works and I can use it anytime. »
+	Le toaster : « It works and I can use it anytime. » (elle ne prend pas)
 
-	La cafetière : « It's empty. I could cry. The filter holder’s stuck.»
+	La cafetière : « It's empty. I could cry. The filter holder’s stuck.» (elle ne prend pas sauf le filter holder, bien entendu)
 
-	Le coffee pot (uniquement un cache, on ne peut pas vraiment le prendre. Pour y accéder, on utilisera la cafetière complète, comme pour le filter holder) : « Ok ! I think it’s ready. »
+	Le coffee pot (uniquement un cache, on ne peut pas vraiment le prendre. Pour y accéder, on utilisera la cafetière complète, comme pour le filter holder) : « Ok ! I think it’s ready. » (troisième tentative)
 
-	Le robinet : « Yes. And? » (on ne l’utilise que si on l’associe à quelque chose d’utile pour le jeu)
+	Le robinet : « Yes. And? » (on ne l’utilise que si on l’associe à quelque chose d’utile pour le jeu) (elle ne prend pas)
 
-	Le pot de cookies à droite de la cafetière : « Only one but I need my coffee first. »
+	Le pot de cookies à droite de la cafetière : « Only one but I need my coffee first. » (elle ne prend pas le pot, juste un cookie)
 
 	L’huile d’olive devant les cookies : « Ok but that’s to please you. »
 
-	Le pot riz à droite du pot de cookies : « No, it’s raw. »
+	Le pot riz à droite du pot de cookies : « No, it’s raw. » (elle ne prend pas)
 
 	Le sel devant le riz : « I’ll never use it with my coffee but ok. »
 
@@ -187,50 +187,50 @@ Sur le plan de travail :
 
 	Les premiers grains de café : « Well, that's something... »
 
-	Les grains de café : « Oh ! My precious ! »
+	Les grains de café (par terre entre le lave vaisselle et le placard) : « Oh ! My precious ! »
 
 	Le pot en terre à gauche du toaster : « Full of rice... » Si Rowena a déjà enlevé le sel, elle dira : « Miracle, coffee beans right beside ! »
 
-	Les grains de café à côté du pot de riz en terre : « Not enough, but I'll take them. »
+	Les grains de café à côté du pot de riz en terre : « Zeus almighty! I'll take them. »
 	Quand Rowena aura assez de grains de café (quand elle trouvera la «deuxième dose » de grains de café, quelle qu’elle soit, par terre ou à côté du riz derrière le sel, alors sa réplique sera : « That should be enough. »
 	
-	Le pot en verre à droite de la cafetière : « Full of raw pasta. »
+	Le pot en verre à droite de la cafetière : « Full of raw pasta. » (elle ne prend pas)
 
 	La tasse rouge à droite de la cafetière : « No, I chipped it yesterday. »
 
 	La tasse rouge à droite de la bouteille de lait : « Yeah, it's new and clean. »
 
-	La tasse marron : « That’s my cup of tea. »
+	La tasse marron : « That’s not my cup of tea. » (elle ne prend pas)
 
-	Le journal devant la bouteille de lait : « Yesterday's newspaper. »
+	Le journal devant la bouteille de lait : « Yesterday's newspaper. » (je ne retrouve pas son collider, peut-être n’en a-t-il pas)
 
 	Les couteaux de cuisine dans le porte-couteaux : « Naa ! My boss isn't worth the trouble! »
 
-	La bouilloire : « There's still water in it. It's cold. »
+	La bouilloire : « There's still water in it. It's cold. » (elle ne prend pas)
 
 	Le yucca à droite du frigo : « I'll be gardening this later. But I’ll take it. »
 
 	Les tupperwares à gauche de l’évier : « I know how to make them fart. I’ll take one. »
 
-	La planche à découper : « Clever ! As soon as I know what to do with it. »
+	La planche à découper : « Clever ! Probably… » (elle prend !)
 
-	La bouteille de lait devant la planche à découper : « Only sour milk. »
+	La bouteille de lait devant la planche à découper : « Only sour milk. » (elle ne prend pas)
 
 Ailleurs dans la cuisine :
 
-	La fenêtre au dessus de l’évier : « I know what this is : a window. »
+	La fenêtre au dessus de l’évier : « I know what this is : a window. » (elle ne prend pas)
 
-	Une chaise : « I'm fine, I've had enough rest so far. »
+	Une chaise : « I'm fine, I've had enough rest so far. » (elle ne prend pas)
 
-	Un tabouret : « As soon as I find out what it's for. »
+	Un tabouret : « As soon as I find out what it's for. » (elle ne prend pas)
 
 	Un petit torchon à côté de la fenêtre de droite : « It's clean, it'll be perfect! »
 
-	Un grand torchon à côté de la fenêtre de droite : « I shouldn’t use it except for… No, I shouldn’t! »
+	Un grand torchon à côté de la fenêtre de droite : « I shouldn’t use it except for… No, I shouldn’t! » (elle ne prend pas)
 
-	La fenêtre de droite : « I’ve had enough of this… Alright ? » – QUIT THE GAME !
+	La fenêtre de droite : « I’ve had enough of this… Alright ? » – QUIT THE GAME ! (elle ne prend pas)
 
-	Le tableau au dessus de la chaise : « A painting entitled “Monsieur le marquis et Madame”. »
+	Le tableau au dessus de la chaise : « A painting entitled “Monsieur le marquis et Madame”. » (elle ne prend pas)
 
 	Les interrupteurs : « I’m no Hubert Bonisseur de la Bath... » (on n’y touche donc pas !)
 
@@ -242,65 +242,65 @@ Le réfrigérateur/congélateur : « Yes, way too big for my needs. »
 
 Refrigerator Left : « That’s where frozen food is. »
 	
-	Water/ice fountain (sur la porte fermée) : « Where in the world have you been so far ? »
+	Water/ice fountain (sur la porte fermée) : « Where in the world have you been so far ? » (elle ne prend pas)
 
-	Tous les tiroirs : « Way too cold at this hour ! »
+	Tous les tiroirs : « Way too cold at this hour ! » (elle ne prend pas)
 
 Refrigerator Right : « That’s a refrigerator… »
 
-	Le beurrier dans le réfrigérateur : « Butter. There's a little knife in it. »
+	Le beurrier dans le réfrigérateur : « Butter. There's a little knife in it. » (elle ne prend pas mais… voire en dessous)
 
 	Le couteau à beurre : « Ok. I’ll take only that knife. »
 
-	Smoothie bottles : « I only drink it before working out. But Ok. »
+	Smoothie bottles : « I drink it before working out. But Ok, one. »
 
-	Fruit Juice : « I only drink it before working out. But Ok. »
+	Fruit Juice : « I drink it before working out. But one is Ok. »
 
 	Milk bottles : « Ok for one. »
 
-	The sauce pan : « I’ll leave that here. »
+	The sauce pan : « I’ll leave that here. » (elle ne prend pas)
 
-	Cream pots : « Not now. »
+	Cream pots : « Not now. » (elle ne prend pas)
 
-	Yoghurts : « Ok, ok... »
+	Yoghurts : « Ok, ok... » (means she takes one)
 
-	Green pepper : « Way too early for that ! »
+	Green pepper : « Way too early for that ! » (elle ne prend pas)
 
-	Tomatoes : « Hm… Nope ! »
+	Tomatoes : « Hm… Nope ! » (elle ne prend pas)
 
-	Eggs : « Ok but I need to be extra careful. »
+	Eggs : « Ok but I need to be extra careful. » (means she takes one)
 
-	Cauliflower : « Not now. »
+	Cauliflower : « Not now. » (elle ne prend pas)
 
-	Yellow pepper : « Ok... No. I was kidding. »
+	Yellow pepper : « Ok... No. I was kidding. » (elle ne prend pas)
 
-	Fruits : « Don’t you remember ? I need a coffee ! »
+	Fruits : « Don’t you remember ? I need a coffee ! » (elle ne prend pas)
 	
 Cleaning Closet: « That’s where I store my cleaning stuff. »
 
-	Le « Destop » (Drain Cleaner) : «To make coffee ? »
+	Le « Destop » (Drain Cleaner) : «To make coffee ? » (elle ne prend pas)
 
-	La lessive : « I’ll use it this weekend. »
+	La lessive : « I’ll use it this weekend. » (elle ne prend pas)
 
-	Le grand sceau : « Hm… Nope. »
+	Le grand sceau : « Hm… Nope. » (elle ne prend pas)
 
- 	La balayette dans le petit sceau : « What was my quest, anyway ? » (pas sûr du « anyway » du tout).
+ 	La balayette dans le petit sceau : « What was my quest, anyway ? » (elle ne prend pas)
 
-	Le petit sceau contenant la balayette : « What could I possibly do with it ? »
+	Le petit sceau contenant la balayette : « What could I possibly do with it ? » (elle ne prend pas)
 
-	La serpillère : « It’s fealthy ! »
+	La serpillère : « It’s fealthy ! » (elle ne prend pas)
 
-Cupboard Upper Center : « I wonder what’s inside... »
+Cupboard Upper Center : « I wonder what’s inside... » (c’est son placard à biscuits)
 
 	La boîte de thé du dessus (la 5) : « Coffee, not tea… Or is it? »
 	
-	Les boîtes de thé du dessous (de 1 à 4) : « It'll come down on me for this… »
+	Les boîtes de thé du dessous (de 1 à 4) : « It'll come down on me for this… » (elle ne prend pas)
 
-	La petite boîte de cookies : « I shouldn't be having these cookies. »
+	La petite boîte de cookies : « I shouldn't be having these cookies. » (elle ne prend pas)
 
-	La grande boîte de cookies : «That’s way too much right now. »
+	La grande boîte de cookies : «That’s way too much right now. » (elle ne prend pas)
 
-Cupboard Upper Center Left : « A cupboard… »
+Cupboard Upper Center Left : « A cupboard… » (c’est un placard à verres et assiettes)
 
 	Un petit verre à vin : « eventually, yes. »
 
@@ -308,13 +308,13 @@ Cupboard Upper Center Left : « A cupboard… »
 
 	Une assiette à soupe : « Yes, that’s definitely needed ! »
 
-Kitchen Cabinet : « A cabinet… »
+Kitchen Cabinet : « A cabinet… » (il y a des machins pour cuire des trucs à la vapeur)
 
-	La cocotte : « No way I'm dragging that around. »
+	La cocotte : « No way I'm dragging that around. » (elle ne prend pas)
 
-	Le Rice cooker : « Please... » (No!)
+	Le Rice cooker : « Please... »  (elle ne prend pas)
 
-Left Glass Cupboard : « Magical ! I can see through the door. »
+Left Glass Cupboard : « Magical ! I can see through the door. » (verres et assiettes)
 
 	Un verre de vin : « Only one is fine with me. »
 
@@ -324,7 +324,7 @@ Left Glass Cupboard : « Magical ! I can see through the door. »
 
 Private Drawer : « It’s my private drawer... ». Si on veut le fouiller : « Nobody should know what’s inside. »
 
-Les tiroirs entre le précédent et le suivant sont vide !
+Les deux tiroirs entre le précédent et le suivant sont vide ! (« A drawer » - « it’s empty »)
 
 Top Left Drawer : « My junk drawer. »
 
@@ -335,12 +335,12 @@ Top Left Drawer : « My junk drawer. »
 
 The Recycling Closet : « That’s the recycling closet ».
 
-	En le fouillant la poubelle : « It’s half full of plastic and paper. »
+	En le fouillant la poubelle : « It’s half full of plastic and paper. » (elle ne prend pas)
 
 
 Le machin à eau froide et glaçons dans la porte du réfrigérateur/congélateur de gauche : « I hate this thing. But it works. »
 
-Right Glass Cupboard : « Magic ! I see what’s in there. »
+Right Glass Cupboard : « Magic ! I see what’s in there. » (assiettes et bols)
 
 	Right Plates : « Nice and clean. »
 
@@ -354,13 +354,13 @@ Under Sink Cabinet : « Oh my god ! What’s in it ? »
 
 	La ventouse (Plunger) : « I’ve always liked that tool. »
 
-	Un panier en plastique : « Okay, just because it's lightweight.  »
+	Un panier en plastique : « Okay, just because it's lightweight.  » (elle peut en prendre un)
 
 	L’extincteur : « That's clever! Or is it...? »
 
 Upper Right Cupboard : « Big stuff in here. »
 
-	Les saladier, casserolles, grande cocotte et cocotte en terre : « No way I'm dragging that around. »
+	Les saladier, casserolles, grande cocotte et cocotte en terre : « No way I'm dragging that around. » (elle ne prend pas)
 Ce que Rowena dira lorsque le joueur la fera combiner les bons objets ensemble.
 
 
@@ -412,10 +412,6 @@ Troisième tentative :
 	La tasse rouge et la cafetière : « By the grace of Zeus! » Rowena boit le café et le recrache quasiment instantanément. Elle dira alors (après s’être retournée) « Ugh ! This is absolutely rancid ! » Et on enchaîne sur la séquence animée finale.
 
 	
-Ce que Rowena dira lorsque le joueur la fera combiner les mauvais objets ensemble.
-
-
-Aléatoirement, Rowena répondra : « That’s doesn’t ring any bell to me ! », « Maybe some other day», « Yeah, or I could just lick the floor... » ou encore « No way, Jose ! » si on lui demande de combiner des mauvais objets.
 La voix intérieure (le docteur F.)
 
 
