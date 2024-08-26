@@ -297,9 +297,10 @@ func _perform_hand_action():
 			await _walk_to_prop()
 			_set_comment(take_msg)
 			$ROWENA.get_something(take_height, take_sound)
-			await $ROWENA.got_something
+			await $ROWENA.get_something_reached
 			$UI.add_to_inventory(take_prop, take_label)
 			$BACKGROUND.set_object_visible(take_prop, false)
+			await $ROWENA.get_something_done
 
 func _perform_open_action():
 	$UI.clear_comment_text()
@@ -308,8 +309,9 @@ func _perform_open_action():
 		Globals.Prop.REFRIGERATOR_RIGHT:
 			await _walk_to_prop()
 			$ROWENA.get_something(3, false)
-			await $ROWENA.got_something
+			await $ROWENA.get_something_reached
 			$BACKGROUND.open_refrigerator_right()
+			await $ROWENA.get_something_done
 
 func _perform_close_action():
 	$UI.clear_comment_text()
@@ -318,8 +320,9 @@ func _perform_close_action():
 		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 			await _walk_to_prop()
 			$ROWENA.get_something(3, false)
-			await $ROWENA.got_something
+			await $ROWENA.get_something_reached
 			$BACKGROUND.close_refrigerator_right()
+			await $ROWENA.get_something_done
 
 func _close_open_object():
 	if $BACKGROUND.get_open_object() == Globals.Prop.REFRIGERATOR_RIGHT:
@@ -327,8 +330,11 @@ func _close_open_object():
 		if _get_distance_from_prop(door) < auto_close_distance:
 			await _walk_to_prop(door)
 			$ROWENA.get_something(3, false)
-			await $ROWENA.got_something
-		$BACKGROUND.close_refrigerator_right()
+			await $ROWENA.get_something_reached
+			$BACKGROUND.close_refrigerator_right()
+			await $ROWENA.get_something_done
+		else:
+			$BACKGROUND.close_refrigerator_right()
 
 #
 # Returns the distance in X between Rowena and the given object from the
