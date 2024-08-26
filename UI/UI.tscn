@@ -2092,6 +2092,7 @@ libraries = {
 [connection signal="mouse_entered" from="Boxes/Inventory_Box/BG3/Inventory3" to="." method="_on_inventory_3_mouse_entered"]
 [connection signal="gui_input" from="Boxes/Inventory_Box/BG4/Inventory4" to="." method="_on_inventory_gui_input"]
 [connection signal="mouse_entered" from="Boxes/Inventory_Box/BG4/Inventory4" to="." method="_on_inventory_4_mouse_entered"]
+[connection signal="gui_input" from="Boxes/CenterContainer/Comment_Box" to="." method="_on_comment_box_gui_input"]
 [connection signal="gui_input" from="Inventory/Inv" to="." method="_on_inv_gui_input"]
 [connection signal="area_entered" from="Inventory/Collider" to="." method="_on_inventory_area_entered"]
 [connection signal="area_exited" from="Inventory/Collider" to="." method="_on_inventory_area_exited"]

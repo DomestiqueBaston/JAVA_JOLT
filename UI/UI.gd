@@ -536,3 +536,7 @@ func _click_on_inventory_item():
 func _on_close_inventory_timer_timeout():
 	if _is_inventory_open:
 		_close_inventory()
+
+func _on_comment_box_gui_input(event):
+	if event.is_action_pressed("left_mouse_click"):
+		clear_comment_text()
