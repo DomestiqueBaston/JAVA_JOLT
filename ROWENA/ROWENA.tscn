@@ -391,7 +391,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mdy2a"]
 resource_name = "Wait_Base"
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -576,3 +575,5 @@ volume_db = -12.5
 
 [node name="Do_Erk_Stuff" type="AudioStreamPlayer" parent="."]
 volume_db = -12.5
+
+[connection signal="animation_started" from="ROWENA_AnimationPlayer" to="." method="_on_animation_started"]

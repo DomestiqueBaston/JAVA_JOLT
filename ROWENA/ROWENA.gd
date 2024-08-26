@@ -14,9 +14,17 @@ signal get_something_done
 ## walk_to_area].
 signal target_area_reached
 
+# X coordinate that Rowena is walking toward.
 var _target_x: float
+
+# Area2D collider that Rowena is walking toward.
 var _target_area: Area2D
+
+# true if Rowena is walking toward the origin of _target_area.
 var _walk_to_area_origin: bool
+
+# Counts Wait_Base animation cycles to time other wait animations occasionally.
+var _wait_cycle_count = 0
 
 func _ready():
 	_target_x = position.x
@@ -40,7 +48,7 @@ func _physics_process(_delta: float):
 		dir = 1 if _target_x > position.x else -1
 
 	if dir == 0:
-		$ROWENA_AnimationPlayer.play("Wait_Base")
+		_wait_cycle()
 	else:
 		$Rowena_Sprites.scale = Vector2(0.5 * dir, 0.5)
 		velocity.x = SPEED * dir
@@ -151,3 +159,27 @@ func do_stuff(erk: bool = false):
 	$ROWENA_AnimationPlayer.play("Turn_Front")
 	await $ROWENA_AnimationPlayer.animation_finished
 	set_physics_process(true)
+
+#
+# Starts Rowena's wait animation cycle. Does nothing if she is already waiting.
+#
+func _wait_cycle():
+	if not $ROWENA_AnimationPlayer.current_animation.begins_with("Wait"):
+		_wait_cycle_count = 0
+		$ROWENA_AnimationPlayer.play("Wait_Base")
+
+#
+# Callback invoked whenever an animation begins. If Rowena is waiting, then
+# occasionally, after 5-10 Wait_Base animation cycles, the Wait_Nails or
+# Wait_Towel animation is played.
+#
+func _on_animation_started(anim_name: String):
+	if anim_name.begins_with("Wait"):
+		var next_anim = "Wait_Base"
+		if anim_name == "Wait_Base" and _wait_cycle_count >= 4:
+			var f = randf()
+			if f < 0.2:
+				next_anim = "Wait_Nails" if f < 0.1 else "Wait_Towel"
+				_wait_cycle_count = 0
+		$ROWENA_AnimationPlayer.queue(next_anim)
+		_wait_cycle_count += 1
