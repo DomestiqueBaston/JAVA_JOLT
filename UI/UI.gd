@@ -46,7 +46,6 @@ var _available_cursors: Array[int] = []
 
 # Cursor actions available while the inventory is open.
 const _inventory_cursors: Array[int] = [
-	Globals.Cursor.CROSS_PASSIVE,
 	Globals.Cursor.HAND,
 	Globals.Cursor.TRASH
 ]
@@ -492,11 +491,20 @@ func _set_current_inventory_item(index: int):
 			_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
 		else:
 			_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
-	else:
-		for i in _max_inventory_size:
-			var label: Label = get_node(
-				"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
-			label.self_modulate = rowena_text_color if i == index else Color.WHITE
+
+	for i in _inventory_contents.size():
+		var label: Label = get_node(
+			"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
+		if (_inventory_item_being_used >= 0 and
+			_inventory_contents.keys()[i] == _inventory_item_being_used):
+			label.self_modulate = rowena_text_color
+		elif i == index:
+			if _inventory_item_being_used < 0:
+				label.self_modulate = rowena_text_color
+			else:
+				label.self_modulate = doctor_text_color
+		else:
+			label.self_modulate = Color.WHITE
 
 	_current_inventory_index = index
 
