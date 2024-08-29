@@ -85,7 +85,7 @@ const prop_info: Array[String] = [
 	# SPOILED_MILK
 	"That's just some sour milk.",
 	# COFFEE_MAKER
-	"The coffee maker is empty. I'd cry if I had time. The filter holder is stuck...",
+	"That's my coffee maker, FWIW.",
 	# RADIO
 	"That's the radio. How clever, I can turn it up or down...",
 	# REFRIGERATOR_RIGHT
@@ -503,7 +503,7 @@ func _use_object_on_other(object1: int, object2: int):
 			_set_comment(inventory_full_msg)
 		else:
 			await _walk_to_prop(Globals.Prop.COFFEE_MAKER, true)
-			await $ROWENA.do_stuff()
+			await $ROWENA.do_stuff(true)
 			_set_comment("I got the filter holder out intact!")
 			$UI.add_to_inventory(Globals.Prop.COFFEE_MAKER, "Coffee filter holder")
 			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_MAKER, false)
@@ -519,7 +519,7 @@ func _use_object_on_other(object1: int, object2: int):
 			elif is_towel_wet:
 				_set_comment("The towel is already moist.")
 			else:
-				await $ROWENA.do_stuff()
+				await $ROWENA.do_stuff(false)
 				_set_comment("Now the towel is moist.")
 				is_towel_wet = true
 				$UI.add_to_inventory(
@@ -534,12 +534,12 @@ func _use_object_on_other(object1: int, object2: int):
 				$UI.find_in_inventory(object2) < 0):
 				pass
 			elif is_towel_wet:
-				await $ROWENA.do_stuff()
+				await $ROWENA.do_stuff(false)
 				_set_comment("That should be more absorbent now. Let's taste it!")
-				await $ROWENA.do_stuff(true)
+				await $ROWENA.do_erk_stuff()
 				_set_comment("That's disgusting! And there's not enough...")
 			else:
-				await $ROWENA.do_stuff()
+				await $ROWENA.do_stuff(false)
 				_set_comment("That works, but I can't get enough coffee out of it.")
 
 	# huh?

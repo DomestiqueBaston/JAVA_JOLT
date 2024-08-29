@@ -147,14 +147,31 @@ func get_something(height: int, with_sound: bool):
 
 ##
 ## Plays the required animations when Rowena turns away to do something, then
-## turns back. Inbetween, either the animation Do_Stuff (if [param erk] is
-## false) or Do_Erk_Stuff (if [param erk] is true) is played.
+## turns back. Inbetween, the Do_Stuff animation is played. If [param
+## with_sound] is true, a sound effect is played as well.
 ##
-func do_stuff(erk: bool = false):
+func do_stuff(with_sound: bool):
 	set_physics_process(false)
 	$ROWENA_AnimationPlayer.play("Turn_Back")
 	await $ROWENA_AnimationPlayer.animation_finished
-	$ROWENA_AnimationPlayer.play("Do_Erk_Stuff" if erk else "Do_Stuff")
+	$ROWENA_AnimationPlayer.play("Do_Stuff")
+	if with_sound:
+		$Do_Stuff.play()
+	await $ROWENA_AnimationPlayer.animation_finished
+	$ROWENA_AnimationPlayer.play("Turn_Front")
+	await $ROWENA_AnimationPlayer.animation_finished
+	set_physics_process(true)
+
+##
+## Plays the required animations when Rowena turns away to do something
+## disgusting, then turns back. Inbetween, the Do_Erk_Stuff animation is
+## played.
+##
+func do_erk_stuff():
+	set_physics_process(false)
+	$ROWENA_AnimationPlayer.play("Turn_Back")
+	await $ROWENA_AnimationPlayer.animation_finished
+	$ROWENA_AnimationPlayer.play("Do_Erk_Stuff")
 	await $ROWENA_AnimationPlayer.animation_finished
 	$ROWENA_AnimationPlayer.play("Turn_Front")
 	await $ROWENA_AnimationPlayer.animation_finished

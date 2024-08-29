@@ -20,7 +20,7 @@ boot_splash/use_filter=false
 config/icon="res://JJ.png"
 config/macos_native_icon="res://JJ.icns"
 config/windows_native_icon="res://JJ.ico"
-boot_splash/minimum_display_time=2000
+boot_splash/minimum_display_time=1000
 
 [autoload]
 
