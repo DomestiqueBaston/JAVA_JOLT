@@ -79,21 +79,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [270, 271, 272, 273, 274, 275, 276, 277, 278]
 }
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Do_Stuff")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_splmy")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_o301v"]
 resource_name = "Get_Something_High_1"
@@ -610,6 +595,7 @@ stream = ExtResource("10_ggfb7")
 bus = &"FX"
 
 [node name="Do_Stuff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_splmy")
 volume_db = -12.5
 
 [node name="Do_Erk_Stuff" type="AudioStreamPlayer" parent="."]
