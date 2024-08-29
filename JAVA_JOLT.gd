@@ -381,7 +381,7 @@ func _walk_to_prop(which: int = -1, walk_to_origin: bool = false):
 # current prop, and available cursor actions, are updated as appropriate.
 #
 func _on_background_area_entered_object(which: int, _area: Area2D):
-	if $UI.is_dialogue_visible() or $UI.is_inventory_open():
+	if $UI.is_dialogue_visible() or $UI.is_inventory_open() or $UI.is_tutorial_open():
 		return
 
 	# some objects are hidden if the user has taken them, so ignore them

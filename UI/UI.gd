@@ -53,8 +53,11 @@ const _inventory_cursors: Array[int] = [
 # Current cursor action (index into _available_cursors or _inventory_cursors).
 var _current_cursor: int = -1
 
-# true if the mouse is over the icon that opens/closes the inventory.
-var _is_mouse_in_inventory_icon: bool = false
+# true if the mouse is over the question mark that opens/closes the tutorial.
+var _is_mouse_on_help_button: bool = false
+
+# true if the tutorial has been seen
+var _is_tutorial_seen: bool = false
 
 # true if the inventory box is open.
 var _is_inventory_open: bool = false
@@ -116,6 +119,10 @@ func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		if _is_inventory_open:
 			_click_on_inventory_item()
+			get_viewport().set_input_as_handled()
+		elif is_tutorial_open():
+			$Boxes/Tutorial.hide()
+			get_viewport().set_input_as_handled()
 		elif not is_dialogue_visible():
 			if event is InputEventMouse:
 				click_on_background.emit(event.position)
@@ -128,6 +135,13 @@ func _unhandled_input(event: InputEvent):
 	elif event.is_action_pressed("prev_mouse_action"):
 		_prev_cursor()
 		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("inventory_action"):
+		if not is_dialogue_visible():
+			if _is_inventory_open:
+				_close_inventory()
+			else:
+				_open_inventory()
+			get_viewport().set_input_as_handled()
 
 func _tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
@@ -361,24 +375,23 @@ func _prev_cursor():
 func is_inventory_open() -> bool:
 	return _is_inventory_open
 
-func _on_inventory_area_entered(_area: Area2D):
-	_is_mouse_in_inventory_icon = true
-	if not is_dialogue_visible() and not is_inventory_open():
-		$Inventory_Icon_AnimationPlayer.play("Inv_On")
+func is_tutorial_open() -> bool:
+	return $Boxes/Tutorial.visible
 
-func _on_inventory_area_exited(_area: Area2D):
-	_is_mouse_in_inventory_icon = false
-	if not is_dialogue_visible() and not is_inventory_open():
-		$Inventory_Icon_AnimationPlayer.play("Inv_Off")
+func _on_help_button_entered(_area: Area2D):
+	_is_mouse_on_help_button = true
+	if not is_dialogue_visible() and not $Help.visible:
+		$Help_AnimationPlayer.play("Help_On")
 
-func _on_inv_gui_input(event: InputEvent):
-	if (event.is_action_pressed("left_mouse_click") and
-		not is_dialogue_visible()):
-		if _is_inventory_open:
-			_close_inventory()
-		else:
-			_open_inventory()
-		$Inventory/Inv.accept_event()
+func _on_help_button_exited(_area: Area2D):
+	_is_mouse_on_help_button = false
+	if not is_dialogue_visible() and _is_tutorial_seen:
+		$Help_AnimationPlayer.play("Help_Off")
+
+func _on_help_gui_input(event: InputEvent):
+	if event.is_action_pressed("left_mouse_click"):
+		$Boxes/Tutorial.show()
+		_is_tutorial_seen = true
 
 func _open_inventory():
 	$Inventory_AnimationPlayer.play("Open_Inventory")
@@ -394,8 +407,6 @@ func _open_inventory():
 func _close_inventory():
 	$Close_Inventory_Timer.stop()
 	$Inventory_AnimationPlayer.play("Close_Inventory")
-	if not _is_mouse_in_inventory_icon:
-		$Inventory_Icon_AnimationPlayer.play("Inv_Off")
 	_is_inventory_open = false
 	if _inventory_item_being_used < 0:
 		if _available_cursors.is_empty():

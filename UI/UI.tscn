@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://6da50018lwam" path="res://UI/IMAGES/Close.png" id="19_j6wa7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu12a"]
-size = Vector2(16, 6)
+size = Vector2(6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncb4q"]
 size = Vector2(1, 1)
@@ -1572,13 +1572,40 @@ _data = {
 "RESET": SubResource("Animation_ayngy")
 }
 
+[sub_resource type="Animation" id="Animation_utdto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Help/Help_Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Help:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_huf36"]
-resource_name = "Inv_Off"
+resource_name = "Help_Off"
 length = 0.30001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Inventory/Inv:self_modulate")
+tracks/0/path = NodePath("Help/Help_Label:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1590,7 +1617,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Inventory:visible")
+tracks/1/path = NodePath("Help:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1601,12 +1628,12 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_4kbfq"]
-resource_name = "Inv_On"
+resource_name = "Help_On"
 length = 0.30001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Inventory/Inv:self_modulate")
+tracks/0/path = NodePath("Help/Help_Label:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1618,7 +1645,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Inventory:visible")
+tracks/1/path = NodePath("Help:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1628,37 +1655,10 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_utdto"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Inventory/Inv:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Inventory:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qex0e"]
 _data = {
-"Inv_Off": SubResource("Animation_huf36"),
-"Inv_On": SubResource("Animation_4kbfq"),
+"Help_Off": SubResource("Animation_huf36"),
+"Help_On": SubResource("Animation_4kbfq"),
 "RESET": SubResource("Animation_utdto")
 }
 
@@ -1861,29 +1861,27 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_c57qq")
 
-[node name="Inventory" type="Control" parent="."]
-visible = false
+[node name="Help" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_top = -2.0
 offset_right = 18.0
 offset_bottom = 8.0
 
-[node name="Inv" type="Label" parent="Inventory"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="Help_Label" type="Label" parent="Help"]
 layout_mode = 0
 offset_right = 18.0
 offset_bottom = 12.0
 mouse_filter = 1
 theme = ExtResource("1_00ud7")
 theme_override_font_sizes/font_size = 0
-text = "Inv."
+text = "?"
 
-[node name="Collider" type="Area2D" parent="Inventory"]
+[node name="Collider" type="Area2D" parent="Help"]
 collision_layer = 2
 
-[node name="Inventory_Collider" type="CollisionShape2D" parent="Inventory/Collider"]
-position = Vector2(8, 5)
+[node name="Help_Collider" type="CollisionShape2D" parent="Help/Collider"]
+position = Vector2(3, 5)
 shape = SubResource("RectangleShape2D_yu12a")
 
 [node name="Mouse" type="Control" parent="."]
@@ -2077,7 +2075,7 @@ libraries = {
 }
 autoplay = "Blinking"
 
-[node name="Inventory_Icon_AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Help_AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qex0e")
 }
@@ -2100,9 +2098,9 @@ libraries = {
 [connection signal="gui_input" from="Boxes/Inventory_Box/BG4/Inventory4" to="." method="_on_inventory_gui_input"]
 [connection signal="mouse_entered" from="Boxes/Inventory_Box/BG4/Inventory4" to="." method="_on_inventory_4_mouse_entered"]
 [connection signal="gui_input" from="Boxes/CenterContainer/Comment_Box" to="." method="_on_comment_box_gui_input"]
-[connection signal="gui_input" from="Inventory/Inv" to="." method="_on_inv_gui_input"]
-[connection signal="area_entered" from="Inventory/Collider" to="." method="_on_inventory_area_entered"]
-[connection signal="area_exited" from="Inventory/Collider" to="." method="_on_inventory_area_exited"]
+[connection signal="gui_input" from="Help/Help_Label" to="." method="_on_help_gui_input"]
+[connection signal="area_entered" from="Help/Collider" to="." method="_on_help_button_entered"]
+[connection signal="area_exited" from="Help/Collider" to="." method="_on_help_button_exited"]
 [connection signal="timeout" from="Typing_Timer" to="." method="_type_one_character"]
 [connection signal="timeout" from="Comment_Timer" to="." method="_on_comment_timer_timeout"]
 [connection signal="timeout" from="Close_Inventory_Timer" to="." method="_on_close_inventory_timer_timeout"]
