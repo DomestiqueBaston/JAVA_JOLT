@@ -40,26 +40,29 @@ Là prend place le jeu.
 
 Fin (séquence prévue en animation) ! /!\ Il faudra prendre garde à ce que Rowena soit loin des bords de l’écran pour l’animation où elle attrape son téléphone en la faisant se déplacer avant si besoin car il est sur le comptoir de la cuisine (peu importe où, on ne le voit pas le reste du jeu).
 
-
 « Dialogue » de la séquence finale, quand le téléphone sonne et que Rowena répond.
+
+1 seconde après que Rowena ait recraché son café et se soit retournée :
 
 Le téléphone sonne… (Phone_Ring – AudioStreamPlayer2D – dans la scène Rowena.tscn qui est en mode « loop »)
 
-Rowena : Uh -oh! That smells like disaster…
+Rowena (Ici, on utilise la boîte des commentaires, pas le setup des dialogues) : Uh -oh! That smells like disaster…
 
 Là commence l’animation Phone_Call dans la scène Rowena.tscn où elle attrape son téléphone et la sonnerie du téléphone se coupe à la frame 21 de l’animation).
 
 Elle répond à son téléphone. On freeze l’animation à la frame 30.
 
+Pour ce dialogue, on utilisera le setup des... dialogues. Les phrases de Rowena auront toujours la même couleur (Rose) et le Boss sera en violet (144, 91, 194). La couleur du Boss sera éventuellement à exporter s’il faut la modifier.
+
 Rowena : Hello ?
 
-Boss : Rowena ? Are you kidding me ? Do you even grasp the colossal clusterfuck you've unleashed ? Clients are on the brink of losing their shit, deadlines are being pulverized, and Zeus knows what you're doing ! I can't keep mopping up after your mind-numbing incompetence. It's beyond comprehension, you've hit a new low of ineptitude ! You've single-handedly torpedoed everything ! You are so expendable, Rowena ! Let's skip the pleasantries: You're goddamn fired ! Don't even think about showing your face here ever again ! You're done ! Finished !
+Boss : Rowena ? Are you kidding me ? Do you even grasp the colossal clusterfuck you've unleashed ? Clients are on the brink of losing their shit, deadlines are being pulverized, and Zeus knows what you're doing ! I can't keep mopping up after your mind-numbing incompetence. It's beyond comprehension, you've hit a new low of ineptitude !(BREAK avec les « ... », sinon le texte ne rentrera pas dans la fenêtre et on enchaîne automatiquement au bout de 2 secondes si le joueur ne clique pas) You've single-handedly torpedoed everything ! You are so expendable, Rowena ! Let's skip the pleasantries: You're goddamn fired ! Don't even think about showing your face here ever again ! You're done ! Finished !(BREAK avec les « ... », sinon le texte ne rentrera pas dans la fenêtre et on enchaîne automatiquement au bout de 2 secondes si le joueur ne clique pas). Fin du dialogue.
 
-Sonnerie de fin de communication. On relance l’animation à la frame 31 et on joue le son Hang_Up de la scène Rowena.tscn à partir de la frame 35.
+On relance l’animation à la frame 31.
 
 Elle lâche son téléphone qui tombe par terre.
 
-Rowena : (Wait_Base animation)That's it then... (Nonsense animation) Well. Back to bed. (Walk animation to the right until Rowena’s out of the field)
+Rowena (Ici, on utilise la boîte des commentaires, pas le setup des dialogues) : (Wait_Base animation)That's it then... (Nonsense animation) Well. Back to bed. (Walk animation to the right until Rowena’s out of the field).
 
 As soon as Rowena’s out, we play the OUTRO.tscn.
 Ce que Rowena peut essayer de faire (ou pas)...
@@ -109,7 +112,7 @@ Là où l’on peut trouver des éléments cachés nécessaires à une autre ten
 
 3ème tentative : faire recuire le café de la veille pris dans la poubelle.
 	Elle ira prendre un verre dans le placard vitré à gauche de la hotte/micro-onde au dessus de la gazinière et le remplira d’eau au robinet.
-	Elle videra ensuite ce verre d’eau dans le réservoir de la cafetière.
+	Elle videra ensuite ce verre d’eau dans le réservoir de la ².
 	Rowena refusera de fouiller dans la poubelle tant qu’il ne sera pas au moins 9h10 (on réglera ce délai plus tard).
 	Une fois l’heure atteinte, à ce moment-là, n’ayant plus trop le choix, Rowena acceptera de fouiller dans la poubelle sous l’évier pour récupérer le filtre à café plein de la veille. Le replacera dans la cafetière pour le repasser. Allumera la cafetière.
 	Quand le café sera passé, elle prendra la tasse rouge devant les couteaux de cuisine (à droite de la bouteille de lait sur le plan de travail) et pas celle à côté de la cafetière car elle est ébréchée. Se servira une tasse de café et la boira… pour la recracher aussitôt !

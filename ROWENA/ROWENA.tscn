@@ -260,6 +260,33 @@ tracks/2/keys = {
 "times": PackedFloat32Array(2.1)
 }
 tracks/2/use_blend = true
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Hang_Up")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 1.60021,
+"start_offset": 0.0,
+"stream": ExtResource("6_xr3ty")
+}],
+"times": PackedFloat32Array(3.1)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Hang_Up:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.7, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-30.0, -30.0, -40.0]
+}
 
 [sub_resource type="Animation" id="Animation_ta5w8"]
 length = 0.001
@@ -287,6 +314,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hang_Up:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-30.0]
 }
 
 [sub_resource type="Animation" id="Animation_wvops"]
@@ -551,10 +590,10 @@ bus = &"FX"
 
 [node name="Phone_Ring" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_gkr5f")
+volume_db = -20.0
 bus = &"FX"
 
 [node name="Hang_Up" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_xr3ty")
 volume_db = -30.0
 bus = &"FX"
 

@@ -2024,18 +2024,18 @@ texture = ExtResource("9_f052n")
 [node name="Open" type="TextureRect" parent="Mouse"]
 visible = false
 layout_mode = 0
-offset_left = -8.5
+offset_left = -7.5
 offset_top = -8.5
-offset_right = 7.5
+offset_right = 8.5
 offset_bottom = 7.5
 texture = ExtResource("18_uto5b")
 
 [node name="Close" type="TextureRect" parent="Mouse"]
 visible = false
 layout_mode = 0
-offset_left = -8.5
+offset_left = -7.5
 offset_top = -8.5
-offset_right = 7.5
+offset_right = 8.5
 offset_bottom = 7.5
 texture = ExtResource("19_j6wa7")
 
