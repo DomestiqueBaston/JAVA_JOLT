@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dak2h42jqim0i"]
+[gd_scene load_steps=28 format=3 uid="uid://dak2h42jqim0i"]
 
 [ext_resource type="Script" path="res://INTRO_OUTRO/INTRO.gd" id="1_pqvu6"]
 [ext_resource type="Texture2D" uid="uid://cacpu7un1mhn3" path="res://INTRO_OUTRO/IMAGES/Titre.png" id="2_6dww4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/IMAGES/Radio_On_Lights_On.png" id="9_028bb"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/IMAGES/ROWENA.png" id="9_a4uop"]
 [ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/IMAGES/Coffee_Cupboard_Open.png" id="9_n6jc3"]
+[ext_resource type="Texture2D" uid="uid://dry5xcdo0wry7" path="res://INTRO_OUTRO/IMAGES/Test.png" id="9_r6oxp"]
 [ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/SOUNDS/Barefoot_Steps_A.ogg" id="10_1mach"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing_Doc.ogg" id="14_lvr4p"]
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="15_iioys"]
@@ -100,7 +101,7 @@ tracks/2/path = NodePath("../Credits/Titre:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 8.5, 20.3),
+"times": PackedFloat32Array(0, 8.5, 18.4667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -112,7 +113,7 @@ tracks/3/path = NodePath("../Credits/Game:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 22.3, 34.1),
+"times": PackedFloat32Array(0, 20.4667, 30.0667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -124,7 +125,7 @@ tracks/4/path = NodePath("../Credits/Code:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 36.1, 47.7),
+"times": PackedFloat32Array(0, 32.0667, 41.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -136,7 +137,7 @@ tracks/5/path = NodePath("../Credits/Graphics:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 63.2, 74.5),
+"times": PackedFloat32Array(0, 54.3, 63.4667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -148,7 +149,7 @@ tracks/6/path = NodePath("../Credits/Sound:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 49.8, 61.2),
+"times": PackedFloat32Array(0, 43.3, 52.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -208,7 +209,7 @@ tracks/11/path = NodePath("../Monologue/Box/Comments:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 84.2, 85.4, 85.7, 87.4, 89.4, 93),
+"times": PackedFloat32Array(0, 84.3333, 85.4, 85.8, 87.4, 89.4, 93),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true, false, true, false]
@@ -322,10 +323,10 @@ tracks/18/path = NodePath("../Monologue/Box/Comments:visible_ratio")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(84.2, 84.6, 85.6, 85.7, 86.5, 89.3, 89.4, 92.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(84.2, 85.6, 85.7, 89.3, 89.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+"values": [1.0, 1.0, 1.0, 1.0, 1.0]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
@@ -346,10 +347,10 @@ tracks/20/path = NodePath("../Monologue/Box/PanelContainer:size")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(84.1667, 84.3667, 84.6, 85.6333, 85.6667, 85.8, 86.5333, 87.4333, 89.2667, 89.3, 89.5, 90.3667, 90.4667, 90.5333, 91.4667, 91.5333, 92.5, 92.7, 93.0667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(84.2, 85.6333, 85.6667, 87.4333, 89.2667, 89.3, 93.0667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(10, 9), Vector2(10, 9), Vector2(15, 9), Vector2(15, 9), Vector2(10, 9), Vector2(10, 9), Vector2(59, 9), Vector2(59, 9), Vector2(59, 9), Vector2(10, 9), Vector2(10, 9), Vector2(54, 9), Vector2(54, 9), Vector2(54, 18), Vector2(54, 18), Vector2(54, 27), Vector2(54, 27), Vector2(63, 27), Vector2(63, 27)]
+"values": [Vector2(15, 9), Vector2(15, 9), Vector2(59, 9), Vector2(59, 9), Vector2(59, 9), Vector2(63, 27), Vector2(63, 27)]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
@@ -362,6 +363,18 @@ tracks/21/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("../Credits/Test:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 65.4667, 74.1667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_a6bnw"]
@@ -594,6 +607,18 @@ tracks/18/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("../Credits/Test:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vcab"]
 _data = {
@@ -642,6 +667,10 @@ centered = false
 
 [node name="Graphics" type="Sprite2D" parent="Credits"]
 texture = ExtResource("5_30fw1")
+centered = false
+
+[node name="Test" type="Sprite2D" parent="Credits"]
+texture = ExtResource("9_r6oxp")
 centered = false
 
 [node name="Radio_On_Lights_On" type="Sprite2D" parent="."]
