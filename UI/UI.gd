@@ -33,6 +33,9 @@ signal use_object_on_other(object1: int, object2: int)
 ## Signal emitted when user removes an inventory item (from [enum Globals.Prop]).
 signal inventory_item_removed(which: int)
 
+## Signal emitted when the comment box is closed, automatically or by the user.
+signal comment_closed
+
 enum { ROWENA, DOCTOR }
 
 # Color of unhighlighted text options in current dialogue.
@@ -220,10 +223,14 @@ func set_comment_text(text: String, x: float, left_justify: bool):
 
 func clear_comment_text():
 	$Comment_Timer.stop()
-	$Boxes/CenterContainer.hide()
+	_hide_comment_box()
 
 func _on_comment_timer_timeout():
+	_hide_comment_box()
+
+func _hide_comment_box():
 	$Boxes/CenterContainer.hide()
+	comment_closed.emit()
 
 func _on_three_points_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):

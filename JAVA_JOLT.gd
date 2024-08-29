@@ -536,6 +536,7 @@ func _use_object_on_other(object1: int, object2: int):
 			elif is_towel_wet:
 				await $ROWENA.do_stuff(false)
 				_set_comment("That should be more absorbent now. Let's taste it!")
+				await $UI.comment_closed
 				await $ROWENA.do_erk_stuff()
 				_set_comment("That's disgusting! And there's not enough...")
 			else:
