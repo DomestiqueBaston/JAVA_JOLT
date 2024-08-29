@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=45 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
 [ext_resource type="Script" path="res://UI/New_Mouse.gd" id="2_mswu7"]
 [ext_resource type="StyleBox" uid="uid://cls45jvu2j875" path="res://UI/Comment_Box.tres" id="3_re3bw"]
+[ext_resource type="Texture2D" uid="uid://u7g33lyvdb6d" path="res://UI/IMAGES/Tutorial.png" id="4_c57qq"]
 [ext_resource type="Texture2D" uid="uid://vqd5mrv0n0yu" path="res://UI/IMAGES/Arrow.png" id="4_ru12x"]
 [ext_resource type="Texture2D" uid="uid://vrc8b1f5n4n4" path="res://UI/IMAGES/Eye.png" id="5_g7pd6"]
 [ext_resource type="AudioStream" uid="uid://dcw2s7od3fb5f" path="res://UI/Typing_Doc.ogg" id="5_ie2x1"]
@@ -1853,6 +1854,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="Tutorial" type="TextureRect" parent="Boxes"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_c57qq")
+
 [node name="Inventory" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -1868,7 +1876,6 @@ offset_right = 18.0
 offset_bottom = 12.0
 mouse_filter = 1
 theme = ExtResource("1_00ud7")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 0
 text = "Inv."
 
