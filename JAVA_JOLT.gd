@@ -500,7 +500,7 @@ func _use_object_on_other(object1: int, object2: int):
 		if not coffee_maker_seen:
 			_set_comment("That's not my sparring partner.")
 		elif $UI.is_inventory_full():
-			_set_comment(inventory_full_msg)
+			_set_comment("Hey, I'm not going around with Santa's bag!")
 		else:
 			await _walk_to_prop(Globals.Prop.COFFEE_MAKER, true)
 			await $ROWENA.do_stuff(true)
