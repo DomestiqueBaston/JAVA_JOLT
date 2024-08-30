@@ -333,14 +333,28 @@ func _perform_hand_action():
 			else:
 				_set_comment("Remember? Coffee...")
 			take_height = 4
+		Globals.Prop.CREAM_POTS:
+			_set_comment("Not now.")
 		Globals.Prop.YOGHURTS:
 			take_label = "Yoghurt"
 			take_msg = "OK, OK..."
 			take_height = 3
+		Globals.Prop.SAUCE_PAN_IN_FRIDGE:
+			_set_comment("Yeah, I'll leave that there.")
 		Globals.Prop.EGGS:
 			take_label = "Egg"
 			take_msg = "OK but I need to be extra careful."
 			take_height = 2
+		Globals.Prop.GREEN_PEPPER:
+			_set_comment("It's way too early for that!")
+		Globals.Prop.TOMATOES:
+			_set_comment("Hmm... Nope!")
+		Globals.Prop.CAULIFLOWER:
+			_set_comment("Not now.")
+		Globals.Prop.YELLOW_PEPPER:
+			_set_comment("OK. No, just kidding.")
+		Globals.Prop.FRUIT:
+			_set_comment("Don't you remember? I need coffee!")
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -550,8 +564,15 @@ func _update_current_prop():
 			Globals.Prop.FRUIT_JUICE_BOTTLES, \
 			Globals.Prop.MILK_BOTTLES, \
 			Globals.Prop.BUTTER_KNIFE, \
+			Globals.Prop.CREAM_POTS, \
 			Globals.Prop.YOGHURTS, \
-			Globals.Prop.EGGS:
+			Globals.Prop.SAUCE_PAN_IN_FRIDGE, \
+			Globals.Prop.EGGS, \
+			Globals.Prop.GREEN_PEPPER, \
+			Globals.Prop.TOMATOES, \
+			Globals.Prop.CAULIFLOWER, \
+			Globals.Prop.YELLOW_PEPPER, \
+			Globals.Prop.FRUIT:
 				if $UI.find_in_inventory(current_prop) < 0:
 					actions.append(Globals.Cursor.HAND)
 			Globals.Prop.WINDOW_RIGHT:
