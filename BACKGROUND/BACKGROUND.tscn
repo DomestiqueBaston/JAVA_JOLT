@@ -572,7 +572,6 @@ position = Vector2(89, 34.5)
 polygon = PackedVector2Array(-3, 2.5, -4, 2.5, -4, -4.5, -2, -4.5, 3, -4.5, 3, -2.5, 4, -2.5, 4, 1.5, 5, 1.5, 5, 4.5, -3.00886, 4.5)
 
 [node name="Red_Coffee_Cup_Left_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
-visible = false
 collision_layer = 2
 metadata/bg_level = 1
 
