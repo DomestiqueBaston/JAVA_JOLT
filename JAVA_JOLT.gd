@@ -266,6 +266,8 @@ func _perform_hand_action():
 			take_height = 1
 		Globals.Prop.TOASTER:
 			_set_comment("It works and I can use it any time.")
+		Globals.Prop.TAP:
+			_set_comment("Yes. And?")
 		Globals.Prop.MANDOLIN:
 			take_label = "Vegetable slicer"
 			take_msg = "As long as I don't slice my fingers off."
@@ -479,6 +481,7 @@ func _update_current_prop():
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
 			Globals.Prop.TOASTER, \
+			Globals.Prop.TAP, \
 			Globals.Prop.MANDOLIN, \
 			Globals.Prop.FOOD_PROCESSOR, \
 			Globals.Prop.FRUIT_BASKET, \
