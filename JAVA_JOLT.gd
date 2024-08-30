@@ -264,6 +264,10 @@ func _perform_hand_action():
 				take_label = "Small towel"
 			take_msg = "OK, one small towel."
 			take_height = 1
+		Globals.Prop.OLIVE_OIL_BOTTLE:
+			take_label = "Olive oil"
+			take_msg = "OK, but it's just to please you."
+			take_height = 3
 		Globals.Prop.TOASTER:
 			_set_comment("It works and I can use it any time.")
 		Globals.Prop.COOKIE_POT:
@@ -402,6 +406,7 @@ func _on_background_area_entered_object(which: int, _area: Area2D):
 
 	const singleton_objects = [
 		Globals.Prop.TOWEL_SMALL,
+		Globals.Prop.OLIVE_OIL_BOTTLE,
 		Globals.Prop.MANDOLIN,
 		Globals.Prop.KETTLE,
 	]
@@ -484,6 +489,7 @@ func _update_current_prop():
 				actions.append(Globals.Cursor.OPEN)
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
+			Globals.Prop.OLIVE_OIL_BOTTLE, \
 			Globals.Prop.TOASTER, \
 			Globals.Prop.COOKIE_POT, \
 			Globals.Prop.TAP, \

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=56 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b0ug13c7pmd0v" path="res://BACKGROUND/IMAGES/Kettle_Out.png" id="8_inw3g"]
 [ext_resource type="Texture2D" uid="uid://73t1sr77us35" path="res://BACKGROUND/IMAGES/Mandoline_Out.png" id="9_erbxf"]
 [ext_resource type="PackedScene" uid="uid://ra2c3mr66sx3" path="res://BACKGROUND/REFRIGERATOR_RIGHT.tscn" id="9_mmix8"]
+[ext_resource type="Texture2D" uid="uid://mtbkpijml1im" path="res://BACKGROUND/IMAGES/Olive_Oil_Bottle_Out.png" id="10_bc2ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -179,6 +180,11 @@ centered = false
 [node name="Mandolin_Out" type="Sprite2D" parent="Removed_Objects"]
 visible = false
 texture = ExtResource("9_erbxf")
+centered = false
+
+[node name="Olive_Oil_Bottle_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("10_bc2ls")
 centered = false
 
 [node name="Open_Objects" type="Node2D" parent="."]
@@ -470,10 +476,11 @@ position = Vector2(43.5, 33.5)
 polygon = PackedVector2Array(2.5, 3.5, 2.5, 5.5, -1.5, 5.5, -1.5, 3.5, -0.5, 3.5, -0.5, 1.5, -3.5, 0.5, -3.5, -0.5, -1.5, -0.5, -1.5, -1.5, -3.5, -1.5, -3.5, -3.5, -2.5, -4.5, -0.5, -4.5, -0.5, -5.5, 0.5, -5.5, 1.5, -3.5, 3.5, -4.5, 4.5, -4.5, 4.5, -3.5, 2.5, -1.5, 2.5, -0.5, 2.5, 0.5, 1.5, 2.5, 1.5, 3.5)
 
 [node name="Olive_Oil_Bottle_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(136, 36)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Olive_Oil_Bottle" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Olive_Oil_Bottle_Collider"]
-position = Vector2(136, 36)
 shape = SubResource("RectangleShape2D_t1y8r")
 
 [node name="Salt_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
