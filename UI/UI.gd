@@ -53,9 +53,6 @@ const _inventory_cursors: Array[int] = [
 # Current cursor action (index into _available_cursors or _inventory_cursors).
 var _current_cursor: int = -1
 
-# true if the mouse is over the question mark that opens/closes the tutorial.
-var _is_mouse_on_help_button: bool = false
-
 # true if the tutorial has been seen
 var _is_tutorial_seen: bool = false
 
@@ -379,12 +376,10 @@ func is_tutorial_open() -> bool:
 	return $Boxes/Tutorial.visible
 
 func _on_help_button_entered(_area: Area2D):
-	_is_mouse_on_help_button = true
-	if not is_dialogue_visible() and not $Help.visible:
+	if not (is_dialogue_visible() or is_tutorial_open() or $Help.visible):
 		$Help_AnimationPlayer.play("Help_On")
 
 func _on_help_button_exited(_area: Area2D):
-	_is_mouse_on_help_button = false
 	if not is_dialogue_visible() and _is_tutorial_seen:
 		$Help_AnimationPlayer.play("Help_Off")
 
