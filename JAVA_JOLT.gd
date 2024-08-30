@@ -314,13 +314,6 @@ func _perform_hand_action():
 			take_height = 3
 		Globals.Prop.SAUCE_PAN:
 			_set_comment("No, there's still sauce in it.")
-		Globals.Prop.BUTTER_KNIFE:
-			if butter_knife_seen:
-				take_label = "Butter knife"
-				take_msg = "OK, I'll just take that knife."
-			else:
-				_set_comment("Remember? Coffee...")
-			take_height = 4
 		Globals.Prop.SMOOTHIE_BOTTLES:
 			take_label = "Smoothie"
 			take_msg = "I drink it before working out. But OK, one."
@@ -333,6 +326,21 @@ func _perform_hand_action():
 			take_label = "Bottle of milk"
 			take_msg = "OK, one bottle of milk."
 			take_height = 1
+		Globals.Prop.BUTTER_KNIFE:
+			if butter_knife_seen:
+				take_label = "Butter knife"
+				take_msg = "OK, I'll just take that knife."
+			else:
+				_set_comment("Remember? Coffee...")
+			take_height = 4
+		Globals.Prop.YOGHURTS:
+			take_label = "Yoghurt"
+			take_msg = "OK, OK..."
+			take_height = 3
+		Globals.Prop.EGGS:
+			take_label = "Egg"
+			take_msg = "OK but I need to be extra careful."
+			take_height = 2
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -538,10 +546,12 @@ func _update_current_prop():
 			Globals.Prop.SAUCE_PAN, \
 			Globals.Prop.TOWEL_LARGE, \
 			Globals.Prop.TOWEL_SMALL, \
-			Globals.Prop.BUTTER_KNIFE, \
 			Globals.Prop.SMOOTHIE_BOTTLES, \
 			Globals.Prop.FRUIT_JUICE_BOTTLES, \
-			Globals.Prop.MILK_BOTTLES:
+			Globals.Prop.MILK_BOTTLES, \
+			Globals.Prop.BUTTER_KNIFE, \
+			Globals.Prop.YOGHURTS, \
+			Globals.Prop.EGGS:
 				if $UI.find_in_inventory(current_prop) < 0:
 					actions.append(Globals.Cursor.HAND)
 			Globals.Prop.WINDOW_RIGHT:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ra2c3mr66sx3"]
+[gd_scene load_steps=24 format=3 uid="uid://ra2c3mr66sx3"]
 
 [ext_resource type="Script" path="res://BACKGROUND/REFRIGERATOR_RIGHT.gd" id="1_gquyx"]
 [ext_resource type="Texture2D" uid="uid://gym227kuxgio" path="res://BACKGROUND/IMAGES/Refrigerator_Right_Open.png" id="1_jhg0m"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://urv2i5aor78o" path="res://BACKGROUND/IMAGES/Milk_Bottle_Out.png" id="4_rl5am"]
 [ext_resource type="Texture2D" uid="uid://8g0tp2srlni4" path="res://BACKGROUND/IMAGES/Smoothie_Bottle_Out.png" id="5_3p7x3"]
 [ext_resource type="Texture2D" uid="uid://l4jfropjntil" path="res://BACKGROUND/IMAGES/Fruit_Juice_Bottles_Out.png" id="6_h65x4"]
+[ext_resource type="Texture2D" uid="uid://chj7pb6o1uf5x" path="res://BACKGROUND/IMAGES/Yoghurts_Out.png" id="7_makik"]
+[ext_resource type="Texture2D" uid="uid://dnps06e87ryyd" path="res://BACKGROUND/IMAGES/Eggs_Out.png" id="8_iyh0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5xtp"]
 size = Vector2(5, 6)
@@ -118,11 +120,12 @@ position = Vector2(26, 34.5)
 shape = SubResource("RectangleShape2D_waql2")
 
 [node name="Yoghurts_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(29, 37)
 collision_layer = 2
-metadata/bg_level = 2
+collision_mask = 5
+metadata/bg_level = 3
 
 [node name="Yoghurts" type="CollisionShape2D" parent="Stuff_Colliders/Yoghurts_Collider"]
-position = Vector2(29, 37)
 shape = SubResource("RectangleShape2D_un6gl")
 
 [node name="Sauce_Pan_Collider" type="Area2D" parent="Stuff_Colliders"]
@@ -132,16 +135,13 @@ metadata/bg_level = 2
 [node name="Sauce_Pan" type="CollisionPolygon2D" parent="Stuff_Colliders/Sauce_Pan_Collider"]
 polygon = PackedVector2Array(27, 36, 27, 33, 29, 33, 29, 34, 33, 34, 33, 35, 29, 35, 29, 36)
 
-[node name="Sauce_Pan_Yoghurts_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Sauce_Pan_Collider"]
-visible = false
-polygon = PackedVector2Array(27, 38, 27, 33, 29, 33, 29, 34, 33, 34, 33, 35, 29, 35, 29, 38)
-
 [node name="Eggs_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(30, 44.5)
 collision_layer = 2
+collision_mask = 5
 metadata/bg_level = 2
 
 [node name="Eggs" type="CollisionShape2D" parent="Stuff_Colliders/Eggs_Collider"]
-position = Vector2(30, 44.5)
 shape = SubResource("RectangleShape2D_h23ti")
 
 [node name="Green_Pepper_Collider" type="Area2D" parent="Stuff_Colliders"]
@@ -214,4 +214,12 @@ centered = false
 [node name="Fruit_Juice_Bottles_Out" type="Sprite2D" parent="Removed_Objects"]
 visible = false
 texture = ExtResource("6_h65x4")
+centered = false
+
+[node name="Yoghurts_Out" type="Sprite2D" parent="Removed_Objects"]
+texture = ExtResource("7_makik")
+centered = false
+
+[node name="Eggs_Out" type="Sprite2D" parent="Removed_Objects"]
+texture = ExtResource("8_iyh0l")
 centered = false
