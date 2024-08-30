@@ -266,6 +266,10 @@ func _perform_hand_action():
 			take_height = 1
 		Globals.Prop.TOASTER:
 			_set_comment("It works and I can use it any time.")
+		Globals.Prop.COOKIE_POT:
+			take_label = "Cookie"
+			take_msg = "Only one. But I need my coffee first."
+			take_height = 3
 		Globals.Prop.TAP:
 			_set_comment("Yes. And?")
 		Globals.Prop.MANDOLIN:
@@ -481,6 +485,7 @@ func _update_current_prop():
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
 			Globals.Prop.TOASTER, \
+			Globals.Prop.COOKIE_POT, \
 			Globals.Prop.TAP, \
 			Globals.Prop.MANDOLIN, \
 			Globals.Prop.FOOD_PROCESSOR, \

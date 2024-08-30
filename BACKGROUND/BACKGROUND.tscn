@@ -531,21 +531,27 @@ visible = false
 polygon = PackedVector2Array(139, 31, 145, 31, 145, 39, 143, 39, 143, 35, 141, 35, 141, 39, 139, 39)
 
 [node name="Cookie_Pot_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(136, 36)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Cookie_Pot" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cookie_Pot_Collider"]
+position = Vector2(-136, -36)
 polygon = PackedVector2Array(133, 39, 133, 30, 139, 30, 139, 35, 138, 35, 138, 39, 137, 39, 137, 33, 135, 33, 135, 39)
 
 [node name="Cookie_Pepper_Olive_Oil_Bottle_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cookie_Pot_Collider"]
 visible = false
+position = Vector2(-136, -36)
 polygon = PackedVector2Array(133, 39, 133, 30, 139, 30, 139, 39)
 
 [node name="Cookie_Pot_Pepper_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cookie_Pot_Collider"]
 visible = false
+position = Vector2(-136, -36)
 polygon = PackedVector2Array(133, 39, 133, 30, 139, 30, 139, 39, 137, 39, 137, 33, 135, 33, 135, 39)
 
 [node name="Cookie_Pot_Oilve_Oil_Bottle_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cookie_Pot_Collider"]
 visible = false
+position = Vector2(-136, -36)
 polygon = PackedVector2Array(133, 39, 133, 30, 139, 30, 139, 35, 138, 35, 138, 39)
 
 [node name="Tap_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
