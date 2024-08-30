@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=55 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://na6eamuhj80a" path="res://ROWENA/SOUNDS/Fridge_Open_Close.ogg" id="6_jvbuw"]
 [ext_resource type="Texture2D" uid="uid://cyghiycxbscrl" path="res://BACKGROUND/IMAGES/Coffee_Filter_Holder_Out.png" id="7_2civg"]
 [ext_resource type="Texture2D" uid="uid://b0ug13c7pmd0v" path="res://BACKGROUND/IMAGES/Kettle_Out.png" id="8_inw3g"]
+[ext_resource type="Texture2D" uid="uid://73t1sr77us35" path="res://BACKGROUND/IMAGES/Mandoline_Out.png" id="9_erbxf"]
 [ext_resource type="PackedScene" uid="uid://ra2c3mr66sx3" path="res://BACKGROUND/REFRIGERATOR_RIGHT.tscn" id="9_mmix8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
@@ -173,6 +174,11 @@ centered = false
 [node name="Kettle_Out" type="Sprite2D" parent="Removed_Objects"]
 visible = false
 texture = ExtResource("8_inw3g")
+centered = false
+
+[node name="Mandolin_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("9_erbxf")
 centered = false
 
 [node name="Open_Objects" type="Node2D" parent="."]
@@ -561,10 +567,13 @@ visible = false
 position = Vector2(98, 38)
 shape = SubResource("RectangleShape2D_gwl77")
 
-[node name="Mandoline_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+[node name="Mandolin_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(96, 36)
 collision_layer = 2
+collision_mask = 5
 
-[node name="Mandoline" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Mandoline_Collider"]
+[node name="Mandolin" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Mandolin_Collider"]
+position = Vector2(-96, -36)
 polygon = PackedVector2Array(94, 39, 94, 33, 96, 33, 97, 34, 97, 37, 96, 37, 96, 39)
 
 [node name="Food_Processor_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]

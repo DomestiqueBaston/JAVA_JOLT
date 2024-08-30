@@ -53,7 +53,7 @@ var _open_object = -1
 	$Stuff_Colliders/Mid/Cookie_Pot_Collider,					# COOKIE_POT
 	$Stuff_Colliders/Mid/Tap_Collider,							# TAP
 	$Stuff_Colliders/Mid/Plastic_Boxes_Collider,				# PLASTIC_BOXES
-	$Stuff_Colliders/Mid/Mandoline_Collider,					# MANDOLINE
+	$Stuff_Colliders/Mid/Mandolin_Collider,						# MANDOLIN
 	$Stuff_Colliders/Mid/Food_Processor_Collider,				# FOOD_PROCESSOR
 	$Stuff_Colliders/Mid/Red_Coffee_Cup_Left_Collider,			# RED_COFFEE_CUP_LEFT
 	$Stuff_Colliders/Mid/Brown_Coffee_Cup_Collider,				# BROWN_COFFEE_CUP
@@ -124,6 +124,8 @@ func set_object_visible(which: int, vis: bool):
 				$Removed_Objects/Tea_Towel_Out.visible = not vis
 			Globals.Prop.COFFEE_MAKER:
 				$Removed_Objects/Coffee_Filter_Holder_Out.visible = not vis
+			Globals.Prop.MANDOLIN:
+				$Removed_Objects/Mandolin_Out.visible = not vis
 			Globals.Prop.KETTLE:
 				$Removed_Objects/Kettle_Out.visible = not vis
 	else:

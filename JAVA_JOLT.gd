@@ -120,7 +120,7 @@ const prop_info: Array[String] = [
 	"That's the faucet.",
 	# PLASTIC_BOXES
 	"Tupperware. I know how to make them fart!",
-	# MANDOLINE
+	# MANDOLIN
 	"That's my miracle vegetable slicer, as seen on TV.",
 	# FOOD_PROCESSOR
 	"That's my food processor.",
@@ -264,6 +264,12 @@ func _perform_hand_action():
 				take_label = "Small towel"
 			take_msg = "OK, one small towel."
 			take_height = 1
+		Globals.Prop.MANDOLIN:
+			take_label = "Vegetable slicer"
+			take_msg = "As long as I don't slice my fingers off."
+			take_height = 3
+		Globals.Prop.FOOD_PROCESSOR:
+			_set_comment("It's not a Rank Xerox, no way.")
 		Globals.Prop.FRUIT_BASKET:
 			take_label = "Red apple"
 			take_msg = "Just a red apple, nothing more."
@@ -388,6 +394,7 @@ func _on_background_area_entered_object(which: int, _area: Area2D):
 
 	const singleton_objects = [
 		Globals.Prop.TOWEL_SMALL,
+		Globals.Prop.MANDOLIN,
 		Globals.Prop.KETTLE,
 	]
 	if which in singleton_objects and $UI.find_in_inventory(which) >= 0:
@@ -469,6 +476,8 @@ func _update_current_prop():
 				actions.append(Globals.Cursor.OPEN)
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
+			Globals.Prop.MANDOLIN, \
+			Globals.Prop.FOOD_PROCESSOR, \
 			Globals.Prop.FRUIT_BASKET, \
 			Globals.Prop.PRESSURE_COOKER, \
 			Globals.Prop.KETTLE, \
@@ -478,7 +487,6 @@ func _update_current_prop():
 			Globals.Prop.MILK_BOTTLES:
 				if $UI.find_in_inventory(current_prop) < 0:
 					actions.append(Globals.Cursor.HAND)
-
 			Globals.Prop.WINDOW_RIGHT:
 				actions.append(Globals.Cursor.QUIT)
 		$UI.set_available_cursors(actions)
