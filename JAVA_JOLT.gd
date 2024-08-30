@@ -387,7 +387,8 @@ func _on_background_area_entered_object(which: int, _area: Area2D):
 	# some objects are hidden if the user has taken them, so ignore them
 
 	const singleton_objects = [
-		Globals.Prop.TOWEL_SMALL
+		Globals.Prop.TOWEL_SMALL,
+		Globals.Prop.KETTLE,
 	]
 	if which in singleton_objects and $UI.find_in_inventory(which) >= 0:
 		return
