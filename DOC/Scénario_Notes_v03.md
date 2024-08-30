@@ -30,7 +30,7 @@ Plan fixe de la cuisine. Lumière éteinte.
 
 Fin du générique
 
-	Clic ! (la lumière s’allume). Rowena entre dans la cuisine et referme la porte de la chambre (la salle de bain était de l’autre côté de la chambre, donc). Elle se dirige vers la cafetière et pose une main dessus avant de diriger l’autre vers le placard du dessus légèrement sur la droite. Elle l’ouvre et va saisir le… HORREUR ! Il n’y a plus de café. Il lui en faut absolument ! Il ne lui reste plus que 15 (ou jusqu’à 30, on verra plus tard) minutes avant de partir au boulot.
+	Clic ! (la lumière s’allume). Rowena entre dans la cuisine et referme la porte de la chambre (la salle de bain était de l’autre côté de la chambre, donc). Elle se dirige vers le placard à café légèrement sur la droite. Elle l’ouvre et va saisir le… HORREUR ! Il n’y a plus de café. Il lui en faut absolument ! Il ne lui reste plus que 15 (ou jusqu’à 30, on verra plus tard) minutes avant de partir au boulot.
 
 Le chrono se lance !
 
