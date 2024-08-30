@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ra2c3mr66sx3"]
+[gd_scene load_steps=22 format=3 uid="uid://ra2c3mr66sx3"]
 
 [ext_resource type="Script" path="res://BACKGROUND/REFRIGERATOR_RIGHT.gd" id="1_gquyx"]
 [ext_resource type="Texture2D" uid="uid://gym227kuxgio" path="res://BACKGROUND/IMAGES/Refrigerator_Right_Open.png" id="1_jhg0m"]
 [ext_resource type="Texture2D" uid="uid://vpswawbugqnn" path="res://BACKGROUND/IMAGES/Butter_Knife_Out.png" id="3_d2yus"]
 [ext_resource type="Texture2D" uid="uid://urv2i5aor78o" path="res://BACKGROUND/IMAGES/Milk_Bottle_Out.png" id="4_rl5am"]
+[ext_resource type="Texture2D" uid="uid://8g0tp2srlni4" path="res://BACKGROUND/IMAGES/Smoothie_Bottle_Out.png" id="5_3p7x3"]
+[ext_resource type="Texture2D" uid="uid://l4jfropjntil" path="res://BACKGROUND/IMAGES/Fruit_Juice_Bottles_Out.png" id="6_h65x4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5xtp"]
 size = Vector2(5, 6)
@@ -60,23 +62,27 @@ centered = false
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Smoothie_Bottles_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(43.5, 33)
 collision_layer = 2
+collision_mask = 5
 metadata/bg_level = 2
 
 [node name="Smoothie_Bottles" type="CollisionShape2D" parent="Stuff_Colliders/Smoothie_Bottles_Collider"]
-position = Vector2(43.5, 33)
 shape = SubResource("RectangleShape2D_k5xtp")
 
 [node name="Smoothie_Bottles_Out" type="CollisionShape2D" parent="Stuff_Colliders/Smoothie_Bottles_Collider"]
-position = Vector2(44.5, 33)
+visible = false
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_a1cyp")
+disabled = true
 
 [node name="Fruit_Juice_Bottles_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(43.5, 41.5)
 collision_layer = 2
+collision_mask = 5
 metadata/bg_level = 2
 
 [node name="Fruit_Juice_Bottles" type="CollisionShape2D" parent="Stuff_Colliders/Fruit_Juice_Bottles_Collider"]
-position = Vector2(43.5, 41.5)
 shape = SubResource("RectangleShape2D_1u1ex")
 
 [node name="Milk_Bottles_Collider" type="Area2D" parent="Stuff_Colliders"]
@@ -92,6 +98,7 @@ shape = SubResource("RectangleShape2D_uolm1")
 visible = false
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_7phv3")
+disabled = true
 
 [node name="Butter_Knife_Collider" type="Area2D" parent="Stuff_Colliders"]
 position = Vector2(28, 27.5)
@@ -197,4 +204,14 @@ centered = false
 [node name="Milk_Bottle_Out" type="Sprite2D" parent="Removed_Objects"]
 visible = false
 texture = ExtResource("4_rl5am")
+centered = false
+
+[node name="Smoothie_Bottles_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("5_3p7x3")
+centered = false
+
+[node name="Fruit_Juice_Bottles_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("6_h65x4")
 centered = false

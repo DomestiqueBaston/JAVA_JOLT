@@ -321,6 +321,14 @@ func _perform_hand_action():
 			else:
 				_set_comment("Remember? Coffee...")
 			take_height = 4
+		Globals.Prop.SMOOTHIE_BOTTLES:
+			take_label = "Smoothie"
+			take_msg = "I drink it before working out. But OK, one."
+			take_height = 3
+		Globals.Prop.FRUIT_JUICE_BOTTLES:
+			take_label = "Fruit juice"
+			take_msg = "I drink it before working out. But one is OK."
+			take_height = 2
 		Globals.Prop.MILK_BOTTLES:
 			take_label = "Bottle of milk"
 			take_msg = "OK, one bottle of milk."
@@ -531,6 +539,8 @@ func _update_current_prop():
 			Globals.Prop.TOWEL_LARGE, \
 			Globals.Prop.TOWEL_SMALL, \
 			Globals.Prop.BUTTER_KNIFE, \
+			Globals.Prop.SMOOTHIE_BOTTLES, \
+			Globals.Prop.FRUIT_JUICE_BOTTLES, \
 			Globals.Prop.MILK_BOTTLES:
 				if $UI.find_in_inventory(current_prop) < 0:
 					actions.append(Globals.Cursor.HAND)

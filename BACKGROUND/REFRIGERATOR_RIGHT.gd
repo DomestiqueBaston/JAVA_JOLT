@@ -43,5 +43,13 @@ func set_object_visible(which: int, vis: bool):
 	match which:
 		Globals.Prop.BUTTER_KNIFE:
 			$Removed_Objects/Butter_Knife_Out.visible = not vis
+		Globals.Prop.SMOOTHIE_BOTTLES:
+			$Removed_Objects/Smoothie_Bottles_Out.visible = not vis
+			$Stuff_Colliders/Smoothie_Bottles_Collider/Smoothie_Bottles_Out.set_deferred("disabled", vis)
+			$Stuff_Colliders/Smoothie_Bottles_Collider/Smoothie_Bottles.set_deferred("disabled", not vis)
+		Globals.Prop.FRUIT_JUICE_BOTTLES:
+			$Removed_Objects/Fruit_Juice_Bottles_Out.visible = not vis
 		Globals.Prop.MILK_BOTTLES:
 			$Removed_Objects/Milk_Bottle_Out.visible = not vis
+			$Stuff_Colliders/Milk_Bottles_Collider/Milk_Bottle_Out.set_deferred("disabled", vis)
+			$Stuff_Colliders/Milk_Bottles_Collider/Milk_Bottles.set_deferred("disabled", not vis)
