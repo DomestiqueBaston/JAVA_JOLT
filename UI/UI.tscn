@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cdg5ketgiif5e"]
+[gd_scene load_steps=48 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
@@ -24,6 +24,45 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu12a"]
 size = Vector2(6, 6)
+
+[sub_resource type="Animation" id="Animation_m7l7s"]
+resource_name = "Blink"
+length = 0.80001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["?", ""]
+}
+
+[sub_resource type="Animation" id="Animation_a10ny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["?"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2cqq"]
+_data = {
+"Blink": SubResource("Animation_m7l7s"),
+"RESET": SubResource("Animation_a10ny")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncb4q"]
 size = Vector2(1, 1)
@@ -1572,33 +1611,6 @@ _data = {
 "RESET": SubResource("Animation_ayngy")
 }
 
-[sub_resource type="Animation" id="Animation_utdto"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Help/Help_Label:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Help:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_huf36"]
 resource_name = "Help_Off"
 length = 0.30001
@@ -1641,6 +1653,33 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.360784), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Help:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_utdto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Help/Help_Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1883,6 +1922,13 @@ collision_layer = 2
 [node name="Help_Collider" type="CollisionShape2D" parent="Help/Collider"]
 position = Vector2(3, 5)
 shape = SubResource("RectangleShape2D_yu12a")
+
+[node name="Help_AnimationPlayer" type="AnimationPlayer" parent="Help"]
+root_node = NodePath("../Help_Label")
+libraries = {
+"": SubResource("AnimationLibrary_q2cqq")
+}
+autoplay = "Blink"
 
 [node name="Mouse" type="Control" parent="."]
 layout_mode = 3
