@@ -307,11 +307,12 @@ func _set_mouse_cursor(cursor: int):
 ##
 func clear_available_cursors():
 	_available_cursors.clear()
-	if _inventory_item_being_used < 0:
-		_current_cursor = -1
-		_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
-	else:
-		_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
+	if not _is_inventory_open:
+		if _inventory_item_being_used < 0:
+			_current_cursor = -1
+			_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
+		else:
+			_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
 
 ##
 ## Specifies the set of action cursors available in the current context. The
@@ -324,11 +325,12 @@ func set_available_cursors(cursors: Array[int]):
 		clear_available_cursors()
 	else:
 		_available_cursors = cursors
-		if _inventory_item_being_used < 0:
-			_current_cursor = 0
-			_set_mouse_cursor(cursors[0])
-		else:
-			_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
+		if not _is_inventory_open:
+			if _inventory_item_being_used < 0:
+				_current_cursor = 0
+				_set_mouse_cursor(cursors[0])
+			else:
+				_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
 
 func get_current_cursor() -> int:
 	if _inventory_item_being_used >= 0:
@@ -385,8 +387,9 @@ func _on_help_button_exited(_area: Area2D):
 
 func _on_help_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
-		$Boxes/Tutorial.show()
-		_is_tutorial_seen = true
+		if not (is_dialogue_visible() or _is_inventory_open):
+			$Boxes/Tutorial.show()
+			_is_tutorial_seen = true
 
 func _open_inventory():
 	$Inventory_AnimationPlayer.play("Open_Inventory")
