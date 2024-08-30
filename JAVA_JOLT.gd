@@ -268,8 +268,18 @@ func _perform_hand_action():
 			take_label = "Olive oil"
 			take_msg = "OK, but it's just to please you."
 			take_height = 3
+		Globals.Prop.SALT:
+			take_label = "Salt"
+			take_msg = "I'll never use it with my coffee, but OK."
+			take_height = 3
 		Globals.Prop.TOASTER:
 			_set_comment("It works and I can use it any time.")
+		Globals.Prop.PEPPER:
+			take_label = "Pepper"
+			take_msg = "You always need some pepper!"
+			take_height = 3
+		Globals.Prop.RICE_POT:
+			_set_comment("No, it's raw.")
 		Globals.Prop.COOKIE_POT:
 			take_label = "Cookie"
 			take_msg = "Only one. But I need my coffee first."
@@ -407,6 +417,8 @@ func _on_background_area_entered_object(which: int, _area: Area2D):
 	const singleton_objects = [
 		Globals.Prop.TOWEL_SMALL,
 		Globals.Prop.OLIVE_OIL_BOTTLE,
+		Globals.Prop.SALT,
+		Globals.Prop.PEPPER,
 		Globals.Prop.MANDOLIN,
 		Globals.Prop.KETTLE,
 	]
@@ -490,7 +502,10 @@ func _update_current_prop():
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
 			Globals.Prop.OLIVE_OIL_BOTTLE, \
+			Globals.Prop.SALT, \
 			Globals.Prop.TOASTER, \
+			Globals.Prop.PEPPER, \
+			Globals.Prop.RICE_POT, \
 			Globals.Prop.COOKIE_POT, \
 			Globals.Prop.TAP, \
 			Globals.Prop.MANDOLIN, \

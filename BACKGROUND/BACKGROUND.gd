@@ -126,6 +126,10 @@ func set_object_visible(which: int, vis: bool):
 				$Removed_Objects/Coffee_Filter_Holder_Out.visible = not vis
 			Globals.Prop.OLIVE_OIL_BOTTLE:
 				$Removed_Objects/Olive_Oil_Bottle_Out.visible = not vis
+			Globals.Prop.SALT:
+				$Removed_Objects/Salt_Out.visible = not vis
+			Globals.Prop.PEPPER:
+				$Removed_Objects/Pepper_Out.visible = not vis
 			Globals.Prop.MANDOLIN:
 				$Removed_Objects/Mandolin_Out.visible = not vis
 			Globals.Prop.KETTLE:
