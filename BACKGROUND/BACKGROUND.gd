@@ -5,8 +5,6 @@ signal area_exited_object(which: int, area: Area2D)
 
 var _open_object = -1
 
-var _refrigerator_right = preload("res://BACKGROUND/REFRIGERATOR_RIGHT.tscn")
-
 @onready var _colliders: Array[Area2D] = [
 	$Stuff_Colliders/Low/Kitchen_Cabinet_Collider,				# KITCHEN_CABINET
 	$Stuff_Colliders/Low/Recycling_Closet_Collider,				# RECYCLING_CLOSET
@@ -71,6 +69,7 @@ var _refrigerator_right = preload("res://BACKGROUND/REFRIGERATOR_RIGHT.tscn")
 
 func _ready():
 	assert(_colliders.size() == Globals.Prop.MAIN_PROP_COUNT)
+
 	for index in _colliders.size():
 		var collider: Area2D = _colliders[index]
 		collider.area_entered.connect(
@@ -78,13 +77,21 @@ func _ready():
 		collider.area_exited.connect(
 			func(area): area_exited_object.emit(index, area))
 
+	$Open_Objects/Refrigerator_Right.area_entered_object.connect(
+		func(which, area):
+			if _open_object == Globals.Prop.REFRIGERATOR_RIGHT:
+				area_entered_object.emit(which, area))
+	$Open_Objects/Refrigerator_Right.area_exited_object.connect(
+		func(which, area):
+			if _open_object == Globals.Prop.REFRIGERATOR_RIGHT:
+				area_exited_object.emit(which, area))
+
 func get_collider(which: int) -> Area2D:
 	if which < Globals.Prop.MAIN_PROP_COUNT:
 		return _colliders[which]
 	match _open_object:
 		Globals.Prop.REFRIGERATOR_RIGHT:
-			var node: Node = $Opens_Outs.get_child(0)
-			return node.get_collider(which)
+			return $Open_Objects/Refrigerator_Right.get_collider(which)
 		_:
 			return null
 
@@ -92,17 +99,12 @@ func get_open_object() -> int:
 	return _open_object
 
 func open_refrigerator_right():
-	var node: Node = _refrigerator_right.instantiate()
-	$Opens_Outs.add_child(node)
-	node.area_entered_object.connect(
-		func(which, area): area_entered_object.emit(which, area))
-	node.area_exited_object.connect(
-		func(which, area): area_exited_object.emit(which, area))
+	$Open_Objects/Refrigerator_Right.show()
 	$Sounds/Fridge_Open_Close.play()
 	_open_object = Globals.Prop.REFRIGERATOR_RIGHT
 
 func close_refrigerator_right():
-	$Opens_Outs.get_child(0).queue_free()
+	$Open_Objects/Refrigerator_Right.hide()
 	$Sounds/Fridge_Open_Close.play()
 	_open_object = -1
 
@@ -127,5 +129,4 @@ func set_object_visible(which: int, vis: bool):
 	else:
 		match _open_object:
 			Globals.Prop.REFRIGERATOR_RIGHT:
-				var node: Node = $Opens_Outs.get_child(0)
-				node.set_object_visible(which, vis)
+				$Open_Objects/Refrigerator_Right.set_object_visible(which, vis)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=54 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://na6eamuhj80a" path="res://ROWENA/SOUNDS/Fridge_Open_Close.ogg" id="6_jvbuw"]
 [ext_resource type="Texture2D" uid="uid://cyghiycxbscrl" path="res://BACKGROUND/IMAGES/Coffee_Filter_Holder_Out.png" id="7_2civg"]
 [ext_resource type="Texture2D" uid="uid://b0ug13c7pmd0v" path="res://BACKGROUND/IMAGES/Kettle_Out.png" id="8_inw3g"]
+[ext_resource type="PackedScene" uid="uid://ra2c3mr66sx3" path="res://BACKGROUND/REFRIGERATOR_RIGHT.tscn" id="9_mmix8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -174,7 +175,10 @@ visible = false
 texture = ExtResource("8_inw3g")
 centered = false
 
-[node name="Opens_Outs" type="Node2D" parent="."]
+[node name="Open_Objects" type="Node2D" parent="."]
+
+[node name="Refrigerator_Right" parent="Open_Objects" instance=ExtResource("9_mmix8")]
+visible = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
