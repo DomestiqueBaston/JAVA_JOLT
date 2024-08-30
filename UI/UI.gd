@@ -138,7 +138,7 @@ func _unhandled_input(event: InputEvent):
 				_close_inventory()
 			else:
 				_open_inventory()
-			get_viewport().set_input_as_handled()
+		get_viewport().set_input_as_handled()
 
 func _tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
@@ -532,6 +532,8 @@ func _on_inventory_4_mouse_entered():
 func _on_inventory_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		_click_on_inventory_item()
+	elif event.is_action_pressed("inventory_action"):
+		_close_inventory()
 
 func _click_on_inventory_item():
 	if _inventory_item_being_used >= 0:
