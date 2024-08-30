@@ -257,12 +257,14 @@ func _perform_hand_action():
 	var take_sound = false
 
 	match current_prop:
+		Globals.Prop.TOWEL_LARGE:
+			_set_comment("I shouldn't use it, except for... No, I shouldn't!")
 		Globals.Prop.TOWEL_SMALL:
 			if is_towel_wet:
 				take_label = "Small towel moistened with milk"
 			else:
 				take_label = "Small towel"
-			take_msg = "OK, one small towel."
+			take_msg = "It's clean, it'll be perfect!"
 			take_height = 1
 		Globals.Prop.OLIVE_OIL_BOTTLE:
 			take_label = "Olive oil"
@@ -526,6 +528,7 @@ func _update_current_prop():
 			Globals.Prop.PRESSURE_COOKER, \
 			Globals.Prop.KETTLE, \
 			Globals.Prop.SAUCE_PAN, \
+			Globals.Prop.TOWEL_LARGE, \
 			Globals.Prop.TOWEL_SMALL, \
 			Globals.Prop.BUTTER_KNIFE, \
 			Globals.Prop.MILK_BOTTLES:
