@@ -125,9 +125,9 @@ const prop_info: Array[String] = [
 	# FOOD_PROCESSOR
 	"That's my food processor.",
 	# RED_COFFEE_CUP_LEFT
-	"That's an empty coffee cup.",
+	"That's an empty, red coffee cup.",
 	# BROWN_COFFEE_CUP
-	"That's my cup of tea.",
+	"That's a dirty coffee cup.",
 	# KNIFE_BLOCK
 	"Those are kitchen knives.",
 	# FRUIT_BASKET
@@ -274,6 +274,8 @@ func _perform_hand_action():
 			take_height = 3
 		Globals.Prop.TOASTER:
 			_set_comment("It works and I can use it any time.")
+		Globals.Prop.NOTCHED_COFFEE_CUP_RIGHT:
+			_set_comment("No, I chipped it yesterday.")
 		Globals.Prop.PEPPER:
 			take_label = "Pepper"
 			take_msg = "You always need some pepper!"
@@ -292,6 +294,12 @@ func _perform_hand_action():
 			take_height = 3
 		Globals.Prop.FOOD_PROCESSOR:
 			_set_comment("It's not a Rank Xerox, no way.")
+		Globals.Prop.RED_COFFEE_CUP_LEFT:
+			take_label = "Coffee cup"
+			take_msg = "Yeah, it's new and clean."
+			take_height = 3
+		Globals.Prop.BROWN_COFFEE_CUP:
+			_set_comment("That's not my cup of tea.")
 		Globals.Prop.FRUIT_BASKET:
 			take_label = "Red apple"
 			take_msg = "Just a red apple, nothing more."
@@ -420,6 +428,7 @@ func _on_background_area_entered_object(which: int, _area: Area2D):
 		Globals.Prop.SALT,
 		Globals.Prop.PEPPER,
 		Globals.Prop.MANDOLIN,
+		Globals.Prop.RED_COFFEE_CUP_LEFT,
 		Globals.Prop.KETTLE,
 	]
 	if which in singleton_objects and $UI.find_in_inventory(which) >= 0:
@@ -504,12 +513,15 @@ func _update_current_prop():
 			Globals.Prop.OLIVE_OIL_BOTTLE, \
 			Globals.Prop.SALT, \
 			Globals.Prop.TOASTER, \
+			Globals.Prop.NOTCHED_COFFEE_CUP_RIGHT, \
 			Globals.Prop.PEPPER, \
 			Globals.Prop.RICE_POT, \
 			Globals.Prop.COOKIE_POT, \
 			Globals.Prop.TAP, \
 			Globals.Prop.MANDOLIN, \
 			Globals.Prop.FOOD_PROCESSOR, \
+			Globals.Prop.RED_COFFEE_CUP_LEFT, \
+			Globals.Prop.BROWN_COFFEE_CUP, \
 			Globals.Prop.FRUIT_BASKET, \
 			Globals.Prop.PRESSURE_COOKER, \
 			Globals.Prop.KETTLE, \

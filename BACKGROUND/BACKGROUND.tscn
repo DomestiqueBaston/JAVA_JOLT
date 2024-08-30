@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=58 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://mtbkpijml1im" path="res://BACKGROUND/IMAGES/Olive_Oil_Bottle_Out.png" id="10_bc2ls"]
 [ext_resource type="Texture2D" uid="uid://dduooioelfxfv" path="res://BACKGROUND/IMAGES/Salt_Out.png" id="11_gl04i"]
 [ext_resource type="Texture2D" uid="uid://ci0v27uluhr5d" path="res://BACKGROUND/IMAGES/Pepper_Out.png" id="12_kg7m7"]
+[ext_resource type="Texture2D" uid="uid://b7itgwxv8j5lp" path="res://BACKGROUND/IMAGES/Red_Coffee_Cup_Out.png" id="13_ik1v4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -194,6 +195,11 @@ centered = false
 [node name="Pepper_Out" type="Sprite2D" parent="Removed_Objects"]
 visible = false
 texture = ExtResource("12_kg7m7")
+centered = false
+
+[node name="Red_Coffee_Cup_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("13_ik1v4")
 centered = false
 
 [node name="Open_Objects" type="Node2D" parent="."]
@@ -572,15 +578,17 @@ position = Vector2(89, 34.5)
 polygon = PackedVector2Array(-3, 2.5, -4, 2.5, -4, -4.5, -2, -4.5, 3, -4.5, 3, -2.5, 4, -2.5, 4, 1.5, 5, 1.5, 5, 4.5, -3.00886, 4.5)
 
 [node name="Red_Coffee_Cup_Left_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(84, 38)
 collision_layer = 2
+collision_mask = 5
 metadata/bg_level = 1
 
 [node name="Red_Coffee_Cup_Left" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Red_Coffee_Cup_Left_Collider"]
-position = Vector2(84, 38)
 shape = SubResource("RectangleShape2D_lkco4")
 
 [node name="Brown_Coffee_Cup_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
+metadata/bg_level = 1
 
 [node name="Brown_Coffee_Cup" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Brown_Coffee_Cup_Collider"]
 polygon = PackedVector2Array(79, 39, 78, 36, 79, 35, 82, 35, 82, 39)
