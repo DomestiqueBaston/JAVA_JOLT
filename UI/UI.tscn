@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://6da50018lwam" path="res://UI/IMAGES/Close.png" id="19_j6wa7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu12a"]
-size = Vector2(6, 6)
+size = Vector2(6, 7)
 
 [sub_resource type="Animation" id="Animation_m7l7s"]
 resource_name = "Blink"
@@ -1920,7 +1920,7 @@ text = "?"
 collision_layer = 2
 
 [node name="Help_Collider" type="CollisionShape2D" parent="Help/Collider"]
-position = Vector2(3, 5)
+position = Vector2(3, 5.5)
 shape = SubResource("RectangleShape2D_yu12a")
 
 [node name="Help_AnimationPlayer" type="AnimationPlayer" parent="Help"]
