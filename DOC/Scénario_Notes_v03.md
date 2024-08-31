@@ -357,7 +357,7 @@ Under Sink Cabinet : « Oh my god ! What’s in it ? »
 
 	La ventouse (Plunger) : « I’ve always liked that tool. »
 
-	Un panier en plastique : « Okay, just because it's lightweight.  » (elle peut en prendre un)
+	Un panier en plastique : « No. Even though it's lightweight.  » (elle ne prend pas)
 
 	L’extincteur : « That's clever! Or is it...? »
 
