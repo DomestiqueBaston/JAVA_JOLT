@@ -382,13 +382,14 @@ func _on_help_button_entered(_area: Area2D):
 		$Help_AnimationPlayer.play("Help_On")
 
 func _on_help_button_exited(_area: Area2D):
-	if not is_dialogue_visible() and _is_tutorial_seen:
+	if not is_dialogue_visible() and _is_tutorial_seen and $Help.visible:
 		$Help_AnimationPlayer.play("Help_Off")
 
 func _on_help_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		if not (is_dialogue_visible() or _is_inventory_open):
 			$Boxes/Tutorial.show()
+			$Help_AnimationPlayer.play("Help_Off")
 			_is_tutorial_seen = true
 
 func _open_inventory():
