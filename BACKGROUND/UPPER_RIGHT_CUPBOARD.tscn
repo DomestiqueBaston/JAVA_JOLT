@@ -29,12 +29,14 @@ collision_layer = 2
 
 [node name="Cooking_Pot_Up_Right" type="CollisionPolygon2D" parent="Stuff_Colliders/Cooking_Pot_Up_Right_Collider"]
 polygon = PackedVector2Array(161, 27, 155, 27, 155, 24, 154, 23, 154, 22, 155, 21, 161, 19)
+metadata/bg_level = 1
 
 [node name="Huge_Pressure_Cooker_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
 [node name="Huge_Pressure_Cooker" type="CollisionPolygon2D" parent="Stuff_Colliders/Huge_Pressure_Cooker_Collider"]
 polygon = PackedVector2Array(155, 27, 145, 27, 145, 21, 144, 20, 144, 19, 145, 19, 147, 18, 151, 17, 155, 18, 157, 19, 158, 19, 158, 20, 155, 21, 154, 22, 154, 23, 155, 24)
+metadata/bg_level = 1
 
 [node name="Sauce_Pan_Set_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
@@ -49,6 +51,7 @@ collision_layer = 2
 [node name="Salad_Bowls" type="CollisionShape2D" parent="Stuff_Colliders/Salad_Bowls_Collider"]
 position = Vector2(148.5, 11)
 shape = SubResource("RectangleShape2D_y8hqo")
+metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
 collision_layer = 2
@@ -56,7 +59,9 @@ collision_layer = 2
 [node name="Door_1" type="CollisionShape2D" parent="Door_Collider"]
 position = Vector2(138, 15.5)
 shape = SubResource("RectangleShape2D_hl2n8")
+metadata/bg_level = 1
 
 [node name="Door_2" type="CollisionShape2D" parent="Door_Collider"]
 position = Vector2(162.5, 15.5)
 shape = SubResource("RectangleShape2D_0vhs3")
+metadata/bg_level = 1

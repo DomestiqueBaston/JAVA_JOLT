@@ -123,6 +123,10 @@ Ce que Rowena peut dire de certaines choses qu’elle va prendre ou pas, etc.
 /!\ A moins que ce soit précisé autrement, Rowena donnera le nom de ce qu’elle désigne quand elle le regardera. /!\ A ne pas confondre avec son commentaire quand on veut prendre les choses.
 
 Le Coffee Cupboard (quand on l’ouvre) : « I like rubbing salt in the wound ! »
+	Canned Green beans : «Not what I had in mind... » (elle ne prend pas)
+	Canned Beans : « They know how to make me fart, so... » (elle ne prend pas)
+	Empty Coffee Space : « I'd better take ten more looks at it, just in case... »
+
 
 Le lave-vaisselle : « My dishwasher… » Quand il est ouvert « It’s empty. »
 

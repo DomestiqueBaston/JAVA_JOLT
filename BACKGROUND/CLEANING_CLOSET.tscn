@@ -23,36 +23,42 @@ collision_layer = 2
 
 [node name="Drain_Cleaner" type="CollisionPolygon2D" parent="Stuff_Colliders/Drain_Cleaner_Collider"]
 polygon = PackedVector2Array(143, 61, 139, 61, 139, 57, 140, 54, 141, 54, 144, 57, 144, 60, 143, 60)
+metadata/bg_level = 1
 
 [node name="Mop_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
 [node name="Mop" type="CollisionPolygon2D" parent="Stuff_Colliders/Mop_Collider"]
 polygon = PackedVector2Array(149, 60, 148, 61, 143, 61, 143, 60, 145, 60, 146, 59, 149, 59)
+metadata/bg_level = 1
 
 [node name="Detergent_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
 [node name="Detergent" type="CollisionPolygon2D" parent="Stuff_Colliders/Detergent_Collider"]
 polygon = PackedVector2Array(153, 61, 150, 61, 149, 60, 149, 54, 150, 53, 152, 53, 153, 56, 154, 57, 154, 60)
+metadata/bg_level = 1
 
 [node name="Large_Bucket_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
 [node name="Large_Bucket" type="CollisionPolygon2D" parent="Stuff_Colliders/Large_Bucket_Collider"]
 polygon = PackedVector2Array(151, 52, 159, 52, 159, 61, 153, 61, 154, 60, 154, 57, 153, 56, 152, 53, 151, 53)
+metadata/bg_level = 1
 
 [node name="Small_Bucket_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
 [node name="Small_Bucket" type="CollisionPolygon2D" parent="Stuff_Colliders/Small_Bucket_Collider"]
 polygon = PackedVector2Array(143, 53, 149, 53, 149, 59, 146, 59, 145, 60, 144, 60, 144, 57, 143, 56)
+metadata/bg_level = 1
 
 [node name="Dust_Pan_Brush_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
 [node name="Dust_Pan_Brush" type="CollisionPolygon2D" parent="Stuff_Colliders/Dust_Pan_Brush_Collider"]
 polygon = PackedVector2Array(146, 53, 143, 50, 142, 50, 142, 51, 143, 52, 143, 53)
+metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
 collision_layer = 2
@@ -60,7 +66,9 @@ collision_layer = 2
 [node name="Door_1" type="CollisionShape2D" parent="Door_Collider"]
 position = Vector2(161, 53.5)
 shape = SubResource("RectangleShape2D_q1gdw")
+metadata/bg_level = 1
 
 [node name="Door_2" type="CollisionShape2D" parent="Door_Collider"]
 position = Vector2(132, 53.5)
 shape = SubResource("RectangleShape2D_dmbok")
+metadata/bg_level = 1

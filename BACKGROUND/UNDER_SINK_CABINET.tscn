@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7kwi7lwhh6do"]
+[gd_scene load_steps=6 format=3 uid="uid://b7kwi7lwhh6do"]
 
 [ext_resource type="Texture2D" uid="uid://bc6yd6wqeaqpu" path="res://BACKGROUND/IMAGES/Under_Sink_Cabinet_Open.png" id="1_k8be0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ru616"]
+size = Vector2(3, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywmpa"]
 size = Vector2(12, 11)
@@ -24,8 +27,9 @@ centered = false
 [node name="Extinguisher_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
 
-[node name="Extinguisher" type="CollisionPolygon2D" parent="Stuff_Colliders/Extinguisher_Collider"]
-polygon = PackedVector2Array(117, 61, 114, 61, 114, 51, 115, 48, 116, 48, 117, 51)
+[node name="Extinguisher" type="CollisionShape2D" parent="Stuff_Colliders/Extinguisher_Collider"]
+position = Vector2(115.5, 54.5)
+shape = SubResource("RectangleShape2D_ru616")
 metadata/bg_level = 2
 
 [node name="Plastic_Baskets_Collider" type="Area2D" parent="Stuff_Colliders"]

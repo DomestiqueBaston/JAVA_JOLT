@@ -19,3 +19,4 @@ collision_layer = 2
 [node name="Cutlery_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Cutlery_Drawer_Collider"]
 position = Vector2(145, 42.5)
 shape = SubResource("RectangleShape2D_yep3q")
+metadata/bg_level = 1

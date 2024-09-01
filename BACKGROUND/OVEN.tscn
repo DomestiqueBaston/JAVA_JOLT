@@ -30,6 +30,7 @@ collision_layer = 2
 [node name="Empty_Space_1" type="CollisionShape2D" parent="Stuff_Colliders/Empty_Space_1_Collider"]
 position = Vector2(57.5, 48)
 shape = SubResource("RectangleShape2D_26irs")
+metadata/bg_level = 1
 
 [node name="Empty_Space_2_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
@@ -37,6 +38,7 @@ collision_layer = 2
 [node name="Empty_Space_2" type="CollisionShape2D" parent="Stuff_Colliders/Empty_Space_2_Collider"]
 position = Vector2(57.5, 52.5)
 shape = SubResource("RectangleShape2D_53510")
+metadata/bg_level = 1
 
 [node name="Empty_Space_3_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
@@ -44,6 +46,7 @@ collision_layer = 2
 [node name="Empty_Space_3" type="CollisionShape2D" parent="Stuff_Colliders/Empty_Space_3_Collider"]
 position = Vector2(57.5, 57)
 shape = SubResource("RectangleShape2D_gb22a")
+metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
 collision_layer = 2
@@ -51,3 +54,4 @@ collision_layer = 2
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
 position = Vector2(64.5, 60)
 shape = SubResource("RectangleShape2D_gacuh")
+metadata/bg_level = 1

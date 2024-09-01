@@ -20,6 +20,7 @@ collision_layer = 2
 
 [node name="Recycling_Bin" type="CollisionPolygon2D" parent="Stuff_Colliders/Recycling_Bin_Collider"]
 polygon = PackedVector2Array(95, 62, 95, 46, 92, 46, 89, 48, 89, 50, 90, 50, 91, 62)
+metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
 collision_layer = 2
@@ -27,3 +28,4 @@ collision_layer = 2
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
 position = Vector2(87, 51.5)
 shape = SubResource("RectangleShape2D_6gyua")
+metadata/bg_level = 1

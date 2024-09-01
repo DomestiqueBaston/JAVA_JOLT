@@ -19,3 +19,4 @@ collision_layer = 2
 [node name="Private_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Private_Drawer_Collider"]
 position = Vector2(47, 60.5)
 shape = SubResource("RectangleShape2D_xvtoi")
+metadata/bg_level = 1

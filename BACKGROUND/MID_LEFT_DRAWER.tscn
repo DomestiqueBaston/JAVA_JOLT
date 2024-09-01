@@ -19,3 +19,4 @@ collision_layer = 2
 [node name="Mid_Left_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Mid_Left_Drawer_Collider"]
 position = Vector2(46.5, 48)
 shape = SubResource("RectangleShape2D_o210j")
+metadata/bg_level = 1
