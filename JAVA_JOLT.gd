@@ -371,6 +371,12 @@ func _perform_hand_action():
 			_set_comment("OK. No, just kidding.")
 		Globals.Prop.FRUIT:
 			_set_comment("Don't you remember? I need coffee!")
+		Globals.Prop.PIZZA_DRAWER, \
+		Globals.Prop.VEGETABLE_DRAWER, \
+		Globals.Prop.LASAGNA_DRAWER, \
+		Globals.Prop.ICE_CREAM_DRAWER, \
+		Globals.Prop.MEAT_DRAWER:
+			_set_comment("Way too cold at this hour!")
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -638,7 +644,12 @@ func _update_current_prop():
 			Globals.Prop.TOMATOES, \
 			Globals.Prop.CAULIFLOWER, \
 			Globals.Prop.YELLOW_PEPPER, \
-			Globals.Prop.FRUIT:
+			Globals.Prop.FRUIT, \
+			Globals.Prop.PIZZA_DRAWER, \
+			Globals.Prop.VEGETABLE_DRAWER, \
+			Globals.Prop.LASAGNA_DRAWER, \
+			Globals.Prop.ICE_CREAM_DRAWER, \
+			Globals.Prop.MEAT_DRAWER:
 				if $UI.find_in_inventory(current_prop) < 0:
 					actions.append(Globals.Cursor.HAND)
 			Globals.Prop.WINDOW_RIGHT:

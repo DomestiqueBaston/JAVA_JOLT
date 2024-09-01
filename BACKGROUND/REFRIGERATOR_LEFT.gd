@@ -34,9 +34,8 @@ func get_collider(which: int) -> Area2D:
 func get_object_from_collider(area: Area2D) -> int:
 	var index = _colliders.find(area)
 	if index >= 0:
-		return Globals.Prop.REFRIGERATOR_LEFT_BEGIN + index
-	else:
-		return -1
+		index += Globals.Prop.REFRIGERATOR_LEFT_BEGIN
+	return index
 
 func set_object_visible(_which: int, _vis: bool):
 	pass
