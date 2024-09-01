@@ -566,3 +566,6 @@ func _on_close_inventory_timer_timeout():
 func _on_comment_box_gui_input(event):
 	if event.is_action_pressed("left_mouse_click"):
 		clear_comment_text()
+
+func get_areas_overlapping_mouse() -> Array[Area2D]:
+	return $Mouse/Mouse_Collider.get_overlapping_areas()

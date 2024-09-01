@@ -185,13 +185,12 @@ position = Vector2(29, 61)
 shape = SubResource("RectangleShape2D_dq8vp")
 
 [node name="Door_Collider" type="Area2D" parent="."]
-position = Vector2(37.5, 42.5)
+position = Vector2(44, 42.5)
 collision_layer = 2
 collision_mask = 5
 metadata/bg_level = 1
 
 [node name="Door_Rectangle" type="CollisionShape2D" parent="Door_Collider"]
-position = Vector2(6.5, 0)
 shape = SubResource("RectangleShape2D_38cc5")
 
 [node name="Removed_Objects" type="Node2D" parent="."]

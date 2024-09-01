@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqa3bbbs2by12"]
+[gd_scene load_steps=9 format=3 uid="uid://cqa3bbbs2by12"]
 
 [ext_resource type="Texture2D" uid="uid://crk1e1iogssok" path="res://BACKGROUND/IMAGES/Refrigerator_Left_Open.png" id="1_i4cca"]
+[ext_resource type="Script" path="res://BACKGROUND/REFRIGERATOR_LEFT.gd" id="1_kfrgd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o43c3"]
 size = Vector2(4, 7)
@@ -21,17 +22,17 @@ size = Vector2(4, 8)
 size = Vector2(6, 43)
 
 [node name="Refrigerator_Left" type="Node2D"]
+script = ExtResource("1_kfrgd")
 
 [node name="Refrigerator_Left_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_i4cca")
 centered = false
 
-[node name="Opens_Outs" type="Node2D" parent="."]
-
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Pizza_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Pizza_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Pizza_Drawer_Collider"]
 position = Vector2(19, 26.5)
@@ -40,6 +41,7 @@ metadata/bg_level = 1
 
 [node name="Vegetable_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Vegetable_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Vegetable_Drawer_Collider"]
 position = Vector2(19, 34.5)
@@ -48,6 +50,7 @@ metadata/bg_level = 1
 
 [node name="Lasagna_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Lasagna_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Lasagna_Drawer_Collider"]
 position = Vector2(19, 42.5)
@@ -56,6 +59,7 @@ metadata/bg_level = 1
 
 [node name="Ice_Cream_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Ice_Cream_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Ice_Cream_Drawer_Collider"]
 position = Vector2(19, 50.5)
@@ -64,6 +68,7 @@ metadata/bg_level = 1
 
 [node name="Meat_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Meat_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Meat_Drawer_Collider"]
 position = Vector2(19, 59)
@@ -71,9 +76,11 @@ shape = SubResource("RectangleShape2D_vg2lo")
 metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
+position = Vector2(14, 42.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
-position = Vector2(14, 42.5)
 shape = SubResource("RectangleShape2D_5ebyv")
 metadata/bg_level = 1

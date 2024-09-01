@@ -172,6 +172,18 @@ const prop_info: Array[String] = [
 	"That's some fruit.",
 	# REFRIGERATOR_RIGHT_OPEN_DOOR
 	"Do you want to close the refrigerator?",
+	# PIZZA_DRAWER
+	"I keep frozen pizzas there.",
+	# VEGETABLE_DRAWER
+	"I keep frozen vegetables there.",
+	# LASAGNA_DRAWER
+	"I keep frozen lasagna there.",
+	# ICE_CREAM_DRAWER
+	"I keep ice cream in there.",
+	# MEAT_DRAWER
+	"I keep frozen meat in there.",
+	# REFRIGERATOR_LEFT_OPEN_DOOR
+	"Do you want to close the freezer?",
 ]
 
 const inventory_full_msg = "Hey, I don't have 4 arms, I'm not Shiva!"
@@ -227,7 +239,7 @@ func _on_ui_click_on_background(pos: Vector2):
 			_perform_close_action()
 		Globals.Cursor.QUIT:
 			$UI.clear_comment_text()
-			await _close_open_object()
+			await _close_open_object(false)
 			await _walk_to_prop()
 			get_tree().quit()
 
@@ -257,6 +269,8 @@ func _perform_hand_action():
 	var take_sound = false
 
 	match current_prop:
+		Globals.Prop.CHAIR:
+			_set_comment("I'm fine, I've had enough rest, thank you.")
 		Globals.Prop.TOWEL_LARGE:
 			_set_comment("I shouldn't use it, except for... No, I shouldn't!")
 		Globals.Prop.TOWEL_SMALL:
@@ -266,6 +280,8 @@ func _perform_hand_action():
 				take_label = "Small towel"
 			take_msg = "It's clean, it'll be perfect!"
 			take_height = 1
+		Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE:
+			_set_comment("Where in the world have you been until now?")
 		Globals.Prop.OLIVE_OIL_BOTTLE:
 			take_label = "Olive oil"
 			take_msg = "OK, but it's just to please you."
@@ -373,36 +389,65 @@ func _perform_hand_action():
 func _perform_open_action():
 	$UI.clear_comment_text()
 	$UI.clear_available_cursors()
-	match current_prop:
+
+	var object_to_open = current_prop
+	await _close_open_object(true)
+
+	await _walk_to_prop(object_to_open)
+	$ROWENA.get_something(3, false)
+	await $ROWENA.get_something_reached
+	match object_to_open:
 		Globals.Prop.REFRIGERATOR_RIGHT:
-			await _walk_to_prop()
-			$ROWENA.get_something(3, false)
-			await $ROWENA.get_something_reached
 			$BACKGROUND.open_refrigerator_right()
-			await $ROWENA.get_something_done
+		Globals.Prop.REFRIGERATOR_LEFT:
+			$BACKGROUND.open_refrigerator_left()
+	await $ROWENA.get_something_done
 
 func _perform_close_action():
 	$UI.clear_comment_text()
 	$UI.clear_available_cursors()
-	match current_prop:
-		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
-			await _walk_to_prop()
-			$ROWENA.get_something(3, false)
-			await $ROWENA.get_something_reached
-			$BACKGROUND.close_refrigerator_right()
-			await $ROWENA.get_something_done
 
-func _close_open_object():
-	if $BACKGROUND.get_open_object() == Globals.Prop.REFRIGERATOR_RIGHT:
-		var door = Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR
-		if _get_distance_from_prop(door) < auto_close_distance:
-			await _walk_to_prop(door)
-			$ROWENA.get_something(3, false)
-			await $ROWENA.get_something_reached
+	var to_close = current_prop
+
+	await _walk_to_prop()
+	$ROWENA.get_something(3, false)
+	await $ROWENA.get_something_reached
+	match to_close:
+		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
 			$BACKGROUND.close_refrigerator_right()
-			await $ROWENA.get_something_done
-		else:
-			$BACKGROUND.close_refrigerator_right()
+		Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR:
+			$BACKGROUND.close_refrigerator_left()
+	await $ROWENA.get_something_done
+
+	_recompute_overlapping_colliders()
+
+func _close_open_object(always_make_the_trip: bool):
+	match $BACKGROUND.get_open_object():
+		Globals.Prop.REFRIGERATOR_RIGHT:
+			var door = Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR
+			if (always_make_the_trip or
+				_get_distance_from_prop(door) < auto_close_distance):
+				await _walk_to_prop(door)
+				$ROWENA.get_something(3, false)
+				await $ROWENA.get_something_reached
+				$BACKGROUND.close_refrigerator_right()
+				await $ROWENA.get_something_done
+			else:
+				$BACKGROUND.close_refrigerator_right()
+			_recompute_overlapping_colliders()
+
+		Globals.Prop.REFRIGERATOR_LEFT:
+			var door = Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR
+			if (always_make_the_trip or
+				_get_distance_from_prop(door) < auto_close_distance):
+				await _walk_to_prop(door)
+				$ROWENA.get_something(3, false)
+				await $ROWENA.get_something_reached
+				$BACKGROUND.close_refrigerator_left()
+				await $ROWENA.get_something_done
+			else:
+				$BACKGROUND.close_refrigerator_left()
+			_recompute_overlapping_colliders()
 
 #
 # Returns the distance in X between Rowena and the given object from the
@@ -483,6 +528,23 @@ func _on_background_area_exited_object(which: int, _area: Area2D):
 	if overlapping_colliders.erase(which):
 		_update_current_prop()
 
+#
+# Recomputes from scratch the list of objects overlapping the mouse collider,
+# then calls _update_current_prop() to find the topmost object, make it the
+# current prop and set the available action cursors appropriately.
+#
+# This is useful in particular when an object has disappeared (e.g. an object
+# in the refrigerator we just closed), because if the mouse was over it before
+# it disappeared, we will never receive an exit signal to remove it.
+#
+func _recompute_overlapping_colliders():
+	overlapping_colliders.clear()
+	for area in $UI.get_areas_overlapping_mouse():
+		var index = $BACKGROUND.get_object_from_collider(area)
+		if index >= 0:
+			overlapping_colliders[index] = area
+	_update_current_prop()
+
 func _get_prop_name(prop) -> String:
 	var prop_name
 	if typeof(prop) == TYPE_INT:
@@ -538,10 +600,13 @@ func _update_current_prop():
 		print(_get_prop_name(top_collider))
 		var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
 		match current_prop:
-			Globals.Prop.REFRIGERATOR_RIGHT:
+			Globals.Prop.REFRIGERATOR_RIGHT, \
+			Globals.Prop.REFRIGERATOR_LEFT:
 				actions.append(Globals.Cursor.OPEN)
-			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
+			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR, \
+			Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
+			Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE, \
 			Globals.Prop.OLIVE_OIL_BOTTLE, \
 			Globals.Prop.SALT, \
 			Globals.Prop.TOASTER, \
@@ -558,6 +623,7 @@ func _update_current_prop():
 			Globals.Prop.PRESSURE_COOKER, \
 			Globals.Prop.KETTLE, \
 			Globals.Prop.SAUCE_PAN, \
+			Globals.Prop.CHAIR, \
 			Globals.Prop.TOWEL_LARGE, \
 			Globals.Prop.TOWEL_SMALL, \
 			Globals.Prop.SMOOTHIE_BOTTLES, \

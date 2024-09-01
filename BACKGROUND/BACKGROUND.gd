@@ -86,14 +86,43 @@ func _ready():
 			if _open_object == Globals.Prop.REFRIGERATOR_RIGHT:
 				area_exited_object.emit(which, area))
 
+	$Open_Objects/Refrigerator_Left.area_entered_object.connect(
+		func(which, area):
+			if _open_object == Globals.Prop.REFRIGERATOR_LEFT:
+				area_entered_object.emit(which, area))
+	$Open_Objects/Refrigerator_Left.area_exited_object.connect(
+		func(which, area):
+			if _open_object == Globals.Prop.REFRIGERATOR_LEFT:
+				area_exited_object.emit(which, area))
+
+##
+## Returns the collider (an Area2D) corresponding to the given constant from
+## [enum Globals.Prop].
+##
 func get_collider(which: int) -> Area2D:
 	if which < Globals.Prop.MAIN_PROP_COUNT:
 		return _colliders[which]
 	match _open_object:
 		Globals.Prop.REFRIGERATOR_RIGHT:
 			return $Open_Objects/Refrigerator_Right.get_collider(which)
+		Globals.Prop.REFRIGERATOR_LEFT:
+			return $Open_Objects/Refrigerator_Left.get_collider(which)
 		_:
 			return null
+
+##
+## Finds and returns the constant from [enum Globals.Prop] corresponding to the
+## collider [param area], or -1 if it is not found.
+##
+func get_object_from_collider(area: Area2D) -> int:
+	var index = _colliders.find(area)
+	if index < 0 and _open_object >= 0:
+		match _open_object:
+			Globals.Prop.REFRIGERATOR_RIGHT:
+				index = $Open_Objects/Refrigerator_Right.get_object_from_collider(area)
+			Globals.Prop.REFRIGERATOR_LEFT:
+				index = $Open_Objects/Refrigerator_Left.get_object_from_collider(area)
+	return index
 
 func get_open_object() -> int:
 	return _open_object
@@ -108,10 +137,22 @@ func close_refrigerator_right():
 	$Sounds/Fridge_Open_Close.play()
 	_open_object = -1
 
+func open_refrigerator_left():
+	$Open_Objects/Refrigerator_Left.show()
+	$Sounds/Fridge_Open_Close.play()
+	_open_object = Globals.Prop.REFRIGERATOR_LEFT
+
+func close_refrigerator_left():
+	$Open_Objects/Refrigerator_Left.hide()
+	$Sounds/Fridge_Open_Close.play()
+	_open_object = -1
+
 func close_everything():
 	match _open_object:
 		Globals.Prop.REFRIGERATOR_RIGHT:
 			close_refrigerator_right()
+		Globals.Prop.REFRIGERATOR_LEFT:
+			close_refrigerator_left()
 
 #
 # Makes the given object visible or invisible in the scene. An object is made
@@ -140,3 +181,5 @@ func set_object_visible(which: int, vis: bool):
 		match _open_object:
 			Globals.Prop.REFRIGERATOR_RIGHT:
 				$Open_Objects/Refrigerator_Right.set_object_visible(which, vis)
+			Globals.Prop.REFRIGERATOR_LEFT:
+				$Open_Objects/Refrigerator_Left.set_object_visible(which, vis)
