@@ -493,6 +493,8 @@ func _walk_to_prop(which: int = -1, walk_to_origin: bool = false):
 		must_wait = $ROWENA.walk_to_area(area)
 	if must_wait:
 		await $ROWENA.target_area_reached
+	else:
+		await get_tree().create_timer(0.01).timeout
 
 #
 # Callback invoked when the mouse collider (_area) enters the Area2D of a
