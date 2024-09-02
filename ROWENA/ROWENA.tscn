@@ -272,6 +272,21 @@ tracks/4/keys = {
 "update": 0,
 "values": [-30.0, -30.0, -40.0]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Do_Erk_Stuff")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.998753,
+"start_offset": 0.0,
+"stream": ExtResource("4_bo057")
+}],
+"times": PackedFloat32Array(1.1)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ta5w8"]
 length = 0.001

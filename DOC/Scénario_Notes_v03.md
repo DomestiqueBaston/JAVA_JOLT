@@ -42,6 +42,8 @@ Fin (séquence prévue en animation) ! /!\ Il faudra prendre garde à ce que Ro
 
 « Dialogue » de la séquence finale, quand le téléphone sonne et que Rowena répond.
 
+A partir d’ici, on n’utilisera plus les animation de Wait alternatives.
+
 1 seconde après que Rowena ait recraché son café et se soit retournée :
 
 Le téléphone sonne… (Phone_Ring – AudioStreamPlayer2D – dans la scène Rowena.tscn qui est en mode « loop »)
@@ -50,9 +52,9 @@ Rowena (Ici, on utilise la boîte des commentaires, pas le setup des dialogues)�
 
 Là commence l’animation Phone_Call dans la scène Rowena.tscn où elle attrape son téléphone et la sonnerie du téléphone se coupe à la frame 21 de l’animation).
 
-Elle répond à son téléphone. On freeze l’animation à la frame 30.
+Elle décroche son téléphone (toujours dans l’animation). On freeze l’animation à la frame 30.
 
-Pour ce dialogue, on utilisera le setup des... dialogues. Les phrases de Rowena auront toujours la même couleur (Rose) et le Boss sera en violet (144, 91, 194). La couleur du Boss sera éventuellement à exporter s’il faut la modifier.
+Pour ce dialogue, on utilisera le setup des... dialogues. Les phrases de Rowena auront toujours la même couleur (Rose) et le Boss sera en violet (144, 91, 194). La couleur du Boss sera éventuellement à exporter si jamais il faut la modifier.
 
 Rowena : Hello ?
 
@@ -60,11 +62,15 @@ Boss : Rowena ? Are you kidding me ? Do you even grasp the colossal clusterfu
 
 On relance l’animation à la frame 31.
 
-Elle lâche son téléphone qui tombe par terre.
+Elle lâche son téléphone qui tombe par terre (toujours dans l’animation).
 
 Rowena (Ici, on utilise la boîte des commentaires, pas le setup des dialogues) : (Wait_Base animation)That's it then... (Nonsense animation) Well. Back to bed. (Walk animation to the right until Rowena’s out of the field).
 
 As soon as Rowena’s out, we play the OUTRO.tscn.
+
+Si jamais la radio jouait encore à ce moment-là, alors elle sera coupée à la frame 28 de l’animation Outro dans OUTRO.tscn !
+
+À la fin de la séquence d’animation le jeu quitte !
 Ce que Rowena peut essayer de faire (ou pas)...
 
 
