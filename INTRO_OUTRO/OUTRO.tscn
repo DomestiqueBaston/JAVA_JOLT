@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dol47lh1gupsx"]
+[gd_scene load_steps=21 format=3 uid="uid://dol47lh1gupsx"]
 
 [ext_resource type="Script" path="res://INTRO_OUTRO/OUTRO.gd" id="1_inxt3"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/IMAGES/BG_Lights_On.png" id="1_mxm7a"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://d5d7mofo1pkv" path="res://INTRO_OUTRO/SOUNDS/Snoring.ogg" id="5_gmlpy"]
 [ext_resource type="Shader" path="res://SHADER/KUWAHARA.gdshader" id="5_y1t33"]
 [ext_resource type="AudioStream" uid="uid://cdk4cbg43ly8j" path="res://INTRO_OUTRO/SOUNDS/Opening_Door.ogg" id="6_ju8ck"]
+[ext_resource type="Texture2D" uid="uid://cyghiycxbscrl" path="res://BACKGROUND/IMAGES/Coffee_Filter_Holder_Out.png" id="6_jw1lv"]
 [ext_resource type="AudioStream" uid="uid://cd88xgmqxtv7m" path="res://INTRO_OUTRO/SOUNDS/Steps.ogg" id="7_wbyuv"]
 [ext_resource type="AudioStream" uid="uid://bi1ej7wmde8ep" path="res://INTRO_OUTRO/SOUNDS/Closing_Door.ogg" id="8_2ywjy"]
 [ext_resource type="AudioStream" uid="uid://dcxe430338t0p" path="res://INTRO_OUTRO/SOUNDS/Going_To_Bed.ogg" id="9_w327o"]
@@ -307,6 +308,11 @@ centered = false
 [node name="End" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("4_4oy66")
+centered = false
+
+[node name="CoffeeFilterHolderOut" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_jw1lv")
 centered = false
 
 [node name="Kuwahara_Shader" type="ColorRect" parent="."]
