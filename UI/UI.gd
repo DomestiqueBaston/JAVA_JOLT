@@ -21,9 +21,6 @@ extends CanvasLayer
 ## Seconds before comments disappear.
 @export var comment_timeout: float = 4
 
-## Which dialogue to start with (for testing), 0 for none.
-@export_range(0, 3) var dialogue_number: int = 0
-
 ## Signal emitted when user clicks somewhere to move or do something.
 signal click_on_background(pos: Vector2)
 
@@ -86,13 +83,6 @@ const dialogue3 = preload("res://dialogue3.json").data
 
 func _ready():
 	clear_inventory()
-	match dialogue_number:
-		1:
-			_tell_story_node(dialogue1, dialogue1["start"])
-		2:
-			_tell_story_node(dialogue2, dialogue2["start"])
-		3:
-			_tell_story_node(dialogue3, dialogue3["start"])
 
 #
 # If the user has chosen an inventory item to use and then moves the mouse
@@ -140,9 +130,22 @@ func _unhandled_input(event: InputEvent):
 				_open_inventory()
 		get_viewport().set_input_as_handled()
 
+##
+## Plays dialogue number 1, 2 or 3. This is a couroutine; use await to block
+## until the dialogue finishes.
+##
+func tell_story(which: int):
+	match which:
+		1:
+			await _tell_story_node(dialogue1, dialogue1["start"])
+		2:
+			await _tell_story_node(dialogue2, dialogue2["start"])
+		3:
+			await _tell_story_node(dialogue3, dialogue3["start"])
+
 func _tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
-	type_dialogue_text(node.text, speaker)
+	_type_dialogue_text(node.text, speaker)
 	await _typing_finished
 	await _next_click
 	var next = node.get("next")
@@ -151,12 +154,12 @@ func _tell_story_node(graph, node):
 		for node_name in next:
 			texts.append(graph[node_name].text)
 		speaker = _get_node_speaker(graph[next[0]])
-		var choice = await choose_response(texts, speaker)
+		var choice = await _choose_response(texts, speaker)
 		next = graph[next[choice]].get("next")
 	if next:
-		_tell_story_node(graph, graph[next])
+		await _tell_story_node(graph, graph[next])
 	else:
-		clear_dialogue()
+		_clear_dialogue()
 
 func _get_node_speaker(node) -> int:
 	return ROWENA if node.speaker == "rowena" else DOCTOR
@@ -172,17 +175,17 @@ func _set_dialogue_style(speaker: int):
 func is_dialogue_visible() -> bool:
 	return $Boxes/Dialogue_Box/BG/Dialogue.visible
 
-func clear_dialogue():
+func _clear_dialogue():
 	$Dialogue_AnimationPlayer.play("Close_Dialogue_1")
 	$Boxes/Dialogue_Box/BG/Next.hide()
 
-func set_dialogue_text(text: String, speaker: int):
+func _set_dialogue_text(text: String, speaker: int):
 	_set_dialogue_style(speaker)
 	$Boxes/Dialogue_Box/BG/Dialogue.text = text
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
 	$Boxes/Dialogue_Box/BG/Next.show()
 
-func type_dialogue_text(text: String, speaker: int):
+func _type_dialogue_text(text: String, speaker: int):
 	_set_dialogue_style(speaker)
 	$Boxes/Dialogue_Box/BG/Dialogue.text = text
 	$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = 0
@@ -190,7 +193,7 @@ func type_dialogue_text(text: String, speaker: int):
 	$Typing_Timer.start(1.0 / characters_per_second)
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
 
-func choose_response(choices: Array[String], speaker: int) -> int:
+func _choose_response(choices: Array[String], speaker: int) -> int:
 	_choice_text_color = rowena_text_color if speaker == ROWENA else doctor_text_color
 	$Boxes/Dialogue_Box/BG/Next.hide()
 	$Boxes/Dialogue_Box/BG/Dialogue.text = choices[0]
@@ -384,6 +387,15 @@ func _on_help_button_entered(_area: Area2D):
 func _on_help_button_exited(_area: Area2D):
 	if not is_dialogue_visible() and _is_tutorial_seen and $Help.visible:
 		$Help_AnimationPlayer.play("Help_Off")
+
+##
+## Makes the help button visible until the user clicks on it to see the
+## tuturial.
+##
+func pin_help_button():
+	_is_tutorial_seen = false
+	if not $Help.visible:
+		$Help_AnimationPlayer.play("Help_On")
 
 func _on_help_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):

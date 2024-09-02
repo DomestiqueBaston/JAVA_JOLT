@@ -17,6 +17,9 @@ extends Node2D
 ## automatically rather than make Rowena walk back to it.
 @export var auto_close_distance = 60
 
+## Which dialogue to start with (for testing), 0 for none.
+@export_range(0, 3) var dialogue_number: int = 0
+
 # The prop currently under the mouse cursor (see Globals.Prop), or -1.
 var current_prop: int = -1
 
@@ -201,6 +204,9 @@ var is_towel_wet = false
 
 func _ready():
 	assert(prop_info.size() == Globals.Prop.TOTAL_PROP_COUNT)
+	if dialogue_number > 0:
+		await $UI.tell_story(dialogue_number)
+	$UI.pin_help_button()
 
 #
 # Sets the comment text, positioning it to the left or to the right of Rowena,
