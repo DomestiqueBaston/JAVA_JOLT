@@ -187,6 +187,18 @@ const prop_info: Array[String] = [
 	"I keep frozen meat in there.",
 	# REFRIGERATOR_LEFT_OPEN_DOOR
 	"Do you want to close the freezer?",
+	# EMPTY_COFFEE_SPACE
+	"That's where my coffee should be but isn't.",
+	# CANNED_GREEN_BEANS_1
+	"That's a can of green beans.",
+	# CANNED_GREEN_BEANS_2
+	"That's a can of green beans.",
+	# CANNED_BEANS_1
+	"That's a can of beans.",
+	# CANNED_BEANS_2
+	"That's a can of beans.",
+	# COFFEE_CUPBOARD_OPEN_DOOR
+	"Do you want to close the coffee cupboard?",
 ]
 
 const inventory_full_msg = "Hey, I don't have 4 arms, I'm not Shiva!"
@@ -383,6 +395,14 @@ func _perform_hand_action():
 		Globals.Prop.ICE_CREAM_DRAWER, \
 		Globals.Prop.MEAT_DRAWER:
 			_set_comment("Way too cold at this hour!")
+		Globals.Prop.EMPTY_COFFEE_SPACE:
+			_set_comment("I'd better take 10 more looks at it, just in case...")
+		Globals.Prop.CANNED_GREEN_BEANS_1, \
+		Globals.Prop.CANNED_GREEN_BEANS_2:
+			_set_comment("Not what I had in mind...")
+		Globals.Prop.CANNED_BEANS_1, \
+		Globals.Prop.CANNED_BEANS_2:
+			_set_comment("They make me fart, so maybe not.")
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -403,63 +423,62 @@ func _perform_open_action():
 	$UI.clear_available_cursors()
 
 	var object_to_open = current_prop
-	await _close_open_object(true)
-
-	await _walk_to_prop(object_to_open)
-	$ROWENA.get_something(3, false)
-	await $ROWENA.get_something_reached
+	var height = 3
 	match object_to_open:
-		Globals.Prop.REFRIGERATOR_RIGHT:
-			$BACKGROUND.open_refrigerator_right()
-		Globals.Prop.REFRIGERATOR_LEFT:
-			$BACKGROUND.open_refrigerator_left()
+		Globals.Prop.COFFEE_CUPBOARD:
+			height = randi_range(4, 5)
+
+	await _close_open_object(true)
+	await _walk_to_prop(object_to_open)
+	$ROWENA.get_something(height, false)
+	await $ROWENA.get_something_reached
+	$BACKGROUND.open_something(object_to_open)
 	await $ROWENA.get_something_done
+	
+	if object_to_open == Globals.Prop.COFFEE_CUPBOARD:
+		_set_comment("I like rubbing salt in the wound.")
 
 func _perform_close_action():
 	$UI.clear_comment_text()
 	$UI.clear_available_cursors()
 
-	var to_close = current_prop
+	var height = 3
+	match current_prop:
+		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR:
+			height = randi_range(4, 5)
 
 	await _walk_to_prop()
-	$ROWENA.get_something(3, false)
+	$ROWENA.get_something(height, false)
 	await $ROWENA.get_something_reached
-	match to_close:
-		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR:
-			$BACKGROUND.close_refrigerator_right()
-		Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR:
-			$BACKGROUND.close_refrigerator_left()
+	$BACKGROUND.close_something()
 	await $ROWENA.get_something_done
 
 	_recompute_overlapping_colliders()
 
 func _close_open_object(always_make_the_trip: bool):
-	match $BACKGROUND.get_open_object():
-		Globals.Prop.REFRIGERATOR_RIGHT:
-			var door = Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR
-			if (always_make_the_trip or
-				_get_distance_from_prop(door) < auto_close_distance):
-				await _walk_to_prop(door)
-				$ROWENA.get_something(3, false)
-				await $ROWENA.get_something_reached
-				$BACKGROUND.close_refrigerator_right()
-				await $ROWENA.get_something_done
-			else:
-				$BACKGROUND.close_refrigerator_right()
-			_recompute_overlapping_colliders()
+	var door = -1
+	var height = 3
 
+	match $BACKGROUND.get_open_object():
+		Globals.Prop.COFFEE_CUPBOARD:
+			door = Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR
+			height = randi_range(4, 5)
+		Globals.Prop.REFRIGERATOR_RIGHT:
+			door = Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR
 		Globals.Prop.REFRIGERATOR_LEFT:
-			var door = Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR
-			if (always_make_the_trip or
-				_get_distance_from_prop(door) < auto_close_distance):
-				await _walk_to_prop(door)
-				$ROWENA.get_something(3, false)
-				await $ROWENA.get_something_reached
-				$BACKGROUND.close_refrigerator_left()
-				await $ROWENA.get_something_done
-			else:
-				$BACKGROUND.close_refrigerator_left()
-			_recompute_overlapping_colliders()
+			door = Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR
+
+	if door >= 0:
+		if (always_make_the_trip or
+			_get_distance_from_prop(door) < auto_close_distance):
+			await _walk_to_prop(door)
+			$ROWENA.get_something(height, false)
+			await $ROWENA.get_something_reached
+			$BACKGROUND.close_something()
+			await $ROWENA.get_something_done
+		else:
+			$BACKGROUND.close_something()
+		_recompute_overlapping_colliders()
 
 #
 # Returns the distance in X between Rowena and the given object from the
@@ -605,9 +624,11 @@ func _update_current_prop():
 		print(_get_prop_name(top_collider))
 		var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
 		match current_prop:
+			Globals.Prop.COFFEE_CUPBOARD, \
 			Globals.Prop.REFRIGERATOR_RIGHT, \
 			Globals.Prop.REFRIGERATOR_LEFT:
 				actions.append(Globals.Cursor.OPEN)
+			Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
 			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR, \
 			Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR:
 				actions.append(Globals.Cursor.CLOSE)
@@ -648,7 +669,12 @@ func _update_current_prop():
 			Globals.Prop.VEGETABLE_DRAWER, \
 			Globals.Prop.LASAGNA_DRAWER, \
 			Globals.Prop.ICE_CREAM_DRAWER, \
-			Globals.Prop.MEAT_DRAWER:
+			Globals.Prop.MEAT_DRAWER, \
+			Globals.Prop.EMPTY_COFFEE_SPACE, \
+			Globals.Prop.CANNED_GREEN_BEANS_1, \
+			Globals.Prop.CANNED_GREEN_BEANS_2, \
+			Globals.Prop.CANNED_BEANS_1, \
+			Globals.Prop.CANNED_BEANS_2:
 				if $UI.find_in_inventory(current_prop) < 0:
 					actions.append(Globals.Cursor.HAND)
 			Globals.Prop.WINDOW_RIGHT:

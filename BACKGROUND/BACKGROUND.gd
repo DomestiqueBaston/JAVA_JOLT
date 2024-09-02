@@ -77,6 +77,15 @@ func _ready():
 		collider.area_exited.connect(
 			func(area): area_exited_object.emit(index, area))
 
+	$Open_Objects/Coffee_Cupboard.area_entered_object.connect(
+		func(which, area):
+			if _open_object == Globals.Prop.COFFEE_CUPBOARD:
+				area_entered_object.emit(which, area))
+	$Open_Objects/Coffee_Cupboard.area_exited_object.connect(
+		func(which, area):
+			if _open_object == Globals.Prop.COFFEE_CUPBOARD:
+				area_exited_object.emit(which, area))
+
 	$Open_Objects/Refrigerator_Right.area_entered_object.connect(
 		func(which, area):
 			if _open_object == Globals.Prop.REFRIGERATOR_RIGHT:
@@ -103,6 +112,8 @@ func get_collider(which: int) -> Area2D:
 	if which < Globals.Prop.MAIN_PROP_COUNT:
 		return _colliders[which]
 	match _open_object:
+		Globals.Prop.COFFEE_CUPBOARD:
+			return $Open_Objects/Coffee_Cupboard.get_collider(which)
 		Globals.Prop.REFRIGERATOR_RIGHT:
 			return $Open_Objects/Refrigerator_Right.get_collider(which)
 		Globals.Prop.REFRIGERATOR_LEFT:
@@ -118,6 +129,8 @@ func get_object_from_collider(area: Area2D) -> int:
 	var index = _colliders.find(area)
 	if index < 0 and _open_object >= 0:
 		match _open_object:
+			Globals.Prop.COFFEE_CUPBOARD:
+				index = $Open_Objects/Coffee_Cupboard.get_object_from_collider(area)
 			Globals.Prop.REFRIGERATOR_RIGHT:
 				index = $Open_Objects/Refrigerator_Right.get_object_from_collider(area)
 			Globals.Prop.REFRIGERATOR_LEFT:
@@ -147,8 +160,27 @@ func close_refrigerator_left():
 	$Sounds/Fridge_Open_Close.play()
 	_open_object = -1
 
-func close_everything():
+func open_coffee_cupboard():
+	$Open_Objects/Coffee_Cupboard.show()
+	_open_object = Globals.Prop.COFFEE_CUPBOARD
+
+func close_coffee_cupboard():
+	$Open_Objects/Coffee_Cupboard.hide()
+	_open_object = -1
+
+func open_something(what: int):
+	match what:
+		Globals.Prop.COFFEE_CUPBOARD:
+			open_coffee_cupboard()
+		Globals.Prop.REFRIGERATOR_RIGHT:
+			open_refrigerator_right()
+		Globals.Prop.REFRIGERATOR_LEFT:
+			open_refrigerator_left()
+
+func close_something():
 	match _open_object:
+		Globals.Prop.COFFEE_CUPBOARD:
+			close_coffee_cupboard()
 		Globals.Prop.REFRIGERATOR_RIGHT:
 			close_refrigerator_right()
 		Globals.Prop.REFRIGERATOR_LEFT:
@@ -179,6 +211,8 @@ func set_object_visible(which: int, vis: bool):
 				$Removed_Objects/Kettle_Out.visible = not vis
 	else:
 		match _open_object:
+			Globals.Prop.COFFEE_CUPBOARD:
+				$Open_Objects/Coffee_Cupboard.set_object_visible(which, vis)
 			Globals.Prop.REFRIGERATOR_RIGHT:
 				$Open_Objects/Refrigerator_Right.set_object_visible(which, vis)
 			Globals.Prop.REFRIGERATOR_LEFT:

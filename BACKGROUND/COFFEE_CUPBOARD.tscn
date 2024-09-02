@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://keucd37jh7cv"]
+[gd_scene load_steps=9 format=3 uid="uid://keucd37jh7cv"]
 
+[ext_resource type="Script" path="res://BACKGROUND/COFFEE_CUPBOARD.gd" id="1_5tqpg"]
 [ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/IMAGES/Coffee_Cupboard_Open.png" id="1_f6c4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfsvx"]
@@ -21,6 +22,7 @@ size = Vector2(1, 4)
 size = Vector2(3, 25)
 
 [node name="Coffee_Cupboard" type="Node2D"]
+script = ExtResource("1_5tqpg")
 
 [node name="Coffee_Cupboard_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_f6c4a")
@@ -32,6 +34,7 @@ centered = false
 
 [node name="Empty_Coffee_Space_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Empty_Coffee_Space" type="CollisionShape2D" parent="Stuff_Colliders/Empty_Coffee_Space_Collider"]
 position = Vector2(136, 23.5)
@@ -40,22 +43,25 @@ metadata/bg_level = 1
 
 [node name="Canned_Green_Beans_1_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Canned_Green_Beans_1" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Green_Beans_1_Collider"]
 position = Vector2(136.5, 8)
 shape = SubResource("RectangleShape2D_qcexa")
 metadata/bg_level = 1
 
-[node name="Canned_Green_Beans_2_Collider2" type="Area2D" parent="Stuff_Colliders"]
+[node name="Canned_Green_Beans_2_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
-[node name="Canned_Green_Beans_2" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Green_Beans_2_Collider2"]
+[node name="Canned_Green_Beans_2" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Green_Beans_2_Collider"]
 position = Vector2(135, 12.5)
 shape = SubResource("RectangleShape2D_trh8a")
 metadata/bg_level = 1
 
 [node name="Canned_Beans_1_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Canned_Beans_1" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Beans_1_Collider"]
 position = Vector2(137.5, 12.5)
@@ -64,6 +70,7 @@ metadata/bg_level = 1
 
 [node name="Canned_Beans_2_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Canned_Beans_2" type="CollisionShape2D" parent="Stuff_Colliders/Canned_Beans_2_Collider"]
 position = Vector2(138.5, 8)
@@ -71,9 +78,11 @@ shape = SubResource("RectangleShape2D_ouy5x")
 metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
+position = Vector2(140.5, 15.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
-position = Vector2(140.5, 15.5)
 shape = SubResource("RectangleShape2D_j7hyh")
 metadata/bg_level = 1

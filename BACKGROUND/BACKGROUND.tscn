@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=61 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ci0v27uluhr5d" path="res://BACKGROUND/IMAGES/Pepper_Out.png" id="12_kg7m7"]
 [ext_resource type="Texture2D" uid="uid://b7itgwxv8j5lp" path="res://BACKGROUND/IMAGES/Red_Coffee_Cup_Out.png" id="13_ik1v4"]
 [ext_resource type="PackedScene" uid="uid://cqa3bbbs2by12" path="res://BACKGROUND/REFRIGERATOR_LEFT.tscn" id="15_h01j6"]
+[ext_resource type="PackedScene" uid="uid://keucd37jh7cv" path="res://BACKGROUND/COFFEE_CUPBOARD.tscn" id="16_mbj8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -214,6 +215,9 @@ visible = false
 [node name="Refrigerator_Left" parent="Open_Objects" instance=ExtResource("15_h01j6")]
 visible = false
 
+[node name="Coffee_Cupboard" parent="Open_Objects" instance=ExtResource("16_mbj8v")]
+visible = false
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 visible = false
 
@@ -384,10 +388,11 @@ position = Vector2(93, 15.5)
 shape = SubResource("RectangleShape2D_mrsfs")
 
 [node name="Coffee_Cupboard_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+position = Vector2(135, 15.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Coffee_Cupboard" type="CollisionShape2D" parent="Stuff_Colliders/Up/Coffee_Cupboard_Collider"]
-position = Vector2(135, 15.5)
 shape = SubResource("RectangleShape2D_t3h6g")
 
 [node name="Upper_Right_Cupboard_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
