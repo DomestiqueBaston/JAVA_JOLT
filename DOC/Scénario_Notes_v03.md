@@ -469,11 +469,11 @@ L’inventaire :
 	Les objets composant l’inventaire se trouverons sous forme de texte car la résolution du jeu est trop basse pour des images lisibles (sans compter qu’il faudrait avoir aussi le shader Kuwahara dessus).
 	Utiliser un élément de l’inventaire le fera passer en surbrillance (rose, comme pour les dialogues de Rowena). Par défaut, la couleur est le blanc. Le désélectionner lui rendra la couleur par défaut.
 	Après avoir combiné des éléments de l’inventaire, ce qui en résulte prend la couleur par défaut et n’est pas sélectionné.
-	Pour désassembler des éléments « désassemblables » on les utilisera sur eux-mêmes. Ils le sont par défaut mais on va rester logique. Si on avait dû utiliser du sirop et de l’eau par exemple, on imagine bien qu’on n’aurait pas pu les désassembler.
-	L’icon de l’inventaire s’affiche en plaçant la souris dans le coin supérieur gauche. Il y a une animation pour affichage de l’icône et une pour la masquer.
-	/!\ IMPORTANT : pendant les séquences de dialogue, l’inventaire ne peut pas être affiché (et l’icône ne peut pas apparaître).
-	Pour fermer l’inventaire sans y interagir, il suffit de cliquer à nouveau sur l’icône Inv.
-	Lorsque l’inventaire est ouvert, l’icône Inv. ne disparaît pas.
+	Pour désassembler des éléments « désassemblables » on les utilisera sur eux-mêmes. Ils le sont par défaut mais on va rester logique. Si on avait dû utiliser du sirop et de l’eau par exemple, on imagine bien qu’on n’aurait pas pu les désassembler. Ceci dit, je ne crois pas qu’on ait besoin de désassembler des trucs dans le jeu.
+	/!\ IMPORTANT : pendant les séquences de dialogue, l’inventaire ne peut pas être affiché.
+	L’inventaire s’ouvre avec un clic droit.
+	Pour fermer l’inventaire sans y interagir, il suffit de cliquer droit.
+	Lorsque l’inventaire est ouvert, l’icône ? ne disparaît pas.
 
 
 	Interactions avec les éléments dans les tiroirs :
@@ -481,6 +481,7 @@ L’inventaire :
 
 	Sauver/charger une partie :
 	Cela se fera n’importe où. Il n’y aura qu’à faire défiler les icônes d’action à la souris avec la molette et de cliquer sur Sauver pour sauver une partie ou Charger pour… charger une partie.
+	À priori, on sauvera en quittant et on rechargera en démarrant le jeu.
 
 	Changer le volume sonore du jeu :
 	Cela ne peut se faire que sur le poste de radio sur la plan de travail à droite (juste à gauche de la fenêtre). On se servira alors de la molette de la souris pour faire défiler les icônes jusqu’à afficher celle d’augmentation ou diminution du volume ou carrément couper le son.
