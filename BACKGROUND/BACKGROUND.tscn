@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=60 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -142,6 +142,9 @@ size = Vector2(1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4i34"]
 size = Vector2(2, 2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3lma"]
+size = Vector2(75, 3)
+
 [node name="BACKGROUND" type="Node2D"]
 script = ExtResource("1_tfe66")
 
@@ -212,6 +215,7 @@ visible = false
 visible = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
+visible = false
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
 
@@ -669,3 +673,11 @@ shape = SubResource("RectangleShape2D_p4i34")
 [node name="Fridge_Open_Close" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("6_jvbuw")
 bus = &"FX"
+
+[node name="Counter_Collider" type="Area2D" parent="."]
+position = Vector2(119, 40)
+collision_layer = 2
+collision_mask = 4
+
+[node name="Counter_Rect" type="CollisionShape2D" parent="Counter_Collider"]
+shape = SubResource("RectangleShape2D_s3lma")

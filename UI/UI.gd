@@ -307,7 +307,7 @@ func _set_mouse_cursor(cursor: int):
 ##
 func clear_available_cursors():
 	_available_cursors.clear()
-	if not _is_inventory_open:
+	if not (_is_inventory_open or is_tutorial_open() or is_dialogue_visible()):
 		if _inventory_item_being_used < 0:
 			_current_cursor = -1
 			_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
@@ -325,7 +325,7 @@ func set_available_cursors(cursors: Array[int]):
 		clear_available_cursors()
 	else:
 		_available_cursors = cursors
-		if not _is_inventory_open:
+		if not (_is_inventory_open or is_tutorial_open() or is_dialogue_visible()):
 			if _inventory_item_being_used < 0:
 				_current_cursor = 0
 				_set_mouse_cursor(cursors[0])

@@ -486,15 +486,8 @@ func _walk_to_prop(which: int = -1, walk_to_origin: bool = false):
 	if which < 0:
 		which = current_prop
 	var area = $BACKGROUND.get_collider(which)
-	var must_wait
-	if walk_to_origin:
-		must_wait = $ROWENA.walk_to_area_origin(area)
-	else:
-		must_wait = $ROWENA.walk_to_area(area)
-	if must_wait:
-		await $ROWENA.target_area_reached
-	else:
-		await get_tree().create_timer(0.01).timeout
+	$ROWENA.look_at_x(area.global_position.x)
+	await $ROWENA.walk_to_area(area, walk_to_origin)
 
 #
 # Callback invoked when the mouse collider (_area) enters the Area2D of a
@@ -502,8 +495,6 @@ func _walk_to_prop(which: int = -1, walk_to_origin: bool = false):
 # current prop, and available cursor actions, are updated as appropriate.
 #
 func _on_background_area_entered_object(which: int, _area: Area2D):
-	if $UI.is_dialogue_visible() or $UI.is_inventory_open() or $UI.is_tutorial_open():
-		return
 
 	# some objects are hidden if the user has taken them, so ignore them
 
@@ -695,6 +686,7 @@ func _use_object_on_other(object1: int, object2: int):
 			elif is_towel_wet:
 				_set_comment("The towel is already moist.")
 			else:
+				await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
 				await $ROWENA.do_stuff(false)
 				_set_comment("Now the towel is moist.")
 				is_towel_wet = true
@@ -710,12 +702,14 @@ func _use_object_on_other(object1: int, object2: int):
 				$UI.find_in_inventory(object2) < 0):
 				pass
 			elif is_towel_wet:
+				await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
 				await $ROWENA.do_stuff(false)
 				_set_comment("That should be more absorbent now. Let's taste it!")
 				await $UI.comment_closed
 				await $ROWENA.do_erk_stuff()
 				_set_comment("That's disgusting! And there's not enough...")
 			else:
+				await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
 				await $ROWENA.do_stuff(false)
 				_set_comment("That works, but I can't get enough coffee out of it.")
 
