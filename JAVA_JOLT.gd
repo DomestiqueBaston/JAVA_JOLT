@@ -199,7 +199,33 @@ const prop_info: Array[String] = [
 	"That's a can of beans.",
 	# COFFEE_CUPBOARD_OPEN_DOOR
 	"Do you want to close the coffee cupboard?",
+	# DISHWASHER_TOP
+	"That's the top rack of the dishwasher.",
+	# DISHWASHER_MIDDLE
+	"That's the middle rack of the dishwasher.",
+	# DISHWASHER_BOTTOM
+	"That's the main compartment of the dishwasher.",
+	# DISHWASHER_OPEN_DOOR
+	"Do you want to close the dishwasher?",
 ]
+
+const open_close_height: Dictionary = {
+	Globals.Prop.DISHWASHER: 1,
+	Globals.Prop.DISHWASHER_OPEN_DOOR: 1,
+	Globals.Prop.COFFEE_CUPBOARD: 4,
+	Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR: 4,
+	Globals.Prop.REFRIGERATOR_RIGHT: 3,
+	Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR: 3,
+	Globals.Prop.REFRIGERATOR_LEFT: 3,
+	Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR: 3,
+}
+
+const open_close_door: Dictionary = {
+	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
+	Globals.Prop.COFFEE_CUPBOARD: Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR,
+	Globals.Prop.REFRIGERATOR_RIGHT: Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR,
+	Globals.Prop.REFRIGERATOR_LEFT: Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR,
+}
 
 const inventory_full_msg = "Hey, I don't have 4 arms, I'm not Shiva!"
 
@@ -403,6 +429,10 @@ func _perform_hand_action():
 		Globals.Prop.CANNED_BEANS_1, \
 		Globals.Prop.CANNED_BEANS_2:
 			_set_comment("They make me fart, so maybe not.")
+		Globals.Prop.DISHWASHER_TOP, \
+		Globals.Prop.DISHWASHER_MIDDLE, \
+		Globals.Prop.DISHWASHER_BOTTOM:
+			_set_comment("It's empty.")
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -423,10 +453,7 @@ func _perform_open_action():
 	$UI.clear_available_cursors()
 
 	var object_to_open = current_prop
-	var height = 3
-	match object_to_open:
-		Globals.Prop.COFFEE_CUPBOARD:
-			height = randi_range(4, 5)
+	var height = _get_open_close_height(object_to_open)
 
 	await _close_open_object(true)
 	await _walk_to_prop(object_to_open)
@@ -442,10 +469,7 @@ func _perform_close_action():
 	$UI.clear_comment_text()
 	$UI.clear_available_cursors()
 
-	var height = 3
-	match current_prop:
-		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR:
-			height = randi_range(4, 5)
+	var height = _get_open_close_height(current_prop)
 
 	await _walk_to_prop()
 	$ROWENA.get_something(height, false)
@@ -456,29 +480,30 @@ func _perform_close_action():
 	_recompute_overlapping_colliders()
 
 func _close_open_object(always_make_the_trip: bool):
-	var door = -1
-	var height = 3
+	var which = $BACKGROUND.get_open_object()
+	if which < 0:
+		return
 
-	match $BACKGROUND.get_open_object():
-		Globals.Prop.COFFEE_CUPBOARD:
-			door = Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR
-			height = randi_range(4, 5)
-		Globals.Prop.REFRIGERATOR_RIGHT:
-			door = Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR
-		Globals.Prop.REFRIGERATOR_LEFT:
-			door = Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR
+	var door = open_close_door[which]
+	var height = _get_open_close_height(which)
 
-	if door >= 0:
-		if (always_make_the_trip or
-			_get_distance_from_prop(door) < auto_close_distance):
-			await _walk_to_prop(door)
-			$ROWENA.get_something(height, false)
-			await $ROWENA.get_something_reached
-			$BACKGROUND.close_something()
-			await $ROWENA.get_something_done
-		else:
-			$BACKGROUND.close_something()
-		_recompute_overlapping_colliders()
+	if (always_make_the_trip or
+		_get_distance_from_prop(door) < auto_close_distance):
+		await _walk_to_prop(door)
+		$ROWENA.get_something(height, false)
+		await $ROWENA.get_something_reached
+		$BACKGROUND.close_something()
+		await $ROWENA.get_something_done
+	else:
+		$BACKGROUND.close_something()
+
+	_recompute_overlapping_colliders()
+
+func _get_open_close_height(which: int) -> int:
+	var height = open_close_height[which]
+	if height >= 4:
+		height = randi_range(4, 5)
+	return height
 
 #
 # Returns the distance in X between Rowena and the given object from the
@@ -620,66 +645,77 @@ func _update_current_prop():
 
 	if current_prop < 0:
 		$UI.clear_available_cursors()
-	else:
-		print(_get_prop_name(top_collider))
-		var actions: Array[int] = [ Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE ]
-		match current_prop:
-			Globals.Prop.COFFEE_CUPBOARD, \
-			Globals.Prop.REFRIGERATOR_RIGHT, \
-			Globals.Prop.REFRIGERATOR_LEFT:
-				actions.append(Globals.Cursor.OPEN)
-			Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
-			Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR, \
-			Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR:
-				actions.append(Globals.Cursor.CLOSE)
-			Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE, \
-			Globals.Prop.OLIVE_OIL_BOTTLE, \
-			Globals.Prop.SALT, \
-			Globals.Prop.TOASTER, \
-			Globals.Prop.NOTCHED_COFFEE_CUP_RIGHT, \
-			Globals.Prop.PEPPER, \
-			Globals.Prop.RICE_POT, \
-			Globals.Prop.COOKIE_POT, \
-			Globals.Prop.TAP, \
-			Globals.Prop.MANDOLIN, \
-			Globals.Prop.FOOD_PROCESSOR, \
-			Globals.Prop.RED_COFFEE_CUP_LEFT, \
-			Globals.Prop.BROWN_COFFEE_CUP, \
-			Globals.Prop.FRUIT_BASKET, \
-			Globals.Prop.PRESSURE_COOKER, \
-			Globals.Prop.KETTLE, \
-			Globals.Prop.SAUCE_PAN, \
-			Globals.Prop.CHAIR, \
-			Globals.Prop.TOWEL_LARGE, \
-			Globals.Prop.TOWEL_SMALL, \
-			Globals.Prop.SMOOTHIE_BOTTLES, \
-			Globals.Prop.FRUIT_JUICE_BOTTLES, \
-			Globals.Prop.MILK_BOTTLES, \
-			Globals.Prop.BUTTER_KNIFE, \
-			Globals.Prop.CREAM_POTS, \
-			Globals.Prop.YOGHURTS, \
-			Globals.Prop.SAUCE_PAN_IN_FRIDGE, \
-			Globals.Prop.EGGS, \
-			Globals.Prop.GREEN_PEPPER, \
-			Globals.Prop.TOMATOES, \
-			Globals.Prop.CAULIFLOWER, \
-			Globals.Prop.YELLOW_PEPPER, \
-			Globals.Prop.FRUIT, \
-			Globals.Prop.PIZZA_DRAWER, \
-			Globals.Prop.VEGETABLE_DRAWER, \
-			Globals.Prop.LASAGNA_DRAWER, \
-			Globals.Prop.ICE_CREAM_DRAWER, \
-			Globals.Prop.MEAT_DRAWER, \
-			Globals.Prop.EMPTY_COFFEE_SPACE, \
-			Globals.Prop.CANNED_GREEN_BEANS_1, \
-			Globals.Prop.CANNED_GREEN_BEANS_2, \
-			Globals.Prop.CANNED_BEANS_1, \
-			Globals.Prop.CANNED_BEANS_2:
-				if $UI.find_in_inventory(current_prop) < 0:
-					actions.append(Globals.Cursor.HAND)
-			Globals.Prop.WINDOW_RIGHT:
-				actions.append(Globals.Cursor.QUIT)
-		$UI.set_available_cursors(actions)
+		return
+
+	print(_get_prop_name(top_collider))
+	var actions: Array[int] = [Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE]
+
+	match current_prop:
+		Globals.Prop.DISHWASHER, \
+		Globals.Prop.COFFEE_CUPBOARD, \
+		Globals.Prop.REFRIGERATOR_RIGHT, \
+		Globals.Prop.REFRIGERATOR_LEFT:
+			actions.append(Globals.Cursor.OPEN)
+
+		Globals.Prop.DISHWASHER_OPEN_DOOR, \
+		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
+		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR, \
+		Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR:
+			actions.append(Globals.Cursor.CLOSE)
+
+		Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE, \
+		Globals.Prop.OLIVE_OIL_BOTTLE, \
+		Globals.Prop.SALT, \
+		Globals.Prop.TOASTER, \
+		Globals.Prop.NOTCHED_COFFEE_CUP_RIGHT, \
+		Globals.Prop.PEPPER, \
+		Globals.Prop.RICE_POT, \
+		Globals.Prop.COOKIE_POT, \
+		Globals.Prop.TAP, \
+		Globals.Prop.MANDOLIN, \
+		Globals.Prop.FOOD_PROCESSOR, \
+		Globals.Prop.RED_COFFEE_CUP_LEFT, \
+		Globals.Prop.BROWN_COFFEE_CUP, \
+		Globals.Prop.FRUIT_BASKET, \
+		Globals.Prop.PRESSURE_COOKER, \
+		Globals.Prop.KETTLE, \
+		Globals.Prop.SAUCE_PAN, \
+		Globals.Prop.CHAIR, \
+		Globals.Prop.TOWEL_LARGE, \
+		Globals.Prop.TOWEL_SMALL, \
+		Globals.Prop.SMOOTHIE_BOTTLES, \
+		Globals.Prop.FRUIT_JUICE_BOTTLES, \
+		Globals.Prop.MILK_BOTTLES, \
+		Globals.Prop.BUTTER_KNIFE, \
+		Globals.Prop.CREAM_POTS, \
+		Globals.Prop.YOGHURTS, \
+		Globals.Prop.SAUCE_PAN_IN_FRIDGE, \
+		Globals.Prop.EGGS, \
+		Globals.Prop.GREEN_PEPPER, \
+		Globals.Prop.TOMATOES, \
+		Globals.Prop.CAULIFLOWER, \
+		Globals.Prop.YELLOW_PEPPER, \
+		Globals.Prop.FRUIT, \
+		Globals.Prop.PIZZA_DRAWER, \
+		Globals.Prop.VEGETABLE_DRAWER, \
+		Globals.Prop.LASAGNA_DRAWER, \
+		Globals.Prop.ICE_CREAM_DRAWER, \
+		Globals.Prop.MEAT_DRAWER, \
+		Globals.Prop.EMPTY_COFFEE_SPACE, \
+		Globals.Prop.CANNED_GREEN_BEANS_1, \
+		Globals.Prop.CANNED_GREEN_BEANS_2, \
+		Globals.Prop.CANNED_BEANS_1, \
+		Globals.Prop.CANNED_BEANS_2, \
+		Globals.Prop.DISHWASHER_TOP, \
+		Globals.Prop.DISHWASHER_MIDDLE, \
+		Globals.Prop.DISHWASHER_BOTTOM:
+			if $UI.find_in_inventory(current_prop) < 0:
+				actions.append(Globals.Cursor.HAND)
+
+		Globals.Prop.WINDOW_RIGHT:
+			actions.append(Globals.Cursor.QUIT)
+
+	$UI.set_available_cursors(actions)
 
 func _check_objects(have1: int, have2: int, want1: int, want2: int) -> bool:
 	return ((have1 == want1 and have2 == want2) or

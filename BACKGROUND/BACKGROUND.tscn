@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=62 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b7itgwxv8j5lp" path="res://BACKGROUND/IMAGES/Red_Coffee_Cup_Out.png" id="13_ik1v4"]
 [ext_resource type="PackedScene" uid="uid://cqa3bbbs2by12" path="res://BACKGROUND/REFRIGERATOR_LEFT.tscn" id="15_h01j6"]
 [ext_resource type="PackedScene" uid="uid://keucd37jh7cv" path="res://BACKGROUND/COFFEE_CUPBOARD.tscn" id="16_mbj8v"]
+[ext_resource type="PackedScene" uid="uid://cybs73vw2lwpw" path="res://BACKGROUND/DISHWASHER.tscn" id="17_fr6vq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -218,8 +219,10 @@ visible = false
 [node name="Coffee_Cupboard" parent="Open_Objects" instance=ExtResource("16_mbj8v")]
 visible = false
 
-[node name="Stuff_Colliders" type="Node2D" parent="."]
+[node name="Dishwasher_Open" parent="Open_Objects" instance=ExtResource("17_fr6vq")]
 visible = false
+
+[node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
 
@@ -308,10 +311,11 @@ position = Vector2(59.5, 62.5)
 shape = SubResource("RectangleShape2D_45k5q")
 
 [node name="DishWasher_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+position = Vector2(127, 53)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Dishwasher" type="CollisionShape2D" parent="Stuff_Colliders/Low/DishWasher_Collider"]
-position = Vector2(127, 53)
 shape = SubResource("RectangleShape2D_rssmk")
 
 [node name="Stool_Collider" type="Area2D" parent="Stuff_Colliders/Low"]

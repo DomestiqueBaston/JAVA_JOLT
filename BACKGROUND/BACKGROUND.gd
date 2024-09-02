@@ -67,6 +67,13 @@ var _open_object = -1
 	$Stuff_Colliders/Mid/Coffee_Beans_2_Collider,				# COFFEE_BEANS_2
 ]
 
+@onready var _openable_nodes: Dictionary = {
+	Globals.Prop.DISHWASHER: $Open_Objects/Dishwasher_Open,
+	Globals.Prop.COFFEE_CUPBOARD: $Open_Objects/Coffee_Cupboard,
+	Globals.Prop.REFRIGERATOR_RIGHT: $Open_Objects/Refrigerator_Right,
+	Globals.Prop.REFRIGERATOR_LEFT: $Open_Objects/Refrigerator_Left,
+}
+
 func _ready():
 	assert(_colliders.size() == Globals.Prop.MAIN_PROP_COUNT)
 
@@ -76,33 +83,17 @@ func _ready():
 			func(area): area_entered_object.emit(index, area))
 		collider.area_exited.connect(
 			func(area): area_exited_object.emit(index, area))
-
-	$Open_Objects/Coffee_Cupboard.area_entered_object.connect(
-		func(which, area):
-			if _open_object == Globals.Prop.COFFEE_CUPBOARD:
-				area_entered_object.emit(which, area))
-	$Open_Objects/Coffee_Cupboard.area_exited_object.connect(
-		func(which, area):
-			if _open_object == Globals.Prop.COFFEE_CUPBOARD:
-				area_exited_object.emit(which, area))
-
-	$Open_Objects/Refrigerator_Right.area_entered_object.connect(
-		func(which, area):
-			if _open_object == Globals.Prop.REFRIGERATOR_RIGHT:
-				area_entered_object.emit(which, area))
-	$Open_Objects/Refrigerator_Right.area_exited_object.connect(
-		func(which, area):
-			if _open_object == Globals.Prop.REFRIGERATOR_RIGHT:
-				area_exited_object.emit(which, area))
-
-	$Open_Objects/Refrigerator_Left.area_entered_object.connect(
-		func(which, area):
-			if _open_object == Globals.Prop.REFRIGERATOR_LEFT:
-				area_entered_object.emit(which, area))
-	$Open_Objects/Refrigerator_Left.area_exited_object.connect(
-		func(which, area):
-			if _open_object == Globals.Prop.REFRIGERATOR_LEFT:
-				area_exited_object.emit(which, area))
+	
+	for id in _openable_nodes:
+		var node: Node2D = _openable_nodes[id]
+		node.area_entered_object.connect(
+			func(which, area):
+				if _open_object == id:
+					area_entered_object.emit(which, area))
+		node.area_exited_object.connect(
+			func(which, area):
+				if _open_object == id:
+					area_exited_object.emit(which, area))
 
 ##
 ## Returns the collider (an Area2D) corresponding to the given constant from
@@ -111,15 +102,10 @@ func _ready():
 func get_collider(which: int) -> Area2D:
 	if which < Globals.Prop.MAIN_PROP_COUNT:
 		return _colliders[which]
-	match _open_object:
-		Globals.Prop.COFFEE_CUPBOARD:
-			return $Open_Objects/Coffee_Cupboard.get_collider(which)
-		Globals.Prop.REFRIGERATOR_RIGHT:
-			return $Open_Objects/Refrigerator_Right.get_collider(which)
-		Globals.Prop.REFRIGERATOR_LEFT:
-			return $Open_Objects/Refrigerator_Left.get_collider(which)
-		_:
-			return null
+	if _open_object >= 0:
+		var node: Node2D = _openable_nodes[_open_object]
+		return node.get_collider(which)
+	return null
 
 ##
 ## Finds and returns the constant from [enum Globals.Prop] corresponding to the
@@ -128,63 +114,30 @@ func get_collider(which: int) -> Area2D:
 func get_object_from_collider(area: Area2D) -> int:
 	var index = _colliders.find(area)
 	if index < 0 and _open_object >= 0:
-		match _open_object:
-			Globals.Prop.COFFEE_CUPBOARD:
-				index = $Open_Objects/Coffee_Cupboard.get_object_from_collider(area)
-			Globals.Prop.REFRIGERATOR_RIGHT:
-				index = $Open_Objects/Refrigerator_Right.get_object_from_collider(area)
-			Globals.Prop.REFRIGERATOR_LEFT:
-				index = $Open_Objects/Refrigerator_Left.get_object_from_collider(area)
+		var node: Node2D = _openable_nodes[_open_object]
+		index = node.get_object_from_collider(area)
 	return index
 
 func get_open_object() -> int:
 	return _open_object
 
-func open_refrigerator_right():
-	$Open_Objects/Refrigerator_Right.show()
-	$Sounds/Fridge_Open_Close.play()
-	_open_object = Globals.Prop.REFRIGERATOR_RIGHT
-
-func close_refrigerator_right():
-	$Open_Objects/Refrigerator_Right.hide()
-	$Sounds/Fridge_Open_Close.play()
-	_open_object = -1
-
-func open_refrigerator_left():
-	$Open_Objects/Refrigerator_Left.show()
-	$Sounds/Fridge_Open_Close.play()
-	_open_object = Globals.Prop.REFRIGERATOR_LEFT
-
-func close_refrigerator_left():
-	$Open_Objects/Refrigerator_Left.hide()
-	$Sounds/Fridge_Open_Close.play()
-	_open_object = -1
-
-func open_coffee_cupboard():
-	$Open_Objects/Coffee_Cupboard.show()
-	_open_object = Globals.Prop.COFFEE_CUPBOARD
-
-func close_coffee_cupboard():
-	$Open_Objects/Coffee_Cupboard.hide()
-	_open_object = -1
-
-func open_something(what: int):
-	match what:
-		Globals.Prop.COFFEE_CUPBOARD:
-			open_coffee_cupboard()
-		Globals.Prop.REFRIGERATOR_RIGHT:
-			open_refrigerator_right()
-		Globals.Prop.REFRIGERATOR_LEFT:
-			open_refrigerator_left()
+func open_something(which: int):
+	var node: Node2D = _openable_nodes[which]
+	node.show()
+	if which in [Globals.Prop.REFRIGERATOR_RIGHT,
+				 Globals.Prop.REFRIGERATOR_LEFT]:
+		$Sounds/Fridge_Open_Close.play()
+	_open_object = which
 
 func close_something():
-	match _open_object:
-		Globals.Prop.COFFEE_CUPBOARD:
-			close_coffee_cupboard()
-		Globals.Prop.REFRIGERATOR_RIGHT:
-			close_refrigerator_right()
-		Globals.Prop.REFRIGERATOR_LEFT:
-			close_refrigerator_left()
+	if _open_object < 0:
+		return
+	var node: Node2D = _openable_nodes[_open_object]
+	node.hide()
+	if _open_object in [Globals.Prop.REFRIGERATOR_RIGHT,
+						Globals.Prop.REFRIGERATOR_LEFT]:
+		$Sounds/Fridge_Open_Close.play()
+	_open_object = -1
 
 #
 # Makes the given object visible or invisible in the scene. An object is made
@@ -209,11 +162,6 @@ func set_object_visible(which: int, vis: bool):
 				$Removed_Objects/Red_Coffee_Cup_Out.visible = not vis
 			Globals.Prop.KETTLE:
 				$Removed_Objects/Kettle_Out.visible = not vis
-	else:
-		match _open_object:
-			Globals.Prop.COFFEE_CUPBOARD:
-				$Open_Objects/Coffee_Cupboard.set_object_visible(which, vis)
-			Globals.Prop.REFRIGERATOR_RIGHT:
-				$Open_Objects/Refrigerator_Right.set_object_visible(which, vis)
-			Globals.Prop.REFRIGERATOR_LEFT:
-				$Open_Objects/Refrigerator_Left.set_object_visible(which, vis)
+	elif _open_object >= 0:
+		var node: Node2D = _openable_nodes[_open_object]
+		node.set_object_visible(which, vis)
