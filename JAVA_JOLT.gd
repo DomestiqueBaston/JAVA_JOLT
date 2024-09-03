@@ -209,17 +209,6 @@ const prop_info: Array[String] = [
 	"Do you want to close the dishwasher?",
 ]
 
-const open_close_height: Dictionary = {
-	Globals.Prop.DISHWASHER: 1,
-	Globals.Prop.DISHWASHER_OPEN_DOOR: 0,
-	Globals.Prop.COFFEE_CUPBOARD: 4,
-	Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR: 4,
-	Globals.Prop.REFRIGERATOR_RIGHT: 3,
-	Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR: 3,
-	Globals.Prop.REFRIGERATOR_LEFT: 3,
-	Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR: 3,
-}
-
 const open_close_door: Dictionary = {
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
 	Globals.Prop.COFFEE_CUPBOARD: Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR,
@@ -309,7 +298,6 @@ func _perform_hand_action():
 
 	var take_label = ""
 	var take_msg = ""
-	var take_height = 0
 
 	match current_prop:
 		Globals.Prop.CHAIR:
@@ -322,17 +310,14 @@ func _perform_hand_action():
 			else:
 				take_label = "Small towel"
 			take_msg = "It's clean, it'll be perfect!"
-			take_height = 1
 		Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE:
 			_set_comment("Where in the world have you been until now?")
 		Globals.Prop.OLIVE_OIL_BOTTLE:
 			take_label = "Olive oil"
 			take_msg = "OK, but it's just to please you."
-			take_height = 3
 		Globals.Prop.SALT:
 			take_label = "Salt"
 			take_msg = "I'll never use it with my coffee, but OK."
-			take_height = 3
 		Globals.Prop.TOASTER:
 			_set_comment("It works and I can use it any time.")
 		Globals.Prop.NOTCHED_COFFEE_CUP_RIGHT:
@@ -340,70 +325,58 @@ func _perform_hand_action():
 		Globals.Prop.PEPPER:
 			take_label = "Pepper"
 			take_msg = "You always need some pepper!"
-			take_height = 3
 		Globals.Prop.RICE_POT:
 			_set_comment("No, it's raw.")
 		Globals.Prop.COOKIE_POT:
 			take_label = "Cookie"
 			take_msg = "Only one. But I need my coffee first."
-			take_height = 3
 		Globals.Prop.TAP:
 			_set_comment("Yes. And?")
 		Globals.Prop.MANDOLIN:
 			take_label = "Vegetable slicer"
 			take_msg = "As long as I don't slice my fingers off."
-			take_height = 3
 		Globals.Prop.FOOD_PROCESSOR:
 			_set_comment("It's not a Rank Xerox, no way.")
 		Globals.Prop.RED_COFFEE_CUP_LEFT:
 			take_label = "Coffee cup"
 			take_msg = "Yeah, it's new and clean."
-			take_height = 3
 		Globals.Prop.BROWN_COFFEE_CUP:
 			_set_comment("That's not my cup of tea.")
 		Globals.Prop.FRUIT_BASKET:
 			take_label = "Red apple"
 			take_msg = "Just a red apple, nothing more."
-			take_height = 3
 		Globals.Prop.PRESSURE_COOKER:
 			_set_comment("There's no way I'm dragging that around.")
 		Globals.Prop.KETTLE:
 			take_label = "Tea kettle"
 			take_msg = "OK, if you say so."
-			take_height = 3
 		Globals.Prop.SAUCE_PAN:
 			_set_comment("No, there's still sauce in it.")
 		Globals.Prop.SMOOTHIE_BOTTLES:
 			take_label = "Smoothie"
 			take_msg = "I drink it before working out. But OK, one."
-			take_height = 3
 		Globals.Prop.FRUIT_JUICE_BOTTLES:
 			take_label = "Fruit juice"
 			take_msg = "I drink it before working out. But one is OK."
-			take_height = 2
 		Globals.Prop.MILK_BOTTLES:
 			take_label = "Bottle of milk"
 			take_msg = "OK, one bottle of milk."
-			take_height = 1
 		Globals.Prop.BUTTER_KNIFE:
 			if butter_knife_seen:
 				take_label = "Butter knife"
 				take_msg = "OK, I'll just take that knife."
 			else:
 				_set_comment("Remember? Coffee...")
-			take_height = 4
 		Globals.Prop.CREAM_POTS:
 			_set_comment("Not now.")
 		Globals.Prop.YOGHURTS:
 			take_label = "Yoghurt"
 			take_msg = "OK, OK..."
-			take_height = 3
 		Globals.Prop.SAUCE_PAN_IN_FRIDGE:
 			_set_comment("Yeah, I'll leave that there.")
 		Globals.Prop.EGGS:
 			take_label = "Egg"
 			take_msg = "OK but I need to be extra careful."
-			take_height = 2
 		Globals.Prop.GREEN_PEPPER:
 			_set_comment("It's way too early for that!")
 		Globals.Prop.TOMATOES:
@@ -441,7 +414,8 @@ func _perform_hand_action():
 			var take_prop = current_prop
 			await _walk_to_prop()
 			_set_comment(take_msg)
-			$ROWENA.get_something(take_height)
+			var collider: Area2D = $BACKGROUND.get_collider(take_prop)
+			$ROWENA.get_something_at(collider.position.y)
 			await $ROWENA.get_something_reached
 			$UI.add_to_inventory(take_prop, take_label)
 			$BACKGROUND.set_object_visible(take_prop, false)
@@ -452,11 +426,11 @@ func _perform_open_action():
 	$UI.clear_available_cursors()
 
 	var object_to_open = current_prop
-	var height = _get_open_close_height(object_to_open)
+	var collider: Area2D = $BACKGROUND.get_collider(object_to_open)
 
 	await _close_open_object(true)
 	await _walk_to_prop(object_to_open)
-	$ROWENA.get_something(height)
+	$ROWENA.get_something_at(collider.position.y)
 	await $ROWENA.get_something_reached
 	$BACKGROUND.open_something(object_to_open)
 	await $ROWENA.get_something_done
@@ -468,10 +442,10 @@ func _perform_close_action():
 	$UI.clear_comment_text()
 	$UI.clear_available_cursors()
 
-	var height = _get_open_close_height(current_prop)
+	var collider: Area2D = $BACKGROUND.get_collider(current_prop)
 
 	await _walk_to_prop()
-	$ROWENA.get_something(height)
+	$ROWENA.get_something_at(collider.position.y)
 	await $ROWENA.get_something_reached
 	$BACKGROUND.close_something()
 	await $ROWENA.get_something_done
@@ -484,12 +458,12 @@ func _close_open_object(always_make_the_trip: bool):
 		return
 
 	var door = open_close_door[which]
-	var height = _get_open_close_height(which)
 
 	if (always_make_the_trip or
 		_get_distance_from_prop(door) < auto_close_distance):
 		await _walk_to_prop(door)
-		$ROWENA.get_something(height)
+		var collider: Area2D = $BACKGROUND.get_collider(door)
+		$ROWENA.get_something_at(collider.position.y)
 		await $ROWENA.get_something_reached
 		$BACKGROUND.close_something()
 		await $ROWENA.get_something_done
@@ -497,12 +471,6 @@ func _close_open_object(always_make_the_trip: bool):
 		$BACKGROUND.close_something()
 
 	_recompute_overlapping_colliders()
-
-func _get_open_close_height(which: int) -> int:
-	var height = open_close_height[which]
-	if height >= 4:
-		height = randi_range(4, 5)
-	return height
 
 #
 # Returns the distance in X between Rowena and the given object from the

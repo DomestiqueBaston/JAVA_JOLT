@@ -102,8 +102,8 @@ func get_global_bbox() -> Rect2:
 
 ##
 ## Plays the animations used when Rowena gets an object, or opens/closes
-## something. [param height] is a value between 0 and 5 (inclusive) indicating
-## the height of the relevant object: 0 is the lowest, 4 and 5 are the highest.
+## something. [param y] is the location in Y of the object, and determines
+## which animation is used.
 ##
 ## Two signals are emitted: [signal get_something_reached] when Rowena's hand
 ## reaches the point where she can touch the object, and [signal
@@ -113,21 +113,28 @@ func get_global_bbox() -> Rect2:
 ##
 ## Does nothing if is_busy() returns true.
 ##
-func get_something(height: int):
+func get_something_at(y: float):
 	if is_busy():
 		return
-	const animations = [
-		"Get_Something_Lowest",
-		"Get_Something_Low",
-		"Get_Something_Low_Mid",
-		"Get_Something_Mid",
-		"Get_Something_High_1",
-		"Get_Something_High_2",
-	]
+
+	var anim
+	var delay = 0.8
+	if y > 55:
+		anim = "Get_Something_Lowest"
+	elif y > 45:
+		anim = "Get_Something_Low"
+		delay = 0.7
+	elif y > 39:
+		anim = "Get_Something_Low_Mid"
+	elif y > 27:
+		anim = "Get_Something_Mid"
+	elif randf() < 0.5:
+		anim = "Get_Something_High_1"
+	else:
+		anim = "Get_Something_High_2"
+
 	set_physics_process(false)
-	var anim = clampi(height, 0, animations.size() - 1)
-	$ROWENA_AnimationPlayer.play(animations[anim])
-	var delay = 0.7 if anim == 1 else 0.8
+	$ROWENA_AnimationPlayer.play(anim)
 	await get_tree().create_timer(delay).timeout
 	get_something_reached.emit()
 	await $ROWENA_AnimationPlayer.animation_finished
