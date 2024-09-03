@@ -2104,7 +2104,6 @@ bus = &"FX"
 one_shot = true
 
 [node name="Close_Inventory_Timer" type="Timer" parent="."]
-wait_time = 0.3
 one_shot = true
 
 [node name="Dialogue_AnimationPlayer" type="AnimationPlayer" parent="."]
