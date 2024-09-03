@@ -40,6 +40,9 @@ signal inventory_item_removed(which: int)
 ## Signal emitted when the comment box is closed, automatically or by the user.
 signal comment_closed
 
+## Signal emitted when the quit process is interrupted by a mouse click.
+signal quit_aborted
+
 enum { ROWENA, DOCTOR }
 
 # Color of unhighlighted text options in current dialogue.
@@ -71,6 +74,9 @@ var _current_inventory_index: int = -1
 
 # Number (Global.Prop enum) of the inventory item being used (arrow cursor).
 var _inventory_item_being_used: int = -1
+
+# Set by start_quit(), reset by _abort_quit().
+var _is_quitting: bool = false
 
 # How many items the inventory can hold.
 const _max_inventory_size = 4
@@ -111,6 +117,7 @@ func _input(event: InputEvent):
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
+		_abort_quit()
 		if _is_inventory_open:
 			_click_on_inventory_item()
 			get_viewport().set_input_as_handled()
@@ -130,6 +137,7 @@ func _unhandled_input(event: InputEvent):
 		_prev_cursor()
 		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("inventory_action"):
+		_abort_quit()
 		if not is_dialogue_visible():
 			if _is_inventory_open:
 				_close_inventory()
@@ -407,6 +415,7 @@ func pin_help_button():
 
 func _on_help_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
+		_abort_quit()
 		if not (is_dialogue_visible() or _is_inventory_open):
 			$Boxes/Tutorial.show()
 			$Help_AnimationPlayer.play("Help_Off")
@@ -590,3 +599,16 @@ func _on_comment_box_gui_input(event):
 
 func get_areas_overlapping_mouse() -> Array[Area2D]:
 	return $Mouse/Mouse_Collider.get_overlapping_areas()
+
+##
+## Sets a flag saying that the user is about to quit. If any mouse click is
+## received afterward, a [signal quit_aborted] signal is emitted and the flag
+## is reset.
+##
+func start_quit():
+	_is_quitting = true
+
+func _abort_quit():
+	if _is_quitting:
+		_is_quitting = false
+		quit_aborted.emit()

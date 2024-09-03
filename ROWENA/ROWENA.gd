@@ -10,8 +10,8 @@ signal get_something_reached
 ## Signal emitted by [method get_something] when the animation has finished.
 signal get_something_done
 
-# Signal emitted when Rowena has reached the target set by walk_to_area(]).
-signal _target_area_reached
+## Signal emitted when Rowena has reached the target set by walk_to_area(]).
+signal target_area_reached
 
 # X coordinate that Rowena is walking toward.
 var _target_x: float
@@ -40,7 +40,7 @@ func _physics_process(_delta: float):
 		if done:
 			_target_area = null
 			_target_x = position.x
-			_target_area_reached.emit()
+			target_area_reached.emit()
 			return
 		dir = 1 if _target_area.global_position.x > position.x else -1
 	elif absf(_target_x - position.x) >= 1:
@@ -78,14 +78,26 @@ func walk_to_x(x: float):
 ## collider's origin. This is a coroutine; use await to block until Rowena
 ## reaches her target.
 ##
+## If [param blocking] is true, the method blocks until Rowena reaches her
+## destination. If false, the method returns immediately, but you can still
+## be notified by the [signal target_area_reached] signal.
+##
 ## Does nothing if [method is_busy()] returns true.
 ##
-func walk_to_area(area: Area2D, to_origin: bool = false):
+func walk_to_area(area: Area2D, to_origin: bool = false, blocking: bool = true):
 	if is_busy():
 		return
 	_target_area = area
 	_walk_to_area_origin = to_origin
-	await _target_area_reached
+	if blocking:
+		await target_area_reached
+
+##
+## Aborts a previous call to [method walk_to_area]: Rowena stops walking.
+##
+func abort_walk_to_area():
+	_target_area = null
+	_target_x = position.x
 
 ##
 ## Returns true if Rowena is busy doing something: walking to a given area or

@@ -234,6 +234,7 @@ const cant_use_msgs = [
 var butter_knife_seen = false
 var coffee_maker_seen = false
 var is_towel_wet = false
+var is_quitting = false
 
 func _ready():
 	assert(prop_info.size() == Globals.Prop.TOTAL_PROP_COUNT)
@@ -259,6 +260,8 @@ func _set_comment(text: String):
 	$UI.set_comment_text(text, x, left_justify)
 
 func _on_ui_click_on_background(pos: Vector2):
+	if $ROWENA.is_busy():
+		return
 	match $UI.get_current_cursor():
 		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
 			$UI.clear_comment_text()
@@ -278,8 +281,13 @@ func _on_ui_click_on_background(pos: Vector2):
 			_perform_close_action()
 		Globals.Cursor.QUIT:
 			$UI.clear_comment_text()
-			await _walk_to_prop()
-			get_tree().quit()
+			# Start walking toward the window, but don't actually quit until
+			# Rowena reaches it (a target_area_reached signal is received from
+			# $ROWENA). Until then, a quit_aborted signal may be received from
+			# $UI.
+			is_quitting = true
+			_walk_to_prop(current_prop, false, false)
+			$UI.start_quit()
 
 func _perform_eye_action(pos: Vector2):
 	$ROWENA.look_at_x(pos.x)
@@ -506,16 +514,22 @@ func _get_distance_from_prop(which: int) -> float:
 # If walk_to_origin is true, she walks all the way to the origin of the object's
 # collider; otherwise, she walks until her collider intersects with it.
 #
+# If blocking is true, the method blocks until Rowena arrives; otherwise, it
+# returns immediately.
+#
 # NB. This will only work properly if the given object's collider (an Area2D) is
 # positioned correctly (its origin is at the center of its shape), and if its
 # collision mask includes Rowena's movements (layer 3).
 #
-func _walk_to_prop(which: int = -1, walk_to_origin: bool = false):
+func _walk_to_prop(
+	which: int = -1, walk_to_origin: bool = false, blocking: bool = true):
 	if which < 0:
 		which = current_prop
 	var area = $BACKGROUND.get_collider(which)
 	$ROWENA.look_at_x(area.global_position.x)
-	await $ROWENA.walk_to_area(area, walk_to_origin)
+	$ROWENA.walk_to_area(area, walk_to_origin, false)
+	if blocking:
+		await $ROWENA.target_area_reached
 
 #
 # Callback invoked when the mouse collider (_area) enters the Area2D of a
@@ -765,3 +779,11 @@ func _use_object_on_other(object1: int, object2: int):
 #
 func _on_inventory_item_removed(which: int):
 	$BACKGROUND.set_object_visible(which, true)
+
+func _on_rowena_target_area_reached():
+	if is_quitting:
+		get_tree().quit()
+
+func _on_ui_quit_aborted():
+	is_quitting = false
+	$ROWENA.abort_walk_to_area()
