@@ -19,7 +19,14 @@ extends CanvasLayer
 @export var highlighted_text_color := Color.WHITE
 
 ## Seconds before comments disappear.
-@export var comment_timeout: float = 4
+@export var comment_timeout_base: float = 2
+
+## Additional comment time for each letter in the comment.
+@export var comment_timeout_per_letter: float = 0.05
+
+## Seconds before inventory closes if the user "uses" an object and then moves
+## the cursor outside the box.
+@export var inventory_timeout: float = 0.3
 
 ## Signal emitted when user clicks somewhere to move or do something.
 signal click_on_background(pos: Vector2)
@@ -100,7 +107,7 @@ func _input(event: InputEvent):
 		if rect.has_point(event.position):
 			$Close_Inventory_Timer.stop()
 		else:
-			$Close_Inventory_Timer.start()
+			$Close_Inventory_Timer.start(inventory_timeout)
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
@@ -232,7 +239,8 @@ func set_comment_text(text: String, x: float, left_justify: bool):
 		x -= $Boxes/CenterContainer/Comment_Box.size.x
 	$Boxes/CenterContainer.position.x = x
 	$Boxes/CenterContainer.show()
-	$Comment_Timer.start(comment_timeout)
+	$Comment_Timer.start(
+		comment_timeout_base + comment_timeout_per_letter * text.length())
 
 func clear_comment_text():
 	$Comment_Timer.stop()
