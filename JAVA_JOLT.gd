@@ -12,10 +12,6 @@ extends Node2D
 # method will show/hide the object as appropriate, and perhaps enable/disable
 # its collider so it cannot be taken if it is hidden.
 
-## At this distance from an open object (e.g. the refrigerator), we close it
-## automatically rather than make Rowena walk back to it.
-@export var auto_close_distance = 60
-
 ## Which dialogue to start with (for testing), 0 for none.
 @export_range(0, 3) var dialogue_number: int = 0
 
@@ -282,7 +278,6 @@ func _on_ui_click_on_background(pos: Vector2):
 			_perform_close_action()
 		Globals.Cursor.QUIT:
 			$UI.clear_comment_text()
-			await _close_open_object(false)
 			await _walk_to_prop()
 			get_tree().quit()
 
@@ -448,7 +443,7 @@ func _perform_open_action():
 	var object_to_open = current_prop
 	var collider: Area2D = $BACKGROUND.get_collider(object_to_open)
 
-	await _close_open_object(true)
+	await _close_open_object()
 	await _walk_to_prop(object_to_open)
 	$ROWENA.get_something_at(collider.position.y)
 	await $ROWENA.get_something_reached
@@ -472,23 +467,19 @@ func _perform_close_action():
 
 	_recompute_overlapping_colliders()
 
-func _close_open_object(always_make_the_trip: bool):
+func _close_open_object():
 	var which = $BACKGROUND.get_open_object()
 	if which < 0:
 		return
 
 	var door = open_close_door[which]
 
-	if (always_make_the_trip or
-		_get_distance_from_prop(door) < auto_close_distance):
-		await _walk_to_prop(door)
-		var collider: Area2D = $BACKGROUND.get_collider(door)
-		$ROWENA.get_something_at(collider.position.y)
-		await $ROWENA.get_something_reached
-		$BACKGROUND.close_something()
-		await $ROWENA.get_something_done
-	else:
-		$BACKGROUND.close_something()
+	await _walk_to_prop(door)
+	var collider: Area2D = $BACKGROUND.get_collider(door)
+	$ROWENA.get_something_at(collider.position.y)
+	await $ROWENA.get_something_reached
+	$BACKGROUND.close_something()
+	await $ROWENA.get_something_done
 
 	_recompute_overlapping_colliders()
 
