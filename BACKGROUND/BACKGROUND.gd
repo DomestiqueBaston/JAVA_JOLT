@@ -74,6 +74,17 @@ var _open_object = -1
 	Globals.Prop.REFRIGERATOR_LEFT: $Open_Objects/Refrigerator_Left,
 }
 
+@onready var _open_close_sounds: Dictionary = {
+	Globals.Prop.DISHWASHER: $Sounds/Fridge_Open_Close,
+	Globals.Prop.DISHWASHER_OPEN_DOOR: $Sounds/Fridge_Open_Close,
+	Globals.Prop.COFFEE_CUPBOARD: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.REFRIGERATOR_RIGHT: $Sounds/Fridge_Open_Close,
+	Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR: $Sounds/Fridge_Open_Close,
+	Globals.Prop.REFRIGERATOR_LEFT: $Sounds/Fridge_Open_Close,
+	Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR: $Sounds/Fridge_Open_Close,
+}
+
 func _ready():
 	assert(_colliders.size() == Globals.Prop.MAIN_PROP_COUNT)
 
@@ -124,9 +135,9 @@ func get_open_object() -> int:
 func open_something(which: int):
 	var node: Node2D = _openable_nodes[which]
 	node.show()
-	if which in [Globals.Prop.REFRIGERATOR_RIGHT,
-				 Globals.Prop.REFRIGERATOR_LEFT]:
-		$Sounds/Fridge_Open_Close.play()
+	var sound: AudioStreamPlayer = _open_close_sounds.get(which)
+	if sound:
+		sound.play()
 	_open_object = which
 
 func close_something():
@@ -134,9 +145,9 @@ func close_something():
 		return
 	var node: Node2D = _openable_nodes[_open_object]
 	node.hide()
-	if _open_object in [Globals.Prop.REFRIGERATOR_RIGHT,
-						Globals.Prop.REFRIGERATOR_LEFT]:
-		$Sounds/Fridge_Open_Close.play()
+	var sound: AudioStreamPlayer = _open_close_sounds.get(_open_object)
+	if sound:
+		sound.play()
 	_open_object = -1
 
 #

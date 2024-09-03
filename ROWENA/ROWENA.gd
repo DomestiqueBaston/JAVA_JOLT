@@ -104,8 +104,6 @@ func get_global_bbox() -> Rect2:
 ## Plays the animations used when Rowena gets an object, or opens/closes
 ## something. [param height] is a value between 0 and 5 (inclusive) indicating
 ## the height of the relevant object: 0 is the lowest, 4 and 5 are the highest.
-## If [param with_sound] is true, a sound is played when her hand reaches the
-## object.
 ##
 ## Two signals are emitted: [signal get_something_reached] when Rowena's hand
 ## reaches the point where she can touch the object, and [signal
@@ -115,7 +113,7 @@ func get_global_bbox() -> Rect2:
 ##
 ## Does nothing if is_busy() returns true.
 ##
-func get_something(height: int, with_sound: bool):
+func get_something(height: int):
 	if is_busy():
 		return
 	const animations = [
@@ -132,8 +130,6 @@ func get_something(height: int, with_sound: bool):
 	var delay = 0.7 if anim == 1 else 0.8
 	await get_tree().create_timer(delay).timeout
 	get_something_reached.emit()
-	if with_sound:
-		$Open_Close.play()
 	await $ROWENA_AnimationPlayer.animation_finished
 	set_physics_process(true)
 	get_something_done.emit()

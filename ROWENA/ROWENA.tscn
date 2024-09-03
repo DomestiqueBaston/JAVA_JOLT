@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://clvr31ogitwwv"]
+[gd_scene load_steps=35 format=3 uid="uid://clvr31ogitwwv"]
 
 [ext_resource type="Script" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/IMAGES/ROWENA.png" id="1_tqx3q"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://ROWENA/SOUNDS/Phone_Ring.ogg" id="5_gkr5f"]
 [ext_resource type="AudioStream" uid="uid://b0ai1u38p82et" path="res://ROWENA/SOUNDS/Do_Stuff.ogg" id="5_splmy"]
 [ext_resource type="AudioStream" uid="uid://cuwid5c2t025o" path="res://ROWENA/SOUNDS/Hang_Up.ogg" id="6_xr3ty"]
-[ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Cupboard_Open_Close.ogg" id="10_ggfb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3djui"]
 size = Vector2(16, 68)
@@ -603,10 +602,6 @@ bus = &"FX"
 
 [node name="Beep" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
-bus = &"FX"
-
-[node name="Open_Close" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_ggfb7")
 bus = &"FX"
 
 [node name="Do_Stuff" type="AudioStreamPlayer" parent="."]

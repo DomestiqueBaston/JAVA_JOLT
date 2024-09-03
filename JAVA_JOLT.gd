@@ -211,7 +211,7 @@ const prop_info: Array[String] = [
 
 const open_close_height: Dictionary = {
 	Globals.Prop.DISHWASHER: 1,
-	Globals.Prop.DISHWASHER_OPEN_DOOR: 1,
+	Globals.Prop.DISHWASHER_OPEN_DOOR: 0,
 	Globals.Prop.COFFEE_CUPBOARD: 4,
 	Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR: 4,
 	Globals.Prop.REFRIGERATOR_RIGHT: 3,
@@ -310,7 +310,6 @@ func _perform_hand_action():
 	var take_label = ""
 	var take_msg = ""
 	var take_height = 0
-	var take_sound = false
 
 	match current_prop:
 		Globals.Prop.CHAIR:
@@ -442,7 +441,7 @@ func _perform_hand_action():
 			var take_prop = current_prop
 			await _walk_to_prop()
 			_set_comment(take_msg)
-			$ROWENA.get_something(take_height, take_sound)
+			$ROWENA.get_something(take_height)
 			await $ROWENA.get_something_reached
 			$UI.add_to_inventory(take_prop, take_label)
 			$BACKGROUND.set_object_visible(take_prop, false)
@@ -457,7 +456,7 @@ func _perform_open_action():
 
 	await _close_open_object(true)
 	await _walk_to_prop(object_to_open)
-	$ROWENA.get_something(height, false)
+	$ROWENA.get_something(height)
 	await $ROWENA.get_something_reached
 	$BACKGROUND.open_something(object_to_open)
 	await $ROWENA.get_something_done
@@ -472,7 +471,7 @@ func _perform_close_action():
 	var height = _get_open_close_height(current_prop)
 
 	await _walk_to_prop()
-	$ROWENA.get_something(height, false)
+	$ROWENA.get_something(height)
 	await $ROWENA.get_something_reached
 	$BACKGROUND.close_something()
 	await $ROWENA.get_something_done
@@ -490,7 +489,7 @@ func _close_open_object(always_make_the_trip: bool):
 	if (always_make_the_trip or
 		_get_distance_from_prop(door) < auto_close_distance):
 		await _walk_to_prop(door)
-		$ROWENA.get_something(height, false)
+		$ROWENA.get_something(height)
 		await $ROWENA.get_something_reached
 		$BACKGROUND.close_something()
 		await $ROWENA.get_something_done
