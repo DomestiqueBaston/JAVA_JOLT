@@ -8,7 +8,7 @@ var _open_object = -1
 @onready var _colliders: Array[Area2D] = [
 	$Stuff_Colliders/Low/Kitchen_Cabinet_Collider,				# KITCHEN_CABINET
 	$Stuff_Colliders/Low/Recycling_Closet_Collider,				# RECYCLING_CLOSET
-	$Stuff_Colliders/Low/Undersink_Cabinet_Collider,			# UNDERSINK_CABINET
+	$Stuff_Colliders/Low/Undersink_Cabinet_Collider,			# UNDER_SINK_CABINET
 	$Stuff_Colliders/Low/Cleaning_Closet_Collider,				# CLEANING_CLOSET
 	$Stuff_Colliders/Low/Drawer_Left_1_Collider,				# DRAWER_LEFT_1
 	$Stuff_Colliders/Low/Drawer_Left_2_Collider,				# DRAWER_LEFT_2
@@ -68,6 +68,7 @@ var _open_object = -1
 ]
 
 @onready var _openable_nodes: Dictionary = {
+	Globals.Prop.UNDER_SINK_CABINET: $Open_Objects/Under_Sink_Cabinet,
 	Globals.Prop.DISHWASHER: $Open_Objects/Dishwasher_Open,
 	Globals.Prop.COFFEE_CUPBOARD: $Open_Objects/Coffee_Cupboard,
 	Globals.Prop.REFRIGERATOR_RIGHT: $Open_Objects/Refrigerator_Right,
@@ -75,6 +76,8 @@ var _open_object = -1
 }
 
 @onready var _open_close_sounds: Dictionary = {
+	Globals.Prop.UNDER_SINK_CABINET: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.UNDER_SINK_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.DISHWASHER: $Sounds/Fridge_Open_Close,
 	Globals.Prop.DISHWASHER_OPEN_DOOR: $Sounds/Fridge_Open_Close,
 	Globals.Prop.COFFEE_CUPBOARD: $Sounds/Cupboard_Open_Close,
@@ -159,20 +162,27 @@ func set_object_visible(which: int, vis: bool):
 		match which:
 			Globals.Prop.TOWEL_SMALL:
 				$Removed_Objects/Tea_Towel_Out.visible = not vis
+				$Stuff_Colliders/Low/Towel_Small_Collider.monitoring = vis
 			Globals.Prop.COFFEE_MAKER:
 				$Removed_Objects/Coffee_Filter_Holder_Out.visible = not vis
 			Globals.Prop.OLIVE_OIL_BOTTLE:
 				$Removed_Objects/Olive_Oil_Bottle_Out.visible = not vis
+				$Stuff_Colliders/Mid/Olive_Oil_Bottle_Collider.monitoring = vis
 			Globals.Prop.SALT:
 				$Removed_Objects/Salt_Out.visible = not vis
+				$Stuff_Colliders/Mid/Salt_Collider.monitoring = vis
 			Globals.Prop.PEPPER:
 				$Removed_Objects/Pepper_Out.visible = not vis
+				$Stuff_Colliders/Mid/Pepper_Collider.monitoring = vis
 			Globals.Prop.MANDOLIN:
 				$Removed_Objects/Mandolin_Out.visible = not vis
+				$Stuff_Colliders/Mid/Mandolin_Collider.monitoring = vis
 			Globals.Prop.RED_COFFEE_CUP_LEFT:
 				$Removed_Objects/Red_Coffee_Cup_Out.visible = not vis
+				$Stuff_Colliders/Mid/Red_Coffee_Cup_Left_Collider.monitoring = vis
 			Globals.Prop.KETTLE:
 				$Removed_Objects/Kettle_Out.visible = not vis
+				$Stuff_Colliders/Mid/Kettle_Collider.monitoring = vis
 	elif _open_object >= 0:
 		var node: Node2D = _openable_nodes[_open_object]
 		node.set_object_visible(which, vis)

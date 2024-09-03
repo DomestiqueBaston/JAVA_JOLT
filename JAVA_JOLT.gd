@@ -5,13 +5,12 @@ extends Node2D
 # If the user can take an object, add the HAND cursor action when the object is
 # made current in _update_current_prop(). Then, in _perform_hand_action(), add
 # the object to the inventory if it is the current prop. If the object is to be
-# hidden from sight when it has been taken (the small towel, for example), add
-# it to the list of singleton objects in _on_background_area_entered_object(),
-# and show/hide it in the BACKGROUND scene: add the appropriate image to the
-# Removed_Objects node there and handle it in $BACKGROUND.set_object_visible().
-# That function must also be modified if the object is not a singleton but its
-# visual aspect changes (e.g. to hide one milk bottle or the coffee maker's
-# filter holder).
+# hidden from sight when it has been taken (the small towel, for example), or
+# if its visual aspect changes (e.g. to hide one milk bottle or the coffee
+# maker's filter holder), the object must be handled by set_object_visible() in
+# the BACKGROUND scene (or a subscene, if the object is inside something). That
+# method will show/hide the object as appropriate, and perhaps enable/disable
+# its collider so it cannot be taken if it is hidden.
 
 ## At this distance from an open object (e.g. the refrigerator), we close it
 ## automatically rather than make Rowena walk back to it.
@@ -33,7 +32,7 @@ const prop_info: Array[String] = [
 	"That's a cabinet...",
 	# RECYCLING_CLOSET
 	"That's the recycling.",
-	# UNDERSINK_CABINET
+	# UNDER_SINK_CABINET
 	"Oh my god! What's in there?",
 	# CLEANING_CLOSET
 	"That's where I put my cleaning stuff.",
@@ -207,9 +206,20 @@ const prop_info: Array[String] = [
 	"That's the main compartment of the dishwasher.",
 	# DISHWASHER_OPEN_DOOR
 	"Do you want to close the dishwasher?",
+	# EXTINGUISHER
+	"That's a fire extinguisher.",
+	# PLASTIC_BASKETS
+	"Those are plastic tubs.",
+	# PLUNGER
+	"That's a plunger.",
+	# TRASH
+	"That's my trash.",
+	# UNDER_SINK_OPEN_DOOR
+	"Do you want to close the cabinet?",
 ]
 
 const open_close_door: Dictionary = {
+	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
 	Globals.Prop.COFFEE_CUPBOARD: Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR,
 	Globals.Prop.REFRIGERATOR_RIGHT: Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR,
@@ -405,6 +415,16 @@ func _perform_hand_action():
 		Globals.Prop.DISHWASHER_MIDDLE, \
 		Globals.Prop.DISHWASHER_BOTTOM:
 			_set_comment("It's empty.")
+		Globals.Prop.EXTINGUISHER:
+			take_label = "Fire extinguisher"
+			take_msg = "That's clever? Or is it...?"
+		Globals.Prop.PLASTIC_BASKETS:
+			_set_comment("No. Even though it's lightweight.")
+		Globals.Prop.PLUNGER:
+			take_label = "Plunger"
+			take_msg = "I've always loved a plunger."
+		Globals.Prop.TRASH:
+			_set_comment("I used to play in the dump. When I was a kid...")
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -513,20 +533,6 @@ func _walk_to_prop(which: int = -1, walk_to_origin: bool = false):
 #
 func _on_background_area_entered_object(which: int, _area: Area2D):
 
-	# some objects are hidden if the user has taken them, so ignore them
-
-	const singleton_objects = [
-		Globals.Prop.TOWEL_SMALL,
-		Globals.Prop.OLIVE_OIL_BOTTLE,
-		Globals.Prop.SALT,
-		Globals.Prop.PEPPER,
-		Globals.Prop.MANDOLIN,
-		Globals.Prop.RED_COFFEE_CUP_LEFT,
-		Globals.Prop.KETTLE,
-	]
-	if which in singleton_objects and $UI.find_in_inventory(which) >= 0:
-		return
-
 	# add the collider to the set of current colliders and make the topmost
 	# collider the current prop
 
@@ -618,12 +624,14 @@ func _update_current_prop():
 	var actions: Array[int] = [Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE]
 
 	match current_prop:
+		Globals.Prop.UNDER_SINK_CABINET, \
 		Globals.Prop.DISHWASHER, \
 		Globals.Prop.COFFEE_CUPBOARD, \
 		Globals.Prop.REFRIGERATOR_RIGHT, \
 		Globals.Prop.REFRIGERATOR_LEFT:
 			actions.append(Globals.Cursor.OPEN)
 
+		Globals.Prop.UNDER_SINK_OPEN_DOOR, \
 		Globals.Prop.DISHWASHER_OPEN_DOOR, \
 		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
 		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR, \
@@ -675,7 +683,11 @@ func _update_current_prop():
 		Globals.Prop.CANNED_BEANS_2, \
 		Globals.Prop.DISHWASHER_TOP, \
 		Globals.Prop.DISHWASHER_MIDDLE, \
-		Globals.Prop.DISHWASHER_BOTTOM:
+		Globals.Prop.DISHWASHER_BOTTOM, \
+		Globals.Prop.EXTINGUISHER, \
+		Globals.Prop.PLASTIC_BASKETS, \
+		Globals.Prop.PLUNGER, \
+		Globals.Prop.TRASH:
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 

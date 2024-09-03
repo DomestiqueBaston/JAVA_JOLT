@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7kwi7lwhh6do"]
+[gd_scene load_steps=11 format=3 uid="uid://b7kwi7lwhh6do"]
 
 [ext_resource type="Texture2D" uid="uid://bc6yd6wqeaqpu" path="res://BACKGROUND/IMAGES/Under_Sink_Cabinet_Open.png" id="1_k8be0"]
+[ext_resource type="Script" path="res://BACKGROUND/UNDER_SINK_CABINET.gd" id="1_vyrnv"]
+[ext_resource type="Texture2D" uid="uid://cg7jx8tb8jpdu" path="res://BACKGROUND/IMAGES/Extinguisher_Out.png" id="3_gi8xo"]
+[ext_resource type="Texture2D" uid="uid://c1unus3clvr6h" path="res://BACKGROUND/IMAGES/Plunger_Out.png" id="4_8meft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ru616"]
 size = Vector2(3, 13)
@@ -21,56 +24,77 @@ size = Vector2(5, 21)
 size = Vector2(3, 21)
 
 [node name="Under_Sink_Cabinet" type="Node2D"]
+script = ExtResource("1_vyrnv")
 
 [node name="Under_Sink_Cabinet" type="Sprite2D" parent="."]
 texture = ExtResource("1_k8be0")
 centered = false
 
-[node name="Opens_Outs" type="Node2D" parent="."]
+[node name="Removed_Objects" type="Node2D" parent="."]
+
+[node name="Extinguisher_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("3_gi8xo")
+centered = false
+
+[node name="Plunger_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("4_8meft")
+centered = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Extinguisher_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(115.5, 54.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 3
 
 [node name="Extinguisher" type="CollisionShape2D" parent="Stuff_Colliders/Extinguisher_Collider"]
-position = Vector2(115.5, 54.5)
 shape = SubResource("RectangleShape2D_ru616")
 metadata/bg_level = 2
 
 [node name="Plastic_Baskets_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(111, 55.5)
 collision_layer = 2
+metadata/bg_level = 2
 
 [node name="Plastic_Baskets" type="CollisionShape2D" parent="Stuff_Colliders/Plastic_Baskets_Collider"]
-position = Vector2(111, 55.5)
 shape = SubResource("RectangleShape2D_ywmpa")
 metadata/bg_level = 1
 
 [node name="Plunger_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(103.5, 56.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 3
 
 [node name="Plunger" type="CollisionShape2D" parent="Stuff_Colliders/Plunger_Collider"]
-position = Vector2(103.5, 56.5)
 shape = SubResource("RectangleShape2D_ac2vl")
 metadata/bg_level = 2
 
 [node name="Trash_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(100.5, 55)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 2
 
 [node name="Trash" type="CollisionShape2D" parent="Stuff_Colliders/Trash_Collider"]
-position = Vector2(100.5, 55)
 shape = SubResource("RectangleShape2D_r3db8")
 metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
+position = Vector2(106.5, 51.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Door_1" type="CollisionShape2D" parent="Door_Collider"]
-position = Vector2(92.5, 51.5)
+position = Vector2(-14, 0)
 shape = SubResource("RectangleShape2D_qi7rc")
 metadata/bg_level = 1
 
 [node name="Door_2" type="CollisionShape2D" parent="Door_Collider"]
-position = Vector2(118.5, 51.5)
+position = Vector2(12, 0)
 shape = SubResource("RectangleShape2D_rlv1w")
 metadata/bg_level = 1

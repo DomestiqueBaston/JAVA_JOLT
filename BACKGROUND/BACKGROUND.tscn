@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=64 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cqa3bbbs2by12" path="res://BACKGROUND/REFRIGERATOR_LEFT.tscn" id="15_h01j6"]
 [ext_resource type="PackedScene" uid="uid://keucd37jh7cv" path="res://BACKGROUND/COFFEE_CUPBOARD.tscn" id="16_mbj8v"]
 [ext_resource type="PackedScene" uid="uid://cybs73vw2lwpw" path="res://BACKGROUND/DISHWASHER.tscn" id="17_fr6vq"]
+[ext_resource type="PackedScene" uid="uid://b7kwi7lwhh6do" path="res://BACKGROUND/UNDER_SINK_CABINET.tscn" id="18_erta0"]
 [ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Cupboard_Open_Close.ogg" id="19_ajmfa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
@@ -223,6 +224,9 @@ visible = false
 [node name="Dishwasher_Open" parent="Open_Objects" instance=ExtResource("17_fr6vq")]
 visible = false
 
+[node name="Under_Sink_Cabinet" parent="Open_Objects" instance=ExtResource("18_erta0")]
+visible = false
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
@@ -242,10 +246,11 @@ position = Vector2(91.5, 51.5)
 shape = SubResource("RectangleShape2D_j18d4")
 
 [node name="Undersink_Cabinet_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+position = Vector2(106.5, 51.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Undersink_Cabinet" type="CollisionShape2D" parent="Stuff_Colliders/Low/Undersink_Cabinet_Collider"]
-position = Vector2(106.5, 51.5)
 shape = SubResource("RectangleShape2D_6tvcg")
 
 [node name="Cleaning_Closet_Collider" type="Area2D" parent="Stuff_Colliders/Low"]

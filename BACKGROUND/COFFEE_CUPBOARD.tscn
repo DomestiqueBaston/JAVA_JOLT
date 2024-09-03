@@ -28,8 +28,6 @@ script = ExtResource("1_5tqpg")
 texture = ExtResource("1_f6c4a")
 centered = false
 
-[node name="Opens_Outs" type="Node2D" parent="."]
-
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Empty_Coffee_Space_Collider" type="Area2D" parent="Stuff_Colliders"]
