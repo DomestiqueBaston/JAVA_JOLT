@@ -71,6 +71,7 @@ inventory_action={
 2d_physics/layer_1="Mouse"
 2d_physics/layer_2="Colliders"
 2d_physics/layer_3="Move"
+2d_physics/layer_4="Zones"
 
 [rendering]
 
