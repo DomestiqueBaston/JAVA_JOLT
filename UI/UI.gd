@@ -28,6 +28,9 @@ extends CanvasLayer
 ## the cursor outside the box.
 @export var inventory_timeout: float = 0.3
 
+## If true, only our big cursor is visible.
+@export var hide_system_mouse: bool = false
+
 ## Signal emitted when user clicks somewhere to move or do something.
 signal click_on_background(pos: Vector2)
 
@@ -96,6 +99,8 @@ const dialogue3 = preload("res://dialogue3.json").data
 
 func _ready():
 	clear_inventory()
+	if hide_system_mouse:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 #
 # If the user has chosen an inventory item to use and then moves the mouse
