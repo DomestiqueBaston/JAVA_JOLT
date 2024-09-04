@@ -192,6 +192,19 @@ func set_object_visible(which: int, vis: bool):
 			Globals.Prop.KETTLE:
 				$Removed_Objects/Kettle_Out.visible = not vis
 				$Stuff_Colliders/Mid/Kettle_Collider.monitoring = vis
-	elif _open_object >= 0:
-		var node: Node2D = _openable_nodes[_open_object]
-		node.set_object_visible(which, vis)
+	elif which <= Globals.Prop.REFRIGERATOR_RIGHT_END:
+		$Open_Objects/Refrigerator_Right.set_object_visible(which, vis)
+	elif which <= Globals.Prop.REFRIGERATOR_LEFT_END:
+		$Open_Objects/Refrigerator_Left.set_object_visible(which, vis)
+	elif which <= Globals.Prop.COFFEE_CUPBOARD_END:
+		$Open_Objects/Coffee_Cupboard.set_object_visible(which, vis)
+	elif which <= Globals.Prop.DISHWASHER_END:
+		$Open_Objects/Dishwasher_Open.set_object_visible(which, vis)
+	elif which <= Globals.Prop.UNDER_SINK_END:
+		$Open_Objects/Under_Sink_Cabinet.set_object_visible(which, vis)
+	elif which <= Globals.Prop.UPPER_RIGHT_CUPBOARD_END:
+		$Open_Objects/Upper_Right_Cupboard.set_object_visible(which, vis)
+	elif which <= Globals.Prop.CLEANING_CLOSET_END:
+		$Open_Objects/Cleaning_Closet.set_object_visible(which, vis)
+	elif which <= Globals.Prop.CUPBOARD_UPPER_CENTER_END:
+		$Open_Objects/Cupboard_Upper_Center.set_object_visible(which, vis)
