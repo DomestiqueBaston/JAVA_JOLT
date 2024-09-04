@@ -12,8 +12,10 @@ extends Node2D
 # method will show/hide the object as appropriate, and perhaps enable/disable
 # its collider so it cannot be taken if it is hidden.
 
-## Which dialogue to start with (for testing), 0 for none.
-@export_range(0, 3) var dialogue_number: int = 0
+@export var skip_dialogues: bool = false
+
+# Current chapter of the story.
+var current_chapter: int = 1
 
 # The prop currently under the mouse cursor (see Globals.Prop), or -1.
 var current_prop: int = -1
@@ -21,7 +23,7 @@ var current_prop: int = -1
 # Dictionary containing all the background object colliders that are currently
 # in contact with the mouse cursor. Keys are prop numbers (see Globals.prop);
 # values are Area2D instances.
-var overlapping_colliders = {}
+var overlapping_colliders: Dictionary = {}
 
 const prop_info: Array[String] = [
 	# KITCHEN_CABINET
@@ -224,22 +226,22 @@ const open_close_door: Dictionary = {
 
 const inventory_full_msg = "Hey, I don't have 4 arms, I'm not Shiva!"
 
-const cant_use_msgs = [
+const cant_use_msgs: Array[String] = [
 	"That doesn't ring a bell for me.",
 	"Maybe some other time.",
 	"Yeah, or I could just lick the floor...",
 	"No way, Jose!",
 ]
 
-var butter_knife_seen = false
-var coffee_maker_seen = false
-var is_towel_wet = false
-var is_quitting = false
+var butter_knife_seen := false
+var coffee_maker_seen := false
+var is_towel_wet := false
+var is_quitting := false
 
 func _ready():
 	assert(prop_info.size() == Globals.Prop.TOTAL_PROP_COUNT)
-	if dialogue_number > 0:
-		await $UI.tell_story(dialogue_number)
+	if not skip_dialogues:
+		await $UI.tell_story(current_chapter)
 	$UI.pin_help_button()
 
 #
@@ -711,6 +713,17 @@ func _check_objects(have1: int, have2: int, want1: int, want2: int) -> bool:
 # constants from Globals.Prop.
 #
 func _use_object_on_other(object1: int, object2: int):
+	var ok = false
+	match current_chapter:
+		1:
+			ok = await _use_object_chapter1(object1, object2)
+
+	if not ok:
+		#print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
+		var msg_index = randi() % cant_use_msgs.size()
+		_set_comment(cant_use_msgs[msg_index])
+
+func _use_object_chapter1(object1: int, object2: int) -> bool:
 
 	# butter knife + coffee maker: add the filter holder to the inventory
 
@@ -726,51 +739,53 @@ func _use_object_on_other(object1: int, object2: int):
 			_set_comment("I got the filter holder out intact!")
 			$UI.add_to_inventory(Globals.Prop.COFFEE_MAKER, "Coffee filter holder")
 			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_MAKER, false)
+		return true
 
 	# milk bottle + small towel: moisten the towel and update the inventory
 	# (both objects must be in the inventory)
 
-	elif _check_objects(
+	if _check_objects(
 		object1, object2, Globals.Prop.MILK_BOTTLES, Globals.Prop.TOWEL_SMALL):
-			if ($UI.find_in_inventory(object1) < 0 or
-				$UI.find_in_inventory(object2) < 0):
-				pass
-			elif is_towel_wet:
-				_set_comment("The towel is already moist.")
-			else:
-				await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-				await $ROWENA.do_stuff(false)
-				_set_comment("Now the towel is moist.")
-				is_towel_wet = true
-				$UI.add_to_inventory(
-					Globals.Prop.TOWEL_SMALL, "Small towel moistened with milk")
+		if ($UI.find_in_inventory(object1) < 0 or
+			$UI.find_in_inventory(object2) < 0):
+			pass
+		elif is_towel_wet:
+			_set_comment("The towel is already moist.")
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("Now the towel is moist.")
+			is_towel_wet = true
+			$UI.add_to_inventory(
+				Globals.Prop.TOWEL_SMALL, "Small towel moistened with milk")
+		return true
 
 	# small towel + filter holder: if the towel has been moistened, use it on
 	# the filter holder and taste it (both objects must be in the inventory)
 
-	elif _check_objects(
+	if _check_objects(
 		object1, object2, Globals.Prop.TOWEL_SMALL, Globals.Prop.COFFEE_MAKER):
-			if ($UI.find_in_inventory(object1) < 0 or
-				$UI.find_in_inventory(object2) < 0):
-				pass
-			elif is_towel_wet:
-				await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-				await $ROWENA.do_stuff(false)
-				_set_comment("That should be more absorbent now. Let's taste it!")
+		if ($UI.find_in_inventory(object1) < 0 or
+			$UI.find_in_inventory(object2) < 0):
+			pass
+		elif is_towel_wet:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("That should be more absorbent now. Let's taste it!")
+			await $UI.comment_closed
+			await $ROWENA.do_erk_stuff()
+			_set_comment("That's disgusting! And there's not enough...")
+			current_chapter += 1
+			if not skip_dialogues:
 				await $UI.comment_closed
-				await $ROWENA.do_erk_stuff()
-				_set_comment("That's disgusting! And there's not enough...")
-			else:
-				await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-				await $ROWENA.do_stuff(false)
-				_set_comment("That works, but I can't get enough coffee out of it.")
+				await $UI.tell_story(current_chapter)
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("That works, but I can't get enough coffee out of it.")
+		return true
 
-	# huh?
-
-	else:
-		#print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
-		var msg_index = randi() % cant_use_msgs.size()
-		_set_comment(cant_use_msgs[msg_index])
+	return false
 
 #
 # Callback invoked when the user has removed an item from the inventory (that
