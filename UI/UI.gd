@@ -418,6 +418,15 @@ func pin_help_button():
 	if not $Help.visible:
 		$Help_AnimationPlayer.play("Help_On")
 
+##
+## Does the opposite of [method pin_help_button]: hides the help button until
+## the mouse passes over it.
+##
+func unpin_help_button():
+	_is_tutorial_seen = true
+	if $Help.visible:
+		$Help_AnimationPlayer.play("Help_Off")
+
 func _on_help_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		_abort_quit()

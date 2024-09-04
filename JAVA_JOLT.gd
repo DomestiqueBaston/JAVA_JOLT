@@ -872,6 +872,7 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 			await $ROWENA.do_erk_stuff()
 			_set_comment("That's disgusting! And there's not enough...")
 			current_chapter += 1
+			$UI.unpin_help_button()
 			if not skip_dialogues:
 				await $UI.comment_closed
 				await $UI.tell_story(current_chapter)
