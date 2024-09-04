@@ -309,7 +309,7 @@ Cupboard Upper Center : « I wonder what’s inside... » (c’est son placar
 	
 	Les boîtes de thé du dessous (de 1 à 4) : « It'll come down on me for this… » (elle ne prend pas)
 
-	La petite boîte de cookies : « I shouldn't be having these cookies. » (elle ne prend pas)
+	La petite boîte de cookies : « I shouldn't be having these cookies. »
 
 	La grande boîte de cookies : «That’s way too much right now. » (elle ne prend pas)
 
