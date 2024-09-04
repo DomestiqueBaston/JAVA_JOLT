@@ -224,10 +224,25 @@ const prop_info: Array[String] = [
 	"Those are my salad bowls.",
 	# UPPER_RIGHT_CUPBOARD_OPEN_DOOR
 	"Do you want to close the cupboard?",
+	# DRAIN_CLEANER
+	"That's drain cleaner.",
+	# MOP
+	"That's a mop.",
+	# DETERGENT
+	"That's detergent.",
+	# LARGE_BUCKET
+	"That's a big bucket.",
+	# SMALL_BUCKET
+	"That's a little bucket.",
+	# DUST_PAN_BRUSH
+	"That's a dust pan and broom.",
+	# CLEANING_CLOSET_OPEN_DOOR
+	"Do you want to close the cabinet?",
 ]
 
 const open_close_door: Dictionary = {
 	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
+	Globals.Prop.CLEANING_CLOSET: Globals.Prop.CLEANING_CLOSET_OPEN_DOOR,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
 	Globals.Prop.COFFEE_CUPBOARD: Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR,
 	Globals.Prop.UPPER_RIGHT_CUPBOARD: Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR,
@@ -446,6 +461,18 @@ func _perform_hand_action():
 		Globals.Prop.SAUCE_PAN_SET, \
 		Globals.Prop.SALAD_BOWLS:
 			_set_comment("No way I'm dragging that around.")
+		Globals.Prop.DRAIN_CLEANER:
+			_set_comment("To make coffee??")
+		Globals.Prop.MOP:
+			_set_comment("It's filthy!")
+		Globals.Prop.DETERGENT:
+			_set_comment("I'll use it this weekend.")
+		Globals.Prop.LARGE_BUCKET:
+			_set_comment("Hmm... Nope.")
+		Globals.Prop.SMALL_BUCKET:
+			_set_comment("What could I possibly do with it?")
+		Globals.Prop.DUST_PAN_BRUSH:
+			_set_comment("What was I looking for again?")
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -648,6 +675,7 @@ func _update_current_prop():
 
 	match current_prop:
 		Globals.Prop.UNDER_SINK_CABINET, \
+		Globals.Prop.CLEANING_CLOSET, \
 		Globals.Prop.DISHWASHER, \
 		Globals.Prop.COFFEE_CUPBOARD, \
 		Globals.Prop.UPPER_RIGHT_CUPBOARD, \
@@ -656,6 +684,7 @@ func _update_current_prop():
 			actions.append(Globals.Cursor.OPEN)
 
 		Globals.Prop.UNDER_SINK_OPEN_DOOR, \
+		Globals.Prop.CLEANING_CLOSET_OPEN_DOOR, \
 		Globals.Prop.DISHWASHER_OPEN_DOOR, \
 		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
 		Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR, \
@@ -716,7 +745,13 @@ func _update_current_prop():
 		Globals.Prop.COOKING_POT, \
 		Globals.Prop.HUGE_PRESSURE_COOKER, \
 		Globals.Prop.SAUCE_PAN_SET, \
-		Globals.Prop.SALAD_BOWLS:
+		Globals.Prop.SALAD_BOWLS, \
+		Globals.Prop.DRAIN_CLEANER, \
+		Globals.Prop.MOP, \
+		Globals.Prop.DETERGENT, \
+		Globals.Prop.LARGE_BUCKET, \
+		Globals.Prop.SMALL_BUCKET, \
+		Globals.Prop.DUST_PAN_BRUSH:
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 

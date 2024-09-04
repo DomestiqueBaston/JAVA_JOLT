@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=66 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b7kwi7lwhh6do" path="res://BACKGROUND/UNDER_SINK_CABINET.tscn" id="18_erta0"]
 [ext_resource type="AudioStream" uid="uid://5sxcbsvh14df" path="res://ROWENA/SOUNDS/Cupboard_Open_Close.ogg" id="19_ajmfa"]
 [ext_resource type="PackedScene" uid="uid://dx7iuxmkmaojs" path="res://BACKGROUND/UPPER_RIGHT_CUPBOARD.tscn" id="19_t568d"]
+[ext_resource type="PackedScene" uid="uid://bwm38rpibu2od" path="res://BACKGROUND/CLEANING_CLOSET.tscn" id="20_68vu2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -231,6 +232,9 @@ visible = false
 [node name="Upper_Right_Cupboard" parent="Open_Objects" instance=ExtResource("19_t568d")]
 visible = false
 
+[node name="Cleaning_Closet" parent="Open_Objects" instance=ExtResource("20_68vu2")]
+visible = false
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
@@ -258,10 +262,11 @@ collision_mask = 5
 shape = SubResource("RectangleShape2D_6tvcg")
 
 [node name="Cleaning_Closet_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+position = Vector2(149, 53.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Cleaning_Closet" type="CollisionShape2D" parent="Stuff_Colliders/Low/Cleaning_Closet_Collider"]
-position = Vector2(149, 53.5)
 shape = SubResource("RectangleShape2D_o8upq")
 
 [node name="Drawer_Left_1_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
