@@ -71,6 +71,7 @@ var _open_object = -1
 	Globals.Prop.UNDER_SINK_CABINET: $Open_Objects/Under_Sink_Cabinet,
 	Globals.Prop.DISHWASHER: $Open_Objects/Dishwasher_Open,
 	Globals.Prop.COFFEE_CUPBOARD: $Open_Objects/Coffee_Cupboard,
+	Globals.Prop.UPPER_RIGHT_CUPBOARD: $Open_Objects/Upper_Right_Cupboard,
 	Globals.Prop.REFRIGERATOR_RIGHT: $Open_Objects/Refrigerator_Right,
 	Globals.Prop.REFRIGERATOR_LEFT: $Open_Objects/Refrigerator_Left,
 }
@@ -82,6 +83,8 @@ var _open_object = -1
 	Globals.Prop.DISHWASHER_OPEN_DOOR: $Sounds/Fridge_Open_Close,
 	Globals.Prop.COFFEE_CUPBOARD: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.UPPER_RIGHT_CUPBOARD: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.REFRIGERATOR_RIGHT: $Sounds/Fridge_Open_Close,
 	Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR: $Sounds/Fridge_Open_Close,
 	Globals.Prop.REFRIGERATOR_LEFT: $Sounds/Fridge_Open_Close,

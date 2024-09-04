@@ -214,12 +214,23 @@ const prop_info: Array[String] = [
 	"That's my trash.",
 	# UNDER_SINK_OPEN_DOOR
 	"Do you want to close the cabinet?",
+	# COOKING_POT
+	"That's a big crock pot.",
+	# HUGE_PRESSURE_COOKER
+	"That's a big pressure cooker.",
+	# SAUCE_PAN_SET
+	"That's a set of sauce pans.",
+	# SALAD_BOWLS
+	"Those are my salad bowls.",
+	# UPPER_RIGHT_CUPBOARD_OPEN_DOOR
+	"Do you want to close the cupboard?",
 ]
 
 const open_close_door: Dictionary = {
 	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
 	Globals.Prop.COFFEE_CUPBOARD: Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR,
+	Globals.Prop.UPPER_RIGHT_CUPBOARD: Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR,
 	Globals.Prop.REFRIGERATOR_RIGHT: Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR,
 	Globals.Prop.REFRIGERATOR_LEFT: Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR,
 }
@@ -430,6 +441,11 @@ func _perform_hand_action():
 			take_msg = "I've always loved a plunger."
 		Globals.Prop.TRASH:
 			_set_comment("I used to play in the dump. When I was a kid...")
+		Globals.Prop.COOKING_POT, \
+		Globals.Prop.HUGE_PRESSURE_COOKER, \
+		Globals.Prop.SAUCE_PAN_SET, \
+		Globals.Prop.SALAD_BOWLS:
+			_set_comment("No way I'm dragging that around.")
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -634,6 +650,7 @@ func _update_current_prop():
 		Globals.Prop.UNDER_SINK_CABINET, \
 		Globals.Prop.DISHWASHER, \
 		Globals.Prop.COFFEE_CUPBOARD, \
+		Globals.Prop.UPPER_RIGHT_CUPBOARD, \
 		Globals.Prop.REFRIGERATOR_RIGHT, \
 		Globals.Prop.REFRIGERATOR_LEFT:
 			actions.append(Globals.Cursor.OPEN)
@@ -641,6 +658,7 @@ func _update_current_prop():
 		Globals.Prop.UNDER_SINK_OPEN_DOOR, \
 		Globals.Prop.DISHWASHER_OPEN_DOOR, \
 		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
+		Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR, \
 		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR, \
 		Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR:
 			actions.append(Globals.Cursor.CLOSE)
@@ -694,7 +712,11 @@ func _update_current_prop():
 		Globals.Prop.EXTINGUISHER, \
 		Globals.Prop.PLASTIC_BASKETS, \
 		Globals.Prop.PLUNGER, \
-		Globals.Prop.TRASH:
+		Globals.Prop.TRASH, \
+		Globals.Prop.COOKING_POT, \
+		Globals.Prop.HUGE_PRESSURE_COOKER, \
+		Globals.Prop.SAUCE_PAN_SET, \
+		Globals.Prop.SALAD_BOWLS:
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 

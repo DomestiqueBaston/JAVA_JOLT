@@ -87,7 +87,7 @@ enum Prop {
 	COFFEE_BEANS_2,
 	MAIN_PROP_COUNT, # must follow the last of the main props
 	
-	# props visible only when the refrigerator door is open
+	# props visible when the refrigerator door is open
 	
 	REFRIGERATOR_RIGHT_BEGIN=MAIN_PROP_COUNT,
 	SMOOTHIE_BOTTLES=REFRIGERATOR_RIGHT_BEGIN,
@@ -106,7 +106,7 @@ enum Prop {
 	REFRIGERATOR_RIGHT_OPEN_DOOR,
 	REFRIGERATOR_RIGHT_END=REFRIGERATOR_RIGHT_OPEN_DOOR,
 	
-	# props visible only when the freezer door is open
+	# props visible when the freezer door is open
 	
 	REFRIGERATOR_LEFT_BEGIN,
 	PIZZA_DRAWER=REFRIGERATOR_LEFT_BEGIN,
@@ -117,7 +117,7 @@ enum Prop {
 	REFRIGERATOR_LEFT_OPEN_DOOR,
 	REFRIGERATOR_LEFT_END=REFRIGERATOR_LEFT_OPEN_DOOR,
 	
-	# props visible only when the coffee cupboard is open
+	# props visible when the coffee cupboard is open
 	
 	COFFEE_CUPBOARD_BEGIN,
 	EMPTY_COFFEE_SPACE=COFFEE_CUPBOARD_BEGIN,
@@ -128,7 +128,7 @@ enum Prop {
 	COFFEE_CUPBOARD_OPEN_DOOR,
 	COFFEE_CUPBOARD_END=COFFEE_CUPBOARD_OPEN_DOOR,
 	
-	# props visible only when the dishwasher is open
+	# props visible when the dishwasher is open
 	
 	DISHWASHER_BEGIN,
 	DISHWASHER_TOP=DISHWASHER_BEGIN,
@@ -137,7 +137,7 @@ enum Prop {
 	DISHWASHER_OPEN_DOOR,
 	DISHWASHER_END=DISHWASHER_OPEN_DOOR,
 	
-	# props visible only when the cabinet under the sink is open
+	# props visible when the cabinet under the sink is open
 	
 	UNDER_SINK_BEGIN,
 	EXTINGUISHER=UNDER_SINK_BEGIN,
@@ -146,6 +146,16 @@ enum Prop {
 	TRASH,
 	UNDER_SINK_OPEN_DOOR,
 	UNDER_SINK_END=UNDER_SINK_OPEN_DOOR,
+	
+	# props visible when the upper right cupboard is open
+	
+	UPPER_RIGHT_CUPBOARD_BEGIN,
+	COOKING_POT=UPPER_RIGHT_CUPBOARD_BEGIN,
+	HUGE_PRESSURE_COOKER,
+	SAUCE_PAN_SET,
+	SALAD_BOWLS,
+	UPPER_RIGHT_CUPBOARD_OPEN_DOOR,
+	UPPER_RIGHT_CUPBOARD_END=UPPER_RIGHT_CUPBOARD_OPEN_DOOR,
 	
 	TOTAL_PROP_COUNT # must be last
 }
