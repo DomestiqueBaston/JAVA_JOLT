@@ -1,7 +1,7 @@
 {
 	"start": {
 		"speaker": "rowena",
-		"text": "This tastes worse than anything!",
+		"text": "One of my worst experiences!",
 		"next": "doctor1"
 	},
 	"doctor1": {
