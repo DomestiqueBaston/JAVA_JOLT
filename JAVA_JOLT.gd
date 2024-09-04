@@ -238,12 +238,29 @@ const prop_info: Array[String] = [
 	"That's a dust pan and broom.",
 	# CLEANING_CLOSET_OPEN_DOOR
 	"Do you want to close the cabinet?",
+	# LARGE_COOKIE_BOX
+	"That's a big box of tea biscuits.",
+	# SMALL_COOKIE_BOX
+	"That's a little box of tea biscuits.",
+	# TEA_BOX_1
+	"That's a box of tea.",
+	# TEA_BOX_2
+	"That's a box of tea.",
+	# TEA_BOX_3
+	"That's a box of tea.",
+	# TEA_BOX_4
+	"That's a box of tea.",
+	# TEA_BOX_5
+	"That's a box of tea.",
+	# CUPBOARD_UPPER_CENTER_OPEN_DOOR
+	"Do you want to close the cupboard?",
 ]
 
 const open_close_door: Dictionary = {
 	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
 	Globals.Prop.CLEANING_CLOSET: Globals.Prop.CLEANING_CLOSET_OPEN_DOOR,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
+	Globals.Prop.CUPBOARD_UPPER_CENTER: Globals.Prop.CUPBOARD_UPPER_CENTER_OPEN_DOOR,
 	Globals.Prop.COFFEE_CUPBOARD: Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR,
 	Globals.Prop.UPPER_RIGHT_CUPBOARD: Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR,
 	Globals.Prop.REFRIGERATOR_RIGHT: Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR,
@@ -473,6 +490,19 @@ func _perform_hand_action():
 			_set_comment("What could I possibly do with it?")
 		Globals.Prop.DUST_PAN_BRUSH:
 			_set_comment("What was I looking for again?")
+		Globals.Prop.LARGE_COOKIE_BOX:
+			_set_comment("That's way too much right now.")
+		Globals.Prop.SMALL_COOKIE_BOX:
+			take_label = "Tea biscuits"
+			take_msg = "I shouldn't, but OK..."
+		Globals.Prop.TEA_BOX_1, \
+		Globals.Prop.TEA_BOX_2, \
+		Globals.Prop.TEA_BOX_3, \
+		Globals.Prop.TEA_BOX_4:
+			_set_comment("They'll all fall down on me if I take that one!")
+		Globals.Prop.TEA_BOX_5:
+			take_label = "Box of tea"
+			take_msg = "I want coffee, not tea, but OK."
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -677,6 +707,7 @@ func _update_current_prop():
 		Globals.Prop.UNDER_SINK_CABINET, \
 		Globals.Prop.CLEANING_CLOSET, \
 		Globals.Prop.DISHWASHER, \
+		Globals.Prop.CUPBOARD_UPPER_CENTER, \
 		Globals.Prop.COFFEE_CUPBOARD, \
 		Globals.Prop.UPPER_RIGHT_CUPBOARD, \
 		Globals.Prop.REFRIGERATOR_RIGHT, \
@@ -686,6 +717,7 @@ func _update_current_prop():
 		Globals.Prop.UNDER_SINK_OPEN_DOOR, \
 		Globals.Prop.CLEANING_CLOSET_OPEN_DOOR, \
 		Globals.Prop.DISHWASHER_OPEN_DOOR, \
+		Globals.Prop.CUPBOARD_UPPER_CENTER_OPEN_DOOR, \
 		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
 		Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR, \
 		Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR, \
@@ -751,7 +783,14 @@ func _update_current_prop():
 		Globals.Prop.DETERGENT, \
 		Globals.Prop.LARGE_BUCKET, \
 		Globals.Prop.SMALL_BUCKET, \
-		Globals.Prop.DUST_PAN_BRUSH:
+		Globals.Prop.DUST_PAN_BRUSH, \
+		Globals.Prop.LARGE_COOKIE_BOX, \
+		Globals.Prop.SMALL_COOKIE_BOX, \
+		Globals.Prop.TEA_BOX_1, \
+		Globals.Prop.TEA_BOX_2, \
+		Globals.Prop.TEA_BOX_3, \
+		Globals.Prop.TEA_BOX_4, \
+		Globals.Prop.TEA_BOX_5:
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 
