@@ -266,6 +266,14 @@ const prop_info: Array[String] = [
 	"That's an old pizza.",
 	# MICROWAVE_OPEN_DOOR
 	"Do you want to close the microwave?",
+	# SMALL_WINE_GLASSES
+	"Those are wine glasses.",
+	# LARGE_GLASSES
+	"Those are water glasses.",
+	# SOUP_PLATES
+	"Those are soup dishes.",
+	# CUPBOARD_UPPER_CENTER_LEFT_OPEN_DOOR
+	"Do you want to close the cupboard?",
 ]
 
 const open_close_door: Dictionary = {
@@ -273,6 +281,7 @@ const open_close_door: Dictionary = {
 	Globals.Prop.CLEANING_CLOSET: Globals.Prop.CLEANING_CLOSET_OPEN_DOOR,
 	Globals.Prop.OVEN: Globals.Prop.OVEN_OPEN_DOOR,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
+	Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT: Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT_OPEN_DOOR,
 	Globals.Prop.CUPBOARD_UPPER_CENTER: Globals.Prop.CUPBOARD_UPPER_CENTER_OPEN_DOOR,
 	Globals.Prop.COFFEE_CUPBOARD: Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR,
 	Globals.Prop.UPPER_RIGHT_CUPBOARD: Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR,
@@ -523,6 +532,15 @@ func _perform_hand_action():
 			_set_comment("I'd have to clean it, it's so gross.")
 		Globals.Prop.MICROWAVE_PIZZA:
 			_set_comment("It's rock hard now!")
+		Globals.Prop.SMALL_WINE_GLASSES:
+			take_label = "Wine glass"
+			take_msg = "OK, why not?"
+		Globals.Prop.LARGE_GLASSES:
+			take_label = "Water glass"
+			take_msg = "OK."
+		Globals.Prop.SOUP_PLATES:
+			take_label = "Soup dish"
+			take_msg = "Yes, just what I need!"
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -728,6 +746,7 @@ func _update_current_prop():
 		Globals.Prop.CLEANING_CLOSET, \
 		Globals.Prop.OVEN, \
 		Globals.Prop.DISHWASHER, \
+		Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT, \
 		Globals.Prop.CUPBOARD_UPPER_CENTER, \
 		Globals.Prop.COFFEE_CUPBOARD, \
 		Globals.Prop.UPPER_RIGHT_CUPBOARD, \
@@ -740,6 +759,7 @@ func _update_current_prop():
 		Globals.Prop.CLEANING_CLOSET_OPEN_DOOR, \
 		Globals.Prop.OVEN_OPEN_DOOR, \
 		Globals.Prop.DISHWASHER_OPEN_DOOR, \
+		Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT_OPEN_DOOR, \
 		Globals.Prop.CUPBOARD_UPPER_CENTER_OPEN_DOOR, \
 		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
 		Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR, \
@@ -818,7 +838,10 @@ func _update_current_prop():
 		Globals.Prop.OVEN_EMPTY_SPACE_1, \
 		Globals.Prop.OVEN_EMPTY_SPACE_2, \
 		Globals.Prop.OVEN_EMPTY_SPACE_3, \
-		Globals.Prop.MICROWAVE_PIZZA:
+		Globals.Prop.MICROWAVE_PIZZA, \
+		Globals.Prop.SMALL_WINE_GLASSES, \
+		Globals.Prop.LARGE_GLASSES, \
+		Globals.Prop.SOUP_PLATES:
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 

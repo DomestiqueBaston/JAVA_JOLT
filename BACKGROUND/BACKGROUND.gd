@@ -72,6 +72,7 @@ var _open_object = -1
 	Globals.Prop.CLEANING_CLOSET: $Open_Objects/Cleaning_Closet,
 	Globals.Prop.OVEN: $Open_Objects/Oven,
 	Globals.Prop.DISHWASHER: $Open_Objects/Dishwasher_Open,
+	Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT: $Open_Objects/Cupboard_Upper_Center_Left,
 	Globals.Prop.CUPBOARD_UPPER_CENTER: $Open_Objects/Cupboard_Upper_Center,
 	Globals.Prop.COFFEE_CUPBOARD: $Open_Objects/Coffee_Cupboard,
 	Globals.Prop.UPPER_RIGHT_CUPBOARD: $Open_Objects/Upper_Right_Cupboard,
@@ -89,6 +90,8 @@ var _open_object = -1
 	Globals.Prop.OVEN_OPEN_DOOR: $Sounds/Fridge_Open_Close,
 	Globals.Prop.DISHWASHER: $Sounds/Fridge_Open_Close,
 	Globals.Prop.DISHWASHER_OPEN_DOOR: $Sounds/Fridge_Open_Close,
+	Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.CUPBOARD_UPPER_CENTER: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.CUPBOARD_UPPER_CENTER_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.COFFEE_CUPBOARD: $Sounds/Cupboard_Open_Close,
@@ -218,3 +221,5 @@ func set_object_visible(which: int, vis: bool):
 		$Open_Objects/Oven.set_object_visible(which, vis)
 	elif which <= Globals.Prop.MICROWAVE_END:
 		$Open_Objects/Micro_Wave.set_object_visible(which, vis)
+	elif which <= Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT_END:
+		$Open_Objects/Cupboard_Upper_Center_Left.set_object_visible(which, vis)
