@@ -1,4 +1,4 @@
-extends "OpenableObject.gd"
+extends OpenableObject
 
 @onready var _my_colliders: Array[Area2D] = [
 	$Stuff_Colliders/Empty_Space_1_Collider,
