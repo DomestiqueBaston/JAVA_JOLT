@@ -288,10 +288,15 @@ const prop_info: Array[String] = [
 	"Those are plates.",
 	# LEFT_GLASS_CUPBOARD_OPEN_DOOR
 	"Do you want to close the cupboard?",
+	# RECYCLING
+	"That's my recycling.",
+	# RECYCLING_OPEN_DOOR	
+	"Do you want to close it?"
 ]
 
 const open_close_door: Dictionary = {
 	Globals.Prop.KITCHEN_CABINET: Globals.Prop.KITCHEN_CABINET_OPEN_DOOR,
+	Globals.Prop.RECYCLING_CLOSET: Globals.Prop.RECYCLING_CLOSET_OPEN_DOOR,
 	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
 	Globals.Prop.CLEANING_CLOSET: Globals.Prop.CLEANING_CLOSET_OPEN_DOOR,
 	Globals.Prop.OVEN: Globals.Prop.OVEN_OPEN_DOOR,
@@ -570,6 +575,8 @@ func _perform_hand_action():
 		Globals.Prop.PLATES:
 			take_label = "Plate"
 			take_msg = "Good."
+		Globals.Prop.RECYCLING:
+			_set_comment("It's half full of plastic and paper.")
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -772,6 +779,7 @@ func _update_current_prop():
 
 	match current_prop:
 		Globals.Prop.KITCHEN_CABINET, \
+		Globals.Prop.RECYCLING_CLOSET, \
 		Globals.Prop.UNDER_SINK_CABINET, \
 		Globals.Prop.CLEANING_CLOSET, \
 		Globals.Prop.OVEN, \
@@ -787,6 +795,7 @@ func _update_current_prop():
 			actions.append(Globals.Cursor.OPEN)
 
 		Globals.Prop.KITCHEN_CABINET_OPEN_DOOR, \
+		Globals.Prop.RECYCLING_CLOSET_OPEN_DOOR, \
 		Globals.Prop.UNDER_SINK_OPEN_DOOR, \
 		Globals.Prop.CLEANING_CLOSET_OPEN_DOOR, \
 		Globals.Prop.OVEN_OPEN_DOOR, \
@@ -879,7 +888,8 @@ func _update_current_prop():
 		Globals.Prop.PRESSURE_COOKER_2, \
 		Globals.Prop.WINE_GLASSES, \
 		Globals.Prop.GLASSES, \
-		Globals.Prop.PLATES:
+		Globals.Prop.PLATES, \
+		Globals.Prop.RECYCLING:
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 

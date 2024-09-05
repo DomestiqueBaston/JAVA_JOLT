@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8lvk22dhf1g2"]
+[gd_scene load_steps=5 format=3 uid="uid://c8lvk22dhf1g2"]
 
+[ext_resource type="Script" path="res://BACKGROUND/RECYCLING_CLOSET.gd" id="1_1mqvd"]
 [ext_resource type="Texture2D" uid="uid://cux36xgb3en3y" path="res://BACKGROUND/IMAGES/Recycling_Closet_Open.png" id="1_tdvom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qw3q8"]
@@ -9,17 +10,17 @@ size = Vector2(5, 15)
 size = Vector2(4, 21)
 
 [node name="Recycling_Closet" type="Node2D"]
+script = ExtResource("1_1mqvd")
 
 [node name="Recycling_Closet_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_tdvom")
 centered = false
 
-[node name="Opens_Outs" type="Node2D" parent="."]
-
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Recycling_Bin_Collider" type="Area2D" parent="Stuff_Colliders"]
 collision_layer = 2
+metadata/bg_level = 1
 
 [node name="Recycling_Bin" type="CollisionShape2D" parent="Stuff_Colliders/Recycling_Bin_Collider"]
 position = Vector2(92.5, 54.5)
@@ -27,9 +28,11 @@ shape = SubResource("RectangleShape2D_qw3q8")
 metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
+position = Vector2(87, 51.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
-position = Vector2(87, 51.5)
 shape = SubResource("RectangleShape2D_6gyua")
 metadata/bg_level = 1

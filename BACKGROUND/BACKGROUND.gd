@@ -69,6 +69,7 @@ var _open_object = -1
 
 @onready var _openable_nodes: Dictionary = {
 	Globals.Prop.KITCHEN_CABINET: $Open_Objects/Kitchen_Cabinet,
+	Globals.Prop.RECYCLING_CLOSET: $Open_Objects/Recycling_Closet,
 	Globals.Prop.UNDER_SINK_CABINET: $Open_Objects/Under_Sink_Cabinet,
 	Globals.Prop.CLEANING_CLOSET: $Open_Objects/Cleaning_Closet,
 	Globals.Prop.OVEN: $Open_Objects/Oven,
@@ -86,6 +87,8 @@ var _open_object = -1
 @onready var _open_close_sounds: Dictionary = {
 	Globals.Prop.KITCHEN_CABINET: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.KITCHEN_CABINET_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.RECYCLING_CLOSET: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.RECYCLING_CLOSET_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.UNDER_SINK_CABINET: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.UNDER_SINK_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.CLEANING_CLOSET: $Sounds/Cupboard_Open_Close,
@@ -233,3 +236,5 @@ func set_object_visible(which: int, vis: bool):
 		$Open_Objects/Kitchen_Cabinet.set_object_visible(which, vis)
 	elif which <= Globals.Prop.LEFT_GLASS_CUPBOARD_END:
 		$Open_Objects/Left_Glass_Cupboard.set_object_visible(which, vis)
+	elif which <= Globals.Prop.RECYCLING_CLOSET_END:
+		$Open_Objects/Recycling_Closet.set_object_visible(which, vis)
