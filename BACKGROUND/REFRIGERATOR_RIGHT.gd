@@ -1,9 +1,6 @@
-extends Node2D
+extends "OpenableObject.gd"
 
-signal area_entered_object(which: int, area: Area2D)
-signal area_exited_object(which: int, area: Area2D)
-
-@onready var _colliders: Array[Area2D] = [
+@onready var _my_colliders: Array[Area2D] = [
 	$Stuff_Colliders/Smoothie_Bottles_Collider,
 	$Stuff_Colliders/Fruit_Juice_Bottles_Collider,
 	$Stuff_Colliders/Milk_Bottles_Collider,
@@ -21,29 +18,10 @@ signal area_exited_object(which: int, area: Area2D)
 ]
 
 func _ready():
-	assert(_colliders.size() ==
+	assert(_my_colliders.size() ==
 		Globals.Prop.REFRIGERATOR_RIGHT_END -
 		Globals.Prop.REFRIGERATOR_RIGHT_BEGIN + 1)
-	for index in _colliders.size():
-		var collider: Area2D = _colliders[index]
-		collider.area_entered.connect(
-			func(area):
-				area_entered_object.emit(
-					Globals.Prop.REFRIGERATOR_RIGHT_BEGIN + index, area)
-				)
-		collider.area_exited.connect(
-			func(area):
-				area_exited_object.emit(
-					Globals.Prop.REFRIGERATOR_RIGHT_BEGIN + index, area))
-
-func get_collider(which: int) -> Area2D:
-	return _colliders[which - Globals.Prop.REFRIGERATOR_RIGHT_BEGIN]
-
-func get_object_from_collider(area: Area2D) -> int:
-	var index = _colliders.find(area)
-	if index >= 0:
-		index += Globals.Prop.REFRIGERATOR_RIGHT_BEGIN
-	return index
+	set_colliders(Globals.Prop.REFRIGERATOR_RIGHT_BEGIN, _my_colliders)
 
 func set_object_visible(which: int, vis: bool):
 	match which:
