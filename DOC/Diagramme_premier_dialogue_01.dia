@@ -62,7 +62,7 @@
       </dia:composite>
     </dia:attribute>
   </dia:diagramdata>
-  <dia:layer name="Arrière-plan" visible="true">
+  <dia:layer name="Arrière-plan" visible="true" active="true">
     <dia:object type="Flowchart - Box" version="0" id="O0">
       <dia:attribute name="obj_pos">
         <dia:point val="22.0981,-5.1"/>
@@ -336,7 +336,7 @@ Dr. F. : Helpful? My dear, I'm the voice of reason in your chaotic life. How abo
         <dia:point val="-23.1045,6.56667"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-23.1545,6.51667;5.08797,10.1167"/>
+        <dia:rectangle val="-23.1545,6.51667;5.088,10.1167"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-23.1045,6.56667"/>
@@ -367,7 +367,7 @@ Dr. F. : Yes, your vital elixir. Always there to fill that void in your… muff.
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="-9.03328,7.71167"/>
+            <dia:point val="-9.03325,7.71167"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -383,7 +383,7 @@ Dr. F. : Yes, your vital elixir. Always there to fill that void in your… muff.
         <dia:point val="16.6394,2.05"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-9.1434,1.99209;16.6973,6.81699"/>
+        <dia:rectangle val="-9.14339,1.99209;16.6973,6.81699"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="16.6394,2.05"/>
@@ -486,7 +486,7 @@ Dr. F. : Oh, come now, Rowena. There's no need to be touchy. I'm just here to le
         <dia:point val="-1.99766,10.0667"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-2.0648,9.99953;14.4674,18.37"/>
+        <dia:rectangle val="-2.0648,9.99956;14.4674,18.37"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="-1.99766,10.0667"/>
@@ -977,7 +977,7 @@ Dr. F. : You know we could make it last all day long, right?#</dia:string>
         <dia:point val="-34.89,48.3"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-34.9604,48.2296;-30.9985,52.9601"/>
+        <dia:rectangle val="-34.9604,48.2296;-30.9984,52.9601"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="-34.89,48.3"/>
@@ -1822,7 +1822,7 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:point val="-9.03328,10.0667"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-9.13762,10.0112;22.9195,42.7955"/>
+        <dia:rectangle val="-9.13761,10.0112;22.9195,42.7955"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="-9.03328,10.0667"/>
@@ -2182,13 +2182,13 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
         <dia:point val="61.0494,30.8515"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-15.5232,30.7999;61.103,80.7076"/>
+        <dia:rectangle val="13.9762,16.3025;61.1039,30.906"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="61.0494,30.8515"/>
-        <dia:point val="61.6478,49.5833"/>
-        <dia:point val="-12.0795,74.8652"/>
-        <dia:point val="-15.5107,80.7076"/>
+        <dia:point val="34.7982,28.3726"/>
+        <dia:point val="14.08,11.3313"/>
+        <dia:point val="14.3675,18.3"/>
       </dia:attribute>
       <dia:attribute name="corner_types">
         <dia:enum val="0"/>
@@ -2205,7 +2205,7 @@ Dr. F. : True, but it makes your misery more entertaining. Now, what’s your pl
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O50" connection="11"/>
-        <dia:connection handle="3" to="O25" connection="2"/>
+        <dia:connection handle="3" to="O34" connection="2"/>
       </dia:connections>
     </dia:object>
     <dia:object type="Standard - BezierLine" version="0" id="O59">
@@ -2802,7 +2802,7 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:point val="-19.2308,39.2066"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-31.1434,39.1361;-19.1603,52.9588"/>
+        <dia:rectangle val="-31.1433,39.1361;-19.1603,52.9588"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="-19.2308,39.2066"/>
@@ -2830,7 +2830,7 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:point val="-4.45965,32.5904"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-19.3401,32.5312;-4.40041,35.9343"/>
+        <dia:rectangle val="-19.3402,32.5312;-4.40041,35.9343"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="-4.45965,32.5904"/>
@@ -2862,7 +2862,7 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="-44.8762,48.3"/>
-        <dia:point val="-45.4081,58.064"/>
+        <dia:point val="-45.4081,58.0641"/>
       </dia:attribute>
       <dia:attribute name="numcp">
         <dia:int val="1"/>
@@ -2913,7 +2913,7 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
       </dia:connections>
     </dia:object>
   </dia:layer>
-  <dia:layer name="JSON names" visible="true" active="true">
+  <dia:layer name="JSON names" visible="true">
     <dia:object type="Standard - Text" version="1" id="O81">
       <dia:attribute name="obj_pos">
         <dia:point val="20.3,-3.65"/>
@@ -4041,7 +4041,7 @@ Dr. F.: Then you'll have to get creative, won’t you? It's not like you have a 
         <dia:point val="-59.6286,60.8882"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-59.6286,60.2746;-56.3825,61.0755"/>
+        <dia:rectangle val="-59.6286,60.2932;-56.4011,61.0382"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">

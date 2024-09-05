@@ -137,7 +137,7 @@
 	"doctor13": {
 		"speaker": "doctor",
 		"text": "Oh, Rowena. No need to get your froth all steamed up. I'm just here to offer my ever-so-helpful... insights.",
-		"next": [ "rowena15", "rowena22", "rowena11", "rowena12" ]
+		"next": [ "rowena6", "rowena22", "rowena11", "rowena12" ]
 	},
 	"rowena15": {
 		"speaker": "rowena",
