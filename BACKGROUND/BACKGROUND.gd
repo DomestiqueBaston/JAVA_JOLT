@@ -111,7 +111,7 @@ func _ready():
 			func(area): area_exited_object.emit(index, area))
 	
 	for id in _openable_nodes:
-		var node: Node2D = _openable_nodes[id]
+		var node: OpenableObject = _openable_nodes[id]
 		node.area_entered_object.connect(
 			func(which, area):
 				if _open_object == id:
@@ -129,7 +129,7 @@ func get_collider(which: int) -> Area2D:
 	if which < Globals.Prop.MAIN_PROP_COUNT:
 		return _colliders[which]
 	if _open_object >= 0:
-		var node: Node2D = _openable_nodes[_open_object]
+		var node: OpenableObject = _openable_nodes[_open_object]
 		return node.get_collider(which)
 	return null
 
@@ -140,7 +140,7 @@ func get_collider(which: int) -> Area2D:
 func get_object_from_collider(area: Area2D) -> int:
 	var index = _colliders.find(area)
 	if index < 0 and _open_object >= 0:
-		var node: Node2D = _openable_nodes[_open_object]
+		var node: OpenableObject = _openable_nodes[_open_object]
 		index = node.get_object_from_collider(area)
 	return index
 
@@ -148,7 +148,7 @@ func get_open_object() -> int:
 	return _open_object
 
 func open_something(which: int):
-	var node: Node2D = _openable_nodes[which]
+	var node: OpenableObject = _openable_nodes[which]
 	node.show()
 	var sound: AudioStreamPlayer = _open_close_sounds.get(which)
 	if sound:
@@ -158,7 +158,7 @@ func open_something(which: int):
 func close_something():
 	if _open_object < 0:
 		return
-	var node: Node2D = _openable_nodes[_open_object]
+	var node: OpenableObject = _openable_nodes[_open_object]
 	node.hide()
 	var sound: AudioStreamPlayer = _open_close_sounds.get(_open_object)
 	if sound:
