@@ -70,6 +70,7 @@ var _open_object = -1
 @onready var _openable_nodes: Dictionary = {
 	Globals.Prop.UNDER_SINK_CABINET: $Open_Objects/Under_Sink_Cabinet,
 	Globals.Prop.CLEANING_CLOSET: $Open_Objects/Cleaning_Closet,
+	Globals.Prop.OVEN: $Open_Objects/Oven,
 	Globals.Prop.DISHWASHER: $Open_Objects/Dishwasher_Open,
 	Globals.Prop.CUPBOARD_UPPER_CENTER: $Open_Objects/Cupboard_Upper_Center,
 	Globals.Prop.COFFEE_CUPBOARD: $Open_Objects/Coffee_Cupboard,
@@ -83,6 +84,8 @@ var _open_object = -1
 	Globals.Prop.UNDER_SINK_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.CLEANING_CLOSET: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.CLEANING_CLOSET_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.OVEN: $Sounds/Fridge_Open_Close,
+	Globals.Prop.OVEN_OPEN_DOOR: $Sounds/Fridge_Open_Close,
 	Globals.Prop.DISHWASHER: $Sounds/Fridge_Open_Close,
 	Globals.Prop.DISHWASHER_OPEN_DOOR: $Sounds/Fridge_Open_Close,
 	Globals.Prop.CUPBOARD_UPPER_CENTER: $Sounds/Cupboard_Open_Close,
@@ -208,3 +211,5 @@ func set_object_visible(which: int, vis: bool):
 		$Open_Objects/Cleaning_Closet.set_object_visible(which, vis)
 	elif which <= Globals.Prop.CUPBOARD_UPPER_CENTER_END:
 		$Open_Objects/Cupboard_Upper_Center.set_object_visible(which, vis)
+	elif which <= Globals.Prop.OVEN_END:
+		$Open_Objects/Oven.set_object_visible(which, vis)

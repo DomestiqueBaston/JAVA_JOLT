@@ -254,11 +254,20 @@ const prop_info: Array[String] = [
 	"That's a box of tea.",
 	# CUPBOARD_UPPER_CENTER_OPEN_DOOR
 	"Do you want to close the cupboard?",
+	# OVEN_EMPTY_SPACE_1
+	"There's nothing in there.",
+	# OVEN_EMPTY_SPACE_2
+	"There's nothing in there.",
+	# OVEN_EMPTY_SPACE_3
+	"There's nothing in there.",
+	# OVEN_OPEN_DOOR
+	"Do you want to close the oven?",
 ]
 
 const open_close_door: Dictionary = {
 	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
 	Globals.Prop.CLEANING_CLOSET: Globals.Prop.CLEANING_CLOSET_OPEN_DOOR,
+	Globals.Prop.OVEN: Globals.Prop.OVEN_OPEN_DOOR,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
 	Globals.Prop.CUPBOARD_UPPER_CENTER: Globals.Prop.CUPBOARD_UPPER_CENTER_OPEN_DOOR,
 	Globals.Prop.COFFEE_CUPBOARD: Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR,
@@ -503,6 +512,10 @@ func _perform_hand_action():
 		Globals.Prop.TEA_BOX_5:
 			take_label = "Box of tea"
 			take_msg = "I want coffee, not tea, but OK."
+		Globals.Prop.OVEN_EMPTY_SPACE_1, \
+		Globals.Prop.OVEN_EMPTY_SPACE_2, \
+		Globals.Prop.OVEN_EMPTY_SPACE_3:
+			_set_comment("I'd have to clean it, it's so gross.")
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -706,6 +719,7 @@ func _update_current_prop():
 	match current_prop:
 		Globals.Prop.UNDER_SINK_CABINET, \
 		Globals.Prop.CLEANING_CLOSET, \
+		Globals.Prop.OVEN, \
 		Globals.Prop.DISHWASHER, \
 		Globals.Prop.CUPBOARD_UPPER_CENTER, \
 		Globals.Prop.COFFEE_CUPBOARD, \
@@ -716,6 +730,7 @@ func _update_current_prop():
 
 		Globals.Prop.UNDER_SINK_OPEN_DOOR, \
 		Globals.Prop.CLEANING_CLOSET_OPEN_DOOR, \
+		Globals.Prop.OVEN_OPEN_DOOR, \
 		Globals.Prop.DISHWASHER_OPEN_DOOR, \
 		Globals.Prop.CUPBOARD_UPPER_CENTER_OPEN_DOOR, \
 		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
@@ -790,7 +805,10 @@ func _update_current_prop():
 		Globals.Prop.TEA_BOX_2, \
 		Globals.Prop.TEA_BOX_3, \
 		Globals.Prop.TEA_BOX_4, \
-		Globals.Prop.TEA_BOX_5:
+		Globals.Prop.TEA_BOX_5, \
+		Globals.Prop.OVEN_EMPTY_SPACE_1, \
+		Globals.Prop.OVEN_EMPTY_SPACE_2, \
+		Globals.Prop.OVEN_EMPTY_SPACE_3:
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 
