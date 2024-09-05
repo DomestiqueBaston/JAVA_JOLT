@@ -477,7 +477,8 @@ L’inventaire :
 
 
 	Interactions avec les éléments dans les tiroirs :
-	La zone d’inventaire servira à afficher le contenu des tiroirs puisqu’on ne voit pas ce qu’ils contiennent. Une liste sera donnée du contenu et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible si besoin (voire au dessus).
+	On regarde les tiroirs avec l’oeil (!), on les ouvre avec la main ce qui affiche également leur contenu (voir ci-dessous) et on ferme la zone de contenu (voir ci-dessous) en passant la souris hors de la zone (comme pour l’inventaire). On ferme les tiroirs avec la main ou en ouvrant un autre truc (qui fait fermer le tiroir à Rowena avant d’aller ouvrir l’autre truc (comme les placards).
+	La zone d’inventaire servira à afficher le contenu des tiroirs en mots puisqu’on ne voit pas ce qu’ils contiennent de par le point de vue de la caméra. Une liste du contenu sera donnée et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible si besoin (voire au dessus avec Shiva, etc.). Comme dans l’inventaire, finalement.
 
 	Sauver/charger une partie :
 	Cela se fera n’importe où. Il n’y aura qu’à faire défiler les icônes d’action à la souris avec la molette et de cliquer sur Sauver pour sauver une partie ou Charger pour… charger une partie.
