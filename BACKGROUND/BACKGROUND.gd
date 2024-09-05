@@ -31,7 +31,7 @@ var _open_object = -1
 	$Stuff_Colliders/Up/Cupboard_Upper_Center_Collider,			# CUPBOARD_UPPER_CENTER
 	$Stuff_Colliders/Up/Coffee_Cupboard_Collider,				# COFFEE_CUPBOARD
 	$Stuff_Colliders/Up/Upper_Right_Cupboard_Collider,			# UPPER_RIGHT_CUPBOARD
-	$Stuff_Colliders/Up/Microwave_Oven_Collider,				# MICROWAVE_OVEN
+	$Stuff_Colliders/Up/Microwave_Oven_Collider,				# MICROWAVE
 	$Stuff_Colliders/Up/Window_Right_Collider,					# WINDOW_RIGHT
 	$Stuff_Colliders/Up/Window_Left_Collider,					# WINDOW_LEFT
 	$Stuff_Colliders/Mid/Spoiled_Milk_Collider,					# SPOILED_MILK
@@ -75,6 +75,7 @@ var _open_object = -1
 	Globals.Prop.CUPBOARD_UPPER_CENTER: $Open_Objects/Cupboard_Upper_Center,
 	Globals.Prop.COFFEE_CUPBOARD: $Open_Objects/Coffee_Cupboard,
 	Globals.Prop.UPPER_RIGHT_CUPBOARD: $Open_Objects/Upper_Right_Cupboard,
+	Globals.Prop.MICROWAVE: $Open_Objects/Micro_Wave,
 	Globals.Prop.REFRIGERATOR_RIGHT: $Open_Objects/Refrigerator_Right,
 	Globals.Prop.REFRIGERATOR_LEFT: $Open_Objects/Refrigerator_Left,
 }
@@ -94,6 +95,8 @@ var _open_object = -1
 	Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.UPPER_RIGHT_CUPBOARD: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.UPPER_RIGHT_CUPBOARD_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.MICROWAVE: $Sounds/Fridge_Open_Close,
+	Globals.Prop.MICROWAVE_OPEN_DOOR: $Sounds/Fridge_Open_Close,
 	Globals.Prop.REFRIGERATOR_RIGHT: $Sounds/Fridge_Open_Close,
 	Globals.Prop.REFRIGERATOR_RIGHT_OPEN_DOOR: $Sounds/Fridge_Open_Close,
 	Globals.Prop.REFRIGERATOR_LEFT: $Sounds/Fridge_Open_Close,
@@ -213,3 +216,5 @@ func set_object_visible(which: int, vis: bool):
 		$Open_Objects/Cupboard_Upper_Center.set_object_visible(which, vis)
 	elif which <= Globals.Prop.OVEN_END:
 		$Open_Objects/Oven.set_object_visible(which, vis)
+	elif which <= Globals.Prop.MICROWAVE_END:
+		$Open_Objects/Micro_Wave.set_object_visible(which, vis)

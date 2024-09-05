@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://curt16g1h0snh"]
+[gd_scene load_steps=5 format=3 uid="uid://curt16g1h0snh"]
 
 [ext_resource type="Texture2D" uid="uid://cmbmog354tyew" path="res://BACKGROUND/IMAGES/Micro_Wave_Open.png" id="1_w70x4"]
+[ext_resource type="Script" path="res://BACKGROUND/MICRO_WAVE.gd" id="1_x2p47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwij2"]
 size = Vector2(9, 1)
@@ -9,16 +10,16 @@ size = Vector2(9, 1)
 size = Vector2(7, 9)
 
 [node name="Micro_Wave" type="Node2D"]
+script = ExtResource("1_x2p47")
 
 [node name="Micro_Wave_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_w70x4")
 centered = false
 
-[node name="Opens_Outs" type="Node2D" parent="."]
-
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Pizza_Collider" type="Area2D" parent="Stuff_Colliders"]
+metadata/bg_level = 1
 
 [node name="Pizza" type="CollisionShape2D" parent="Stuff_Colliders/Pizza_Collider"]
 position = Vector2(60.5, 24.5)
@@ -26,9 +27,11 @@ shape = SubResource("RectangleShape2D_cwij2")
 metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
+position = Vector2(52.5, 21.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
-position = Vector2(52.5, 21.5)
 shape = SubResource("RectangleShape2D_p2blr")
 metadata/bg_level = 1
