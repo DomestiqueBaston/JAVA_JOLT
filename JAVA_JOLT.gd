@@ -457,6 +457,9 @@ func _perform_hand_action():
 			take_msg = "Only one. But I need my coffee first."
 		Globals.Prop.TAP:
 			_set_comment("Yes. And?")
+		Globals.Prop.PLASTIC_BOXES:
+			take_label = "Tupperware"
+			take_msg = "I know how to make them fart! I'll take one."
 		Globals.Prop.MANDOLIN:
 			take_label = "Vegetable slicer"
 			take_msg = "As long as I don't slice my fingers off."
@@ -865,6 +868,7 @@ func _update_current_prop():
 		Globals.Prop.RICE_POT, \
 		Globals.Prop.COOKIE_POT, \
 		Globals.Prop.TAP, \
+		Globals.Prop.PLASTIC_BOXES, \
 		Globals.Prop.MANDOLIN, \
 		Globals.Prop.FOOD_PROCESSOR, \
 		Globals.Prop.RED_COFFEE_CUP_LEFT, \

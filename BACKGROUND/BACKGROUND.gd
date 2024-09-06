@@ -208,6 +208,9 @@ func set_object_visible(which: int, vis: bool):
 			Globals.Prop.PEPPER:
 				$Removed_Objects/Pepper_Out.visible = not vis
 				$Stuff_Colliders/Mid/Pepper_Collider.monitoring = vis
+			Globals.Prop.PLASTIC_BOXES:
+				$Removed_Objects/Tupperware_Out.visible = not vis
+				$Stuff_Colliders/Mid/Plastic_Boxes_Collider/Plastic_Box.set_deferred("disabled", not vis)
 			Globals.Prop.MANDOLIN:
 				$Removed_Objects/Mandolin_Out.visible = not vis
 				$Stuff_Colliders/Mid/Mandolin_Collider.monitoring = vis

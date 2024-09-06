@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=80 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://fbaeg06q01a1" path="res://BACKGROUND/IMAGES/Yucca_Out.png" id="14_3uky6"]
 [ext_resource type="PackedScene" uid="uid://cqa3bbbs2by12" path="res://BACKGROUND/REFRIGERATOR_LEFT.tscn" id="15_h01j6"]
 [ext_resource type="Texture2D" uid="uid://dwskhdv53jp4q" path="res://BACKGROUND/IMAGES/Cutting_Board_Out.png" id="15_u046u"]
+[ext_resource type="Texture2D" uid="uid://cvmkeery1kpah" path="res://BACKGROUND/IMAGES/Tupperware_Out.png" id="16_e76yx"]
 [ext_resource type="PackedScene" uid="uid://keucd37jh7cv" path="res://BACKGROUND/COFFEE_CUPBOARD.tscn" id="16_mbj8v"]
 [ext_resource type="PackedScene" uid="uid://cybs73vw2lwpw" path="res://BACKGROUND/DISHWASHER.tscn" id="17_fr6vq"]
 [ext_resource type="PackedScene" uid="uid://b7kwi7lwhh6do" path="res://BACKGROUND/UNDER_SINK_CABINET.tscn" id="18_erta0"]
@@ -239,6 +240,11 @@ centered = false
 [node name="Cutting_Board_Out" type="Sprite2D" parent="Removed_Objects"]
 visible = false
 texture = ExtResource("15_u046u")
+centered = false
+
+[node name="Tupperware_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("16_e76yx")
 centered = false
 
 [node name="Open_Objects" type="Node2D" parent="."]
@@ -653,16 +659,18 @@ position = Vector2(117, 35.5)
 polygon = PackedVector2Array(-5, -0.5, -5, -1.5, -3, -1.5, 0, -0.5, 1, -4.5, 3, -4.5, 3, 3.5, -1, 3.5, -1, 1.5)
 
 [node name="Plastic_Boxes_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(100, 37.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Big_Plastic_Box" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Plastic_Boxes_Collider"]
-position = Vector2(101, 37.5)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_5tdx8")
 
 [node name="Plastic_Box" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Plastic_Boxes_Collider"]
-position = Vector2(98, 38)
+position = Vector2(-2, 0.5)
 shape = SubResource("RectangleShape2D_gwl77")
-metadata/bg_level = 1
 
 [node name="Mandolin_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 position = Vector2(96, 36)
