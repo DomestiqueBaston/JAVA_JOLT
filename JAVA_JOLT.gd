@@ -144,6 +144,8 @@ const prop_info: Array[String] = [
 	"Coffee beans!",
 	# COFFEE_BEANS_2
 	"Coffee beans!",
+	# NEWSPAPER
+	"Newspaper from last week. An eternity...",
 	# SMOOTHIE_BOTTLES
 	"Those are smoothie bottles.",
 	# FRUIT_JUICE_BOTTLES
@@ -480,6 +482,8 @@ func _perform_hand_action():
 			take_msg = "OK, if you say so."
 		Globals.Prop.SAUCE_PAN:
 			_set_comment("No, there's still sauce in it.")
+		Globals.Prop.NEWSPAPER:
+			_set_comment("That'll get me depressed.")
 		Globals.Prop.SMOOTHIE_BOTTLES:
 			take_label = "Smoothie"
 			take_msg = "I drink it before working out. But OK, one."
@@ -871,6 +875,7 @@ func _update_current_prop():
 		Globals.Prop.PRESSURE_COOKER, \
 		Globals.Prop.KETTLE, \
 		Globals.Prop.SAUCE_PAN, \
+		Globals.Prop.NEWSPAPER, \
 		Globals.Prop.STOOL, \
 		Globals.Prop.CHAIR, \
 		Globals.Prop.TOWEL_LARGE, \

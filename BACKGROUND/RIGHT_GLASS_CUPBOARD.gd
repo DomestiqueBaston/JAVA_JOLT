@@ -16,14 +16,14 @@ func _ready():
 func set_object_visible(index: int, vis: bool):
 	match index:
 		Globals.Prop.BOWLS:
-			$Stuff_Colliders/Bowls_Collider.visible = not vis
+			$Removed_Objects/Right_Bowls_Out.visible = not vis
 			$Stuff_Colliders/Bowls_Collider/Bowls.set_deferred("disabled", not vis)
 			$Stuff_Colliders/Bowls_Collider/Bowls_Out.set_deferred("disabled", vis)
 		Globals.Prop.LARGE_BOWLS:
-			$Stuff_Colliders/Large_Bowls_Collider.visible = not vis
+			$Removed_Objects/Right_Large_Bowls_Out.visible = not vis
 			$Stuff_Colliders/Large_Bowls_Collider/Large_Bowls.set_deferred("disabled", not vis)
 			$Stuff_Colliders/Large_Bowls_Collider/Large_Bowls_Out.set_deferred("disabled", vis)
 		Globals.Prop.PLATES_2:
-			$Stuff_Colliders/Right_Plates_Collider.visible = not vis
+			$Removed_Objects/Right_Plates_Out.visible = not vis
 			$Stuff_Colliders/Right_Plates_Collider/Right_Plates.set_deferred("disabled", not vis)
 			$Stuff_Colliders/Right_Plates_Collider/Right_Plates_Out.set_deferred("disabled", vis)

@@ -766,6 +766,7 @@ position = Vector2(137, 64)
 shape = SubResource("RectangleShape2D_p4i34")
 
 [node name="Newspaper_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+collision_layer = 2
 
 [node name="Newspaper" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Newspaper_Collider"]
 position = Vector2(74.5, 38.5)

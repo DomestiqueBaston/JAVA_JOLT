@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5o71w1wnkpo2"]
+[gd_scene load_steps=11 format=3 uid="uid://b5o71w1wnkpo2"]
 
 [ext_resource type="Texture2D" uid="uid://dg218pv0vlcxy" path="res://BACKGROUND/IMAGES/Right_Glass_Cupboard_Open.png" id="1_803rn"]
 [ext_resource type="Script" path="res://BACKGROUND/RIGHT_GLASS_CUPBOARD.gd" id="1_ejar5"]
+[ext_resource type="Texture2D" uid="uid://dpcnnnwjxv8qv" path="res://BACKGROUND/IMAGES/Right_Bowls_Out.png" id="3_s6sa6"]
+[ext_resource type="Texture2D" uid="uid://vw21u782dejk" path="res://BACKGROUND/IMAGES/Right_Large_Bowls_Out.png" id="4_8k8v6"]
+[ext_resource type="Texture2D" uid="uid://df8a6af6b2aoo" path="res://BACKGROUND/IMAGES/Right_Plates_Out.png" id="5_xg0q4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qaswx"]
 size = Vector2(4, 5)
@@ -23,6 +26,23 @@ script = ExtResource("1_ejar5")
 
 [node name="Right_Glass_Cupboard_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_803rn")
+centered = false
+
+[node name="Removed_Objects" type="Node2D" parent="."]
+
+[node name="Right_Bowls_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("3_s6sa6")
+centered = false
+
+[node name="Right_Large_Bowls_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("4_8k8v6")
+centered = false
+
+[node name="Right_Plates_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("5_xg0q4")
 centered = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]

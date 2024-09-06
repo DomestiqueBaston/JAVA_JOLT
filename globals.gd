@@ -85,6 +85,7 @@ enum Prop {
 	SAUCE_PAN,
 	COFFEE_BEANS_1,
 	COFFEE_BEANS_2,
+	NEWSPAPER,
 	MAIN_PROP_COUNT, # must follow the last of the main props
 	
 	# props visible when the refrigerator door is open

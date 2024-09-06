@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1n8b6od2ip8a"]
+[gd_scene load_steps=13 format=3 uid="uid://b1n8b6od2ip8a"]
 
 [ext_resource type="Script" path="res://BACKGROUND/LEFT_GLASS_CUPBOARD.gd" id="1_0id3p"]
 [ext_resource type="Texture2D" uid="uid://cfcdplx6ttyw5" path="res://BACKGROUND/IMAGES/Left_Glass_Cupboard_Open.png" id="1_0270w"]
+[ext_resource type="Texture2D" uid="uid://53shckyylsbc" path="res://BACKGROUND/IMAGES/Left_Wine_Glass_Out.png" id="3_tkyew"]
+[ext_resource type="Texture2D" uid="uid://c475lqqi3oq1b" path="res://BACKGROUND/IMAGES/Left_Glass_Out.png" id="4_f0bou"]
+[ext_resource type="Texture2D" uid="uid://d083g84steba1" path="res://BACKGROUND/IMAGES/Left_Plate_Out.png" id="5_oyf4f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cddej"]
 size = Vector2(5, 5)
@@ -29,6 +32,23 @@ script = ExtResource("1_0id3p")
 
 [node name="Left_Glass_Cupboard_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_0270w")
+centered = false
+
+[node name="Removed_Objects" type="Node2D" parent="."]
+
+[node name="Left_Wine_Glass_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("3_tkyew")
+centered = false
+
+[node name="Left_Glass_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("4_f0bou")
+centered = false
+
+[node name="Left_Plate_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("5_oyf4f")
 centered = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]

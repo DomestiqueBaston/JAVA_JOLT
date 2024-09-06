@@ -65,6 +65,7 @@ var _open_object = -1
 	$Stuff_Colliders/Mid/Sauce_Pan_Collider,					# SAUCE_PAN
 	$Stuff_Colliders/Mid/Coffee_Beans_1_Collider,				# COFFEE_BEANS_1
 	$Stuff_Colliders/Mid/Coffee_Beans_2_Collider,				# COFFEE_BEANS_2
+	$Stuff_Colliders/Mid/Newspaper_Collider,					# NEWSPAPER
 ]
 
 @onready var _openable_nodes: Dictionary = {
