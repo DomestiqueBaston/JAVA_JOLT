@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=77 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -15,7 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dduooioelfxfv" path="res://BACKGROUND/IMAGES/Salt_Out.png" id="11_gl04i"]
 [ext_resource type="Texture2D" uid="uid://ci0v27uluhr5d" path="res://BACKGROUND/IMAGES/Pepper_Out.png" id="12_kg7m7"]
 [ext_resource type="Texture2D" uid="uid://b7itgwxv8j5lp" path="res://BACKGROUND/IMAGES/Red_Coffee_Cup_Out.png" id="13_ik1v4"]
+[ext_resource type="Texture2D" uid="uid://fbaeg06q01a1" path="res://BACKGROUND/IMAGES/Yucca_Out.png" id="14_3uky6"]
 [ext_resource type="PackedScene" uid="uid://cqa3bbbs2by12" path="res://BACKGROUND/REFRIGERATOR_LEFT.tscn" id="15_h01j6"]
+[ext_resource type="Texture2D" uid="uid://dwskhdv53jp4q" path="res://BACKGROUND/IMAGES/Cutting_Board_Out.png" id="15_u046u"]
 [ext_resource type="PackedScene" uid="uid://keucd37jh7cv" path="res://BACKGROUND/COFFEE_CUPBOARD.tscn" id="16_mbj8v"]
 [ext_resource type="PackedScene" uid="uid://cybs73vw2lwpw" path="res://BACKGROUND/DISHWASHER.tscn" id="17_fr6vq"]
 [ext_resource type="PackedScene" uid="uid://b7kwi7lwhh6do" path="res://BACKGROUND/UNDER_SINK_CABINET.tscn" id="18_erta0"]
@@ -147,6 +149,9 @@ size = Vector2(4, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkco4"]
 size = Vector2(4, 2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_teyyn"]
+size = Vector2(11, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktomw"]
 size = Vector2(4, 2)
 
@@ -218,6 +223,16 @@ centered = false
 [node name="Red_Coffee_Cup_Out" type="Sprite2D" parent="Removed_Objects"]
 visible = false
 texture = ExtResource("13_ik1v4")
+centered = false
+
+[node name="Yucca_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("14_3uky6")
+centered = false
+
+[node name="Cutting_Board_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
+texture = ExtResource("15_u046u")
 centered = false
 
 [node name="Open_Objects" type="Node2D" parent="."]
@@ -557,10 +572,11 @@ position = Vector2(103, 33)
 shape = SubResource("RectangleShape2D_qqj3q")
 
 [node name="Yucca_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(43.5, 33.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Yucca" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Yucca_Collider"]
-position = Vector2(43.5, 33.5)
 polygon = PackedVector2Array(2.5, 3.5, 2.5, 5.5, -1.5, 5.5, -1.5, 3.5, -0.5, 3.5, -0.5, 1.5, -3.5, 0.5, -3.5, -0.5, -1.5, -0.5, -1.5, -1.5, -3.5, -1.5, -3.5, -3.5, -2.5, -4.5, -0.5, -4.5, -0.5, -5.5, 0.5, -5.5, 1.5, -3.5, 3.5, -4.5, 4.5, -4.5, 4.5, -3.5, 2.5, -1.5, 2.5, -0.5, 2.5, 0.5, 1.5, 2.5, 1.5, 3.5)
 
 [node name="Olive_Oil_Bottle_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
@@ -686,18 +702,28 @@ polygon = PackedVector2Array(78, 32, 80, 32, 80, 34, 82, 32, 83, 32, 84, 33, 84,
 position = Vector2(67, 37.5)
 collision_layer = 2
 collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Fruit_Basket" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Fruit_Basket_Collider"]
 polygon = PackedVector2Array(2, 1.5, 3, 0.5, 3, -0.5, 1, -1.5, -3, -1.5, -3, 1.5)
 
 [node name="Cutting_Board_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(65.5, 34)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 0
 
-[node name="Cutting_Board" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cutting_Board_Collider"]
+[node name="Cutting_Board_Old" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Cutting_Board_Collider"]
+visible = false
 polygon = PackedVector2Array(61, 33, 61, 32, 60, 32, 60, 30, 71, 30, 71, 38, 70, 38, 70, 37, 68, 36, 64, 36, 64, 35, 65, 35, 65, 34, 64, 34, 64, 33)
+disabled = true
+
+[node name="Cutting_Board" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Cutting_Board_Collider"]
+shape = SubResource("RectangleShape2D_teyyn")
 
 [node name="Pressure_Cooker_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
+metadata/bg_level = 1
 
 [node name="Pressure_Cooker" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Pressure_Cooker_Collider"]
 polygon = PackedVector2Array(56, 39, 56, 35, 55, 35, 55, 34, 56, 34, 56, 33, 59, 33, 59, 32, 61, 32, 61, 33, 64, 33, 64, 34, 65, 34, 65, 35, 64, 35, 64, 39)

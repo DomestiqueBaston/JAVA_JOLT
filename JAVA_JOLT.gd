@@ -83,7 +83,7 @@ const prop_info: Array[String] = [
 	# WINDOW_LEFT
 	"I know what that is: it's a window!",
 	# SPOILED_MILK
-	"That's just some sour milk.",
+	"That's a bottle of sour milk.",
 	# COFFEE_MAKER
 	"That's my coffee maker, FWIW.",
 	# RADIO
@@ -119,7 +119,7 @@ const prop_info: Array[String] = [
 	# TAP
 	"That's the faucet.",
 	# PLASTIC_BOXES
-	"Tupperware. I know how to make them fart!",
+	"That's tupperware.",
 	# MANDOLIN
 	"That's my miracle vegetable slicer, as seen on TV.",
 	# FOOD_PROCESSOR
@@ -421,8 +421,13 @@ func _perform_hand_action():
 			else:
 				take_label = "Small towel"
 			take_msg = "It's clean, it'll be perfect!"
+		Globals.Prop.SPOILED_MILK:
+			_set_comment("I don't want that.")
 		Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE:
 			_set_comment("Where in the world have you been until now?")
+		Globals.Prop.YUCCA:
+			take_label = "Yucca plant"
+			take_msg = "I'll be watering it later, but OK."
 		Globals.Prop.OLIVE_OIL_BOTTLE:
 			take_label = "Olive oil"
 			take_msg = "OK, but it's just to please you."
@@ -453,9 +458,14 @@ func _perform_hand_action():
 			take_msg = "Yeah, it's new and clean."
 		Globals.Prop.BROWN_COFFEE_CUP:
 			_set_comment("That's not my cup of tea.")
+		Globals.Prop.KNIFE_BLOCK:
+			_set_comment("Nah! My boss isn't worth the trouble.")
 		Globals.Prop.FRUIT_BASKET:
 			take_label = "Red apple"
 			take_msg = "Just a red apple, nothing more."
+		Globals.Prop.CUTTING_BOARD:
+			take_label = "Cutting board"
+			take_msg = "Clever! Probably..."
 		Globals.Prop.PRESSURE_COOKER:
 			_set_comment("There's no way I'm dragging that around.")
 		Globals.Prop.KETTLE:
@@ -830,7 +840,9 @@ func _update_current_prop():
 		Globals.Prop.REFRIGERATOR_LEFT_OPEN_DOOR:
 			actions.append(Globals.Cursor.CLOSE)
 
+		Globals.Prop.SPOILED_MILK, \
 		Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE, \
+		Globals.Prop.YUCCA, \
 		Globals.Prop.OLIVE_OIL_BOTTLE, \
 		Globals.Prop.SALT, \
 		Globals.Prop.TOASTER, \
@@ -843,7 +855,9 @@ func _update_current_prop():
 		Globals.Prop.FOOD_PROCESSOR, \
 		Globals.Prop.RED_COFFEE_CUP_LEFT, \
 		Globals.Prop.BROWN_COFFEE_CUP, \
+		Globals.Prop.KNIFE_BLOCK, \
 		Globals.Prop.FRUIT_BASKET, \
+		Globals.Prop.CUTTING_BOARD, \
 		Globals.Prop.PRESSURE_COOKER, \
 		Globals.Prop.KETTLE, \
 		Globals.Prop.SAUCE_PAN, \

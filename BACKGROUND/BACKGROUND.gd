@@ -195,6 +195,9 @@ func set_object_visible(which: int, vis: bool):
 				$Stuff_Colliders/Low/Towel_Small_Collider.monitoring = vis
 			Globals.Prop.COFFEE_MAKER:
 				$Removed_Objects/Coffee_Filter_Holder_Out.visible = not vis
+			Globals.Prop.YUCCA:
+				$Removed_Objects/Yucca_Out.visible = not vis
+				$Stuff_Colliders/Mid/Yucca_Collider.monitoring = vis
 			Globals.Prop.OLIVE_OIL_BOTTLE:
 				$Removed_Objects/Olive_Oil_Bottle_Out.visible = not vis
 				$Stuff_Colliders/Mid/Olive_Oil_Bottle_Collider.monitoring = vis
@@ -210,6 +213,9 @@ func set_object_visible(which: int, vis: bool):
 			Globals.Prop.RED_COFFEE_CUP_LEFT:
 				$Removed_Objects/Red_Coffee_Cup_Out.visible = not vis
 				$Stuff_Colliders/Mid/Red_Coffee_Cup_Left_Collider.monitoring = vis
+			Globals.Prop.CUTTING_BOARD:
+				$Removed_Objects/Cutting_Board_Out.visible = not vis
+				$Stuff_Colliders/Mid/Cutting_Board_Collider.monitoring = vis
 			Globals.Prop.KETTLE:
 				$Removed_Objects/Kettle_Out.visible = not vis
 				$Stuff_Colliders/Mid/Kettle_Collider.monitoring = vis
