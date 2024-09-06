@@ -95,11 +95,11 @@ const prop_info: Array[String] = [
 	# REFRIGERATOR_LEFT_WATER_ICE
 	"That dispenses cold water and ice. How cool is that?",
 	# PAINTING
-	"That's a painting called \"Monsieur le Marquis et Madame\".",
+	"That's a painting.",
 	# LIGHT_SWITCH_LEFT
-	"I’m no Hubert Bonisseur de la Bath...",
+	"That's a light switch.",
 	# LIGHT_SWITCH_RIGHT
-	"I’m no Hubert Bonisseur de la Bath...",
+	"That's a light switch.",
 	# YUCCA
 	"That's a yucca plant.",
 	# OLIVE_OIL_BOTTLE
@@ -411,6 +411,8 @@ func _perform_hand_action():
 	var take_msg = ""
 
 	match current_prop:
+		Globals.Prop.STOOL:
+			_set_comment("As soon as I figure out what it's for.")
 		Globals.Prop.CHAIR:
 			_set_comment("I'm fine, I've had enough rest, thank you.")
 		Globals.Prop.TOWEL_LARGE:
@@ -425,6 +427,11 @@ func _perform_hand_action():
 			_set_comment("I don't want that.")
 		Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE:
 			_set_comment("Where in the world have you been until now?")
+		Globals.Prop.PAINTING:
+			_set_comment("The painting's called \"Monsieur le Marquis et Madame\".")
+		Globals.Prop.LIGHT_SWITCH_LEFT, \
+		Globals.Prop.LIGHT_SWITCH_RIGHT:
+			_set_comment("I’m no Hubert Bonisseur de la Bath...")
 		Globals.Prop.YUCCA:
 			take_label = "Yucca plant"
 			take_msg = "I'll be watering it later, but OK."
@@ -842,6 +849,9 @@ func _update_current_prop():
 
 		Globals.Prop.SPOILED_MILK, \
 		Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE, \
+		Globals.Prop.PAINTING, \
+		Globals.Prop.LIGHT_SWITCH_LEFT, \
+		Globals.Prop.LIGHT_SWITCH_RIGHT, \
 		Globals.Prop.YUCCA, \
 		Globals.Prop.OLIVE_OIL_BOTTLE, \
 		Globals.Prop.SALT, \
@@ -861,6 +871,7 @@ func _update_current_prop():
 		Globals.Prop.PRESSURE_COOKER, \
 		Globals.Prop.KETTLE, \
 		Globals.Prop.SAUCE_PAN, \
+		Globals.Prop.STOOL, \
 		Globals.Prop.CHAIR, \
 		Globals.Prop.TOWEL_LARGE, \
 		Globals.Prop.TOWEL_SMALL, \
