@@ -43,7 +43,7 @@ Comment qu’on fait pour ramasser des trucs, etc. PRÉCISÉMENT !
 	Elle dira « Clever me ! » et mettra son café moulu dans le demi filtre à café pour obtenir Ground coffee in half a filter (cela peut être fait avant d’aller récupérer le scotch) et le fermera avec un morceau de scotch qu’elle aura coupé du rouleau. Elle dira « Ok, it’s now sealed. » avant d’obtenir a « Coffee Patch ».
 	Puis coupera à nouveau un morceau de scotch. Et l’utilisera sur le patch au café.
 	A ce moment-là, Rowena joue ces animations : se retourne, applique son patch puis se retourne à nouveau vers nous.
-	Elle décidera que ça ne marche pas au bout de 5 secondes (pendant ces 5 secondes, le joueur ne pourra plus intervenir). Sans doute car il est trop sec. Elle dira « Darn! This thing does nothing ! » et enlèvera le patch (on rejoue l’animation d’application du patch dans le son si j’en ai mis un).
+	Elle décidera que ça ne marche pas au bout de 5 secondes (pendant ces 5 secondes, le joueur ne pourra plus intervenir). Sans doute car il est trop sec. Elle dira « Darn! This thing does nothing ! » et enlèvera le patch (on rejoue l’animation d’application du patch sans le son si j’en ai mis un).
 	Rowena dira « Yeah, that should make it porous... » et ira humidifier (utiliser) son patch sous le robinet de l’évier (je dois voir si je peux trouver un son de robinet qui coule).
 	Replacera (animation!) son patch sur son bras (le scotch fonctionnera encore).
 	Elle attendra à nouveau 5 secondes, dira « Damn it, it doesn't work at all! » : ça ne marche définitivement pas.
@@ -59,3 +59,7 @@ Comment qu’on fait pour ramasser des trucs, etc. PRÉCISÉMENT !
 	Quand le café sera passé, elle prendra la tasse rouge devant les couteaux de cuisine (à droite de la bouteille de lait sur le plan de travail) et pas celle à côté de la cafetière car elle est ébréchée. Se servira une tasse de café et automatiquement la boira… pour la recracher aussitôt et se retournera à nouveau vers nous !
 
 	Une fois fait, on enchaînera sur la séquence du coup de téléphone de son boss (Animation Phone_Call) ! Voir les notes dans l’autre doc pour plus de détails sur cette séquence.
+
+
+/!\ NOTE IMPORTANTE /!\
+	On ne peut pas passer directement à la séquence finale en résolvant directement la dernière énigme. Après, l’intro, on enchaîne bien sur le premier dialogue (ça, on ne peut rien y faire de toute manière). Ensuite, la première énigme. Le second dialogue ne peut pas arriver tant qu’on n’a pas « raté » la première énigme avec la dernière phrase de Rowena qui déclenche le deuxième dialogue. Ensuite, pareil avec la seconde énigme et le troisième dialogue. Et pareil avec le reste, pas de dialogue final (avec le boss) tant que Rowena n’a pas recraché son café dégueu, etc. De plus, le temps empêche d’attaquer la fin trop tôt (Rowena ne veut pas ramasser le café de la veille dans la poubelle avant un moment précis).
