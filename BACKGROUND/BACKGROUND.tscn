@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=79 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -163,6 +163,9 @@ size = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4i34"]
 size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngq48"]
+size = Vector2(7, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3lma"]
 size = Vector2(76, 3)
@@ -761,6 +764,12 @@ collision_layer = 2
 visible = false
 position = Vector2(137, 64)
 shape = SubResource("RectangleShape2D_p4i34")
+
+[node name="Newspaper_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+
+[node name="Newspaper" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Newspaper_Collider"]
+position = Vector2(74.5, 38.5)
+shape = SubResource("RectangleShape2D_ngq48")
 
 [node name="Sounds" type="Node" parent="."]
 

@@ -172,6 +172,8 @@ Sur la gazinière :
 
 Sur le plan de travail :
 
+	Le journal (Newspaper) : News from last week. An eternity… (elle ne prend pas et elle dira « It’s gonna depress ! »)
+
 	Le panier de fruits juste à droite de la gazinière : « Just a red apple, nothing more. »
 
 	Le robot-mixer à gauche de la mandoline : « It’s not a Rank Xerox, no way. » (elle ne prend pas)
