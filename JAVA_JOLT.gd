@@ -291,7 +291,15 @@ const prop_info: Array[String] = [
 	# RECYCLING
 	"That's my recycling.",
 	# RECYCLING_OPEN_DOOR	
-	"Do you want to close it?"
+	"Do you want to close it?",
+	# BOWLS
+	"Those are bowls.",
+	# LARGE_BOWLS
+	"Those are large bowls.",
+	# PLATES_2
+	"Those are plates.",
+	# RIGHT_GLASS_CUPBOARD_OPEN_DOOR
+	"Do you want to close the cupboard?",
 ]
 
 const open_close_door: Dictionary = {
@@ -302,6 +310,7 @@ const open_close_door: Dictionary = {
 	Globals.Prop.OVEN: Globals.Prop.OVEN_OPEN_DOOR,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
 	Globals.Prop.LEFT_GLASS_CUPBOARD: Globals.Prop.LEFT_GLASS_CUPBOARD_OPEN_DOOR,
+	Globals.Prop.RIGHT_GLASS_CUPBOARD: Globals.Prop.RIGHT_GLASS_CUPBOARD_OPEN_DOOR,
 	Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT: Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT_OPEN_DOOR,
 	Globals.Prop.CUPBOARD_UPPER_CENTER: Globals.Prop.CUPBOARD_UPPER_CENTER_OPEN_DOOR,
 	Globals.Prop.COFFEE_CUPBOARD: Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR,
@@ -577,6 +586,15 @@ func _perform_hand_action():
 			take_msg = "Good."
 		Globals.Prop.RECYCLING:
 			_set_comment("It's half full of plastic and paper.")
+		Globals.Prop.BOWLS:
+			take_label = "Bowl"
+			take_msg = "I have bigger ones, but OK."
+		Globals.Prop.LARGE_BOWLS:
+			take_label = "Large bowl"
+			take_msg = "I have smaller ones, but OK."
+		Globals.Prop.PLATES_2:
+			take_label = "Plate"
+			take_msg = "Nice and clean."
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -785,6 +803,7 @@ func _update_current_prop():
 		Globals.Prop.OVEN, \
 		Globals.Prop.DISHWASHER, \
 		Globals.Prop.LEFT_GLASS_CUPBOARD, \
+		Globals.Prop.RIGHT_GLASS_CUPBOARD, \
 		Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT, \
 		Globals.Prop.CUPBOARD_UPPER_CENTER, \
 		Globals.Prop.COFFEE_CUPBOARD, \
@@ -801,6 +820,7 @@ func _update_current_prop():
 		Globals.Prop.OVEN_OPEN_DOOR, \
 		Globals.Prop.DISHWASHER_OPEN_DOOR, \
 		Globals.Prop.LEFT_GLASS_CUPBOARD_OPEN_DOOR, \
+		Globals.Prop.RIGHT_GLASS_CUPBOARD_OPEN_DOOR, \
 		Globals.Prop.CUPBOARD_UPPER_CENTER_LEFT_OPEN_DOOR, \
 		Globals.Prop.CUPBOARD_UPPER_CENTER_OPEN_DOOR, \
 		Globals.Prop.COFFEE_CUPBOARD_OPEN_DOOR, \
@@ -889,7 +909,10 @@ func _update_current_prop():
 		Globals.Prop.WINE_GLASSES, \
 		Globals.Prop.GLASSES, \
 		Globals.Prop.PLATES, \
-		Globals.Prop.RECYCLING:
+		Globals.Prop.RECYCLING, \
+		Globals.Prop.BOWLS, \
+		Globals.Prop.LARGE_BOWLS, \
+		Globals.Prop.PLATES_2:
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 

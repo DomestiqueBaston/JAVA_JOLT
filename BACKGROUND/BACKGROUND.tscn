@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=74 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://bodgro4qy43p8" path="res://BACKGROUND/KITCHEN_CABINET.tscn" id="25_qq026"]
 [ext_resource type="PackedScene" uid="uid://b1n8b6od2ip8a" path="res://BACKGROUND/LEFT_GLASS_CUPBOARD.tscn" id="26_che73"]
 [ext_resource type="PackedScene" uid="uid://c8lvk22dhf1g2" path="res://BACKGROUND/RECYCLING_CLOSET.tscn" id="27_xpvs3"]
+[ext_resource type="PackedScene" uid="uid://b5o71w1wnkpo2" path="res://BACKGROUND/RIGHT_GLASS_CUPBOARD.tscn" id="28_6owm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -263,6 +264,9 @@ visible = false
 [node name="Recycling_Closet" parent="Open_Objects" instance=ExtResource("27_xpvs3")]
 visible = false
 
+[node name="Right_Glass_Cupboard" parent="Open_Objects" instance=ExtResource("28_6owm5")]
+visible = false
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
@@ -418,10 +422,12 @@ position = Vector2(58, 9.5)
 shape = SubResource("RectangleShape2D_fy2og")
 
 [node name="Right_Glass_Cupboard_Collider" type="Area2D" parent="Stuff_Colliders/Up"]
+position = Vector2(72.5, 15.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Right_Glass_Cupboard" type="CollisionPolygon2D" parent="Stuff_Colliders/Up/Right_Glass_Cupboard_Collider"]
-position = Vector2(72.5, 10)
+position = Vector2(0, -5.5)
 polygon = PackedVector2Array(-4.5, -7, -4.5, 7, -2.5, 7, -2.5, 16, -3.5, 16, -3.5, 18, 4.5, 18, 4.5, -7)
 
 [node name="Cupboard_Upper_Center_Left_Collider" type="Area2D" parent="Stuff_Colliders/Up"]

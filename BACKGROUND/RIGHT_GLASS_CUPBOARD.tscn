@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5o71w1wnkpo2"]
+[gd_scene load_steps=8 format=3 uid="uid://b5o71w1wnkpo2"]
 
 [ext_resource type="Texture2D" uid="uid://dg218pv0vlcxy" path="res://BACKGROUND/IMAGES/Right_Glass_Cupboard_Open.png" id="1_803rn"]
+[ext_resource type="Script" path="res://BACKGROUND/RIGHT_GLASS_CUPBOARD.gd" id="1_ejar5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qaswx"]
 size = Vector2(4, 5)
@@ -18,59 +19,72 @@ size = Vector2(6, 2)
 size = Vector2(8, 25)
 
 [node name="Right_Glass_Cupboard" type="Node2D"]
+script = ExtResource("1_ejar5")
 
 [node name="Right_Glass_Cupboard_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_803rn")
 centered = false
 
-[node name="Opens_Outs" type="Node2D" parent="."]
-
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Bowls_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(72, 25.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Bowls" type="CollisionShape2D" parent="Stuff_Colliders/Bowls_Collider"]
-position = Vector2(72, 25.5)
 shape = SubResource("RectangleShape2D_qaswx")
 metadata/bg_level = 1
 
 [node name="Bowls_Out" type="CollisionShape2D" parent="Stuff_Colliders/Bowls_Collider"]
 visible = false
-position = Vector2(72, 26)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_mx44g")
+disabled = true
 metadata/bg_level = 1
 
 [node name="Large_Bowls_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(71.5, 15.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Large_Bowls" type="CollisionPolygon2D" parent="Stuff_Colliders/Large_Bowls_Collider"]
+position = Vector2(-71.5, -15.5)
 polygon = PackedVector2Array(70, 19, 70, 17, 68, 17, 68, 13, 73, 13, 73, 18, 71, 19)
 metadata/bg_level = 1
 
 [node name="Large_Bowls_Out" type="CollisionPolygon2D" parent="Stuff_Colliders/Large_Bowls_Collider"]
 visible = false
+position = Vector2(-71.5, -15.5)
 polygon = PackedVector2Array(70, 19, 70, 17, 68, 17, 68, 14, 73, 14, 73, 18, 71, 19)
+disabled = true
 metadata/bg_level = 1
 
 [node name="Right_Plates_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(71.5, 8.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Right_Plates" type="CollisionShape2D" parent="Stuff_Colliders/Right_Plates_Collider"]
-position = Vector2(71, 8.5)
 shape = SubResource("RectangleShape2D_a74sh")
 metadata/bg_level = 1
 
 [node name="Right_Plates_Out" type="CollisionShape2D" parent="Stuff_Colliders/Right_Plates_Collider"]
 visible = false
-position = Vector2(71, 9)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_dfsnb")
+disabled = true
 metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
+position = Vector2(81, 15.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
-position = Vector2(81, 15.5)
 shape = SubResource("RectangleShape2D_swuem")
 metadata/bg_level = 1
