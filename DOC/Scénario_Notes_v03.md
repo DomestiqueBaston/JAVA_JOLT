@@ -146,9 +146,11 @@ Le four : « My oven… » Quand il est ouvert «It's as empty as space is !
 
 Cuttlery drawer : « That’s a nice Cuttlery drawer, isn’t it ? »
 
-	Couteau, fourchette, cuillère (couverts) dans le tiroir sous le toaster : « Ok ! I’ll take one. » Ou « One’s more than enough. » quand Rowena en a déjà un/une.
+	Couteau, fourchette, cuillère (couverts) dans le tiroir sous le toaster : après avoir fermé le tiroir, si Rowena a pris quelque chose : « Great ! » ou « Amazing ! » ou « Wonderful ! » ou « Yeah ! Rock & Roll ! »(aléatoirement).
 
 	Les couteaux (couverts) : Quand Rowena voudra les utiliser elle dira « Awake as I am, I'm going to hurt myself. » Sauf pour la deuxième tentative pour couper un filtre.
+
+	CANCELLED : Couteau, fourchette, cuillère (couverts) dans le tiroir sous le toaster : « Ok ! I’ll take one. » Ou « One’s more than enough. » quand Rowena en a déjà un/une.
 	
 Les placards au dessus de la hotte/micro-onde et du frigo : « Naaa! Too high, I've never put anything in it. »
 
@@ -156,11 +158,10 @@ Left Glass Cupboard : « Glasses and plates. » (verres et assiettes)
 
 Kitchen Tool drawer : « Here I store useless stuff like a garlic press. »
 
-	Un garlic press dans le tiroir d’outils de cuisine : « What could I possibly do with it now? » (elle ne prend pas)
+	Un garlic press et un corkscrew dans le tiroir d’outils de cuisine : (elle ne prend pas)
 
-	Un corkscrew dans le tiroir d’outils de cuisine : « Hm... No, too soon. » (elle ne prend pas)
 
-	Une wooden spoon : « It was my childhood dream to have one. I'm taking it. »
+	Une wooden spoon : « My childhood dream was to have a wooden spoon. » (après avoir fermé le tiroir)
 
 Sur la gazinière :
 
@@ -341,11 +342,11 @@ Private Drawer : « It’s my private drawer... ». Si on veut le fouiller :
 
 Les deux tiroirs entre le précédent et le suivant sont vide ! (« A drawer » - « it’s empty »)
 
-Top Left Drawer : « My junk drawer. »
+Top Left Drawer : « My useful junk drawer ! »
 
-	Un filtre à café : « This could be a first step. »
+	Un filtre à café
 
-	Le rouleau de scotch : « Could be useful. »
+	Le rouleau de scotch
 
 
 The Recycling Closet : « That’s the recycling closet ».
@@ -480,8 +481,9 @@ L’inventaire :
 
 	Interactions avec les éléments dans les tiroirs :
 	On regarde les tiroirs avec l’oeil. On les ouvre/ferme avec la main.
-	Pour voir le contenu (une fois ouvert), il faut passer la souris sur le collider du tiroir et y rester 1 seconde. À ce moment-là, la zone de contenu s’ouvre (voir dessous). On y interagit comme dans l’inventaire. Pour refermer la zone, on passe la souris à l’extérieur de la zone au moins 1 seconde (comme pour l’inventaire). Oui, s’il faut expliquer ça dans le tuto, ça va être compliqué...
-	La zone d’inventaire servira à afficher le contenu des tiroirs en mots puisqu’on ne voit pas ce qu’ils contiennent de par le point de vue de la caméra. Une liste du contenu sera donnée et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible si besoin (voire au dessus avec Shiva, etc.). Comme dans l’inventaire...
+	Pour voir le contenu (une fois ouvert), il faut passer la souris sur le collider du tiroir et y rester 1 seconde ou cliquer avec l’oeil (!). À ce moment-là, la zone de contenu s’ouvre (voir dessous). On y interagit comme dans l’inventaire. Pour refermer la zone, on passe la souris à l’extérieur de la zone au moins 1 seconde (comme pour l’inventaire) ou cliquer à l’extérieur. Oui, s’il faut expliquer ça dans le tuto, ça va être compliqué…
+	La zone d’inventaire servira à afficher le contenu des tiroirs en mots puisqu’on ne voit pas ce qu’ils contiennent de par le point de vue de la caméra. Une liste du contenu sera donnée et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible si besoin (voire au dessus avec Shiva, etc.). Comme dans l’inventaire…
+	S’il doit y avoir un commentaire de Rowena parce qu’elle a pris un truc ou parce qu’il n’y a rien qu’elle veuille prendre, alors son commentaire s’affichera après que la zone de contenu soit fermée.
 
 	CANCELLED : On regarde les tiroirs avec l’oeil (!), on les ouvre avec la main ce qui affiche également leur contenu (voir ci-dessous) et on ferme la zone de contenu (voir ci-dessous) en passant la souris hors de la zone (comme pour l’inventaire). On ferme les tiroirs avec la main ou en ouvrant un autre truc (qui fait fermer le tiroir à Rowena avant d’aller ouvrir l’autre truc (comme les placards).
 
