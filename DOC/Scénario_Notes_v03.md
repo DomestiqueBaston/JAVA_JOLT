@@ -479,12 +479,15 @@ L’inventaire :
 
 
 	Interactions avec les éléments dans les tiroirs :
-	On regarde les tiroirs avec l’oeil (!), on les ouvre avec la main ce qui affiche également leur contenu (voir ci-dessous) et on ferme la zone de contenu (voir ci-dessous) en passant la souris hors de la zone (comme pour l’inventaire). On ferme les tiroirs avec la main ou en ouvrant un autre truc (qui fait fermer le tiroir à Rowena avant d’aller ouvrir l’autre truc (comme les placards).
-	La zone d’inventaire servira à afficher le contenu des tiroirs en mots puisqu’on ne voit pas ce qu’ils contiennent de par le point de vue de la caméra. Une liste du contenu sera donnée et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible si besoin (voire au dessus avec Shiva, etc.). Comme dans l’inventaire, finalement.
+	On regarde les tiroirs avec l’oeil. On les ouvre/ferme avec la main.
+	Pour voir le contenu (une fois ouvert), il faut passer la souris sur le collider du tiroir et y rester 1 seconde. À ce moment-là, la zone de contenu s’ouvre (voir dessous). On y interagit comme dans l’inventaire. Pour refermer la zone, on passe la souris à l’extérieur de la zone au moins 1 seconde (comme pour l’inventaire). Oui, s’il faut expliquer ça dans le tuto, ça va être compliqué...
+	La zone d’inventaire servira à afficher le contenu des tiroirs en mots puisqu’on ne voit pas ce qu’ils contiennent de par le point de vue de la caméra. Une liste du contenu sera donnée et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible si besoin (voire au dessus avec Shiva, etc.). Comme dans l’inventaire...
+
+	CANCELLED : On regarde les tiroirs avec l’oeil (!), on les ouvre avec la main ce qui affiche également leur contenu (voir ci-dessous) et on ferme la zone de contenu (voir ci-dessous) en passant la souris hors de la zone (comme pour l’inventaire). On ferme les tiroirs avec la main ou en ouvrant un autre truc (qui fait fermer le tiroir à Rowena avant d’aller ouvrir l’autre truc (comme les placards).
 
 	Sauver/charger une partie :
-	Cela se fera n’importe où. Il n’y aura qu’à faire défiler les icônes d’action à la souris avec la molette et de cliquer sur Sauver pour sauver une partie ou Charger pour… charger une partie.
 	À priori, on sauvera en quittant et on rechargera en démarrant le jeu.
+	CANCELLED : Cela se fera n’importe où. Il n’y aura qu’à faire défiler les icônes d’action à la souris avec la molette et de cliquer sur Sauver pour sauver une partie ou Charger pour… charger une partie.
 
 	Changer le volume sonore du jeu :
 	Cela ne peut se faire que sur le poste de radio sur la plan de travail à droite (juste à gauche de la fenêtre). On se servira alors de la molette de la souris pour faire défiler les icônes jusqu’à afficher celle d’augmentation ou diminution du volume ou carrément couper le son.
