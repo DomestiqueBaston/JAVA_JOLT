@@ -51,9 +51,6 @@ signal drawer_item_picked(which: int)
 ## Signal emitted when the comment box is closed, automatically or by the user.
 signal comment_closed
 
-## Signal emitted when there has been no user input in a while.
-signal hovering
-
 ## Signal emitted when the quit process is interrupted by a mouse click.
 signal quit_aborted
 
@@ -129,7 +126,6 @@ func _ready():
 # triggered reliably.
 #
 func _input(event: InputEvent):
-	$Hover_Timer.start()
 	if is_inventory_open() and event is InputEventMouseMotion:
 		var invbox = $Boxes/Inventory_Box
 		var rect = Rect2(invbox.position, invbox.size)
@@ -281,7 +277,6 @@ func clear_comment_text():
 
 func _on_comment_timer_timeout():
 	_hide_comment_box()
-	$Hover_Timer.start()
 
 func _hide_comment_box():
 	$Boxes/CenterContainer.hide()
@@ -651,7 +646,7 @@ func _set_current_drawer_item(index: int):
 		if i == index:
 			label.self_modulate = rowena_text_color
 		else:
-			label.self_modulate = Color.WHITE
+			label.self_modulate = doctor_text_color
 
 	_current_inventory_index = index
 
@@ -721,7 +716,6 @@ func _click_on_inventory_item():
 func _on_close_inventory_timer_timeout():
 	if is_inventory_open():
 		_close_inventory()
-		$Hover_Timer.start()
 
 func _on_comment_box_gui_input(event):
 	if event.is_action_pressed("left_mouse_click"):
@@ -742,6 +736,3 @@ func _abort_quit():
 	if _is_quitting:
 		_is_quitting = false
 		quit_aborted.emit()
-
-func _on_hover_timer_timeout():
-	hovering.emit()

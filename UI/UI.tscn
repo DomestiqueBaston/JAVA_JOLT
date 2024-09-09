@@ -2106,9 +2106,6 @@ one_shot = true
 [node name="Close_Inventory_Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Hover_Timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="Dialogue_AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ot440")
@@ -2154,4 +2151,3 @@ libraries = {
 [connection signal="timeout" from="Typing_Timer" to="." method="_type_one_character"]
 [connection signal="timeout" from="Comment_Timer" to="." method="_on_comment_timer_timeout"]
 [connection signal="timeout" from="Close_Inventory_Timer" to="." method="_on_close_inventory_timer_timeout"]
-[connection signal="timeout" from="Hover_Timer" to="." method="_on_hover_timer_timeout"]

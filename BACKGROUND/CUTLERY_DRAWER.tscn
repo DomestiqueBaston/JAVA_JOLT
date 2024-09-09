@@ -15,12 +15,12 @@ centered = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
-[node name="Cutlery_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
+[node name="Cutlery_Drawer_Open_Collider" type="Area2D" parent="Stuff_Colliders"]
 position = Vector2(145, 42.5)
 collision_layer = 2
 collision_mask = 5
 metadata/bg_level = 1
 
-[node name="Cutlery_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Cutlery_Drawer_Collider"]
+[node name="Cutlery_Drawer_Open" type="CollisionShape2D" parent="Stuff_Colliders/Cutlery_Drawer_Open_Collider"]
 shape = SubResource("RectangleShape2D_yep3q")
 metadata/bg_level = 1

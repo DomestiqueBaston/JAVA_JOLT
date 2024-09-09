@@ -622,6 +622,9 @@ func _perform_hand_action():
 		Globals.Prop.PLATES_2:
 			take_label = "Plate"
 			take_msg = "Nice and clean."
+		Globals.Prop.CUTLERY_DRAWER, \
+		Globals.Prop.CUTLERY_DRAWER_OPEN:
+			_show_cutlery_drawer()
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -654,7 +657,7 @@ func _perform_open_action():
 
 	match object_to_open:
 		Globals.Prop.CUTLERY_DRAWER:
-			_open_cutlery_drawer()
+			_show_cutlery_drawer()
 		Globals.Prop.COFFEE_CUPBOARD:
 			_set_comment("I like rubbing salt in the wound.")
 
@@ -808,13 +811,7 @@ func _update_current_prop():
 	if current_prop == top_prop:
 		return
 
-	# if the refrigerator door is open (for example), the closed door remains
-	# in the scene; ignore it
-
-	if top_prop >= 0 and top_prop == $BACKGROUND.get_open_object():
-		current_prop = -1
-	else:
-		current_prop = top_prop
+	current_prop = top_prop
 
 	# update the list of available cursor actions
 
@@ -830,7 +827,6 @@ func _update_current_prop():
 		Globals.Prop.RECYCLING_CLOSET, \
 		Globals.Prop.UNDER_SINK_CABINET, \
 		Globals.Prop.CLEANING_CLOSET, \
-		Globals.Prop.CUTLERY_DRAWER, \
 		Globals.Prop.OVEN, \
 		Globals.Prop.DISHWASHER, \
 		Globals.Prop.LEFT_GLASS_CUPBOARD, \
@@ -842,13 +838,13 @@ func _update_current_prop():
 		Globals.Prop.MICROWAVE, \
 		Globals.Prop.REFRIGERATOR_RIGHT, \
 		Globals.Prop.REFRIGERATOR_LEFT:
-			actions.append(Globals.Cursor.OPEN)
+			if $BACKGROUND.get_open_object() != current_prop:
+				actions.append(Globals.Cursor.OPEN)
 
 		Globals.Prop.KITCHEN_CABINET_OPEN_DOOR, \
 		Globals.Prop.RECYCLING_CLOSET_OPEN_DOOR, \
 		Globals.Prop.UNDER_SINK_OPEN_DOOR, \
 		Globals.Prop.CLEANING_CLOSET_OPEN_DOOR, \
-		Globals.Prop.CUTLERY_DRAWER_OPEN, \
 		Globals.Prop.OVEN_OPEN_DOOR, \
 		Globals.Prop.DISHWASHER_OPEN_DOOR, \
 		Globals.Prop.LEFT_GLASS_CUPBOARD_OPEN_DOOR, \
@@ -958,6 +954,15 @@ func _update_current_prop():
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 
+		Globals.Prop.CUTLERY_DRAWER:
+			if $BACKGROUND.get_open_object() == current_prop:
+				actions.append(Globals.Cursor.HAND)
+			else:
+				actions.append(Globals.Cursor.OPEN)
+		Globals.Prop.CUTLERY_DRAWER_OPEN:
+			actions.append(Globals.Cursor.HAND)
+			actions.append(Globals.Cursor.CLOSE)
+
 		Globals.Prop.WINDOW_RIGHT:
 			actions.append(Globals.Cursor.QUIT)
 
@@ -1064,18 +1069,18 @@ func _on_ui_quit_aborted():
 	is_quitting = false
 	$ROWENA.abort_walk_to_area()
 
-func _open_cutlery_drawer():
-	var contents = {
-		Globals.Prop.CUTLERY_FORKS: "Forks",
-		Globals.Prop.CUTLERY_KNIVES: "Knives",
-		Globals.Prop.CUTLERY_SPOONS: "Spoons",
-	}
+func _show_cutlery_drawer():
+	var contents = {}
+	if $UI.find_in_inventory(Globals.Prop.CUTLERY_FORKS) < 0:
+		contents[Globals.Prop.CUTLERY_FORKS] = "Forks"
+	if $UI.find_in_inventory(Globals.Prop.CUTLERY_KNIVES) < 0:
+		contents[Globals.Prop.CUTLERY_KNIVES] = "Knives"
+	if $UI.find_in_inventory(Globals.Prop.CUTLERY_SPOONS) < 0:
+		contents[Globals.Prop.CUTLERY_SPOONS] = "Spoons"
 	$UI.open_drawer(contents)
 
 func _on_ui_drawer_item_picked(which: int):
-	if $UI.find_in_inventory(which) >= 0:
-		pass
-	elif $UI.is_inventory_full():
+	if $UI.is_inventory_full():
 		$UI.close_drawer()
 		_set_comment(inventory_full_msg)
 	else:
@@ -1086,8 +1091,4 @@ func _on_ui_drawer_item_picked(which: int):
 				$UI.add_to_inventory(which, "Knife")
 			Globals.Prop.CUTLERY_SPOONS:
 				$UI.add_to_inventory(which, "Spoon")
-
-func _on_ui_hovering():
-	if (current_prop == Globals.Prop.CUTLERY_DRAWER_OPEN
-		and not $UI.is_inventory_open()):
-		_open_cutlery_drawer()
+		$UI.remove_from_drawer(which)
