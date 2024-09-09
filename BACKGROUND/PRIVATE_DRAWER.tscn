@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://1a8w284kxpin"]
+[gd_scene load_steps=4 format=3 uid="uid://1a8w284kxpin"]
 
+[ext_resource type="Script" path="res://BACKGROUND/PRIVATE_DRAWER.gd" id="1_an8ij"]
 [ext_resource type="Texture2D" uid="uid://xdggsb76gr0a" path="res://BACKGROUND/IMAGES/Private_Drawer_Open.png" id="1_y40dt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtoi"]
 size = Vector2(16, 9)
 
 [node name="Private_Drawer" type="Node2D"]
+script = ExtResource("1_an8ij")
 
 [node name="Private_Drawer_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_y40dt")
@@ -13,10 +15,12 @@ centered = false
 
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
-[node name="Private_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
-collision_layer = 2
-
-[node name="Private_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Private_Drawer_Collider"]
+[node name="Private_Drawer_Open_Collider" type="Area2D" parent="Stuff_Colliders"]
 position = Vector2(47, 60.5)
+collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
+
+[node name="Private_Drawer_Open" type="CollisionShape2D" parent="Stuff_Colliders/Private_Drawer_Open_Collider"]
 shape = SubResource("RectangleShape2D_xvtoi")
 metadata/bg_level = 1

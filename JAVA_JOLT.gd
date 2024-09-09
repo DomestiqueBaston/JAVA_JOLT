@@ -302,6 +302,8 @@ const prop_info: Array[String] = [
 	"Those are plates.",
 	# RIGHT_GLASS_CUPBOARD_OPEN_DOOR
 	"Do you want to close the cupboard?",
+	# PRIVATE_DRAWER_OPEN
+	"Would you close that, please?",
 	# KITCHEN_TOOLS_DRAWER_OPEN
 	"Do you want to close the drawer?",
 	# CUTLERY_DRAWER_OPEN
@@ -313,6 +315,7 @@ const open_close_door: Dictionary = {
 	Globals.Prop.RECYCLING_CLOSET: Globals.Prop.RECYCLING_CLOSET_OPEN_DOOR,
 	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
 	Globals.Prop.CLEANING_CLOSET: Globals.Prop.CLEANING_CLOSET_OPEN_DOOR,
+	Globals.Prop.PRIVATE_DRAWER: Globals.Prop.PRIVATE_DRAWER_OPEN,
 	Globals.Prop.KITCHEN_TOOLS_DRAWER: Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN,
 	Globals.Prop.CUTLERY_DRAWER: Globals.Prop.CUTLERY_DRAWER_OPEN,
 	Globals.Prop.OVEN: Globals.Prop.OVEN_OPEN_DOOR,
@@ -626,6 +629,9 @@ func _perform_hand_action():
 		Globals.Prop.PLATES_2:
 			take_label = "Plate"
 			take_msg = "Nice and clean."
+		Globals.Prop.PRIVATE_DRAWER, \
+		Globals.Prop.PRIVATE_DRAWER_OPEN:
+			_show_private_drawer()
 		Globals.Prop.KITCHEN_TOOLS_DRAWER, \
 		Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN:
 			_show_kitchen_tools_drawer()
@@ -663,6 +669,8 @@ func _perform_open_action():
 	await $ROWENA.get_something_done
 
 	match object_to_open:
+		Globals.Prop.PRIVATE_DRAWER:
+			_show_private_drawer()
 		Globals.Prop.KITCHEN_TOOLS_DRAWER:
 			_show_kitchen_tools_drawer()
 		Globals.Prop.CUTLERY_DRAWER:
@@ -963,6 +971,7 @@ func _update_current_prop():
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 
+		Globals.Prop.PRIVATE_DRAWER, \
 		Globals.Prop.KITCHEN_TOOLS_DRAWER, \
 		Globals.Prop.CUTLERY_DRAWER:
 			if $BACKGROUND.get_open_object() == current_prop:
@@ -970,6 +979,7 @@ func _update_current_prop():
 			else:
 				actions.append(Globals.Cursor.OPEN)
 
+		Globals.Prop.PRIVATE_DRAWER_OPEN, \
 		Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN, \
 		Globals.Prop.CUTLERY_DRAWER_OPEN:
 			actions.append(Globals.Cursor.HAND)
@@ -1080,6 +1090,9 @@ func _on_rowena_target_area_reached():
 func _on_ui_quit_aborted():
 	is_quitting = false
 	$ROWENA.abort_walk_to_area()
+
+func _show_private_drawer():
+	_set_comment("No one must know what's inside this drawer.")
 
 func _show_kitchen_tools_drawer():
 	var contents = {}

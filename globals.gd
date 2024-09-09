@@ -243,6 +243,7 @@ enum Prop {
 	
 	# open drawers
 	
+	PRIVATE_DRAWER_OPEN,
 	KITCHEN_TOOLS_DRAWER_OPEN,
 	CUTLERY_DRAWER_OPEN,
 	
