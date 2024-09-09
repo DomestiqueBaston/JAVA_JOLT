@@ -6,6 +6,10 @@ signal area_exited_object(index: int, area: Area2D)
 var _start_index: int
 var _colliders: Array[Area2D]
 
+func set_collider(index: int, collider: Area2D):
+	var colliders: Array[Area2D] = [collider]
+	set_colliders(index, colliders)
+
 func set_colliders(start_index: int, colliders: Array[Area2D]):
 	_start_index = start_index
 	_colliders = colliders

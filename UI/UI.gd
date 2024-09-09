@@ -28,6 +28,9 @@ extends CanvasLayer
 ## the cursor outside the box.
 @export var inventory_timeout: float = 0.3
 
+## Seconds before drawer closes if the user moves the cursor outside the box.
+@export var drawer_timeout: float = 1
+
 ## If true, only our big cursor is visible.
 @export var hide_system_mouse: bool = false
 
@@ -37,16 +40,30 @@ signal click_on_background(pos: Vector2)
 ## Signal emitted when user tries to "use" one inventory item on another.
 signal use_object_on_other(object1: int, object2: int)
 
-## Signal emitted when user removes an inventory item (from [enum Globals.Prop]).
+## Signal emitted when user removes an inventory item (a constant from
+## [enum Globals.Prop]).
 signal inventory_item_removed(which: int)
+
+## Signal emitted when user clicks on an item in the open drawer (a constant
+## from [enum Globals.Prop]).
+signal drawer_item_picked(which: int)
 
 ## Signal emitted when the comment box is closed, automatically or by the user.
 signal comment_closed
+
+## Signal emitted when there has been no user input in a while.
+signal hovering
 
 ## Signal emitted when the quit process is interrupted by a mouse click.
 signal quit_aborted
 
 enum { ROWENA, DOCTOR }
+
+enum InventoryMode {
+	OFF,
+	INVENTORY,
+	DRAWER
+}
 
 # Color of unhighlighted text options in current dialogue.
 var _choice_text_color: Color
@@ -54,35 +71,36 @@ var _choice_text_color: Color
 # Which cursor actions are currently available.
 var _available_cursors: Array[int] = []
 
-# Cursor actions available while the inventory is open.
-const _inventory_cursors: Array[int] = [
-	Globals.Cursor.HAND,
-	Globals.Cursor.TRASH
-]
+# Cursor actions available while the inventory (or a drawer) is open.
+var _inventory_cursors: Array[int] = []
 
 # Current cursor action (index into _available_cursors or _inventory_cursors).
 var _current_cursor: int = -1
 
-# true if the tutorial has been seen
-var _is_tutorial_seen: bool = false
-
-# true if the inventory box is open.
-var _is_inventory_open: bool = false
+# INVENTORY or DRAWER if the inventory box is open.
+var _inventory_mode: int = InventoryMode.OFF
 
 # Inventory contents: maps item numbers (Globals.Prop enum) to label strings.
-var _inventory_contents := {}
+var _inventory_contents: Dictionary = {}
 
-# Index (not item ID!) of the highlighted inventory item.
+# Contents of the drawer, when inventory box is opened in DRAWER mode: maps
+# item numbers (Globals.Prop enum) to label strings.
+var _drawer_contents: Dictionary = {}
+
+# Index (not item ID!) of the highlighted inventory or drawer item.
 var _current_inventory_index: int = -1
 
 # Number (Global.Prop enum) of the inventory item being used (arrow cursor).
 var _inventory_item_being_used: int = -1
 
-# Set by start_quit(), reset by _abort_quit().
-var _is_quitting: bool = false
-
 # How many items the inventory can hold.
 const _max_inventory_size = 4
+
+# true if the tutorial has been seen
+var _is_tutorial_seen: bool = false
+
+# Set by start_quit(), reset by _abort_quit().
+var _is_quitting: bool = false
 
 # Emitted when the typing of a line of dialogue finishes.
 signal _typing_finished
@@ -111,19 +129,21 @@ func _ready():
 # triggered reliably.
 #
 func _input(event: InputEvent):
-	if (_is_inventory_open and _inventory_item_being_used >= 0 and
-		event is InputEventMouseMotion):
+	$Hover_Timer.start()
+	if is_inventory_open() and event is InputEventMouseMotion:
 		var invbox = $Boxes/Inventory_Box
 		var rect = Rect2(invbox.position, invbox.size)
 		if rect.has_point(event.position):
 			$Close_Inventory_Timer.stop()
-		else:
+		elif _inventory_mode == InventoryMode.DRAWER:
+			$Close_Inventory_Timer.start(drawer_timeout)
+		elif _inventory_item_being_used >= 0:
 			$Close_Inventory_Timer.start(inventory_timeout)
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		_abort_quit()
-		if _is_inventory_open:
+		if is_inventory_open():
 			_click_on_inventory_item()
 			get_viewport().set_input_as_handled()
 		elif is_tutorial_open():
@@ -144,7 +164,7 @@ func _unhandled_input(event: InputEvent):
 	elif event.is_action_pressed("inventory_action"):
 		_abort_quit()
 		if not is_dialogue_visible():
-			if _is_inventory_open:
+			if is_inventory_open():
 				_close_inventory()
 			else:
 				_open_inventory()
@@ -261,6 +281,7 @@ func clear_comment_text():
 
 func _on_comment_timer_timeout():
 	_hide_comment_box()
+	$Hover_Timer.start()
 
 func _hide_comment_box():
 	$Boxes/CenterContainer.hide()
@@ -331,7 +352,7 @@ func _set_mouse_cursor(cursor: int):
 ##
 func clear_available_cursors():
 	_available_cursors.clear()
-	if not (_is_inventory_open or is_tutorial_open() or is_dialogue_visible()):
+	if not (is_inventory_open() or is_tutorial_open() or is_dialogue_visible()):
 		if _inventory_item_being_used < 0:
 			_current_cursor = -1
 			_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
@@ -349,7 +370,7 @@ func set_available_cursors(cursors: Array[int]):
 		clear_available_cursors()
 	else:
 		_available_cursors = cursors
-		if not (_is_inventory_open or is_tutorial_open() or is_dialogue_visible()):
+		if not (is_inventory_open() or is_tutorial_open() or is_dialogue_visible()):
 			if _inventory_item_being_used < 0:
 				_current_cursor = 0
 				_set_mouse_cursor(cursors[0])
@@ -358,7 +379,7 @@ func set_available_cursors(cursors: Array[int]):
 
 func get_current_cursor() -> int:
 	if _inventory_item_being_used >= 0:
-		if _is_inventory_open:
+		if is_inventory_open():
 			if _current_inventory_index >= 0:
 				return Globals.Cursor.ARROW_ACTIVE
 			else:
@@ -370,7 +391,7 @@ func get_current_cursor() -> int:
 				return Globals.Cursor.ARROW_ACTIVE
 	elif _current_cursor < 0:
 		return Globals.Cursor.CROSS_PASSIVE
-	elif _is_inventory_open:
+	elif is_inventory_open():
 		return _inventory_cursors[_current_cursor]
 	else:
 		return _available_cursors[_current_cursor]
@@ -378,7 +399,7 @@ func get_current_cursor() -> int:
 func _next_cursor():
 	if _inventory_item_being_used >= 0:
 		return
-	elif _is_inventory_open:
+	elif is_inventory_open():
 		_current_cursor = (_current_cursor + 1) % _inventory_cursors.size()
 		_set_mouse_cursor(_inventory_cursors[_current_cursor])
 	elif _available_cursors.size() > 1:
@@ -388,15 +409,19 @@ func _next_cursor():
 func _prev_cursor():
 	if _inventory_item_being_used >= 0:
 		return
-	elif _is_inventory_open:
+	elif is_inventory_open():
 		_current_cursor = posmod(_current_cursor - 1, _inventory_cursors.size())
 		_set_mouse_cursor(_inventory_cursors[_current_cursor])
 	elif _available_cursors.size() > 1:
 		_current_cursor = posmod(_current_cursor - 1, _available_cursors.size())
 		_set_mouse_cursor(_available_cursors[_current_cursor])
 
+##
+## Returns true if the inventory box is open, regardless of whether it is being
+## used to display the inventory or the contents of a drawer.
+##
 func is_inventory_open() -> bool:
-	return _is_inventory_open
+	return _inventory_mode != InventoryMode.OFF
 
 func is_tutorial_open() -> bool:
 	return $Boxes/Tutorial.visible
@@ -430,26 +455,56 @@ func unpin_help_button():
 func _on_help_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		_abort_quit()
-		if not (is_dialogue_visible() or _is_inventory_open):
+		if not (is_dialogue_visible() or is_inventory_open()):
 			$Boxes/Tutorial.show()
 			$Help_AnimationPlayer.play("Help_Off")
 			_is_tutorial_seen = true
 
-func _open_inventory():
+##
+## Displays the contents of a drawer, where [param contents] maps item numbers
+## (constants from [enum Globals.Prop]) to label strings. The contents remain
+## on display until [method close_drawer] is called, or until all the contents
+## are removed by [method remove_from_drawer].
+##
+## Note that drawers contents are displayed using the same GUI controls as the
+## inventory, so only one or the other can be shown at a time.
+##
+func open_drawer(contents: Dictionary):
+	if _inventory_mode == InventoryMode.OFF:
+		_drawer_contents = contents
+		_open_inventory(InventoryMode.DRAWER)
+
+##
+## Hides the drawer contents shown previously by [method open_drawer].
+##
+func close_drawer():
+	if _inventory_mode == InventoryMode.DRAWER:
+		_close_inventory()
+		_drawer_contents.clear()
+
+func _open_inventory(mode: int = InventoryMode.INVENTORY):
 	$Inventory_AnimationPlayer.play("Open_Inventory")
 	clear_comment_text()
+
+	_inventory_mode = mode
 	_current_cursor = 0
-	if _inventory_item_being_used >= 0:
-		_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
+
+	if mode == InventoryMode.INVENTORY:
+		_inventory_cursors = [ Globals.Cursor.HAND, Globals.Cursor.TRASH ]
+		_update_inventory_labels()
+		_set_current_inventory_item(-1)
 	else:
-		_set_mouse_cursor(_inventory_cursors[0])
-	_set_current_inventory_item(-1)
-	_is_inventory_open = true
+		_inventory_cursors = [ Globals.Cursor.HAND ]
+		_update_drawer_labels()
+		_set_current_drawer_item(-1)
 
 func _close_inventory():
 	$Close_Inventory_Timer.stop()
 	$Inventory_AnimationPlayer.play("Close_Inventory")
-	_is_inventory_open = false
+
+	_inventory_mode = InventoryMode.OFF
+	_inventory_cursors.clear()
+
 	if _inventory_item_being_used < 0:
 		if _available_cursors.is_empty():
 			_current_cursor = -1
@@ -459,12 +514,18 @@ func _close_inventory():
 			_set_mouse_cursor(_available_cursors[0])
 
 func _update_inventory_labels():
-	var items = _inventory_contents.keys()
+	_update_labels(_inventory_contents)
+
+func _update_drawer_labels():
+	_update_labels(_drawer_contents)
+
+func _update_labels(contents: Dictionary):
+	var keys = contents.keys()
 	for i in _max_inventory_size:
 		var label: Label = get_node(
 			"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
-		if i < _inventory_contents.size():
-			label.text = _inventory_contents[items[i]]
+		if i < contents.size():
+			label.text = contents[keys[i]]
 		else:
 			label.text = ""
 
@@ -473,7 +534,8 @@ func _update_inventory_labels():
 ##
 func clear_inventory():
 	_inventory_contents.clear()
-	_update_inventory_labels()
+	if _inventory_mode == InventoryMode.INVENTORY:
+		_update_inventory_labels()
 
 ##
 ## Searches for an item in the inventory and returns its index, if it is found,
@@ -490,17 +552,31 @@ func find_in_inventory(item: int) -> int:
 ##
 func add_to_inventory(item: int, label: String):
 	_inventory_contents[item] = label
-	_update_inventory_labels()
+	if _inventory_mode == InventoryMode.INVENTORY:
+		_update_inventory_labels()
 
-##
-## Removes an item from the inventory, where 0 <= [param index] < the number of
-## items in the inventory.
-##
-func remove_from_inventory(index: int):
+#
+# Removes an item from the inventory, where 0 <= index < the number of items
+# in the inventory.
+#
+func _remove_from_inventory(index: int):
 	var item = _inventory_contents.keys()[index]
 	inventory_item_removed.emit(item)
 	_inventory_contents.erase(item)
-	_update_inventory_labels()
+	if _inventory_mode == InventoryMode.INVENTORY:
+		_update_inventory_labels()
+
+##
+## Removes an item from the open drawer, where [param item] is a constant from
+## [enum Globals.Prop].
+##
+func remove_from_drawer(item: int):
+	_drawer_contents.erase(item)
+	if _inventory_mode == InventoryMode.DRAWER:
+		if _drawer_contents.is_empty():
+			_close_inventory()
+		else:
+			_update_drawer_labels()
 
 func is_inventory_full() -> bool:
 	return _inventory_contents.size() >= _max_inventory_size
@@ -544,6 +620,8 @@ func _set_current_inventory_item(index: int):
 			_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
 		else:
 			_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
+	else:
+		_set_mouse_cursor(_inventory_cursors[0])
 
 	for i in _inventory_contents.size():
 		var label: Label = get_node(
@@ -561,17 +639,49 @@ func _set_current_inventory_item(index: int):
 
 	_current_inventory_index = index
 
+func _set_current_drawer_item(index: int):
+	if index >= _drawer_contents.size():
+		index = -1
+
+	_set_mouse_cursor(_inventory_cursors[0])
+
+	for i in _drawer_contents.size():
+		var label: Label = get_node(
+			"Boxes/Inventory_Box/BG%d/Inventory%d" % [i+1, i+1])
+		if i == index:
+			label.self_modulate = rowena_text_color
+		else:
+			label.self_modulate = Color.WHITE
+
+	_current_inventory_index = index
+
 func _on_inventory_1_mouse_entered():
-	_set_current_inventory_item(0)
+	match _inventory_mode:
+		InventoryMode.INVENTORY:
+			_set_current_inventory_item(0)
+		InventoryMode.DRAWER:
+			_set_current_drawer_item(0)
 
 func _on_inventory_2_mouse_entered():
-	_set_current_inventory_item(1)
+	match _inventory_mode:
+		InventoryMode.INVENTORY:
+			_set_current_inventory_item(1)
+		InventoryMode.DRAWER:
+			_set_current_drawer_item(1)
 
 func _on_inventory_3_mouse_entered():
-	_set_current_inventory_item(2)
+	match _inventory_mode:
+		InventoryMode.INVENTORY:
+			_set_current_inventory_item(2)
+		InventoryMode.DRAWER:
+			_set_current_drawer_item(2)
 
 func _on_inventory_4_mouse_entered():
-	_set_current_inventory_item(3)
+	match _inventory_mode:
+		InventoryMode.INVENTORY:
+			_set_current_inventory_item(3)
+		InventoryMode.DRAWER:
+			_set_current_drawer_item(3)
 
 func _on_inventory_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
@@ -594,18 +704,24 @@ func _click_on_inventory_item():
 	elif _current_inventory_index >= 0:
 		match _inventory_cursors[_current_cursor]:
 			Globals.Cursor.HAND:
-				_inventory_item_being_used = _inventory_contents.keys()[_current_inventory_index]
-				_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
+				if _inventory_mode == InventoryMode.INVENTORY:
+					_inventory_item_being_used = \
+						_inventory_contents.keys()[_current_inventory_index]
+					_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
+				else: # InventoryMode.DRAWER
+					drawer_item_picked.emit(
+						_drawer_contents.keys()[_current_inventory_index])
 			Globals.Cursor.TRASH:
-				remove_from_inventory(_current_inventory_index)
+				_remove_from_inventory(_current_inventory_index)
 				if _inventory_contents.is_empty():
 					_close_inventory()
 				else:
 					_set_current_inventory_item(_current_inventory_index)
 
 func _on_close_inventory_timer_timeout():
-	if _is_inventory_open:
+	if is_inventory_open():
 		_close_inventory()
+		$Hover_Timer.start()
 
 func _on_comment_box_gui_input(event):
 	if event.is_action_pressed("left_mouse_click"):
@@ -626,3 +742,6 @@ func _abort_quit():
 	if _is_quitting:
 		_is_quitting = false
 		quit_aborted.emit()
+
+func _on_hover_timer_timeout():
+	hovering.emit()

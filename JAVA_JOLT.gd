@@ -302,6 +302,8 @@ const prop_info: Array[String] = [
 	"Those are plates.",
 	# RIGHT_GLASS_CUPBOARD_OPEN_DOOR
 	"Do you want to close the cupboard?",
+	# CUTLERY_DRAWER_OPEN
+	"Do you want to close the drawer?",
 ]
 
 const open_close_door: Dictionary = {
@@ -309,6 +311,7 @@ const open_close_door: Dictionary = {
 	Globals.Prop.RECYCLING_CLOSET: Globals.Prop.RECYCLING_CLOSET_OPEN_DOOR,
 	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
 	Globals.Prop.CLEANING_CLOSET: Globals.Prop.CLEANING_CLOSET_OPEN_DOOR,
+	Globals.Prop.CUTLERY_DRAWER: Globals.Prop.CUTLERY_DRAWER_OPEN,
 	Globals.Prop.OVEN: Globals.Prop.OVEN_OPEN_DOOR,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
 	Globals.Prop.LEFT_GLASS_CUPBOARD: Globals.Prop.LEFT_GLASS_CUPBOARD_OPEN_DOOR,
@@ -337,7 +340,7 @@ var is_towel_wet := false
 var is_quitting := false
 
 func _ready():
-	assert(prop_info.size() == Globals.Prop.TOTAL_PROP_COUNT)
+	assert(prop_info.size() == Globals.Prop.VISIBLE_PROP_COUNT)
 	if not skip_dialogues:
 		await $UI.tell_story(current_chapter)
 	$UI.pin_help_button()
@@ -648,9 +651,12 @@ func _perform_open_action():
 	await $ROWENA.get_something_reached
 	$BACKGROUND.open_something(object_to_open)
 	await $ROWENA.get_something_done
-	
-	if object_to_open == Globals.Prop.COFFEE_CUPBOARD:
-		_set_comment("I like rubbing salt in the wound.")
+
+	match object_to_open:
+		Globals.Prop.CUTLERY_DRAWER:
+			_open_cutlery_drawer()
+		Globals.Prop.COFFEE_CUPBOARD:
+			_set_comment("I like rubbing salt in the wound.")
 
 func _perform_close_action():
 	$UI.clear_comment_text()
@@ -824,6 +830,7 @@ func _update_current_prop():
 		Globals.Prop.RECYCLING_CLOSET, \
 		Globals.Prop.UNDER_SINK_CABINET, \
 		Globals.Prop.CLEANING_CLOSET, \
+		Globals.Prop.CUTLERY_DRAWER, \
 		Globals.Prop.OVEN, \
 		Globals.Prop.DISHWASHER, \
 		Globals.Prop.LEFT_GLASS_CUPBOARD, \
@@ -841,6 +848,7 @@ func _update_current_prop():
 		Globals.Prop.RECYCLING_CLOSET_OPEN_DOOR, \
 		Globals.Prop.UNDER_SINK_OPEN_DOOR, \
 		Globals.Prop.CLEANING_CLOSET_OPEN_DOOR, \
+		Globals.Prop.CUTLERY_DRAWER_OPEN, \
 		Globals.Prop.OVEN_OPEN_DOOR, \
 		Globals.Prop.DISHWASHER_OPEN_DOOR, \
 		Globals.Prop.LEFT_GLASS_CUPBOARD_OPEN_DOOR, \
@@ -1055,3 +1063,31 @@ func _on_rowena_target_area_reached():
 func _on_ui_quit_aborted():
 	is_quitting = false
 	$ROWENA.abort_walk_to_area()
+
+func _open_cutlery_drawer():
+	var contents = {
+		Globals.Prop.CUTLERY_FORKS: "Forks",
+		Globals.Prop.CUTLERY_KNIVES: "Knives",
+		Globals.Prop.CUTLERY_SPOONS: "Spoons",
+	}
+	$UI.open_drawer(contents)
+
+func _on_ui_drawer_item_picked(which: int):
+	if $UI.find_in_inventory(which) >= 0:
+		pass
+	elif $UI.is_inventory_full():
+		$UI.close_drawer()
+		_set_comment(inventory_full_msg)
+	else:
+		match which:
+			Globals.Prop.CUTLERY_FORKS:
+				$UI.add_to_inventory(which, "Fork")
+			Globals.Prop.CUTLERY_KNIVES:
+				$UI.add_to_inventory(which, "Knife")
+			Globals.Prop.CUTLERY_SPOONS:
+				$UI.add_to_inventory(which, "Spoon")
+
+func _on_ui_hovering():
+	if (current_prop == Globals.Prop.CUTLERY_DRAWER_OPEN
+		and not $UI.is_inventory_open()):
+		_open_cutlery_drawer()

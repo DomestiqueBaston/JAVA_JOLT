@@ -241,5 +241,16 @@ enum Prop {
 	RIGHT_GLASS_CUPBOARD_OPEN_DOOR,
 	RIGHT_GLASS_CUPBOARD_END=RIGHT_GLASS_CUPBOARD_OPEN_DOOR,
 	
-	TOTAL_PROP_COUNT # must be last
+	# open drawers
+	
+	CUTLERY_DRAWER_OPEN,
+	
+	# props below VISIBLE_PROP_COUNT are not actually visible in the scene, so
+	# they have no colliders (e.g. the contents of drawers)
+	
+	VISIBLE_PROP_COUNT,
+	
+	CUTLERY_FORKS,
+	CUTLERY_KNIVES,
+	CUTLERY_SPOONS,
 }

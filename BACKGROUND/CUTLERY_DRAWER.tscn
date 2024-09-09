@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ygsahuj4jtn3"]
+[gd_scene load_steps=4 format=3 uid="uid://ygsahuj4jtn3"]
 
 [ext_resource type="Texture2D" uid="uid://daq1dm4w05dv0" path="res://BACKGROUND/IMAGES/Cutlery_Drawer_Open.png" id="1_1gm6o"]
+[ext_resource type="Script" path="res://BACKGROUND/CUTLERY_DRAWER.gd" id="1_5ehb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yep3q"]
 size = Vector2(30, 3)
 
 [node name="Cutlery_Drawer" type="Node2D"]
+script = ExtResource("1_5ehb7")
 
 [node name="Cutlery_Drawer_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_1gm6o")
@@ -14,9 +16,11 @@ centered = false
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Cutlery_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(145, 42.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Cutlery_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Cutlery_Drawer_Collider"]
-position = Vector2(145, 42.5)
 shape = SubResource("RectangleShape2D_yep3q")
 metadata/bg_level = 1
