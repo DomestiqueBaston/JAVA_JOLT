@@ -302,6 +302,8 @@ const prop_info: Array[String] = [
 	"Those are plates.",
 	# RIGHT_GLASS_CUPBOARD_OPEN_DOOR
 	"Do you want to close the cupboard?",
+	# KITCHEN_TOOLS_DRAWER_OPEN
+	"Do you want to close the drawer?",
 	# CUTLERY_DRAWER_OPEN
 	"Do you want to close the drawer?",
 ]
@@ -311,6 +313,7 @@ const open_close_door: Dictionary = {
 	Globals.Prop.RECYCLING_CLOSET: Globals.Prop.RECYCLING_CLOSET_OPEN_DOOR,
 	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
 	Globals.Prop.CLEANING_CLOSET: Globals.Prop.CLEANING_CLOSET_OPEN_DOOR,
+	Globals.Prop.KITCHEN_TOOLS_DRAWER: Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN,
 	Globals.Prop.CUTLERY_DRAWER: Globals.Prop.CUTLERY_DRAWER_OPEN,
 	Globals.Prop.OVEN: Globals.Prop.OVEN_OPEN_DOOR,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
@@ -337,6 +340,7 @@ const cant_use_msgs: Array[String] = [
 var butter_knife_seen := false
 var coffee_maker_seen := false
 var is_towel_wet := false
+var is_object_taken_from_drawer := false
 var is_quitting := false
 
 func _ready():
@@ -622,6 +626,9 @@ func _perform_hand_action():
 		Globals.Prop.PLATES_2:
 			take_label = "Plate"
 			take_msg = "Nice and clean."
+		Globals.Prop.KITCHEN_TOOLS_DRAWER, \
+		Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN:
+			_show_kitchen_tools_drawer()
 		Globals.Prop.CUTLERY_DRAWER, \
 		Globals.Prop.CUTLERY_DRAWER_OPEN:
 			_show_cutlery_drawer()
@@ -656,6 +663,8 @@ func _perform_open_action():
 	await $ROWENA.get_something_done
 
 	match object_to_open:
+		Globals.Prop.KITCHEN_TOOLS_DRAWER:
+			_show_kitchen_tools_drawer()
 		Globals.Prop.CUTLERY_DRAWER:
 			_show_cutlery_drawer()
 		Globals.Prop.COFFEE_CUPBOARD:
@@ -954,11 +963,14 @@ func _update_current_prop():
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 
+		Globals.Prop.KITCHEN_TOOLS_DRAWER, \
 		Globals.Prop.CUTLERY_DRAWER:
 			if $BACKGROUND.get_open_object() == current_prop:
 				actions.append(Globals.Cursor.HAND)
 			else:
 				actions.append(Globals.Cursor.OPEN)
+
+		Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN, \
 		Globals.Prop.CUTLERY_DRAWER_OPEN:
 			actions.append(Globals.Cursor.HAND)
 			actions.append(Globals.Cursor.CLOSE)
@@ -1069,6 +1081,17 @@ func _on_ui_quit_aborted():
 	is_quitting = false
 	$ROWENA.abort_walk_to_area()
 
+func _show_kitchen_tools_drawer():
+	var contents = {}
+	if $UI.find_in_inventory(Globals.Prop.GARLIC_PRESS) < 0:
+		contents[Globals.Prop.GARLIC_PRESS] = "Garlic press"
+	if $UI.find_in_inventory(Globals.Prop.CORKSCREW) < 0:
+		contents[Globals.Prop.CORKSCREW] = "Corkscrew"
+	if $UI.find_in_inventory(Globals.Prop.WOODEN_SPOON) < 0:
+		contents[Globals.Prop.WOODEN_SPOON] = "Wooden spoon"
+	is_object_taken_from_drawer = false
+	$UI.open_drawer(contents)
+
 func _show_cutlery_drawer():
 	var contents = {}
 	if $UI.find_in_inventory(Globals.Prop.CUTLERY_FORKS) < 0:
@@ -1077,6 +1100,7 @@ func _show_cutlery_drawer():
 		contents[Globals.Prop.CUTLERY_KNIVES] = "Knives"
 	if $UI.find_in_inventory(Globals.Prop.CUTLERY_SPOONS) < 0:
 		contents[Globals.Prop.CUTLERY_SPOONS] = "Spoons"
+	is_object_taken_from_drawer = false
 	$UI.open_drawer(contents)
 
 func _on_ui_drawer_item_picked(which: int):
@@ -1084,11 +1108,32 @@ func _on_ui_drawer_item_picked(which: int):
 		$UI.close_drawer()
 		_set_comment(inventory_full_msg)
 	else:
+		var add_label = ""
 		match which:
+			Globals.Prop.WOODEN_SPOON:
+				add_label = "Wooden spoon"
 			Globals.Prop.CUTLERY_FORKS:
-				$UI.add_to_inventory(which, "Fork")
+				add_label = "Fork"
 			Globals.Prop.CUTLERY_KNIVES:
-				$UI.add_to_inventory(which, "Knife")
+				add_label = "Knife"
 			Globals.Prop.CUTLERY_SPOONS:
-				$UI.add_to_inventory(which, "Spoon")
-		$UI.remove_from_drawer(which)
+				add_label = "Spoon"
+		if add_label:
+			is_object_taken_from_drawer = true
+			$UI.add_to_inventory(which, add_label)
+			$UI.remove_from_drawer(which)
+
+func _on_ui_drawer_closed():
+	if is_object_taken_from_drawer:
+		match $BACKGROUND.get_open_object():
+			Globals.Prop.KITCHEN_TOOLS_DRAWER:
+				_set_comment("My childhood dream was to have a wooden spoon...")
+			Globals.Prop.CUTLERY_DRAWER:
+				const reactions = [
+					"Great!",
+					"Amazing!",
+					"Wonderful!",
+					"Yeah! Rock & roll!",
+				]
+				var which = randi_range(0, reactions.size() - 1)
+				_set_comment(reactions[which])

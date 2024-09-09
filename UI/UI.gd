@@ -48,6 +48,9 @@ signal inventory_item_removed(which: int)
 ## from [enum Globals.Prop]).
 signal drawer_item_picked(which: int)
 
+## Signal emitted when the open drawer is closed.
+signal drawer_closed
+
 ## Signal emitted when the comment box is closed, automatically or by the user.
 signal comment_closed
 
@@ -497,6 +500,7 @@ func _close_inventory():
 	$Close_Inventory_Timer.stop()
 	$Inventory_AnimationPlayer.play("Close_Inventory")
 
+	var mode = _inventory_mode
 	_inventory_mode = InventoryMode.OFF
 	_inventory_cursors.clear()
 
@@ -507,6 +511,9 @@ func _close_inventory():
 		else:
 			_current_cursor = 0
 			_set_mouse_cursor(_available_cursors[0])
+
+	if mode == InventoryMode.DRAWER:
+		drawer_closed.emit()
 
 func _update_inventory_labels():
 	_update_labels(_inventory_contents)

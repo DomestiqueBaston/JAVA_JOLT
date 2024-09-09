@@ -243,6 +243,7 @@ enum Prop {
 	
 	# open drawers
 	
+	KITCHEN_TOOLS_DRAWER_OPEN,
 	CUTLERY_DRAWER_OPEN,
 	
 	# props below VISIBLE_PROP_COUNT are not actually visible in the scene, so
@@ -250,6 +251,9 @@ enum Prop {
 	
 	VISIBLE_PROP_COUNT,
 	
+	GARLIC_PRESS,
+	CORKSCREW,
+	WOODEN_SPOON,
 	CUTLERY_FORKS,
 	CUTLERY_KNIVES,
 	CUTLERY_SPOONS,
