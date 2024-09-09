@@ -480,8 +480,8 @@ L’inventaire :
 
 
 	Interactions avec les éléments dans les tiroirs :
-	On regarde les tiroirs avec l’oeil. On les ouvre/ferme avec la main.
-	Pour voir le contenu (une fois ouvert), il faut passer la souris sur le collider du tiroir et y rester 1 seconde ou cliquer avec l’oeil (!). À ce moment-là, la zone de contenu s’ouvre (voir dessous). On y interagit comme dans l’inventaire. Pour refermer la zone, on passe la souris à l’extérieur de la zone au moins 1 seconde (comme pour l’inventaire) ou cliquer à l’extérieur. Oui, s’il faut expliquer ça dans le tuto, ça va être compliqué…
+	On regarde les tiroirs avec l’oeil. On les ouvre/ferme avec Open/Close.
+	Pour voir le contenu (une fois ouvert), il faut cliquer avec Hand. À ce moment-là, la zone de contenu s’ouvre (voir dessous). On y interagit comme dans l’inventaire. Pour refermer la zone, on passe la souris à l’extérieur de la zone au moins 1 seconde (comme pour l’inventaire) ou cliquer à l’extérieur. 
 	La zone d’inventaire servira à afficher le contenu des tiroirs en mots puisqu’on ne voit pas ce qu’ils contiennent de par le point de vue de la caméra. Une liste du contenu sera donnée et pour se saisir d’un élément, il faudra cliquer dessus avec l’icône appropriée. Pareil pour toute autre action possible si besoin (voire au dessus avec Shiva, etc.). Comme dans l’inventaire…
 	S’il doit y avoir un commentaire de Rowena parce qu’elle a pris un truc ou parce qu’il n’y a rien qu’elle veuille prendre, alors son commentaire s’affichera après que la zone de contenu soit fermée.
 
