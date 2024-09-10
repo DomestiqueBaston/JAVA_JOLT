@@ -864,7 +864,7 @@ func _update_current_prop():
 		$UI.clear_available_cursors()
 		return
 
-	print(_get_prop_name(top_collider))
+	#print(_get_prop_name(top_collider))
 	var actions: Array[int] = [Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE]
 
 	match current_prop:
