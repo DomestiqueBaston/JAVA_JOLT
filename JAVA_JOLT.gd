@@ -1196,11 +1196,19 @@ func _on_ui_drawer_item_picked(which: int):
 			$UI.remove_from_drawer(which)
 
 func _on_ui_drawer_closed():
-	if is_object_taken_from_drawer:
-		match $BACKGROUND.get_open_object():
-			Globals.Prop.KITCHEN_TOOLS_DRAWER:
+	match $BACKGROUND.get_open_object():
+		Globals.Prop.DRAWER_LEFT_1:
+			if is_object_taken_from_drawer:
+				_set_comment("Could be useful. Some day...")
+			else:
+				_set_comment("Maybe next time...")
+		Globals.Prop.KITCHEN_TOOLS_DRAWER:
+			if is_object_taken_from_drawer:
 				_set_comment("My childhood dream was to have a wooden spoon...")
-			Globals.Prop.CUTLERY_DRAWER:
+			else:
+				_set_comment("Never mind...")
+		Globals.Prop.CUTLERY_DRAWER:
+			if is_object_taken_from_drawer:
 				const reactions = [
 					"Great!",
 					"Amazing!",
@@ -1209,3 +1217,5 @@ func _on_ui_drawer_closed():
 				]
 				var which = randi_range(0, reactions.size() - 1)
 				_set_comment(reactions[which])
+			else:
+				_set_comment("Well, anyway...")
