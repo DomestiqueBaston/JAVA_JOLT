@@ -513,6 +513,7 @@ func _close_inventory():
 			_set_mouse_cursor(_available_cursors[0])
 
 	if mode == InventoryMode.DRAWER:
+		await $Inventory_AnimationPlayer.animation_finished
 		drawer_closed.emit()
 
 func _update_inventory_labels():
