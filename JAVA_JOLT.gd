@@ -314,6 +314,8 @@ const prop_info: Array[String] = [
 	"Do you want to close the drawer?",
 	# CUTLERY_DRAWER_OPEN
 	"Do you want to close the drawer?",
+	# OVEN_BOTTOM_OPEN
+	"Do you want to close that?",
 ]
 
 const open_close_door: Dictionary = {
@@ -328,6 +330,7 @@ const open_close_door: Dictionary = {
 	Globals.Prop.KITCHEN_TOOLS_DRAWER: Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN,
 	Globals.Prop.CUTLERY_DRAWER: Globals.Prop.CUTLERY_DRAWER_OPEN,
 	Globals.Prop.OVEN: Globals.Prop.OVEN_OPEN_DOOR,
+	Globals.Prop.OVEN_BOTTOM: Globals.Prop.OVEN_BOTTOM_OPEN,
 	Globals.Prop.DISHWASHER: Globals.Prop.DISHWASHER_OPEN_DOOR,
 	Globals.Prop.LEFT_GLASS_CUPBOARD: Globals.Prop.LEFT_GLASS_CUPBOARD_OPEN_DOOR,
 	Globals.Prop.RIGHT_GLASS_CUPBOARD: Globals.Prop.RIGHT_GLASS_CUPBOARD_OPEN_DOOR,
@@ -653,6 +656,9 @@ func _perform_hand_action():
 		Globals.Prop.CUTLERY_DRAWER, \
 		Globals.Prop.CUTLERY_DRAWER_OPEN:
 			_show_cutlery_drawer()
+		Globals.Prop.OVEN_BOTTOM, \
+		Globals.Prop.OVEN_BOTTOM_OPEN:
+			_show_oven_bottom()
 
 	if take_label:
 		if $UI.is_inventory_full():
@@ -695,6 +701,8 @@ func _perform_open_action():
 			_show_kitchen_tools_drawer()
 		Globals.Prop.CUTLERY_DRAWER:
 			_show_cutlery_drawer()
+		Globals.Prop.OVEN_BOTTOM:
+			_show_oven_bottom()
 		Globals.Prop.COFFEE_CUPBOARD:
 			_set_comment("I like rubbing salt in the wound.")
 
@@ -996,7 +1004,8 @@ func _update_current_prop():
 		Globals.Prop.DRAWER_LEFT_3, \
 		Globals.Prop.PRIVATE_DRAWER, \
 		Globals.Prop.KITCHEN_TOOLS_DRAWER, \
-		Globals.Prop.CUTLERY_DRAWER:
+		Globals.Prop.CUTLERY_DRAWER, \
+		Globals.Prop.OVEN_BOTTOM:
 			if $BACKGROUND.get_open_object() == current_prop:
 				actions.append(Globals.Cursor.HAND)
 			else:
@@ -1007,7 +1016,8 @@ func _update_current_prop():
 		Globals.Prop.DRAWER_LEFT_3_OPEN, \
 		Globals.Prop.PRIVATE_DRAWER_OPEN, \
 		Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN, \
-		Globals.Prop.CUTLERY_DRAWER_OPEN:
+		Globals.Prop.CUTLERY_DRAWER_OPEN, \
+		Globals.Prop.OVEN_BOTTOM_OPEN:
 			actions.append(Globals.Cursor.HAND)
 			actions.append(Globals.Cursor.CLOSE)
 
@@ -1151,6 +1161,13 @@ func _show_cutlery_drawer():
 		contents[Globals.Prop.CUTLERY_KNIVES] = "Knives"
 	if $UI.find_in_inventory(Globals.Prop.CUTLERY_SPOONS) < 0:
 		contents[Globals.Prop.CUTLERY_SPOONS] = "Spoons"
+	is_object_taken_from_drawer = false
+	$UI.open_drawer(contents)
+
+func _show_oven_bottom():
+	var contents = {}
+	if $UI.find_in_inventory(Globals.Prop.BURNT_PIZZA) < 0:
+		contents[Globals.Prop.BURNT_PIZZA] = "Burnt pizza"
 	is_object_taken_from_drawer = false
 	$UI.open_drawer(contents)
 

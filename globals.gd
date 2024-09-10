@@ -249,6 +249,7 @@ enum Prop {
 	PRIVATE_DRAWER_OPEN,
 	KITCHEN_TOOLS_DRAWER_OPEN,
 	CUTLERY_DRAWER_OPEN,
+	OVEN_BOTTOM_OPEN,
 	
 	# props below VISIBLE_PROP_COUNT are not actually visible in the scene, so
 	# they have no colliders (e.g. the contents of drawers)
@@ -263,4 +264,5 @@ enum Prop {
 	CUTLERY_FORKS,
 	CUTLERY_KNIVES,
 	CUTLERY_SPOONS,
+	BURNT_PIZZA,
 }

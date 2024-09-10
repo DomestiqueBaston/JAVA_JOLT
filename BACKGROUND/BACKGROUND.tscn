@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=87 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://5xlfg46qn7ck" path="res://BACKGROUND/TOP_LEFT_DRAWER.tscn" id="35_f2d87"]
 [ext_resource type="PackedScene" uid="uid://bioklxmuctgx3" path="res://BACKGROUND/MID_LEFT_DRAWER.tscn" id="36_fn6tv"]
 [ext_resource type="PackedScene" uid="uid://b4o6l6ik45oxv" path="res://BACKGROUND/BOTTOM_LEFT_DRAWER.tscn" id="37_xkxvi"]
+[ext_resource type="PackedScene" uid="uid://bou50y45l6m8r" path="res://BACKGROUND/OVEN_BOTTOM.tscn" id="38_yr3rx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -318,6 +319,9 @@ visible = false
 [node name="Bottom_Left_Drawer" parent="Open_Objects" instance=ExtResource("37_xkxvi")]
 visible = false
 
+[node name="Oven_Bottom" parent="Open_Objects" instance=ExtResource("38_yr3rx")]
+visible = false
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
@@ -411,10 +415,11 @@ collision_mask = 5
 shape = SubResource("RectangleShape2D_b6a20")
 
 [node name="Oven_Bottom_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+position = Vector2(59.5, 62.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Oven_Bottom" type="CollisionShape2D" parent="Stuff_Colliders/Low/Oven_Bottom_Collider"]
-position = Vector2(59.5, 62.5)
 shape = SubResource("RectangleShape2D_45k5q")
 
 [node name="DishWasher_Collider" type="Area2D" parent="Stuff_Colliders/Low"]

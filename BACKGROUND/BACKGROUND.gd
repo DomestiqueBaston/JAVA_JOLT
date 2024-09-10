@@ -80,6 +80,7 @@ var _open_object = -1
 	Globals.Prop.KITCHEN_TOOLS_DRAWER: $Open_Objects/Kitchen_Tools_Drawer,
 	Globals.Prop.CUTLERY_DRAWER: $Open_Objects/Cutlery_Drawer,
 	Globals.Prop.OVEN: $Open_Objects/Oven,
+	Globals.Prop.OVEN_BOTTOM: $Open_Objects/Oven_Bottom,
 	Globals.Prop.DISHWASHER: $Open_Objects/Dishwasher_Open,
 	Globals.Prop.LEFT_GLASS_CUPBOARD: $Open_Objects/Left_Glass_Cupboard,
 	Globals.Prop.RIGHT_GLASS_CUPBOARD: $Open_Objects/Right_Glass_Cupboard,
@@ -115,6 +116,8 @@ var _open_object = -1
 	Globals.Prop.CUTLERY_DRAWER_OPEN: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.OVEN: $Sounds/Fridge_Open_Close,
 	Globals.Prop.OVEN_OPEN_DOOR: $Sounds/Fridge_Open_Close,
+	Globals.Prop.OVEN_BOTTOM: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.OVEN_BOTTOM_OPEN: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.DISHWASHER: $Sounds/Fridge_Open_Close,
 	Globals.Prop.DISHWASHER_OPEN_DOOR: $Sounds/Fridge_Open_Close,
 	Globals.Prop.LEFT_GLASS_CUPBOARD: $Sounds/Cupboard_Open_Close,
@@ -253,6 +256,8 @@ func set_object_visible(which: int, vis: bool):
 				$Open_Objects/Kitchen_Tools_Drawer.visible = not vis
 			Globals.Prop.CUTLERY_DRAWER_OPEN:
 				$Open_Objects/Cutlery_Drawer.visible = not vis
+			Globals.Prop.OVEN_BOTTOM_OPEN:
+				$Open_Objects/Oven_Bottom.visible = not vis
 	elif which <= Globals.Prop.REFRIGERATOR_RIGHT_END:
 		$Open_Objects/Refrigerator_Right.set_object_visible(which, vis)
 	elif which <= Globals.Prop.REFRIGERATOR_LEFT_END:
