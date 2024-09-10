@@ -35,7 +35,7 @@ const prop_info: Array[String] = [
 	# CLEANING_CLOSET
 	"That's where I put my cleaning stuff.",
 	# DRAWER_LEFT_1
-	"That's my junk drawer.",
+	"My useful junk drawer!",
 	# DRAWER_LEFT_2
 	"That drawer is empty.",
 	# DRAWER_LEFT_3
@@ -302,6 +302,12 @@ const prop_info: Array[String] = [
 	"Those are plates.",
 	# RIGHT_GLASS_CUPBOARD_OPEN_DOOR
 	"Do you want to close the cupboard?",
+	# DRAWER_LEFT_1_OPEN
+	"Do you want to close the drawer?",
+	# DRAWER_LEFT_2_OPEN
+	"Do you want to close the drawer?",
+	# DRAWER_LEFT_3_OPEN
+	"Do you want to close the drawer?",
 	# PRIVATE_DRAWER_OPEN
 	"Would you close that, please?",
 	# KITCHEN_TOOLS_DRAWER_OPEN
@@ -315,6 +321,9 @@ const open_close_door: Dictionary = {
 	Globals.Prop.RECYCLING_CLOSET: Globals.Prop.RECYCLING_CLOSET_OPEN_DOOR,
 	Globals.Prop.UNDER_SINK_CABINET: Globals.Prop.UNDER_SINK_OPEN_DOOR,
 	Globals.Prop.CLEANING_CLOSET: Globals.Prop.CLEANING_CLOSET_OPEN_DOOR,
+	Globals.Prop.DRAWER_LEFT_1: Globals.Prop.DRAWER_LEFT_1_OPEN,
+	Globals.Prop.DRAWER_LEFT_2: Globals.Prop.DRAWER_LEFT_2_OPEN,
+	Globals.Prop.DRAWER_LEFT_3: Globals.Prop.DRAWER_LEFT_3_OPEN,
 	Globals.Prop.PRIVATE_DRAWER: Globals.Prop.PRIVATE_DRAWER_OPEN,
 	Globals.Prop.KITCHEN_TOOLS_DRAWER: Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN,
 	Globals.Prop.CUTLERY_DRAWER: Globals.Prop.CUTLERY_DRAWER_OPEN,
@@ -629,6 +638,12 @@ func _perform_hand_action():
 		Globals.Prop.PLATES_2:
 			take_label = "Plate"
 			take_msg = "Nice and clean."
+		Globals.Prop.DRAWER_LEFT_1, \
+		Globals.Prop.DRAWER_LEFT_1_OPEN:
+			_show_junk_drawer()
+		Globals.Prop.DRAWER_LEFT_2, \
+		Globals.Prop.DRAWER_LEFT_2_OPEN:
+			_show_empty_drawer()
 		Globals.Prop.PRIVATE_DRAWER, \
 		Globals.Prop.PRIVATE_DRAWER_OPEN:
 			_show_private_drawer()
@@ -669,6 +684,11 @@ func _perform_open_action():
 	await $ROWENA.get_something_done
 
 	match object_to_open:
+		Globals.Prop.DRAWER_LEFT_1:
+			_show_junk_drawer()
+		Globals.Prop.DRAWER_LEFT_2, \
+		Globals.Prop.DRAWER_LEFT_3:
+			_show_empty_drawer()
 		Globals.Prop.PRIVATE_DRAWER:
 			_show_private_drawer()
 		Globals.Prop.KITCHEN_TOOLS_DRAWER:
@@ -971,6 +991,9 @@ func _update_current_prop():
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 
+		Globals.Prop.DRAWER_LEFT_1, \
+		Globals.Prop.DRAWER_LEFT_2, \
+		Globals.Prop.DRAWER_LEFT_3, \
 		Globals.Prop.PRIVATE_DRAWER, \
 		Globals.Prop.KITCHEN_TOOLS_DRAWER, \
 		Globals.Prop.CUTLERY_DRAWER:
@@ -979,6 +1002,9 @@ func _update_current_prop():
 			else:
 				actions.append(Globals.Cursor.OPEN)
 
+		Globals.Prop.DRAWER_LEFT_1_OPEN, \
+		Globals.Prop.DRAWER_LEFT_2_OPEN, \
+		Globals.Prop.DRAWER_LEFT_3_OPEN, \
 		Globals.Prop.PRIVATE_DRAWER_OPEN, \
 		Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN, \
 		Globals.Prop.CUTLERY_DRAWER_OPEN:
@@ -1091,6 +1117,18 @@ func _on_ui_quit_aborted():
 	is_quitting = false
 	$ROWENA.abort_walk_to_area()
 
+func _show_junk_drawer():
+	var contents = {}
+	if $UI.find_in_inventory(Globals.Prop.COFFEE_FILTER) < 0:
+		contents[Globals.Prop.COFFEE_FILTER] = "Coffee filter"
+	if $UI.find_in_inventory(Globals.Prop.SCOTCH_TAPE) < 0:
+		contents[Globals.Prop.SCOTCH_TAPE] = "Scotch tape"
+	is_object_taken_from_drawer = false
+	$UI.open_drawer(contents)
+
+func _show_empty_drawer():
+	_set_comment("It's empty.")
+
 func _show_private_drawer():
 	_set_comment("No one must know what's inside this drawer.")
 
@@ -1123,6 +1161,10 @@ func _on_ui_drawer_item_picked(which: int):
 	else:
 		var add_label = ""
 		match which:
+			Globals.Prop.COFFEE_FILTER:
+				add_label = "Coffee filter"
+			Globals.Prop.SCOTCH_TAPE:
+				add_label = "Scotch tape"
 			Globals.Prop.WOODEN_SPOON:
 				add_label = "Wooden spoon"
 			Globals.Prop.CUTLERY_FORKS:

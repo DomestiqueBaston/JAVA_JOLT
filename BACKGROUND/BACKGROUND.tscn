@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=86 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -36,6 +36,9 @@
 [ext_resource type="PackedScene" uid="uid://ygsahuj4jtn3" path="res://BACKGROUND/CUTLERY_DRAWER.tscn" id="32_viuox"]
 [ext_resource type="PackedScene" uid="uid://bsf8xurtyvxn3" path="res://BACKGROUND/KITCHEN_TOOLS_DRAWER.tscn" id="33_ykfsf"]
 [ext_resource type="PackedScene" uid="uid://1a8w284kxpin" path="res://BACKGROUND/PRIVATE_DRAWER.tscn" id="34_hjh43"]
+[ext_resource type="PackedScene" uid="uid://5xlfg46qn7ck" path="res://BACKGROUND/TOP_LEFT_DRAWER.tscn" id="35_f2d87"]
+[ext_resource type="PackedScene" uid="uid://bioklxmuctgx3" path="res://BACKGROUND/MID_LEFT_DRAWER.tscn" id="36_fn6tv"]
+[ext_resource type="PackedScene" uid="uid://b4o6l6ik45oxv" path="res://BACKGROUND/BOTTOM_LEFT_DRAWER.tscn" id="37_xkxvi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj11s"]
 size = Vector2(12, 16)
@@ -306,6 +309,15 @@ visible = false
 [node name="Private_Drawer" parent="Open_Objects" instance=ExtResource("34_hjh43")]
 visible = false
 
+[node name="Top_Left_Drawer" parent="Open_Objects" instance=ExtResource("35_f2d87")]
+visible = false
+
+[node name="Mid_Left_Drawer" parent="Open_Objects" instance=ExtResource("36_fn6tv")]
+visible = false
+
+[node name="Bottom_Left_Drawer" parent="Open_Objects" instance=ExtResource("37_xkxvi")]
+visible = false
+
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Low" type="Node2D" parent="Stuff_Colliders"]
@@ -343,24 +355,27 @@ collision_mask = 5
 shape = SubResource("RectangleShape2D_o8upq")
 
 [node name="Drawer_Left_1_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+position = Vector2(43.5, 43)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Drawer_Left_1" type="CollisionShape2D" parent="Stuff_Colliders/Low/Drawer_Left_1_Collider"]
-position = Vector2(43.5, 43)
 shape = SubResource("RectangleShape2D_kny74")
 
 [node name="Drawer_Left_2_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+position = Vector2(43.5, 48)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Drawer_Left_2" type="CollisionShape2D" parent="Stuff_Colliders/Low/Drawer_Left_2_Collider"]
-position = Vector2(43.5, 48)
 shape = SubResource("RectangleShape2D_koqen")
 
 [node name="Drawer_Left_3_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
+position = Vector2(43.5, 53.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Drawer_Left_3" type="CollisionShape2D" parent="Stuff_Colliders/Low/Drawer_Left_3_Collider"]
-position = Vector2(43.5, 53.5)
 shape = SubResource("RectangleShape2D_rcs60")
 
 [node name="Private_Drawer_Collider" type="Area2D" parent="Stuff_Colliders/Low"]
@@ -623,7 +638,6 @@ metadata/bg_level = 1
 
 [node name="Salt" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Salt_Collider"]
 shape = SubResource("RectangleShape2D_olhwm")
-metadata/bg_level = 1
 
 [node name="Toaster_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
@@ -639,7 +653,6 @@ metadata/bg_level = 1
 [node name="Notched_Coffee_Cup_Right" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Notched_Coffee_Cup_Right_Collider"]
 position = Vector2(131, 38)
 shape = SubResource("RectangleShape2D_hney6")
-metadata/bg_level = 1
 
 [node name="Pepper_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 position = Vector2(139, 37)
@@ -649,7 +662,6 @@ metadata/bg_level = 1
 
 [node name="Pepper" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Pepper_Collider"]
 shape = SubResource("RectangleShape2D_fc325")
-metadata/bg_level = 1
 
 [node name="Rice_Pot_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2
@@ -711,7 +723,6 @@ metadata/bg_level = 1
 
 [node name="Red_Coffee_Cup_Left" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Red_Coffee_Cup_Left_Collider"]
 shape = SubResource("RectangleShape2D_lkco4")
-metadata/bg_level = 1
 
 [node name="Brown_Coffee_Cup_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
 collision_layer = 2

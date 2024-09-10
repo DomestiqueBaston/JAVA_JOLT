@@ -25,7 +25,6 @@ metadata/bg_level = 1
 [node name="Recycling_Bin" type="CollisionShape2D" parent="Stuff_Colliders/Recycling_Bin_Collider"]
 position = Vector2(92.5, 54.5)
 shape = SubResource("RectangleShape2D_qw3q8")
-metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
 position = Vector2(87, 51.5)
@@ -35,4 +34,3 @@ metadata/bg_level = 1
 
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
 shape = SubResource("RectangleShape2D_6gyua")
-metadata/bg_level = 1

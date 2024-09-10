@@ -61,13 +61,11 @@ metadata/bg_level = 1
 
 [node name="Wine_Glasses" type="CollisionShape2D" parent="Stuff_Colliders/Wine_Glasses_Collider"]
 shape = SubResource("RectangleShape2D_cddej")
-metadata/bg_level = 1
 
 [node name="Wine_Glasses_Out" type="CollisionShape2D" parent="Stuff_Colliders/Wine_Glasses_Collider"]
 visible = false
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_h7ps6")
-metadata/bg_level = 1
 
 [node name="Glasses_Collider" type="Area2D" parent="Stuff_Colliders"]
 position = Vector2(43, 16)
@@ -77,14 +75,12 @@ metadata/bg_level = 1
 
 [node name="Glasses" type="CollisionShape2D" parent="Stuff_Colliders/Glasses_Collider"]
 shape = SubResource("RectangleShape2D_gvmbi")
-metadata/bg_level = 1
 
 [node name="Glasses_Out" type="CollisionShape2D" parent="Stuff_Colliders/Glasses_Collider"]
 visible = false
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_qpcvb")
 disabled = true
-metadata/bg_level = 1
 
 [node name="Left_Plates_Collider" type="Area2D" parent="Stuff_Colliders"]
 position = Vector2(42.5, 24.5)
@@ -94,14 +90,12 @@ metadata/bg_level = 1
 
 [node name="Left_Plates" type="CollisionShape2D" parent="Stuff_Colliders/Left_Plates_Collider"]
 shape = SubResource("RectangleShape2D_ndtfm")
-metadata/bg_level = 1
 
 [node name="Left_Plates_Out" type="CollisionShape2D" parent="Stuff_Colliders/Left_Plates_Collider"]
 visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_11ehp")
 disabled = true
-metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
 position = Vector2(39, 15.5)
@@ -111,4 +105,3 @@ metadata/bg_level = 1
 
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
 shape = SubResource("RectangleShape2D_rw0o3")
-metadata/bg_level = 1

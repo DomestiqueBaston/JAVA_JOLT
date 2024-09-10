@@ -23,4 +23,3 @@ metadata/bg_level = 1
 
 [node name="Kitchen_Tools_Drawer_Open" type="CollisionShape2D" parent="Stuff_Colliders/Kitchen_Tools_Drawer_Open_Collider"]
 shape = SubResource("RectangleShape2D_8kam8")
-metadata/bg_level = 1

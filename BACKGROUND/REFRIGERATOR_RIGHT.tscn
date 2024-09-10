@@ -216,9 +216,11 @@ texture = ExtResource("6_h65x4")
 centered = false
 
 [node name="Yoghurts_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
 texture = ExtResource("7_makik")
 centered = false
 
 [node name="Eggs_Out" type="Sprite2D" parent="Removed_Objects"]
+visible = false
 texture = ExtResource("8_iyh0l")
 centered = false

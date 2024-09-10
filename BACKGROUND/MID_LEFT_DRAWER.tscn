@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bioklxmuctgx3"]
+[gd_scene load_steps=4 format=3 uid="uid://bioklxmuctgx3"]
 
+[ext_resource type="Script" path="res://BACKGROUND/MID_LEFT_DRAWER.gd" id="1_be3m7"]
 [ext_resource type="Texture2D" uid="uid://vx2nesh21fuo" path="res://BACKGROUND/IMAGES/Mid_Left_Drawer_Open.png" id="1_nsaqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o210j"]
 size = Vector2(13, 4)
 
 [node name="Mid_Left_Drawer" type="Node2D"]
+script = ExtResource("1_be3m7")
 
 [node name="Mid_Left_Drawer_Open" type="Sprite2D" parent="."]
 texture = ExtResource("1_nsaqd")
@@ -14,9 +16,10 @@ centered = false
 [node name="Stuff_Colliders" type="Node2D" parent="."]
 
 [node name="Mid_Left_Drawer_Collider" type="Area2D" parent="Stuff_Colliders"]
+position = Vector2(46.5, 48)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Mid_Left_Drawer" type="CollisionShape2D" parent="Stuff_Colliders/Mid_Left_Drawer_Collider"]
-position = Vector2(46.5, 48)
 shape = SubResource("RectangleShape2D_o210j")
-metadata/bg_level = 1

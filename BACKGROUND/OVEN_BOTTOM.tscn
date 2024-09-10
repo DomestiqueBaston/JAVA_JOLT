@@ -18,4 +18,3 @@ centered = false
 [node name="Door" type="CollisionShape2D" parent="Door_Collider"]
 position = Vector2(67, 62.5)
 shape = SubResource("RectangleShape2D_x36xk")
-metadata/bg_level = 1

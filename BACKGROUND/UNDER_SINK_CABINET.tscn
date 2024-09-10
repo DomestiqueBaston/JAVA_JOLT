@@ -52,7 +52,6 @@ metadata/bg_level = 3
 
 [node name="Extinguisher" type="CollisionShape2D" parent="Stuff_Colliders/Extinguisher_Collider"]
 shape = SubResource("RectangleShape2D_ru616")
-metadata/bg_level = 2
 
 [node name="Plastic_Baskets_Collider" type="Area2D" parent="Stuff_Colliders"]
 position = Vector2(111, 55.5)
@@ -61,7 +60,6 @@ metadata/bg_level = 2
 
 [node name="Plastic_Baskets" type="CollisionShape2D" parent="Stuff_Colliders/Plastic_Baskets_Collider"]
 shape = SubResource("RectangleShape2D_ywmpa")
-metadata/bg_level = 1
 
 [node name="Plunger_Collider" type="Area2D" parent="Stuff_Colliders"]
 position = Vector2(103.5, 56.5)
@@ -71,7 +69,6 @@ metadata/bg_level = 3
 
 [node name="Plunger" type="CollisionShape2D" parent="Stuff_Colliders/Plunger_Collider"]
 shape = SubResource("RectangleShape2D_ac2vl")
-metadata/bg_level = 2
 
 [node name="Trash_Collider" type="Area2D" parent="Stuff_Colliders"]
 position = Vector2(100.5, 55)
@@ -81,7 +78,6 @@ metadata/bg_level = 2
 
 [node name="Trash" type="CollisionShape2D" parent="Stuff_Colliders/Trash_Collider"]
 shape = SubResource("RectangleShape2D_r3db8")
-metadata/bg_level = 1
 
 [node name="Door_Collider" type="Area2D" parent="."]
 position = Vector2(106.5, 51.5)
@@ -92,9 +88,7 @@ metadata/bg_level = 1
 [node name="Door_1" type="CollisionShape2D" parent="Door_Collider"]
 position = Vector2(-14, 0)
 shape = SubResource("RectangleShape2D_qi7rc")
-metadata/bg_level = 1
 
 [node name="Door_2" type="CollisionShape2D" parent="Door_Collider"]
 position = Vector2(12, 0)
 shape = SubResource("RectangleShape2D_rlv1w")
-metadata/bg_level = 1

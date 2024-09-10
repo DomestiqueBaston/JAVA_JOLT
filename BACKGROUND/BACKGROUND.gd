@@ -73,6 +73,9 @@ var _open_object = -1
 	Globals.Prop.RECYCLING_CLOSET: $Open_Objects/Recycling_Closet,
 	Globals.Prop.UNDER_SINK_CABINET: $Open_Objects/Under_Sink_Cabinet,
 	Globals.Prop.CLEANING_CLOSET: $Open_Objects/Cleaning_Closet,
+	Globals.Prop.DRAWER_LEFT_1: $Open_Objects/Top_Left_Drawer,
+	Globals.Prop.DRAWER_LEFT_2: $Open_Objects/Mid_Left_Drawer,
+	Globals.Prop.DRAWER_LEFT_3: $Open_Objects/Bottom_Left_Drawer,
 	Globals.Prop.PRIVATE_DRAWER: $Open_Objects/Private_Drawer,
 	Globals.Prop.KITCHEN_TOOLS_DRAWER: $Open_Objects/Kitchen_Tools_Drawer,
 	Globals.Prop.CUTLERY_DRAWER: $Open_Objects/Cutlery_Drawer,
@@ -98,6 +101,12 @@ var _open_object = -1
 	Globals.Prop.UNDER_SINK_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.CLEANING_CLOSET: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.CLEANING_CLOSET_OPEN_DOOR: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.DRAWER_LEFT_1: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.DRAWER_LEFT_1_OPEN: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.DRAWER_LEFT_2: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.DRAWER_LEFT_2_OPEN: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.DRAWER_LEFT_3: $Sounds/Cupboard_Open_Close,
+	Globals.Prop.DRAWER_LEFT_3_OPEN: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.PRIVATE_DRAWER: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.PRIVATE_DRAWER_OPEN: $Sounds/Cupboard_Open_Close,
 	Globals.Prop.KITCHEN_TOOLS_DRAWER: $Sounds/Cupboard_Open_Close,
@@ -232,6 +241,12 @@ func set_object_visible(which: int, vis: bool):
 			Globals.Prop.KETTLE:
 				$Removed_Objects/Kettle_Out.visible = not vis
 				$Stuff_Colliders/Mid/Kettle_Collider.monitoring = vis
+			Globals.Prop.DRAWER_LEFT_1_OPEN:
+				$Open_Objects/Top_Left_Drawer.visible = not vis
+			Globals.Prop.DRAWER_LEFT_2_OPEN:
+				$Open_Objects/Mid_Left_Drawer.visible = not vis
+			Globals.Prop.DRAWER_LEFT_3_OPEN:
+				$Open_Objects/Bottom_Left_Drawer.visible = not vis
 			Globals.Prop.PRIVATE_DRAWER_OPEN:
 				$Open_Objects/Private_Drawer.visible = not vis
 			Globals.Prop.KITCHEN_TOOLS_DRAWER_OPEN:
