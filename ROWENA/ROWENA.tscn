@@ -576,7 +576,7 @@ autoplay = "Wait_Base"
 
 [node name="Foot_Steps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_72jic")
-volume_db = -20.0
+volume_db = -15.0
 bus = &"FX"
 
 [node name="Spitting_Out" type="AudioStreamPlayer" parent="."]
