@@ -142,7 +142,7 @@ Le four : « My oven… » Quand il est ouvert «It's as empty as space is !
 
 	Dans le four (3 empty spaces) : « I'd have to clean it, it's so gross. » (elle ne prend pas)
 
-	Dans le tiroir sous le four : « It’s filled with burnt pizza remains... » quand on regarde le collider quand il est ouvert (elle ne prend pas)
+	Dans le tiroir sous le four : « It’s filled with burnt pizza remains... » quand on regarde le collider quand il est ouvert (elle ne prend pas). Quand on ferme la zone de dialogue de contenu du tiroir, Rowena dira « See ? »
 
 Cuttlery drawer : « That’s a nice Cuttlery drawer, isn’t it ? »
 
@@ -160,8 +160,9 @@ Kitchen Tool drawer : « Here I store useless stuff like a garlic press. »
 
 	Un garlic press et un corkscrew dans le tiroir d’outils de cuisine : (elle ne prend pas)
 
-
 	Une wooden spoon : « My childhood dream was to have a wooden spoon. » (après avoir fermé le tiroir)
+
+	À la fermeture de la zone de dialogue, elle dit « Well, anyway... » si elle n’a rien pris. Si elle a pris la Wooden spoon, elle dira « 
 
 Sur la gazinière :
 
@@ -347,6 +348,8 @@ Top Left Drawer : « My useful junk drawer ! »
 	Un filtre à café
 
 	Le rouleau de scotch
+
+	Quand Rowena a pris 1 ou 2 des objets, à la fermeture de la zone de dialogue, elle dit « ‘Could be useful… Someday... »
 
 
 The Recycling Closet : « That’s the recycling closet ».
