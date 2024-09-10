@@ -837,7 +837,7 @@ func _get_prop_name(prop) -> String:
 #
 func _update_current_prop():
 	var top_prop = -1
-	var top_collider: Area2D
+	#var top_collider: Area2D
 
 	# fetch the topmost object in contact with the mouse collider
 
@@ -849,7 +849,7 @@ func _update_current_prop():
 			if bg_level < level:
 				bg_level = level
 				top_prop = key
-				top_collider = collider
+				#top_collider = collider
 
 	# already the current prop: do nothing
 
