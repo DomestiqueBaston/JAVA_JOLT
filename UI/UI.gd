@@ -549,6 +549,13 @@ func find_in_inventory(item: int) -> int:
 	return _inventory_contents.keys().find(item)
 
 ##
+## Returns the current contents of the inventory: a Dictionary mapping object
+## numbers (from [enum Globals.Prop]) to their labels.
+##
+func get_inventory() -> Dictionary:
+	return _inventory_contents
+
+##
 ## This can be used either to add an item to the inventory or to update the
 ## label of an item that is already there. It is assumed that the inventory has
 ## room for the new item, if it is not already there.

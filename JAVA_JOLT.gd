@@ -14,6 +14,11 @@ extends Node2D
 
 @export var skip_dialogues: bool = false
 
+## Signal emitted when the player quits the game. If this node is parented
+## directly to the root of the scene tree, no signal is emitted: the node quits
+## immediately.
+signal quit
+
 # Current chapter of the story.
 var current_chapter: int = 1
 
@@ -360,6 +365,13 @@ var is_quitting := false
 
 func _ready():
 	assert(prop_info.size() == Globals.Prop.VISIBLE_PROP_COUNT)
+
+##
+## Call this to start the game from the beginning, as if this is the first time
+## it has been played.
+##
+func start():
+	current_chapter = 1
 	if not skip_dialogues:
 		await $UI.tell_story(current_chapter)
 	$UI.pin_help_button()
@@ -1121,7 +1133,10 @@ func _on_inventory_item_removed(which: int):
 
 func _on_rowena_target_area_reached():
 	if is_quitting:
-		get_tree().quit()
+		if get_parent() == get_tree().root:
+			get_tree().quit()
+		else:
+			quit.emit()
 
 func _on_ui_quit_aborted():
 	is_quitting = false
@@ -1219,3 +1234,29 @@ func _on_ui_drawer_closed():
 				_set_comment(reactions[which])
 			else:
 				_set_comment("Well, anyway...")
+
+##
+## Returns a Dictionary containing data to save the game for later.
+##
+func save_game() -> Dictionary:
+	var dict = {
+		"chapter": current_chapter,
+		"butter-knife-seen": butter_knife_seen,
+		"coffee-maker-seen": coffee_maker_seen,
+		"is-towel-wet": is_towel_wet,
+		"inventory": $UI.get_inventory(),
+	}
+	return dict
+
+##
+## Processes a Dictionary saved previously by [method save_game].
+##
+func load_game(dict: Dictionary):
+	current_chapter = dict.get("chapter", 1)
+	butter_knife_seen = dict.get("butter-knife-seen", false)
+	coffee_maker_seen = dict.get("coffee-maker-seen", false)
+	is_towel_wet = dict.get("is-towel-wet", false)
+	$UI.clear_inventory()
+	var inventory = dict.get("inventory", {})
+	for item in inventory:
+		$UI.add_to_inventory(item as int, inventory[item])
