@@ -1,7 +1,10 @@
 extends Node2D
 
+signal radio_on
+signal intro_done
 
-var next_scene = load("res://JAVA_JOLT.tscn")
+func turn_on_radio():
+	radio_on.emit()
 
-func _on_animation_screens_animation_finished(_anim_name):
-	get_tree().change_scene_to_packed(next_scene)
+func _on_animation_intro_animation_finished(_anim_name):
+	intro_done.emit()
