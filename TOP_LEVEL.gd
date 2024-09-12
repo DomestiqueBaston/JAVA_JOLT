@@ -5,4 +5,4 @@ func _on_intro_radio_on():
 
 func _on_intro_intro_done():
 	$INTRO.queue_free()
-	add_child($JAVA_JOLT.create_instance())
+	$JAVA_JOLT.create_instance()
