@@ -9,9 +9,6 @@ script = ExtResource("1_tomy0")
 
 [node name="INTRO" parent="." instance=ExtResource("2_614r7")]
 
-[node name="JAVA_JOLT" parent="." instance_placeholder="res://JAVA_JOLT.tscn"]
-skip_dialogues = false
-
 [node name="RadioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_is4ym")
 volume_db = -20.0
