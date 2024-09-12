@@ -12,7 +12,13 @@ extends Node2D
 # method will show/hide the object as appropriate, and perhaps enable/disable
 # its collider so it cannot be taken if it is hidden.
 
+## For debugging: don't display any dialogues.
 @export var skip_dialogues: bool = false
+
+## For debugging: if set to 1, 2 or 3, the game starts with that chapter and
+## its associated dialogue. If set to 0, you will want to call either [method
+## start] or [method load_game] to get the game started.
+@export_range(0,3) var auto_start_chapter: int = 1
 
 ## Signal emitted when the player quits the game. If this node is parented
 ## directly to the root of the scene tree, no signal is emitted: the node quits
@@ -365,13 +371,16 @@ var is_quitting := false
 
 func _ready():
 	assert(prop_info.size() == Globals.Prop.VISIBLE_PROP_COUNT)
+	if auto_start_chapter > 0:
+		start(auto_start_chapter)
 
 ##
 ## Call this to start the game from the beginning, as if this is the first time
-## it has been played.
+## it has been played. You can optionally specify a [param chapter] other than
+## the first to start with.
 ##
-func start():
-	current_chapter = 1
+func start(chapter: int = 1):
+	current_chapter = chapter
 	if not skip_dialogues:
 		await $UI.tell_story(current_chapter)
 	$UI.pin_help_button()
@@ -1260,3 +1269,7 @@ func load_game(dict: Dictionary):
 	var inventory = dict.get("inventory", {})
 	for item in inventory:
 		$UI.add_to_inventory(item as int, inventory[item])
+
+func _on_ui_typing_finished(speaker: int):
+	if speaker == Globals.DOCTOR:
+		$ROWENA.respond_to_doctor_maybe()

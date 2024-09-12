@@ -1,6 +1,9 @@
 extends Node
 
+## Skip the intro and go straight to the game.
 @export var skip_intro := false
+
+## Don't display any dialogues.
 @export var skip_dialogues := false
 
 var intro = preload("res://INTRO_OUTRO/INTRO.tscn").instantiate()
@@ -10,6 +13,7 @@ const save_file = "user://save.json"
 
 func _ready():
 	game.skip_dialogues = skip_dialogues
+	game.auto_start_chapter = 0
 	game.quit.connect(_on_quit)
 	get_tree().root.close_requested.connect(_on_close_requested)
 	if skip_intro or FileAccess.file_exists(save_file):

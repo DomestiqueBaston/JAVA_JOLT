@@ -1,5 +1,8 @@
 extends Node
 
+## Characters in the game.
+enum { ROWENA, DOCTOR }
+
 ## Mouse cursors defined in the UI scene.
 enum Cursor {
 	CROSS_PASSIVE,

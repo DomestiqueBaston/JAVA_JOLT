@@ -217,3 +217,22 @@ func _on_animation_started(anim_name: String):
 				_wait_cycle_count = 0
 		$ROWENA_AnimationPlayer.queue(next_anim)
 		_wait_cycle_count += 1
+
+##
+## Plays a reaction animation (Nonsense, Stop_That or WtF), or not, at random.
+## Does nothing if [method is_busy] returns true.
+##
+func respond_to_doctor_maybe():
+	if is_busy():
+		return
+	var f = randf()
+	if f < 0.25:
+		set_physics_process(false)
+		if f < 0.0833:
+			$ROWENA_AnimationPlayer.play("Nonsense")
+		elif f < 0.1667:
+			$ROWENA_AnimationPlayer.play("Stop_That")
+		else:
+			$ROWENA_AnimationPlayer.play("WtF")
+		await $ROWENA_AnimationPlayer.animation_finished
+		set_physics_process(true)

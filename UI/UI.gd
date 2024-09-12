@@ -34,6 +34,10 @@ extends CanvasLayer
 ## If true, only our big cursor is visible.
 @export var hide_system_mouse: bool = false
 
+## Signal emitted during a dialogue, when a line of dialogue finishes typing.
+## [param speaker] is Globals.ROWENA or Globals.DOCTOR.
+signal typing_finished(speaker: int)
+
 ## Signal emitted when user clicks somewhere to move or do something.
 signal click_on_background(pos: Vector2)
 
@@ -57,8 +61,6 @@ signal comment_closed
 ## Signal emitted when the quit process is interrupted by a mouse click.
 signal quit_aborted
 
-enum { ROWENA, DOCTOR }
-
 enum InventoryMode {
 	OFF,
 	INVENTORY,
@@ -67,6 +69,9 @@ enum InventoryMode {
 
 # Color of unhighlighted text options in current dialogue.
 var _choice_text_color: Color
+
+# Current speaker during a dialogue.
+var _current_speaker: int
 
 # Which cursor actions are currently available.
 var _available_cursors: Array[int] = []
@@ -101,9 +106,6 @@ var _is_tutorial_seen: bool = false
 
 # Set by start_quit(), reset by _abort_quit().
 var _is_quitting: bool = false
-
-# Emitted when the typing of a line of dialogue finishes.
-signal _typing_finished
 
 # Emitted when the user clicks on "..." to pass to the next line of dialogue.
 signal _next_click
@@ -185,7 +187,7 @@ func tell_story(which: int):
 func _tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
 	_type_dialogue_text(node.text, speaker)
-	await _typing_finished
+	await typing_finished
 	await _next_click
 	var next = node.get("next")
 	if typeof(next) == TYPE_ARRAY:
@@ -201,10 +203,11 @@ func _tell_story_node(graph, node):
 		_clear_dialogue()
 
 func _get_node_speaker(node) -> int:
-	return ROWENA if node.speaker == "rowena" else DOCTOR
+	return Globals.ROWENA if node.speaker == "rowena" else Globals.DOCTOR
 
-func _set_dialogue_style(speaker: int):
-	if speaker == ROWENA:
+func _set_current_speaker(speaker: int):
+	_current_speaker = speaker
+	if speaker == Globals.ROWENA:
 		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
 		$Typing.pitch_scale = 6
 	else:
@@ -219,13 +222,13 @@ func _clear_dialogue():
 	$Boxes/Dialogue_Box/BG/Next.hide()
 
 func _set_dialogue_text(text: String, speaker: int):
-	_set_dialogue_style(speaker)
+	_set_current_speaker(speaker)
 	$Boxes/Dialogue_Box/BG/Dialogue.text = text
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
 	$Boxes/Dialogue_Box/BG/Next.show()
 
 func _type_dialogue_text(text: String, speaker: int):
-	_set_dialogue_style(speaker)
+	_set_current_speaker(speaker)
 	$Boxes/Dialogue_Box/BG/Dialogue.text = text
 	$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = 0
 	$Boxes/Dialogue_Box/BG/Next.hide()
@@ -233,7 +236,8 @@ func _type_dialogue_text(text: String, speaker: int):
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
 
 func _choose_response(choices: Array[String], speaker: int) -> int:
-	_choice_text_color = rowena_text_color if speaker == ROWENA else doctor_text_color
+	_choice_text_color = \
+		rowena_text_color if speaker == Globals.ROWENA else doctor_text_color
 	$Boxes/Dialogue_Box/BG/Next.hide()
 	$Boxes/Dialogue_Box/BG/Dialogue.text = choices[0]
 	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = _choice_text_color
@@ -262,7 +266,7 @@ func _type_one_character():
 		$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = i
 	if i < 0 or i == n:
 		$Typing_Timer.stop()
-		emit_signal("_typing_finished")
+		typing_finished.emit(_current_speaker)
 		$Boxes/Dialogue_Box/BG/Next.show()
 
 func set_comment_text(text: String, x: float, left_justify: bool):
