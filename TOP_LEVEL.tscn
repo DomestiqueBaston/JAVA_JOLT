@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://TOP_LEVEL.gd" id="1_tomy0"]
 [ext_resource type="PackedScene" uid="uid://dak2h42jqim0i" path="res://INTRO_OUTRO/INTRO.tscn" id="2_614r7"]
-[ext_resource type="AudioStream" uid="uid://dlrhrmwdi7qyx" path="res://Radio.ogg" id="4_br2ei"]
+[ext_resource type="AudioStream" uid="uid://b1pcij7np1r3" path="res://INTRO_OUTRO/SOUNDS/Radio.ogg" id="3_is4ym"]
 
 [node name="TOP_LEVEL" type="Node"]
 script = ExtResource("1_tomy0")
@@ -13,8 +13,8 @@ script = ExtResource("1_tomy0")
 skip_dialogues = false
 
 [node name="RadioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_br2ei")
-volume_db = -22.5
+stream = ExtResource("3_is4ym")
+volume_db = -20.0
 bus = &"MUSIC"
 
 [connection signal="intro_done" from="INTRO" to="." method="_on_intro_intro_done"]
