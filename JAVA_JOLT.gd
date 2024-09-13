@@ -20,6 +20,9 @@ extends Node2D
 ## start] or [method load_game] to get the game started.
 @export_range(0,3) var auto_start_chapter: int = 1
 
+## Radio volume presets in dB. These must be in ascending order.
+@export var volume_presets: Array[float] = [-80, -40, -16, -12.5, -4, -2, 0]
+
 ## Signal emitted when the player quits the game. If this node is parented
 ## directly to the root of the scene tree, no signal is emitted: the node quits
 ## immediately.
@@ -363,8 +366,6 @@ const cant_use_msgs: Array[String] = [
 	"No way, Jose!",
 ]
 
-const volume_settings = [-80, -40, -16, -8, -4, -2, 0]
-
 var butter_knife_seen := false
 var coffee_maker_seen := false
 var is_towel_wet := false
@@ -535,6 +536,9 @@ func _perform_hand_action():
 			take_msg = "OK, if you say so."
 		Globals.Prop.SAUCE_PAN:
 			_set_comment("No, there's still sauce in it.")
+		Globals.Prop.COFFEE_BEANS_1, \
+		Globals.Prop.COFFEE_BEANS_2:
+			pass # TODO
 		Globals.Prop.NEWSPAPER:
 			_set_comment("That'll get me depressed.")
 		Globals.Prop.SMOOTHIE_BOTTLES:
@@ -811,6 +815,16 @@ func _walk_to_prop(
 #
 func _on_background_area_entered_object(which: int, _area: Area2D):
 
+	# coffee beans are not visible until chapter 2, and some are only visible
+	# if you take the salt first
+
+	if which in [Globals.Prop.COFFEE_BEANS_1, Globals.Prop.COFFEE_BEANS_2]:
+		if current_chapter < 2:
+			return
+		if (which == Globals.Prop.COFFEE_BEANS_1
+			and $UI.find_in_inventory(Globals.Prop.SALT) < 0):
+			return
+
 	# add the collider to the set of current colliders and make the topmost
 	# collider the current prop
 
@@ -956,6 +970,8 @@ func _update_current_prop():
 		Globals.Prop.PRESSURE_COOKER, \
 		Globals.Prop.KETTLE, \
 		Globals.Prop.SAUCE_PAN, \
+		Globals.Prop.COFFEE_BEANS_1, \
+		Globals.Prop.COFFEE_BEANS_2, \
 		Globals.Prop.NEWSPAPER, \
 		Globals.Prop.STOOL, \
 		Globals.Prop.CHAIR, \
@@ -1308,40 +1324,40 @@ func _on_ui_typing_finished(speaker: int):
 func _get_radio_volume():
 	var bus = AudioServer.get_bus_index(&"Master")
 	if bus < 0:
-		return volume_settings[0]
+		return volume_presets[0]
 	else:
 		return AudioServer.get_bus_volume_db(bus)
 
 #
 # Sets the radio volume to the given value in dB. If the given volume is not
-# found in volume_settings, a nearby value is used instead.
+# found in volume_presets, a nearby value is used instead.
 #
 func _set_radio_volume(volume):
-	_set_radio_volume_setting(volume_settings.bsearch(volume))
+	_set_radio_volume_preset(volume_presets.bsearch(volume))
 
 #
-# Sets the radio volume to the given setting, which is an index into
-# volume_settings.
+# Sets the radio volume to the given preset, which is an index into
+# volume_presets.
 #
-func _set_radio_volume_setting(setting: int):
+func _set_radio_volume_preset(preset: int):
 	var bus = AudioServer.get_bus_index(&"Master")
 	if bus < 0:
 		return
-	setting = clampi(setting, 0, volume_settings.size() - 1)
-	AudioServer.set_bus_volume_db(bus, volume_settings[setting])
-	$BACKGROUND.set_radio_light_on(setting > 0)
+	preset = clampi(preset, 0, volume_presets.size() - 1)
+	AudioServer.set_bus_volume_db(bus, volume_presets[preset])
+	$BACKGROUND.set_radio_light_on(preset > 0)
 
 #
 # Turns the radio volume up, down or off.
 #
 func _adjust_radio_volume(cursor: int):
 	var volume = _get_radio_volume()
-	var setting = volume_settings.bsearch(volume)
+	var preset = volume_presets.bsearch(volume)
 	match cursor:
 		Globals.Cursor.SOUND_UP:
-			setting += 1
+			preset += 1
 		Globals.Cursor.SOUND_DOWN:
-			setting -= 1
+			preset -= 1
 		Globals.Cursor.NO_SOUND:
-			setting = 0
-	_set_radio_volume_setting(setting)
+			preset = 0
+	_set_radio_volume_preset(preset)
