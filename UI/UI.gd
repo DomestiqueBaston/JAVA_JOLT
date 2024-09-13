@@ -576,11 +576,20 @@ func add_to_inventory(item: int, label: String):
 	if _inventory_mode == InventoryMode.INVENTORY:
 		_update_inventory_labels()
 
+##
+## Removes an item from the inventory, where [param item] is a constant from
+## [enum Globals.Prop]. No [signal inventory_item_removed] signal is emitted.
+##
+func remove_from_inventory(item: int):
+	if (_inventory_contents.erase(item)
+		and _inventory_mode == InventoryMode.INVENTORY):
+		_update_inventory_labels()
+
 #
 # Removes an item from the inventory, where 0 <= index < the number of items
-# in the inventory.
+# in the inventory, and emits an inventory_item_removed signal.
 #
-func _remove_from_inventory(index: int):
+func _remove_from_inventory_user(index: int):
 	var item = _inventory_contents.keys()[index]
 	inventory_item_removed.emit(item)
 	_inventory_contents.erase(item)
@@ -733,7 +742,7 @@ func _click_on_inventory_item():
 					drawer_item_picked.emit(
 						_drawer_contents.keys()[_current_inventory_index])
 			Globals.Cursor.TRASH:
-				_remove_from_inventory(_current_inventory_index)
+				_remove_from_inventory_user(_current_inventory_index)
 				if _inventory_contents.is_empty():
 					_close_inventory()
 				else:
