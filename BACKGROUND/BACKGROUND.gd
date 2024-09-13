@@ -246,6 +246,10 @@ func set_object_visible(which: int, vis: bool):
 			Globals.Prop.KETTLE:
 				$Removed_Objects/Kettle_Out.visible = not vis
 				$Stuff_Colliders/Mid/Kettle_Collider.monitoring = vis
+			Globals.Prop.COFFEE_BEANS_1:
+				$Stuff_Colliders/Mid/Coffee_Beans_1_Collider.monitoring = vis
+			Globals.Prop.COFFEE_BEANS_2:
+				$Stuff_Colliders/Mid/Coffee_Beans_2_Collider.monitoring = vis
 			Globals.Prop.DRAWER_LEFT_1_OPEN:
 				$Open_Objects/Top_Left_Drawer.visible = not vis
 			Globals.Prop.DRAWER_LEFT_2_OPEN:

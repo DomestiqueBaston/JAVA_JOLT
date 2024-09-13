@@ -372,6 +372,12 @@ var is_towel_wet := false
 var is_object_taken_from_drawer := false
 var is_quitting := false
 
+# 0: no coffee beans
+# 1: COFFEE_BEANS_1
+# 2: COFFEE_BEANS_2
+# 3: COFFEE_BEANS_1 and COFFEE_BEANS_2
+var coffee_beans_held: int = 0
+
 func _ready():
 	assert(prop_info.size() == Globals.Prop.VISIBLE_PROP_COUNT)
 	if auto_start_chapter > 0:
@@ -538,7 +544,11 @@ func _perform_hand_action():
 			_set_comment("No, there's still sauce in it.")
 		Globals.Prop.COFFEE_BEANS_1, \
 		Globals.Prop.COFFEE_BEANS_2:
-			pass # TODO
+			if coffee_beans_held > 0:
+				take_label = "Coffee beans (enough)"
+			else:
+				take_label = "Coffee beans (not enough)"
+			take_msg = "Coffee beans!"
 		Globals.Prop.NEWSPAPER:
 			_set_comment("That'll get me depressed.")
 		Globals.Prop.SMOOTHIE_BOTTLES:
@@ -703,7 +713,19 @@ func _perform_hand_action():
 			var collider: Area2D = $BACKGROUND.get_collider(take_prop)
 			$ROWENA.get_something_at(collider.position.y)
 			await $ROWENA.get_something_reached
-			$UI.add_to_inventory(take_prop, take_label)
+
+			# special case for coffee beans: there are two colliders, but in
+			# the inventory they only count for one item
+
+			if take_prop == Globals.Prop.COFFEE_BEANS_1:
+				coffee_beans_held += 1
+				$UI.add_to_inventory(Globals.Prop.COFFEE_BEANS_1, take_label)
+			elif take_prop == Globals.Prop.COFFEE_BEANS_2:
+				coffee_beans_held += 2
+				$UI.add_to_inventory(Globals.Prop.COFFEE_BEANS_1, take_label)
+			else:
+				$UI.add_to_inventory(take_prop, take_label)
+
 			$BACKGROUND.set_object_visible(take_prop, false)
 			await $ROWENA.get_something_done
 
@@ -970,8 +992,6 @@ func _update_current_prop():
 		Globals.Prop.PRESSURE_COOKER, \
 		Globals.Prop.KETTLE, \
 		Globals.Prop.SAUCE_PAN, \
-		Globals.Prop.COFFEE_BEANS_1, \
-		Globals.Prop.COFFEE_BEANS_2, \
 		Globals.Prop.NEWSPAPER, \
 		Globals.Prop.STOOL, \
 		Globals.Prop.CHAIR, \
@@ -1041,6 +1061,13 @@ func _update_current_prop():
 		Globals.Prop.LARGE_BOWLS, \
 		Globals.Prop.PLATES_2:
 			if $UI.find_in_inventory(current_prop) < 0:
+				actions.append(Globals.Cursor.HAND)
+
+		Globals.Prop.COFFEE_BEANS_1:
+			if not (coffee_beans_held & 1):
+				actions.append(Globals.Cursor.HAND)
+		Globals.Prop.COFFEE_BEANS_2:
+			if not (coffee_beans_held & 2):
 				actions.append(Globals.Cursor.HAND)
 
 		Globals.Prop.DRAWER_LEFT_1, \
@@ -1166,7 +1193,18 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 # again.
 #
 func _on_inventory_item_removed(which: int):
-	$BACKGROUND.set_object_visible(which, true)
+
+	# special case for coffee beans: there are two colliders, but in the
+	# inventory they only count for one item
+
+	if which == Globals.Prop.COFFEE_BEANS_1:
+		if coffee_beans_held & 1:
+			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_1, true)
+		if coffee_beans_held & 2:
+			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_2, true)
+		coffee_beans_held = 0
+	else:
+		$BACKGROUND.set_object_visible(which, true)
 
 func _on_rowena_target_area_reached():
 	if is_quitting:
@@ -1281,6 +1319,7 @@ func save_game() -> Dictionary:
 		"butter-knife-seen": butter_knife_seen,
 		"coffee-maker-seen": coffee_maker_seen,
 		"is-towel-wet": is_towel_wet,
+		"coffee-beans-held": coffee_beans_held,
 		"inventory": $UI.get_inventory(),
 		"tutorial-seen": $UI.is_tutorial_seen(),
 		"open-object": $BACKGROUND.get_open_object(),
@@ -1297,10 +1336,19 @@ func load_game(dict: Dictionary):
 	coffee_maker_seen = dict.get("coffee-maker-seen", false)
 	is_towel_wet = dict.get("is-towel-wet", false)
 
+	coffee_beans_held = dict.get("coffee-beans-held", 0)
+	if coffee_beans_held & 1:
+		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_1, false)
+	if coffee_beans_held & 2:
+		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_2, false)
+
 	$UI.clear_inventory()
 	var inventory = dict.get("inventory", {})
 	for item in inventory:
-		$UI.add_to_inventory(item as int, inventory[item])
+		var index = item as int
+		$UI.add_to_inventory(index, inventory[item])
+		if index != Globals.Prop.COFFEE_BEANS_1:
+			$BACKGROUND.set_object_visible(index, false)
 
 	if dict.has("tutorial-seen"):
 		if dict["tutorial-seen"]:
