@@ -290,3 +290,9 @@ func set_object_visible(which: int, vis: bool):
 		$Open_Objects/Recycling_Closet.set_object_visible(which, vis)
 	elif which <= Globals.Prop.RIGHT_GLASS_CUPBOARD_END:
 		$Open_Objects/Right_Glass_Cupboard.set_object_visible(which, vis)
+
+##
+## Turns the radio light on or off.
+##
+func set_radio_light_on(on: bool):
+	$Radio_On_Lights_On.visible = on

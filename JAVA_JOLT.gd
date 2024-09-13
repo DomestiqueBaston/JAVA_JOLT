@@ -363,6 +363,8 @@ const cant_use_msgs: Array[String] = [
 	"No way, Jose!",
 ]
 
+const volume_settings = [-80, -40, -16, -8, -4, -2, 0]
+
 var butter_knife_seen := false
 var coffee_maker_seen := false
 var is_towel_wet := false
@@ -405,7 +407,8 @@ func _set_comment(text: String):
 func _on_ui_click_on_background(pos: Vector2):
 	if $ROWENA.is_busy():
 		return
-	match $UI.get_current_cursor():
+	var cursor = $UI.get_current_cursor()
+	match cursor:
 		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
 			$UI.clear_comment_text()
 			$ROWENA.walk_to_x(pos.x)
@@ -414,6 +417,10 @@ func _on_ui_click_on_background(pos: Vector2):
 		Globals.Cursor.ARROW_ACTIVE:
 			_use_object_on_other($UI.get_inventory_item_being_used(), current_prop)
 			$UI.stop_using_inventory_item()
+		Globals.Cursor.SOUND_UP, \
+		Globals.Cursor.SOUND_DOWN, \
+		Globals.Cursor.NO_SOUND:
+			_adjust_radio_volume(cursor)
 		Globals.Cursor.EYE:
 			_perform_eye_action(pos)
 		Globals.Cursor.HAND:
@@ -1042,6 +1049,11 @@ func _update_current_prop():
 			actions.append(Globals.Cursor.HAND)
 			actions.append(Globals.Cursor.CLOSE)
 
+		Globals.Prop.RADIO:
+			actions.append(Globals.Cursor.SOUND_UP)
+			actions.append(Globals.Cursor.SOUND_DOWN)
+			actions.append(Globals.Cursor.NO_SOUND)
+
 		Globals.Prop.WINDOW_RIGHT:
 			actions.append(Globals.Cursor.QUIT)
 
@@ -1256,6 +1268,7 @@ func save_game() -> Dictionary:
 		"inventory": $UI.get_inventory(),
 		"tutorial-seen": $UI.is_tutorial_seen(),
 		"open-object": $BACKGROUND.get_open_object(),
+		"radio-volume": _get_radio_volume(),
 	}
 	return dict
 
@@ -1282,7 +1295,53 @@ func load_game(dict: Dictionary):
 	var open_object = dict.get("open-object", -1)
 	if open_object >= 0:
 		$BACKGROUND.open_something(open_object, false)
+	
+	_set_radio_volume(dict.get("radio-volume", -8))
 
 func _on_ui_typing_finished(speaker: int):
 	if speaker == Globals.DOCTOR:
 		$ROWENA.respond_to_doctor_maybe()
+
+#
+# Returns the current radio volume in dB.
+#
+func _get_radio_volume():
+	var bus = AudioServer.get_bus_index(&"Master")
+	if bus < 0:
+		return volume_settings[0]
+	else:
+		return AudioServer.get_bus_volume_db(bus)
+
+#
+# Sets the radio volume to the given value in dB. If the given volume is not
+# found in volume_settings, a nearby value is used instead.
+#
+func _set_radio_volume(volume):
+	_set_radio_volume_setting(volume_settings.bsearch(volume))
+
+#
+# Sets the radio volume to the given setting, which is an index into
+# volume_settings.
+#
+func _set_radio_volume_setting(setting: int):
+	var bus = AudioServer.get_bus_index(&"Master")
+	if bus < 0:
+		return
+	setting = clampi(setting, 0, volume_settings.size() - 1)
+	AudioServer.set_bus_volume_db(bus, volume_settings[setting])
+	$BACKGROUND.set_radio_light_on(setting > 0)
+
+#
+# Turns the radio volume up, down or off.
+#
+func _adjust_radio_volume(cursor: int):
+	var volume = _get_radio_volume()
+	var setting = volume_settings.bsearch(volume)
+	match cursor:
+		Globals.Cursor.SOUND_UP:
+			setting += 1
+		Globals.Cursor.SOUND_DOWN:
+			setting -= 1
+		Globals.Cursor.NO_SOUND:
+			setting = 0
+	_set_radio_volume_setting(setting)
