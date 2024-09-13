@@ -76,7 +76,7 @@
 	},
 	"rowena8": {
 		"speaker": "rowena",
-		"text": "I just need my coffee.",
+		"text": "Yes? What do you think I was up to?",
 		"next": "doctor15"
 	},
 	"rowena9": {
