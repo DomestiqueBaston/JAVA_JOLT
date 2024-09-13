@@ -20,6 +20,9 @@ extends Node2D
 ## start] or [method load_game] to get the game started.
 @export_range(0,3) var auto_start_chapter: int = 1
 
+## Radio volume presets in dB. These must be in ascending order.
+@export var volume_presets: Array[float] = [-80, -40, -16, -12.5, -4, -2, 0]
+
 ## Signal emitted when the player quits the game. If this node is parented
 ## directly to the root of the scene tree, no signal is emitted: the node quits
 ## immediately.
@@ -367,7 +370,14 @@ var butter_knife_seen := false
 var coffee_maker_seen := false
 var is_towel_wet := false
 var is_object_taken_from_drawer := false
+var is_coffee_in_towel := false
 var is_quitting := false
+
+# 0: no coffee beans
+# 1: COFFEE_BEANS_1
+# 2: COFFEE_BEANS_2
+# 3: COFFEE_BEANS_1 and COFFEE_BEANS_2
+var coffee_beans_held: int = 0
 
 func _ready():
 	assert(prop_info.size() == Globals.Prop.VISIBLE_PROP_COUNT)
@@ -405,7 +415,8 @@ func _set_comment(text: String):
 func _on_ui_click_on_background(pos: Vector2):
 	if $ROWENA.is_busy():
 		return
-	match $UI.get_current_cursor():
+	var cursor = $UI.get_current_cursor()
+	match cursor:
 		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
 			$UI.clear_comment_text()
 			$ROWENA.walk_to_x(pos.x)
@@ -414,6 +425,10 @@ func _on_ui_click_on_background(pos: Vector2):
 		Globals.Cursor.ARROW_ACTIVE:
 			_use_object_on_other($UI.get_inventory_item_being_used(), current_prop)
 			$UI.stop_using_inventory_item()
+		Globals.Cursor.SOUND_UP, \
+		Globals.Cursor.SOUND_DOWN, \
+		Globals.Cursor.NO_SOUND:
+			_adjust_radio_volume(cursor)
 		Globals.Cursor.EYE:
 			_perform_eye_action(pos)
 		Globals.Cursor.HAND:
@@ -454,6 +469,7 @@ func _perform_hand_action():
 
 	var take_label = ""
 	var take_msg = ""
+	var need_room_in_inventory = true
 
 	match current_prop:
 		Globals.Prop.STOOL:
@@ -528,6 +544,14 @@ func _perform_hand_action():
 			take_msg = "OK, if you say so."
 		Globals.Prop.SAUCE_PAN:
 			_set_comment("No, there's still sauce in it.")
+		Globals.Prop.COFFEE_BEANS_1, \
+		Globals.Prop.COFFEE_BEANS_2:
+			if coffee_beans_held > 0:
+				take_label = "Coffee beans (enough)"
+				need_room_in_inventory = false
+			else:
+				take_label = "Coffee beans (not enough)"
+			take_msg = "Coffee beans!"
 		Globals.Prop.NEWSPAPER:
 			_set_comment("That'll get me depressed.")
 		Globals.Prop.SMOOTHIE_BOTTLES:
@@ -682,7 +706,7 @@ func _perform_hand_action():
 			_show_oven_bottom()
 
 	if take_label:
-		if $UI.is_inventory_full():
+		if need_room_in_inventory and $UI.is_inventory_full():
 			_set_comment(inventory_full_msg)
 		else:
 			# because walking will change the current prop...
@@ -692,7 +716,19 @@ func _perform_hand_action():
 			var collider: Area2D = $BACKGROUND.get_collider(take_prop)
 			$ROWENA.get_something_at(collider.position.y)
 			await $ROWENA.get_something_reached
-			$UI.add_to_inventory(take_prop, take_label)
+
+			# special case for coffee beans: there are two colliders, but in
+			# the inventory they only count for one item
+
+			if take_prop == Globals.Prop.COFFEE_BEANS_1:
+				coffee_beans_held += 1
+				$UI.add_to_inventory(Globals.Prop.COFFEE_BEANS_1, take_label)
+			elif take_prop == Globals.Prop.COFFEE_BEANS_2:
+				coffee_beans_held += 2
+				$UI.add_to_inventory(Globals.Prop.COFFEE_BEANS_1, take_label)
+			else:
+				$UI.add_to_inventory(take_prop, take_label)
+
 			$BACKGROUND.set_object_visible(take_prop, false)
 			await $ROWENA.get_something_done
 
@@ -803,6 +839,16 @@ func _walk_to_prop(
 # current prop, and available cursor actions, are updated as appropriate.
 #
 func _on_background_area_entered_object(which: int, _area: Area2D):
+
+	# coffee beans are not visible until chapter 2, and some are only visible
+	# if you take the salt first
+
+	if which in [Globals.Prop.COFFEE_BEANS_1, Globals.Prop.COFFEE_BEANS_2]:
+		if current_chapter < 2:
+			return
+		if (which == Globals.Prop.COFFEE_BEANS_1
+			and $UI.find_in_inventory(Globals.Prop.SALT) < 0):
+			return
 
 	# add the collider to the set of current colliders and make the topmost
 	# collider the current prop
@@ -1020,6 +1066,13 @@ func _update_current_prop():
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 
+		Globals.Prop.COFFEE_BEANS_1:
+			if not (coffee_beans_held & 1):
+				actions.append(Globals.Cursor.HAND)
+		Globals.Prop.COFFEE_BEANS_2:
+			if not (coffee_beans_held & 2):
+				actions.append(Globals.Cursor.HAND)
+
 		Globals.Prop.DRAWER_LEFT_1, \
 		Globals.Prop.DRAWER_LEFT_2, \
 		Globals.Prop.DRAWER_LEFT_3, \
@@ -1042,6 +1095,11 @@ func _update_current_prop():
 			actions.append(Globals.Cursor.HAND)
 			actions.append(Globals.Cursor.CLOSE)
 
+		Globals.Prop.RADIO:
+			actions.append(Globals.Cursor.SOUND_UP)
+			actions.append(Globals.Cursor.SOUND_DOWN)
+			actions.append(Globals.Cursor.NO_SOUND)
+
 		Globals.Prop.WINDOW_RIGHT:
 			actions.append(Globals.Cursor.QUIT)
 
@@ -1061,6 +1119,8 @@ func _use_object_on_other(object1: int, object2: int):
 	match current_chapter:
 		1:
 			ok = await _use_object_chapter1(object1, object2)
+		2:
+			ok = await _use_object_chapter2(object1, object2)
 
 	if not ok:
 		#print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
@@ -1132,13 +1192,57 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 
 	return false
 
+func _use_object_chapter2(object1: int, object2: int) -> bool:
+
+	# towel + coffee beans: wrap the beans in the towel (the small towel and
+	# ALL the coffee beans must be in the inventory)
+
+	if _check_objects(
+		object1, object2, Globals.Prop.TOWEL_SMALL, Globals.Prop.COFFEE_BEANS_1):
+		if ($UI.find_in_inventory(object1) < 0 or
+			$UI.find_in_inventory(object2) < 0):
+			pass
+		elif is_coffee_in_towel:
+			_set_comment("The coffee beans are already wrapped in the towel.")
+		elif coffee_beans_held != 3:
+			_set_comment("I don't have enough coffee beans.")
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("OK. Well that's something.")
+			is_coffee_in_towel = true
+			$UI.remove_from_inventory(Globals.Prop.TOWEL_SMALL)
+			$UI.add_to_inventory(
+				Globals.Prop.COFFEE_BEANS_1, "Coffee beans wrapped in towel")
+		return true
+
+	# TODO: use beans_1 on beans_1 to unwrap coffee beans? if the inventory is
+	# not full?
+
+	return false
+
 #
 # Callback invoked when the user has removed an item from the inventory (that
 # is, put it down). The corresponding object in the scene is made visible
 # again.
 #
 func _on_inventory_item_removed(which: int):
-	$BACKGROUND.set_object_visible(which, true)
+
+	# special cases for coffee beans: there are two colliders, but in the
+	# inventory they only count for one item, plus they may be wrapped in the
+	# towel...
+
+	if which == Globals.Prop.COFFEE_BEANS_1:
+		if coffee_beans_held & 1:
+			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_1, true)
+		if coffee_beans_held & 2:
+			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_2, true)
+		coffee_beans_held = 0
+		if is_coffee_in_towel:
+			$BACKGROUND.set_object_visible(Globals.Prop.TOWEL_SMALL, true)
+			is_coffee_in_towel = false
+	else:
+		$BACKGROUND.set_object_visible(which, true)
 
 func _on_rowena_target_area_reached():
 	if is_quitting:
@@ -1253,7 +1357,12 @@ func save_game() -> Dictionary:
 		"butter-knife-seen": butter_knife_seen,
 		"coffee-maker-seen": coffee_maker_seen,
 		"is-towel-wet": is_towel_wet,
+		"coffee-beans-held": coffee_beans_held,
+		"is-coffee-in-towel": is_coffee_in_towel,
 		"inventory": $UI.get_inventory(),
+		"tutorial-seen": $UI.is_tutorial_seen(),
+		"open-object": $BACKGROUND.get_open_object(),
+		"radio-volume": _get_radio_volume(),
 	}
 	return dict
 
@@ -1261,15 +1370,85 @@ func save_game() -> Dictionary:
 ## Processes a Dictionary saved previously by [method save_game].
 ##
 func load_game(dict: Dictionary):
+	# TODO: is_coffee_in_towel
 	current_chapter = dict.get("chapter", 1)
 	butter_knife_seen = dict.get("butter-knife-seen", false)
 	coffee_maker_seen = dict.get("coffee-maker-seen", false)
 	is_towel_wet = dict.get("is-towel-wet", false)
+	is_coffee_in_towel = dict.get("is-coffee-in-towel", false)
+	coffee_beans_held = dict.get("coffee-beans-held", 0)
+
+	if coffee_beans_held & 1:
+		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_1, false)
+	if coffee_beans_held & 2:
+		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_2, false)
+	if is_coffee_in_towel:
+		$BACKGROUND.set_object_visible(Globals.Prop.TOWEL_SMALL, false)
+
 	$UI.clear_inventory()
 	var inventory = dict.get("inventory", {})
 	for item in inventory:
-		$UI.add_to_inventory(item as int, inventory[item])
+		var index = item as int
+		$UI.add_to_inventory(index, inventory[item])
+		if index != Globals.Prop.COFFEE_BEANS_1:
+			$BACKGROUND.set_object_visible(index, false)
+
+	if dict.has("tutorial-seen"):
+		if dict["tutorial-seen"]:
+			$UI.unpin_help_button()
+		else:
+			$UI.pin_help_button()
+
+	var open_object = dict.get("open-object", -1)
+	if open_object >= 0:
+		$BACKGROUND.open_something(open_object, false)
+	
+	_set_radio_volume(dict.get("radio-volume", -8))
 
 func _on_ui_typing_finished(speaker: int):
 	if speaker == Globals.DOCTOR:
 		$ROWENA.respond_to_doctor_maybe()
+
+#
+# Returns the current radio volume in dB.
+#
+func _get_radio_volume():
+	var bus = AudioServer.get_bus_index(&"Master")
+	if bus < 0:
+		return volume_presets[0]
+	else:
+		return AudioServer.get_bus_volume_db(bus)
+
+#
+# Sets the radio volume to the given value in dB. If the given volume is not
+# found in volume_presets, a nearby value is used instead.
+#
+func _set_radio_volume(volume):
+	_set_radio_volume_preset(volume_presets.bsearch(volume))
+
+#
+# Sets the radio volume to the given preset, which is an index into
+# volume_presets.
+#
+func _set_radio_volume_preset(preset: int):
+	var bus = AudioServer.get_bus_index(&"Master")
+	if bus < 0:
+		return
+	preset = clampi(preset, 0, volume_presets.size() - 1)
+	AudioServer.set_bus_volume_db(bus, volume_presets[preset])
+	$BACKGROUND.set_radio_light_on(preset > 0)
+
+#
+# Turns the radio volume up, down or off.
+#
+func _adjust_radio_volume(cursor: int):
+	var volume = _get_radio_volume()
+	var preset = volume_presets.bsearch(volume)
+	match cursor:
+		Globals.Cursor.SOUND_UP:
+			preset += 1
+		Globals.Cursor.SOUND_DOWN:
+			preset -= 1
+		Globals.Cursor.NO_SOUND:
+			preset = 0
+	_set_radio_volume_preset(preset)

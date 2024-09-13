@@ -789,19 +789,20 @@ position = Vector2(50, 38)
 shape = SubResource("RectangleShape2D_ktomw")
 
 [node name="Coffee_Beans_1_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(144.5, 38.5)
 collision_layer = 2
+collision_mask = 5
+metadata/bg_level = 1
 
 [node name="Coffee_Beans_1" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Coffee_Beans_1_Collider"]
-visible = false
-position = Vector2(144.5, 38.5)
 shape = SubResource("RectangleShape2D_r4728")
 
 [node name="Coffee_Beans_2_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(137, 64)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Coffee_Beans_2" type="CollisionShape2D" parent="Stuff_Colliders/Mid/Coffee_Beans_2_Collider"]
-visible = false
-position = Vector2(137, 64)
 shape = SubResource("RectangleShape2D_p4i34")
 
 [node name="Newspaper_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]

@@ -187,22 +187,24 @@ func get_object_from_collider(area: Area2D) -> int:
 func get_open_object() -> int:
 	return _open_object
 
-func open_something(which: int):
+func open_something(which: int, play_sound: bool = true):
 	var node: OpenableObject = _openable_nodes[which]
 	node.show()
-	var sound: AudioStreamPlayer = _open_close_sounds.get(which)
-	if sound:
-		sound.play()
+	if play_sound:
+		var sound: AudioStreamPlayer = _open_close_sounds.get(which)
+		if sound:
+			sound.play()
 	_open_object = which
 
-func close_something():
+func close_something(play_sound: bool = true):
 	if _open_object < 0:
 		return
 	var node: OpenableObject = _openable_nodes[_open_object]
 	node.hide()
-	var sound: AudioStreamPlayer = _open_close_sounds.get(_open_object)
-	if sound:
-		sound.play()
+	if play_sound:
+		var sound: AudioStreamPlayer = _open_close_sounds.get(_open_object)
+		if sound:
+			sound.play()
 	_open_object = -1
 
 #
@@ -244,6 +246,10 @@ func set_object_visible(which: int, vis: bool):
 			Globals.Prop.KETTLE:
 				$Removed_Objects/Kettle_Out.visible = not vis
 				$Stuff_Colliders/Mid/Kettle_Collider.monitoring = vis
+			Globals.Prop.COFFEE_BEANS_1:
+				$Stuff_Colliders/Mid/Coffee_Beans_1_Collider.monitoring = vis
+			Globals.Prop.COFFEE_BEANS_2:
+				$Stuff_Colliders/Mid/Coffee_Beans_2_Collider.monitoring = vis
 			Globals.Prop.DRAWER_LEFT_1_OPEN:
 				$Open_Objects/Top_Left_Drawer.visible = not vis
 			Globals.Prop.DRAWER_LEFT_2_OPEN:
@@ -288,3 +294,9 @@ func set_object_visible(which: int, vis: bool):
 		$Open_Objects/Recycling_Closet.set_object_visible(which, vis)
 	elif which <= Globals.Prop.RIGHT_GLASS_CUPBOARD_END:
 		$Open_Objects/Right_Glass_Cupboard.set_object_visible(which, vis)
+
+##
+## Turns the radio light on or off.
+##
+func set_radio_light_on(on: bool):
+	$Radio_On_Lights_On.visible = on
