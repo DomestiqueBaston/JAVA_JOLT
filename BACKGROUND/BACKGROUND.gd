@@ -187,22 +187,24 @@ func get_object_from_collider(area: Area2D) -> int:
 func get_open_object() -> int:
 	return _open_object
 
-func open_something(which: int):
+func open_something(which: int, play_sound: bool = true):
 	var node: OpenableObject = _openable_nodes[which]
 	node.show()
-	var sound: AudioStreamPlayer = _open_close_sounds.get(which)
-	if sound:
-		sound.play()
+	if play_sound:
+		var sound: AudioStreamPlayer = _open_close_sounds.get(which)
+		if sound:
+			sound.play()
 	_open_object = which
 
-func close_something():
+func close_something(play_sound: bool = true):
 	if _open_object < 0:
 		return
 	var node: OpenableObject = _openable_nodes[_open_object]
 	node.hide()
-	var sound: AudioStreamPlayer = _open_close_sounds.get(_open_object)
-	if sound:
-		sound.play()
+	if play_sound:
+		var sound: AudioStreamPlayer = _open_close_sounds.get(_open_object)
+		if sound:
+			sound.play()
 	_open_object = -1
 
 #

@@ -1254,6 +1254,8 @@ func save_game() -> Dictionary:
 		"coffee-maker-seen": coffee_maker_seen,
 		"is-towel-wet": is_towel_wet,
 		"inventory": $UI.get_inventory(),
+		"tutorial-seen": $UI.is_tutorial_seen(),
+		"open-object": $BACKGROUND.get_open_object(),
 	}
 	return dict
 
@@ -1265,10 +1267,21 @@ func load_game(dict: Dictionary):
 	butter_knife_seen = dict.get("butter-knife-seen", false)
 	coffee_maker_seen = dict.get("coffee-maker-seen", false)
 	is_towel_wet = dict.get("is-towel-wet", false)
+
 	$UI.clear_inventory()
 	var inventory = dict.get("inventory", {})
 	for item in inventory:
 		$UI.add_to_inventory(item as int, inventory[item])
+
+	if dict.has("tutorial-seen"):
+		if dict["tutorial-seen"]:
+			$UI.unpin_help_button()
+		else:
+			$UI.pin_help_button()
+
+	var open_object = dict.get("open-object", -1)
+	if open_object >= 0:
+		$BACKGROUND.open_something(open_object, false)
 
 func _on_ui_typing_finished(speaker: int):
 	if speaker == Globals.DOCTOR:

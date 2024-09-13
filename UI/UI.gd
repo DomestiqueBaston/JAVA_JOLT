@@ -454,6 +454,13 @@ func unpin_help_button():
 	if $Help.visible:
 		$Help_AnimationPlayer.play("Help_Off")
 
+##
+## Returns true if the user has seen the tutorial at least once, or if [method
+## unpin_help_button] has been called.
+##
+func is_tutorial_seen() -> bool:
+	return _is_tutorial_seen
+
 func _on_help_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		_abort_quit()
