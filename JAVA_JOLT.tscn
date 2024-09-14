@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://x26ngvt8sudo"]
+[gd_scene load_steps=8 format=3 uid="uid://x26ngvt8sudo"]
 
 [ext_resource type="PackedScene" uid="uid://btw3ypyfee56m" path="res://BACKGROUND/BACKGROUND.tscn" id="1_3jbuv"]
 [ext_resource type="Script" path="res://JAVA_JOLT.gd" id="1_4obue"]
 [ext_resource type="PackedScene" uid="uid://clvr31ogitwwv" path="res://ROWENA/ROWENA.tscn" id="2_s87s0"]
 [ext_resource type="PackedScene" uid="uid://b0utj6k63s0l8" path="res://SHADER/KUWAHARA.tscn" id="3_quulp"]
 [ext_resource type="PackedScene" uid="uid://cdg5ketgiif5e" path="res://UI/UI.tscn" id="4_ilxi3"]
+[ext_resource type="AudioStream" uid="uid://dsficbv0c758x" path="res://UI/Volume_Up.ogg" id="6_4imn2"]
+[ext_resource type="AudioStream" uid="uid://bqqstj52ukvo4" path="res://UI/Volume_Down.ogg" id="7_aetnj"]
 
 [node name="JAVA_JOLT" type="Node2D"]
 script = ExtResource("1_4obue")
@@ -20,6 +22,16 @@ scale = Vector2(-1, 1)
 [node name="UI" parent="." instance=ExtResource("4_ilxi3")]
 comment_timeout_base = 1.0
 inventory_timeout = 0.1
+
+[node name="Volume_Up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4imn2")
+volume_db = -5.0
+bus = &"MUSIC"
+
+[node name="Volume_Down" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_aetnj")
+volume_db = -5.0
+bus = &"MUSIC"
 
 [connection signal="area_entered_object" from="BACKGROUND" to="." method="_on_background_area_entered_object"]
 [connection signal="area_exited_object" from="BACKGROUND" to="." method="_on_background_area_exited_object"]
