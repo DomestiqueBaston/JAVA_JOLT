@@ -34,6 +34,9 @@ var current_chapter: int = 1
 # The prop currently under the mouse cursor (see Globals.Prop), or -1.
 var current_prop: int = -1
 
+# Which props the user has looked at.
+var props_seen: Array = []
+
 # Dictionary containing all the background object colliders that are currently
 # in contact with the mouse cursor. Keys are prop numbers (see Globals.prop);
 # values are Area2D instances.
@@ -417,7 +420,9 @@ func _on_ui_click_on_background(pos: Vector2):
 		return
 	var cursor = $UI.get_current_cursor()
 	match cursor:
-		Globals.Cursor.CROSS_PASSIVE, Globals.Cursor.CROSS_ACTIVE:
+		Globals.Cursor.CROSS_PASSIVE, \
+		Globals.Cursor.CROSS_ACTIVE, \
+		Globals.Cursor.CROSS_ACTIVE_NEVER_SEEN:
 			$UI.clear_comment_text()
 			$ROWENA.walk_to_x(pos.x)
 		Globals.Cursor.ARROW_PASSIVE:
@@ -451,6 +456,7 @@ func _perform_eye_action(pos: Vector2):
 	$ROWENA.look_at_x(pos.x)
 	if current_prop < 0:
 		return
+	_set_prop_seen(current_prop)
 	var comment = ""
 	match current_prop:
 		Globals.Prop.BUTTER_KNIFE:
@@ -933,6 +939,8 @@ func _update_current_prop():
 
 	#print(_get_prop_name(top_collider))
 	var actions: Array[int] = [Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE]
+	if not _is_prop_seen(current_prop):
+		actions[0] = Globals.Cursor.CROSS_ACTIVE_NEVER_SEEN
 
 	match current_prop:
 		Globals.Prop.KITCHEN_CABINET, \
@@ -1359,6 +1367,7 @@ func save_game() -> Dictionary:
 		"is-towel-wet": is_towel_wet,
 		"coffee-beans-held": coffee_beans_held,
 		"is-coffee-in-towel": is_coffee_in_towel,
+		"props-seen": props_seen,
 		"inventory": $UI.get_inventory(),
 		"tutorial-seen": $UI.is_tutorial_seen(),
 		"open-object": $BACKGROUND.get_open_object(),
@@ -1375,8 +1384,9 @@ func load_game(dict: Dictionary):
 	butter_knife_seen = dict.get("butter-knife-seen", false)
 	coffee_maker_seen = dict.get("coffee-maker-seen", false)
 	is_towel_wet = dict.get("is-towel-wet", false)
-	is_coffee_in_towel = dict.get("is-coffee-in-towel", false)
 	coffee_beans_held = dict.get("coffee-beans-held", 0)
+	is_coffee_in_towel = dict.get("is-coffee-in-towel", false)
+	props_seen = dict.get("props-seen", [])
 
 	if coffee_beans_held & 1:
 		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_1, false)
@@ -1464,3 +1474,12 @@ func _adjust_radio_volume(cursor: int):
 				$Volume_Up.play()
 			Globals.Cursor.SOUND_DOWN:
 				$Volume_Down.play()
+
+func _is_prop_seen(which: int) -> bool:
+	var i = props_seen.bsearch(which)
+	return i < props_seen.size() and props_seen[i] == which
+
+func _set_prop_seen(which: int):
+	var i = props_seen.bsearch(which)
+	if i == props_seen.size() or props_seen[i] != which:
+		props_seen.insert(i, which)
