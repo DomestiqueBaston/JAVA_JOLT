@@ -26,12 +26,12 @@ inventory_timeout = 0.1
 [node name="Volume_Up" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_4imn2")
 volume_db = -11.5
-bus = &"MUSIC"
+bus = &"FX"
 
 [node name="Volume_Down" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_aetnj")
 volume_db = -10.0
-bus = &"MUSIC"
+bus = &"FX"
 
 [connection signal="area_entered_object" from="BACKGROUND" to="." method="_on_background_area_entered_object"]
 [connection signal="area_exited_object" from="BACKGROUND" to="." method="_on_background_area_exited_object"]

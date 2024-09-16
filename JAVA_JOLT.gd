@@ -1413,7 +1413,7 @@ func _on_ui_typing_finished(speaker: int):
 # Returns the current radio volume in dB.
 #
 func _get_radio_volume():
-	var bus = AudioServer.get_bus_index(&"Master")
+	var bus = AudioServer.get_bus_index(&"MUSIC")
 	if bus < 0:
 		return volume_presets[0]
 	else:
@@ -1431,7 +1431,7 @@ func _set_radio_volume(volume):
 # volume_presets. Returns the new volume.
 #
 func _set_radio_volume_preset(preset: int):
-	var bus = AudioServer.get_bus_index(&"Master")
+	var bus = AudioServer.get_bus_index(&"MUSIC")
 	if bus < 0:
 		return AudioServer.get_bus_volume_db(bus)
 	preset = clampi(preset, 0, volume_presets.size() - 1)
