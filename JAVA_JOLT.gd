@@ -437,11 +437,11 @@ func _on_ui_click_on_background(pos: Vector2):
 		Globals.Cursor.EYE:
 			_perform_eye_action(pos)
 		Globals.Cursor.HAND:
-			_perform_hand_action()
+			await _perform_hand_action()
 		Globals.Cursor.OPEN:
-			_perform_open_action()
+			await _perform_open_action()
 		Globals.Cursor.CLOSE:
-			_perform_close_action()
+			await _perform_close_action()
 		Globals.Cursor.QUIT:
 			$UI.clear_comment_text()
 			# Start walking toward the window, but don't actually quit until
@@ -472,6 +472,10 @@ func _perform_eye_action(pos: Vector2):
 func _perform_hand_action():
 	$UI.clear_comment_text()
 	$UI.clear_available_cursors()
+
+	if current_prop < 0:
+		return
+	_set_prop_seen(current_prop)
 
 	var take_label = ""
 	var take_msg = ""
@@ -741,6 +745,10 @@ func _perform_hand_action():
 func _perform_open_action():
 	$UI.clear_comment_text()
 	$UI.clear_available_cursors()
+
+	if current_prop < 0:
+		return
+	_set_prop_seen(current_prop)
 
 	var object_to_open = current_prop
 	var collider: Area2D = $BACKGROUND.get_collider(object_to_open)
