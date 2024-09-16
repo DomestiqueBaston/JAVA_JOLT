@@ -160,10 +160,10 @@ func _unhandled_input(event: InputEvent):
 				click_on_background.emit($Mouse.position)
 			get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("next_mouse_action"):
-		_next_cursor()
+		next_cursor()
 		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("prev_mouse_action"):
-		_prev_cursor()
+		prev_cursor()
 		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("inventory_action"):
 		_abort_quit()
@@ -403,7 +403,10 @@ func get_current_cursor() -> int:
 	else:
 		return _available_cursors[_current_cursor]
 
-func _next_cursor():
+##
+## Changes the cursor to the next available one, depending on the context.
+##
+func next_cursor():
 	if _inventory_item_being_used >= 0:
 		return
 	elif is_inventory_open():
@@ -413,7 +416,10 @@ func _next_cursor():
 		_current_cursor = (_current_cursor + 1) % _available_cursors.size()
 		_set_mouse_cursor(_available_cursors[_current_cursor])
 
-func _prev_cursor():
+##
+## Changes the cursor to the previous available one, depending on the context.
+##
+func prev_cursor():
 	if _inventory_item_being_used >= 0:
 		return
 	elif is_inventory_open():

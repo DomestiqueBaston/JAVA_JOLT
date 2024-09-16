@@ -1478,6 +1478,9 @@ func _adjust_radio_volume(cursor: int):
 				$Volume_Up.play()
 			Globals.Cursor.SOUND_DOWN:
 				$Volume_Down.play()
+				# show NO_SOUND cursor when volume is turned all the way down
+				if new_preset == 0:
+					$UI.next_cursor()
 
 func _is_prop_seen(which: int) -> bool:
 	var i = props_seen.bsearch(which)
