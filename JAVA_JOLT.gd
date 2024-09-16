@@ -21,7 +21,7 @@ extends Node2D
 @export_range(0,3) var auto_start_chapter: int = 1
 
 ## Radio volume presets in dB. These must be in ascending order.
-@export var volume_presets: Array[float] = [-80, -40, -16, -12.5, -4, -2, 0]
+@export var volume_presets: Array[float] = [-80, -30, -20, -15, -10, -5, 0]
 
 ## Signal emitted when the player quits the game. If this node is parented
 ## directly to the root of the scene tree, no signal is emitted: the node quits
@@ -1428,27 +1428,39 @@ func _set_radio_volume(volume):
 
 #
 # Sets the radio volume to the given preset, which is an index into
-# volume_presets.
+# volume_presets. Returns the new volume.
 #
 func _set_radio_volume_preset(preset: int):
 	var bus = AudioServer.get_bus_index(&"Master")
 	if bus < 0:
-		return
+		return AudioServer.get_bus_volume_db(bus)
 	preset = clampi(preset, 0, volume_presets.size() - 1)
 	AudioServer.set_bus_volume_db(bus, volume_presets[preset])
 	$BACKGROUND.set_radio_light_on(preset > 0)
+	return volume_presets[preset]
 
 #
 # Turns the radio volume up, down or off.
 #
 func _adjust_radio_volume(cursor: int):
 	var volume = _get_radio_volume()
-	var preset = volume_presets.bsearch(volume)
+	var old_preset = volume_presets.bsearch(volume)
+	var new_preset
+
 	match cursor:
 		Globals.Cursor.SOUND_UP:
-			preset += 1
+			new_preset = old_preset + 1
 		Globals.Cursor.SOUND_DOWN:
-			preset -= 1
+			new_preset = old_preset - 1
 		Globals.Cursor.NO_SOUND:
-			preset = 0
-	_set_radio_volume_preset(preset)
+			new_preset = 0
+
+	volume = _set_radio_volume_preset(new_preset)
+	new_preset = volume_presets.bsearch(volume)
+
+	if new_preset != old_preset:
+		match cursor:
+			Globals.Cursor.SOUND_UP:
+				$Volume_Up.play()
+			Globals.Cursor.SOUND_DOWN:
+				$Volume_Down.play()
