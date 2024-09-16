@@ -74,7 +74,7 @@ const prop_info: Array[String] = [
 	# CHAIR
 	"That's a chair.",
 	# TOWEL_LARGE
-	"That's a big towel.",
+	"That's a big dirty towel.",
 	# TOWEL_SMALL
 	"That's a little towel.",
 	# TOP_LEFT_UNUSED_CUPBOARD
