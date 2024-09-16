@@ -1224,9 +1224,6 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 				Globals.Prop.COFFEE_BEANS_1, "Coffee beans wrapped in towel")
 		return true
 
-	# TODO: use beans_1 on beans_1 to unwrap coffee beans? if the inventory is
-	# not full?
-
 	return false
 
 #
@@ -1379,7 +1376,6 @@ func save_game() -> Dictionary:
 ## Processes a Dictionary saved previously by [method save_game].
 ##
 func load_game(dict: Dictionary):
-	# TODO: is_coffee_in_towel
 	current_chapter = dict.get("chapter", 1)
 	butter_knife_seen = dict.get("butter-knife-seen", false)
 	coffee_maker_seen = dict.get("coffee-maker-seen", false)

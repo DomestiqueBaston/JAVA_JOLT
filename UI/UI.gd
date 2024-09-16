@@ -104,6 +104,9 @@ const _max_inventory_size = 4
 # true if the tutorial has been seen
 var _is_tutorial_seen: bool = false
 
+# true if a dialogue is in progress
+var _is_dialogue_in_progress: bool = false
+
 # Set by start_quit(), reset by _abort_quit().
 var _is_quitting: bool = false
 
@@ -150,7 +153,7 @@ func _unhandled_input(event: InputEvent):
 		elif is_tutorial_open():
 			$Boxes/Tutorial.hide()
 			get_viewport().set_input_as_handled()
-		elif not is_dialogue_visible():
+		elif not is_dialogue_open():
 			if event is InputEventMouse:
 				click_on_background.emit(event.position)
 			else:
@@ -164,7 +167,7 @@ func _unhandled_input(event: InputEvent):
 		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("inventory_action"):
 		_abort_quit()
-		if not is_dialogue_visible():
+		if not is_dialogue_open():
 			if is_inventory_open():
 				_close_inventory()
 			else:
@@ -176,6 +179,7 @@ func _unhandled_input(event: InputEvent):
 ## until the dialogue finishes.
 ##
 func tell_story(which: int):
+	_is_dialogue_in_progress = true
 	match which:
 		1:
 			await _tell_story_node(dialogue1, dialogue1["start"])
@@ -183,6 +187,7 @@ func tell_story(which: int):
 			await _tell_story_node(dialogue2, dialogue2["start"])
 		3:
 			await _tell_story_node(dialogue3, dialogue3["start"])
+	_is_dialogue_in_progress = false
 
 func _tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
@@ -214,8 +219,8 @@ func _set_current_speaker(speaker: int):
 		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = doctor_text_color
 		$Typing.pitch_scale = 1
 
-func is_dialogue_visible() -> bool:
-	return $Boxes/Dialogue_Box/BG/Dialogue.visible
+func is_dialogue_open() -> bool:
+	return _is_dialogue_in_progress
 
 func _clear_dialogue():
 	$Dialogue_AnimationPlayer.play("Close_Dialogue_1")
@@ -354,7 +359,7 @@ func _set_mouse_cursor(cursor: int):
 ##
 func clear_available_cursors():
 	_available_cursors.clear()
-	if not (is_inventory_open() or is_tutorial_open() or is_dialogue_visible()):
+	if not (is_inventory_open() or is_tutorial_open() or is_dialogue_open()):
 		if _inventory_item_being_used < 0:
 			_current_cursor = -1
 			_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
@@ -372,7 +377,7 @@ func set_available_cursors(cursors: Array[int]):
 		clear_available_cursors()
 	else:
 		_available_cursors = cursors
-		if not (is_inventory_open() or is_tutorial_open() or is_dialogue_visible()):
+		if not (is_inventory_open() or is_tutorial_open() or is_dialogue_open()):
 			if _inventory_item_being_used < 0:
 				_current_cursor = 0
 				_set_mouse_cursor(cursors[0])
@@ -429,11 +434,11 @@ func is_tutorial_open() -> bool:
 	return $Boxes/Tutorial.visible
 
 func _on_help_button_entered(_area: Area2D):
-	if not (is_dialogue_visible() or is_tutorial_open() or $Help.visible):
+	if not (is_dialogue_open() or is_tutorial_open() or $Help.visible):
 		$Help_AnimationPlayer.play("Help_On")
 
 func _on_help_button_exited(_area: Area2D):
-	if not is_dialogue_visible() and _is_tutorial_seen and $Help.visible:
+	if not is_dialogue_open() and _is_tutorial_seen and $Help.visible:
 		$Help_AnimationPlayer.play("Help_Off")
 
 ##
@@ -464,7 +469,7 @@ func is_tutorial_seen() -> bool:
 func _on_help_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		_abort_quit()
-		if not (is_dialogue_visible() or is_inventory_open()):
+		if not (is_dialogue_open() or is_inventory_open()):
 			$Boxes/Tutorial.show()
 			$Help_AnimationPlayer.play("Help_Off")
 			_is_tutorial_seen = true
