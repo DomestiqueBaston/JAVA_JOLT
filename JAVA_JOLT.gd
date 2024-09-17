@@ -398,6 +398,15 @@ func start(chapter: int = 1):
 		await $UI.tell_story(current_chapter)
 	$UI.pin_help_button()
 
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("inventory_action"):
+		if $UI.is_inventory_open():
+			$UI.close_inventory()
+		elif not ($UI.is_tutorial_open() or $UI.is_dialogue_open()):
+			if is_quitting or not $ROWENA.is_busy():
+				$UI.open_inventory()
+		get_viewport().set_input_as_handled()
+
 #
 # Sets the comment text, positioning it to the left or to the right of Rowena,
 # depending on where she is standing.

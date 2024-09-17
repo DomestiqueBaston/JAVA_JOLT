@@ -165,14 +165,6 @@ func _unhandled_input(event: InputEvent):
 	elif event.is_action_pressed("prev_mouse_action"):
 		prev_cursor()
 		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("inventory_action"):
-		_abort_quit()
-		if not is_dialogue_open():
-			if is_inventory_open():
-				_close_inventory()
-			else:
-				_open_inventory()
-		get_viewport().set_input_as_handled()
 
 ##
 ## Plays dialogue number 1, 2 or 3. This is a couroutine; use await to block
@@ -489,7 +481,7 @@ func _on_help_gui_input(event: InputEvent):
 ## on display until [method close_drawer] is called, or until all the contents
 ## are removed by [method remove_from_drawer].
 ##
-## Note that drawers contents are displayed using the same GUI controls as the
+## Note that drawer contents are displayed using the same GUI controls as the
 ## inventory, so only one or the other can be shown at a time.
 ##
 func open_drawer(contents: Dictionary):
@@ -504,6 +496,26 @@ func close_drawer():
 	if _inventory_mode == InventoryMode.DRAWER:
 		_close_inventory()
 		_drawer_contents.clear()
+
+##
+## Displays the current contents of the inventory. The inventory remains open
+## until [method close_inventory] is called, or until the user triggers an
+## "inventory_action" in the inventory box, or empties the inventory.
+##
+## Note that the inventory is displayed using the same GUI controls as drawer
+## contents, so only one or the other can be shown at a time.
+##
+func open_inventory():
+	_abort_quit()
+	if _inventory_mode == InventoryMode.OFF:
+		_open_inventory()
+
+##
+## Closes the inventory box after a call to open_inventory().
+##
+func close_inventory():
+	if _inventory_mode == InventoryMode.INVENTORY:
+		_close_inventory()
 
 func _open_inventory(mode: int = InventoryMode.INVENTORY):
 	$Inventory_AnimationPlayer.play("Open_Inventory")
