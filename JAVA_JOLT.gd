@@ -758,6 +758,7 @@ func _perform_open_action():
 	if current_prop < 0:
 		return
 	_set_prop_seen(current_prop)
+	_set_prop_seen(open_close_door[current_prop])
 
 	var object_to_open = current_prop
 	var collider: Area2D = $BACKGROUND.get_collider(object_to_open)
