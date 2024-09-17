@@ -180,6 +180,7 @@ func _unhandled_input(event: InputEvent):
 ##
 func tell_story(which: int):
 	_is_dialogue_in_progress = true
+	_set_mouse_cursor(Globals.Cursor.CROSS_PASSIVE)
 	match which:
 		1:
 			await _tell_story_node(dialogue1, dialogue1["start"])
@@ -385,7 +386,9 @@ func set_available_cursors(cursors: Array[int]):
 				_set_mouse_cursor(Globals.Cursor.ARROW_ACTIVE)
 
 func get_current_cursor() -> int:
-	if _inventory_item_being_used >= 0:
+	if is_dialogue_open():
+		return Globals.Cursor.ARROW_PASSIVE
+	elif _inventory_item_being_used >= 0:
 		if is_inventory_open():
 			if _current_inventory_index >= 0:
 				return Globals.Cursor.ARROW_ACTIVE

@@ -1965,6 +1965,7 @@ offset_left = -7.5
 offset_top = -7.5
 offset_right = 8.5
 offset_bottom = 8.5
+mouse_filter = 2
 texture = ExtResource("8_nl72j")
 
 [node name="Arrow_Passive" type="TextureRect" parent="Mouse"]
