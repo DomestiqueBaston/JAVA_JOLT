@@ -40,5 +40,6 @@ bus = &"FX"
 [connection signal="drawer_closed" from="UI" to="." method="_on_ui_drawer_closed"]
 [connection signal="drawer_item_picked" from="UI" to="." method="_on_ui_drawer_item_picked"]
 [connection signal="quit_aborted" from="UI" to="." method="_on_ui_quit_aborted"]
+[connection signal="trash_inventory_item" from="UI" to="." method="_on_ui_trash_inventory_item"]
 [connection signal="typing_finished" from="UI" to="." method="_on_ui_typing_finished"]
 [connection signal="use_object_on_other" from="UI" to="." method="_use_object_on_other"]

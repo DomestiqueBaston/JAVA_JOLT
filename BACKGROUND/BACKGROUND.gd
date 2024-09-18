@@ -168,7 +168,7 @@ func _ready():
 func get_collider(which: int) -> Area2D:
 	if which < Globals.Prop.MAIN_PROP_COUNT:
 		return _colliders[which]
-	if _open_object >= 0:
+	if which < Globals.Prop.VISIBLE_PROP_COUNT and _open_object >= 0:
 		var node: OpenableObject = _openable_nodes[_open_object]
 		return node.get_collider(which)
 	return null

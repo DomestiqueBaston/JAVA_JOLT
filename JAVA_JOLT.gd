@@ -923,7 +923,10 @@ func _recompute_overlapping_colliders():
 func _get_prop_name(prop) -> String:
 	var prop_name
 	if typeof(prop) == TYPE_INT:
-		prop_name = $BACKGROUND.get_collider(prop).name
+		var collider: Area2D = $BACKGROUND.get_collider(prop)
+		if collider == null:
+			return type_convert(prop, TYPE_STRING)
+		prop_name = collider.name
 	else:
 		prop_name = prop.name
 	return prop_name.to_lower().replace("_collider", "").replace("_", " ")
