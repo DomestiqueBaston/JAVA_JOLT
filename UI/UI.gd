@@ -44,9 +44,9 @@ signal click_on_background(pos: Vector2)
 ## Signal emitted when user tries to "use" one inventory item on another.
 signal use_object_on_other(object1: int, object2: int)
 
-## Signal emitted when user removes an inventory item (a constant from
-## [enum Globals.Prop]).
-signal inventory_item_removed(which: int)
+## Signal emitted when user clicks on the trash cursor to remove an item from
+## the inventory ([param which] is a constant from [enum Globals.Prop]).
+signal trash_inventory_item(which: int)
 
 ## Signal emitted when user clicks on an item in the open drawer (a constant
 ## from [enum Globals.Prop]).
@@ -494,8 +494,8 @@ func open_drawer(contents: Dictionary):
 ##
 func close_drawer():
 	if _inventory_mode == InventoryMode.DRAWER:
-		_close_inventory()
 		_drawer_contents.clear()
+		await _close_inventory()
 
 ##
 ## Displays the current contents of the inventory. The inventory remains open
@@ -515,7 +515,7 @@ func open_inventory():
 ##
 func close_inventory():
 	if _inventory_mode == InventoryMode.INVENTORY:
-		_close_inventory()
+		await _close_inventory()
 
 func _open_inventory(mode: int = InventoryMode.INVENTORY):
 	$Inventory_AnimationPlayer.play("Open_Inventory")
@@ -604,22 +604,12 @@ func add_to_inventory(item: int, label: String):
 
 ##
 ## Removes an item from the inventory, where [param item] is a constant from
-## [enum Globals.Prop]. No [signal inventory_item_removed] signal is emitted.
+## [enum Globals.Prop].
 ##
 func remove_from_inventory(item: int):
 	if (_inventory_contents.erase(item)
 		and _inventory_mode == InventoryMode.INVENTORY):
-		_update_inventory_labels()
-
-#
-# Removes an item from the inventory, where 0 <= index < the number of items
-# in the inventory, and emits an inventory_item_removed signal.
-#
-func _remove_from_inventory_user(index: int):
-	var item = _inventory_contents.keys()[index]
-	inventory_item_removed.emit(item)
-	_inventory_contents.erase(item)
-	if _inventory_mode == InventoryMode.INVENTORY:
+		_set_current_inventory_item(_current_inventory_index)
 		_update_inventory_labels()
 
 ##
@@ -630,12 +620,18 @@ func remove_from_drawer(item: int):
 	_drawer_contents.erase(item)
 	if _inventory_mode == InventoryMode.DRAWER:
 		if _drawer_contents.is_empty():
-			_close_inventory()
+			await _close_inventory()
 		else:
 			_update_drawer_labels()
 
 func is_inventory_full() -> bool:
 	return _inventory_contents.size() >= _max_inventory_size
+
+func is_inventory_empty() -> bool:
+	return _inventory_contents.is_empty()
+
+func get_inventory_room() -> int:
+	return _max_inventory_size - _inventory_contents.size()
 
 ##
 ## Returns true if the user has requested to use an item in the inventory and we
@@ -744,7 +740,7 @@ func _on_inventory_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click"):
 		_click_on_inventory_item()
 	elif event.is_action_pressed("inventory_action"):
-		_close_inventory()
+		await _close_inventory()
 
 func _click_on_inventory_item():
 	if _inventory_item_being_used >= 0:
@@ -752,7 +748,7 @@ func _click_on_inventory_item():
 		_inventory_item_being_used = -1
 		if _current_inventory_index >= 0:
 			var object2 = _inventory_contents.keys()[_current_inventory_index]
-			_close_inventory()
+			await _close_inventory()
 			use_object_on_other.emit(object1, object2)
 		else:
 			_current_cursor = 0
@@ -769,11 +765,8 @@ func _click_on_inventory_item():
 					drawer_item_picked.emit(
 						_drawer_contents.keys()[_current_inventory_index])
 			Globals.Cursor.TRASH:
-				_remove_from_inventory_user(_current_inventory_index)
-				if _inventory_contents.is_empty():
-					_close_inventory()
-				else:
-					_set_current_inventory_item(_current_inventory_index)
+				trash_inventory_item.emit(
+					_inventory_contents.keys()[_current_inventory_index])
 
 func _on_close_inventory_timer_timeout():
 	if is_inventory_open():

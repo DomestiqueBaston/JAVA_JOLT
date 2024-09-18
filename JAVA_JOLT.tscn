@@ -39,7 +39,6 @@ bus = &"FX"
 [connection signal="click_on_background" from="UI" to="." method="_on_ui_click_on_background"]
 [connection signal="drawer_closed" from="UI" to="." method="_on_ui_drawer_closed"]
 [connection signal="drawer_item_picked" from="UI" to="." method="_on_ui_drawer_item_picked"]
-[connection signal="inventory_item_removed" from="UI" to="." method="_on_inventory_item_removed"]
 [connection signal="quit_aborted" from="UI" to="." method="_on_ui_quit_aborted"]
 [connection signal="typing_finished" from="UI" to="." method="_on_ui_typing_finished"]
 [connection signal="use_object_on_other" from="UI" to="." method="_use_object_on_other"]

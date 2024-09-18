@@ -372,11 +372,18 @@ const cant_use_msgs: Array[String] = [
 	"No way, Jose!",
 ]
 
+enum CoffeeState {
+	BEANS,
+	IN_TOWEL,
+	ON_BOARD,
+	GROUND,
+}
+
 var butter_knife_seen := false
 var coffee_maker_seen := false
 var is_towel_wet := false
 var is_object_taken_from_drawer := false
-var is_coffee_in_towel := false
+var coffee_state: int = CoffeeState.BEANS
 var is_quitting := false
 
 # 0: no coffee beans
@@ -1183,7 +1190,7 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 		object1, object2, Globals.Prop.MILK_BOTTLES, Globals.Prop.TOWEL_SMALL):
 		if ($UI.find_in_inventory(object1) < 0 or
 			$UI.find_in_inventory(object2) < 0):
-			pass
+			return false
 		elif is_towel_wet:
 			_set_comment("The towel is already moist.")
 		else:
@@ -1202,7 +1209,7 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 		object1, object2, Globals.Prop.TOWEL_SMALL, Globals.Prop.COFFEE_MAKER):
 		if ($UI.find_in_inventory(object1) < 0 or
 			$UI.find_in_inventory(object2) < 0):
-			pass
+			return false
 		elif is_towel_wet:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
 			await $ROWENA.do_stuff(false)
@@ -1233,44 +1240,98 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 	if _check_objects(
 		object1, object2, Globals.Prop.TOWEL_SMALL, Globals.Prop.COFFEE_BEANS_1):
 		if ($UI.find_in_inventory(object1) < 0 or
-			$UI.find_in_inventory(object2) < 0):
-			pass
-		elif is_coffee_in_towel:
-			_set_comment("The coffee beans are already wrapped in the towel.")
+			$UI.find_in_inventory(object2) < 0 or
+			coffee_state != CoffeeState.BEANS):
+			return false
 		elif coffee_beans_held != 3:
 			_set_comment("I don't have enough coffee beans.")
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
 			await $ROWENA.do_stuff(false)
 			_set_comment("OK. Well that's something.")
-			is_coffee_in_towel = true
+			coffee_state = CoffeeState.IN_TOWEL
 			$UI.remove_from_inventory(Globals.Prop.TOWEL_SMALL)
 			$UI.add_to_inventory(
 				Globals.Prop.COFFEE_BEANS_1, "Coffee beans wrapped in towel")
 		return true
 
+	# cutting board + coffee beans wrapped in towel: put the wrapped beans on
+	# the cutting board (both must be in the inventory)
+
+	if _check_objects(
+		object1, object2, Globals.Prop.CUTTING_BOARD, Globals.Prop.COFFEE_BEANS_1):
+		if ($UI.find_in_inventory(object1) < 0 or
+			$UI.find_in_inventory(object2) < 0 or
+			coffee_state != CoffeeState.IN_TOWEL):
+			return false
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("Looks like a plan to me!")
+			coffee_state = CoffeeState.ON_BOARD
+			$UI.remove_from_inventory(Globals.Prop.CUTTING_BOARD)
+			$UI.add_to_inventory(
+				Globals.Prop.COFFEE_BEANS_1, "Wrapped coffee beans on cutting board")
+		return true
+
+	# wooden spoon + wrapped coffee beans on cutting board: ground the beans
+
+	if _check_objects(
+		object1, object2, Globals.Prop.WOODEN_SPOON, Globals.Prop.COFFEE_BEANS_1):
+		if ($UI.find_in_inventory(object1) < 0 or
+			$UI.find_in_inventory(object2) < 0 or
+			coffee_state != CoffeeState.ON_BOARD):
+			return false
+		elif $UI.get_inventory_room() < 2:
+			_set_comment(inventory_full_msg)
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("One small step for man, one giant leap...")
+			coffee_state = CoffeeState.GROUND
+			$UI.add_to_inventory(Globals.Prop.COFFEE_BEANS_1, "Ground coffee")
+			$UI.add_to_inventory(Globals.Prop.CUTTING_BOARD, "Cutting board")
+			$UI.add_to_inventory(Globals.Prop.WOODEN_SPOON, "Wooden spoon")
+		return true
+
 	return false
 
 #
-# Callback invoked when the user has removed an item from the inventory (that
-# is, put it down). The corresponding object in the scene is made visible
+# Callback invoked when the user tries to remove an item from the inventory
+# (that is, put it down). The corresponding object in the scene is made visible
 # again.
 #
-func _on_inventory_item_removed(which: int):
+func _on_ui_trash_inventory_item(which: int):
 
-	# special cases for coffee beans: there are two colliders, but in the
-	# inventory they only count for one item, plus they may be wrapped in the
-	# towel...
+	# special cases where the user cannot remove the item
+
+	if (which == Globals.Prop.COFFEE_BEANS_1
+		and coffee_state > CoffeeState.BEANS
+		and current_chapter == 2):
+		return
+
+	# remove the item from the inventory, and close the inventory if it was the
+	# last
+
+	$UI.remove_from_inventory(which)
+	if $UI.is_inventory_empty():
+		$UI.close_inventory()
+
+	# make the object visible in the scene again, but with special cases for
+	# coffee beans: there are two colliders, but in the inventory they only
+	# count for one item, plus they may be wrapped in the towel
 
 	if which == Globals.Prop.COFFEE_BEANS_1:
 		if coffee_beans_held & 1:
 			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_1, true)
 		if coffee_beans_held & 2:
 			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_2, true)
-		coffee_beans_held = 0
-		if is_coffee_in_towel:
+		if coffee_state >= CoffeeState.IN_TOWEL:
 			$BACKGROUND.set_object_visible(Globals.Prop.TOWEL_SMALL, true)
-			is_coffee_in_towel = false
+			if coffee_state >= CoffeeState.ON_BOARD:
+				$BACKGROUND.set_object_visible(Globals.Prop.CUTTING_BOARD, true)
+		coffee_beans_held = 0
+		coffee_state = CoffeeState.BEANS
 	else:
 		$BACKGROUND.set_object_visible(which, true)
 
@@ -1389,7 +1450,7 @@ func save_game() -> Dictionary:
 		"coffee-maker-seen": coffee_maker_seen,
 		"is-towel-wet": is_towel_wet,
 		"coffee-beans-held": coffee_beans_held,
-		"is-coffee-in-towel": is_coffee_in_towel,
+		"coffee-state": coffee_state,
 		"props-seen": props_seen,
 		"inventory": $UI.get_inventory(),
 		"tutorial-seen": $UI.is_tutorial_seen(),
@@ -1408,15 +1469,17 @@ func load_game(dict: Dictionary):
 	coffee_maker_seen = dict.get("coffee-maker-seen", false)
 	is_towel_wet = dict.get("is-towel-wet", false)
 	coffee_beans_held = dict.get("coffee-beans-held", 0)
-	is_coffee_in_towel = dict.get("is-coffee-in-towel", false)
+	coffee_state = dict.get("coffee-state", CoffeeState.BEANS)
 	props_seen = dict.get("props-seen", [])
 
 	if coffee_beans_held & 1:
 		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_1, false)
 	if coffee_beans_held & 2:
 		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_2, false)
-	if is_coffee_in_towel:
+	if coffee_state >= CoffeeState.IN_TOWEL:
 		$BACKGROUND.set_object_visible(Globals.Prop.TOWEL_SMALL, false)
+		if coffee_state >= CoffeeState.ON_BOARD:
+			$BACKGROUND.set_object_visible(Globals.Prop.CUTTING_BOARD, false)
 
 	$UI.clear_inventory()
 	var inventory = dict.get("inventory", {})
