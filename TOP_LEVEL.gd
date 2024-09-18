@@ -58,7 +58,7 @@ func _on_quit():
 #
 func _start_game():
 	add_child(game)
-	if not _load_game():
+	if not await _load_game():
 		game.start()
 
 #
@@ -81,7 +81,7 @@ func _load_game():
 		if json.parse(json_str) == OK:
 			var dict = json.get_data()
 			if dict is Dictionary:
-				game.load_game(dict)
+				await game.load_game(dict)
 				var t = dict.get("elapsed-time")
 				if t:
 					$RadioPlayer.play(t)

@@ -31,6 +31,9 @@ signal quit
 # Current chapter of the story.
 var current_chapter: int = 1
 
+# Has the dialogue for the current chapter been seen?
+var is_dialogue_seen: bool = false
+
 # The prop currently under the mouse cursor (see Globals.Prop), or -1.
 var current_prop: int = -1
 
@@ -395,7 +398,9 @@ func _ready():
 func start(chapter: int = 1):
 	current_chapter = chapter
 	if not skip_dialogues:
+		is_dialogue_seen = false
 		await $UI.tell_story(current_chapter)
+	is_dialogue_seen = true
 	$UI.pin_help_button()
 
 func _unhandled_input(event: InputEvent):
@@ -1208,8 +1213,10 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 			current_chapter += 1
 			$UI.unpin_help_button()
 			if not skip_dialogues:
+				is_dialogue_seen = false
 				await $UI.comment_closed
 				await $UI.tell_story(current_chapter)
+			is_dialogue_seen = true
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
 			await $ROWENA.do_stuff(false)
@@ -1377,6 +1384,7 @@ func _on_ui_drawer_closed():
 func save_game() -> Dictionary:
 	var dict = {
 		"chapter": current_chapter,
+		"is-dialogue-seen": is_dialogue_seen,
 		"butter-knife-seen": butter_knife_seen,
 		"coffee-maker-seen": coffee_maker_seen,
 		"is-towel-wet": is_towel_wet,
@@ -1395,6 +1403,7 @@ func save_game() -> Dictionary:
 ##
 func load_game(dict: Dictionary):
 	current_chapter = dict.get("chapter", 1)
+	is_dialogue_seen = dict.get("is-dialogue-seen", false)
 	butter_knife_seen = dict.get("butter-knife-seen", false)
 	coffee_maker_seen = dict.get("coffee-maker-seen", false)
 	is_towel_wet = dict.get("is-towel-wet", false)
@@ -1428,6 +1437,11 @@ func load_game(dict: Dictionary):
 		$BACKGROUND.open_something(open_object, false)
 	
 	_set_radio_volume(dict.get("radio-volume", -8))
+	
+	if not is_dialogue_seen:
+		if not skip_dialogues:
+			await $UI.tell_story(current_chapter)
+		is_dialogue_seen = true
 
 func _on_ui_typing_finished(speaker: int):
 	if speaker == Globals.DOCTOR:
