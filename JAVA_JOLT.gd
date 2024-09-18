@@ -1319,19 +1319,21 @@ func _on_ui_trash_inventory_item(which: int):
 
 	# make the object visible in the scene again, but with special cases for
 	# coffee beans: there are two colliders, but in the inventory they only
-	# count for one item, plus they may be wrapped in the towel
+	# count for one item, plus they may be wrapped in the towel and may be on
+	# the cutting board...
 
 	if which == Globals.Prop.COFFEE_BEANS_1:
-		if coffee_beans_held & 1:
+		if (coffee_beans_held & 1) and coffee_state < CoffeeState.GROUND:
 			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_1, true)
-		if coffee_beans_held & 2:
+		if (coffee_beans_held & 2) and coffee_state < CoffeeState.GROUND:
 			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_2, true)
-		if coffee_state >= CoffeeState.IN_TOWEL:
+		if coffee_state in [CoffeeState.IN_TOWEL, CoffeeState.ON_BOARD]:
 			$BACKGROUND.set_object_visible(Globals.Prop.TOWEL_SMALL, true)
-			if coffee_state >= CoffeeState.ON_BOARD:
-				$BACKGROUND.set_object_visible(Globals.Prop.CUTTING_BOARD, true)
+		if coffee_state == CoffeeState.ON_BOARD:
+			$BACKGROUND.set_object_visible(Globals.Prop.CUTTING_BOARD, true)
 		coffee_beans_held = 0
-		coffee_state = CoffeeState.BEANS
+		if coffee_state < CoffeeState.GROUND:
+			coffee_state = CoffeeState.BEANS
 	else:
 		$BACKGROUND.set_object_visible(which, true)
 
@@ -1472,14 +1474,14 @@ func load_game(dict: Dictionary):
 	coffee_state = dict.get("coffee-state", CoffeeState.BEANS)
 	props_seen = dict.get("props-seen", [])
 
-	if coffee_beans_held & 1:
+	if (coffee_beans_held & 1) or coffee_state == CoffeeState.GROUND:
 		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_1, false)
-	if coffee_beans_held & 2:
+	if (coffee_beans_held & 2) or coffee_state == CoffeeState.GROUND:
 		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_2, false)
-	if coffee_state >= CoffeeState.IN_TOWEL:
+	if coffee_state in [CoffeeState.IN_TOWEL, CoffeeState.ON_BOARD]:
 		$BACKGROUND.set_object_visible(Globals.Prop.TOWEL_SMALL, false)
-		if coffee_state >= CoffeeState.ON_BOARD:
-			$BACKGROUND.set_object_visible(Globals.Prop.CUTTING_BOARD, false)
+	if coffee_state == CoffeeState.ON_BOARD:
+		$BACKGROUND.set_object_visible(Globals.Prop.CUTTING_BOARD, false)
 
 	$UI.clear_inventory()
 	var inventory = dict.get("inventory", {})
