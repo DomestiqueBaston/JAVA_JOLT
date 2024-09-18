@@ -684,10 +684,11 @@ position = Vector2(-136, -36)
 polygon = PackedVector2Array(133, 39, 133, 30, 139, 30, 139, 39)
 
 [node name="Tap_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]
+position = Vector2(117, 35.5)
 collision_layer = 2
+collision_mask = 5
 
 [node name="Tap" type="CollisionPolygon2D" parent="Stuff_Colliders/Mid/Tap_Collider"]
-position = Vector2(117, 35.5)
 polygon = PackedVector2Array(-5, -0.5, -5, -1.5, -3, -1.5, 0, -0.5, 1, -4.5, 3, -4.5, 3, 3.5, -1, 3.5, -1, 1.5)
 
 [node name="Plastic_Boxes_Collider" type="Area2D" parent="Stuff_Colliders/Mid"]

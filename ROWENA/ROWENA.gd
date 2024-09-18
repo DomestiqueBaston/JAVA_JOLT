@@ -178,7 +178,7 @@ func do_stuff(with_sound: bool):
 ##
 ## Plays the required animations when Rowena turns away to do something
 ## disgusting, then turns back. Inbetween, the Do_Erk_Stuff animation is
-## played.
+## played. This is a coroutine; use await to block until it finishes.
 ##
 ## Does nothing if is_busy() returns true.
 ##
@@ -194,6 +194,23 @@ func do_erk_stuff():
 	await $ROWENA_AnimationPlayer.animation_finished
 	set_physics_process(true)
 
+##
+## Plays the required animations when Rowena puts the coffee patch on her arm
+## or removes it. This is a coroutine; use await to block until it finishes.
+##
+## Does nothing if is_busy() returns true.
+##
+func do_patch_stuff():
+	if is_busy():
+		return
+	set_physics_process(false)
+	$ROWENA_AnimationPlayer.play("Turn_Back")
+	await $ROWENA_AnimationPlayer.animation_finished
+	$ROWENA_AnimationPlayer.play("Sticking_Patch")
+	await $ROWENA_AnimationPlayer.animation_finished
+	$ROWENA_AnimationPlayer.play("Turn_Front")
+	await $ROWENA_AnimationPlayer.animation_finished
+	set_physics_process(true)
 #
 # Starts Rowena's wait animation cycle. Does nothing if she is already waiting.
 #

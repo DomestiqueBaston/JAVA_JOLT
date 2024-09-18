@@ -379,11 +379,20 @@ enum CoffeeState {
 	GROUND,
 }
 
+enum FilterState {
+	ORIGINAL,
+	ON_BOARD,
+	HALVED,
+	FULL,
+	SEALED,
+}
+
 var butter_knife_seen := false
 var coffee_maker_seen := false
 var is_towel_wet := false
 var is_object_taken_from_drawer := false
 var coffee_state: int = CoffeeState.BEANS
+var filter_state: int = FilterState.ORIGINAL
 var is_quitting := false
 
 # 0: no coffee beans
@@ -1278,6 +1287,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 		return true
 
 	# wooden spoon + wrapped coffee beans on cutting board: ground the beans
+	# (both must be in the inventory)
 
 	if _check_objects(
 		object1, object2, Globals.Prop.WOODEN_SPOON, Globals.Prop.COFFEE_BEANS_1):
@@ -1297,6 +1307,111 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			$UI.add_to_inventory(Globals.Prop.WOODEN_SPOON, "Wooden spoon")
 		return true
 
+	# coffee filter + cutting board (both must be in the inventory)
+
+	if _check_objects(
+		object1, object2, Globals.Prop.CUTTING_BOARD, Globals.Prop.COFFEE_FILTER):
+		if ($UI.find_in_inventory(object1) < 0 or
+			$UI.find_in_inventory(object2) < 0 or
+			filter_state != FilterState.ORIGINAL):
+			return false
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("All right!")
+			filter_state = FilterState.ON_BOARD
+			$UI.remove_from_inventory(Globals.Prop.CUTTING_BOARD)
+			$UI.add_to_inventory(
+				Globals.Prop.COFFEE_FILTER, "Coffee filter on cutting board")
+		return true
+
+	# knife + coffee filter on cutting board (they are both in drawers, so if
+	# we get this far they must be in the inventory)
+
+	if _check_objects(
+		object1, object2, Globals.Prop.CUTLERY_KNIVES, Globals.Prop.COFFEE_FILTER):
+		if filter_state != FilterState.ON_BOARD:
+			return false
+		elif $UI.is_inventory_full():
+			_set_comment(inventory_full_msg)
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("OK, but just this once.")
+			filter_state = FilterState.HALVED
+			$UI.add_to_inventory(Globals.Prop.CUTTING_BOARD, "Cutting board")
+			$UI.add_to_inventory(
+				Globals.Prop.COFFEE_FILTER, "Coffee filter cut in half")
+		return true
+
+	# knife + scotch tape, or scotch tape on itself: cut a piece of tape (both
+	# come from drawers so must be in the inventory)
+
+	if (_check_objects(
+			object1, object2, Globals.Prop.CUTLERY_KNIVES, Globals.Prop.SCOTCH_TAPE)
+		or (object1 == Globals.Prop.SCOTCH_TAPE and object2 == object1)):
+		if $UI.find_in_inventory(Globals.Prop.PIECE_OF_TAPE) >= 0:
+			return false
+		elif $UI.is_inventory_full():
+			_set_comment(inventory_full_msg)
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("Clever me!")
+			$UI.add_to_inventory(Globals.Prop.PIECE_OF_TAPE, "Piece of tape")
+		return true
+
+	# ground coffee + half coffee filter: put the coffee in the filter
+
+	if _check_objects(
+		object1, object2, Globals.Prop.COFFEE_BEANS_1, Globals.Prop.COFFEE_FILTER):
+		if filter_state != FilterState.HALVED:
+			return false
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("Clever me!")
+			filter_state = FilterState.FULL
+			$UI.add_to_inventory(
+				Globals.Prop.COFFEE_FILTER, "Ground coffee in half a filter")
+			$UI.remove_from_inventory(Globals.Prop.COFFEE_BEANS_1)
+		return true
+
+	# coffee in filter + piece of tape: coffee patch!
+	# coffee patch + piece of tape: end of chapter
+
+	if _check_objects(
+		object1, object2, Globals.Prop.PIECE_OF_TAPE, Globals.Prop.COFFEE_FILTER):
+		if filter_state == FilterState.FULL:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_stuff(false)
+			_set_comment("OK, now it's sealed.")
+			filter_state = FilterState.SEALED
+			$UI.add_to_inventory(Globals.Prop.COFFEE_FILTER, "Coffee patch")
+			$UI.remove_from_inventory(Globals.Prop.PIECE_OF_TAPE)
+		elif filter_state == FilterState.SEALED:
+			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
+			await $ROWENA.do_patch_stuff()
+			await get_tree().create_timer(5).timeout
+			_set_comment("Darn! This doesn't do anything.")
+			await $UI.comment_closed
+			await $ROWENA.do_patch_stuff()
+			_set_comment("Yeah, that should make it more porous...")
+			await $UI.comment_closed
+			await $ROWENA.walk_to_area($BACKGROUND.get_collider(Globals.Prop.TAP), true)
+			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_patch_stuff()
+			_set_comment("Damn it, it doesn't work at all!")
+			current_chapter += 1
+			if not skip_dialogues:
+				is_dialogue_seen = false
+				await $UI.comment_closed
+				await $UI.tell_story(current_chapter)
+			is_dialogue_seen = true
+		else:
+			return false
+		return true
+
 	return false
 
 #
@@ -1308,10 +1423,14 @@ func _on_ui_trash_inventory_item(which: int):
 
 	# special cases where the user cannot remove the item
 
-	if (which == Globals.Prop.COFFEE_BEANS_1
-		and coffee_state > CoffeeState.BEANS
-		and current_chapter == 2):
-		return
+	if current_chapter == 2:
+		match which:
+			Globals.Prop.COFFEE_BEANS_1:
+				if coffee_state > CoffeeState.BEANS:
+					return
+			Globals.Prop.COFFEE_FILTER:
+				if filter_state > FilterState.ORIGINAL:
+					return
 
 	# remove the item from the inventory, and close the inventory if it was the
 	# last
@@ -1456,6 +1575,7 @@ func save_game() -> Dictionary:
 		"is-towel-wet": is_towel_wet,
 		"coffee-beans-held": coffee_beans_held,
 		"coffee-state": coffee_state,
+		"filter-state": filter_state,
 		"props-seen": props_seen,
 		"inventory": $UI.get_inventory(),
 		"tutorial-seen": $UI.is_tutorial_seen(),
@@ -1475,6 +1595,7 @@ func load_game(dict: Dictionary):
 	is_towel_wet = dict.get("is-towel-wet", false)
 	coffee_beans_held = dict.get("coffee-beans-held", 0)
 	coffee_state = dict.get("coffee-state", CoffeeState.BEANS)
+	filter_state = dict.get("filter-state", FilterState.ORIGINAL)
 	props_seen = dict.get("props-seen", [])
 
 	if (coffee_beans_held & 1) or coffee_state == CoffeeState.GROUND:
@@ -1483,7 +1604,7 @@ func load_game(dict: Dictionary):
 		$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_BEANS_2, false)
 	if coffee_state in [CoffeeState.IN_TOWEL, CoffeeState.ON_BOARD]:
 		$BACKGROUND.set_object_visible(Globals.Prop.TOWEL_SMALL, false)
-	if coffee_state == CoffeeState.ON_BOARD:
+	if coffee_state == CoffeeState.ON_BOARD or filter_state == FilterState.ON_BOARD:
 		$BACKGROUND.set_object_visible(Globals.Prop.CUTTING_BOARD, false)
 
 	$UI.clear_inventory()
