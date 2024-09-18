@@ -677,6 +677,7 @@ func _set_current_inventory_item(index: int):
 		else:
 			_set_mouse_cursor(Globals.Cursor.ARROW_PASSIVE)
 	else:
+		_current_cursor = 0
 		_set_mouse_cursor(_inventory_cursors[0])
 
 	for i in _inventory_contents.size():
