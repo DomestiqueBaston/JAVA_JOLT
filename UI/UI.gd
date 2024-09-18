@@ -52,7 +52,8 @@ signal trash_inventory_item(which: int)
 ## from [enum Globals.Prop]).
 signal drawer_item_picked(which: int)
 
-## Signal emitted when the open drawer is closed.
+## Signal emitted when the open drawer is closed (but not if [method
+## close_drawer] was called).
 signal drawer_closed
 
 ## Signal emitted when the comment box is closed, automatically or by the user.
@@ -490,12 +491,13 @@ func open_drawer(contents: Dictionary):
 		_open_inventory(InventoryMode.DRAWER)
 
 ##
-## Hides the drawer contents shown previously by [method open_drawer].
+## Hides the drawer contents shown previously by [method open_drawer]. No
+## [signal drawer_closed] signal is emitted.
 ##
 func close_drawer():
 	if _inventory_mode == InventoryMode.DRAWER:
 		_drawer_contents.clear()
-		await _close_inventory()
+		await _close_inventory(false)
 
 ##
 ## Displays the current contents of the inventory. The inventory remains open
@@ -533,7 +535,7 @@ func _open_inventory(mode: int = InventoryMode.INVENTORY):
 		_update_drawer_labels()
 		_set_current_drawer_item(-1)
 
-func _close_inventory():
+func _close_inventory(emit_drawer_signal: bool = true):
 	$Close_Inventory_Timer.stop()
 	$Inventory_AnimationPlayer.play("Close_Inventory")
 
@@ -551,7 +553,8 @@ func _close_inventory():
 
 	if mode == InventoryMode.DRAWER:
 		await $Inventory_AnimationPlayer.animation_finished
-		drawer_closed.emit()
+		if emit_drawer_signal:
+			drawer_closed.emit()
 
 func _update_inventory_labels():
 	_update_labels(_inventory_contents)
