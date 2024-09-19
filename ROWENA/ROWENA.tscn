@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://clvr31ogitwwv"]
+[gd_scene load_steps=37 format=3 uid="uid://clvr31ogitwwv"]
 
 [ext_resource type="Script" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/IMAGES/ROWENA.png" id="1_tqx3q"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b0ai1u38p82et" path="res://ROWENA/SOUNDS/Do_Stuff.ogg" id="5_splmy"]
 [ext_resource type="AudioStream" uid="uid://cuwid5c2t025o" path="res://ROWENA/SOUNDS/Hang_Up.ogg" id="6_xr3ty"]
 [ext_resource type="AudioStream" uid="uid://cjtbgf2e7gdmg" path="res://ROWENA/SOUNDS/Flowing_Water.ogg" id="12_n5evd"]
+[ext_resource type="AudioStream" uid="uid://d38xhbrbcau3f" path="res://ROWENA/SOUNDS/Coffee_Ready.ogg" id="13_vnqku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3djui"]
 size = Vector2(16, 68)
@@ -72,7 +73,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-12.5]
+"values": [-10.0]
 }
 
 [sub_resource type="Animation" id="Animation_ww28l"]
@@ -650,6 +651,11 @@ volume_db = -10.0
 
 [node name="Running_Water" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_n5evd")
+bus = &"FX"
+
+[node name="Coffee_Ready" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_vnqku")
+volume_db = -10.0
 bus = &"FX"
 
 [connection signal="animation_started" from="ROWENA_AnimationPlayer" to="." method="_on_animation_started"]
