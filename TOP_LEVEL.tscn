@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt0ftcmljrt5a"]
+[gd_scene load_steps=2 format=3 uid="uid://dt0ftcmljrt5a"]
 
 [ext_resource type="Script" path="res://TOP_LEVEL.gd" id="1_tomy0"]
-[ext_resource type="AudioStream" uid="uid://bgov5rr4v0fmc" path="res://Radio.ogg" id="3_is4ym"]
 
 [node name="TOP_LEVEL" type="Node"]
 script = ExtResource("1_tomy0")
-
-[node name="RadioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_is4ym")
-volume_db = -15.0
-bus = &"MUSIC"

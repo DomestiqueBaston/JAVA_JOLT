@@ -1571,6 +1571,7 @@ func save_game() -> Dictionary:
 		"tutorial-seen": $UI.is_tutorial_seen(),
 		"open-object": $BACKGROUND.get_open_object(),
 		"radio-volume": _get_radio_volume(),
+		"elapsed-time": Globals.get_elapsed_time(),
 	}
 	return dict
 
@@ -1616,6 +1617,7 @@ func load_game(dict: Dictionary):
 		$BACKGROUND.open_something(open_object, false)
 	
 	_set_radio_volume(dict.get("radio-volume", -8))
+	Globals.play_radio_at(dict.get("elapsed-time", 0))
 	
 	if not is_dialogue_seen:
 		if not skip_dialogues:

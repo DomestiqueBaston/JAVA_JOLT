@@ -1,3 +1,6 @@
+##
+## Defines enums and methods available to all scenes in the project.
+##
 extends Node
 
 ## Characters in the game.
@@ -278,3 +281,17 @@ enum Prop {
 func _ready():
 	if hide_system_mouse:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+##
+## Plays the radio starting at time [param t]. If the radio is already playing,
+## it skips to [param t].
+##
+func play_radio_at(t: float = 0):
+	$RadioPlayer.play(t)
+
+##
+## Returns the time elapsed since the beginning of the radio program, in
+## seconds. Returns 0 if the radio is not playing.
+##
+func get_elapsed_time() -> float:
+	return $RadioPlayer.get_playback_position()

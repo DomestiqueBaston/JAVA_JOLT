@@ -6,10 +6,14 @@ extends Node
 ## Don't display any dialogues.
 @export var skip_dialogues := false
 
+## File where game state is saved.
+const save_file = "user://save.json"
+
+## Time (in seconds from start of radio program) when the game starts.
+const time_at_start = 13.2
+
 var intro = preload("res://INTRO_OUTRO/INTRO.tscn").instantiate()
 var game = preload("res://JAVA_JOLT.tscn").instantiate()
-
-const save_file = "user://save.json"
 
 func _ready():
 	game.skip_dialogues = skip_dialogues
@@ -17,8 +21,7 @@ func _ready():
 	game.quit.connect(_on_quit)
 	get_tree().root.close_requested.connect(_on_close_requested)
 	if skip_intro or FileAccess.file_exists(save_file):
-		# 13.2 = time difference between radio_on and intro_done signals
-		$RadioPlayer.play(13.2)
+		Globals.play_radio_at(time_at_start)
 		_start_game()
 	else:
 		intro.radio_on.connect(_on_intro_radio_on)
@@ -29,7 +32,7 @@ func _ready():
 # Called when the intro emits its radio_on signal: turns on the radio.
 #
 func _on_intro_radio_on():
-	$RadioPlayer.play()
+	Globals.play_radio_at(0)
 
 #
 # Called when the intro finishes: closes the intro and starts the game.
@@ -67,7 +70,6 @@ func _start_game():
 func _save_game():
 	if is_instance_valid(game) and game.is_inside_tree():
 		var dict = game.save_game()
-		dict["elapsed-time"] = $RadioPlayer.get_playback_position()
 		var file = FileAccess.open(save_file, FileAccess.WRITE)
 		file.store_line(JSON.stringify(dict, "\t"))
 
@@ -82,8 +84,5 @@ func _load_game():
 			var dict = json.get_data()
 			if dict is Dictionary:
 				game.load_game(dict)
-				var t = dict.get("elapsed-time")
-				if t:
-					$RadioPlayer.play(t)
 				return true
 	return false
