@@ -1179,7 +1179,7 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 			_set_comment("Hey, I'm not going around with Santa's bag!")
 		else:
 			await _walk_to_prop(Globals.Prop.COFFEE_MAKER, true)
-			await $ROWENA.do_stuff(true)
+			await $ROWENA.do_stuff($ROWENA.SoundEffect.DO_STUFF)
 			_set_comment("I got the filter holder out intact!")
 			$UI.add_to_inventory(Globals.Prop.COFFEE_MAKER, "Coffee filter holder")
 			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_MAKER, false)
@@ -1197,7 +1197,7 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 			_set_comment("The towel is already moist.")
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("Now the towel is moist.")
 			is_towel_wet = true
 			$UI.add_to_inventory(
@@ -1214,7 +1214,7 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 			return false
 		elif is_towel_wet:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("That should be more absorbent now. Let's taste it!")
 			await $UI.comment_closed
 			await $ROWENA.do_erk_stuff()
@@ -1228,7 +1228,7 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 			is_dialogue_seen = true
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("That works, but I can't get enough coffee out of it.")
 		return true
 
@@ -1249,7 +1249,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			_set_comment("I don't have enough coffee beans.")
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("OK. Well that's something.")
 			coffee_state = CoffeeState.IN_TOWEL
 			$UI.remove_from_inventory(Globals.Prop.TOWEL_SMALL)
@@ -1268,7 +1268,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			return false
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("Looks like a plan to me!")
 			coffee_state = CoffeeState.ON_BOARD
 			$UI.remove_from_inventory(Globals.Prop.CUTTING_BOARD)
@@ -1289,7 +1289,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			_set_comment(inventory_full_msg)
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("One small step for man, one giant leap...")
 			coffee_state = CoffeeState.GROUND
 			$UI.add_to_inventory(Globals.Prop.COFFEE_BEANS_1, "Ground coffee")
@@ -1307,7 +1307,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			return false
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("All right!")
 			filter_state = FilterState.ON_BOARD
 			$UI.remove_from_inventory(Globals.Prop.CUTTING_BOARD)
@@ -1326,7 +1326,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			_set_comment(inventory_full_msg)
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("OK, but just this once.")
 			filter_state = FilterState.HALVED
 			$UI.add_to_inventory(Globals.Prop.CUTTING_BOARD, "Cutting board")
@@ -1346,7 +1346,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			_set_comment(inventory_full_msg)
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("Clever me!")
 			$UI.add_to_inventory(Globals.Prop.PIECE_OF_TAPE, "Piece of tape")
 		return true
@@ -1359,7 +1359,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			return false
 		else:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("Clever me!")
 			filter_state = FilterState.FULL
 			$UI.add_to_inventory(
@@ -1374,7 +1374,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 		object1, object2, Globals.Prop.PIECE_OF_TAPE, Globals.Prop.COFFEE_FILTER):
 		if filter_state == FilterState.FULL:
 			await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff()
 			_set_comment("OK, now it's sealed.")
 			filter_state = FilterState.SEALED
 			$UI.add_to_inventory(Globals.Prop.COFFEE_FILTER, "Coffee patch")
@@ -1389,7 +1389,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			_set_comment("Yeah, that should make it more porous...")
 			await $UI.comment_closed
 			await $ROWENA.walk_to_area($BACKGROUND.get_collider(Globals.Prop.TAP), true)
-			await $ROWENA.do_stuff(false)
+			await $ROWENA.do_stuff($ROWENA.SoundEffect.RUNNING_WATER)
 			await $ROWENA.do_patch_stuff()
 			_set_comment("Damn it, it doesn't work at all!")
 			current_chapter += 1

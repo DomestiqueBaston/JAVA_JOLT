@@ -3,6 +3,12 @@ extends CharacterBody2D
 ## Walking speed in pixels/second.
 const SPEED = 40.0
 
+enum SoundEffect {
+	NONE,
+	DO_STUFF,
+	RUNNING_WATER,
+}
+
 ## Signal emitted by [method get_something] when Rowena's hand reaches the
 ## target.
 signal get_something_reached
@@ -156,20 +162,23 @@ func get_something_at(y: float):
 ##
 ## Plays the required animations when Rowena turns away to do something, then
 ## turns back. Inbetween, the Do_Stuff animation is played. If [param
-## with_sound] is true, a sound effect is played as well. This is a coroutine;
-## use await to block until it finishes.
+## with_sound] is not [enum SoundEffect].NONE, a sound effect is played as well.
+## This is a coroutine; use await to block until it finishes.
 ##
 ## Does nothing if is_busy() returns true.
 ##
-func do_stuff(with_sound: bool):
+func do_stuff(sound_effect: int = SoundEffect.NONE):
 	if is_busy():
 		return
 	set_physics_process(false)
 	$ROWENA_AnimationPlayer.play("Turn_Back")
 	await $ROWENA_AnimationPlayer.animation_finished
 	$ROWENA_AnimationPlayer.play("Do_Stuff")
-	if with_sound:
-		$Do_Stuff.play()
+	match sound_effect:
+		SoundEffect.DO_STUFF:
+			$Do_Stuff.play()
+		SoundEffect.RUNNING_WATER:
+			$Running_Water.play()
 	await $ROWENA_AnimationPlayer.animation_finished
 	$ROWENA_AnimationPlayer.play("Turn_Front")
 	await $ROWENA_AnimationPlayer.animation_finished

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://clvr31ogitwwv"]
+[gd_scene load_steps=36 format=3 uid="uid://clvr31ogitwwv"]
 
 [ext_resource type="Script" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/IMAGES/ROWENA.png" id="1_tqx3q"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://ROWENA/SOUNDS/Phone_Ring.ogg" id="5_gkr5f"]
 [ext_resource type="AudioStream" uid="uid://b0ai1u38p82et" path="res://ROWENA/SOUNDS/Do_Stuff.ogg" id="5_splmy"]
 [ext_resource type="AudioStream" uid="uid://cuwid5c2t025o" path="res://ROWENA/SOUNDS/Hang_Up.ogg" id="6_xr3ty"]
+[ext_resource type="AudioStream" uid="uid://cjtbgf2e7gdmg" path="res://ROWENA/SOUNDS/Flowing_Water.ogg" id="12_n5evd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3djui"]
 size = Vector2(16, 68)
@@ -646,5 +647,9 @@ volume_db = -12.5
 
 [node name="Do_Erk_Stuff" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
+
+[node name="Running_Water" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_n5evd")
+bus = &"FX"
 
 [connection signal="animation_started" from="ROWENA_AnimationPlayer" to="." method="_on_animation_started"]
