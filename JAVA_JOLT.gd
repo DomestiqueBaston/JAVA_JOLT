@@ -929,16 +929,8 @@ func _recompute_overlapping_colliders():
 			overlapping_colliders[index] = area
 	_update_current_prop()
 
-func _get_prop_name(prop) -> String:
-	var prop_name
-	if typeof(prop) == TYPE_INT:
-		var collider: Area2D = $BACKGROUND.get_collider(prop)
-		if collider == null:
-			return type_convert(prop, TYPE_STRING)
-		prop_name = collider.name
-	else:
-		prop_name = prop.name
-	return prop_name.to_lower().replace("_collider", "").replace("_", " ")
+func _get_prop_name(prop: int) -> String:
+	return Globals.Prop.find_key(prop).capitalize()
 
 #
 # Called when the list of background objects in contact with the mouse collider
@@ -952,7 +944,6 @@ func _get_prop_name(prop) -> String:
 #
 func _update_current_prop():
 	var top_prop = -1
-	#var top_collider: Area2D
 
 	# fetch the topmost object in contact with the mouse collider
 
@@ -964,7 +955,6 @@ func _update_current_prop():
 			if bg_level < level:
 				bg_level = level
 				top_prop = key
-				#top_collider = collider
 
 	# already the current prop: do nothing
 
@@ -979,7 +969,7 @@ func _update_current_prop():
 		$UI.clear_available_cursors()
 		return
 
-	#print(_get_prop_name(top_collider))
+	#print(_get_prop_name(top_prop))
 	var actions: Array[int] = [Globals.Cursor.CROSS_ACTIVE, Globals.Cursor.EYE]
 	if not _is_prop_seen(current_prop):
 		actions[0] = Globals.Cursor.CROSS_ACTIVE_NEVER_SEEN
