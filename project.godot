@@ -24,7 +24,7 @@ boot_splash/minimum_display_time=1000
 
 [autoload]
 
-Globals="*res://globals.gd"
+Globals="*res://Globals.tscn"
 
 [display]
 

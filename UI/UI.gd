@@ -31,9 +31,6 @@ extends CanvasLayer
 ## Seconds before drawer closes if the user moves the cursor outside the box.
 @export var drawer_timeout: float = 1
 
-## If true, only our big cursor is visible.
-@export var hide_system_mouse: bool = false
-
 ## Signal emitted during a dialogue, when a line of dialogue finishes typing.
 ## [param speaker] is Globals.ROWENA or Globals.DOCTOR.
 signal typing_finished(speaker: int)
@@ -123,8 +120,6 @@ const dialogue3 = preload("res://dialogue3.json").data
 
 func _ready():
 	clear_inventory()
-	if hide_system_mouse:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 #
 # If the user has chosen an inventory item to use and then moves the mouse
