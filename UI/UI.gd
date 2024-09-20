@@ -284,12 +284,12 @@ func _hide_comment_box():
 	comment_closed.emit()
 
 func _on_three_points_gui_input(event: InputEvent):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click", false, true):
 		$Boxes/Dialogue_Box/BG/Next/Three_Points.accept_event()
 		emit_signal("_next_click")
 
 func _on_dialogue_1_gui_input(event: InputEvent):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click", false, true):
 		$Boxes/Dialogue_Box/BG/Dialogue.accept_event()
 		# if Dialogue2 is visible, we are waiting for the user to choose
 		if $Boxes/Dialogue_Box/BG2/Dialogue2.visible:
@@ -299,17 +299,17 @@ func _on_dialogue_1_gui_input(event: InputEvent):
 			$Boxes/Dialogue_Box/BG/Dialogue.visible_characters = -1
 
 func _on_dialogue_2_gui_input(event: InputEvent):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click", false, true):
 		$Boxes/Dialogue_Box/BG2/Dialogue2.accept_event()
 		_click_on_choice.emit(1)
 
 func _on_dialogue_3_gui_input(event: InputEvent):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click", false, true):
 		$Boxes/Dialogue_Box/BG3/Dialogue3.accept_event()
 		_click_on_choice.emit(2)
 
 func _on_dialogue_4_gui_input(event: InputEvent):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click", false, true):
 		$Boxes/Dialogue_Box/BG4/Dialogue4.accept_event()
 		_click_on_choice.emit(3)
 
@@ -464,7 +464,7 @@ func is_tutorial_seen() -> bool:
 	return _is_tutorial_seen
 
 func _on_help_gui_input(event: InputEvent):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click", false, true):
 		_abort_quit()
 		if not (is_dialogue_open() or is_inventory_open()):
 			$Boxes/Tutorial.show()
@@ -735,9 +735,9 @@ func _on_inventory_4_mouse_entered():
 			_set_current_drawer_item(3)
 
 func _on_inventory_gui_input(event: InputEvent):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click", false, true):
 		_click_on_inventory_item()
-	elif event.is_action_pressed("inventory_action"):
+	elif event.is_action_pressed("inventory_action", false, true):
 		await _close_inventory()
 
 func _click_on_inventory_item():
@@ -771,7 +771,7 @@ func _on_close_inventory_timer_timeout():
 		_close_inventory()
 
 func _on_comment_box_gui_input(event):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click", false, true):
 		clear_comment_text()
 
 func get_areas_overlapping_mouse() -> Array[Area2D]:

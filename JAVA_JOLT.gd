@@ -430,7 +430,7 @@ func start(chapter: int = 1):
 	$UI.pin_help_button()
 
 func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed("inventory_action"):
+	if event.is_action_pressed("inventory_action", false, true):
 		if $UI.is_inventory_open():
 			$UI.close_inventory()
 		elif not ($UI.is_tutorial_open() or $UI.is_dialogue_open()):
