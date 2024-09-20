@@ -34,6 +34,9 @@ extends Node2D
 ## immediately.
 signal quit
 
+## Signal emitted when Rowena leaves the kitchen. The game is over.
+signal game_over
+
 # Current chapter of the story.
 var current_chapter: int = 1
 
@@ -1499,8 +1502,15 @@ func _use_object_chapter3(object1: int, object2: int) -> bool:
 			await get_tree().create_timer(phone_ring_time).timeout
 			await $ROWENA.play_phone_call_1()
 			$Phone_Ring.stop()
-			await $UI.tell_story(4)
+			if not skip_dialogues:
+				await $UI.tell_story(4)
 			await $ROWENA.play_phone_call_2()
+			_set_comment("That's it then...")
+			await $UI.comment_closed
+			_set_comment("Well. Back to bed.")
+			await $UI.comment_closed
+			await $ROWENA.walk_out_of_area($BACKGROUND/Room_Collider)
+			game_over.emit()
 		return true
 
 	return false

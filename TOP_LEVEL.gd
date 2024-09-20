@@ -14,6 +14,7 @@ const time_at_start = 13.2
 
 var intro = preload("res://INTRO_OUTRO/INTRO.tscn").instantiate()
 var game = preload("res://JAVA_JOLT.tscn").instantiate()
+var outro = preload("res://INTRO_OUTRO/OUTRO.tscn").instantiate()
 
 func _ready():
 	game.skip_dialogues = skip_dialogues
@@ -57,9 +58,19 @@ func _on_quit():
 	get_tree().quit()
 
 #
+# Called when Rowena has left the kitchen: plays the outro scene and turns off
+# the radio.
+#
+func _on_game_over():
+	game.queue_free()
+	outro.music_off.connect(Globals.stop_radio)
+	add_child(outro)
+
+#
 # Starts the game...
 #
 func _start_game():
+	game.game_over.connect(_on_game_over)
 	add_child(game)
 	if not _load_game():
 		game.start()

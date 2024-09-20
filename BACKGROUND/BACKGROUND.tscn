@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://btw3ypyfee56m"]
+[gd_scene load_steps=88 format=3 uid="uid://btw3ypyfee56m"]
 
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="1_fd7kn"]
 [ext_resource type="Script" path="res://BACKGROUND/BACKGROUND.gd" id="1_tfe66"]
@@ -177,6 +177,9 @@ size = Vector2(7, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3lma"]
 size = Vector2(76, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo52f"]
+size = Vector2(188, 68)
 
 [node name="BACKGROUND" type="Node2D"]
 script = ExtResource("1_tfe66")
@@ -831,3 +834,11 @@ collision_mask = 4
 [node name="Counter_Rect" type="CollisionShape2D" parent="Counter_Collider"]
 position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_s3lma")
+
+[node name="Room_Collider" type="Area2D" parent="."]
+position = Vector2(94, 34)
+collision_layer = 2
+collision_mask = 4
+
+[node name="Room_Rect" type="CollisionShape2D" parent="Room_Collider"]
+shape = SubResource("RectangleShape2D_fo52f")

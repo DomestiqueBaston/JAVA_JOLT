@@ -299,6 +299,12 @@ func play_radio_at(t: float = 0):
 	$RadioPlayer.play(t)
 
 ##
+## Turns the radio off, if it is playing.
+##
+func stop_radio():
+	$RadioPlayer.stop()
+
+##
 ## Returns the time elapsed since the beginning of the radio program, in
 ## seconds. Returns 0 if the radio is not playing.
 ##

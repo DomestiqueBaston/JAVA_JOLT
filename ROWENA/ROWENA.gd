@@ -22,8 +22,14 @@ var _target_x: float
 # Area2D collider that Rowena is walking toward.
 var _target_area: Area2D
 
-# true if Rowena is walking toward the origin of _target_area.
-var _walk_to_area_origin: bool
+enum AreaMode {
+	WALK_TO_EDGE,
+	WALK_TO_ORIGIN,
+	LEAVE
+}
+
+# is Rowena is walking toward _target_area, toward its origin, or away from it?
+var _walk_to_area_mode: int
 
 # Counts Wait_Base animation cycles to time other wait animations occasionally.
 var _wait_cycle_count = 0
@@ -36,16 +42,22 @@ func _physics_process(_delta: float):
 
 	if _target_area:
 		var done
-		if _walk_to_area_origin:
-			done = (absf(_target_area.global_position.x - position.x) < 1)
-		else:
-			done = _target_area.overlaps_body(self)
+		match _walk_to_area_mode:
+			AreaMode.WALK_TO_EDGE:
+				done = _target_area.overlaps_body(self)
+			AreaMode.WALK_TO_ORIGIN:
+				done = (absf(_target_area.global_position.x - position.x) < 1)
+			AreaMode.LEAVE:
+				done = not _target_area.overlaps_body(self)
 		if done:
 			_target_area = null
 			_target_x = position.x
 			target_area_reached.emit()
 			return
-		dir = 1 if _target_area.global_position.x > position.x else -1
+		if _walk_to_area_mode == AreaMode.LEAVE:
+			dir = 1
+		else:
+			dir = 1 if _target_area.global_position.x > position.x else -1
 	elif absf(_target_x - position.x) >= 1:
 		dir = 1 if _target_x > position.x else -1
 
@@ -91,9 +103,21 @@ func walk_to_area(area: Area2D, to_origin: bool = false, blocking: bool = true):
 	if is_busy():
 		return
 	_target_area = area
-	_walk_to_area_origin = to_origin
+	_walk_to_area_mode = \
+		AreaMode.WALK_TO_ORIGIN if to_origin else AreaMode.WALK_TO_EDGE
 	if blocking:
 		await target_area_reached
+
+##
+## Similar to [method walk_to_area], but Rowena walks to the right until she
+## exits the given collider.
+##
+func walk_out_of_area(area: Area2D):
+	if is_busy():
+		return
+	_target_area = area
+	_walk_to_area_mode = AreaMode.LEAVE
+	await target_area_reached
 
 ##
 ## Aborts a previous call to [method walk_to_area]: Rowena stops walking.
