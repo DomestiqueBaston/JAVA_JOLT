@@ -3,12 +3,6 @@ extends CharacterBody2D
 ## Walking speed in pixels/second.
 const SPEED = 40.0
 
-enum SoundEffect {
-	NONE,
-	DO_STUFF,
-	RUNNING_WATER,
-}
-
 ## Signal emitted by [method get_something] when Rowena's hand reaches the
 ## target.
 signal get_something_reached
@@ -18,6 +12,9 @@ signal get_something_done
 
 ## Signal emitted when Rowena has reached the target set by walk_to_area(]).
 signal target_area_reached
+
+## Signal emitted in [method pick_up_phone] when Rowena answers the phone.
+signal phone_answered
 
 # X coordinate that Rowena is walking toward.
 var _target_x: float
@@ -161,24 +158,21 @@ func get_something_at(y: float):
 
 ##
 ## Plays the required animations when Rowena turns away to do something, then
-## turns back. Inbetween, the Do_Stuff animation is played. If [param
-## with_sound] is not [enum SoundEffect].NONE, a sound effect is played as well.
-## This is a coroutine; use await to block until it finishes.
+## turns back. Inbetween, the Do_Stuff animation is played. If [param sound] is
+## given, a sound effect is played as well. This is a coroutine; use await to
+## block until it finishes.
 ##
 ## Does nothing if is_busy() returns true.
 ##
-func do_stuff(sound_effect: int = SoundEffect.NONE):
+func do_stuff(sound: AnimationPlayer = null):
 	if is_busy():
 		return
 	set_physics_process(false)
 	$ROWENA_AnimationPlayer.play("Turn_Back")
 	await $ROWENA_AnimationPlayer.animation_finished
 	$ROWENA_AnimationPlayer.play("Do_Stuff")
-	match sound_effect:
-		SoundEffect.DO_STUFF:
-			$Do_Stuff.play()
-		SoundEffect.RUNNING_WATER:
-			$Running_Water.play()
+	if sound:
+		sound.play()
 	await $ROWENA_AnimationPlayer.animation_finished
 	$ROWENA_AnimationPlayer.play("Turn_Front")
 	await $ROWENA_AnimationPlayer.animation_finished
@@ -187,11 +181,12 @@ func do_stuff(sound_effect: int = SoundEffect.NONE):
 ##
 ## Plays the required animations when Rowena turns away to do something
 ## disgusting, then turns back. Inbetween, the Do_Erk_Stuff animation is
-## played. This is a coroutine; use await to block until it finishes.
+## played. And then the Spitting_Out animation, if [param and_spit] is true.
+## This is a coroutine; use await to block until it finishes.
 ##
 ## Does nothing if is_busy() returns true.
 ##
-func do_erk_stuff():
+func do_erk_stuff(and_spit: bool = false):
 	if is_busy():
 		return
 	set_physics_process(false)
@@ -199,6 +194,9 @@ func do_erk_stuff():
 	await $ROWENA_AnimationPlayer.animation_finished
 	$ROWENA_AnimationPlayer.play("Do_Erk_Stuff")
 	await $ROWENA_AnimationPlayer.animation_finished
+	if and_spit:
+		$ROWENA_AnimationPlayer.play("Spitting_Out")
+		await $ROWENA_AnimationPlayer.animation_finished
 	$ROWENA_AnimationPlayer.play("Turn_Front")
 	await $ROWENA_AnimationPlayer.animation_finished
 	set_physics_process(true)
@@ -220,6 +218,21 @@ func do_patch_stuff():
 	$ROWENA_AnimationPlayer.play("Turn_Front")
 	await $ROWENA_AnimationPlayer.animation_finished
 	set_physics_process(true)
+
+##
+## Plays the phone call animation. Use await to block until it finishes.
+##
+func pick_up_phone():
+	if is_busy():
+		return
+	set_physics_process(false)
+	$ROWENA_AnimationPlayer.play("Phone_Call")
+	await $ROWENA_AnimationPlayer.animation_finished
+	set_physics_process(true)
+
+func _emit_phone_answered():
+	phone_answered.emit()
+
 #
 # Starts Rowena's wait animation cycle. Does nothing if she is already waiting.
 #

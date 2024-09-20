@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://clvr31ogitwwv"]
+[gd_scene load_steps=32 format=3 uid="uid://clvr31ogitwwv"]
 
 [ext_resource type="Script" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/IMAGES/ROWENA.png" id="1_tqx3q"]
@@ -6,13 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://dv5yjodb221qq" path="res://ROWENA/SOUNDS/Spitting_Out.ogg" id="2_v3kx6"]
 [ext_resource type="AudioStream" uid="uid://1c18jpuv4m1b" path="res://ROWENA/SOUNDS/Barefoot_Steps_A.ogg" id="3_72jic"]
 [ext_resource type="AudioStream" uid="uid://bt5748asskrtp" path="res://ROWENA/SOUNDS/Phone_Fall.ogg" id="3_wmn3r"]
-[ext_resource type="AudioStream" uid="uid://damkxikdmdura" path="res://ROWENA/SOUNDS/Beep.ogg" id="4_7nc6a"]
 [ext_resource type="AudioStream" uid="uid://b5rhb1m6aocrt" path="res://ROWENA/SOUNDS/Do_Erk_Stuff.ogg" id="4_bo057"]
-[ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://ROWENA/SOUNDS/Phone_Ring.ogg" id="5_gkr5f"]
-[ext_resource type="AudioStream" uid="uid://b0ai1u38p82et" path="res://ROWENA/SOUNDS/Do_Stuff.ogg" id="5_splmy"]
 [ext_resource type="AudioStream" uid="uid://cuwid5c2t025o" path="res://ROWENA/SOUNDS/Hang_Up.ogg" id="6_xr3ty"]
-[ext_resource type="AudioStream" uid="uid://cjtbgf2e7gdmg" path="res://ROWENA/SOUNDS/Flowing_Water.ogg" id="12_n5evd"]
-[ext_resource type="AudioStream" uid="uid://d38xhbrbcau3f" path="res://ROWENA/SOUNDS/Coffee_Ready.ogg" id="13_vnqku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3djui"]
 size = Vector2(16, 68)
@@ -246,25 +241,10 @@ tracks/1/use_blend = true
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Beep")
+tracks/2/path = NodePath("../Hang_Up")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("4_7nc6a")
-}],
-"times": PackedFloat32Array(2.1)
-}
-tracks/2/use_blend = true
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Hang_Up")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "clips": [{
 "end_offset": 1.60021,
 "start_offset": 0.0,
@@ -272,26 +252,26 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(3.1)
 }
-tracks/3/use_blend = true
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Hang_Up:volume_db")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Hang_Up:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 3.7, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-30.0, -30.0, -40.0]
 }
-tracks/5/type = "audio"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Do_Erk_Stuff")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Do_Erk_Stuff")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "clips": [{
 "end_offset": 0.998753,
 "start_offset": 0.0,
@@ -299,18 +279,32 @@ tracks/5/keys = {
 }],
 "times": PackedFloat32Array(1.1)
 }
-tracks/5/use_blend = true
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Do_Erk_Stuff:volume_db")
-tracks/6/interp = 0
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Do_Erk_Stuff:volume_db")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 1.1, 1.4, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-12.5, -10.0, -12.5, -12.5]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_emit_phone_answered"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ta5w8"]
@@ -625,11 +619,6 @@ bus = &"FX"
 volume_db = -22.5
 bus = &"FX"
 
-[node name="Phone_Ring" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_gkr5f")
-volume_db = -20.0
-bus = &"FX"
-
 [node name="Hang_Up" type="AudioStreamPlayer" parent="."]
 volume_db = -30.0
 bus = &"FX"
@@ -638,24 +627,7 @@ bus = &"FX"
 volume_db = -10.0
 bus = &"FX"
 
-[node name="Beep" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
-bus = &"FX"
-
-[node name="Do_Stuff" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_splmy")
-volume_db = -12.5
-
 [node name="Do_Erk_Stuff" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
-
-[node name="Running_Water" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_n5evd")
-bus = &"FX"
-
-[node name="Coffee_Ready" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_vnqku")
-volume_db = -10.0
-bus = &"FX"
 
 [connection signal="animation_started" from="ROWENA_AnimationPlayer" to="." method="_on_animation_started"]

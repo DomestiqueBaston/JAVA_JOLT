@@ -23,6 +23,12 @@ extends Node2D
 ## Radio volume presets in dB. These must be in ascending order.
 @export var volume_presets: Array[float] = [-80, -30, -20, -15, -10, -5, 0]
 
+## Time in seconds when Rowena is ready to dig the old coffee out of the trash.
+@export var scavenging_time: float = 900
+
+## How long the phone rings before Rowena answers it.
+@export var phone_ring_time: float = 2.5
+
 ## Signal emitted when the player quits the game. If this node is parented
 ## directly to the root of the scene tree, no signal is emitted: the node quits
 ## immediately.
@@ -393,6 +399,10 @@ var is_towel_wet := false
 var is_object_taken_from_drawer := false
 var coffee_state: int = CoffeeState.BEANS
 var filter_state: int = FilterState.ORIGINAL
+var is_glass_full := false
+var is_water_in_coffee_maker := false
+var is_coffee_in_coffee_maker := false
+var is_coffee_maker_on := false
 var is_quitting := false
 
 # 0: no coffee beans
@@ -524,6 +534,8 @@ func _perform_hand_action():
 			else:
 				take_label = "Small towel"
 			take_msg = "It's clean, it'll be perfect!"
+		Globals.Prop.COFFEE_MAKER:
+			await _turn_on_coffee_maker()
 		Globals.Prop.SPOILED_MILK:
 			_set_comment("I don't want that.")
 		Globals.Prop.REFRIGERATOR_LEFT_WATER_ICE:
@@ -656,7 +668,12 @@ func _perform_hand_action():
 			take_label = "Plunger"
 			take_msg = "I've always loved a plunger."
 		Globals.Prop.TRASH:
-			_set_comment("I used to play in the dump. When I was a kid...")
+			if (current_chapter == 3
+				and Globals.get_elapsed_time() > scavenging_time):
+				take_label = "Yesterday's coffee filter"
+				take_msg = "Not much choice... Where is that old coffee filter?"
+			else:
+				_set_comment("I used to play in the dump. When I was a kid...")
 		Globals.Prop.COOKING_POT, \
 		Globals.Prop.HUGE_PRESSURE_COOKER, \
 		Globals.Prop.SAUCE_PAN_SET, \
@@ -1106,6 +1123,12 @@ func _update_current_prop():
 			if $UI.find_in_inventory(current_prop) < 0:
 				actions.append(Globals.Cursor.HAND)
 
+		Globals.Prop.COFFEE_MAKER:
+			if (is_water_in_coffee_maker
+				and is_coffee_in_coffee_maker
+				and not is_coffee_maker_on):
+				actions.append(Globals.Cursor.HAND)
+
 		Globals.Prop.COFFEE_BEANS_1:
 			if not (coffee_beans_held & 1):
 				actions.append(Globals.Cursor.HAND)
@@ -1161,6 +1184,8 @@ func _use_object_on_other(object1: int, object2: int):
 			ok = await _use_object_chapter1(object1, object2)
 		2:
 			ok = await _use_object_chapter2(object1, object2)
+		3:
+			ok = await _use_object_chapter3(object1, object2)
 
 	if not ok:
 		#print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
@@ -1179,7 +1204,7 @@ func _use_object_chapter1(object1: int, object2: int) -> bool:
 			_set_comment("Hey, I'm not going around with Santa's bag!")
 		else:
 			await _walk_to_prop(Globals.Prop.COFFEE_MAKER, true)
-			await $ROWENA.do_stuff($ROWENA.SoundEffect.DO_STUFF)
+			await $ROWENA.do_stuff($Do_Stuff)
 			_set_comment("I got the filter holder out intact!")
 			$UI.add_to_inventory(Globals.Prop.COFFEE_MAKER, "Coffee filter holder")
 			$BACKGROUND.set_object_visible(Globals.Prop.COFFEE_MAKER, false)
@@ -1389,7 +1414,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			_set_comment("Yeah, that should make it more porous...")
 			await $UI.comment_closed
 			await $ROWENA.walk_to_area($BACKGROUND.get_collider(Globals.Prop.TAP), true)
-			await $ROWENA.do_stuff($ROWENA.SoundEffect.RUNNING_WATER)
+			await $ROWENA.do_stuff($Running_Water)
 			await $ROWENA.do_patch_stuff()
 			_set_comment("Damn it, it doesn't work at all!")
 			current_chapter += 1
@@ -1400,6 +1425,81 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			is_dialogue_seen = true
 		else:
 			return false
+		return true
+
+	return false
+
+func _use_object_chapter3(object1: int, object2: int) -> bool:
+
+	# glass (in inventory) + tap: fill the glass with water
+
+	if _check_objects(
+		object1, object2, Globals.Prop.GLASSES, Globals.Prop.TAP):
+		if $UI.find_in_inventory(Globals.Prop.GLASSES) < 0:
+			return false
+		elif is_glass_full:
+			_set_comment("The glass is already full.")
+		else:
+			await $ROWENA.walk_to_area($BACKGROUND.get_collider(Globals.Prop.TAP), true)
+			await $ROWENA.do_stuff($Running_Water)
+			_set_comment("OK, but I won't drink it.")
+			is_glass_full = true
+			$UI.add_to_inventory(Globals.Prop.GLASSES, "Glass full of water")
+		return true
+
+	# glass of water (in inventory) + coffee maker: pour the water in
+
+	if _check_objects(
+		object1, object2, Globals.Prop.GLASSES, Globals.Prop.COFFEE_MAKER):
+		if $UI.find_in_inventory(Globals.Prop.GLASSES) < 0:
+			return false
+		elif is_water_in_coffee_maker:
+			_set_comment("One glass of water is enough.")
+		elif not is_glass_full:
+			_set_comment("There is nothing in the glass.")
+		else:
+			await $ROWENA.walk_to_area(
+				$BACKGROUND.get_collider(Globals.Prop.COFFEE_MAKER), true)
+			await $ROWENA.do_stuff()
+			_set_comment("I'm strapped for time, so one glass will do.")
+			is_glass_full = false
+			is_water_in_coffee_maker = true
+			$UI.add_to_inventory(Globals.Prop.GLASSES, "Empty glass")
+		return true
+
+	# used coffee (AKA trash, in inventory) + coffee maker: put the filter in
+	# the coffee maker
+
+	if _check_objects(
+		object1, object2, Globals.Prop.TRASH, Globals.Prop.COFFEE_MAKER):
+		if is_coffee_in_coffee_maker:
+			_set_comment("The old filter is already in the coffee maker.")
+		else:
+			await $ROWENA.walk_to_area(
+				$BACKGROUND.get_collider(Globals.Prop.COFFEE_MAKER), true)
+			await $ROWENA.do_stuff()
+			_set_comment("Don't think, don't think...")
+			is_coffee_in_coffee_maker = true
+			$UI.remove_from_inventory(Globals.Prop.TRASH)
+		return true
+
+	# red coffee cup (in inventory) + running coffee maker: taste and spit out
+
+	if _check_objects(
+		object1, object2, Globals.Prop.RED_COFFEE_CUP_LEFT, Globals.Prop.COFFEE_MAKER):
+		if not is_coffee_maker_on:
+			return false
+		else:
+			await $ROWENA.walk_to_area(
+				$BACKGROUND.get_collider(Globals.Prop.COFFEE_MAKER), true)
+			await $ROWENA.do_erk_stuff(true)
+			_set_comment("Ugh! This is absolutely rancid!")
+			await $UI.comment_closed
+			$Phone_Ring.play()
+			await get_tree().create_timer(phone_ring_time).timeout
+			$ROWENA.phone_answered.connect(
+				func(): $Phone_Ring.stop(), ConnectFlags.CONNECT_ONE_SHOT)
+			await $ROWENA.pick_up_phone()
 		return true
 
 	return false
@@ -1566,6 +1666,10 @@ func save_game() -> Dictionary:
 		"coffee-beans-held": coffee_beans_held,
 		"coffee-state": coffee_state,
 		"filter-state": filter_state,
+		"is-glass-full": is_glass_full,
+		"is-water-in-coffee-maker": is_water_in_coffee_maker,
+		"is-coffee-in-coffee-maker": is_coffee_in_coffee_maker,
+		"is-coffee-maker-on": is_coffee_maker_on,
 		"props-seen": props_seen,
 		"inventory": $UI.get_inventory(),
 		"tutorial-seen": $UI.is_tutorial_seen(),
@@ -1587,6 +1691,10 @@ func load_game(dict: Dictionary):
 	coffee_beans_held = dict.get("coffee-beans-held", 0)
 	coffee_state = dict.get("coffee-state", CoffeeState.BEANS)
 	filter_state = dict.get("filter-state", FilterState.ORIGINAL)
+	is_glass_full = dict.get("is-glass-full", false)
+	is_water_in_coffee_maker = dict.get("is-water-in-coffee-maker", false)
+	is_coffee_in_coffee_maker = dict.get("is-coffee-in-coffee-maker", false)
+	is_coffee_maker_on = dict.get("is-coffee-maker-on", false)
 	props_seen = dict.get("props-seen", [])
 
 	if (coffee_beans_held & 1) or coffee_state == CoffeeState.GROUND:
@@ -1686,6 +1794,15 @@ func _adjust_radio_volume(cursor: int):
 				# show NO_SOUND cursor when volume is turned all the way down
 				if new_preset == 0:
 					$UI.next_cursor()
+
+func _turn_on_coffee_maker():
+	await $ROWENA.walk_to_area(
+		$BACKGROUND.get_collider(Globals.Prop.COFFEE_MAKER), true)
+	await $ROWENA.do_stuff($Beep)
+	_set_comment("I can't believe I'm doing this...")
+	await $UI.comment_closed
+	$Coffee_Ready.play()
+	is_coffee_maker_on = true
 
 func _is_prop_seen(which: int) -> bool:
 	var i = props_seen.bsearch(which)

@@ -22,3 +22,5 @@ func set_object_visible(which: int, vis: bool):
 		Globals.Prop.PLUNGER:
 			$Removed_Objects/Plunger_Out.visible = not vis
 			$Stuff_Colliders/Plunger_Collider.monitoring = vis
+		Globals.Prop.TRASH:
+			$Stuff_Colliders/Trash_Collider.monitoring = vis

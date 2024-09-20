@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://x26ngvt8sudo"]
+[gd_scene load_steps=12 format=3 uid="uid://x26ngvt8sudo"]
 
 [ext_resource type="PackedScene" uid="uid://btw3ypyfee56m" path="res://BACKGROUND/BACKGROUND.tscn" id="1_3jbuv"]
 [ext_resource type="Script" path="res://JAVA_JOLT.gd" id="1_4obue"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cdg5ketgiif5e" path="res://UI/UI.tscn" id="4_ilxi3"]
 [ext_resource type="AudioStream" uid="uid://dsficbv0c758x" path="res://UI/Volume_Up.ogg" id="6_4imn2"]
 [ext_resource type="AudioStream" uid="uid://bqqstj52ukvo4" path="res://UI/Volume_Down.ogg" id="7_aetnj"]
+[ext_resource type="AudioStream" uid="uid://d38xhbrbcau3f" path="res://ROWENA/SOUNDS/Coffee_Ready.ogg" id="8_ebboq"]
+[ext_resource type="AudioStream" uid="uid://b0ai1u38p82et" path="res://ROWENA/SOUNDS/Do_Stuff.ogg" id="8_tc7jy"]
+[ext_resource type="AudioStream" uid="uid://cjtbgf2e7gdmg" path="res://ROWENA/SOUNDS/Flowing_Water.ogg" id="9_23w6k"]
+[ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://ROWENA/SOUNDS/Phone_Ring.ogg" id="11_ah2tu"]
 
 [node name="JAVA_JOLT" type="Node2D"]
 script = ExtResource("1_4obue")
@@ -30,6 +34,28 @@ bus = &"FX"
 
 [node name="Volume_Down" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_aetnj")
+volume_db = -20.0
+bus = &"FX"
+
+[node name="Do_Stuff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tc7jy")
+volume_db = -12.5
+
+[node name="Running_Water" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_23w6k")
+bus = &"FX"
+
+[node name="Beep" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = &"FX"
+
+[node name="Coffee_Ready" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ebboq")
+volume_db = -10.0
+bus = &"FX"
+
+[node name="Phone_Ring" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ah2tu")
 volume_db = -20.0
 bus = &"FX"
 
