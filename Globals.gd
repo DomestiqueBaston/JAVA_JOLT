@@ -282,6 +282,15 @@ func _ready():
 	if hide_system_mouse:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("full_screen", false, true):
+		get_viewport().set_input_as_handled()
+		var win = get_window()
+		if win.mode == Window.MODE_FULLSCREEN:
+			win.mode = Window.MODE_WINDOWED
+		else:
+			win.mode = Window.MODE_FULLSCREEN
+
 ##
 ## Plays the radio starting at time [param t]. If the radio is already playing,
 ## it skips to [param t].

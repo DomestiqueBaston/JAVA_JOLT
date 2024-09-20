@@ -141,7 +141,7 @@ func _input(event: InputEvent):
 			$Close_Inventory_Timer.start(inventory_timeout)
 
 func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed("left_mouse_click"):
+	if event.is_action_pressed("left_mouse_click", false, true):
 		_abort_quit()
 		if is_inventory_open():
 			_click_on_inventory_item()
@@ -155,10 +155,10 @@ func _unhandled_input(event: InputEvent):
 			else:
 				click_on_background.emit($Mouse.position)
 			get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("next_mouse_action"):
+	elif event.is_action_pressed("next_mouse_action", false, true):
 		next_cursor()
 		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("prev_mouse_action"):
+	elif event.is_action_pressed("prev_mouse_action", false, true):
 		prev_cursor()
 		get_viewport().set_input_as_handled()
 
