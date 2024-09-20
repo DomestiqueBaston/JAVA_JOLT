@@ -61,7 +61,7 @@ func _on_quit():
 #
 func _start_game():
 	add_child(game)
-	if not await _load_game():
+	if not _load_game():
 		game.start()
 
 #
