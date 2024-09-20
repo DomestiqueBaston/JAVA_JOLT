@@ -15,6 +15,9 @@ extends CanvasLayer
 ## Color of dialogue text when the doctor speaks.
 @export var doctor_text_color := Color(0x5b/255.0, 0x90/255.0, 0xc2/255.0)
 
+## Color of dialogue text when the boss speaks.
+@export var boss_text_color := Color(0x90/255.0, 0x5b/255.0, 0xc2/255.0)
+
 ## Color of dialogue text option under the mouse cursor.
 @export var highlighted_text_color := Color.WHITE
 
@@ -117,6 +120,7 @@ signal _click_on_choice(which: int)
 const dialogue1 = preload("res://dialogue1.json").data
 const dialogue2 = preload("res://dialogue2.json").data
 const dialogue3 = preload("res://dialogue3.json").data
+const dialogue4 = preload("res://dialogue4.json").data
 
 func _ready():
 	clear_inventory()
@@ -163,7 +167,7 @@ func _unhandled_input(event: InputEvent):
 		get_viewport().set_input_as_handled()
 
 ##
-## Plays dialogue number 1, 2 or 3. This is a couroutine; use await to block
+## Plays dialogue number 1, 2, 3 or 4. This is a couroutine; use await to block
 ## until the dialogue finishes.
 ##
 func tell_story(which: int):
@@ -176,14 +180,33 @@ func tell_story(which: int):
 			await _tell_story_node(dialogue2, dialogue2["start"])
 		3:
 			await _tell_story_node(dialogue3, dialogue3["start"])
+		4:
+			await _tell_story_node(dialogue4, dialogue4["start"])
 	_is_dialogue_in_progress = false
+
+func _emit_next_click():
+	_next_click.emit()
 
 func _tell_story_node(graph, node):
 	var speaker = _get_node_speaker(node)
+	var next = node.get("next")
+
+	# type the line character by character (but the user can skip to the end)
+
 	_type_dialogue_text(node.text, speaker)
 	await typing_finished
+
+	# wait for the user to click on "..." to go the next line (or move on
+	# automatically after a while if the same person has more to say)
+
+	if (next and typeof(next) == TYPE_STRING
+		and _get_node_speaker(graph[next]) == speaker):
+		$Next_Timer.start()
 	await _next_click
-	var next = node.get("next")
+	$Next_Timer.stop()
+
+	# if next is multiple choice, wait for the user to choose one
+
 	if typeof(next) == TYPE_ARRAY:
 		var texts: Array[String] = []
 		for node_name in next:
@@ -191,22 +214,37 @@ func _tell_story_node(graph, node):
 		speaker = _get_node_speaker(graph[next[0]])
 		var choice = await _choose_response(texts, speaker)
 		next = graph[next[choice]].get("next")
+
+	# next line, or clear the dialogue box if this is the end
+
 	if next:
 		await _tell_story_node(graph, graph[next])
 	else:
 		_clear_dialogue()
 
 func _get_node_speaker(node) -> int:
-	return Globals.ROWENA if node.speaker == "rowena" else Globals.DOCTOR
+	match node.speaker:
+		"rowena":
+			return Globals.ROWENA
+		"doctor":
+			return Globals.DOCTOR
+		"boss":
+			return Globals.BOSS
+		_:
+			return -1
 
 func _set_current_speaker(speaker: int):
 	_current_speaker = speaker
-	if speaker == Globals.ROWENA:
-		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
-		$Typing.pitch_scale = 6
-	else:
-		$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = doctor_text_color
-		$Typing.pitch_scale = 1
+	match speaker:
+		Globals.ROWENA:
+			$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = rowena_text_color
+			$Typing.pitch_scale = 6
+		Globals.DOCTOR:
+			$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = doctor_text_color
+			$Typing.pitch_scale = 1
+		Globals.BOSS:
+			$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = boss_text_color
+			$Typing.pitch_scale = 1
 
 func is_dialogue_open() -> bool:
 	return _is_dialogue_in_progress
@@ -230,8 +268,14 @@ func _type_dialogue_text(text: String, speaker: int):
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_1")
 
 func _choose_response(choices: Array[String], speaker: int) -> int:
-	_choice_text_color = \
-		rowena_text_color if speaker == Globals.ROWENA else doctor_text_color
+	match speaker:
+		Globals.ROWENA:
+			_choice_text_color = rowena_text_color
+		Globals.DOCTOR:
+			_choice_text_color = doctor_text_color
+		Globals.BOSS:
+			_choice_text_color = boss_text_color
+
 	$Boxes/Dialogue_Box/BG/Next.hide()
 	$Boxes/Dialogue_Box/BG/Dialogue.text = choices[0]
 	$Boxes/Dialogue_Box/BG/Dialogue.self_modulate = _choice_text_color
@@ -244,6 +288,7 @@ func _choose_response(choices: Array[String], speaker: int) -> int:
 			if choices.size() > 3:
 				$Boxes/Dialogue_Box/BG4/Dialogue4.text = choices[3]
 				$Boxes/Dialogue_Box/BG4/Dialogue4.self_modulate = _choice_text_color
+
 	$Dialogue_AnimationPlayer.play("Open_Dialogue_%d" % choices.size())
 	var choice = await _click_on_choice
 	$Dialogue_AnimationPlayer.play("Close_Dialogue_%d" % choices.size())

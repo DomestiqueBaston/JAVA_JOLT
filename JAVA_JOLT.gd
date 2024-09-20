@@ -15,10 +15,10 @@ extends Node2D
 ## For debugging: don't display any dialogues.
 @export var skip_dialogues: bool = false
 
-## For debugging: if set to 1, 2 or 3, the game starts with that chapter and
+## For debugging: if set to 1, 2, 3 or 4, the game starts with that chapter and
 ## its associated dialogue. If set to 0, you will want to call either [method
 ## start] or [method load_game] to get the game started.
-@export_range(0,3) var auto_start_chapter: int = 1
+@export_range(0,4) var auto_start_chapter: int = 1
 
 ## Radio volume presets in dB. These must be in ascending order.
 @export var volume_presets: Array[float] = [-80, -30, -20, -15, -10, -5, 0]
@@ -1497,9 +1497,10 @@ func _use_object_chapter3(object1: int, object2: int) -> bool:
 			await $UI.comment_closed
 			$Phone_Ring.play()
 			await get_tree().create_timer(phone_ring_time).timeout
-			$ROWENA.phone_answered.connect(
-				func(): $Phone_Ring.stop(), ConnectFlags.CONNECT_ONE_SHOT)
-			await $ROWENA.pick_up_phone()
+			await $ROWENA.play_phone_call_1()
+			$Phone_Ring.stop()
+			await $UI.tell_story(4)
+			await $ROWENA.play_phone_call_2()
 		return true
 
 	return false

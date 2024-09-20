@@ -13,8 +13,8 @@ signal get_something_done
 ## Signal emitted when Rowena has reached the target set by walk_to_area(]).
 signal target_area_reached
 
-## Signal emitted in [method pick_up_phone] when Rowena answers the phone.
-signal phone_answered
+# Signal emitted by Phone_Call animation when Rowena answers the phone.
+signal _phone_answered
 
 # X coordinate that Rowena is walking toward.
 var _target_x: float
@@ -220,18 +220,31 @@ func do_patch_stuff():
 	set_physics_process(true)
 
 ##
-## Plays the phone call animation. Use await to block until it finishes.
+## Plays the phone call animation up until the frame where Rowena answers, then
+## pauses. You must call [method play_phone_call_2] afterwards!
 ##
-func pick_up_phone():
+func play_phone_call_1():
 	if is_busy():
 		return
 	set_physics_process(false)
 	$ROWENA_AnimationPlayer.play("Phone_Call")
+	await _phone_answered
+
+#
+# Invoked by the Phone_Call animation when Rowena answers the phone.
+#
+func _answer_phone():
+	$ROWENA_AnimationPlayer.pause()
+	_phone_answered.emit()
+
+##
+## Plays the rest of the phone call animation, starting from where [method
+## play_phone_call_1] left off.
+##
+func play_phone_call_2():
+	$ROWENA_AnimationPlayer.play()
 	await $ROWENA_AnimationPlayer.animation_finished
 	set_physics_process(true)
-
-func _emit_phone_answered():
-	phone_answered.emit()
 
 #
 # Starts Rowena's wait animation cycle. Does nothing if she is already waiting.

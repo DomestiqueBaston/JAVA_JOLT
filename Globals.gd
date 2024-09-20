@@ -4,7 +4,7 @@
 extends Node
 
 ## Characters in the game.
-enum { ROWENA, DOCTOR }
+enum { ROWENA, DOCTOR, BOSS }
 
 ## Mouse cursors defined in the UI scene.
 enum Cursor {
