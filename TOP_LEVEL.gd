@@ -63,8 +63,12 @@ func _on_quit():
 #
 func _on_game_over():
 	game.queue_free()
-	outro.music_off.connect(Globals.stop_radio)
-	add_child(outro)
+	DirAccess.remove_absolute(save_file)
+	if skip_intro:
+		get_tree().quit()
+	else:
+		outro.music_off.connect(Globals.stop_radio)
+		add_child(outro)
 
 #
 # Starts the game...
