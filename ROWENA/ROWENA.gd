@@ -188,7 +188,7 @@ func get_something_at(y: float):
 ##
 ## Does nothing if is_busy() returns true.
 ##
-func do_stuff(sound: AnimationPlayer = null):
+func do_stuff(sound: AudioStreamPlayer = null):
 	if is_busy():
 		return
 	set_physics_process(false)
