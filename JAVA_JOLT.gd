@@ -1396,7 +1396,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 		return true
 
 	# coffee in filter + piece of tape: coffee patch!
-	# coffee patch + piece of tape: the dry coffee patch doesn't work
+	# coffee patch + piece of tape: try the patch (doesn't work, too dry)
 
 	if _check_objects(
 		object1, object2, Globals.Prop.PIECE_OF_TAPE, Globals.Prop.COFFEE_FILTER):
@@ -1414,7 +1414,7 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 			_set_comment("Darn! This doesn't do anything.")
 			await $UI.comment_closed
 			await $ROWENA.do_patch_stuff()
-			# TODO: remove piece of tape from inventory
+			$UI.remove_from_inventory(Globals.Prop.PIECE_OF_TAPE)
 		else:
 			return false
 		return true
@@ -1426,11 +1426,12 @@ func _use_object_chapter2(object1: int, object2: int) -> bool:
 		if filter_state != FilterState.SEALED:
 			return false
 		else:
-			_set_comment("Yeah, that should make it more porous...")
-			await $UI.comment_closed
 			await $ROWENA.walk_to_area($BACKGROUND.get_collider(Globals.Prop.TAP), true)
 			await $ROWENA.do_stuff($Running_Water)
+			_set_comment("Yeah, that should make it more porous...")
+			await $UI.comment_closed
 			await $ROWENA.do_patch_stuff()
+			await get_tree().create_timer(5).timeout
 			_set_comment("Damn it, it doesn't work at all!")
 			current_chapter += 1
 			if not skip_dialogues:
