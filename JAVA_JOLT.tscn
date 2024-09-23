@@ -58,7 +58,7 @@ bus = &"FX"
 
 [node name="Phone_Ring" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ah2tu")
-volume_db = -20.0
+volume_db = -30.0
 bus = &"FX"
 
 [connection signal="area_entered_object" from="BACKGROUND" to="." method="_on_background_area_entered_object"]
