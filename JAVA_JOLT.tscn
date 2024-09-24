@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://x26ngvt8sudo"]
+[gd_scene load_steps=12 format=3 uid="uid://x26ngvt8sudo"]
 
 [ext_resource type="PackedScene" uid="uid://btw3ypyfee56m" path="res://BACKGROUND/BACKGROUND.tscn" id="1_3jbuv"]
 [ext_resource type="Script" path="res://JAVA_JOLT.gd" id="1_4obue"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://b0ai1u38p82et" path="res://ROWENA/SOUNDS/Do_Stuff.ogg" id="8_tc7jy"]
 [ext_resource type="AudioStream" uid="uid://cjtbgf2e7gdmg" path="res://ROWENA/SOUNDS/Flowing_Water.ogg" id="9_23w6k"]
 [ext_resource type="AudioStream" uid="uid://damkxikdmdura" path="res://ROWENA/SOUNDS/Beep.ogg" id="10_3ny0c"]
-[ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://ROWENA/SOUNDS/Phone_Ring.ogg" id="11_ah2tu"]
 
 [node name="JAVA_JOLT" type="Node2D"]
 script = ExtResource("1_4obue")
@@ -55,11 +54,6 @@ bus = &"FX"
 [node name="Coffee_Ready" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ebboq")
 volume_db = -15.0
-bus = &"FX"
-
-[node name="Phone_Ring" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_ah2tu")
-volume_db = -30.0
 bus = &"FX"
 
 [connection signal="area_entered_object" from="BACKGROUND" to="." method="_on_background_area_entered_object"]

@@ -1509,10 +1509,7 @@ func _use_object_chapter3(object1: int, object2: int) -> bool:
 			await $ROWENA.do_erk_stuff(true)
 			_set_comment("Ugh! This is absolutely rancid!")
 			await $UI.comment_closed
-			$Phone_Ring.play()
-			await get_tree().create_timer(phone_ring_time).timeout
 			await $ROWENA.play_phone_call_1()
-			$Phone_Ring.stop()
 			if not skip_dialogues:
 				await $UI.tell_story(4)
 			await $ROWENA.play_phone_call_2()

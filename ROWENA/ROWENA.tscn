@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://clvr31ogitwwv"]
+[gd_scene load_steps=34 format=3 uid="uid://clvr31ogitwwv"]
 
 [ext_resource type="Script" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/IMAGES/ROWENA.png" id="1_tqx3q"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b5rhb1m6aocrt" path="res://ROWENA/SOUNDS/Do_Erk_Stuff.ogg" id="4_bo057"]
 [ext_resource type="AudioStream" uid="uid://cuwid5c2t025o" path="res://ROWENA/SOUNDS/Hang_Up.ogg" id="6_xr3ty"]
 [ext_resource type="AudioStream" uid="uid://damkxikdmdura" path="res://ROWENA/SOUNDS/Beep.ogg" id="7_gg8cx"]
+[ext_resource type="AudioStream" uid="uid://dk1ype6paor1p" path="res://ROWENA/SOUNDS/Phone_Ring.ogg" id="7_o2isf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3djui"]
 size = Vector2(16, 68)
@@ -210,7 +211,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mng2v"]
 resource_name = "Phone_Call"
-length = 5.00001
+length = 7.10001
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -219,7 +220,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9),
+"times": PackedFloat32Array(2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187]
@@ -236,7 +237,7 @@ tracks/1/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("3_wmn3r")
 }],
-"times": PackedFloat32Array(4.2)
+"times": PackedFloat32Array(6.3)
 }
 tracks/1/use_blend = true
 tracks/2/type = "audio"
@@ -251,7 +252,7 @@ tracks/2/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("6_xr3ty")
 }],
-"times": PackedFloat32Array(3.1)
+"times": PackedFloat32Array(5.2)
 }
 tracks/2/use_blend = true
 tracks/3/type = "value"
@@ -261,7 +262,7 @@ tracks/3/path = NodePath("../Hang_Up:volume_db")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.7, 5),
+"times": PackedFloat32Array(2.1, 5.8, 7.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-30.0, -30.0, -40.0]
@@ -278,7 +279,7 @@ tracks/4/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("4_bo057")
 }],
-"times": PackedFloat32Array(1.1)
+"times": PackedFloat32Array(3.2)
 }
 tracks/4/use_blend = true
 tracks/5/type = "value"
@@ -288,7 +289,7 @@ tracks/5/path = NodePath("../Do_Erk_Stuff:volume_db")
 tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.4, 5),
+"times": PackedFloat32Array(2.1, 3.2, 3.5, 7.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-12.5, -9.0, -12.5, -12.5]
@@ -300,26 +301,30 @@ tracks/6/path = NodePath("..")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(2.1),
+"times": PackedFloat32Array(5.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"_answer_phone"
+"method": &"_pause_phone_animation"
 }]
 }
 tracks/7/type = "audio"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../Beep")
+tracks/7/path = NodePath("../Phone_Sounds")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "clips": [{
+"end_offset": 2.4,
+"start_offset": 0.0,
+"stream": ExtResource("7_o2isf")
+}, {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("7_gg8cx")
 }],
-"times": PackedFloat32Array(2.1)
+"times": PackedFloat32Array(0, 4.2)
 }
 tracks/7/use_blend = true
 
@@ -377,7 +382,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Beep:playing")
+tracks/4/path = NodePath("../Phone_Sounds:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -658,7 +663,7 @@ bus = &"FX"
 [node name="Do_Erk_Stuff" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 
-[node name="Beep" type="AudioStreamPlayer" parent="."]
+[node name="Phone_Sounds" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0
 bus = &"FX"
 
