@@ -286,10 +286,10 @@ func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("full_screen", false, true):
 		get_viewport().set_input_as_handled()
 		var win = get_window()
-		if win.mode == Window.MODE_FULLSCREEN:
-			win.mode = Window.MODE_WINDOWED
+		if win.mode == Window.MODE_WINDOWED:
+			win.mode = Window.MODE_EXCLUSIVE_FULLSCREEN
 		else:
-			win.mode = Window.MODE_FULLSCREEN
+			win.mode = Window.MODE_WINDOWED
 
 ##
 ## Plays the radio starting at time [param t]. If the radio is already playing,
