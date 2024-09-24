@@ -342,6 +342,18 @@ tracks/8/keys = {
 "times": PackedFloat32Array(4.2)
 }
 tracks/8/use_blend = true
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Phone_Sounds:volume_db")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 4.2, 4.3, 7.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-30.0, -30.0, -80.0, -80.0]
+}
 
 [sub_resource type="Animation" id="Animation_ta5w8"]
 length = 0.001
@@ -405,6 +417,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Phone_Sounds:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-30.0]
 }
 
 [sub_resource type="Animation" id="Animation_wvops"]

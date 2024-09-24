@@ -5,6 +5,7 @@
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_k4312")
+hide_system_mouse = true
 
 [node name="RadioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_gbpml")
