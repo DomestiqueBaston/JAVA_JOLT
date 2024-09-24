@@ -1,6 +1,7 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://daxlp0ibgsuiv"]
 
 [resource]
+bus/0/volume_db = -10.0
 bus/1/name = &"FX"
 bus/1/solo = false
 bus/1/mute = false
