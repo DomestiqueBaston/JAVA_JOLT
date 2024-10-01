@@ -278,6 +278,10 @@ enum Prop {
 ## If true, only our big cursor is visible.
 @export var hide_system_mouse := false
 
+# Time corresponding to the start of the radio program, in milliseconds
+# relative to the time the engine started: see Time.get_ticks_msec().
+var _start_time: int
+
 func _ready():
 	if hide_system_mouse:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -296,6 +300,7 @@ func _unhandled_input(event: InputEvent):
 ## it skips to [param t].
 ##
 func play_radio_at(t: float = 0):
+	_start_time = Time.get_ticks_msec() - roundi(t * 1000.0)
 	$RadioPlayer.play(t)
 
 ##
@@ -306,7 +311,7 @@ func stop_radio():
 
 ##
 ## Returns the time elapsed since the beginning of the radio program, in
-## seconds. Returns 0 if the radio is not playing.
+## seconds.
 ##
 func get_elapsed_time() -> float:
-	return $RadioPlayer.get_playback_position()
+	return (Time.get_ticks_msec() - _start_time) / 1000.0
