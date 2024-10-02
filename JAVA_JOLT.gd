@@ -47,7 +47,7 @@ var is_dialogue_seen: bool = false
 enum { GAME_IN_PROGRESS, END_GAME_REQUESTED, GAME_ENDING }
 var game_over_status: int = GAME_IN_PROGRESS
 
-# true if we are doing something that cannot be interrupted by end game.
+# Positive if we are doing something that cannot be interrupted by end game.
 var im_busy: int = 0
 
 # The prop currently under the mouse cursor (see Globals.Prop), or -1.
