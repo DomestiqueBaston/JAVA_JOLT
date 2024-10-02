@@ -43,6 +43,13 @@ var current_chapter: int = 1
 # Has the dialogue for the current chapter been seen?
 var is_dialogue_seen: bool = false
 
+# When end_game() is called, the game may not be terminated immediately...
+enum { GAME_IN_PROGRESS, END_GAME_REQUESTED, GAME_ENDING }
+var game_over_status: int = GAME_IN_PROGRESS
+
+# true if we are doing something that cannot be interrupted by end game.
+var im_busy: int = 0
+
 # The prop currently under the mouse cursor (see Globals.Prop), or -1.
 var current_prop: int = -1
 
@@ -419,6 +426,25 @@ func _ready():
 	if auto_start_chapter > 0:
 		start(auto_start_chapter)
 
+#
+# Call this before doing anything that involves await statements (actions that
+# cannot be interrupted), then call _clear_busy() when finished. This is to
+# ensure that the game is not terminated (Rowena getting a phone call, walking
+# to the counter to answer, etc.) while she is doing something, or while the
+# comment box is open.
+#
+func _set_busy():
+	im_busy += 1
+
+#
+# Call this after a call to _set_busy(). When the busy count drops to zero, if
+# the end game has been requested, the game is ended here.
+#
+func _clear_busy():
+	im_busy -= 1
+	if im_busy == 0 and game_over_status == END_GAME_REQUESTED:
+		_on_end_game()
+
 ##
 ## Call this to start the game from the beginning, as if this is the first time
 ## it has been played. You can optionally specify a [param chapter] other than
@@ -428,7 +454,9 @@ func start(chapter: int = 1):
 	current_chapter = chapter
 	if not skip_dialogues:
 		is_dialogue_seen = false
+		_set_busy()
 		await $UI.tell_story(current_chapter)
+		_clear_busy()
 	is_dialogue_seen = true
 	$UI.pin_help_button()
 
@@ -456,7 +484,11 @@ func _set_comment(text: String):
 	else:
 		left_justify = false
 		x = rowena_bbox.position.x
+	_set_busy()
 	$UI.set_comment_text(text, x, left_justify)
+
+func _on_ui_comment_closed():
+	_clear_busy()
 
 func _on_ui_click_on_background(pos: Vector2):
 	if $ROWENA.is_busy():
@@ -769,6 +801,8 @@ func _perform_hand_action():
 		if need_room_in_inventory and $UI.is_inventory_full():
 			_set_comment(inventory_full_msg)
 		else:
+			_set_busy()
+
 			# because walking will change the current prop...
 			var take_prop = current_prop
 			await _walk_to_prop()
@@ -792,6 +826,8 @@ func _perform_hand_action():
 			$BACKGROUND.set_object_visible(take_prop, false)
 			await $ROWENA.get_something_done
 
+			_clear_busy()
+
 func _perform_open_action():
 	$UI.clear_comment_text()
 	$UI.clear_available_cursors()
@@ -804,12 +840,14 @@ func _perform_open_action():
 	var object_to_open = current_prop
 	var collider: Area2D = $BACKGROUND.get_collider(object_to_open)
 
+	_set_busy()
 	await _close_open_object()
 	await _walk_to_prop(object_to_open)
 	$ROWENA.get_something_at(collider.position.y)
 	await $ROWENA.get_something_reached
 	$BACKGROUND.open_something(object_to_open)
 	await $ROWENA.get_something_done
+	_clear_busy()
 
 	match object_to_open:
 		Globals.Prop.DRAWER_LEFT_1:
@@ -834,11 +872,13 @@ func _perform_close_action():
 
 	var collider: Area2D = $BACKGROUND.get_collider(current_prop)
 
+	_set_busy()
 	await _walk_to_prop()
 	$ROWENA.get_something_at(collider.position.y)
 	await $ROWENA.get_something_reached
 	$BACKGROUND.close_something()
 	await $ROWENA.get_something_done
+	_clear_busy()
 
 	_recompute_overlapping_colliders()
 
@@ -849,12 +889,14 @@ func _close_open_object():
 
 	var door = open_close_door[which]
 
+	_set_busy()
 	await _walk_to_prop(door)
 	var collider: Area2D = $BACKGROUND.get_collider(door)
 	$ROWENA.get_something_at(collider.position.y)
 	await $ROWENA.get_something_reached
 	$BACKGROUND.close_something()
 	await $ROWENA.get_something_done
+	_clear_busy()
 
 	_recompute_overlapping_colliders()
 
@@ -896,7 +938,9 @@ func _walk_to_prop(
 	$ROWENA.look_at_x(area.global_position.x)
 	$ROWENA.walk_to_area(area, walk_to_origin, false)
 	if blocking:
+		_set_busy()
 		await $ROWENA.target_area_reached
+		_clear_busy()
 
 #
 # Callback invoked when the mouse collider (_area) enters the Area2D of a
@@ -1181,6 +1225,7 @@ func _check_objects(have1: int, have2: int, want1: int, want2: int) -> bool:
 # constants from Globals.Prop.
 #
 func _use_object_on_other(object1: int, object2: int):
+	_set_busy()
 	var ok = false
 	match current_chapter:
 		1:
@@ -1189,6 +1234,7 @@ func _use_object_on_other(object1: int, object2: int):
 			ok = await _use_object_chapter2(object1, object2)
 		3:
 			ok = await _use_object_chapter3(object1, object2)
+	_clear_busy()
 
 	if not ok:
 		#print("use ", _get_prop_name(object1), " on ", _get_prop_name(object2))
@@ -1509,21 +1555,37 @@ func _use_object_chapter3(object1: int, object2: int) -> bool:
 			await $ROWENA.do_erk_stuff(true)
 			_set_comment("Ugh! This is absolutely rancid!")
 			await $UI.comment_closed
-			await end_game(false)
-			game_over.emit()
+			end_game()
 		return true
 
 	return false
 
 ##
 ## Ends the game: Rowena gets a phone call from her boss, then goes back to
-## bed. If [param force] is true, tell Rowena to stop whatever she is doing
-## first.
+## bed.
 ##
-func end_game(force: bool):
-	if force:
-		$ROWENA.interrupt()
-		await $ROWENA.interrupted
+func end_game():
+	# game already ending: do nothing
+	if game_over_status != GAME_IN_PROGRESS:
+		return
+
+	# start the phone ringing
+	_start_ringing()
+
+	# end game when we finish doing whatever we're doing
+	if im_busy > 0:
+		game_over_status = END_GAME_REQUESTED
+	else:
+		_on_end_game()
+
+#
+# Plays the end game sequence (phone call), then emits a game_over signal.
+#
+func _on_end_game():
+	game_over_status = GAME_ENDING
+	await $UI.abort_inventory_or_drawer()
+	await get_tree().create_timer(phone_ring_time).timeout
+	await $ROWENA.walk_to_area($BACKGROUND/Counter_Collider)
 	await $ROWENA.play_phone_call_1()
 	if not skip_dialogues:
 		await $UI.tell_story(4)
@@ -1533,6 +1595,14 @@ func end_game(force: bool):
 	_set_comment("Well. Back to bed.")
 	await $UI.comment_closed
 	await $ROWENA.walk_out_of_area($BACKGROUND/Room_Collider)
+	game_over.emit()
+
+#
+# Starts the phone ringing until a phone_answered signal is emitted by ROWENA.
+#
+func _start_ringing():
+	$Phone_Ring.play()
+	$ROWENA.phone_answered.connect(func(): $Phone_Ring.stop(), CONNECT_ONE_SHOT)
 
 #
 # Callback invoked when the user tries to remove an item from the inventory
@@ -1826,6 +1896,7 @@ func _adjust_radio_volume(cursor: int):
 					$UI.next_cursor()
 
 func _turn_on_coffee_maker():
+	_set_busy()
 	await $ROWENA.walk_to_area(
 		$BACKGROUND.get_collider(Globals.Prop.COFFEE_MAKER), true)
 	await $ROWENA.do_stuff($Beep)
@@ -1833,6 +1904,7 @@ func _turn_on_coffee_maker():
 	await $UI.comment_closed
 	$Coffee_Ready.play()
 	is_coffee_maker_on = true
+	_clear_busy()
 
 func _is_prop_seen(which: int) -> bool:
 	var i = props_seen.bsearch(which)

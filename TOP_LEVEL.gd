@@ -77,8 +77,7 @@ func _on_game_over():
 #
 func _on_radio_done():
 	if is_instance_valid(game) and game.is_inside_tree():
-		await game.end_game(true)
-		_on_game_over()
+		game.end_game()
 
 #
 # Starts the game...
