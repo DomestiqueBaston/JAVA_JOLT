@@ -606,8 +606,9 @@ func _close_inventory(emit_drawer_signal: bool = true):
 			_current_cursor = 0
 			_set_mouse_cursor(_available_cursors[0])
 
+	await $Inventory_AnimationPlayer.animation_finished
+
 	if mode == InventoryMode.DRAWER:
-		await $Inventory_AnimationPlayer.animation_finished
 		if emit_drawer_signal:
 			drawer_closed.emit()
 
