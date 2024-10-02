@@ -13,7 +13,11 @@ signal get_something_done
 ## Signal emitted when Rowena has reached the target set by walk_to_area(]).
 signal target_area_reached
 
-# Signal emitted when Rowena answers the phone and the animation is paused.
+## Signal emitted when Rowena answers the phone.
+signal phone_answered
+
+# Signal emitted when Rowena puts the phone to her ear and the animation is
+# paused.
 signal _phone_paused
 
 # X coordinate that Rowena is walking toward.
@@ -256,6 +260,13 @@ func play_phone_call_1():
 
 #
 # Called by the phone call animation at the frame where Rowena answers.
+#
+func _stop_phone_ringing():
+	phone_answered.emit()
+
+#
+# Called by the phone call animation at the frame where Rowena puts the phone
+# to her ear.
 #
 func _pause_phone_animation():
 	$ROWENA_AnimationPlayer.pause()

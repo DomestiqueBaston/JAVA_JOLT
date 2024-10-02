@@ -11,3 +11,7 @@ hide_system_mouse = true
 stream = ExtResource("2_gbpml")
 volume_db = -15.0
 bus = &"MUSIC"
+
+[node name="RadioTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="RadioTimer" to="." method="_on_radio_timer_timeout"]

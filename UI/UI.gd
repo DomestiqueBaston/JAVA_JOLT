@@ -325,8 +325,9 @@ func _on_comment_timer_timeout():
 	_hide_comment_box()
 
 func _hide_comment_box():
-	$Boxes/CenterContainer.hide()
-	comment_closed.emit()
+	if $Boxes/CenterContainer.visible:
+		$Boxes/CenterContainer.hide()
+		comment_closed.emit()
 
 func _on_three_points_gui_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click", false, true):
@@ -559,6 +560,20 @@ func close_inventory():
 	if _inventory_mode == InventoryMode.INVENTORY:
 		await _close_inventory()
 
+##
+## If the inventory box is open (whether to show the inventory or the contents
+## of a drawer), close it. If the user was in the process of using an item from
+## the inventory, the process is interrupted.
+##
+func abort_inventory_or_drawer():
+	if _inventory_item_being_used >= 0:
+		stop_using_inventory_item()
+	match _inventory_mode:
+		InventoryMode.INVENTORY:
+			await close_inventory()
+		InventoryMode.DRAWER:
+			await close_drawer()
+
 func _open_inventory(mode: int = InventoryMode.INVENTORY):
 	$Inventory_AnimationPlayer.play("Open_Inventory")
 	clear_comment_text()
@@ -591,8 +606,9 @@ func _close_inventory(emit_drawer_signal: bool = true):
 			_current_cursor = 0
 			_set_mouse_cursor(_available_cursors[0])
 
+	await $Inventory_AnimationPlayer.animation_finished
+
 	if mode == InventoryMode.DRAWER:
-		await $Inventory_AnimationPlayer.animation_finished
 		if emit_drawer_signal:
 			drawer_closed.emit()
 
