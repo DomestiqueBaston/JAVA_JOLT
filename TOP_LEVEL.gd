@@ -21,6 +21,8 @@ func _ready():
 	game.auto_start_chapter = 0
 	game.quit.connect(_on_quit)
 	get_tree().root.close_requested.connect(_on_close_requested)
+	Globals.radio_done.connect(_on_radio_done)
+
 	if skip_intro or FileAccess.file_exists(save_file):
 		Globals.play_radio_at(time_at_start)
 		_start_game()
@@ -69,6 +71,14 @@ func _on_game_over():
 	else:
 		outro.music_off.connect(Globals.stop_radio)
 		add_child(outro)
+
+#
+# Called when the radio program is coming to an end: ends the game.
+#
+func _on_radio_done():
+	if is_instance_valid(game) and game.is_inside_tree():
+		await game.end_game(true)
+		_on_game_over()
 
 #
 # Starts the game...

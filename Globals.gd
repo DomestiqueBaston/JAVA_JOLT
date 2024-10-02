@@ -278,6 +278,12 @@ enum Prop {
 ## If true, only our big cursor is visible.
 @export var hide_system_mouse := false
 
+## How long before the end of the radio program [signal radio_done] is emitted.
+@export var radio_done_margin := 1.0
+
+## Signal emitted just before the radio program ends.
+signal radio_done
+
 # Time corresponding to the start of the radio program, in milliseconds
 # relative to the time the engine started: see Time.get_ticks_msec().
 var _start_time: int
@@ -302,6 +308,12 @@ func _unhandled_input(event: InputEvent):
 func play_radio_at(t: float = 0):
 	_start_time = Time.get_ticks_msec() - roundi(t * 1000.0)
 	$RadioPlayer.play(t)
+	var end_time = $RadioPlayer.stream.get_length() - radio_done_margin
+	if t < end_time:
+		$RadioTimer.start(end_time - t)
+
+func _on_radio_timer_timeout():
+	radio_done.emit()
 
 ##
 ## Turns the radio off, if it is playing.

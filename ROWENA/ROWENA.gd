@@ -13,6 +13,10 @@ signal get_something_done
 ## Signal emitted when Rowena has reached the target set by walk_to_area(]).
 signal target_area_reached
 
+## Signal emitted when Rowena finishes whatever she was doing after a call to
+## [method interrupt].
+signal interrupted
+
 # Signal emitted when Rowena answers the phone and the animation is paused.
 signal _phone_paused
 
@@ -21,6 +25,9 @@ var _target_x: float
 
 # Area2D collider that Rowena is walking toward.
 var _target_area: Area2D
+
+# true if interrupt() has been called.
+var _interrupt_flag: bool = false
 
 enum AreaMode {
 	WALK_TO_EDGE,
@@ -38,6 +45,13 @@ func _ready():
 	_target_x = position.x
 
 func _physics_process(_delta: float):
+	if _interrupt_flag:
+		_interrupt_flag = false
+		_target_area = null
+		_target_x = position.x
+		interrupted.emit()
+		return
+
 	var dir = 0
 
 	if _target_area:
@@ -132,6 +146,13 @@ func abort_walk_to_area():
 ##
 func is_busy() -> bool:
 	return _target_area != null or not is_physics_processing()
+
+##
+## Tells Rowena to stop whatever she is doing. [signal interrupted] is emitted
+## when she does.
+##
+func interrupt():
+	_interrupt_flag = true
 
 func get_global_bbox() -> Rect2:
 	var rect_shape: RectangleShape2D = $ROWENA_Collider.shape

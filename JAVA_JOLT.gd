@@ -1509,19 +1509,30 @@ func _use_object_chapter3(object1: int, object2: int) -> bool:
 			await $ROWENA.do_erk_stuff(true)
 			_set_comment("Ugh! This is absolutely rancid!")
 			await $UI.comment_closed
-			await $ROWENA.play_phone_call_1()
-			if not skip_dialogues:
-				await $UI.tell_story(4)
-			await $ROWENA.play_phone_call_2()
-			_set_comment("That's it then...")
-			await $UI.comment_closed
-			_set_comment("Well. Back to bed.")
-			await $UI.comment_closed
-			await $ROWENA.walk_out_of_area($BACKGROUND/Room_Collider)
+			await end_game(false)
 			game_over.emit()
 		return true
 
 	return false
+
+##
+## Ends the game: Rowena gets a phone call from her boss, then goes back to
+## bed. If [param force] is true, tell Rowena to stop whatever she is doing
+## first.
+##
+func end_game(force: bool):
+	if force:
+		$ROWENA.interrupt()
+		await $ROWENA.interrupted
+	await $ROWENA.play_phone_call_1()
+	if not skip_dialogues:
+		await $UI.tell_story(4)
+	await $ROWENA.play_phone_call_2()
+	_set_comment("That's it then...")
+	await $UI.comment_closed
+	_set_comment("Well. Back to bed.")
+	await $UI.comment_closed
+	await $ROWENA.walk_out_of_area($BACKGROUND/Room_Collider)
 
 #
 # Callback invoked when the user tries to remove an item from the inventory
