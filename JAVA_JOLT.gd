@@ -1777,6 +1777,7 @@ func save_game() -> Dictionary:
 		"radio-volume": _get_radio_volume(),
 		"elapsed-time": Globals.get_elapsed_time(),
 	}
+	$ROWENA.save_state(dict)
 	return dict
 
 ##
@@ -1824,6 +1825,8 @@ func load_game(dict: Dictionary):
 	if open_object >= 0:
 		$BACKGROUND.open_something(open_object, false)
 	
+	$ROWENA.load_state(dict)
+
 	_set_radio_volume(dict.get("radio-volume", -8))
 	Globals.play_radio_at(dict.get("elapsed-time", 0))
 	

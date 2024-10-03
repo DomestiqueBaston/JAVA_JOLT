@@ -323,3 +323,22 @@ func respond_to_doctor_maybe():
 			$ROWENA_AnimationPlayer.play("WtF")
 		await $ROWENA_AnimationPlayer.animation_finished
 		set_physics_process(true)
+
+##
+## Save's Rowena's current position and orientation to [param dict], using keys
+## beginning with "rowena-".
+##
+func save_state(dict: Dictionary):
+	dict["rowena-pos"] = position.x
+	dict["rowena-dir"] = $Rowena_Sprites.scale.x
+
+##
+## Restores Rowena's position and orientation using [param dict] entries
+## created by [method save_state].
+##
+func load_state(dict: Dictionary):
+	if dict.has("rowena-pos"):
+		position.x = dict["rowena-pos"]
+		_target_x = position.x
+	if dict.has("rowena-dir"):
+		$Rowena_Sprites.scale = Vector2(dict["rowena-dir"], 0.5)
