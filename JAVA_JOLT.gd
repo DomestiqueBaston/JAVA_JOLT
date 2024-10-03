@@ -438,11 +438,24 @@ func _set_busy():
 
 #
 # Call this after a call to _set_busy(). When the busy count drops to zero, if
-# the end game has been requested, the game is ended here.
+# the end game has been requested, the game may be ended here.
 #
 func _clear_busy():
 	im_busy -= 1
-	if im_busy == 0 and game_over_status == END_GAME_REQUESTED:
+	_check_for_end_game_request()
+
+#
+# If end_game() has been called (either because time has run out or the last
+# riddle has been solved), and we are not busy doing something else, the game
+# is actually ended here. The special case for is_quitting here is necessary
+# because, while Rowena is walking toward the window to quit, the im_busy flag
+# is not set (so that she can be interrupted), and yet she is doing something.
+# We cannot play the phone call animation while she is walking toward the
+# window. So this method should be called when either im_busy goes down to zero
+# OR is_quitting is reset to false.
+#
+func _check_for_end_game_request():
+	if im_busy == 0 and not is_quitting and game_over_status == END_GAME_REQUESTED:
 		_on_end_game()
 
 ##
@@ -465,7 +478,7 @@ func _unhandled_input(event: InputEvent):
 		if $UI.is_inventory_open():
 			$UI.close_inventory()
 		elif not ($UI.is_tutorial_open() or $UI.is_dialogue_open()):
-			if is_quitting or not $ROWENA.is_busy():
+			if is_quitting or im_busy == 0:
 				$UI.open_inventory()
 		get_viewport().set_input_as_handled()
 
@@ -491,7 +504,7 @@ func _on_ui_comment_closed():
 	_clear_busy()
 
 func _on_ui_click_on_background(pos: Vector2):
-	if $ROWENA.is_busy():
+	if im_busy > 0:
 		return
 	var cursor = $UI.get_current_cursor()
 	match cursor:
@@ -1573,7 +1586,7 @@ func end_game():
 	_start_ringing()
 
 	# end game when we finish doing whatever we're doing
-	if im_busy > 0:
+	if im_busy > 0 or is_quitting:
 		game_over_status = END_GAME_REQUESTED
 	else:
 		_on_end_game()
@@ -1582,6 +1595,7 @@ func end_game():
 # Plays the end game sequence (phone call), then emits a game_over signal.
 #
 func _on_end_game():
+	_set_busy()
 	game_over_status = GAME_ENDING
 	await $UI.abort_inventory_or_drawer()
 	await get_tree().create_timer(phone_ring_time).timeout
@@ -1595,6 +1609,7 @@ func _on_end_game():
 	_set_comment("Well. Back to bed.")
 	await $UI.comment_closed
 	await $ROWENA.walk_out_of_area($BACKGROUND/Room_Collider)
+	_clear_busy()
 	game_over.emit()
 
 #
@@ -1659,6 +1674,7 @@ func _on_rowena_target_area_reached():
 func _on_ui_quit_aborted():
 	is_quitting = false
 	$ROWENA.abort_walk_to_area()
+	_check_for_end_game_request()
 
 func _show_junk_drawer():
 	var contents = {}
