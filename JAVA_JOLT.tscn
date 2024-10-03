@@ -26,8 +26,8 @@ scale = Vector2(-1, 1)
 
 [node name="UI" parent="." instance=ExtResource("4_ilxi3")]
 comment_timeout_base = 0.5
+inventory_use_timeout = 0.1
 inventory_timeout = 0.1
-drawer_timeout = 0.1
 
 [node name="Volume_Up" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_4imn2")

@@ -29,10 +29,10 @@ extends CanvasLayer
 
 ## Seconds before inventory closes if the user "uses" an object and then moves
 ## the cursor outside the box.
-@export var inventory_timeout: float = 0.3
+@export var inventory_use_timeout: float = 0.3
 
-## Seconds before drawer closes if the user moves the cursor outside the box.
-@export var drawer_timeout: float = 1
+## Seconds before inventory closes if the user moves the cursor outside the box.
+@export var inventory_timeout: float = 1
 
 ## Signal emitted during a dialogue, when a line of dialogue finishes typing.
 ## [param speaker] is Globals.ROWENA or Globals.DOCTOR.
@@ -139,10 +139,11 @@ func _input(event: InputEvent):
 		var rect = Rect2(invbox.position, invbox.size)
 		if rect.has_point(event.position):
 			$Close_Inventory_Timer.stop()
-		elif _inventory_mode == InventoryMode.DRAWER:
-			$Close_Inventory_Timer.start(drawer_timeout)
-		elif _inventory_item_being_used >= 0:
-			$Close_Inventory_Timer.start(inventory_timeout)
+		elif _inventory_mode != InventoryMode.OFF:
+			if _inventory_item_being_used >= 0:
+				$Close_Inventory_Timer.start(inventory_use_timeout)
+			else:
+				$Close_Inventory_Timer.start(inventory_timeout)
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("left_mouse_click", false, true):
