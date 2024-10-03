@@ -1777,7 +1777,8 @@ func save_game() -> Dictionary:
 		"radio-volume": _get_radio_volume(),
 		"elapsed-time": Globals.get_elapsed_time(),
 	}
-	$ROWENA.save_state(dict)
+	if not is_quitting:
+		$ROWENA.save_state(dict)
 	return dict
 
 ##
