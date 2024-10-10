@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=1.0
+Version=1.0.1
 Type=Application
 
 Name=Java Jolt!
@@ -7,5 +7,5 @@ Comment=A point & click adventure game
 Categories=Game;AdventureGame;
 
 Icon=io.itch.domestique_baston.java_jolt
-Exec=java_jolt
+Exec=godot-runner
 Terminal=false
