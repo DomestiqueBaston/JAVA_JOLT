@@ -42,6 +42,7 @@ func _on_intro_radio_on():
 #
 func _on_intro_intro_done():
 	intro.queue_free()
+	intro = null
 	_start_game()
 
 #
@@ -50,6 +51,7 @@ func _on_intro_intro_done():
 #
 func _on_close_requested():
 	_save_game()
+	_cleanup()
 
 #
 # Called when the game scene emits its quit signal, meaning Rowena has jumped
@@ -57,6 +59,7 @@ func _on_close_requested():
 #
 func _on_quit():
 	_save_game()
+	_cleanup()
 	get_tree().quit()
 
 #
@@ -65,8 +68,10 @@ func _on_quit():
 #
 func _on_game_over():
 	game.queue_free()
+	game = null
 	DirAccess.remove_absolute(save_file)
 	if skip_intro:
+		_cleanup()
 		get_tree().quit()
 	else:
 		outro.music_off.connect(Globals.stop_radio)
@@ -110,3 +115,17 @@ func _load_game():
 				game.load_game(dict)
 				return true
 	return false
+
+#
+# Deletes any preloaded nodes which have not been deleted already. The only
+# reason for doing this is to avoid warning messages in Linux about memory
+# leaks and resources still in use when the application exits.
+#
+func _cleanup():
+	for node: Node in [intro, game, outro]:
+		if node != null:
+			if node.is_inside_tree():
+				node.queue_free()
+			else:
+				node.free()
+	Globals.stop_radio()
