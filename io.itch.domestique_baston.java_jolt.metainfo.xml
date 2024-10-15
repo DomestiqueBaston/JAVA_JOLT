@@ -18,6 +18,11 @@
   <releases>
     <release version="1.0.1" date="2024-10-10"/>
   </releases>
+  <launchable type="desktop-id">io.itch.domestique_baston.java_jolt.desktop</launchable>
+  <branding>
+    <color type="primary" scheme_preference="light">#dc7615</color>
+    <color type="primary" scheme_preference="dark">#1d1105</color>
+  </branding>
   
   <description>
     <p>
