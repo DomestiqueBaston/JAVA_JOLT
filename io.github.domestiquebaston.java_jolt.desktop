@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Java Jolt!
+Comment=A point & click adventure game
+Categories=Game;AdventureGame;
+
+Icon=io.github.domestiquebaston.java_jolt
+Exec=godot-runner
+Terminal=false

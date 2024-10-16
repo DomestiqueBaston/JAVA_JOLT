@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.domestiquebaston.java_jolt</id>
+  <provides>
+    <id>io.itch.domestique_baston.java_jolt</id>
+  </provides>
+  <replaces>
+    <id>io.itch.domestique_baston.java_jolt</id>
+  </replaces>
+  
+  <name>Java Jolt!</name>
+  <summary>A point &amp; click adventure game</summary>
+  
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  
+  <content_rating type="oars-1.0">
+    <content_attribute id="sex-themes">mild</content_attribute>
+  </content_rating>
+  <developer id="io.github.domestiquebaston">
+    <name>Domestique Baston</name>
+  </developer>
+  <url type="homepage">https://domestiquebaston.github.io/JAVA_JOLT</url>
+  <releases>
+    <release version="1.0.1" date="2024-10-10"/>
+  </releases>
+  <launchable type="desktop-id">io.github.domestiquebaston.java_jolt.desktop</launchable>
+  <branding>
+    <color type="primary" scheme_preference="light">#dc7615</color>
+    <color type="primary" scheme_preference="dark">#1d1105</color>
+  </branding>
+  
+  <description>
+    <p>
+      Java Jolt! is a point &amp; click adventure game where your morning caffeine fix is a matter of survival. Play as Rowena Pitifool, a copywriter who must find a way to get her coffee while enduring the relentless jabs of a particularly annoying inner voice.
+    </p>
+    <p>
+      Explore, combine, and improvise to salvage your day before it descends into chaos.
+    </p>
+  </description>
+  
+  <screenshots>
+    <screenshot type="default">
+      <image type="source" width="1128" height="408">http://domestiquebaston.github.io/JAVA_JOLT/screenshots/02.png</image>
+    </screenshot>
+    <screenshot>
+      <image type="source" width="1128" height="408">http://domestiquebaston.github.io/JAVA_JOLT/screenshots/03.png</image>
+    </screenshot>
+    <screenshot>
+      <image type="source" width="1128" height="408">http://domestiquebaston.github.io/JAVA_JOLT/screenshots/04.png</image>
+    </screenshot>
+  </screenshots>
+</component>
