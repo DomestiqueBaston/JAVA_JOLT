@@ -12,11 +12,11 @@ config_version=5
 
 config/name="JAVA JOLT!"
 run/main_scene="res://TOP_LEVEL.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=10
 boot_splash/bg_color=Color(0.137255, 0.133333, 0.145098, 1)
-boot_splash/image="res://Splash_Screen.png"
 boot_splash/use_filter=false
+boot_splash/image="res://Splash_Screen.png"
 config/icon="res://JJ.png"
 config/macos_native_icon="res://JJ.icns"
 config/windows_native_icon="res://JJ.ico"

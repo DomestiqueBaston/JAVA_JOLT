@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://clvr31ogitwwv"]
 
-[ext_resource type="Script" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
+[ext_resource type="Script" uid="uid://dy614trtldtky" path="res://ROWENA/ROWENA.gd" id="1_a1se7"]
 [ext_resource type="Texture2D" uid="uid://kofjjbj565wq" path="res://ROWENA/IMAGES/ROWENA.png" id="1_tqx3q"]
 [ext_resource type="AudioStream" uid="uid://l7jtkoklf4u0" path="res://ROWENA/SOUNDS/Disgusted.ogg" id="2_5gboi"]
 [ext_resource type="AudioStream" uid="uid://dv5yjodb221qq" path="res://ROWENA/SOUNDS/Spitting_Out.ogg" id="2_v3kx6"]
@@ -577,27 +577,27 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mol2e"]
 _data = {
-"Do_Erk_Stuff": SubResource("Animation_euko2"),
-"Do_Stuff": SubResource("Animation_ww28l"),
-"Get_Something_High_1": SubResource("Animation_o301v"),
-"Get_Something_High_2": SubResource("Animation_aq0oo"),
-"Get_Something_Low": SubResource("Animation_kgaqx"),
-"Get_Something_Low_Mid": SubResource("Animation_10pwy"),
-"Get_Something_Lowest": SubResource("Animation_crym6"),
-"Get_Something_Mid": SubResource("Animation_jmibs"),
-"Nonsense": SubResource("Animation_vn55n"),
-"Phone_Call": SubResource("Animation_mng2v"),
-"RESET": SubResource("Animation_ta5w8"),
-"Spitting_Out": SubResource("Animation_wvops"),
-"Sticking_Patch": SubResource("Animation_3roor"),
-"Stop_That": SubResource("Animation_r5vrl"),
-"Turn_Back": SubResource("Animation_yxscj"),
-"Turn_Front": SubResource("Animation_cpa71"),
-"Wait_Base": SubResource("Animation_mdy2a"),
-"Wait_Nails": SubResource("Animation_ort0t"),
-"Wait_Towel": SubResource("Animation_4bhe7"),
-"Walk": SubResource("Animation_wcrxa"),
-"WtF": SubResource("Animation_4vnq0")
+&"Do_Erk_Stuff": SubResource("Animation_euko2"),
+&"Do_Stuff": SubResource("Animation_ww28l"),
+&"Get_Something_High_1": SubResource("Animation_o301v"),
+&"Get_Something_High_2": SubResource("Animation_aq0oo"),
+&"Get_Something_Low": SubResource("Animation_kgaqx"),
+&"Get_Something_Low_Mid": SubResource("Animation_10pwy"),
+&"Get_Something_Lowest": SubResource("Animation_crym6"),
+&"Get_Something_Mid": SubResource("Animation_jmibs"),
+&"Nonsense": SubResource("Animation_vn55n"),
+&"Phone_Call": SubResource("Animation_mng2v"),
+&"RESET": SubResource("Animation_ta5w8"),
+&"Spitting_Out": SubResource("Animation_wvops"),
+&"Sticking_Patch": SubResource("Animation_3roor"),
+&"Stop_That": SubResource("Animation_r5vrl"),
+&"Turn_Back": SubResource("Animation_yxscj"),
+&"Turn_Front": SubResource("Animation_cpa71"),
+&"Wait_Base": SubResource("Animation_mdy2a"),
+&"Wait_Nails": SubResource("Animation_ort0t"),
+&"Wait_Towel": SubResource("Animation_4bhe7"),
+&"Walk": SubResource("Animation_wcrxa"),
+&"WtF": SubResource("Animation_4vnq0")
 }
 
 [node name="ROWENA" type="CharacterBody2D"]

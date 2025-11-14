@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bodgro4qy43p8"]
 
 [ext_resource type="Texture2D" uid="uid://1re4xmfoby2h" path="res://BACKGROUND/IMAGES/Kitchen_Cabinet_Open.png" id="1_22mus"]
-[ext_resource type="Script" path="res://BACKGROUND/KITCHEN_CABINET.gd" id="1_27oes"]
+[ext_resource type="Script" uid="uid://d3nijfstjoeg" path="res://BACKGROUND/KITCHEN_CABINET.gd" id="1_27oes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cupwy"]
 size = Vector2(4, 5)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://keucd37jh7cv"]
 
-[ext_resource type="Script" path="res://BACKGROUND/COFFEE_CUPBOARD.gd" id="1_5tqpg"]
+[ext_resource type="Script" uid="uid://ctkodo8dvo26f" path="res://BACKGROUND/COFFEE_CUPBOARD.gd" id="1_5tqpg"]
 [ext_resource type="Texture2D" uid="uid://3atnhhhoq7g1" path="res://BACKGROUND/IMAGES/Coffee_Cupboard_Open.png" id="1_f6c4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfsvx"]

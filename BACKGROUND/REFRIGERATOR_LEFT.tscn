@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cqa3bbbs2by12"]
 
 [ext_resource type="Texture2D" uid="uid://crk1e1iogssok" path="res://BACKGROUND/IMAGES/Refrigerator_Left_Open.png" id="1_i4cca"]
-[ext_resource type="Script" path="res://BACKGROUND/REFRIGERATOR_LEFT.gd" id="1_kfrgd"]
+[ext_resource type="Script" uid="uid://fn78wus3bv5s" path="res://BACKGROUND/REFRIGERATOR_LEFT.gd" id="1_kfrgd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o43c3"]
 size = Vector2(4, 7)

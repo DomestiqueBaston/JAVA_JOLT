@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8lvk22dhf1g2"]
 
-[ext_resource type="Script" path="res://BACKGROUND/RECYCLING_CLOSET.gd" id="1_1mqvd"]
+[ext_resource type="Script" uid="uid://l2uug2vglcxu" path="res://BACKGROUND/RECYCLING_CLOSET.gd" id="1_1mqvd"]
 [ext_resource type="Texture2D" uid="uid://cux36xgb3en3y" path="res://BACKGROUND/IMAGES/Recycling_Closet_Open.png" id="1_tdvom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qw3q8"]

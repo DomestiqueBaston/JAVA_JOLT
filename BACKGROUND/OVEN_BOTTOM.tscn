@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bou50y45l6m8r"]
 
-[ext_resource type="Script" path="res://BACKGROUND/OVEN_BOTTOM.gd" id="1_meotr"]
+[ext_resource type="Script" uid="uid://cumm4i5tsoamv" path="res://BACKGROUND/OVEN_BOTTOM.gd" id="1_meotr"]
 [ext_resource type="Texture2D" uid="uid://b4adpodq8040w" path="res://BACKGROUND/IMAGES/Oven_Bottom_Open.png" id="1_xo771"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x36xk"]

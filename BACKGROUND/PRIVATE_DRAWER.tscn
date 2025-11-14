@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1a8w284kxpin"]
 
-[ext_resource type="Script" path="res://BACKGROUND/PRIVATE_DRAWER.gd" id="1_an8ij"]
+[ext_resource type="Script" uid="uid://drh3q8bq8vf01" path="res://BACKGROUND/PRIVATE_DRAWER.gd" id="1_an8ij"]
 [ext_resource type="Texture2D" uid="uid://xdggsb76gr0a" path="res://BACKGROUND/IMAGES/Private_Drawer_Open.png" id="1_y40dt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtoi"]

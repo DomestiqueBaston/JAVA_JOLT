@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://curt16g1h0snh"]
 
 [ext_resource type="Texture2D" uid="uid://cmbmog354tyew" path="res://BACKGROUND/IMAGES/Micro_Wave_Open.png" id="1_w70x4"]
-[ext_resource type="Script" path="res://BACKGROUND/MICRO_WAVE.gd" id="1_x2p47"]
+[ext_resource type="Script" uid="uid://3tmecs0bh3ig" path="res://BACKGROUND/MICRO_WAVE.gd" id="1_x2p47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwij2"]
 size = Vector2(9, 1)

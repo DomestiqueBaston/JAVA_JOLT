@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dx7iuxmkmaojs"]
 
 [ext_resource type="Texture2D" uid="uid://cps7xqwnh7s0q" path="res://BACKGROUND/IMAGES/Up_Right_Cupboard_Open.png" id="1_nf856"]
-[ext_resource type="Script" path="res://BACKGROUND/UPPER_RIGHT_CUPBOARD.gd" id="1_x0wry"]
+[ext_resource type="Script" uid="uid://c28ir1iptnr27" path="res://BACKGROUND/UPPER_RIGHT_CUPBOARD.gd" id="1_x0wry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yix21"]
 size = Vector2(6, 7)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=49 format=3 uid="uid://cdg5ketgiif5e"]
 
 [ext_resource type="Theme" uid="uid://dlw6rpos1vtql" path="res://UI/JJ_Theme.tres" id="1_00ud7"]
-[ext_resource type="Script" path="res://UI/UI.gd" id="1_ui3qd"]
-[ext_resource type="Script" path="res://UI/New_Mouse.gd" id="2_mswu7"]
+[ext_resource type="Script" uid="uid://bd84ko2t0xj4k" path="res://UI/UI.gd" id="1_ui3qd"]
+[ext_resource type="Script" uid="uid://brb4grp5klvbb" path="res://UI/New_Mouse.gd" id="2_mswu7"]
 [ext_resource type="StyleBox" uid="uid://cls45jvu2j875" path="res://UI/Comment_Box.tres" id="3_re3bw"]
 [ext_resource type="Texture2D" uid="uid://u7g33lyvdb6d" path="res://UI/IMAGES/Tutorial.png" id="4_c57qq"]
 [ext_resource type="Texture2D" uid="uid://vqd5mrv0n0yu" path="res://UI/IMAGES/Arrow.png" id="4_ru12x"]
@@ -61,8 +61,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q2cqq"]
 _data = {
-"Blink": SubResource("Animation_m7l7s"),
-"RESET": SubResource("Animation_a10ny")
+&"Blink": SubResource("Animation_m7l7s"),
+&"RESET": SubResource("Animation_a10ny")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncb4q"]
@@ -1077,15 +1077,15 @@ tracks/12/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ot440"]
 _data = {
-"Close_Dialogue_1": SubResource("Animation_oyp0o"),
-"Close_Dialogue_2": SubResource("Animation_cpgsf"),
-"Close_Dialogue_3": SubResource("Animation_dm4gf"),
-"Close_Dialogue_4": SubResource("Animation_2r2am"),
-"Open_Dialogue_1": SubResource("Animation_a80s1"),
-"Open_Dialogue_2": SubResource("Animation_h5hi5"),
-"Open_Dialogue_3": SubResource("Animation_i7m3u"),
-"Open_Dialogue_4": SubResource("Animation_a7ipt"),
-"RESET": SubResource("Animation_igdpa")
+&"Close_Dialogue_1": SubResource("Animation_oyp0o"),
+&"Close_Dialogue_2": SubResource("Animation_cpgsf"),
+&"Close_Dialogue_3": SubResource("Animation_dm4gf"),
+&"Close_Dialogue_4": SubResource("Animation_2r2am"),
+&"Open_Dialogue_1": SubResource("Animation_a80s1"),
+&"Open_Dialogue_2": SubResource("Animation_h5hi5"),
+&"Open_Dialogue_3": SubResource("Animation_i7m3u"),
+&"Open_Dialogue_4": SubResource("Animation_a7ipt"),
+&"RESET": SubResource("Animation_igdpa")
 }
 
 [sub_resource type="Animation" id="Animation_lxcbn"]
@@ -1569,9 +1569,9 @@ tracks/12/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7qn2o"]
 _data = {
-"Close_Inventory": SubResource("Animation_lxcbn"),
-"Open_Inventory": SubResource("Animation_pj36a"),
-"RESET": SubResource("Animation_wb0vr")
+&"Close_Inventory": SubResource("Animation_lxcbn"),
+&"Open_Inventory": SubResource("Animation_pj36a"),
+&"RESET": SubResource("Animation_wb0vr")
 }
 
 [sub_resource type="Animation" id="Animation_imx7s"]
@@ -1608,8 +1608,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5oxd5"]
 _data = {
-"Blinking": SubResource("Animation_imx7s"),
-"RESET": SubResource("Animation_ayngy")
+&"Blinking": SubResource("Animation_imx7s"),
+&"RESET": SubResource("Animation_ayngy")
 }
 
 [sub_resource type="Animation" id="Animation_huf36"]
@@ -1697,9 +1697,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qex0e"]
 _data = {
-"Help_Off": SubResource("Animation_huf36"),
-"Help_On": SubResource("Animation_4kbfq"),
-"RESET": SubResource("Animation_utdto")
+&"Help_Off": SubResource("Animation_huf36"),
+&"Help_On": SubResource("Animation_4kbfq"),
+&"RESET": SubResource("Animation_utdto")
 }
 
 [node name="UI" type="CanvasLayer"]

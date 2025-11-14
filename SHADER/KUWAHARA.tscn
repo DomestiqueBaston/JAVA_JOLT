@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0utj6k63s0l8"]
 
-[ext_resource type="Shader" path="res://SHADER/KUWAHARA.gdshader" id="1_318fm"]
+[ext_resource type="Shader" uid="uid://c8o5ah4sk7jau" path="res://SHADER/KUWAHARA.gdshader" id="1_318fm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nxiaj"]
 shader = ExtResource("1_318fm")
@@ -41,8 +41,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ml54y"]
 _data = {
-"Moving_painting": SubResource("Animation_hknbg"),
-"RESET": SubResource("Animation_uoheo")
+&"Moving_painting": SubResource("Animation_hknbg"),
+&"RESET": SubResource("Animation_uoheo")
 }
 
 [node name="KUWAHARA" type="Node2D"]

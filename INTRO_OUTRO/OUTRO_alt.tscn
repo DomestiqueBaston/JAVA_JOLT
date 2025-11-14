@@ -1,12 +1,12 @@
 [gd_scene load_steps=21 format=3 uid="uid://m1oplrlhbb0p"]
 
-[ext_resource type="Script" path="res://INTRO_OUTRO/OUTRO.gd" id="1_85ucv"]
+[ext_resource type="Script" uid="uid://sdcucbt73exo" path="res://INTRO_OUTRO/OUTRO.gd" id="1_85ucv"]
 [ext_resource type="Texture2D" uid="uid://c7tbw0pnaoy4p" path="res://BACKGROUND/IMAGES/BG_Lights_On.png" id="2_n45m6"]
 [ext_resource type="Texture2D" uid="uid://dery6ph6gxcu2" path="res://BACKGROUND/IMAGES/Radio_On_Lights_On.png" id="3_y10mk"]
 [ext_resource type="Texture2D" uid="uid://cxayem5uqrj1g" path="res://BACKGROUND/IMAGES/BG_Lights_Off.png" id="4_dcnlh"]
 [ext_resource type="Texture2D" uid="uid://0shmmmluyidr" path="res://INTRO_OUTRO/IMAGES/End.png" id="5_v82qi"]
 [ext_resource type="Texture2D" uid="uid://cyghiycxbscrl" path="res://BACKGROUND/IMAGES/Coffee_Filter_Holder_Out.png" id="6_r5chk"]
-[ext_resource type="Shader" path="res://SHADER/KUWAHARA.gdshader" id="7_xx8wl"]
+[ext_resource type="Shader" uid="uid://c8o5ah4sk7jau" path="res://SHADER/KUWAHARA.gdshader" id="7_xx8wl"]
 [ext_resource type="AudioStream" uid="uid://d5d7mofo1pkv" path="res://INTRO_OUTRO/SOUNDS/Snoring.ogg" id="8_5jvuw"]
 [ext_resource type="AudioStream" uid="uid://b6cpsyavomfrk" path="res://INTRO_OUTRO/SOUNDS/Music_Off.ogg" id="9_t8wxy"]
 [ext_resource type="AudioStream" uid="uid://cdk4cbg43ly8j" path="res://INTRO_OUTRO/SOUNDS/Opening_Door.ogg" id="10_ka4gs"]
@@ -242,8 +242,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_myp3g"]
 _data = {
-"Outro": SubResource("Animation_laq0e"),
-"RESET": SubResource("Animation_c2bm3")
+&"Outro": SubResource("Animation_laq0e"),
+&"RESET": SubResource("Animation_c2bm3")
 }
 
 [sub_resource type="Animation" id="Animation_hknbg"]
@@ -280,8 +280,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ml54y"]
 _data = {
-"Moving_painting": SubResource("Animation_hknbg"),
-"RESET": SubResource("Animation_uoheo")
+&"Moving_painting": SubResource("Animation_hknbg"),
+&"RESET": SubResource("Animation_uoheo")
 }
 
 [node name="Outro" type="Node2D"]
